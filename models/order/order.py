@@ -34,7 +34,69 @@ class sale_order(models.Model):
 
 
 
+# ----------------------------------------------------------- Descriptors -------------------------------
+	# Product
+	x_product = fields.Char(
+			string="Producto",
+		)
+
+
+
+
+	# Family
+	x_family = fields.Selection(
+			string="Familia",
+			selection=[
+							('product', 'Producto'),
+							('consultation', 'Consulta'),
+							('procedure', 'Procedimiento'),
+							('cosmetology', 'Cosmiatría'),
+			],
+		)
+
+
+
+
+
 # ----------------------------------------------------------- Print Ticket -------------------------------
+
+	def get_total_net(self):
+		"""
+		Used by Print Ticket.
+		"""
+		return self.x_total_net
+
+	def get_total_tax(self):
+		"""
+		Used by Print Ticket.
+		"""
+		return self.x_total_tax
+
+	def get_amount_total(self):
+		"""
+		Used by Print Ticket.
+		"""
+		return self.amount_total
+
+
+
+
+	def get_total_in_words(self):
+		"""
+		Used by Print Ticket.
+		"""
+		return self.x_total_in_words
+
+	def get_total_cents(self):
+		"""
+		Used by Print Ticket.
+		"""
+		return self.x_total_cents
+
+
+
+
+
 
 	def get_note(self):
 		"""
@@ -872,21 +934,6 @@ class sale_order(models.Model):
 			states=READONLY_STATES,
 		)
 
-	# Family
-	x_family = fields.Selection(
-			string="Familia",
-			selection=[
-							('product', 'Producto'),
-							('consultation', 'Consulta'),
-							('procedure', 'Procedimiento'),
-							('cosmetology', 'Cosmiatría'),
-			],
-		)
-
-	# Product
-	x_product = fields.Char(
-			string="Producto",
-		)
 
 
 

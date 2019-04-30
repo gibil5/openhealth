@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# 	*** Cosmetology 
+# 	*** Cosmetology - Dep ?
 # 
 
 from openerp import models, fields, api

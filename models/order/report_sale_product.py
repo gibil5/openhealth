@@ -16,6 +16,26 @@ class ReportSaleProduct(models.Model):
 	
 
 
+# ----------------------------------------------------------- Relational ------------------------------------------------------	
+	# Order Lines
+	order_line_ids = fields.One2many(
+			'openhealth.report.order_line', 
+			'report_sale_product_id', 
+			#string="Estado de cuenta",
+		)
+
+
+	# Item Counter
+	item_counter_ids = fields.One2many(
+			'openhealth.item.counter', 
+			'report_sale_product_id', 
+			#string="Estado de cuenta",
+		)
+
+
+
+
+
 # ----------------------------------------------------------- Test ------------------------------------------------------
 
 	test_target = fields.Boolean(
@@ -48,21 +68,6 @@ class ReportSaleProduct(models.Model):
 
 
 
-# ----------------------------------------------------------- Relational ------------------------------------------------------	
-	# Item Counter
-	item_counter_ids = fields.One2many(
-			'openhealth.item.counter', 
-			'report_sale_product_id', 
-			#string="Estado de cuenta",
-		)
-
-
-	# Order Lines
-	order_line_ids = fields.One2many(
-			'openhealth.report.order_line', 
-			'report_sale_product_id', 
-			#string="Estado de cuenta",
-		)
 
 
 

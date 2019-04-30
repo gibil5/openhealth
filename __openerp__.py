@@ -6,7 +6,7 @@
 
 	'description': """
 
-		26 April 2019
+		30 April 2019
 
 		Remember, it is just a Bigger game:
 			- DEV = 9x9
@@ -399,8 +399,10 @@
 		'views/orders/order_search.xml',
 		'views/orders/order_line.xml',
 		'views/orders/order_admin.xml',
+
 		#'views/orders/order_report_nex.xml',				# Estado de Cuenta
-		'views/orders/order_account.xml',				# Estado de Cuenta New
+		#'views/orders/order_account.xml',				# Estado de Cuenta New
+		'views/orders/order_report_nex.xml',				# Estado de Cuenta New
 
 
 

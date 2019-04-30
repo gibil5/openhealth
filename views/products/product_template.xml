@@ -85,6 +85,11 @@
                         </group>
                         -->
 
+
+
+
+
+
                         <!-- Update Level -->
                         <group>                         
                             <button
@@ -167,14 +172,16 @@
             <field name="type">tree</field>
             <field name="priority" eval="1"/>
             <field name="arch" type="xml">
-                <tree string="Product Tree - Mod"   
+
+
+                <tree string="Product Tree - Mod">
+<!--
 colors="
 red:x_checksum_1=='0';
 blue:x_checksum_2=='0';
 black:x_checksum_1=='1'
 "
->
-
+-->
 
                     <field name="name"              string="Nombre actual"/>
                     <field name="x_test"/>
@@ -225,8 +232,6 @@ black:x_checksum_1=='1'
 
 
 
-                    <field name="x_checksum_1"/>
-                    <field name="x_checksum_2"/>
 <!--
                     <field name="item_ids"/>
 -->
@@ -251,6 +256,8 @@ black:x_checksum_1=='1'
             </field>
         </record>
 <!--
+                    <field name="x_checksum_1"/>
+                    <field name="x_checksum_2"/>
                     <field name="x_generated"/>
                     <field name="x_name_ticket"/>
 -->

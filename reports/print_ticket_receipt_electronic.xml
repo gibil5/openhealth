@@ -199,7 +199,10 @@
         <td><b>Total</b></td>
     </tr>
 
-<!-- Items --> 
+
+
+
+<!-- LOOP - Items --> 
 <t t-foreach="doc.order_line" t-as="line">
 <tr>
 
@@ -219,11 +222,17 @@
 </td>
 
 <td>
-<t t-esc="line.price_unit"/>
+<!--
+    <t t-esc="line.price_unit"/>
+-->
+    <t t-esc="line.get_price_unit()"/>    
 </td>
 
 <td>
-<t t-esc="line.price_subtotal"/>
+<!--
+    <t t-esc="line.price_subtotal"/>
+-->
+    <t t-esc="line.get_price_subtotal()"/>    
 </td>
 
 </tr>
@@ -241,7 +250,12 @@
 <table style="width:100%">
     <tr>
         <td>OP. GRAVADAS S/.</td>
-        <td align="right" ><t t-esc="doc.x_total_net"/></td> 
+        <td align="right" >
+<!--
+            <t t-esc="doc.x_total_net"/>
+-->
+            <t t-esc="doc.get_total_net()"/>
+        </td> 
     </tr>
     <tr>
         <td>OP. GRATUITAS S/.</td>
@@ -257,11 +271,22 @@
     </tr>
     <tr>
         <td>I.G.V. 18% S/.</td>
-        <td align="right" ><t t-esc="doc.x_total_tax"/></td> 
+        <td align="right" >
+<!--
+            <t t-esc="doc.x_total_tax"/>
+-->
+            <t t-esc="doc.get_total_tax()"/>
+
+        </td> 
     </tr>
     <tr>
         <td>TOTAL S/.</td>
-        <td align="right" ><t t-esc="doc.amount_total"/></td> 
+        <td align="right" >
+<!--
+            <t t-esc="doc.amount_total"/>
+-->        
+            <t t-esc="doc.get_amount_total()"/>
+        </td> 
     </tr>
 </table>
 <br/>
@@ -275,10 +300,22 @@
         <td><b>Son:</b></td>
     </tr>
     <tr>
-        <td align="right" ><t t-esc="doc.x_total_in_words"/></td> 
+        <td align="right" >
+<!--
+            <t t-esc="doc.x_total_in_words"/>
+-->
+            <t t-esc="doc.get_total_in_words()"/>
+        </td> 
     </tr>
     <tr>
-        <td align="right" >Y <t t-esc="doc.x_total_cents"/>/100</td> 
+        <td align="right" >Y 
+<!--
+            <t t-esc="doc.x_total_cents"/>
+-->
+            <t t-esc="doc.get_total_cents()"/>
+
+            
+            /100</td> 
     </tr>
     <tr>
         <td align="right" >Soles</td> 

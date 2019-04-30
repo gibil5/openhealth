@@ -6,15 +6,12 @@
 		Last up: 	 		  9 Apr 2019
 """
 from __future__ import print_function
-
 from openerp import models, fields, api
 from openerp.exceptions import ValidationError
 from openerp.addons.openhealth.models.libs import lib
 from . import prodvars
-
 #from . import gen  		# Dep 2019
 #from . import gen_tic   	# Dep 2019
-
 
 class Product(models.Model):
 	"""
@@ -27,7 +24,6 @@ class Product(models.Model):
 
 
 # ----------------------------------------------------------- Print Ticket -------------------------------
-
 	#def get_name_ticket(self):
 	#	"""
 	#	Used by Print Ticket.
@@ -35,10 +31,7 @@ class Product(models.Model):
 	#	return self.x_name_ticket
 
 
-
-
 # ----------------------------------------------------------- Canonical -------------------------------
-
 	#name = fields.Char(
 	#	'Name', 
 	#	required=True, 
@@ -52,6 +45,7 @@ class Product(models.Model):
 	#		required=True,
 	#       help="A consumable is a product for which you don't manage stock, a service is a non-material product provided by a company or an individual."
 	#	)
+
 
 
 # ----------------------------------------------------------- Canonical -------------------------------
@@ -107,10 +101,6 @@ class Product(models.Model):
 	x_price_vip_return = fields.Float(
 			required=False,
 		)
-
-
-
-
 
 
 # ----------------------------------------------------------- Test -------------------------------
@@ -310,32 +300,6 @@ class Product(models.Model):
 
 
 
-# ----------------------------------------------------------- Checksum ----------------------------
-
-	# Checksum 1 - Generated vs Name
-	x_checksum_1 = fields.Char(
-			'Checksum 1',
-
-			compute='_compute_checksum_1',
-		)
-	@api.multi
-	def _compute_checksum_1(self):
-		for record in self:
-			record.x_checksum_1 = lib.get_checksum_gen(record.x_generated, record.name)
-
-
-
-
-	# Checksum 2 - Ticket Compact Name
-	x_checksum_2 = fields.Char(
-			'Checksum 2',
-
-			compute='_compute_checksum_2',
-		)
-	@api.multi
-	def _compute_checksum_2(self):
-		for record in self:
-			record.x_checksum_2 = lib.get_checksum_tic(record.x_name_ticket)
 
 
 

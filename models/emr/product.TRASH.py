@@ -1,5 +1,33 @@
 
 
+# ----------------------------------------------------------- Checksum - Dep ----------------------------
+
+	# Checksum 1 - Generated vs Name
+	x_checksum_1 = fields.Char(
+			'Checksum 1',
+
+			compute='_compute_checksum_1',
+		)
+	@api.multi
+	def _compute_checksum_1(self):
+		for record in self:
+			record.x_checksum_1 = lib.get_checksum_gen(record.x_generated, record.name)
+
+
+
+
+	# Checksum 2 - Ticket Compact Name
+	x_checksum_2 = fields.Char(
+			'Checksum 2',
+
+			compute='_compute_checksum_2',
+		)
+	@api.multi
+	def _compute_checksum_2(self):
+		for record in self:
+			record.x_checksum_2 = lib.get_checksum_tic(record.x_name_ticket)
+
+
 
 
 # ----------------------------------------------------------- Ticket - Dep -------------------------------

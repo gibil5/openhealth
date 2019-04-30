@@ -3,7 +3,7 @@
 		Patient
 
  		Created: 		26 Aug 2016
-		Last up: 		29 Nov 2018
+		Last up: 		28 Apr 2019
 """
 from __future__ import print_function
 from openerp import models, fields, api
@@ -11,9 +11,6 @@ from . import pat_vars
 from . import pat_funcs
 from . import chk_patient
 from openerp.addons.openhealth.models.libs import count_funcs
-#from . import lib
-#from . import count_funcs
-#from libs import count_funcs
 
 class Patient(models.Model):
 	"""
@@ -24,6 +21,95 @@ class Patient(models.Model):
 	_order = 'x_id_code desc'
 
 	_description = 'Patient'
+
+
+
+# ----------------------------------------------------------- Estado de Cuenta --------------------
+
+	# Relational
+	order_report_nex = fields.Many2one(
+			'openhealth.order.report.nex',
+			string="Estado de cuenta",
+		)
+
+
+	# Remove
+	@api.multi
+	def remove_order_report(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Remove Order Report')
+		#self.order_report_nex = False
+		self.order_report_nex.unlink()		# This !
+	# remove_order_report
+
+
+	# Create
+	@api.multi
+	def create_order_report(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Create Order Report')
+		name = 'EC - ' + self.partner_id.name
+		order_report_id = self.env['openhealth.order.report.nex'].create({
+																			'name': name,
+																			'patient': self.id,
+																			'partner_id': self.partner_id.id,
+																		}).id
+		#print name 			# Warning - Generates Error in Prod. Because of Latin chars (ie Ñ).
+		return order_report_id
+	# create_order_report
+
+
+
+
+
+	# Generate
+	@api.multi
+	def generate_order_report(self):
+		"""
+		Estado de Cuenta.
+		"""
+		print()
+		print('Generate Order Report')
+
+		# Clean
+		self.remove_order_report()
+
+		# Create
+		self.order_report_nex = self.create_order_report()
+		res_id = self.order_report_nex.id
+
+		# Update
+		self.order_report_nex.update()
+
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' New Order Report',
+				'view_type': 'form',
+				'view_mode': 'form',
+				'target': 'current',
+				'res_model': 'openhealth.order.report.nex',
+				'res_id': res_id,
+				'flags': 	{
+								#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+								'form': {'action_buttons': True, }
+							},
+				'context': {}
+				}
+	# generate_order_report
+
+
+
+
+
+
+
+
 
 
 # ----------------------------------------------------------- Constraints - Sql -------------------
@@ -254,77 +340,6 @@ class Patient(models.Model):
 	x_district = fields.Char(
 			string='Distrito L',
 		)
-
-
-
-# ----------------------------------------------------------- Estado de Cuenta --------------------
-
-	# Estado de cuenta
-	order_report_nex = fields.Many2one(
-			'openhealth.order.report.nex',
-			string="Estado de cuenta",
-		)
-
-
-	# Remove
-	@api.multi
-	def remove_order_report(self):
-		"""
-		high level support for doing this and that.
-		"""
-		self.order_report_nex = False
-	# remove_order_report
-
-
-	# Create
-	@api.multi
-	def create_order_report(self):
-		"""
-		high level support for doing this and that.
-		"""
-		name = 'EC - ' + self.partner_id.name
-		order_report_id = self.env['openhealth.order.report.nex'].create({
-																			'name': name,
-																			'patient': self.id,
-																			'partner_id': self.partner_id.id,
-																		}).id
-		#print name 			# Warning - Generates Error in Prod. Because of Latin chars (ie Ñ).
-		return order_report_id
-	# create_order_report
-
-
-	# Generate
-	@api.multi
-	def generate_order_report(self):
-		"""
-		Estado de Cuenta.
-		"""
-
-		# Clean
-		self.remove_order_report()
-
-		# Create
-		self.order_report_nex = self.create_order_report()
-		res_id = self.order_report_nex.id
-
-		# Update
-		self.order_report_nex.update()
-
-		return {
-				'type': 'ir.actions.act_window',
-				'name': ' New Order Report',
-				'view_type': 'form',
-				'view_mode': 'form',
-				'target': 'current',
-				'res_model': 'openhealth.order.report.nex',
-				'res_id': res_id,
-				'flags': 	{
-								#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-								'form': {'action_buttons': True, }
-							},
-				'context': {}
-				}
-	# generate_order_report
 
 
 

@@ -21,6 +21,20 @@ class SaleOrderLine(models.Model):
 
 # ----------------------------------------------------------- Print Ticket -------------------------------
 
+	def get_price_unit(self):
+		"""
+		Used by Print Ticket.
+		"""
+		return self.price_unit
+
+
+	def get_price_subtotal(self):
+		"""
+		Used by Print Ticket.
+		"""
+		return self.price_subtotal
+
+
 	def get_quantity(self):
 		"""
 		Used by Print Ticket.

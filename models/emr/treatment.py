@@ -10,14 +10,12 @@ import datetime
 from openerp import models, fields, api
 from . import time_funcs
 from . import treatment_vars
-from . import reco_funcs
-
 from openerp.addons.openhealth.models.libs import creates as cre
-
 from openerp.addons.openhealth.models.libs import lib, user
 from . import test_foo
-
 from . import test_treatment
+
+#from . import reco_funcs
 
 class Treatment(models.Model):
 
@@ -28,6 +26,57 @@ class Treatment(models.Model):
 	_order = 'write_date desc'
 
 	_description = 'Treatment'
+
+
+
+# ----------------------------------------------------------- All Services - Dep ? ------------------------
+	# Product
+	@api.multi
+	def create_service_product(self):
+		#ret = reco_funcs.create_service_product(self)
+		return 0
+
+	# Co2
+	@api.multi
+	def create_service_co2(self):
+		#ret = reco_funcs.create_service_co2(self)
+		return 0
+
+	# Quick
+	@api.multi
+	def create_service_quick(self):
+		#ret = reco_funcs.create_service_quick(self)
+		return 0
+
+	# Excilite
+	@api.multi
+	def create_service_excilite(self):
+		#ret = reco_funcs.create_service_excilite(self)
+		return 0
+
+	# Ipl
+	@api.multi
+	def create_service_ipl(self):
+		#ret = reco_funcs.create_service_ipl(self)
+		return 0
+
+	# Ndyag
+	@api.multi
+	def create_service_ndyag(self):
+		#ret = reco_funcs.create_service_ndyag(self)
+		return 0
+
+	# Medical
+	@api.multi
+	def create_service_medical(self):
+		#ret = reco_funcs.create_service_medical(self)
+		return 0
+
+	# Cosmetology
+	@api.multi
+	def create_service_cosmetology(self):
+		#ret = reco_funcs.create_service_cosmetology(self)
+		return 0
 
 
 
@@ -1529,55 +1578,6 @@ class Treatment(models.Model):
 
 
 
-
-# ----------------------------------------------------------- All Services ------------------------
-	# Product
-	@api.multi
-	def create_service_product(self):
-		ret = reco_funcs.create_service_product(self)
-		return ret
-
-	# Co2
-	@api.multi
-	def create_service_co2(self):
-		ret = reco_funcs.create_service_co2(self)
-		return ret
-
-	# Quick
-	@api.multi
-	def create_service_quick(self):
-		ret = reco_funcs.create_service_quick(self)
-		return ret
-
-	# Excilite
-	@api.multi
-	def create_service_excilite(self):
-		ret = reco_funcs.create_service_excilite(self)
-		return ret
-
-	# Ipl
-	@api.multi
-	def create_service_ipl(self):
-		ret = reco_funcs.create_service_ipl(self)
-		return ret
-
-	# Ndyag
-	@api.multi
-	def create_service_ndyag(self):
-		ret = reco_funcs.create_service_ndyag(self)
-		return ret
-
-	# Medical
-	@api.multi
-	def create_service_medical(self):
-		ret = reco_funcs.create_service_medical(self)
-		return ret
-
-	# Cosmetology
-	@api.multi
-	def create_service_cosmetology(self):
-		ret = reco_funcs.create_service_cosmetology(self)
-		return ret
 
 
 

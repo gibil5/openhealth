@@ -31,27 +31,22 @@ _dic_id_doc_code = {
 }
 
 
+
 _first_contact_list = [
-		
-		('recommendation','Recomendación'), 
-		('tv','Tv'), 
-		('radio','Radio'), 
-		
-		#('website','Sitio web'), 
-		('website','Web'), 
-		('facebook','Facebook'), 					# New
-		('instagram','Instagram'), 					# New
-		
-		#('mail_campaign','Campaña de mail'), 
-		('mail_campaign','Mailing'), 
+						('facebook','Facebook'), 					# New
+						('instagram','Instagram'), 					# New
+						('callcenter','Call Center'), 				# New 
+						('old_patient','Paciente Antiguo'), 		# New 		
 
-		('callcenter','Call Center'), 				# New 
-		('old_patient','Paciente Antiguo'), 		# New 		
+						('mail_campaign','Mailing'), 
+						('recommendation','Recomendación'), 
+						('tv','Tv'), 
+						('radio','Radio'), 		
+						('website','Web'), 
 
-
-		# Deprecated
-		('internet','Internet'), 
-		('none','Ninguno'), 
+						# Deprecated
+						('internet','Internet'), 
+						('none','Ninguno'), 
 ]
 
 

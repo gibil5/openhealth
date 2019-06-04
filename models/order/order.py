@@ -951,6 +951,7 @@ class sale_order(models.Model):
 			string='Order Lines',
 
 			#states=READONLY_STATES, 			# By XML
+			
 			#states=ORDER_LINE_READONLY_STATES,
 		)
 

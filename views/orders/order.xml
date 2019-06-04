@@ -793,12 +793,15 @@
 	<attribute name='attrs'>{'readonly': [('state', 'in', ('cancel'))]}</attribute>
 	<attribute name='attrs'>{'readonly': [('state', 'not in', ('sale', 'draft', 'cancel', 'sent'))]}</attribute>
 -->
+
+<!--
+Angelo - 4 Jun 2019
+-->
 <xpath expr="//field[@name='order_line']" position="attributes">
 
 	<attribute name='attrs'>{'readonly': [('state', 'not in', ('sale', 'draft', 'cancel', 'sent', 'credit_note'))]}</attribute>
 
 </xpath>
-
 
 
 

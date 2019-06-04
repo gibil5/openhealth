@@ -122,8 +122,8 @@ class DoctorLine(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		#print()
-		#print('Doctor - Stats')
+		print()
+		print('Doctor - Stats')
 
 		# Using collections - More Abstract !
 
@@ -319,6 +319,7 @@ class DoctorLine(models.Model):
 			self.ratio_pro_con_co2 = (float(self.nr_procedures_co2) / float(self.nr_consultations)) * 100
 			self.ratio_pro_con_quick = (float(self.nr_procedures_quick) / float(self.nr_consultations)) * 100
 	# update
+
 
 
 # ----------------------------------------------------------- Update Daily ------------------------------

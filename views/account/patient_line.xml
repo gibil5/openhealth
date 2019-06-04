@@ -4,7 +4,7 @@
         
 
 
-        <!-- FORM --> 
+<!-- FORM --> 
         <record model="ir.ui.view" id="patient_line_form_view">
 
             <field name="name">openhealth.patient.line.form</field>
@@ -253,7 +253,7 @@ Sales by patient who have a Vip Card
 
 
 
-        <!-- Tree --> 
+<!-- Tree -->
         <record model="ir.ui.view" id="patient_line_view_order_tree">
             <field name="name">openhealth.patient.line.tree</field>
             <field name="model">openhealth.patient.line</field>
@@ -493,190 +493,6 @@ Sales by patient who have a Vip Card
         </record>
 
 
-
-
-
-
-        <!-- Action 1 -->
-        <record model="ir.actions.act_window" id="patient_line_form_action">
-            <field name="name">Pacientes</field>
-            <field name="res_model">openhealth.patient.line</field>
-            <field name="view_type">form</field>
-
-<!--
-            <field name="view_mode">pivot,tree,form,graph</field>
-            <field name="view_mode">tree,graph,pivot</field>
--->
-
-            <field name="view_mode">tree,form,graph,pivot</field>
-
-            <field name="domain">[
-                                    ('marketing_id', '=', active_id),
-                                ]
-            </field>
-
-<!--
-                                    'search_default_Sales':1, 
-                                    'group_by_no_leaf':1,
-                                    'group_by': ('sex','education','vip'),
--->
-            <field name="context">{}
-            </field>
-
-            <field name="limit">1000</field>
-        </record>
-
-
-
-        <!-- Action 2 -->
-        <record model="ir.actions.act_window" id="patient_line_proc_form_action">
-            <field name="name">Pacientes</field>
-            <field name="res_model">openhealth.patient.line</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form,graph,pivot</field>
-
-            <field name="view_id" ref="patient_line_proc_view_tree"/> 
-
-<!--
-                                    ('budget_flag', '=', True),
--->
-            <field name="domain">[
-                                    ('marketing_id', '=', active_id),
-                                ]
-            </field>
-
-            <field name="context">{}</field>
-
-            <field name="limit">1000</field>
-        </record>
-
-
-
-
-
-
-
-
-
-
-        <!-- Action - Vip -->
-        <record model="ir.actions.act_window" id="patient_line_vip_form_action">
-            <field name="name">Pacientes</field>
-            <field name="res_model">openhealth.patient.line</field>
-            <field name="view_type">form</field>
-
-            <field name="view_mode">tree,form,graph,pivot</field>
-
-            <field name="domain">[
-                                    ('vip', '=', True),
-                                    ('marketing_id', '=', active_id),
-                                ]
-            </field>
-
-            <field name="context">{}</field>
-            <field name="limit">1000</field>
-        </record>
-
-
-
-        <!-- Action - No Vip -->
-        <record model="ir.actions.act_window" id="patient_line_vip_no_form_action">
-            <field name="name">Pacientes</field>
-            <field name="res_model">openhealth.patient.line</field>
-            <field name="view_type">form</field>
-
-            <field name="view_mode">tree,form,graph,pivot</field>
-
-            <field name="domain">[
-                                    ('vip', '=', False),
-                                    ('marketing_id', '=', active_id),
-                                ]
-            </field>
-
-            <field name="context">{}</field>
-            <field name="limit">1000</field>
-        </record>
-
-
-
-
-        <!-- Action - Vip Not Used -->
-        <record model="ir.actions.act_window" id="patient_line_vip_not_used_form_action">
-            <field name="name">Tarjeta Vip No Utilizada</field>
-            <field name="res_model">openhealth.patient.line</field>
-            <field name="view_type">form</field>
-
-            <field name="view_mode">tree,form,graph,pivot</field>
-
-            <field name="domain">[
-                                    ('vip', '=', True),
-
-                                    ('nr_lines_vip', '=', 0),
-
-                                    ('marketing_id', '=', active_id),
-                                ]
-            </field>
-
-            <field name="context">{}</field>
-            <field name="limit">1000</field>
-        </record>
-
-
-
-
-
-
-
-
-
-
-
-
-        <!-- Filter --> 
-        <record id="view_patient_line_filter" model="ir.ui.view">
-            <field name="name">Patient Line Search</field>
-
-            <field name="model">openhealth.patient.line</field>
-            
-            <field name="arch" type="xml">
-               
-               <search string="Patient Lines">
-                   
-<!--
-                    <field  name="patient" 
-                        filter_domain="['|',('patient','ilike',self),('physician','ilike',self)]"/>
-                    <field  name="marketing_id"/>
--->
-
-
-
-
-                    <group expand="1" string="Group By">
-<!--
-                        <filter name="Estado" context="{'group_by':'state'}"/>
-                        <filter name="Paciente" context="{'group_by':'patient'}"/>
-                        <filter name="Familia" context="{'group_by':'family'}"/>
-                        <filter name="Subfamilia" context="{'group_by':'sub_family'}"/>
-                        <filter name="Marketing" context="{'group_by':'marketing_id'}"/>
-                        <filter name="Patient Line" context="{'group_by':'patient_line_id'}"/>
--->
-                        <filter name="Médico" context="{'group_by':'doctor'}"/>
-
-                        <filter name="Nr Proc" context="{'group_by':'nr_proc'}"/>
-
-                        <filter name="Nr Pres" context="{'group_by':'nr_budget'}"/>
-                    </group>
-
-                   
-                   <!--
-                   <newline />
-                   <group expand="0" string="Group By...">
-                       <filter string="Patient" domain="[]" context="{'group_by':'patient'}" />
-                   </group>
-                   -->
-               </search>
-           </field>
-       </record>
 
 
 

@@ -27,6 +27,46 @@ class electronic_order(models.Model):
 
 
 
+# ----------------------------------------------------------- Required ----------------------------
+
+	# Patient
+	id_doc_type = fields.Char(
+			string='Doc Id Tipo',
+			default=".",
+			required=True,
+		)
+
+	id_doc_type_code = fields.Char(
+			string='Codigo',
+			default=".",
+			required=True,
+		)
+
+
+
+	# Order
+	x_type = fields.Char(
+			'Tipo',
+			required=True,
+		)
+
+	type_code = fields.Char(
+			'Codigo',
+			required=True,
+		)
+
+	serial_nr = fields.Char(
+			'Serial Nr',
+			required=True,
+		)
+
+	receptor = fields.Char(
+			string='Receptor',
+			required=True,
+		)
+
+
+
 # ----------------------------------------------------------- Electronic -------------------------------
 
 	def get_coeff(self):
@@ -108,12 +148,6 @@ class electronic_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Keys --------------------------------
-	# Serial Number
-	serial_nr = fields.Char(
-			'Serial Nr',
-			required=True,
-		)
 
 
 
@@ -134,28 +168,10 @@ class electronic_order(models.Model):
 
 # ----------------------------------------------------------- Receptor ----------------------------
 
-	# Receptor
-	receptor = fields.Char(
-			string='Receptor',
-			required=True,
-		)
-
-	id_doc_type = fields.Char(
-			string='Doc Id Tipo',
-			default=".",
-			required=True,
-		)
-
-	id_doc_type_code = fields.Char(
-			string='Codigo',
-			default=".",
-			required=True,
-		)
 
 	id_doc = fields.Char(
 			'Doc Id',
 			default=".",
-			#required=True,
 		)
 
 	patient = fields.Many2one(
@@ -222,16 +238,6 @@ class electronic_order(models.Model):
 
 
 # ----------------------------------------------------------- Sale --------------------------------
-
-	x_type = fields.Char(
-			'Tipo',
-			required=True,
-		)
-
-	type_code = fields.Char(
-			'Codigo',
-			required=True,
-		)
 
 	currency_code = fields.Char(
 			'Moneda',

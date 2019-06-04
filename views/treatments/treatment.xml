@@ -4,92 +4,6 @@
 
 
 
-<!-- FORM 2 --> 
-        <record model="ir.ui.view" id="treatment_2_form_view">
-            <field name="name">treatment.form</field>
-            <field name="model">openhealth.treatment</field>
-            <field name="priority" eval="5"/>
-            <field name="arch" type="xml">
-                <form string="Treatment 2 Form">
-                    <header>
-
-                            <!-- CO2 --> 
-                            <button 
-                                type="object" 
-                                class="oe_highlight"    
-                                name="create_service_co2"
-                                string="LASER CO2"
-                            />
-
-                            <!-- Quick --> 
-                            <button 
-                                type="object" 
-                                class="oe_highlight"    
-                                name="create_service_quick"
-                                string="QUICK LASER"
-                            />
-
-                            <!-- Excilite -->
-                            <button 
-                                type="object" 
-                                class="oe_highlight"    
-                                name="create_service_excilite"
-                                string=" EXCILITE"
-                            />
-
-                            <!-- M22-IPL --> 
-                            <button 
-                                type="object" 
-                                class="oe_highlight"    
-                                name="create_service_ipl"
-                                string=" M22-IPL"
-                            />
-
-                            <!-- M22-NDYAG -->
-                            <button 
-                                type="object" 
-                                class="oe_highlight"    
-                                name="create_service_ndyag"
-                                string=" M22-NDYAG"
-                            />
-
-
-
-                            <!-- Product --> 
-                            <button 
-                                type="object" 
-                                class="oe_highlight"    
-                                name="create_service_product"
-                                string="PRODUCTOS"
-                            />
-
-
-
-                            <!-- T. MEDICO -->
-                            <button 
-                                type="object" 
-                                class="oe_highlight"    
-                                name="create_service_medical"
-                                string="T. MEDICO"
-                            />
-
-                            <!-- Cosmeto -->
-                            <button 
-                                type="object" 
-                                class="oe_highlight"    
-                                name="create_service_cosmetology"
-                                string="Cosmiatria"
-                            />
-                    </header>
-                    <sheet>
-                        <notebook></notebook>
-                    </sheet>
-                </form>
-            </field>
-        </record>
-
-
-
 <!-- FORM --> 
         <record model="ir.ui.view" id="treatment_form_view">
             <field name="name">treatment.form</field>
@@ -342,12 +256,20 @@
                                 </button>
 
 
-                                <!-- Services -->
+<!--
                                 <button type="action" class="oe_stat_button" icon="fa-list" invisible="0"
+-->
+                                <!-- Services -->
+                                <button type="action" class="oe_stat_button" icon="fa-list"
+                                    
                                     name="%(service_list_action)d"
+                                    
                                     context="{                                  
-                                            'search_default_treatment': active_id,
-                                            }"  
+                                                'search_default_treatment': active_id,
+                                            }"
+
+                                    attrs="{ 'invisible':[  ('nr_services','=',0), ]}"
+                                    
                                     >
                                     <field string="Recomendacion" name="nr_services" widget="statinfo"/>
                                 </button>
@@ -576,6 +498,7 @@
                                     <button 
                                         type="object" 
                                         class="oe_highlight"
+                                        
                                         name="test_integration" 
                                         
                                         string="Integration"
@@ -734,6 +657,91 @@
 
 
 
+
+
+<!-- FORM 2 --> 
+        <record model="ir.ui.view" id="treatment_2_form_view">
+            <field name="name">treatment.form</field>
+            <field name="model">openhealth.treatment</field>
+            <field name="priority" eval="5"/>
+            <field name="arch" type="xml">
+                <form string="Treatment 2 Form">
+                    <header>
+
+                            <!-- CO2 --> 
+                            <button 
+                                type="object" 
+                                class="oe_highlight"    
+                                name="create_service_co2"
+                                string="LASER CO2"
+                            />
+
+                            <!-- Quick --> 
+                            <button 
+                                type="object" 
+                                class="oe_highlight"    
+                                name="create_service_quick"
+                                string="QUICK LASER"
+                            />
+
+                            <!-- Excilite -->
+                            <button 
+                                type="object" 
+                                class="oe_highlight"    
+                                name="create_service_excilite"
+                                string=" EXCILITE"
+                            />
+
+                            <!-- M22-IPL --> 
+                            <button 
+                                type="object" 
+                                class="oe_highlight"    
+                                name="create_service_ipl"
+                                string=" M22-IPL"
+                            />
+
+                            <!-- M22-NDYAG -->
+                            <button 
+                                type="object" 
+                                class="oe_highlight"    
+                                name="create_service_ndyag"
+                                string=" M22-NDYAG"
+                            />
+
+
+
+                            <!-- Product --> 
+                            <button 
+                                type="object" 
+                                class="oe_highlight"    
+                                name="create_service_product"
+                                string="PRODUCTOS"
+                            />
+
+
+
+                            <!-- T. MEDICO -->
+                            <button 
+                                type="object" 
+                                class="oe_highlight"    
+                                name="create_service_medical"
+                                string="T. MEDICO"
+                            />
+
+                            <!-- Cosmeto -->
+                            <button 
+                                type="object" 
+                                class="oe_highlight"    
+                                name="create_service_cosmetology"
+                                string="Cosmiatria"
+                            />
+                    </header>
+                    <sheet>
+                        <notebook></notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
 
 
 

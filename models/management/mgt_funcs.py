@@ -187,6 +187,11 @@ def get_orders_filter(self, date_bx, date_ex, state_arr, type_arr):
 	"""
 	print('')
 	print('Get Orders - Filter')
+	print(date_bx)
+	print(date_ex)
+	print(state_arr)
+	print(type_arr)
+
 
 	# Init
 	DATETIME_FORMAT = "%Y-%m-%d"

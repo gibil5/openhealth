@@ -7,7 +7,9 @@
 <!-- TREE --> 
         <record model="ir.ui.view" id="electronic_order_view_tree">
             <field name="name">openhealth.electronic.order.tree</field>
+
             <field name="model">openhealth.electronic.order</field>
+            
             <field name="arch" type="xml">
 
 <!--
@@ -94,7 +96,9 @@
 <!-- ACTION -->
         <record model="ir.actions.act_window" id="electronic_order_form_action">    
             <field name="name">Ventas</field>
+
             <field name="res_model">openhealth.electronic.order</field>
+            
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
             <field name="domain">[]</field>

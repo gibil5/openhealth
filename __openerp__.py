@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 {
-	'name': "Open Health - SERVICE ORIENTED",
+	'name': "Open Health - OBJECT ORIENTED",
 
 	'summary': "",
 
 	'description': """
 
-		30 April 2019
+		3 Jun 2019
 
 		Remember, it is just a Bigger game:
 			- DEV = 9x9
@@ -262,7 +262,9 @@
 
 
 
-		# Account - Patients 					# Dep ???
+		# Account - Patients 					# For Marketing
+		'views/account/patient_line_search.xml',
+		'views/account/patient_line_actions.xml',
 		'views/account/patient_line.xml',
 		'views/account/patient_line_pivot.xml',
 
@@ -300,8 +302,9 @@
 		'views/management/management_order_line.xml',
 		'views/management/management_doctor_line.xml',
 
-		'views/management/management_actions.xml',
 		'views/management/management.xml',
+
+		'views/management/management_actions.xml',
 		
 
 
@@ -488,7 +491,7 @@
 
 
 		# Products
-		'views/products/product_template.xml',
+		#'views/products/product_template.xml',		# Dep - 2019
 		'views/products/product_actions.xml',
 		'views/products/product_product.xml',
 
@@ -651,7 +654,10 @@
 		'views/menus/menus_caja.xml',
 		'views/menus/menus_reporting.xml',
 		'views/menus/menus_marketing.xml',		 
-		'views/menus/menus_management.xml',		  
+
+		'views/menus/menus_management.xml',
+		#'views/menus/menus_management_config.xml',
+
 		'views/menus/menus_qc.xml',
 		'views/menus/menus_account.xml',
 

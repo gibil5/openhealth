@@ -24,6 +24,18 @@ class Patient(models.Model):
 
 
 
+# ----------------------------------------------------------- Handle Dep ------------------------------
+	# Container
+	#container_id = fields.Many2one(
+	#	'openhealth.container',
+	#	ondelete='cascade',		# Very Dangerous. When Container is removed, Patient is removed.
+	#)
+
+
+
+
+
+
 # ----------------------------------------------------------- Estado de Cuenta --------------------
 
 	# Relational
@@ -212,12 +224,6 @@ class Patient(models.Model):
 		)
 
 
-# ----------------------------------------------------------- Handle ------------------------------
-	# Container
-	container_id = fields.Many2one(
-		'openhealth.container',
-		ondelete='cascade',
-	)
 
 
 

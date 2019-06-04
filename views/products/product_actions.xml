@@ -24,6 +24,7 @@
 
 
         <!-- Products --> 
+<!--        
         <record model="ir.actions.act_window" id="product_template_pl_list_action">
             <field name="name">Productos</field>
             <field name="res_model">product.template</field>
@@ -39,7 +40,7 @@
 
             <field name="context">{}</field>
         </record>
-
+-->
 
 
 

@@ -4,7 +4,7 @@
         
 
 
-        <!-- FORM --> 
+<!-- FORM -->
         <record model="ir.ui.view" id="marketing_form_view">
             <field name="name">marketing.form</field>           
             <field name="model">openhealth.marketing</field>
@@ -46,7 +46,7 @@
                                 type="object" 
                                 name="update_sales"
 
-                                string="Ventas" 
+                                string="Actualizar Ventas" 
                         />
 
                         <button 
@@ -54,7 +54,7 @@
                                 type="object" 
                                 name="update_recos"
 
-                                string="Recomendaciones"    
+                                string="Actualizar Recomendaciones"    
                         />
 
 
@@ -596,9 +596,6 @@ attrs="{'invisible':[('x_type', '!=', 'patient')]}"
             <field name="model">openhealth.marketing</field>
             <field name="arch" type="xml">
 
-<!--
-                <tree string="Account Contasis Tree" default_order='date desc'>
--->
                 <tree string="Marketing Tree">
                     
                     <field name="name"/>
@@ -689,6 +686,8 @@ attrs="{'invisible':[('x_type', '!=', 'patient')]}"
             <field name="view_mode">tree,form,graph,pivot</field>
 -->
             <field name="view_mode">tree,form</field>
+
+            <field name="view_id" ref="marketing_view_tree"/> 
 
             <field name="domain">[]</field>
 

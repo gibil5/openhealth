@@ -15,13 +15,12 @@
 
 
 
-        <!-- Ventas -->
+<!-- Ventas -->
         <menuitem   id="management_menu" 
                     name="Ventas"
                     parent="main_management_menu"
+                    sequence="1"
                 />
-
-
 
 
         <!-- Month 2019 -->
@@ -36,7 +35,6 @@
                     action="management_list_mgt_2019_action"
 
                 />
-
 
 
         <!-- Month 2018 -->
@@ -54,17 +52,42 @@
 
 
 
-        <!-- Year -->
-        <menuitem   id="management_sales_mgt_year_menu" 
 
-                    name="Anual" 
+
+
+<!-- Macros 2019 -->
+        <menuitem   id="management_macros_2019_menu" 
+                    
+                    name="Macros 2019"
+                    
+                    parent="main_management_menu"
+
+                    sequence="3"
+                />
+        
+        <!-- Family -->
+        <menuitem   id="management_family_2019_menu" 
+
+                    name="Familias" 
             
-                    parent="management_menu"
+                    parent="management_macros_2019_menu"
+            
+                    sequence="1"
+            
+                    action="management_list_mgt_2019_families_action"
+                />
+
+
+        <!-- subfamily -->
+        <menuitem   id="management_subfamily_2019_menu" 
+
+                    name="Sub Familias" 
+            
+                    parent="management_macros_2019_menu"
             
                     sequence="3"
             
-                    action="management_list_mgt_year_action"
-
+                    action="management_list_mgt_2019_subfamilies_action"
                 />
 
 
@@ -72,70 +95,32 @@
 
 
 
-        <!-- Admin -->
-        <menuitem   id="management_sales_menu" 
+<!-- Macros 2018 -->
+        <menuitem   id="management_macros_2018_menu" 
+                    
+                    name="Macros 2018"
+                    
+                    parent="main_management_menu"
 
-                    name="Admin" 
-            
-                    parent="management_menu"
-            
-                    sequence="10"
-            
-                    action="management_list_action"
-
-                    groups="openhealth.roots"
+                    sequence="5"
                 />
+        
+        <!-- Month 2018 -->
+        <menuitem   id="management_family_2018_menu" 
 
-
-
-
-        <!-- Export -->
-        <menuitem   id="management_sales_mgt_export_month_menu" 
-
-                    name="Export Mensual" 
+                    name="Familias" 
             
-                    parent="management_menu"
+                    parent="management_macros_2018_menu"
             
-                    sequence="11"
+                    sequence="1"
             
-                    action="management_list_mgt_export_month_action"
-
-                    groups="openhealth.roots"
-                />
-
-
-        <!-- Export -->
-        <menuitem   id="management_sales_mgt_export_year_menu" 
-
-                    name="Export Anual" 
-            
-                    parent="management_menu"
-            
-                    sequence="12"
-            
-                    action="management_list_mgt_export_year_action"
-
-                    groups="openhealth.roots"
+                    action="management_list_mgt_2018_families_action"
                 />
 
 
 
 
 
-        <!-- Management Order Lines -->
-<!--        
-        <menuitem   id="management_order_lines_menu" 
-
-                    name="Management Order Lines" 
-            
-                    parent="management_menu"
-            
-                    sequence="2"
-            
-                    action="management_order_line_form_action"
-
-                    />
--->
 
     </data>
 </openerp>

@@ -1,10 +1,10 @@
 
 Openhealth
 
-Thizwax !
+Thiz !
 
 Gox
 
-April 2019
+2019
 
-30
+June 3

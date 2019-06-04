@@ -401,10 +401,12 @@
 <!--
                                 <field name="x_datetime_created"    readonly="0"    required="0"    />
                                 <field name="x_date_created"        readonly="0"    />
-
                                 <field name="x_date_created"        readonly="1"    />
--->                         
+
+
                                 <field name="create_date"           readonly="1"    />
+-->                         
+                                <field name="create_date"           readonly="0"    />
                                 <field name="x_date_record"         readonly="1"    />
 
 

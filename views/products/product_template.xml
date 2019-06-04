@@ -1,19 +1,19 @@
 <?xml version="1.0"?>
 <openerp>
     <data>
-
+<!-- Deprecated ->
 
 
 <!-- FORM -->
         <record model="ir.ui.view" id="product_form">
             <field name="name">product.template.product.form</field>
             <field name="model">product.template</field>
+
             <field name="inherit_id" ref="product.product_template_form_view"/>
+            
             <field name="mode">primary</field>
             <field name="priority" eval="1"/>
             <field name="arch" type="xml">
-
-
 
                 <!-- Xpaths --> 
                 <xpath expr="//field[@name='invoice_policy']" position="after">
@@ -23,26 +23,18 @@
 
 
                 <!-- Notebook --> 
+                        <!-- Update Level -->
+<!--
                 <xpath expr="//notebook" position="inside">
                     <page string="Clínica Chavarri">
-
                         <group>
-
                             <field name="active"/>
-
                             <field name="vspace"/>
                             <field name="x_test"/>
                             <field name="vspace"/>
-
-
-
                             <field name="x_name_account"/>
                             <field name="x_code_account"/>
-
                             <field name="vspace"/>
-
-
-
                             <field name="x_code"/>
                             <field name="description"/>
                             <field name="x_name_short"/>                            
@@ -55,17 +47,35 @@
                             <field name="x_pathology"/>             
                             <field name="x_level"/>             
                             <field name="x_sessions"/>  
-                            <field name="x_time"/>      
-
-
+                            <field name="x_time"/>
                             <field name="x_go_flag"/>       
                             <field name="x_name_unfixed"/>
+                        </group>
 
+                        <group>                         
+                            <button
+                                type="object" 
+                                class="oe_highlight"
+                                name="fix_name"
+                                string="Fix Name"
+                            />
+                        </group>
+                        <group>                         
+                            <button
+                                type="object" 
+                                class="oe_highlight"
+                                name="unfix_name"
+                                string="Un Fix"
+                            />
+                        </group>
+                    </page>
+                </xpath>
+-->
+            </field>
+        </record>
 <!--
                             <field name="x_short_unfixed"/>
 -->
-
-                        </group>
 <!--
                             <field name="x_date_created"/>
                             <field name="x_date_updated"/>
@@ -84,41 +94,6 @@
                             />
                         </group>
                         -->
-
-
-
-
-
-
-                        <!-- Update Level -->
-                        <group>                         
-                            <button
-                                type="object" 
-                                class="oe_highlight"
-                                    
-                                name="fix_name"
-
-                                string="Fix Name"
-                            />
-                        </group>
-
-
-                        <group>                         
-                            <button
-                                type="object" 
-                                class="oe_highlight"
-                                    
-                                name="unfix_name"
-
-                                string="Un Fix"
-                            />
-                        </group>
-
-
-                    </page>
-                </xpath>
-            </field>
-        </record>
 
 <!--
                             <field name="x_generated"/>
@@ -266,56 +241,32 @@ black:x_checksum_1=='1'
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 <!-- FILTER --> 
         <record id="product.view_product_template_filter" model="ir.ui.view">
            <field name="name">Product Search</field>
            <field name="model">product.template</field> 
            <field name="arch" type="xml">
                <search string="products">
-
-                <field  name="name" 
-                
+                <field  name="name"                 
                         filter_domain="['|',('name','ilike',self),('default_code','ilike',self)]"/>               
-
 
                     <!-- Group By --> 
                     <group expand="1" string="Group By">
-
-                        <filter name="Tipo" context="{'group_by':'type'}"/>
 <!--
                         <filter name="Code" context="{'group_by':'x_code'}"/>
-
                         <filter name="Origen" context="{'group_by':'x_origin'}"/>
-
                         <filter name="Categ" context="{'group_by':'categ_id'}"/>
 -->
+                        <filter name="Tipo" context="{'group_by':'type'}"/>
                         <filter name="Treatment" context="{'group_by':'x_treatment'}"/>
-
                         <filter name="Zone" context="{'group_by':'x_zone'}"/>
-
                         <filter name="Pathology" context="{'group_by':'x_pathology'}"/>
-
                         <filter name="Time" context="{'group_by':'x_time'}"/>
-
                         <filter name="Sessions" context="{'group_by':'x_sessions'}"/>
-
                     </group>
                </search>
            </field>
        </record>
-
 <!--
                         <filter name="Checksum 1" context="{'group_by':'x_checksum_1'}"/>
                         <filter name="Checksum 2" context="{'group_by':'x_checksum_2'}"/>

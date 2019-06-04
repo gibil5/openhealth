@@ -23,15 +23,6 @@ class Marketing(models.Model):
 
 
 
-
-
-# ----------------------------------------------------------- Dep ---------------------------------
-	#test_target = fields.Boolean(
-	#		string="Test Target", 
-	#	)
-
-
-
 # ----------------------------------------------------------- QC ----------------------------------
 
 	delta_patients = fields.Float(
@@ -544,6 +535,7 @@ class Marketing(models.Model):
 
 		# Update Object 
 
+
 		# Sex 
 		# Absolutes 
 		self.sex_male = count_m
@@ -551,10 +543,15 @@ class Marketing(models.Model):
 		self.sex_undefined = count_u
 
 		# Per
-		if self.total_count != 0: 
-			self.sex_male_per = ( float(self.sex_male) / float(self.total_count) ) * 100
-			self.sex_female_per = ( float(self.sex_female) / float(self.total_count) ) * 100
-			self.sex_undefined_per = ( float(self.sex_undefined) / float(self.total_count) ) * 100
+		#if self.total_count != 0: 
+			#self.sex_male_per = ( float(self.sex_male) / float(self.total_count) ) * 100
+			#self.sex_female_per = ( float(self.sex_female) / float(self.total_count) ) * 100
+			#self.sex_undefined_per = ( float(self.sex_undefined) / float(self.total_count) ) * 100
+		self.sex_male_per = mkt_funcs.get_per(self, self.sex_male, self.total_count)
+		self.sex_female_per = mkt_funcs.get_per(self, self.sex_female, self.total_count)
+		self.sex_undefined_per = mkt_funcs.get_per(self, self.sex_undefined, self.total_count)
+
+
 
 
 		# Ages 
@@ -1051,7 +1048,7 @@ class Marketing(models.Model):
 		self.patient_line.unlink()
 
 
-		# Orders 
+		# Get Patients 
 		mode = 'normal'
 		patients,count = mkt_funcs.get_patients_filter(self, self.date_begin, self.date_end, mode)
 
@@ -1110,9 +1107,6 @@ class Marketing(models.Model):
 		self.delta_patients = t1 - t0
 
 	# update_patients
-
-
-
 
 
 

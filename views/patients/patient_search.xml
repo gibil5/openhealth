@@ -53,6 +53,7 @@
 
 <!--
                     <field  name="name"                 filter_domain="['|',('name','ilike',self),('x_dni','ilike',self)]"/>
+                    
                     <field  name="name" select="1"/>
 
                     <field  name="name"     filter_domain="['|','|',('name','ilike',self),('x_dni','ilike',self),('x_id_doc','ilike',self)]"/>

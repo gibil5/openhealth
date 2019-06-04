@@ -52,9 +52,9 @@
 
 
 <!--
-                    <field name="price_subtotal"/>
-
                     <field name="management_id"/>
+
+                    <field name="price_subtotal"/>
                     <field name="doctor_id"/>
                     <field name="delta"/>
                     <field name="name"/>

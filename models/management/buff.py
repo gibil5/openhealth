@@ -1,4 +1,21 @@
 
+
+	# Procedures
+	nr_co2 = fields.Integer(
+			'Nr Co2',
+		)
+	amo_co2 = fields.Float(
+			'Monto Co2',
+		)
+
+	per_amo_co2 = fields.Float(
+			'% Monto Co2',
+		)
+
+
+
+
+
 # Management
 
 

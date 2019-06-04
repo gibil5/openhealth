@@ -54,6 +54,20 @@ class DayDoctorLine(models.Model):
 		)
 
 
+# ----------------------------------------------------------- reset ------------------------------
+	@api.multi
+	def reset_macro(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Reset - Macro')
+
+		self.amount = 0
+		self.nr_consultations = 0
+		self.nr_procedures = 0
+		self.ratio_pro_con = 0
+
 # ----------------------------------------------------------- Update ------------------------------
 	def update(self):
 		"""
@@ -135,20 +149,6 @@ class DayDoctorLine(models.Model):
 
 
 
-# ----------------------------------------------------------- reset ------------------------------
-	@api.multi
-	def reset_macro(self):
-		"""
-		high level support for doing this and that.
-		"""
-		print()
-		print('Reset - Macro')
-
-		self.amount = 0
-		self.nr_consultations = 0
-		self.nr_procedures = 0
-		self.ratio_pro_con = 0
-
 
 # ----------------------------------------------------------- Update ------------------------------
 	@api.multi
@@ -159,33 +159,21 @@ class DayDoctorLine(models.Model):
 		print()
 		print('Update - Macro')
 
-		
+		# Clean		
 		self.reset_macro()
 
-
 		for line in self.order_line:
-
 			self.amount = self.amount + line.price_total
 
-
 			if line.product_id.x_family in ['consultation']:
-
 				self.nr_consultations = self.nr_consultations + line.product_uom_qty
 
-
 			if line.product_id.x_family in ['laser', 'medical', 'cosmetology']:
-
 				self.nr_procedures = self.nr_procedures + line.product_uom_qty
 
 
-
-
 		if self.nr_consultations != 0:
-
 			print('Gotcha !')
-			
 			self.ratio_pro_con = float(self.nr_procedures) / float(self.nr_consultations)
 
-
-
-
+	# update_macro

@@ -364,3 +364,5 @@ class DoctorLine(models.Model):
 
 
 		print(date_array)
+
+	# update_daily

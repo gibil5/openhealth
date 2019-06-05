@@ -25,7 +25,22 @@ class ServiceCosmetology(models.Model):
 
 
 # ----------------------------------------------------------- Dep ------------------------------
+	#cos_tri_fac = fields.Char()
+
+	time_1 = fields.Char()
+
+	# Criosurgery
+	cos_dia = fields.Char()
+
+	# Carboxytherapy
+	cos_car_fac = fields.Char()
+
+	cos_car_bod = fields.Char()
+
+	# Laser Triactive
 	cos_tri_fac = fields.Char()
+
+	cos_tri_bod = fields.Char()
 
 
 

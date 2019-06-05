@@ -23,6 +23,12 @@ class ServiceCosmetology(models.Model):
 	_inherit = 'openhealth.service'
 
 
+
+# ----------------------------------------------------------- Dep ------------------------------
+	cos_tri_fac = fields.Char()
+
+
+
 # ----------------------------------------------------------- Natives ------------------------------
 	service = fields.Many2one(
 			'product.template',

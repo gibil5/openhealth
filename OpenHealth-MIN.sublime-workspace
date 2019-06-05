@@ -871,6 +871,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"age_max = ",
+			"age_max",
 			"update_stats",
 			"update_pat",
 			"reset",
@@ -996,9 +998,7 @@
 			"create_patient",
 			"test_cases_pat",
 			"io.",
-			"receptor",
-			"validate",
-			"required"
+			"receptor"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -1144,7 +1144,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -1198,8 +1198,8 @@
 						"selection":
 						[
 							[
-								10949,
-								10949
+								4198,
+								4294
 							]
 						],
 						"settings":
@@ -1208,10 +1208,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 10497.0,
+						"translation.y": 4211.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -1227,8 +1227,8 @@
 						"selection":
 						[
 							[
-								0,
-								2251
+								224,
+								224
 							]
 						],
 						"settings":
@@ -1240,7 +1240,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -1443,7 +1443,7 @@
 						"translation.y": 11530.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{

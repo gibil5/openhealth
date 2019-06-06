@@ -436,7 +436,8 @@
 													('state','not in',['sale', 'credit_note']), 
 											]}"
 							name="print_ticket_electronic"
-							groups="openhealth.roots, openhealth.caja, openhealth.managers"
+
+							groups="openhealth.roots, openhealth.caja, openhealth.managers, openhealth.directors"
 
 							string="Imprimir - Electrónico"
 						/>

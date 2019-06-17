@@ -6,21 +6,16 @@
 	Last up: 			15 Jan 2019
 """
 from __future__ import print_function
-
 import numpy as np
-
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.order import ord_vars
 from . import mgt_funcs
-
 from openerp.addons.openhealth.models.libs import lib
-
 
 class DayLine(models.Model):
 	"""
 	high level support for doing this and that.
 	"""
-
 	_name = 'openhealth.management.day.line'
 
 	_inherit = 'openhealth.management.line'
@@ -29,14 +24,10 @@ class DayLine(models.Model):
 
 
 
-
 # ----------------------------------------------------------- Relational --------------------------
-
 	configurator_emr_id = fields.Many2one(
 			'openhealth.configurator.emr'
 		)
-
-
 
 
 # ----------------------------------------------------------- Redefined ---------------------------
@@ -137,8 +128,6 @@ class DayLine(models.Model):
 		#print('Update - Projection')
 		self.projection = self.avg_amount * self.nr_days_total
 
-
-
 # ----------------------------------------------------------- Update ------------------------------
 	# Update
 	@api.multi
@@ -150,10 +139,6 @@ class DayLine(models.Model):
 		#print('Update - Average')
 		self.avg_amount = self.cumulative / self.nr_days
 
-
-
-
-
 # ----------------------------------------------------------- Update ------------------------------
 	# Update
 	@api.multi
@@ -164,17 +149,12 @@ class DayLine(models.Model):
 		#print()
 		#print('Update - amount')
 
-
 		# Search
 		orders, count = mgt_funcs.get_orders_filter_fast(self, self.date, self.date)
-
-
 		#print(orders)
 		#print(count)
 
-
 		data_amount = []
-
 
 		for order in orders:
 
@@ -191,17 +171,12 @@ class DayLine(models.Model):
 
 
 
-
-
 		self.x_count = len(data_amount)
-
 		if self.x_count != 0:
-
 			self.amount = np.sum(data_amount)
 
 			#amax = np.amax(self.data)
 			#amin = np.amin(self.data)
-
 			# Mean of sales, compounded with number of days
 			#self.avg_amount = np.mean(data_amount)			# Not correct !
 

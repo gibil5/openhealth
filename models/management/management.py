@@ -1178,8 +1178,8 @@ class Management(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		#print()
-		#print('Update - Average')
+		print()
+		print('Update - Average')
 
 		# Update
 		for day in self.day_line:
@@ -1197,8 +1197,8 @@ class Management(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		#print()
-		#print('Update - Cumulative')
+		print()
+		print('Update - Cumulative')
 
 		# Init
 		amount_total = 0
@@ -1318,9 +1318,14 @@ class Management(models.Model):
 		"""
 		print()
 		print('Update Productivity')
+		
 		self.create_days()
+		#print(self.day_line)
+
 		self.update_day_cumulative()
+		
 		self.update_day_avg()
+
 
 # ----------------------------------------------------------- Update Daily -------------------------
 	# Update Daily

@@ -109,10 +109,33 @@
 <th><t t-esc="doc.dob"/></th>
 </tr>
 
+
+<!--
+Dep !!!
 <tr>
 <th>DNI:</th>
 <th><t t-esc="doc.x_dni"/></th>
 </tr>
+-->
+
+
+<!--
+New
+-->
+<tr>
+<th>Tipo de Documento:</th>
+<th><t t-esc="doc.x_id_doc_type"/></th>
+</tr>
+
+<tr>
+<th>Número de Documento:</th>
+<th><t t-esc="doc.x_id_doc"/></th>
+</tr>
+
+
+
+
+
 
 
 <tr>

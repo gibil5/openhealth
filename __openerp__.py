@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
 {
-	'name': "Open Health - OBJECT ORIENTED",
+	'name': "Open Health - SERVICE ORIENTED",
 
 	'summary': "",
 
 	'description': """
 
-		11 Jun 2019
+		17 Jun 2019
+
+		Remember, Hunter and Westerman:
+			- Step 1 - New Thinking: Avoid Value Traps.
 
 		Remember, it is just a Bigger game:
 			- DEV = 9x9
@@ -634,7 +637,7 @@
 
 		# ----------------------------------------------------------- Security ------------------------------------------------------
 		'security/openhealth_security.xml',
-		'security/openhealth_security_readers.xml',		
+		'security/openhealth_security_readers.xml',
 		'security/ir.model.access.csv',
 		'security/ir.rule.xml', 				# Dep 
 

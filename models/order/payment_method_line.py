@@ -7,11 +7,7 @@
 """
 from openerp import models, fields, api
 from . import pm_vars
-
-#from . import acc_funcs
-#from libs import acc_lib
 from openerp.addons.openhealth.models.libs import acc_lib
-
 
 class payment_method_line(models.Model):
 	"""
@@ -21,6 +17,16 @@ class payment_method_line(models.Model):
 
 	_order = 'date_time asc'
 
+
+
+# ----------------------------------------------------------- Method --------------------------------
+	# Method
+	method = fields.Selection(
+			selection=pm_vars._payment_method_list,
+			string="Forma de Pago",
+			default="cash",
+			required=True,
+		)
 
 
 # ----------------------------------------------------------- Init --------------------------------
@@ -128,13 +134,6 @@ class payment_method_line(models.Model):
 			required=True,
 		)
 
-	# Method
-	method = fields.Selection(
-			selection=pm_vars._payment_method_list,
-			string="Forma de Pago",
-			default="cash",
-			required=True,
-		)
 
 
 	# Currency

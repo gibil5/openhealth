@@ -2,6 +2,23 @@
 
 
 
+# Payment Methods
+_payment_method_list = [
+		('cash',			'Efectivo'), 
+		('american_express','American Express'), 
+		('cuota_perfecta',	'Cuota perfecta'), 
+		('diners',			'Diners'), 
+		('credit_master',	'Master - Crédito'), 
+		('debit_master',	'Master - Débito'), 
+		('credit_visa',		'Visa - Crédito'), 
+		('debit_visa',		'Visa - Débito'), 
+		#('',''), 
+]
+
+
+
+
+
 # States 
 READONLY_STATES = {
 		'draft': 		[('readonly', False)], 
@@ -17,22 +34,6 @@ _state_list = [
 				('sale', 		'Pagado'),				
 				('cancel', 		'Anulado'),
 ]
-
-
-
-
-_payment_method_list = [
-		('cash',			'Efectivo'), 
-		('american_express','American Express'), 
-		('cuota_perfecta',	'Cuota perfecta'), 
-		('diners',			'Diners'), 
-		('credit_master',	'Master - Crédito'), 
-		('debit_master',	'Master - Débito'), 
-		('credit_visa',		'Visa - Crédito'), 
-		('debit_visa',		'Visa - Débito'), 
-		#('',''), 
-]
-
 
 
 

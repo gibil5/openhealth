@@ -1,171 +1,125 @@
 <?xml version="1.0"?>
 <openerp>
-    <data>
-        
-
+	<data>
+		
 
 
 <!-- FORM view --> 
-        <record model="ir.ui.view" id="rsp_form_view">
+		<record model="ir.ui.view" id="rsp_form_view">
+			<field name="name">report.sale.product.form</field>
+			<field name="model">openhealth.report.sale.product</field>
+			<field name="arch" type="xml">
+				
+				<!-- Form -->    
+				<form string="RSP Form">
 
-            <field name="name">report.sale.product.form</field>
-            
-            <field name="model">openhealth.report.sale.product</field>
-            
-            <field name="arch" type="xml">
-                
-                <form string="RSP Form">
-                    
-
-
-
-                    <header>
-                        <button 
-                                type="object" 
-                                class="oe_highlight"
-
-                                name="update"
-
-                                string="Actualizar"
-                        />
-                    </header>
+					<!-- Header -->    
+					<header>
+						<button 
+								type="object" 
+								class="oe_highlight"
+								name="update"
+								string="Actualizar"
+						/>
+					</header>
 
 
+					<!-- Sheet -->  
+					<sheet>
 
 
-                    <!-- Sheet -->  
-                    <sheet>
-
-
-                    <group  string="Venta de Productos" >
-                        <group>
-                            <field name="name"/>
-                            <field name="write_date"/>
-
-                            <field name="test_target"/>
-                        </group>
-                        <group>
-                            <field name="total_qty"/>
-                            <field name="total"/>
-                        </group>
-                    </group>
+						<group  string="Venta de Productos" >
+							<group>
+								<field name="name"/>
+								<field name="write_date"/>
+								<field name="test_target"/>
+							</group>
+							<group>
+								<field name="total_qty"/>
+								<field name="total"/>
+							</group>
+						</group>
 <!--                            
-                            <field name="date"/>
+							<field name="date"/>
 -->
 
 
 
 
-                        <notebook>
-                            
-                            <page   string="Cantidades" >
-
-                                <field name="item_counter_ids"      >
+						<!-- Notebook -->  
+						<notebook>
+							<page   string="Cantidades" >
+								<field name="item_counter_ids">
+									<tree string="">
+										<field name="name"/>
+										<field name="qty"/>
+										<field name="total"/>
+									</tree>
+								</field>
+							</page>
+						</notebook>
 <!--
-                                    <tree string=""     default_order="x_date_created"  >   
--->                 
-                                    <tree string=""     >   
-
-                                        <field name="name"      />
-
-                                        <field name="qty"       />
-
-                                        <field name="total"     />
-
-
-<!--
-                                        <field name="product_id"        />
-
-                                        <field name="price_unit"        />
-
-                                        <field name="product_uom_qty"       />
-
-                                        <field name="price_subtotal"        />
-
-                                        <field name="x_date_created"    string="Fecha"  />
--->
-                                    </tree>
-                                </field>
-                            </page>
-                        </notebook>
-
-
-                            <field name="vspace"/>
-
-
-                        <notebook>
-
-                            <page   string="Detalle"        >
-                            
-                                <field name="order_line_ids">
-                                    <tree string="">    
-                        
-                                        <field name="product_id"        />
-
-                                        <field name="price_unit"        />
-
-                                        <field name="product_uom_qty"       />
-
-                                        <field name="price_subtotal"        />
-
-                                        <field name="x_date_created"    string="Fecha"  />
-
-                                        <field name="state"     />
-                                    </tree>
-                                </field>
-                            </page>
-                        </notebook>
-<!--
-                                    <tree string=""     default_order="x_date_created"  >   
-                                        <field name="patient"       />
-                                        <field name="name"      />
+									<tree string=""     default_order="x_date_created">
+										<field name="product_id"/>
+										<field name="price_unit"/>
+										<field name="product_uom_qty"/>
+										<field name="price_subtotal"/>
+										<field name="x_date_created"    string="Fecha"/>
 -->
 
 
 
+						<field name="vspace"/>
 
 
-
-
-                    </sheet>
-                </form>
-            </field>
-        </record>
-
-
-
-
-
-        
-<!-- TREE view --> 
-        
-        <record model="ir.ui.view" id="rsp_tree">
-
-            <field name="name">openhealth.report.sale.product.tree</field>
-            
-            <field name="model">openhealth.report.sale.product</field>
-            
-            <field name="arch" type="xml">
+						<!-- Notebook -->  
+						<notebook>
+							<page   string="Detalle">
+								<field name="order_line_ids">
+									<tree string="">    
+										<field name="product_id"/>
+										<field name="price_unit"/>
+										<field name="product_uom_qty"/>
+										<field name="price_subtotal"/>
+										<field name="x_date_created"    string="Fecha"/>
+										<field name="state"/>
+									</tree>
+								</field>
+							</page>
+						</notebook>
 <!--
-                <tree string="Closing Tree">
+									<tree string=""     default_order="x_date_created"  >   
+										<field name="patient"       />
+										<field name="name"      />
 -->
-                <tree default_order='name desc'>
-                    
+
+					</sheet>
+				</form>
+			</field>
+		</record>
 
 
-                    <field name="name"                  />
 
-                    <field name="test_target"/>
+
+
+		
+<!-- TREE --> 
+		<record model="ir.ui.view" id="rsp_tree">
+			<field name="name">openhealth.report.sale.product.tree</field>
+			<field name="model">openhealth.report.sale.product</field>
+			<field name="arch" type="xml">
+				<tree default_order='name desc'>
+					<field name="name"/>
+					<field name="test_target"/>
+					<field name="total_qty"/>
+					<field name="total"/>
+				</tree>
+			</field>
+		</record>
 <!--
-                    <field name="date"/>
+				<tree string="Closing Tree">
+					<field name="date"/>
 -->
-                    <field name="total_qty"/>
-                    <field name="total"/>
-
-
-                </tree>
-            </field>
-        </record>
 
 
 
@@ -173,26 +127,23 @@
 
 
 <!-- ACTION -->
-        <record model="ir.actions.act_window" id="rsp_list_action">
+		<record model="ir.actions.act_window" id="rsp_list_action">
+			
+			<field name="name">Venta de Productos - Por Fecha</field>
+			<field name="res_model">openhealth.report.sale.product</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<!--
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first order
+				</p>
+			</field>
+			-->
+		</record>
+		
 
-            <field name="name">Venta de Productos - Por Fecha</field>
-            
-            <field name="res_model">openhealth.report.sale.product</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-            
-            <!--
-            <field name="domain">[]</field>
-            <field name="context">{}</field>
-            <field name="view_id" eval="False"/>
-            
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create">Create the first order
-                </p>
-            </field>
-            -->
-        </record>
-        
-
-    </data>
+	</data>
 </openerp>

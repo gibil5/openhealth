@@ -1,10 +1,8 @@
-
-Openhealth
-
-Thiz !
+Openhealth - Thiz !
 
 Gox
 
 2019
 
-June 17
+June 
+19

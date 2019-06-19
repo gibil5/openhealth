@@ -6,10 +6,10 @@
 
 	'description': """
 
-		17 Jun 2019
+		19 Jun 2019
 
 		Remember, Hunter and Westerman:
-			- Step 1 - New Thinking: Avoid Value Traps.
+			- Step 1 - New Thinking: Avoid the 7 Value Traps.
 
 		Remember, it is just a Bigger game:
 			- DEV = 9x9

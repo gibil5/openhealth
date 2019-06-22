@@ -18,6 +18,12 @@
 <!-- Active --> 
 
 
+                    <!-- This -->
+                    <filter string="10 Junio 2019" domain="[
+                                                            ('date_order','&gt;=','2019-06-10 05:00:00'),
+                                                            ('date_order','&lt;','2019-06-11 05:00:00'),
+                                            ]"/>
+
 
 
                     <!-- This -->

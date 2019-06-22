@@ -19,44 +19,32 @@
 
 					<!-- Sheet -->  
 					<sheet>
-
+<!--
 						<group>
 							<group>
 								<field name="name"/>
 							</group>
+							<group>
+							</group>
+						</group>
 
+						<group>
 							<group>
 								<field name="x_type"/>
 							</group>
-						</group>
-
-
-						<group>
-							<group  string="Nr Sesiones">
-								<field name="nr_sessions_co2"/>
-								<field name="nr_sessions_quick"/>
-								<field name="nr_sessions_exc"/>
-								<field name="nr_sessions_ipl"/>
-								<field name="nr_sessions_ndyag"/>
+							<group>
 							</group>
-
-							<group  string="Nr Controles">
-								<field name="nr_controls_co2"/>
-								<field name="nr_controls_quick"/>
-								<field name="nr_controls_exc"/>
-								<field name="nr_controls_ipl"/>
-								<field name="nr_controls_ndyag"/>
-							</group>
-						</group>
-
-<!--
-						<group  string="Nr Controles">
-							<group></group>
 						</group>
 -->
+						<group>
+							<field name="name"/>
+							<field name="x_type"/>
+						</group>
 
 
-						<group  string="Apertura">
+
+
+						<group  string="Horarios">
 							<group>
 								<field name="date_open"     widget="time"/>
 								<field name="date_close"    widget="time"/>
@@ -81,19 +69,52 @@
 
                             <!-- Holidays --> 
                             <page   string="Feriados">
-
                                 <field name="day_line">
-                                
                                     <tree string="Holidays">
-<!--
-                                        <field name="name"/>
--->
                                         <field name="date"/>
-
                                         <field name="holiday"/>
                                     </tree>
                                 </field>
                             </page>
+<!--
+                                        <field name="name"/>
+-->
+
+                            <!-- Medical --> 
+                            <page   string="Laser">
+
+								<group>
+									<group  string="Nr Sesiones">
+										<field name="nr_sessions_co2"/>
+										<field name="nr_sessions_quick"/>
+										<field name="nr_sessions_exc"/>
+										<field name="nr_sessions_ipl"/>
+										<field name="nr_sessions_ndyag"/>
+									</group>
+
+									<group  string="Nr Controles">
+										<field name="nr_controls_co2"/>
+										<field name="nr_controls_quick"/>
+										<field name="nr_controls_exc"/>
+										<field name="nr_controls_ipl"/>
+										<field name="nr_controls_ndyag"/>
+									</group>
+								</group>
+
+<!--
+						<group  string="Nr Controles">
+							<group></group>
+						</group>
+-->
+                            </page>
+
+
+
+
+
+
+
+
 
 
                             <!-- Doctors --> 

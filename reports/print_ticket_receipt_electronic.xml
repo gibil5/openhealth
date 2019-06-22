@@ -1,53 +1,90 @@
 <openerp>
-    <data>
-
-
+	<data>
 
 
 <!-- Electronic --> 
 <report
-    string="Ticket de Venta Electrónico"
+	string="Ticket de Venta Electrónico"
 
-    id="print_ticket_receipt_electronic"
-    model="sale.order"
-    report_type="qweb-pdf"
-    name="openhealth.report_ticket_receipt_electronic"
-    paperformat="appointment_receipt_electronic"
-    file="openhealth.report_ticket_receipt_electronic"
+	id="print_ticket_receipt_electronic"
+
+	model="sale.order"
+	
+	report_type="qweb-pdf"
+	
+	name="openhealth.report_ticket_receipt_electronic"
+	
+	paperformat="appointment_receipt_electronic"
+	
+	file="openhealth.report_ticket_receipt_electronic"
 />
-
 
 
 <!-- Template --> 
 <template id="report_ticket_receipt_electronic">
-    <t t-call="report.html_container">
-        <t t-foreach="docs" t-as="doc"> 
-            <t t-call="openhealth.external_layout">
-                <div class="page" style="margin-top:100px;font-size: small;">
+	<t t-call="report.html_container">
+		<t t-foreach="docs" t-as="doc"> 
 
 
+
+<!-- Legal --> 
+<div class="header">
+<!--
+	<div class="text-center" style="margin-top:1px;margin-bottom:1px;width:100%;font-size: xx-small;">
+-->
+	<div class="text-center" style="margin-top:1px;margin-bottom:1px;width:100%;font-size: x-small;">
+<br/>
+		<div class="col-xs-12 text-center" style="margin-top:7px;" t-esc="doc.get_company_name()"/>
+		
+		<div class="col-xs-12 text-center" style="margin-top:7px;" t-esc="doc.get_company_ruc()"/>
+
+		<div class="col-xs-12 text-center" style="margin-top:7px;" t-esc="doc.get_company_address()"/>
+
+		<div class="col-xs-12 text-center" style="margin-top:7px;" t-esc="doc.get_company_phone()"/>
+
+
+<!--
+doc.get_patient_address()
+			<td><t t-esc="doc.get_patient_address()"/></td> 
+-->
+	</div>
+</div>      
+
+
+			<t t-call="openhealth.external_layout">
+				<div class="page" style="margin-top:100px;font-size: small;">
 
 
 
 <!-- ROW - Title - Begin -->
 <div class="row">
 <b>
-    <div class="col-xs-12" style="border-top: 1px solid black;"/>
+	<div class="col-xs-12" style="border-top: 1px solid black;"/>
 
-    <div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-field="doc.x_title"/>
-    
-    <!-- Conditional - Credit Note -->
-    <t t-if="doc.state == 'credit_note'">
-        <div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-field="doc.x_serial_nr"/>
+	<!-- Title -->
 <!--
-        <div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-field="doc.x_date_order_corr"/>
+	<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-field="doc.x_title"/>
 -->
-    </t>
+	<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_title()"/>
 
-    <div class="col-xs-12" style="border-top: 1px solid black;"/>
+
+	
+	<!-- Conditional - Credit Note -->
+	<t t-if="doc.state == 'credit_note'">
+<!--
+		<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-field="doc.x_serial_nr"/>
+-->
+		<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_serial_nr()"/>
+	</t>
+
+	<div class="col-xs-12" style="border-top: 1px solid black;"/>
 </b>
 </div>
 <!-- ROW - Title - End -->
+
+<!--
+		<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-field="doc.x_date_order_corr"/>
+-->
 
 
 
@@ -56,59 +93,59 @@
 <!-- ROW - Receptor - Begin -->
 <div class="row">
 <div class="text-left" style="margin-top:10px;">
-    <table style="width:100%">
+	<table style="width:100%">
 
 
 <!-- Conditional - Credit Note -->
 <t t-if="doc.state == 'credit_note'">
-        <tr>
-            <td><b>Fecha:</b></td>
-            <td><t t-esc="doc.x_date_order_corr"/></td> 
-        </tr>
+		<tr>
+			<td><b>Fecha:</b></td>
+			<td><t t-esc="doc.x_date_order_corr"/></td> 
+		</tr>
 </t>
 
 
 <!-- Conditional - Receipt -->
 <t t-if="doc.x_type == 'ticket_receipt'">
-        <tr>
-            <td><b>Cliente:</b></td>
-            <td><t t-esc="doc.patient.name"/></td> 
-        </tr>
-        <tr>
-            <td><b>DNI:</b></td>
-            <td><t t-esc="doc.x_id_doc"/></td> 
-        </tr>
-        <tr>
-            <td><b>Dirección:</b></td>
-            <!--
-            <td><t t-esc="doc.partner_id.x_address"/></td> 
-            -->
-            <td><t t-esc="doc.get_patient_address()"/></td> 
-        </tr>
+		<tr>
+			<td><b>Cliente:</b></td>
+			<td><t t-esc="doc.patient.name"/></td> 
+		</tr>
+		<tr>
+			<td><b>DNI:</b></td>
+			<td><t t-esc="doc.x_id_doc"/></td> 
+		</tr>
+		<tr>
+			<td><b>Dirección:</b></td>
+			<!--
+			<td><t t-esc="doc.partner_id.x_address"/></td> 
+			-->
+			<td><t t-esc="doc.get_patient_address()"/></td> 
+		</tr>
 </t>
 
 
 <!-- Conditional - Invoice -->
 <t t-if="doc.x_type == 'ticket_invoice'">
-        <tr>
-            <td><b>Razón social:</b></td>
-            <td><t t-esc="doc.patient.x_firm"/></td> 
-        </tr>
-        <tr>
-            <td><b>RUC:</b></td>
-            <td><t t-esc="doc.x_ruc"/></td> 
-        </tr>
-        <tr>
-            <td><b>Dirección:</b></td>
-            <!--
-            <td><t t-esc="doc.partner_id.x_address"/></td> 
-            -->
-            <td><t t-esc="doc.get_firm_address()"/></td> 
-        </tr>
+		<tr>
+			<td><b>Razón social:</b></td>
+			<td><t t-esc="doc.patient.x_firm"/></td> 
+		</tr>
+		<tr>
+			<td><b>RUC:</b></td>
+			<td><t t-esc="doc.x_ruc"/></td> 
+		</tr>
+		<tr>
+			<td><b>Dirección:</b></td>
+			<!--
+			<td><t t-esc="doc.partner_id.x_address"/></td> 
+			-->
+			<td><t t-esc="doc.get_firm_address()"/></td> 
+		</tr>
 </t>
 
-    </table>
-    <br/>
+	</table>
+	<br/>
 </div>
 </div>
 <!-- ROW - Receptor - End -->
@@ -125,36 +162,36 @@
 <!-- Modified Document -->
 <t t-if="doc.state == 'credit_note'">
 
-    <div class="col-xs-12" style="border-top: 1px solid black;"/>
+	<div class="col-xs-12" style="border-top: 1px solid black;"/>
 
 <b>
-    <div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;">
-        Documento que Modifica
-    </div>
+	<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;">
+		Documento que Modifica
+	</div>
 </b>
 
 <table style="width:100%">
 
-    <tr>
-        <td><b>Denominación:</b></td>
-        <td><t t-esc="doc.x_credit_note_owner.x_serial_nr"/></td> 
-    </tr>
+	<tr>
+		<td><b>Denominación:</b></td>
+		<td><t t-esc="doc.x_credit_note_owner.x_serial_nr"/></td> 
+	</tr>
 
-    <tr>
-        <td><b>Fecha de emisión:</b></td>
-        <td><t t-esc="doc.x_credit_note_owner.x_date_order_corr"/></td> 
-    </tr>
+	<tr>
+		<td><b>Fecha de emisión:</b></td>
+		<td><t t-esc="doc.x_credit_note_owner.x_date_order_corr"/></td> 
+	</tr>
 
-    <tr>
-        <td><b>Motivo:</b></td>
-        <td><t t-esc="doc.get_credit_note_type()"/></td> 
-    </tr>
+	<tr>
+		<td><b>Motivo:</b></td>
+		<td><t t-esc="doc.get_credit_note_type()"/></td> 
+	</tr>
 
 <!--
-    <tr>
-        <td><b>Importe:</b></td>
-        <td><t t-esc="doc.get_credit_note_owner_amount()"/></td> 
-    </tr>
+	<tr>
+		<td><b>Importe:</b></td>
+		<td><t t-esc="doc.get_credit_note_owner_amount()"/></td> 
+	</tr>
 -->
 </table>
 </t>
@@ -167,14 +204,14 @@
 <!-- Date and Serial Nr -->
 <t t-if="doc.state in ['sale', 'cancel']">
 <table style="width:100%">
-    <tr>
-        <td><b>Fecha:</b></td>
-        <td><t t-esc="doc.x_date_order_corr"/></td> 
-    </tr>
-    <tr>
-        <td><b>Ticket:</b></td>
-        <td><t t-esc="doc.x_serial_nr"/></td> 
-    </tr>
+	<tr>
+		<td><b>Fecha:</b></td>
+		<td><t t-esc="doc.x_date_order_corr"/></td> 
+	</tr>
+	<tr>
+		<td><b>Ticket:</b></td>
+		<td><t t-esc="doc.x_serial_nr"/></td> 
+	</tr>
 </table>
 </t>
 
@@ -192,12 +229,12 @@
 <div class="col-xs-12" style="border-top: 1px solid black;"/>
 
 <table style="width:100%">
-    <tr>
-        <td><b>Desc</b></td>
-        <td><b>Cnt</b></td>
-        <td><b>PUnit</b></td>
-        <td><b>Total</b></td>
-    </tr>
+	<tr>
+		<td><b>Desc</b></td>
+		<td><b>Cnt</b></td>
+		<td><b>PUnit</b></td>
+		<td><b>Total</b></td>
+	</tr>
 
 
 
@@ -208,31 +245,31 @@
 
 <td>
 <!--
-    <t t-esc="line.product_id.x_name_ticket"/>
+	<t t-esc="line.product_id.x_name_ticket"/>
 -->
-    <t t-esc="line.product_id.get_name_ticket()"/>
+	<t t-esc="line.product_id.get_name_ticket()"/>
 </td>
 
 
 <td>
 <!--
-    <t t-esc="line.x_qty"/>
+	<t t-esc="line.x_qty"/>
 -->
-    <t t-esc="line.get_quantity()"/>    
+	<t t-esc="line.get_quantity()"/>    
 </td>
 
 <td>
 <!--
-    <t t-esc="line.price_unit"/>
+	<t t-esc="line.price_unit"/>
 -->
-    <t t-esc="line.get_price_unit()"/>    
+	<t t-esc="line.get_price_unit()"/>    
 </td>
 
 <td>
 <!--
-    <t t-esc="line.price_subtotal"/>
+	<t t-esc="line.price_subtotal"/>
 -->
-    <t t-esc="line.get_price_subtotal()"/>    
+	<t t-esc="line.get_price_subtotal()"/>    
 </td>
 
 </tr>
@@ -248,46 +285,46 @@
 
 <!-- Total --> 
 <table style="width:100%">
-    <tr>
-        <td>OP. GRAVADAS S/.</td>
-        <td align="right" >
+	<tr>
+		<td>OP. GRAVADAS S/.</td>
+		<td align="right" >
 <!--
-            <t t-esc="doc.x_total_net"/>
+			<t t-esc="doc.x_total_net"/>
 -->
-            <t t-esc="doc.get_total_net()"/>
-        </td> 
-    </tr>
-    <tr>
-        <td>OP. GRATUITAS S/.</td>
-        <td align="right" >0.00</td> 
-    </tr>
-    <tr>
-        <td>OP. EXONERADAS S/.</td>
-        <td align="right" >0.00</td> 
-    </tr>
-    <tr>
-        <td>OP. INAFECTAS S/.</td>
-        <td align="right" >0.00</td> 
-    </tr>
-    <tr>
-        <td>I.G.V. 18% S/.</td>
-        <td align="right" >
+			<t t-esc="doc.get_total_net()"/>
+		</td> 
+	</tr>
+	<tr>
+		<td>OP. GRATUITAS S/.</td>
+		<td align="right" >0.00</td> 
+	</tr>
+	<tr>
+		<td>OP. EXONERADAS S/.</td>
+		<td align="right" >0.00</td> 
+	</tr>
+	<tr>
+		<td>OP. INAFECTAS S/.</td>
+		<td align="right" >0.00</td> 
+	</tr>
+	<tr>
+		<td>I.G.V. 18% S/.</td>
+		<td align="right" >
 <!--
-            <t t-esc="doc.x_total_tax"/>
+			<t t-esc="doc.x_total_tax"/>
 -->
-            <t t-esc="doc.get_total_tax()"/>
+			<t t-esc="doc.get_total_tax()"/>
 
-        </td> 
-    </tr>
-    <tr>
-        <td>TOTAL S/.</td>
-        <td align="right" >
+		</td> 
+	</tr>
+	<tr>
+		<td>TOTAL S/.</td>
+		<td align="right" >
 <!--
-            <t t-esc="doc.amount_total"/>
+			<t t-esc="doc.amount_total"/>
 -->        
-            <t t-esc="doc.get_amount_total()"/>
-        </td> 
-    </tr>
+			<t t-esc="doc.get_amount_total()"/>
+		</td> 
+	</tr>
 </table>
 <br/>
 
@@ -296,30 +333,30 @@
 
 <!-- Total In Words --> 
 <table style="width:100%">
-    <tr>
-        <td><b>Son:</b></td>
-    </tr>
-    <tr>
-        <td align="right" >
+	<tr>
+		<td><b>Son:</b></td>
+	</tr>
+	<tr>
+		<td align="right" >
 <!--
-            <t t-esc="doc.x_total_in_words"/>
+			<t t-esc="doc.x_total_in_words"/>
 -->
-            <t t-esc="doc.get_total_in_words()"/>
-        </td> 
-    </tr>
-    <tr>
-        <td align="right" >Y 
+			<t t-esc="doc.get_total_in_words()"/>
+		</td> 
+	</tr>
+	<tr>
+		<td align="right" >Y 
 <!--
-            <t t-esc="doc.x_total_cents"/>
+			<t t-esc="doc.x_total_cents"/>
 -->
-            <t t-esc="doc.get_total_cents()"/>
+			<t t-esc="doc.get_total_cents()"/>
 
-            
-            /100</td> 
-    </tr>
-    <tr>
-        <td align="right" >Soles</td> 
-    </tr>
+			
+			/100</td> 
+	</tr>
+	<tr>
+		<td align="right" >Soles</td> 
+	</tr>
 </table>
 <br/>
 
@@ -329,9 +366,9 @@
 <!-- Note --> 
 <table style="width:100%">
 
-    <tr>
-        <td align="left" ><t t-esc="doc.get_note()"/></td> 
-    </tr>
+	<tr>
+		<td align="left" ><t t-esc="doc.get_note()"/></td> 
+	</tr>
 
 </table>
 <br/>
@@ -351,22 +388,39 @@
 
 <!-- QR --> 
 <div class="text-center col-xs-12" style="border-top: 1px solid black; margin-top: 5px;">
-    <img t-att-src="'data:image/png;base64,%s' % doc.x_qr_img"  style="max-height: 100px;"/>
+	<img t-att-src="'data:image/png;base64,%s' % doc.x_qr_img"  style="max-height: 100px;"/>
 
 </div>
 
 <!-- Legal --> 
 <div class="footer_">
-    <div class="text-center" style="margin-top:1px;margin-bottom:1px;width:100%;font-size: xx-small;">
+	<div class="text-center" style="margin-top:1px;margin-bottom:1px;width:100%;font-size: xx-small;">
 
-        <div class="col-xs-12 text-center" style="margin-top:7px;" t-field="doc.x_my_company.x_warning"/>
-        <div class="col-xs-12 text-center" style="margin-top:7px;" t-field="doc.x_my_company.website"/>
-        <div class="col-xs-12 text-center" style="margin-top:7px;" t-field="doc.x_my_company.email"/>
+<br/>
+		<div class="col-xs-12 text-center" style="margin-top:7px;" t-esc="doc.get_warning()"/>
+		
+		<div class="col-xs-12 text-center" style="margin-top:7px;" t-esc="doc.get_website()"/>
 
-    </div>
+		<div class="col-xs-12 text-center" style="margin-top:7px;" t-esc="doc.get_email()"/>
+
+<!--
+		<div class="col-xs-12 text-center" style="margin-top:7px;" t-field="doc.x_my_company.x_warning"/>
+		<div class="col-xs-12 text-center" style="margin-top:7px;" t-field="doc.x_my_company.website"/>
+		<div class="col-xs-12 text-center" style="margin-top:7px;" t-field="doc.x_my_company.email"/>
+
+		<div class="col-xs-12 text-center" style="margin-top:7px;" t-field="doc.get_warning()"/>
+		<div class="col-xs-12 text-center" style="margin-top:7px;" t-field="doc.get_website()"/>
+		<div class="col-xs-12 text-center" style="margin-top:7px;" t-field="doc.get_email()"/>
+-->
+
+<!--
+doc.get_patient_address()
+			<td><t t-esc="doc.get_patient_address()"/></td> 
+-->
+	</div>
 </div>      
 <!--
-        <div class="col-xs-12 text-center" style="margin-top:7px;" t-field="doc.x_my_company.sale_note"/>
+		<div class="col-xs-12 text-center" style="margin-top:7px;" t-field="doc.x_my_company.sale_note"/>
 -->
 </div>
 <!-- ROW - Footer - End --> 
@@ -374,13 +428,15 @@
 
 
 
+				</div>
+			</t>
 
 
-                </div>
-            </t>
-        </t>
-    </t>
+		</t>
+	</t>
 </template>
 
-    </data>
+
+
+	</data>
 </openerp>

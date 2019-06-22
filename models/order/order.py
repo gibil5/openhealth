@@ -34,27 +34,132 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Descriptors -------------------------------
-	# Product
-	x_product = fields.Char(
-			string="Producto",
-		)
+
+
+# ----------------------------------------------------------- Ticket - Getters ----------------
+	def get_company_name(self):
+		"""
+		Used by Print Ticket.
+		"""
+		company_name = 'SERVICIOS MÉDICOS ESTÉTICOS S.A.C'
+		return company_name
+
+
+	def get_company_address(self):
+		"""
+		Used by Print Ticket.
+		"""
+		company_address = 'Av. La Merced 161 Miraflores - Lima'
+		return company_address
+
+
+	def get_company_phone(self):
+		"""
+		Used by Print Ticket.
+		"""
+		company_phone = 'Teléfono: (051) 321 2394'
+		return company_phone
+
+
+	def get_company_ruc(self):
+		"""
+		Used by Print Ticket.
+		"""
+		company_ruc = 'R.U.C.: 20523424221'
+		return company_ruc
 
 
 
 
-	# Family
-	x_family = fields.Selection(
-			string="Familia",
-			selection=[
-							('product', 'Producto'),
-							('consultation', 'Consulta'),
-							('procedure', 'Procedimiento'),
-							('cosmetology', 'Cosmiatría'),
-			],
-		)
+# ----------------------------------------------------------- Ticket - Getters ----------------
+
+	def get_title(self):
+		"""
+		Used by Print Ticket.
+		"""
+		return self.x_title
 
 
+	def get_serial_nr(self):
+		"""
+		Used by Print Ticket.
+		"""
+		return self.x_serial_nr
+
+
+
+
+
+	def get_warning(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Get Warning')
+		return self.x_my_company.x_warning
+
+	def get_website(self):
+		"""
+		high level support for doing this and that.
+		"""
+		return self.x_my_company.website
+
+	def get_email(self):
+		"""
+		high level support for doing this and that.
+		"""
+		return self.x_my_company.email
+
+
+
+
+# ----------------------------------------------------------- Electronic - Getters ----------------
+
+	def get_patient_address(self):
+		"""
+		high level support for doing this and that.
+		"""
+		#print
+		#print 'Get Patient Address'
+		return self.partner_id.x_address
+
+
+	def get_firm_address(self):
+		"""
+		high level support for doing this and that.
+		"""
+		#print
+		#print 'Get Firm Address'
+		#return self.partner_id.x_firm_address
+		return self.partner_id.x_address
+
+
+
+	def get_credit_note_type(self):
+		"""
+		Used by Print Ticket.
+		"""
+		_dic_cn = {
+					'cancel': 					'Anulación de la operación.',
+					'cancel_error_ruc': 		'Anulación por error en el RUC.',
+					'correct_error_desc': 		'Corrección por error en la descripción.',
+					'discount': 				'Descuento global.',
+					'discount_item': 			'Descuento por item.',
+					'return': 					'Devolución total.',
+					'return_item': 				'Devolución por item.',
+					'bonus': 					'Bonificación.',
+					'value_drop': 				'Disminución en el valor.',
+					'other': 					'Otros.',
+					False: 						'',
+		}
+		return _dic_cn[self.x_credit_note_type]
+
+
+	def get_credit_note_owner_amount(self):
+		"""
+		Used by Print Ticket.
+		"""
+		return self.x_credit_note_owner_amount
 
 
 
@@ -79,8 +184,6 @@ class sale_order(models.Model):
 		return self.amount_total
 
 
-
-
 	def get_total_in_words(self):
 		"""
 		Used by Print Ticket.
@@ -94,15 +197,39 @@ class sale_order(models.Model):
 		return self.x_total_cents
 
 
-
-
-
-
 	def get_note(self):
 		"""
 		Used by Print Ticket.
 		"""
 		return self.note
+
+
+
+
+
+# ----------------------------------------------------------- Descriptors -------------------------------
+	# Product
+	x_product = fields.Char(
+			string="Producto",
+		)
+
+
+
+
+	# Family
+	x_family = fields.Selection(
+			string="Familia",
+			selection=[
+							('product', 'Producto'),
+							('consultation', 'Consulta'),
+							('procedure', 'Procedimiento'),
+							('cosmetology', 'Cosmiatría'),
+			],
+		)
+
+
+
+
 
 
 
@@ -212,33 +339,6 @@ class sale_order(models.Model):
 			'Nota de Crédito',
 		)
 
-
-
-	def get_credit_note_type(self):
-		"""
-		Used by Print Ticket.
-		"""
-		_dic_cn = {
-					'cancel': 					'Anulación de la operación.',
-					'cancel_error_ruc': 		'Anulación por error en el RUC.',
-					'correct_error_desc': 		'Corrección por error en la descripción.',
-					'discount': 				'Descuento global.',
-					'discount_item': 			'Descuento por item.',
-					'return': 					'Devolución total.',
-					'return_item': 				'Devolución por item.',
-					'bonus': 					'Bonificación.',
-					'value_drop': 				'Disminución en el valor.',
-					'other': 					'Otros.',
-					False: 						'',
-		}
-		return _dic_cn[self.x_credit_note_type]
-
-
-	def get_credit_note_owner_amount(self):
-		"""
-		Used by Print Ticket.
-		"""
-		return self.x_credit_note_owner_amount
 
 
 
@@ -719,25 +819,7 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Electronic - Getters ----------------
 
-	def get_patient_address(self):
-		"""
-		high level support for doing this and that.
-		"""
-		#print
-		#print 'Get Patient Address'
-		return self.partner_id.x_address
-
-
-	def get_firm_address(self):
-		"""
-		high level support for doing this and that.
-		"""
-		#print
-		#print 'Get Firm Address'
-		#return self.partner_id.x_firm_address
-		return self.partner_id.x_address
 
 
 # ----------------------------------------------------------- Onchange - DNI ----------------------

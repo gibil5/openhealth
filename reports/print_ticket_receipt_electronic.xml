@@ -365,15 +365,11 @@ doc.get_patient_address()
 
 <!-- Note --> 
 <table style="width:100%">
-
 	<tr>
 		<td align="left" ><t t-esc="doc.get_note()"/></td> 
 	</tr>
-
 </table>
 <br/>
-
-
 
 </div>
 <!-- ROW - Sale - End --> 
@@ -386,17 +382,22 @@ doc.get_patient_address()
 <!-- ROW - Footer - Begin --> 
 <div class="row">
 
+
+
 <!-- QR --> 
 <div class="text-center col-xs-12" style="border-top: 1px solid black; margin-top: 5px;">
 	<img t-att-src="'data:image/png;base64,%s' % doc.x_qr_img"  style="max-height: 100px;"/>
-
 </div>
 
-<!-- Legal --> 
+
+
+<!-- Legal Warning --> 
 <div class="footer_">
 	<div class="text-center" style="margin-top:1px;margin-bottom:1px;width:100%;font-size: xx-small;">
 
 <br/>
+		<div class="col-xs-12 text-center" style="margin-top:7px;" t-esc="doc.get_description()"/>
+
 		<div class="col-xs-12 text-center" style="margin-top:7px;" t-esc="doc.get_warning()"/>
 		
 		<div class="col-xs-12 text-center" style="margin-top:7px;" t-esc="doc.get_website()"/>
@@ -427,16 +428,11 @@ doc.get_patient_address()
 
 
 
-
 				</div>
 			</t>
-
-
 		</t>
 	</t>
 </template>
-
-
 
 	</data>
 </openerp>

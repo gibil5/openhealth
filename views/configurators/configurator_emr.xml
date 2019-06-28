@@ -163,7 +163,7 @@
 		<!-- ACTION - EMR -->
 		<record model="ir.actions.act_window" id="configurator_emr_list_action">
 
-			<field name="name">Configurators - EMR</field>
+			<field name="name">Configuracion - Clinica Chavarri</field>
 			
 			<field name="res_model">openhealth.configurator.emr</field>
 

@@ -6,7 +6,7 @@
 
 	'description': """
 
-		19 Jun 2019
+		28 Jun 2019
 
 		Remember, Hunter and Westerman:
 			- Step 1 - New Thinking: Avoid the 7 Value Traps.
@@ -265,11 +265,11 @@
 
 
 
-		# Account - Patients 					# For Marketing
-		'views/account/patient_line_search.xml',
-		'views/account/patient_line_actions.xml',
-		'views/account/patient_line.xml',
-		'views/account/patient_line_pivot.xml',
+		# For Marketing
+		'views/marketing/patient_line_search.xml',
+		'views/marketing/patient_line.xml',
+		'views/marketing/patient_line_actions.xml',
+		'views/marketing/patient_line_pivot.xml',
 
 
 

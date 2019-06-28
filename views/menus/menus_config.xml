@@ -24,48 +24,37 @@
                 />
 
 
-
+<!--
+                    name="Historias" 
+                    name="Sedes" 
+-->
         <!-- EMR --> 
         <menuitem   id="config_emr_menu" 
-
-                    name="Historias" 
-            
+                    name="Clinicas" 
                     parent="openhealth_config_menu"
-            
                     sequence="1"
-            
                     action="configurator_emr_list_action"
             />
 
 
 
-        <!-- Reports --> 
+        <!-- Reports - DEP -->
+        <!-- Configurators - DEP --> 
+<!--
         <menuitem   id="config_report_menu" 
-
-                    name="Reportes" 
-            
+                    name="Reportes"
                     parent="openhealth_config_menu"
-            
                     sequence="3"
-            
                     action="configurator_report_list_action"
             />
 
-
-
-
-        <!-- Configurators --> 
         <menuitem   id="config_config_menu" 
-
-                    name="Configurators" 
-            
+                    name="Configurators"             
                     parent="openhealth_config_menu"
-            
                     sequence="5"
-            
                     action="configurator_list_action"
             />
-
+-->
 
 
 

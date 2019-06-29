@@ -1,20 +1,14 @@
 # -*- coding: utf-8 -*-
-#
-# 	Patient Line
-# 
-# Created: 				16 May 2018
-#
-
+"""
+ 	Patient Line - Usede by Marketing
+ 
+ 	Created: 				16 May 2018
+ 	Last up: 	 			29 Jun 2019
+"""
 from openerp import models, fields, api
-from . import pat_vars
-
-
-#from . import eval_vars
+from openerp.addons.openhealth.models.patient import pat_vars
 from openerp.addons.openhealth.models.libs import eval_vars
-
-#from . import prodvars
 from openerp.addons.openhealth.models.emr import prodvars
-
 
 class PaitentLine(models.Model):
 	

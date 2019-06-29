@@ -6,6 +6,6 @@ from . import partner
 
 from . import patient
 
-from . import patient_line
+#from . import patient_line
 
 from . import counter

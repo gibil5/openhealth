@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 
+from . import patient_line
+
+
 from . import medical
 
 from . import media_line

@@ -231,6 +231,14 @@ _zone_list = [
 
 _pathology_list = [ 
 
+		# 28 Jun 2019
+		('varices',			'varices'),
+		
+		# Standard
+		('varicose',			'varicose'),
+
+
+
 		# Med 
 		('keloid',		'keloid'),
 
@@ -395,8 +403,6 @@ _pathology_list = [
 		
 
 
-		#('varices',			'varices'),
-		('varicose',			'varicose'),
 
 		
 		('vitiligo',			'vitiligo'),

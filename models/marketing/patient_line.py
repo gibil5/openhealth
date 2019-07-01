@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
- 	Patient Line - Usede by Marketing
+ 	Patient Line - Used by Marketing
  
  	Created: 				16 May 2018
  	Last up: 	 			29 Jun 2019
@@ -10,127 +10,20 @@ from openerp.addons.openhealth.models.patient import pat_vars
 from openerp.addons.openhealth.models.libs import eval_vars
 from openerp.addons.openhealth.models.emr import prodvars
 
-class PaitentLine(models.Model):
+class PatientLine(models.Model):
 	
 	_name = 'openhealth.patient.line'
 
 	_order = 'date_create asc'
 
 
-
-
-
-# ----------------------------------------------------------- Inheritable ------------------------------------------------------
-
-	# Patient 
-	patient = fields.Many2one(
-			'oeh.medical.patient', 
-			string="Paciente", 
-		)
-
-
-	# Doctor 
-	doctor = fields.Many2one(
-			'oeh.medical.physician',
-			string = "Médico", 	
-		)
-
-
-
-
-	# Treatment 
-	treatment = fields.Many2one(
-			'openhealth.treatment', 
-			string="Tratamiento", 
-		)
-
-
-	# Consultation 
-	consultation = fields.Many2one(
-			'openhealth.consultation', 
-			string="Consulta", 
-		)
-
-
-
-	# Mkt 
-	emr = fields.Char(
-			'HC', 
-		)
-
-
-	phone_1 = fields.Char(
-			'Tel 1', 
-		)
-
-
-	phone_2 = fields.Char(
-			'Tel 2', 
-		)
-
-
-	email = fields.Char(
-			'Email', 
-		)
-
-
-
-	#chief_complaint = fields.Char(
-	#		'Motivo', 
-	#	)
-
-
-
-	chief_complaint = fields.Selection(
-			string = 'Motivo de consulta', 						
-			selection = eval_vars._chief_complaint_list, 
-			#required=False, 
-			#readonly=True, 
-		)
-
-
-
-
-	diagnosis = fields.Char(
-			'Diagnóstico', 
-		)
-
-
-
-	budget_date = fields.Datetime(
-			'Pres. Fecha', 
-		)
-
-
-
-	#budget_amount = fields.Float(
-	budget_amount = fields.Char(
-			'Pres. Monto', 
-		)
-
-
-
-	budget_flag = fields.Boolean(
-			'Flag', 
-		)
-
-
-
-	budget_prod = fields.Char(
-			'Pres. Proc.', 
-		)
-
-
-
 # ----------------------------------------------------------- Relational ------------------------------------------------------
 
-
-	# Budgets
-	budget_line = fields.One2many(
-			'openhealth.marketing.order.line', 
-			'patient_line_budget_id',
+	# Marketing Id 
+	marketing_id = fields.Many2one(
+			'openhealth.marketing', 
+			ondelete='cascade', 
 		)
-
 
 
 
@@ -141,14 +34,18 @@ class PaitentLine(models.Model):
 		)
 
 
+	# Budgets
+	budget_line = fields.One2many(
+			'openhealth.marketing.order.line', 
+			'patient_line_budget_id',
+		)
+
 
 	# Consus
 	consu_line = fields.One2many(
 			'openhealth.marketing.order.line', 
 			'patient_line_consu_id',
 		)
-
-
 
 	# Products
 	product_line = fields.One2many(
@@ -157,23 +54,12 @@ class PaitentLine(models.Model):
 			'patient_line_product_id',
 		)
 
-
-
 	# Procedures
 	procedure_line = fields.One2many(
 			'openhealth.marketing.order.line', 
-			
-			#'patient_line_id_proc',
 			'patient_line_proc_id',
-		
 			string="Procedimientos", 
 		)
-
-
-
-
-
-
 
 	# Vip Sales
 	order_line = fields.One2many(
@@ -181,16 +67,11 @@ class PaitentLine(models.Model):
 			'patient_line_id',
 		)
 
-
 	# Vip Sales - With Vip Card
 	order_line_vip = fields.One2many(
 			'openhealth.marketing.order.line', 
 			'patient_line_id_vip',
 		)
-
-
-
-
 
 	# Recommendations
 	reco_line = fields.One2many(
@@ -198,6 +79,84 @@ class PaitentLine(models.Model):
 			'patient_line_id',
 			string="Recom.", 
 		)
+
+
+
+# ----------------------------------------------------------- Native ------------------------------------------------------
+
+	# Patient 
+	patient = fields.Many2one(
+			'oeh.medical.patient', 
+			string="Paciente", 
+		)
+
+	# Doctor 
+	doctor = fields.Many2one(
+			'oeh.medical.physician',
+			string = "Médico", 	
+		)
+
+	# Treatment 
+	treatment = fields.Many2one(
+			'openhealth.treatment', 
+			string="Tratamiento", 
+		)
+
+	# Consultation 
+	consultation = fields.Many2one(
+			'openhealth.consultation', 
+			string="Consulta", 
+		)
+
+
+
+	# Marketing
+
+	emr = fields.Char(
+			'HC', 
+		)
+
+	phone_1 = fields.Char(
+			'Tel 1', 
+		)
+
+	phone_2 = fields.Char(
+			'Tel 2', 
+		)
+
+	email = fields.Char(
+			'Email', 
+		)
+
+	chief_complaint = fields.Selection(
+			string = 'Motivo de consulta', 						
+			selection = eval_vars._chief_complaint_list, 
+			#required=False, 
+			#readonly=True, 
+		)
+
+	diagnosis = fields.Char(
+			'Diagnóstico', 
+		)
+
+	budget_date = fields.Datetime(
+			'Pres. Fecha', 
+		)
+
+	#budget_amount = fields.Float(
+	budget_amount = fields.Char(
+			'Pres. Monto', 
+		)
+
+	budget_flag = fields.Boolean(
+			'Flag', 
+		)
+
+	budget_prod = fields.Char(
+			'Pres. Proc.', 
+		)
+
+
 
 
 # ----------------------------------------------------------- Dates ------------------------------------------------------
@@ -290,14 +249,6 @@ class PaitentLine(models.Model):
 			string="Fecha Vip", 
 		)
 
-
-	# Marketing Id 
-	marketing_id = fields.Many2one(
-			#'openhealth.account.contasis'
-			'openhealth.marketing', 
-
-			ondelete='cascade', 
-		)
 
 
 

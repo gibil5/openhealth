@@ -12,6 +12,9 @@
                 <tree string="marketing order line Tree">
 
                     <field name="marketing_id"/>
+
+                    <field name="write_date"/>
+
                     <field name="patient_line_id"/>
                     <field name="product_id"/>
                     <field name="product_uom_qty"/>

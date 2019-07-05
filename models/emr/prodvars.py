@@ -486,11 +486,9 @@ _family_list = [
 		('other',			'other'), 
 
 
-
 		# Service 
 		('consultation',	'consultation'), 
-		('consultation_gyn',	'consultation_gyn'), 
-
+		('consultation_gyn',	'consultation_gyn'),
 		('laser',			'laser'),
 		('medical',			'medical'), 
 		('cosmetology',		'cosmetology'),
@@ -503,7 +501,6 @@ _family_list = [
 		('topical',			'topical'),
 		('kit',				'kit'),
 		('card',			'card'),
-
 
 		('none',		'none'),
 ]

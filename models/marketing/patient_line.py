@@ -251,9 +251,6 @@ class PatientLine(models.Model):
 
 
 
-
-
-
 	# Age 
 	age = fields.Char(
 			string = "Edad", 		

@@ -542,8 +542,8 @@ class sale_order(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		print()
-		print('Update Day Month')
+		#print()
+		#print('Update Day Month')
 
 		date_format = "%d"
 		self.x_day_order = lib.get_date_with_format(date_format, self.date_order)

@@ -6,7 +6,7 @@
 
 	'description': """
 
-		1 July 2019
+		17 July 2019
 
 		Remember, Hunter and Westerman:
 			- Step 1 - New Thinking: Avoid the 7 Value Traps.

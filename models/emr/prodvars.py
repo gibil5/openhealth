@@ -34,6 +34,9 @@ _laser_type_list = [
 		('infiltration_keloid', 	'Infiltracion Queloide'), 
 		('infiltration_scar', 		'Infiltracion Cicatriz'), 
 
+		# 12 Jul 2019
+		('infiltration', 	'Infiltracion'), 
+
 
 
 

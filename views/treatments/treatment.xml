@@ -501,9 +501,9 @@
                                         
                                         name="test_integration" 
                                         
-                                        string="Integration"
+                                        string="Test Integration"
 
-                                        help='Tests: Integration'
+                                        help='Test Integration'
                                     />
 
                                     <!-- Reset -->

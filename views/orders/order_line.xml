@@ -4,7 +4,7 @@
         
 
 
-        <!-- FORM -->
+<!-- FORM -->
         <record model="ir.ui.view" id="sale.view_order_line_form">
             <field name="name">sale.order.line.form</field>
             <field name="model">sale.order.line</field>                     

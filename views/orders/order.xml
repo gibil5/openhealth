@@ -744,7 +744,6 @@
 											help="Importante: Esta operación es REVERSIBLE !"
 
 											confirm="Importante: La Venta va a ser convertida en Presupuesto. Desea continuar ?"
-
 									/>
 
 

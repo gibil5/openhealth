@@ -1,6 +1,13 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
+access_oeh_medical_appointment,oeh.medical.appointment,oehealth.model_oeh_medical_appointment,oehealth.group_oeh_medical_physician,1,1,1,1
+access_oeh_medical_appointment_caja,oeh.medical.appointment caja,oehealth.model_oeh_medical_appointment,openhealth.caja,1,1,1,0
+access_oeh_medical_appointment_reception,oeh.medical.appointment reception,oehealth.model_oeh_medical_appointment,openhealth.reception,1,1,1,1
+access_oeh_medical_appointment_manager,oeh.medical.appointment manager,oehealth.model_oeh_medical_appointment,openhealth.managers,1,1,1,1
+
+
+
 
 
 
@@ -13,19 +20,12 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_openhealth_doctor,access_openhealth_doctor,model_openhealth_doctor,,1,1,1,1
 
 
-
-
 access_openhealth_service_cosmetology,openhealth.service.cosmetology,model_openhealth_service_cosmetology,,1,1,1,1
 access_openhealth_report_order_line,openhealth.report.order_line,model_openhealth_report_order_line,,1,1,1,1
 access_openhealth_report_sale_product,openhealth.order.report.sale.product,model_openhealth_report_sale_product,,1,1,1,1
 
 
-
-
-
-
 access_openhealth_management_day_doctor_line,openhealth.management.day.doctor.line,model_openhealth_management_day_doctor_line,,1,1,1,1
-
 access_openhealth_management_day_line,openhealth.management.day.line,model_openhealth_management_day_line,,1,1,1,1
 
 
@@ -397,9 +397,6 @@ access_product_template_readers,product.template.readers,model_product_template,
 
 
 
-access_oeh_medical_appointment,oeh.medical.appointment,oehealth.model_oeh_medical_appointment,oehealth.group_oeh_medical_physician,1,1,1,1
-access_oeh_medical_appointment_caja,oeh.medical.appointment caja,oehealth.model_oeh_medical_appointment,openhealth.caja,1,1,1,0
-access_oeh_medical_appointment_reception,oeh.medical.appointment reception,oehealth.model_oeh_medical_appointment,openhealth.reception,1,1,1,1
 
 
 

@@ -4,67 +4,38 @@
 
 
 <!--
-        <menuitem id="main_appointment_calendar_menu"
+    groups="openhealth.roots,openhealth.assistants,openhealth.reception,openhealth.caja,openhealth.physicians,openhealth.directors,openhealth.managers"
 -->
+<!-- CITAS -->
+<menuitem id="main_appointment_menu_jx" 
+    
+    sequence="-18"
+    
+    name="Citas"
 
- <!-- Calendar -->
-<menuitem 
-            id="main_appointment_calendar_menu"
-
-            sequence="-17"
-
-            name="Calendario"
-                
-            groups="openhealth.roots,openhealth.assistants,openhealth.reception,openhealth.caja,openhealth.physicians,openhealth.directors"
-        />
-
+    groups="openhealth.roots,openhealth.assistants,openhealth.reception,openhealth.caja,openhealth.physicians,openhealth.directors,openhealth.managers
+    "
+/>
 
 
-<!--
-            name="Citas - Médicos"
--->
-
-<!--
-                parent="main_appointment_calendar_menu"            
--->
-<!-- Citas Confirmadas --> 
-        <menuitem id="oehealth_appointment_menu_jx" 
-
-                parent="main_appointment_calendar_menu"            
-                
-                sequence="1"
-
-                name="Hoy"
-        />
 
 
-<!--
-                    id="oeh_medical_appointment_list_1"
--->
-        <!-- Calendar --> 
+
+<!-- All --> 
+        <menuitem id="oehealth_appointment_all_menu" 
+            name="Todas"
+            parent="main_appointment_menu_jx"
+
+            sequence="0"
+            />
+
+
         <menuitem 
-                    id="oeh_medical_appointment_list_cal_calendar"
+                    id="oeh_medical_appointment_list_all" 
 
-                    parent="oehealth_appointment_menu_jx"  
-                    
+                    parent="oehealth_appointment_all_menu"  
+
                     sequence="1"
-
-                    action="oeh_medical_appointment_action_calendar_confirmed" 
-
-                    name="Calendario"
-        />
-
-
-<!--
-                    id="oeh_medical_appointment_list_7"
--->
-        <!-- Tree --> 
-        <menuitem 
-                    id="oeh_medical_appointment_list_cal_all"
-
-                    parent="oehealth_appointment_menu_jx"  
-                    
-                    sequence="3"
 
                     action="oeh_medical_appointment_action_tree_all" 
 
@@ -73,94 +44,7 @@
 
 
 
-
-
-
-
-
-        <!-- Tree Confirmed --> 
-        <!-- Tree Not Confirmed --> 
-<!--
-        <menuitem 
-                    id="oeh_medical_appointment_list_2"
-                    parent="oehealth_appointment_menu"
-                    sequence="5"
-                    action="oeh_medical_appointment_action_tree_confirmed"
-                    name="Confirmadas"
-        />
-
-
-        <menuitem 
-                    id="oeh_medical_appointment_list_5"
-                    parent="oehealth_appointment_menu"
-                    sequence="7"
-                    action="oeh_medical_appointment_action_tree_not_confirmed"
-                    name="No Confirmadas"
-        />
--->
-
-
-
-
-
-
-
-<!-- Citas No Confirmadas --> 
-        <menuitem id="oehealth_appointment_nc_menu"
-
-                parent="main_appointment_calendar_menu"            
-            
-                sequence="3"
-
-                name="Hoy - No Confirmadas"
-            />
-
-
-
-        <!-- Controls --> 
-        <menuitem 
-                    id="oeh_medical_appointment_list_nc_control" 
-                    
-                    parent="oehealth_appointment_nc_menu"  
-                    
-                    sequence="1"
-
-                    action="oeh_medical_appointment_action_tree_not_confirmed_control" 
-        />
-
-        <!-- Consultations --> 
-        <menuitem 
-                    id="oeh_medical_appointment_list_nc_consultation" 
-                    
-                    parent="oehealth_appointment_nc_menu"  
-                    
-                    sequence="3"
-
-                    action="oeh_medical_appointment_action_tree_not_confirmed_consultation" 
-        />
-
-
-
-
-
-
-
-
-<!-- Appointments -->
-        <menuitem id="main_appointment_menu_jx" 
-            sequence="-18"
-            name="Citas"
-
-            groups="openhealth.roots,openhealth.assistants,openhealth.reception,openhealth.caja,openhealth.physicians,openhealth.directors"
-            />
-
-
-
-
-
-
-
-<!-- By Type --> 
+<!-- By Type -->
         <menuitem id="oehealth_appointment_type_menu" 
             name="Por Tipo"
             parent="main_appointment_menu_jx"
@@ -195,29 +79,6 @@
                     action="oeh_medical_appointment_action_tree_procedures" 
         />
 
-        <!-- sessions -->
-        <!-- events --> 
-<!--
-        <menuitem 
-                    id="oehealth_appointment_type_sessions"
-                    parent="oehealth_appointment_type_menu"
-                    sequence="9"
-
-                    action="oeh_medical_appointment_action_tree_sessions" 
-        />
-
-        <menuitem 
-                    id="oehealth_appointment_type_events"
-                    parent="oehealth_appointment_type_menu"
-                    sequence="11"
-
-                    action="oeh_medical_appointment_action_tree_events" 
-        />
--->
-
-
-
-
 
 
 
@@ -243,7 +104,7 @@
 
         <!-- Month --> 
         <!-- Year --> 
-<!--
+        <!--
         <menuitem 
                     id="oeh_medical_appointment_list_month" 
                     parent="oehealth_appointment_date_menu"  
@@ -256,7 +117,7 @@
                     sequence="3"
                     action="oeh_medical_appointment_action_tree_this_year"
         />
--->
+        -->
 
 
 
@@ -465,25 +326,6 @@
 
 
 
-        <!-- All --> 
-<!--
-        <menuitem 
-                    id="oeh_medical_appointment_list_all" 
-                    parent="oehealth_appointment_menu"  
-                    sequence="4"
-
-                    action="oeh_medical_appointment_action_tree_all" 
-
-                    name="Todas"
-        />
--->
-
-
-
-
-
-
-
 
         <!-- Machines --> 
 <!--
@@ -498,15 +340,10 @@
 
 
 
-
-
-
-
-
 <!-- Cosmetology --> 
         <!-- Confirmed - Cos --> 
         <!-- Machines --> 
-<!--
+        <!--
         <menuitem 
                     action="oeh_medical_appointment_action_tree_confirmed_cos" 
                     parent="oehealth_appointment_menu_cos"  
@@ -522,20 +359,7 @@
 
                     sequence="2"
         />
--->
-
-
-
-
-
-
-
-
-
-
-
-
-
+        -->
 
 
     </data>

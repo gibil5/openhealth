@@ -7,7 +7,7 @@
 <!-- Electronic --> 
         <record id="appointment_receipt_electronic" model="report.paperformat">
 
-            <field name="name">Appointment Receipt - Electroic</field>
+            <field name="name">Appointment Receipt - ELECTRONIC - 26 Jul 2019</field>
 
             <field name="format">custom</field>
 
@@ -21,20 +21,22 @@
 
             <field name="dpi">130</field>
 
-            <field name="margin_top">35</field>
+            <field name="margin_top">33</field>
             
-            <field name="header_spacing">35</field>
+            <field name="header_spacing">33</field>
 
             <field name="margin_bottom">0</field>
 
             <field name="page_height">260</field>
 
 <!--
+            <field name="margin_top">35</field>            
+            <field name="header_spacing">35</field>
+
+
             <field name="header_spacing">0</field>
-
             <field name="margin_bottom">80</field>          
-            <field name="margin_bottom">70</field>          
-
+            <field name="margin_bottom">70</field>
             <field name="page_height">270</field>
             <field name="page_height">240</field>
 -->

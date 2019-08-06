@@ -1,1 +1,13 @@
+
+
+access_oeh_medical_appointment,oeh.medical.appointment,oehealth.model_oeh_medical_appointment,oehealth.group_oeh_medical_manager,1,1,1,1
+
+
+
+
+
+
+
+
+
 access_product_selector,product.selector,model_openhealth_product_selector,,1,1,1,1

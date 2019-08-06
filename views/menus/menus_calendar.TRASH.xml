@@ -1,0 +1,43 @@
+<!--
+            name="Citas - Médicos"
+-->
+
+<!--
+                parent="main_appointment_calendar_menu"            
+-->
+
+
+<!--
+                    id="oeh_medical_appointment_list_1"
+-->
+
+
+<!--
+                    id="oeh_medical_appointment_list_7"
+-->
+
+
+        <!-- Tree Confirmed --> 
+        <!-- Tree Not Confirmed --> 
+<!--
+        <menuitem 
+                    id="oeh_medical_appointment_list_2"
+                    parent="oehealth_appointment_menu"
+                    sequence="5"
+                    action="oeh_medical_appointment_action_tree_confirmed"
+                    name="Confirmadas"
+        />
+
+
+        <menuitem 
+                    id="oeh_medical_appointment_list_5"
+                    parent="oehealth_appointment_menu"
+                    sequence="7"
+                    action="oeh_medical_appointment_action_tree_not_confirmed"
+                    name="No Confirmadas"
+        />
+-->
+
+
+
+

@@ -174,9 +174,10 @@ class Partner(models.Model):
 	# Dni 
 	x_dni = fields.Char(
 			"DNI", 	
-			index=True, 
-			required=False, 
-			readonly=True
+			index=True,
+			required=False,
+
+			#readonly=True
 		)
 
 # ----------------------------------------------------------- My Company ------------------------------------------------------

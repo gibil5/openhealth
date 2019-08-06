@@ -3,15 +3,14 @@
     <data>
 
 
-
+<!--
+    groups="openhealth.roots,openhealth.assistants,openhealth.reception,openhealth.caja,openhealth.physicians,openhealth.directors,openhealth.manager"
+-->
  <!-- CALENDARIO -->
 <menuitem   id="main_appointment_calendar_menu"
 	sequence="-17"
 
-	name="Calendario"
-	                
-	groups="openhealth.roots,openhealth.assistants,openhealth.reception,openhealth.caja,openhealth.physicians,openhealth.directors,openhealth.managers
-    "
+	name="Calendario"	                
 />
 
 

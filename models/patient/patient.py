@@ -14,7 +14,16 @@ from openerp.addons.openhealth.models.libs import count_funcs
 
 class Patient(models.Model):
 	"""
-	high level support for doing this and that.
+	Patient Class. 
+	Inherits OeHealth Patient Class.
+
+	This is a very dangerous thing to do. Should NEVER be done:
+
+	# Container
+	#container_id = fields.Many2one(
+	#	'openhealth.container',
+	#	ondelete='cascade',		# Very Dangerous. When Container is removed, Patient is removed.
+	#)
 	"""
 	_inherit = 'oeh.medical.patient'
 
@@ -23,18 +32,143 @@ class Patient(models.Model):
 	_description = 'Patient'
 
 
+# ----------------------------------------------------------- First Level - Buttons ---------------------------------------------
 
-# ----------------------------------------------------------- Handle Dep ------------------------------
-	# Container
-	#container_id = fields.Many2one(
-	#	'openhealth.container',
-	#	ondelete='cascade',		# Very Dangerous. When Container is removed, Patient is removed.
-	#)
+# ----------------------------------------------------------- Open Treatment - Button ----------------------
+	@api.multi
+	def open_treatment(self):
+		"""
+		Open Treatment Button
+		"""
+
+		# Validate
+		self.validate()
+
+
+		# Search
+		treatment = self.env['openhealth.treatment'].search([
+																('patient', '=', self.id),
+															],
+															order='write_date desc',
+															limit=1,
+														)
+		return {
+					# Mandatory
+					'type': 'ir.actions.act_window',
+					'name': 'Open Treatment Current',
+					# Window action
+					'res_model': 'openhealth.treatment',
+					#'res_id': treatment_id,
+					'res_id': treatment.id,
+					# Views
+					"views": [[False, "form"]],
+					'view_mode': 'form',
+					'target': 'current',
+					'flags': {
+							'form': {'action_buttons': True, }
+							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+					},
+					'context':   {
+									'search_default_patient': self.id,
+									'default_patient': self.id,
+					}
+			}
+	# open_treatment
+
+
+
+# ----------------------------------------------------------- Generate Estado de Cuenta - Button ----------------------
+	# Generate
+	@api.multi
+	def generate_order_report(self):
+		"""
+		Estado de Cuenta.
+		"""
+
+		# Validate
+		self.validate()
+
+
+		# Clean
+		self.remove_order_report()
+
+		# Create
+		self.order_report_nex = self.create_order_report()
+		res_id = self.order_report_nex.id
+
+		# Update
+		self.order_report_nex.update()
+
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' New Order Report',
+				'view_type': 'form',
+				'view_mode': 'form',
+				'target': 'current',
+				'res_model': 'openhealth.order.report.nex',
+				'res_id': res_id,
+				'flags': 	{
+								#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+								'form': {'action_buttons': True, }
+							},
+				'context': {}
+				}
+	# generate_order_report
+
+
+
+# ----------------------------------------------------------- Print Patient HC - Button ------------------
+	# Print Patient
+	@api.multi
+	def print_patient_hc(self):
+		"""
+		Print Patient HC - Button
+		"""
+
+		# Validate
+		self.validate()
+
+
+		name = 'openhealth.report_patient_view'
+		return self.env['report'].get_action(self, name)
+
+
+# ----------------------------------------------------------- Deactivate Patient - Button --------------------------
+	# Deactivate
+	@api.multi
+	def deactivate_patient(self):
+		"""
+		Deactivate Patient - Button
+		"""
+		self.active = False
+		self.partner_id.active = False
+
+# ----------------------------------------------------------- Activate Patient - Button ----------------------------
+	# Activate Patient
+	@api.multi
+	def activate_patient(self):
+		"""
+		Activate Patient - Button
+		"""
+		self.active = True
+		self.partner_id.active = True
+
+
+
+# ----------------------------------------------------------- Validate - Button -----------
+	@api.multi
+	def validate(self):
+		"""
+		Just a wrapper
+		"""
+		print()
+		print('Wrapper')
 
 
 
 
 
+# ----------------------------------------------------------- Second Level - Implementation ---------------------------------------------
 
 # ----------------------------------------------------------- Estado de Cuenta --------------------
 
@@ -75,48 +209,6 @@ class Patient(models.Model):
 		#print name 			# Warning - Generates Error in Prod. Because of Latin chars (ie Ñ).
 		return order_report_id
 	# create_order_report
-
-
-
-
-
-	# Generate
-	@api.multi
-	def generate_order_report(self):
-		"""
-		Estado de Cuenta.
-		"""
-		print()
-		print('Generate Order Report')
-
-		# Clean
-		self.remove_order_report()
-
-		# Create
-		self.order_report_nex = self.create_order_report()
-		res_id = self.order_report_nex.id
-
-		# Update
-		self.order_report_nex.update()
-
-		return {
-				'type': 'ir.actions.act_window',
-				'name': ' New Order Report',
-				'view_type': 'form',
-				'view_mode': 'form',
-				'target': 'current',
-				'res_model': 'openhealth.order.report.nex',
-				'res_id': res_id,
-				'flags': 	{
-								#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-								'form': {'action_buttons': True, }
-							},
-				'context': {}
-				}
-	# generate_order_report
-
-
-
 
 
 
@@ -687,68 +779,7 @@ class Patient(models.Model):
 
 
 
-# ----------------------------------------------------------- Deactivate --------------------------
-	# Deactivate
-	@api.multi
-	def deactivate_patient(self):
-		"""
-		high level support for doing this and that.
-		"""
-		self.active = False
-		self.partner_id.active = False
 
-
-# ----------------------------------------------------------- Activate ----------------------------
-	# Activate Patient
-	@api.multi
-	def activate_patient(self):
-		"""
-		high level support for doing this and that.
-		"""
-		self.active = True
-		self.partner_id.active = True
-
-
-# ----------------------------------------------------------- Open Treatment ----------------------
-	# Open Treatment
-	@api.multi
-	def open_treatment(self):
-		"""
-		high level support for doing this and that.
-		"""
-		#print
-		#print 'Open Treatment'
-
-
-		# Search
-		treatment = self.env['openhealth.treatment'].search([
-																('patient', '=', self.id),
-															],
-															order='write_date desc',
-															limit=1,
-														)
-		return {
-					# Mandatory
-					'type': 'ir.actions.act_window',
-					'name': 'Open Treatment Current',
-					# Window action
-					'res_model': 'openhealth.treatment',
-					#'res_id': treatment_id,
-					'res_id': treatment.id,
-					# Views
-					"views": [[False, "form"]],
-					'view_mode': 'form',
-					'target': 'current',
-					'flags': {
-							'form': {'action_buttons': True, }
-							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-					},
-					'context':   {
-									'search_default_patient': self.id,
-									'default_patient': self.id,
-					}
-			}
-	# open_treatment
 
 
 
@@ -933,18 +964,6 @@ class Patient(models.Model):
 					'Husband': 	'Esposo/a',
 					'Other': 	'Otro',
 	}
-
-# ----------------------------------------------------------- Print - Patient HC ------------------
-	# Print Patient
-	@api.multi
-	def print_patient_hc(self):
-		"""
-		high level support for doing this and that.
-		"""
-		#print
-		#print 'Print Patient'
-		name = 'openhealth.report_patient_view'
-		return self.env['report'].get_action(self, name)
 
 
 

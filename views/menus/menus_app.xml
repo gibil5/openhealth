@@ -12,9 +12,6 @@
     sequence="-18"
     
     name="Citas"
-
-    groups="openhealth.roots,openhealth.assistants,openhealth.reception,openhealth.caja,openhealth.physicians,openhealth.directors,openhealth.managers
-    "
 />
 
 

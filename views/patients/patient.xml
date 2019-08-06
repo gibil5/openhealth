@@ -157,6 +157,24 @@
 
 
 
+
+                        <!-- Validate --> 
+                        <button 
+                            type="object" 
+                            class="oe_highlight oe_right"
+
+                            name="validate" 
+
+                            string="Validate" 
+
+                            groups="openhealth.roots"
+                        />
+
+
+
+
+
+
                         <!-- Update --> 
 <!--
                         <button 

@@ -144,8 +144,7 @@
 
 		# Doctors
 		'data/physicians/base_data_physicians.xml',				
-		'data/physicians/base_data_physicians_new.xml',	
-					
+		'data/physicians/base_data_physicians_new.xml',
 		'data/physicians/base_data_physicians_inactive.xml',		
 
 
@@ -177,18 +176,10 @@
 		'data/prods/odoo_data_products.xml',
 		'data/prods/odoo_data_products_new.xml',
 		'data/prods/odoo_data_products_dep.xml',			# Important
-
 		'data/prods/odoo_data_products_new_20181212.xml',
-
 		'data/prods/odoo_data_products_new_20190128.xml',	# New !
-
 		'data/prods/odoo_data_products_credit_notes.xml',	# New !
-
 		'data/prods/odoo_data_products_new_2019-03-06.xml',
-
-
-
-
 
 		'data/prods/odoo_data_services_co2.xml',
 		'data/prods/odoo_data_services_exc.xml',
@@ -197,7 +188,6 @@
 		'data/prods/odoo_data_services_consult.xml',
 		'data/prods/odoo_data_services_cos.xml',
 		'data/prods/odoo_data_services_med_dep.xml',	# Dependance
-
 
 		#'data/prods/odoo_data_services_cos_dep.xml', 	# Dependance ?
 		#'data/prods/odoo_data_products_consu.xml',		# Deprecated
@@ -221,13 +211,6 @@
 
 		# Suppliers 
 		'data/suppliers.xml',							# Very Important - Account Invoice Dependance
-
-
-
-
-
-
-
 
 
 		# ----------------------------------------------------------- Actions ------------------------------------------------------
@@ -304,12 +287,9 @@
 		'views/management/management_subfamily_line.xml',
 		'views/management/management_order_line.xml',
 		'views/management/management_doctor_line.xml',
-
 		'views/management/management.xml',
-
 		'views/management/management_actions.xml',
 		
-
 
 		# Coder 
 		'views/coders/coder.xml',
@@ -580,9 +560,7 @@
 		'views/treatments/treatment_appointments.xml',
 		'views/treatments/treatment_orders.xml',
 		'views/treatments/treatment_consultations.xml',
-		
 		#'views/treatments/treatment_services.xml',
-		
 		'views/treatments/treatment_procedures.xml',
 		'views/treatments/treatment_sessions.xml',
 		'views/treatments/treatment_controls.xml',
@@ -596,7 +574,7 @@
 
 
 		# Appointments - 2
-		'views/appointments/calendar.xml',
+		'views/appointments/calendar.xml',					# Exploring
 		'views/appointments/appointment_kanban.xml',
 
 

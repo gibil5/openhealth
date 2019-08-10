@@ -491,33 +491,6 @@
 
 
                                 <field name="x_test_scenario"/>
-
-                                <group>
-                                
-                                    <!-- Treatment --> 
-                                    <button 
-                                        type="object" 
-                                        class="oe_highlight"
-                                        
-                                        name="test_integration" 
-                                        
-                                        string="Test Integration"
-
-                                        help='Test Integration'
-                                    />
-
-                                    <!-- Reset -->
-                                    <button 
-                                        type="object" 
-                                        class="oe_highlight"
-                                        groups="openhealth.roots"
-                                        name="test_reset"
-                                        
-                                        string="Reset"
-
-                                        help='Tests: Reset'
-                                    />
-                                </group>
                         </group>
 
 

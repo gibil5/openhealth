@@ -1,0 +1,336 @@
+<!--
+						<group>
+							<group></group>
+							<group></group>
+						</group>
+-->
+
+
+
+
+
+						<!-- Update --> 
+<!--
+						<button 
+							type="object" 
+							class="oe_highlight oe_right"
+
+							name="update_id_docs" 
+
+							string="Update Id Docs" 
+						/>
+-->
+
+
+
+						<!-- Update --> 
+<!--
+						<button 
+							type="object" 
+							class="oe_highlight"
+							name="x_update" 
+
+							string="Update" 
+						/>
+
+						<button 
+							type="object" 
+							class="oe_highlight"
+
+							name="correct_comment" 
+
+							string="Correct comment" 
+						/>
+
+						<button 
+							type="object" 
+							class="oe_highlight"                            
+							name="update_order_report" 
+
+							string="Actualizar" 
+						/>
+
+						<button 
+							type="object" 
+							class="oe_highlight"
+							name="create_order_report" 
+
+							string="Crear" 
+							
+						/>
+
+						<button 
+							type="object" 
+							class="oe_highlight"
+							name="remove_order_report" 
+
+							string="Eliminar"                           
+						/>
+
+						<field  name="x_state" 
+								widget="statusbar" 
+								statusbar_visible="active, cancel"
+						/>
+-->
+
+
+
+
+
+						<!-- Clean -->
+<!--
+						<button 
+							type="object" 
+							class="oe_highlight"
+							
+							name="clear_appointments" 
+
+							string="Limpiar Citas" 
+
+							groups="openhealth.roots"
+						/>
+-->
+
+
+						<!-- Update Active Treatment -->
+<!--
+						<button 
+							type="object" 
+							class="oe_highlight"
+							
+							name="update_treatment_active" 
+
+							string="Sincronizar" 
+
+							groups="openhealth.roots"
+						/>
+-->
+
+
+
+
+						<!-- Update Date Record -->
+<!--
+						<button 
+							type="object" 
+							class="oe_highlight"
+							name="update_date_record" 
+							groups="openhealth.roots"
+							string="Update Date Rec" 
+						/>
+-->
+
+
+
+
+
+
+
+
+
+
+
+<!--
+								<field name="x_treatment_count"         groups="openhealth.roots"/>
+-->
+
+<!--
+								<field name="property_product_pricelist"    />
+-->
+
+
+
+
+<!--
+
+								<field name="treatment_active"  />
+-->
+
+
+<!--
+															attrs="{    
+																		'invisible':    [('partner_id', '!=', False)], 
+																		'required':     [('partner_id', '=', False)], 
+															}"  
+
+								<field name="x_first_name"  class="oe_edit_only"/>
+																		'invisible':    [('x_legacy', '!=', False)], 
+
+
+																		'invisible':    [('x_data_complete', '=', True)], 
+--> 
+
+
+
+								<!--    
+								Dep !
+								<field name="x_full_name"  string="x_full_name"/>
+								-->
+
+
+
+<!--
+															attrs="{    
+																			'invisible':    [('partner_id', '!=', False)], 
+																			'required':     [('partner_id', '=', False)], 
+																}"  
+
+								<field name="x_last_name"   class="oe_edit_only"/>
+
+																							('x_legacy', '!=', False), 
+																							('x_treatment_count', '>', '0'), 
+
+
+																		'invisible':    [('x_data_complete', '=', True),], 
+-->
+
+
+
+<!--
+								<field name="x_datetime_created"    readonly="0"    required="0"    />
+								<field name="x_date_created"        readonly="0"    />
+								<field name="x_date_created"        readonly="1"    />
+
+
+								<field name="create_date"           readonly="1"    />
+-->                         
+
+
+<!--                                
+								<field name="x_id_doc_type"  />
+								<field name="x_dni"/>
+-->
+<!--
+								<field string='Custodia'  name="x_active"   visible="1"/>
+-->
+
+
+<!--
+								<field name="x_dni"                             attrs="{
+																							'required':[    ('x_nationality', '=', 'peruvian'), ]
+																						}"
+								/>
+								<field name="x_dni"         attrs="{'invisible':[   ('x_id_doc_type', 'not in', ['dni']), ]}"               />
+-->
+
+
+
+
+
+
+<!-- TREE 1 -->
+
+<!--
+					<field name="x_counter"/>
+-->
+<!--
+					<field name="city"          string="Depto"/>                    
+					<field name="age"/>
+					<field name="sex"/>     
+
+					<field name="x_treatment_count"/>
+					<field name="x_firm"/>
+					<field name="x_id_doc"      string="Otro"/>
+					<field name="x_id_doc_type" string="Tipo"/>
+
+					<field name="street2_sel"/>
+					<field name="zip"/>                 
+					<field name="street"/>
+
+					<field name="phone"/>
+					<field name="mobile"/>
+					<field name="email"         string="Email"  />      
+-->
+
+
+<!--
+					<field name="create_date"   string="Fecha de creación"      />
+					<field name="x_date_record"     />
+
+-->
+
+
+<!--
+
+					<field name="x_card"/>
+					<field name="property_product_pricelist"/>
+-->
+
+<!--
+				<tree string="Patient Tree"     colors="red:x_nr_clones!=1;"  >
+-->
+<!--
+					<field name="x_test"            groups='openhealth.roots'   />      
+-->
+<!--
+					<field name="x_treatment_count"/>       
+
+					<field name="create_date"   string="Fecha de creación"      />
+					<field name="dob"/>
+-->
+
+
+					<!-- Legacy --> 
+<!--                    
+					<field name="x_date_record"     groups='openhealth.roots'   />
+					<field name="street"            groups='openhealth.roots'   />
+					<field name="x_district"        groups='openhealth.roots'   />      
+					<field name="comment"           groups='openhealth.roots'   />
+-->
+
+
+
+<!--
+					<field name="phone_1"/>
+					<field name="phone_2"/>
+					<field name="street_2"/>        
+					<field name="x_flag"    invisible="1"/>
+					<field name="write_date"    string="Última modificación"    />
+					<field name="age"/>
+					<field name="x_vip"/>
+					<field name="x_card"/>
+
+
+					<field name="x_first_contact"/>
+					<field name="x_datetime_created"/>
+					<field name="date"/>
+					<field string="Historia Médica"  name="identification_code"/>
+
+
+					<field name="x_nr_clones"/>
+					<field name="x_lowcase"/>
+					<field name="id"/>
+					<field name="x_datetime_created"/>
+					<field name="x_spaced"/>
+					<field name="x_last_name"  />
+					<field name="x_first_name"  />
+
+					<field name="x_status"/>        
+					<field name="x_owner"/>     
+					<field name="x_sex"/>       
+					<field name="x_year_created"/>
+					<field name="x_month_created"/>
+
+					<field name="x_completeness"/>  
+					<field name="x_mark"/>      
+					<field name="x_datetime_created"/>
+					<field name="x_date_created"/>
+-->
+
+
+
+
+<!-- TREE 2 -->
+<!--
+					<field name="x_firm"/>
+					<field name="x_id_doc"      string="Otro"/>
+					<field name="x_id_doc_type" string="Tipo"/>
+
+					<field name="street2_sel"/>
+					<field name="zip"/>                 
+					<field name="street"/>
+
+					<field name="phone"/>
+					<field name="mobile"/>
+					<field name="email"         string="Email"  />      
+-->

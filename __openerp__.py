@@ -6,7 +6,7 @@
 
 	'description': """
 
-		20 Aug 2019
+		22 Aug 2019
 
 		Remember, Hunter and Westerman:
 			- Step 1 - New Thinking: Avoid the 7 Value Traps.
@@ -361,8 +361,8 @@
 		'views/services/service_actions.xml',
 		'views/services/service_search.xml',
 
-		'views/appointments/appointment_actions.xml',
-		'views/appointments/appointment_search.xml',
+		#'views/appointments/appointment_actions.xml',		# Dep
+		#'views/appointments/appointment_search.xml',		# Dep
 
 
 
@@ -464,7 +464,7 @@
 
 
 		# Appointments
-		'views/appointments/appointment.xml',
+		#'views/appointments/appointment.xml',	# Dep
 
 
 
@@ -557,7 +557,9 @@
 		
 
 		# Treatments - 2 
-		'views/treatments/treatment_appointments.xml',
+		
+		#'views/treatments/treatment_appointments.xml',			# Dep
+
 		'views/treatments/treatment_orders.xml',
 		'views/treatments/treatment_consultations.xml',
 		#'views/treatments/treatment_services.xml',
@@ -574,8 +576,8 @@
 
 
 		# Appointments - 2
-		'views/appointments/calendar.xml',					# Exploring
-		'views/appointments/appointment_kanban.xml',
+		#'views/appointments/calendar.xml',					# Dep
+		#'views/appointments/appointment_kanban.xml',		# Dep
 
 
 
@@ -627,8 +629,8 @@
 # ----------------------------------------------------------- Menus ------------------------------------------------------
 		'views/menus/menus.xml',
 
-		'views/menus/menus_app.xml',
-		'views/menus/menus_calendar.xml',
+		#'views/menus/menus_app.xml',
+		#'views/menus/menus_calendar.xml',
 
 		'views/menus/menus_config.xml',
 		'views/menus/menus_openhealth.xml',		
@@ -644,7 +646,7 @@
 		'views/menus/menus_management.xml',
 		#'views/menus/menus_management_config.xml',
 
-		'views/menus/menus_qc.xml',
+		#'views/menus/menus_qc.xml',				# Dep 
 		'views/menus/menus_account.xml',
 
 	],

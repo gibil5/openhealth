@@ -179,6 +179,8 @@
 
 								<field name="x_data_complete"       groups="openhealth.roots"/>
 
+								<field name="x_treatment_count"         groups="openhealth.roots"/>
+
 
 								<field name="property_product_pricelist"    required="1"/>
 

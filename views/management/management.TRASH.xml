@@ -1,3 +1,228 @@
+                    <!-- Day Doctor --> 
+<!--                            
+                            <page   string="Diario por Doctor">
+
+                                <field name="day_doctor_line">
+                                
+                                    <tree string="Day Doctor">
+
+                                        <field name="date"/>
+                                        <field name="weekday"/>
+                                        <field name="duration"/>
+
+                                        <field name="amount"/>
+
+
+                                        <field name="amount_fchavarri"/>
+                                        <field name="amount_pcanales"/>
+                                        <field name="amount_lgonzales"/>
+
+                                        <field name="amount_pmonteverde"/>
+                                        <field name="amount_lcastillo"/>
+                                        <field name="amount_cabriojo"/>
+
+                                        <field name="amount_rloaiza"/>
+                                        <field name="amount_cescudero"/>
+
+                                    </tree>
+                                </field>
+                            </page>
+-->
+
+
+                            <!-- Orders --> 
+<!--                            
+                            <page   string="Ventas">
+                                <field name="order_line">
+                                    <tree string="Ventas"   default_order='x_date_created desc'>    
+                                        <field name="patient"/>
+                                        <field name="doctor"/>
+                                        <field name="serial_nr"/>
+                                        <field name="delta"/>
+                                        <field name="x_date_created"/>
+                                        <field name="family"/>
+                                        <field name="sub_family"/>
+                                        <field name="product_id"/>
+                                        <field name="product_uom_qty"/>
+                                        <field name="price_unit"/>
+                                        <field name="price_subtotal"/>
+                                    </tree>
+                                </field>
+                            </page>
+-->
+
+<!--
+                                        <field name="name"/>
+                                        <field name="state"/>
+-->
+<!--
+                                    <tree string="Ventas"   limit="500"     default_order='x_date_created desc' 
+
+                                        colors="
+                                        red:delta==2
+                                        "
+
+                                        green:state=='sent';
+                                        blue:state=='sale';
+                                        grey:state in ('cancel')
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <!-- Update Days -->
+                        <!-- Update Cumulative -->
+                        <!-- Update Average -->
+<!--
+                        <button 
+                                type="object" 
+                                class="oe_highlight oe_right"
+
+                                name="update_day_avg"
+
+                                string="Update Days Avg"
+
+                                groups="openhealth.roots"
+                        />
+
+                        <button 
+                                type="object" 
+                                class="oe_highlight oe_right"
+
+                                name="update_day_cumulative"
+
+                                string="Update Days Cumu"
+
+                                groups="openhealth.roots"
+                        />
+
+                        <button 
+                                type="object" 
+                                class="oe_highlight oe_right"
+
+                                name="create_days"
+
+                                string="Create Days"
+
+                                groups="openhealth.roots"
+                        />
+-->
+
+
+
+
+
+
+                        <!-- Update All Years -->
+                        <!-- Update All Months -->
+                        <!-- Update -->
+                        <!-- QC -->
+                        <!-- Export -->
+                        <!-- Graph -->
+                        <!-- Graph Server -->
+<!--
+                        <button 
+                                type="object" 
+                                class="oe_highlight oe_right"                                
+                                name="update_all_years"
+                                string="Update All Years"
+                                groups="openhealth.roots"
+                        />
+
+
+                        <button 
+                                type="object" 
+                                class="oe_highlight oe_right"
+                                name="update_all_months"
+                                string="Update All Months"
+                                groups="openhealth.roots"
+                        />
+
+                        <button 
+                                type="object" 
+                                class="oe_highlight oe_right"
+                                name="update"
+                                string="Update"
+                                groups="openhealth.roots"
+                        />
+
+                        <button 
+                                type="object" 
+                                class="oe_highlight oe_right"
+                                name="update_qc_all"
+                                string="QC"
+                                groups="openhealth.roots"
+                        />
+
+                        <button 
+                                type="object" 
+                                class="oe_highlight oe_right"
+                                name="export_stats"
+                                string="Export"
+                                groups="openhealth.roots"
+                        />
+
+                        <button 
+                                type="object" 
+                                class="oe_highlight oe_right"
+                                name="create_graph"
+                                string="Graph"
+                                groups="openhealth.roots"
+                        />
+
+
+                        <button 
+                                type="object" 
+                                class="oe_highlight oe_right"
+                                name="create_graph_remote"
+                                string="Graph Remote"
+                                groups="openhealth.roots"
+                        />
+-->
+
+
+
+
+                        <!-- Families -->
+                        <!-- Sub Families -->
+<!--
+
+                        <button 
+                                class="oe_highlight"
+                                type="action" 
+                                context="{
+                                            'search_default_management_id': active_id,  
+                                        }"                                                                          
+                                name="%(management_family_line_form_action)d" 
+
+                                string="Ver Familias"   
+                        />
+
+                        <button 
+                                class="oe_highlight"
+
+                                type="action"
+                                
+                                context="{
+                                            'search_default_management_id': active_id,  
+                                        }"
+
+                                name="%(management_sub_family_line_form_action)d" 
+
+                                string="Ver Sub-Familias"   
+                        />
+-->
+
 
 
 

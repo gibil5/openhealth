@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-# 	Coder
+# 	Coder - DEPRECATED !
 #
 # 	Created: 			16 Sep 2018
 # 	Last updated: 		12 Nov 2018

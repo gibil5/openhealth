@@ -6,7 +6,7 @@
 
 	'description': """
 
-		22 Aug 2019
+		23 Aug 2019
 
 		Remember, Hunter and Westerman:
 			- Step 1 - New Thinking: Avoid the 7 Value Traps.
@@ -82,25 +82,18 @@
 	""",
 
 	'author': "DataMetrics",
-	
 	'website': "http://jrevilla.com/",
-	
 	'category': 'Object Oriented',
-	
-	'version': '2.0',
+	'version': '3.0',
 
 	'depends': ['base', 'oehealth', 'base_multi_image'],
-
-
 
 	'data': [
 
 
-# ----------------------------------------------------------- New ------------------------------------------------------
-		'views/configurators/scheduler.xml',
-		'views/configurators/configurator.xml',
-		'views/configurators/configurator_emr.xml',			# Includes Menu
-		'views/configurators/configurator_report.xml',
+
+
+
 
 
 # ----------------------------------------------------------- Data - First ------------------------------------------------------
@@ -111,36 +104,27 @@
 		'data/categs/base_data_categs_partners.xml',			
 		'data/categs/base_data_categs_prods.xml',			
 
-
 		# Allergy 
 		'data/allergies/allergy.xml',
-
 
 		# Doctors
 		'data/physicians/base_data_physicians.xml',				
 		'data/physicians/base_data_physicians_new.xml',
 		'data/physicians/base_data_physicians_inactive.xml',		
 
-
-
 		# Generics 
 		'data/users/base_data_users_generics.xml',	
-
 
 		# Users - With pw
 		'data/users/base_data_users_platform.xml',	
 		'data/users/base_data_users_platform_new.xml',	
-
 		'data/users/base_data_users_cash.xml',		
 		'data/users/base_data_users_doctors.xml',
-
 		'data/users/base_data_users_assistants.xml',	
-		
 		'data/users/base_data_users_staff.xml',		
 		'data/users/base_data_users_almacen.xml',		
 		'data/users/base_data_users_managers.xml',	
 		'data/users/base_data_users_doctors_new.xml',		
-
 
 
 
@@ -153,7 +137,6 @@
 		'data/prods/odoo_data_products_new_20190128.xml',	# New !
 		'data/prods/odoo_data_products_credit_notes.xml',	# New !
 		'data/prods/odoo_data_products_new_2019-03-06.xml',
-
 		'data/prods/odoo_data_services_co2.xml',
 		'data/prods/odoo_data_services_exc.xml',
 		'data/prods/odoo_data_services_m22.xml',
@@ -162,36 +145,46 @@
 		'data/prods/odoo_data_services_cos.xml',
 		'data/prods/odoo_data_services_med_dep.xml',	# Dependance
 
-
 		# Pricelists - Vip
 		'data/pricelists/pricelists.xml',
 		
-
-
-
-
 		# Suppliers 
 		'data/suppliers.xml',							# Very Important - Account Invoice Dependance
 
 
-		# ----------------------------------------------------------- Actions ------------------------------------------------------
+
+# ----------------------------------------------------------- Security - First ------------------------------------------------------
+		'security/openhealth_security.xml',				# Groups
+		'security/openhealth_security_readers.xml',
+
+
+
+
+
+# ----------------------------------------------------------- Configurators ------------------------------------------------------
+		'views/configurators/scheduler.xml',
+		'views/configurators/configurator.xml',
+		'views/configurators/configurator_emr.xml',			# Includes Menu
+		'views/configurators/configurator_report.xml',
+
+
+
+# ----------------------------------------------------------- Actions ------------------------------------------------------
+
 		'views/patients/patient_actions.xml',
 
 
 
 
-		# ----------------------------------------------------------- Recent ------------------------------------------------------
+# ----------------------------------------------------------- Recent ------------------------------------------------------
 
 		# Product Selector  
 		'views/report_sale/report_sale_product.xml',
 		'views/report_sale/item_counter.xml',
 
 
-
 		# Account - Payments
 		'views/payment_method/payment_method_line.xml',
-
-
 
 
 		# Account
@@ -201,19 +194,12 @@
 		'views/account/account_contasis.xml',
 
 
-
-
-
-		# For Marketing
+		# Marketing 
 		'views/marketing/patient_line_search.xml',
 		'views/marketing/patient_line.xml',
 		'views/marketing/patient_line_actions.xml',
 		'views/marketing/patient_line_pivot.xml',
 
-
-
-
-		# Marketing 
 		'views/marketing/marketing_order_line.xml',
 		'views/marketing/marketing_reco_line.xml',
 		'views/marketing/media_line.xml',
@@ -225,49 +211,37 @@
 		'views/marketing/marketing_pivot.xml',
 
 
-
 		# Electronic
 		'views/electronic/electronic_order.xml',
 		'views/electronic/electronic_line.xml',
 
 
-
 		# Management 
 		'views/management/management_day_line.xml',
-
 		'views/management/management_day_doctor_line.xml',
-
-
 		'views/management/management_family_line.xml',
 		'views/management/management_subfamily_line.xml',
+
 		'views/management/management_order_line.xml',
 		'views/management/management_doctor_line.xml',
-		'views/management/management.xml',
+
+
+		'views/management/management_trees.xml',
 		'views/management/management_actions.xml',
-		
-
-		# Coder 
-		'views/coders/coder.xml',
-
+		'views/management/management.xml',
 		
 
 
 
-
-
-		# ----------------------------------------------------------- Views - Base Actions ------------------------------------------------------
+# ----------------------------------------------------------- Views - Base Actions ------------------------------------------------------
 
 		# Base - Form and List Actions - Must be the first
-		
 		'views/base_actions.xml',										# Very important - All Actions should go here - Dependencies
 		
 
 
 
-
-
-
-		# ----------------------------------------------------------- Reports ------------------------------------------------------
+# ----------------------------------------------------------- Reports ------------------------------------------------------
 
 		# Patient
 		'reports/patient/report_patient.xml',
@@ -285,48 +259,30 @@
 
 
 
+# ----------------------------------------------------------- Views - Actions ------------------------------------------------------
 
-# ----------------------------------------------------------- Views ------------------------------------------------------
-
-		# ----------------------------------------------------------- Views - Actions ------------------------------------------------------
 		'views/services/service_actions.xml',
 		'views/services/service_search.xml',
 
 
 
-
-		# ----------------------------------------------------------- Views - First Level ------------------------------------------------------
+# ----------------------------------------------------------- Views - First Level ------------------------------------------------------
 
 		# Users
 		'views/users/user.xml',
 
 
-		# Groups 
-		#'views/groups/groups.xml',
-
-
-
 		# Orders
 		'views/orders/order.xml',
 		'views/orders/order_tree.xml',
-
 		'views/orders/order_actions.xml',
 		'views/orders/order_search.xml',
-
-		#'views/orders/order_line.xml',						# Deprecated - 19 Jul 2019
-		
 		'views/orders/order_admin.xml',
-
-		#'views/orders/order_report_nex.xml',				# Estado de Cuenta
-		#'views/orders/order_account.xml',				# Estado de Cuenta New
 		'views/orders/order_report_nex.xml',				# Estado de Cuenta New
-
-
 
 
 		# Payment methods 
 		'views/payment_method/payment_methods.xml',
-
 
 
 		# Counters 
@@ -345,10 +301,6 @@
 		'views/images/image_view.xml',
 
 
-		# Evaluations
-		#'views/evaluations/evaluation.xml',
-
-
 		# Services
 		'views/services/service.xml',
 
@@ -361,8 +313,6 @@
 		'views/consultations/consultation.xml',
 
 
-
-
 		# Treatments 
 		'views/treatments/treatment.xml',
 		'views/treatments/treatment_actions.xml',
@@ -372,11 +322,9 @@
 		'views/physicians/physician.xml',
 
 
-
 		# Patients 
 		'views/patients/patient.xml',
 		'views/patients/patient_search.xml',
-
 
 
 		# Containers 
@@ -385,42 +333,14 @@
 		'views/containers/corrector.xml',
 
 
-
-
 		# Partners
 		'views/partners/partner.xml',
 		'views/partners/partner_actions.xml',
 
 
-		# Appointments
-		#'views/appointments/appointment.xml',	# Dep
-
-
-
-
-		# Products Min - Dep ?
-		#'views/products/product_min.xml',
-
-
-
-
 		# Products
-		#'views/products/product_template.xml',		# Dep - 2019
 		'views/products/product_actions.xml',
 		'views/products/product_product.xml',
-
-		#'views/products/product_category.xml',
-		#'views/products/product_pricelist.xml',
-		#'views/products/purchase_order.xml',	
-
-
-
-
-		# Pricelist Items - Deprecated ?
-		#'views/pricelist_items/pricelist_item_actions.xml',
-		#'views/pricelist_items/pricelist_item.xml',
-
-
 
 
 		# Cards 
@@ -428,22 +348,12 @@
 
 
 
-
-
-
-		# ----------------------------------------------------------- Views - Second ------------------------------------------------------
+# ----------------------------------------------------------- Views - Second ------------------------------------------------------
 
 		# Sessions
 		'views/sessions/session.xml',
 		'views/sessions/session_config_simple.xml',
 		'views/sessions/session_config_simple_2.xml',
-		#'views/sessions/session_config_manual.xml',		# Dep
-
-
-
-		# Evaluations - 2
-		#'views/evaluations/evaluation_oeh.xml',			# Dep
-
 
 
 		# Services - 2  
@@ -456,42 +366,15 @@
 		'views/services/service_quick.xml',		
 		'views/services/service_medical.xml',
 		'views/services/service_cosmetology.xml',
-		#'views/services/service_vip.xml',					# Dep
-
-
-
-
-
-		# Deprecated - 24 Apr 2019 - New Price List
-		#'views/services/zones/service_co2_zone.xml',
-		#'views/services/zones/service_excilite_zone.xml',
-		#'views/services/zones/service_ipl_zone.xml',
-		#'views/services/zones/service_ndyag_zone.xml',
-		#'views/services/zones/service_medical_zone.xml',
-		#'views/services/zones/service_cosmetology_zone.xml',
-
-
-
-
-
-
-		# Procedures - 2  
-		#'views/procedures/procedure_controls.xml',				# Dep 2019
-		#'views/procedures/procedure_sessions.xml',				# Id.
 
 
 		# Consultation - 2
-		#'views/consultations/consultation_med.xml',			# Dep ?
 		'views/consultations/consultation_diagnosis.xml',
 		
 
 		# Treatments - 2 
-		
-		#'views/treatments/treatment_appointments.xml',			# Dep
-
 		'views/treatments/treatment_orders.xml',
 		'views/treatments/treatment_consultations.xml',
-		#'views/treatments/treatment_services.xml',
 		'views/treatments/treatment_procedures.xml',
 		'views/treatments/treatment_sessions.xml',
 		'views/treatments/treatment_controls.xml',
@@ -500,89 +383,46 @@
 		# Patients - 2 
 		'views/patients/patient_personal.xml',
 		'views/patients/patient_control_docs.xml',
-		#'views/patients/patient_appointments.xml',
 
 
 
-		# Appointments - 2
-		#'views/appointments/calendar.xml',					# Dep
-		#'views/appointments/appointment_kanban.xml',		# Dep
-
-
-
-
-
-
-		# ----------------------------------------------------------- FileSystem - Dep ------------------------------------------------------
-
-		#'views/containers/filesystem_directory.xml',	# Dep
-		#'views/containers/filesystem_file.xml',		# Dep
-
-
-
-
-
-
-
-		# ----------------------------------------------------------- Closings ------------------------------------------------------
+# ----------------------------------------------------------- Closings ------------------------------------------------------
 		# Closing 
 		'views/closings/closings.xml',
 		'views/closings/closings_search.xml',
-
-
-		#'reports/closing.xml',
 		'reports/closing/closing.xml',
 
 
-
-
-		# ----------------------------------------------------------- Sale Reports ------------------------------------------------------
+# ----------------------------------------------------------- Sale Reports ------------------------------------------------------
 		'views/reports/report_sale_pivots.xml',
 		'views/reports/report_sale_graphs.xml',
 		'views/reports/report_sale_favorites.xml',
 		'views/reports/report_sale_search.xml',
 		'views/reports/report_sale.xml',
-
-		#'views/reports/report_sale_months.xml',			# Changed name
 		'views/reports/report_sale_actions.xml',			# With Menus
 
-
-
-		# ----------------------------------------------------------- Security ------------------------------------------------------
-		'security/openhealth_security.xml',
-		'security/openhealth_security_readers.xml',
-		'security/ir.model.access.csv',
-		'security/ir.rule.xml', 				# Dep 
 
 
 
 
 # ----------------------------------------------------------- Menus ------------------------------------------------------
-		#'views/menus/menus_app.xml',
-		#'views/menus/menus_calendar.xml',
-		#'views/menus/menus_config.xml',				# Dep
-		#'views/menus/menus_products.xml',
-		#'views/menus/menus_reporting.xml',				# Dep
-		#'views/menus/menus_management_config.xml',
-		#'views/menus/menus_qc.xml',					# Dep 
-
 		'views/menus/menus.xml',
-		'views/menus/menus_openhealth.xml',		
+		#'views/menus/menus_openhealth.xml',		# Dep
 		'views/menus/menus_caja.xml',
 		'views/menus/menus_marketing.xml',
 		'views/menus/menus_management.xml',
 		'views/menus/menus_account.xml',
+
+
+
+# ----------------------------------------------------------- Security - Models - Last ------------------------------------------------------
+		#'security/ir.model.access.csv',
+		#'security/ir.rule.xml', 				# Dep 
+
 	],
-
-
 	'demo': [],
-
-
 	# Static - Style Css 
-	'css': ['static/src/css/jx.css'],
-	
+	'css': ['static/src/css/jx.css'],	
 
 	'js': [],
 }
-
-

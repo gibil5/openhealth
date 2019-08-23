@@ -1,3 +1,22 @@
+access_stock_inventory_manager,stock.inventory manager,stock.model_stock_inventory,openhealth.caja,1,1,1,1
+access_ir_property_caja,ir.property.caja,base.model_ir_property,openhealth.caja,1,1,1,0
+access_stock_picking,stock.picking,stock.model_stock_picking,,1,1,1,1
+access_account_invoice,account.invoice,account.model_account_invoice,,1,1,1,1
+access_stock_move,stock.move,stock.model_stock_move,,1,1,1,1
+access_stock_warehouse_orderpoint_caja,stock.warehouse.orderpoint.caja,stock.model_stock_warehouse_orderpoint,openhealth.caja,1,1,1,0
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 access_oeh_medical_appointment,oeh.medical.appointment,oehealth.model_oeh_medical_appointment,oehealth.group_oeh_medical_manager,1,1,1,1

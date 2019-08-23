@@ -35,7 +35,7 @@ from electronic import *
 
 #from . import electronic_order
 #from . import electronic_line
-#from . import coder 
+#from . import coder 				# Dep !
 #from . import texto
 
 

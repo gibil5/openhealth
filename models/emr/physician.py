@@ -16,10 +16,7 @@ class Physician(models.Model):
 	_inherit = 'oeh.medical.physician'	
 	
 	#_order = 'name'
-	_order = 'idx asc'
-
-	#_name = 'openhealth.physician'
-	
+	#_order = 'idx asc'
 
 
 

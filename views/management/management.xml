@@ -4,6 +4,34 @@
 		
 
 
+
+<!-- ACTION - day line -->
+		<record model="ir.actions.act_window" id="management_day_line_form_action"> 
+			<field name="name">Ventas Promedio</field>
+			<field name="res_model">openhealth.management.day.line</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="limit">1000</field>
+		</record>
+
+
+
+<!-- ACTION - day doctor line -->
+		<record model="ir.actions.act_window" id="management_day_doctor_line_form_action"> 
+			<field name="name">Ventas Diario</field>
+			<field name="res_model">openhealth.management.day.doctor.line</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="limit">1000</field>
+		</record>
+
+
+
+
 <!-- FORM --> 
 		<record model="ir.ui.view" id="management_form_view">
 			<field name="name">management.form</field>          
@@ -80,6 +108,7 @@
 								context="{
 											'search_default_management_id': active_id,  
 										}"                                          
+
 								name="%(management_day_line_form_action)d" 
 
 								string="Ver Productividad"   
@@ -93,9 +122,7 @@
 						<button 
 								type="object" 
 								class="oe_highlight"
-
 								name="update_daily"
-								
 								string="Actualizar Diario"                             
 						/>
 
@@ -107,51 +134,11 @@
 								context="{
 											'search_default_management_id': active_id,  
 										}"
+
 								name="%(management_day_doctor_line_form_action)d" 
 
 								string="Ver Diario"   
 						/>
-
-
-
-
-
-
-
-						<!-- Families -->
-						<!-- Sub Families -->
-<!--
-
-						<button 
-								class="oe_highlight"
-								type="action" 
-								context="{
-											'search_default_management_id': active_id,  
-										}"                                                                          
-								name="%(management_family_line_form_action)d" 
-
-								string="Ver Familias"   
-						/>
-
-						<button 
-								class="oe_highlight"
-
-								type="action"
-								
-								context="{
-											'search_default_management_id': active_id,  
-										}"
-
-								name="%(management_sub_family_line_form_action)d" 
-
-								string="Ver Sub-Familias"   
-						/>
--->
-
-
-
-
-
 
 
 
@@ -160,124 +147,9 @@
 						<button 
 								type="object" 
 								class="oe_highlight oe_right"
-
 								name="reset"
-
-								string="Reset"                              
-
+								string="Reset"
 						/>
-
-
-
-						<!-- Update Days -->
-						<!-- Update Cumulative -->
-						<!-- Update Average -->
-<!--
-						<button 
-								type="object" 
-								class="oe_highlight oe_right"
-
-								name="update_day_avg"
-
-								string="Update Days Avg"
-
-								groups="openhealth.roots"
-						/>
-
-						<button 
-								type="object" 
-								class="oe_highlight oe_right"
-
-								name="update_day_cumulative"
-
-								string="Update Days Cumu"
-
-								groups="openhealth.roots"
-						/>
-
-						<button 
-								type="object" 
-								class="oe_highlight oe_right"
-
-								name="create_days"
-
-								string="Create Days"
-
-								groups="openhealth.roots"
-						/>
--->
-
-
-
-
-
-
-						<!-- Update All Years -->
-						<!-- Update All Months -->
-						<!-- Update -->
-						<!-- QC -->
-						<!-- Export -->
-						<!-- Graph -->
-						<!-- Graph Server -->
-<!--
-						<button 
-								type="object" 
-								class="oe_highlight oe_right"                                
-								name="update_all_years"
-								string="Update All Years"
-								groups="openhealth.roots"
-						/>
-
-
-						<button 
-								type="object" 
-								class="oe_highlight oe_right"
-								name="update_all_months"
-								string="Update All Months"
-								groups="openhealth.roots"
-						/>
-
-						<button 
-								type="object" 
-								class="oe_highlight oe_right"
-								name="update"
-								string="Update"
-								groups="openhealth.roots"
-						/>
-
-						<button 
-								type="object" 
-								class="oe_highlight oe_right"
-								name="update_qc_all"
-								string="QC"
-								groups="openhealth.roots"
-						/>
-
-						<button 
-								type="object" 
-								class="oe_highlight oe_right"
-								name="export_stats"
-								string="Export"
-								groups="openhealth.roots"
-						/>
-
-						<button 
-								type="object" 
-								class="oe_highlight oe_right"
-								name="create_graph"
-								string="Graph"
-								groups="openhealth.roots"
-						/>
-
-
-						<button 
-								type="object" 
-								class="oe_highlight oe_right"
-								name="create_graph_remote"
-								string="Graph Remote"
-								groups="openhealth.roots"
-						/>
--->
 					</header>
 
 
@@ -508,7 +380,6 @@
 						<notebook>  
 
 
-
 							<!-- Doctores --> 
 							<page   string="Por Doctor">
 								<field name="doctor_line">
@@ -521,62 +392,29 @@
 											name="open_line_current" 
 											string="e"
 										/>
-
 										<field name="name"/>
-
 										<field name="x_count"    string="Nr Ventas"/>
 										<field name="per_nr"   widget="percentage"/>
-
 										<field name="nr_consultations"/>
 										<field name="nr_procedures"/>
 										<field name="nr_products"/>
-
 										<field name="ratio_pro_con"/>
 										<field name="ratio_pro_con_co2"/>
 										<field name="ratio_pro_con_quick"/>
-
 										<field name="amount"/>
 										<field name="per_amo"   widget="percentage"/>
 									</tree>
 								</field>
 							</page>
-<!--
-										<field name="nr_procedures_co2"/>
-										<field name="nr_procedures_quick"/>
-										<field name="nr_medicals"/>
--->
 
 
 							<!-- Day Prod --> 
 							<page   string="Productividad">
-
 								<field name="day_line">
-								
 									<tree string="Day Prod">
-
-										<!-- Open Button -->
-<!--
-										<button 
-											type="object" 
-											class="oe_highlight"    
-											name="open_line_current" 
-											string="e"
-										/>
-									
-										<field name="name"/>
-										<field name="x_count"    string="Nr Ventas"/>
-										<field name="per_nr"   widget="percentage"/>
-										<field name="amount"/>
-										<field name="per_amo"   widget="percentage"/>
-
-										<field name="name"/>
--->
-
 										<field name="date"/>
 										<field name="weekday"/>
-
 										<field name="holiday"/>
-
 										<field name="duration"/>
 										<field name="amount"/>
 										<field name="cumulative"/>
@@ -588,42 +426,6 @@
 							</page>
 
 
-
-							<!-- Day Doctor --> 
-<!--                            
-							<page   string="Diario por Doctor">
-
-								<field name="day_doctor_line">
-								
-									<tree string="Day Doctor">
-
-										<field name="date"/>
-										<field name="weekday"/>
-										<field name="duration"/>
-
-										<field name="amount"/>
-
-
-										<field name="amount_fchavarri"/>
-										<field name="amount_pcanales"/>
-										<field name="amount_lgonzales"/>
-
-										<field name="amount_pmonteverde"/>
-										<field name="amount_lcastillo"/>
-										<field name="amount_cabriojo"/>
-
-										<field name="amount_rloaiza"/>
-										<field name="amount_cescudero"/>
-
-									</tree>
-								</field>
-							</page>
--->
-
-
-
-
-
 							<!-- Familias --> 
 							<page   string="Familias">
 								<field name="family_line">                              
@@ -631,21 +433,13 @@
 										<field name="idx"/>
 										<field name="name_sp"/>
 										<field name="meta_sp"/>
-
 										<field name="x_count"/>
 										<field name="per_nr"   widget="percentage"/>
-
 										<field name="amount"/>
 										<field name="per_amo"   widget="percentage"/>
 									</tree>
 								</field>
 							</page>
-<!--
-										<field name="name"/>
-										<field name="meta"/>
--->
-
-
 
 							<!-- Sub Familias --> 
 							<page   string="Sub Familias">
@@ -654,10 +448,8 @@
 										<field name="idx"/>
 										<field name="name_sp"/>
 										<field name="meta_sp"/>
-
 										<field name="x_count"/>
 										<field name="per_nr"   widget="percentage"/>
-
 										<field name="amount"/>
 										<field name="per_amo"   widget="percentage"/>
 									</tree>
@@ -665,283 +457,24 @@
 							</page>
 
 
-
 							<!-- Admin --> 
 							<page   string="Admin"  groups='openhealth.roots'>
-
 								<group      col="2">
 									<group>
 										<field name="state_arr"/>
 										<field name="type_arr"/>
-<!--
-										<field name="container"/>
--->
 									</group>
 									<group>
 										<field name="delta_fast"/>
 										<field name="delta_doctor"/>
 									</group>                        
 								</group>
-<!--
-								<field name="test_target"/>
-								<field name="legacy"/>
--->
-
-
 							</page>
-
-
-
-							<!-- Orders --> 
-<!--                            
-							<page   string="Ventas">
-								<field name="order_line">
-									<tree string="Ventas"   default_order='x_date_created desc'>    
-										<field name="patient"/>
-										<field name="doctor"/>
-										<field name="serial_nr"/>
-										<field name="delta"/>
-										<field name="x_date_created"/>
-										<field name="family"/>
-										<field name="sub_family"/>
-										<field name="product_id"/>
-										<field name="product_uom_qty"/>
-										<field name="price_unit"/>
-										<field name="price_subtotal"/>
-									</tree>
-								</field>
-							</page>
--->
-
-<!--
-										<field name="name"/>
-										<field name="state"/>
--->
-<!--
-									<tree string="Ventas"   limit="500"     default_order='x_date_created desc' 
-
-										colors="
-										red:delta==2
-										"
-
-										green:state=='sent';
-										blue:state=='sale';
-										grey:state in ('cancel')
--->
-
 						</notebook>
 					</sheet>
 				</form>
 			</field>
 		</record>
-
-
-
-
-
-<!-- TREE --> 
-		<record model="ir.ui.view" id="management_view_tree">
-			<field name="name">openhealth.management.tree</field>
-			<field name="model">openhealth.management</field>
-			<field name="arch" type="xml">
-				<tree string="Management Tree">
-
-
-					<field name="name"/>
-					<field name="month"  groups="openhealth.roots"/>
-					<field name="year"   groups="openhealth.roots"/>
-					<field name="date_begin"    string="Fecha Inicio"   groups="openhealth.roots"/>
-					<field name="date_end"      string="Fecha Fin"      groups="openhealth.roots"/>
-
-
-<!--
-					<field name="total_amount"/>
--->
-
-					<field name="total_amount" sum="Total" widget="monetary"/>
-					<field name="per_amo_total"     widget="percentage"  />
-
-
-					<field name="write_date"        string="Actualizado"/>
-					<field name="delta_fast"        groups="openhealth.roots"/>
-					<field name="delta_doctor"      groups="openhealth.roots"/>
-
-<!--
-					<field name="test_target"   groups="openhealth.roots"/>
--->                
-					<field name="owner"         groups="openhealth.roots"/>
-					<field name="type_arr"      groups="openhealth.roots"/>
-					<field name="state_arr"     groups="openhealth.roots"/>
-
-
-<!--
-					<field name="date_begin"    string="Fecha Inicio"/>
-					<field name="date_end"      string="Fecha Fin"/>
--->
-					<field name="nr_products"/>
-					<field name="nr_consultations"/>
-					<field name="nr_procedures"/>
-
-					<field name="ratio_pro_con"     string="Ratio"/>
-					
-					<field name="total_tickets"/>
-					<field name="total_count"/>
-
-				</tree>
-			</field>
-		</record>
-<!--
-					<field name="avg_total_amount"/>
-					<field name="write_date"    string="Actualizado"/>
--->
-
-
-
-
-<!-- TREE 2 --> 
-		<record model="ir.ui.view" id="management_view_export_tree">
-			<field name="name">openhealth.management.tree.2</field>
-			<field name="model">openhealth.management</field>
-			<field name="arch" type="xml">
-				<tree string="Management Tree 2">
-					
-					<field name="name"/>
-
-					<field name="total_amount" sum="Total" widget="monetary"/>
-
-
-
-					<field name="per_amo_topical"/>
-					<field name="per_amo_card"/>
-					<field name="per_amo_kit"/>
-
-
-
-					<field name="nr_products"/>
-					<field name="nr_consultations"/>
-					<field name="nr_procedures"/>
-
-					<field name="amo_products"/>
-					<field name="amo_consultations"/>
-					<field name="amo_procedures"/>
-
-					<field name="per_amo_products"/>
-					<field name="per_amo_consultations"/>
-					<field name="per_amo_procedures"/>
-
-
-
-
-
-					<field name="amo_co2"/>
-					<field name="amo_exc"/>
-					<field name="amo_ipl"/>
-					<field name="amo_ndyag"/>
-					<field name="amo_quick"/>
-					<field name="amo_medical"/>
-					<field name="amo_cosmetology"/>
-
-					<field name="per_amo_co2"/>
-					<field name="per_amo_exc"/>
-					<field name="per_amo_ipl"/>
-					<field name="per_amo_ndyag"/>
-					<field name="per_amo_quick"/>
-					<field name="per_amo_medical"/>
-					<field name="per_amo_cosmetology"/>
-
-
-
-<!--
-					<field name="total_count"       string="Nr Lineas"/>
-
-					<field name="ratio_pro_con"     string="Ratio"/>
--->
-				</tree>
-			</field>
-		</record>
-
-
-
-
-
-<!-- TREE 3 --> 
-		<record model="ir.ui.view" id="management_view_families_tree">
-			<field name="name">openhealth.management.tree.3</field>
-			<field name="model">openhealth.management</field>
-			<field name="arch" type="xml">
-
-				<tree string="Management Tree - Familias">
-					
-					<field name="name"/>
-
-					<field name="total_amount" sum="Total" widget="monetary"/>
-
-<!--
-					<field name="nr_products"/>
-					<field name="nr_consultations"/>
-					<field name="nr_procedures"/>
--->
-					<field name="amo_products"          sum="Productos" 		widget="monetary"/>
-					<field name="amo_consultations"     sum="Consultas" 		widget="monetary"/>
-					<field name="amo_procedures"        sum="Procedimientos"	widget="monetary"/>
-
-					<field name="per_amo_products"      widget="percentage"/>
-					<field name="per_amo_consultations" widget="percentage"/>
-					<field name="per_amo_procedures"    widget="percentage"/>
-				</tree>
-			</field>
-		</record>
-
-
-
-
-
-<!-- TREE 4 --> 
-		<record model="ir.ui.view" id="management_view_subfamilies_tree">
-			<field name="name">openhealth.management.tree.4</field>
-			<field name="model">openhealth.management</field>
-			<field name="arch" type="xml">
-				
-				<tree string="Management Tree - Sub Familias">
-					
-					<field name="name"/>
-
-					<field name="total_amount" sum="Total" widget="monetary"/>
-
-
-
-					<field name="amo_topical"	string="Cremas"/>
-					<field name="amo_card"		string="Cremas"/>
-					<field name="amo_kit"		string="Kits"/>
-
-					<field name="per_amo_topical"	string="% Cremas"	widget="percentage"/>
-					<field name="per_amo_card"		string="% Cremas"	widget="percentage"/>
-					<field name="per_amo_kit"		string="% Kits"	widget="percentage"	/>
-
-
-					<field name="amo_co2"		string="Co2"	/>
-					<field name="amo_quick"		string="Quick"	/>
-					<field name="amo_exc"		string="Exc"	/>
-					<field name="amo_ipl"		string="Ipl"	/>
-					<field name="amo_ndyag"		string="Ndyag" />
-					<field name="amo_medical"	string="T. Medicos"	/>
-					<field name="amo_cosmetology"	string="Cosmeatria"	/>
-
-					<field name="per_amo_co2"	string="% Co2"		widget="percentage"/>
-					<field name="per_amo_quick"	string="% Quick"		widget="percentage"/>
-					<field name="per_amo_exc"	string="% Exc"		widget="percentage"/>
-					<field name="per_amo_ipl"	string="% Ipl"		widget="percentage"/>
-					<field name="per_amo_ndyag"	string="% Ndyag"		widget="percentage"/>
-					<field name="per_amo_medical"		string="T. Medicos"	widget="percentage"/>
-					<field name="per_amo_cosmetology"	string="Cosmeatria"	widget="percentage"/>
-
-				</tree>
-			
-			</field>
-		</record>
-
-
-
 
 	</data>
 </openerp>

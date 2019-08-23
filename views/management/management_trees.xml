@@ -1,0 +1,210 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+<!-- TREE 1 --> 
+		<record model="ir.ui.view" id="management_view_tree">
+			<field name="name">openhealth.management.tree</field>
+			<field name="model">openhealth.management</field>
+			<field name="arch" type="xml">
+				<tree string="Management Tree">
+
+
+					<field name="name"/>
+					<field name="month"  groups="openhealth.roots"/>
+					<field name="year"   groups="openhealth.roots"/>
+					<field name="date_begin"    string="Fecha Inicio"   groups="openhealth.roots"/>
+					<field name="date_end"      string="Fecha Fin"      groups="openhealth.roots"/>
+
+
+<!--
+					<field name="total_amount"/>
+-->
+
+					<field name="total_amount" sum="Total" widget="monetary"/>
+					<field name="per_amo_total"     widget="percentage"  />
+
+
+					<field name="write_date"        string="Actualizado"/>
+					<field name="delta_fast"        groups="openhealth.roots"/>
+					<field name="delta_doctor"      groups="openhealth.roots"/>
+
+<!--
+					<field name="test_target"   groups="openhealth.roots"/>
+-->                
+					<field name="owner"         groups="openhealth.roots"/>
+					<field name="type_arr"      groups="openhealth.roots"/>
+					<field name="state_arr"     groups="openhealth.roots"/>
+
+
+<!--
+					<field name="date_begin"    string="Fecha Inicio"/>
+					<field name="date_end"      string="Fecha Fin"/>
+-->
+					<field name="nr_products"/>
+					<field name="nr_consultations"/>
+					<field name="nr_procedures"/>
+
+					<field name="ratio_pro_con"     string="Ratio"/>
+					
+					<field name="total_tickets"/>
+					<field name="total_count"/>
+
+				</tree>
+			</field>
+		</record>
+<!--
+					<field name="avg_total_amount"/>
+					<field name="write_date"    string="Actualizado"/>
+-->
+
+
+
+
+<!-- TREE 2 --> 
+		<record model="ir.ui.view" id="management_view_export_tree">
+			<field name="name">openhealth.management.tree.2</field>
+			<field name="model">openhealth.management</field>
+			<field name="arch" type="xml">
+				<tree string="Management Tree 2">
+					
+					<field name="name"/>
+
+					<field name="total_amount" sum="Total" widget="monetary"/>
+
+
+
+					<field name="per_amo_topical"/>
+					<field name="per_amo_card"/>
+					<field name="per_amo_kit"/>
+
+
+
+					<field name="nr_products"/>
+					<field name="nr_consultations"/>
+					<field name="nr_procedures"/>
+
+					<field name="amo_products"/>
+					<field name="amo_consultations"/>
+					<field name="amo_procedures"/>
+
+					<field name="per_amo_products"/>
+					<field name="per_amo_consultations"/>
+					<field name="per_amo_procedures"/>
+
+
+
+
+
+					<field name="amo_co2"/>
+					<field name="amo_exc"/>
+					<field name="amo_ipl"/>
+					<field name="amo_ndyag"/>
+					<field name="amo_quick"/>
+					<field name="amo_medical"/>
+					<field name="amo_cosmetology"/>
+
+					<field name="per_amo_co2"/>
+					<field name="per_amo_exc"/>
+					<field name="per_amo_ipl"/>
+					<field name="per_amo_ndyag"/>
+					<field name="per_amo_quick"/>
+					<field name="per_amo_medical"/>
+					<field name="per_amo_cosmetology"/>
+
+
+
+<!--
+					<field name="total_count"       string="Nr Lineas"/>
+
+					<field name="ratio_pro_con"     string="Ratio"/>
+-->
+				</tree>
+			</field>
+		</record>
+
+
+
+
+
+<!-- TREE 3 --> 
+		<record model="ir.ui.view" id="management_view_families_tree">
+			<field name="name">openhealth.management.tree.3</field>
+			<field name="model">openhealth.management</field>
+			<field name="arch" type="xml">
+
+				<tree string="Management Tree - Familias">
+					
+					<field name="name"/>
+
+					<field name="total_amount" sum="Total" widget="monetary"/>
+
+<!--
+					<field name="nr_products"/>
+					<field name="nr_consultations"/>
+					<field name="nr_procedures"/>
+-->
+					<field name="amo_products"          sum="Productos" 		widget="monetary"/>
+					<field name="amo_consultations"     sum="Consultas" 		widget="monetary"/>
+					<field name="amo_procedures"        sum="Procedimientos"	widget="monetary"/>
+
+					<field name="per_amo_products"      widget="percentage"/>
+					<field name="per_amo_consultations" widget="percentage"/>
+					<field name="per_amo_procedures"    widget="percentage"/>
+				</tree>
+			</field>
+		</record>
+
+
+
+
+
+<!-- TREE 4 --> 
+		<record model="ir.ui.view" id="management_view_subfamilies_tree">
+			<field name="name">openhealth.management.tree.4</field>
+			<field name="model">openhealth.management</field>
+			<field name="arch" type="xml">
+				
+				<tree string="Management Tree - Sub Familias">
+					
+					<field name="name"/>
+
+					<field name="total_amount" sum="Total" widget="monetary"/>
+
+
+
+					<field name="amo_topical"	string="Cremas"/>
+					<field name="amo_card"		string="Cremas"/>
+					<field name="amo_kit"		string="Kits"/>
+
+					<field name="per_amo_topical"	string="% Cremas"	widget="percentage"/>
+					<field name="per_amo_card"		string="% Cremas"	widget="percentage"/>
+					<field name="per_amo_kit"		string="% Kits"	widget="percentage"	/>
+
+
+					<field name="amo_co2"		string="Co2"	/>
+					<field name="amo_quick"		string="Quick"	/>
+					<field name="amo_exc"		string="Exc"	/>
+					<field name="amo_ipl"		string="Ipl"	/>
+					<field name="amo_ndyag"		string="Ndyag" />
+					<field name="amo_medical"	string="T. Medicos"	/>
+					<field name="amo_cosmetology"	string="Cosmeatria"	/>
+
+					<field name="per_amo_co2"	string="% Co2"		widget="percentage"/>
+					<field name="per_amo_quick"	string="% Quick"		widget="percentage"/>
+					<field name="per_amo_exc"	string="% Exc"		widget="percentage"/>
+					<field name="per_amo_ipl"	string="% Ipl"		widget="percentage"/>
+					<field name="per_amo_ndyag"	string="% Ndyag"		widget="percentage"/>
+					<field name="per_amo_medical"		string="T. Medicos"	widget="percentage"/>
+					<field name="per_amo_cosmetology"	string="Cosmeatria"	widget="percentage"/>
+
+				</tree>
+			
+			</field>
+		</record>
+
+
+	</data>
+</openerp>

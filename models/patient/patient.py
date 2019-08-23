@@ -12,6 +12,9 @@ from . import pat_funcs
 from . import chk_patient
 from openerp.addons.openhealth.models.libs import count_funcs
 
+from openerp import _
+from openerp.exceptions import Warning as UserError
+
 class Patient(models.Model):
 	"""
 	Patient Class. 
@@ -382,24 +385,41 @@ class Patient(models.Model):
 																('name', '=', name_ctr),
 														],
 															#order='write_date desc',
-															limit=1,
+															#limit=1,
 														)
- 		# Init
- 		prefix = counter.prefix
- 		separator = counter.separator
- 		padding = counter.padding
- 		value = counter.value
 
-		name = count_funcs.get_name(self, prefix, separator, padding, value)
+		# Manage Exception
+		try:
+			counter.ensure_one()
 
-		return name
+	 		# Init
+	 		prefix = counter.prefix
+	 		separator = counter.separator
+	 		padding = counter.padding
+	 		value = counter.value
+
+			name = count_funcs.get_name(self, prefix, separator, padding, value)
+
+			return name
+
+		except:
+			#print("An exception occurred")
+			msg = "ERROR: Record Must be One."
+			#class_name = type(counter).__name__
+			#obj_name = counter.name
+			#msg =  msg + '\n' + class_name + '\n' + obj_name
+			msg =  msg 
+
+			raise UserError(_(msg))
+
+
 
 
 	# NC Number
 	x_id_code = fields.Char(
 			'Nr Historia Médica',
 
-			default=_get_default_id_code,
+			#default=_get_default_id_code,
 		)
 
 

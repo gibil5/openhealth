@@ -1,0 +1,45 @@
+        <!-- Files -->
+<!--        
+        <menuitem   id="oh_file_menu" 
+                    name="Files" 
+                    parent="openhealth_openhealth_menu"
+                    sequence="0"
+
+                    action="filesystem_file_list_action"
+            />
+-->
+
+
+
+        <!-- Configurators --> 
+<!--
+        <menuitem   id="oh_configurator_menu" 
+                    name="Configurators" 
+                    parent="openhealth_openhealth_menu"
+                    sequence="1"
+                    action="configurator_list_action"
+            />
+-->
+
+
+        <!-- Product Pricelist Item --> 
+        <!-- Product Pricelist Item Products --> 
+        <!-- Product Pricelist Item Cons --> 
+<!--
+        <menuitem id="oh_pl_item_menu" 
+                    name="Pricelist Items" 
+                    parent="openhealth_openhealth_menu"
+                    action="product_pricelist_item_action"
+            />
+        <menuitem id="oh_pl_item_prods_menu" 
+                    name="Pricelist Items Products" 
+                    parent="openhealth_openhealth_menu"
+                    action="product_pricelist_item_product_action"
+            />
+
+        <menuitem id="oh_pl_item_cons_menu"
+                    name="Pricelist Items Consultations" 
+                    parent="openhealth_openhealth_menu"
+                    action="product_pricelist_item_consultation_action"
+            />
+-->

@@ -36,3 +36,30 @@
 
 
 		# RSP
+
+
+
+		#'views/places/place.xml',
+
+
+
+		#'reports/patient.xml',
+		#'reports/report_patient.xml',
+		#'reports/patient_consultation.xml',
+		#'reports/patient_sessions.xml',
+		#'reports/patient_controls.xml',
+
+
+		# Ticket - Dep !
+		#'reports/report_ticket_receipt.xml',
+		#'reports/report_ticket_invoice.xml',
+
+		#'reports/report_ticket_invoice_nex.xml',
+		#'reports/report_ticket_receipt_nex.xml',
+
+
+
+		#'views/appointments/appointment_actions.xml',		# Dep
+		#'views/appointments/appointment_search.xml',		# Dep
+
+

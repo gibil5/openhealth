@@ -218,7 +218,6 @@
 		'views/marketing/marketing_reco_line.xml',
 		'views/marketing/media_line.xml',
 		'views/marketing/histogram.xml',
-		#'views/places/place.xml',
 		'views/marketing/place_actions.xml',
 		'views/marketing/place_pivot.xml',
 		'views/marketing/place.xml',
@@ -271,14 +270,7 @@
 		# ----------------------------------------------------------- Reports ------------------------------------------------------
 
 		# Patient
-		#'reports/patient.xml',
-		#'reports/report_patient.xml',
-		#'reports/patient_consultation.xml',
-		#'reports/patient_sessions.xml',
-		#'reports/patient_controls.xml',
 		'reports/patient/report_patient.xml',
-
-
 
 		# Formats
 		'reports/paper_format.xml',
@@ -287,38 +279,19 @@
 		'reports/report_layouts.xml',
 		'reports/print_ticket_receipt_electronic.xml',
 
-
-
-		# Ticket - Dep !
-		#'reports/report_ticket_receipt.xml',
-		#'reports/report_ticket_invoice.xml',
-
 		# Ticket
-		#'reports/report_ticket_invoice_nex.xml',
-		#'reports/report_ticket_receipt_nex.xml',
 		'reports/phys/report_ticket_invoice_nex.xml',
 		'reports/phys/report_ticket_receipt_nex.xml',
 
 
 
 
-
-
-
-
-
-
-
 # ----------------------------------------------------------- Views ------------------------------------------------------
-
-
 
 		# ----------------------------------------------------------- Views - Actions ------------------------------------------------------
 		'views/services/service_actions.xml',
 		'views/services/service_search.xml',
 
-		#'views/appointments/appointment_actions.xml',		# Dep
-		#'views/appointments/appointment_search.xml',		# Dep
 
 
 

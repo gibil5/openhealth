@@ -98,13 +98,9 @@
 
 # ----------------------------------------------------------- New ------------------------------------------------------
 		'views/configurators/scheduler.xml',
-
 		'views/configurators/configurator.xml',
-
-		'views/configurators/configurator_emr.xml',
-
+		'views/configurators/configurator_emr.xml',			# Includes Menu
 		'views/configurators/configurator_report.xml',
-
 
 
 # ----------------------------------------------------------- Data - First ------------------------------------------------------
@@ -116,29 +112,7 @@
 		'data/categs/base_data_categs_prods.xml',			
 
 
-
-
-
-		# Deprecated - After cleanup 2019
-		# Important 
-		#'data/pathologies/pathology.xml',
-		#'data/prods/zone/data_pathologies.xml',			
-		#'data/prods/zone/data_nexzones.xml',
-
-		# Zone
-		#'views/zones/zone_actions.xml',
-		#'data/prods/zone/data_zones_quick.xml',			 
-		#'data/prods/zone/data_zones_co2.xml',			 
-		#'data/prods/zone/data_zones_excilite.xml',			 
-		#'data/prods/zone/data_zones_ipl.xml',			 
-		#'data/prods/zone/data_zones_ndyag.xml',			 
-
-
-
-
-
 		# Allergy 
-		#'views/allergies/allergy.xml',
 		'data/allergies/allergy.xml',
 
 
@@ -167,7 +141,6 @@
 		'data/users/base_data_users_managers.xml',	
 		'data/users/base_data_users_doctors_new.xml',		
 
-		#'data/users/base_data_users_test.xml',		Dep !!!
 
 
 
@@ -189,23 +162,11 @@
 		'data/prods/odoo_data_services_cos.xml',
 		'data/prods/odoo_data_services_med_dep.xml',	# Dependance
 
-		#'data/prods/odoo_data_services_cos_dep.xml', 	# Dependance ?
-		#'data/prods/odoo_data_products_consu.xml',		# Deprecated
-
-
-
 
 		# Pricelists - Vip
 		'data/pricelists/pricelists.xml',
 		
-		# Pricelists - Deprecated ?
-		#'data/pricelists/pricelist_items_co2.xml',
-		#'data/pricelists/pricelist_items_ipl.xml',
-		#'data/pricelists/pricelist_items_ndyag.xml',
-		#'data/pricelists/pricelist_items_quick.xml',
-		#'data/pricelists/pricelist_items_med_cos.xml',
-		#'data/pricelists/pricelist_consultation.xml',
-		#'data/pricelists/pricelist_products.xml',
+
 
 
 
@@ -222,11 +183,6 @@
 		# ----------------------------------------------------------- Recent ------------------------------------------------------
 
 		# Product Selector  
-		#'views/product_selectors/product_selector.xml',		# Dep - 2019
-
-
-
-		# RSP
 		'views/report_sale/report_sale_product.xml',
 		'views/report_sale/item_counter.xml',
 
@@ -613,7 +569,9 @@
 		'views/reports/report_sale_favorites.xml',
 		'views/reports/report_sale_search.xml',
 		'views/reports/report_sale.xml',
-		'views/reports/report_sale_months.xml',
+
+		#'views/reports/report_sale_months.xml',			# Changed name
+		'views/reports/report_sale_actions.xml',			# With Menus
 
 
 
@@ -627,28 +585,20 @@
 
 
 # ----------------------------------------------------------- Menus ------------------------------------------------------
-		'views/menus/menus.xml',
-
 		#'views/menus/menus_app.xml',
 		#'views/menus/menus_calendar.xml',
-
-		'views/menus/menus_config.xml',
-		'views/menus/menus_openhealth.xml',		
-
-
+		#'views/menus/menus_config.xml',				# Dep
 		#'views/menus/menus_products.xml',
-
-
-		'views/menus/menus_caja.xml',
-		'views/menus/menus_reporting.xml',
-		'views/menus/menus_marketing.xml',		 
-
-		'views/menus/menus_management.xml',
+		#'views/menus/menus_reporting.xml',				# Dep
 		#'views/menus/menus_management_config.xml',
+		#'views/menus/menus_qc.xml',					# Dep 
 
-		#'views/menus/menus_qc.xml',				# Dep 
+		'views/menus/menus.xml',
+		'views/menus/menus_openhealth.xml',		
+		'views/menus/menus_caja.xml',
+		'views/menus/menus_marketing.xml',
+		'views/menus/menus_management.xml',
 		'views/menus/menus_account.xml',
-
 	],
 
 

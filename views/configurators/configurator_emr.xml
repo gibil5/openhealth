@@ -182,6 +182,36 @@
 
 
 
+<!-- Config -->
+        <menuitem   id="main_config_menu" 
+                    sequence="-16"
+
+                    name="Configuracion - N"
+
+					groups="openhealth.roots,openhealth.directors,openhealth.managers"
+            />
+
+
+
+        <!-- Config -->
+        <menuitem   id="openhealth_config_menu"
+                    parent="main_config_menu"
+                    sequence="1"
+                    name="Configuracion - N"
+                />
+
+        <!-- EMR --> 
+        <menuitem   id="config_emr_menu" 
+
+                    name="Clinicas - N" 
+
+                    parent="openhealth_config_menu"
+                    sequence="1"
+                    action="configurator_emr_list_action"
+            />
+
+
+
 
 	</data>
 </openerp>

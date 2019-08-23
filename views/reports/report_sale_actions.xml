@@ -4,44 +4,27 @@
 
 
 
-
-
 <!-- January --> 
         <record id="action_order_report_january" model="ir.actions.act_window">
             <field name="name">Reporte de Ventas - Enero</field>
             <field name="res_model">sale.report</field>
             <field name="view_type">form</field>
             <field name="view_mode">pivot,graph,tree</field>
-
             <field name="search_view_id" ref="sale.view_order_product_search"/>
-
             <field name="domain">
                                     [
                                         ('date','&lt;=',time.strftime('%%Y-02-01 05:00:00')),
                                         ('date','&gt;=',time.strftime('%%Y-01-01 05:00:00')), 
                                     ]
             </field>
-
-
-
-<!--
-                                    'group_by': ['categ_id']
-                                    'search_default_Sales':1, 
-                                    'search_default_Quotations':1, 
--->
             <field name="context">{
                                     'search_default_Sales':1, 
                                     'group_by_no_leaf':1,
                                     'group_by': ['product_id'],
                                 }
             </field>
-
             <field name="help"></field>
         </record>
-
-
-
-
 
 
 <!-- February --> 
@@ -51,74 +34,48 @@
             <field name="view_type">form</field>
             <field name="view_mode">pivot,graph,tree</field>
             <field name="view_id"></field>  <!-- force empty -->
-
             <field name="search_view_id" ref="sale.view_order_product_search"/>
-
-
            <field name="domain">
                                 [
                                     ('date','&lt;=',time.strftime('%%Y-03-01 05:00:00')), 
                                     ('date','&gt;=',time.strftime('%%Y-02-01 05:00:00')),                                   
                                 ]
             </field>
-
-
             <field name="context">{
                                     'search_default_Sales':1, 
                                     'group_by_no_leaf':1,
                                     'group_by': ['product_id'],
                                 }
             </field>
-
             <field name="help"></field>
         </record>
 
 
-
-
-
-
 <!-- March --> 
-<!--
-                                    'group_by': ['name'],
--->
         <record id="action_order_report_march" model="ir.actions.act_window">
             <field name="name">Reporte de Ventas - Marzo</field>
             <field name="res_model">sale.report</field>
             <field name="view_type">form</field>
             <field name="view_mode">pivot,graph,tree</field>
             <field name="view_id"></field>  <!-- force empty -->
-
             <field name="search_view_id" ref="sale.view_order_product_search"/>
-
            <field name="domain">
                                 [
                                     ('date','&lt;=',time.strftime('%%Y-04-01 05:00:00')), 
                                     ('date','&gt;=',time.strftime('%%Y-03-01 05:00:00')), 
                                 ]
             </field>
-
             <field name="context">{
                                     'search_default_Sales':1, 
                                     'group_by_no_leaf':1,                                   
                                     'group_by': ['categ_id']
                                 }
             </field>
-
             <field name="help"></field>
         </record>
 
 
-
-
-
-
-
 <!-- April --> 
-<!--
-                                    ('date','&gt;=',time.strftime('%%Y-04-01')), 
-                                    ('date','&lt;=',time.strftime('%%Y-05-01')),
--->
         <record id="action_order_report_april" model="ir.actions.act_window">
             <field name="name">Reporte de Ventas - Abril</field>
             <field name="res_model">sale.report</field>
@@ -126,59 +83,44 @@
             <field name="view_mode">pivot,graph,tree</field>
             <field name="view_id"></field> 
             <field name="search_view_id" ref="sale.view_order_product_search"/>
-
            <field name="domain">
                                 [
                                     ('date','&gt;=',time.strftime('%%Y-04-01 05:00:00')), 
                                     ('date','&lt;=',time.strftime('%%Y-05-01 05:00:00')),
                                 ]
             </field>
-
             <field name="context">{
                                     'search_default_Sales':1, 
                                     'group_by_no_leaf':1,
                                     'group_by': ['categ_id']
                                 }
             </field>
-
             <field name="help"></field>
         </record>
 
 
-
-
 <!-- May --> 
-<!--
-                                    ('date','&gt;=',time.strftime('%%Y-05-01')), 
--->
         <record id="action_order_report_may" model="ir.actions.act_window">
             <field name="name">Reporte de Ventas - Mayo</field>
             <field name="res_model">sale.report</field>
             <field name="view_type">form</field>
-
             <field name="view_mode">pivot,graph,tree</field>
-            
             <field name="view_id"></field> 
             <field name="search_view_id" ref="sale.view_order_product_search"/>
-
            <field name="domain">
                                 [
                                     ('date','&gt;=',time.strftime('%%Y-05-01 05:00:00')), 
                                     ('date','&lt;=',time.strftime('%%Y-06-01 05:00:00')),
                                 ]
             </field>
-
             <field name="context">{
                                     'search_default_Sales':1, 
                                     'group_by_no_leaf':1,
                                     'group_by': ['categ_id']
                                 }
             </field>
-
             <field name="help"></field>
         </record>
-
-
 
 
 <!-- June --> 
@@ -189,29 +131,20 @@
             <field name="view_mode">pivot,graph,tree</field>
             <field name="view_id"></field> 
             <field name="search_view_id" ref="sale.view_order_product_search"/>
-
            <field name="domain">
                                 [
                                     ('date','&gt;=',time.strftime('%%Y-06-01 05:00:00')), 
                                     ('date','&lt;=',time.strftime('%%Y-07-01 05:00:00')),
                                 ]
             </field>
-
             <field name="context">{
                                     'search_default_Sales':1, 
                                     'group_by_no_leaf':1,
                                     'group_by': ['categ_id']
                                 }
             </field>
-
             <field name="help"></field>
         </record>
-
-
-
-
-
-
 
 
 <!-- July --> 
@@ -222,25 +155,20 @@
             <field name="view_mode">pivot,graph,tree</field>
             <field name="view_id"></field> 
             <field name="search_view_id" ref="sale.view_order_product_search"/>
-
            <field name="domain">
                                 [
                                     ('date','&lt;=',time.strftime('%%Y-08-01 05:00:00')),
                                     ('date','&gt;=',time.strftime('%%Y-07-01 05:00:00'))
                                 ]
             </field>
-
             <field name="context">{
                                     'search_default_Sales':1, 
                                     'group_by_no_leaf':1,
                                     'group_by': ['categ_id']
                                 }
             </field>
-
             <field name="help"></field>
         </record>
-
-
 
 <!-- August --> 
         <record id="action_order_report_august" model="ir.actions.act_window">
@@ -250,25 +178,20 @@
             <field name="view_mode">pivot,graph,tree</field>
             <field name="view_id"></field> 
             <field name="search_view_id" ref="sale.view_order_product_search"/>
-
            <field name="domain">
                                 [
                                     ('date','&lt;=',time.strftime('%%Y-09-01 05:00:00')),
                                     ('date','&gt;=',time.strftime('%%Y-08-01 05:00:00'))
                                 ]
             </field>
-
             <field name="context">{
                                     'search_default_Sales':1, 
                                     'group_by_no_leaf':1,
                                     'group_by': ['categ_id']
                                 }
             </field>
-
             <field name="help"></field>
         </record>
-
-
 
 <!-- September --> 
         <record id="action_order_report_september" model="ir.actions.act_window">
@@ -278,24 +201,20 @@
             <field name="view_mode">pivot,graph,tree</field>
             <field name="view_id"></field> 
             <field name="search_view_id" ref="sale.view_order_product_search"/>
-
            <field name="domain">
                                 [
                                     ('date','&lt;=',time.strftime('%%Y-10-01 05:00:00')),
                                     ('date','&gt;=',time.strftime('%%Y-09-01 05:00:00'))
                                 ]
             </field>
-
             <field name="context">{
                                     'search_default_Sales':1, 
                                     'group_by_no_leaf':1,
                                     'group_by': ['categ_id']
                                 }
             </field>
-
             <field name="help"></field>
         </record>
-
 
 
 <!-- October --> 
@@ -305,26 +224,20 @@
             <field name="view_type">form</field>
             <field name="view_mode">pivot,graph,tree</field>
             <field name="view_id"></field> 
-<!--            
-            <field name="search_view_id" ref="sale.view_order_product_search"/>
--->
            <field name="domain">
                                 [
                                     ('date','&gt;=',time.strftime('%%Y-10-01 05:00:00')),
                                     ('date','&lt;=',time.strftime('%%Y-11-01 05:00:00')),
                                 ]
             </field>
-
             <field name="context">{
                                     'search_default_Sales':1, 
                                     'group_by_no_leaf':1,
                                     'group_by': ['categ_id']
                                 }
             </field>
-
             <field name="help"></field>
         </record>
-
 
 
 <!-- November --> 
@@ -335,25 +248,20 @@
             <field name="view_mode">pivot,graph,tree</field>
             <field name="view_id"></field> 
             <field name="search_view_id" ref="sale.view_order_product_search"/>
-
            <field name="domain">
                                 [
                                     ('date','&lt;=',time.strftime('%%Y-12-01 05:00:00')),
                                     ('date','&gt;=',time.strftime('%%Y-11-01 05:00:00'))
                                 ]
             </field>
-
             <field name="context">{
                                     'search_default_Sales':1, 
                                     'group_by_no_leaf':1,
                                     'group_by': ['categ_id']
                                 }
             </field>
-
             <field name="help"></field>
         </record>
-
-
 
 
 <!-- December --> 
@@ -364,28 +272,177 @@
             <field name="view_mode">pivot,graph,tree</field>
             <field name="view_id"></field> 
             <field name="search_view_id" ref="sale.view_order_product_search"/>
-
            <field name="domain">
                                 [
                                     ('date','&lt;=',time.strftime('2019-01-01 05:00:00')),
                                     ('date','&gt;=',time.strftime('%%Y-12-01 05:00:00'))
                                 ]
             </field>
-
             <field name="context">{
                                     'search_default_Sales':1, 
                                     'group_by_no_leaf':1,
                                     'group_by': ['categ_id']
                                 }
             </field>
-
-
             <field name="help"></field>
         </record>
 
 
 
 
+
+
+<!--
+groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.managers,openhealth.directors"
+groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.managers,openhealth.directors"
+-->
+
+<!-- MENUS -->
+<menuitem   id="main_reporting_sales_menu" 
+    
+            sequence="-6"
+    
+            name="Reporte de Ventas - N"
+
+            groups="openhealth.roots,openhealth.caja,openhealth.managers,openhealth.directors"
+        />
+
+        <!-- Daily --> 
+        <menuitem   id="report_sale_product_menu" 
+                    parent="main_reporting_sales_menu"
+                    sequence="0"
+                    
+                    name="Venta de Productos"           
+                />
+
+                <menuitem   id="report_sale_product_submenu" 
+                            parent="report_sale_product_menu"
+                            sequence="1"
+
+                            name="Por Fecha" 
+                    
+                            action="rsp_list_action"
+                        />
+
+        <!-- Monthly --> 
+        <menuitem   id="sales_reports_menu" 
+                    parent="main_reporting_sales_menu"
+                    sequence="2"
+                    
+                    name="Por mes"
+
+                />
+
+
+<!-- Active --> 
+                <menuitem   id="sales_report_sales_january_menu" 
+                            parent="sales_reports_menu"
+                            sequence="1"
+
+                            name="Enero"                
+
+                            action="action_order_report_january"
+                        />
+
+                <menuitem   id="sales_report_sales_february_menu" 
+                            parent="sales_reports_menu"
+                            sequence="2"
+
+                            name="Febrero"              
+
+                            action="action_order_report_february"
+                        />
+
+                <menuitem   id="sales_report_sales_march_menu" 
+                            parent="sales_reports_menu"
+                            sequence="3"
+
+                            name="Marzo"                
+
+                            action="action_order_report_march"
+                        />
+
+                <menuitem   id="sales_report_sales_april_menu" 
+                            parent="sales_reports_menu"
+                            sequence="4"
+
+                            name="Abril"                
+
+                            action="action_order_report_april"
+                        />
+
+                <menuitem   id="sales_report_sales_may_menu" 
+                            parent="sales_reports_menu"
+                            sequence="5"
+
+                            name="Mayo"                 
+
+                            action="action_order_report_may"
+                        />
+
+                <menuitem   id="sales_report_sales_june_menu" 
+                            parent="sales_reports_menu"
+                            sequence="6"
+
+                            name="Junio"                
+
+                            action="action_order_report_june"
+                        />
+
+                <menuitem   id="sales_report_sales_july_menu" 
+                            parent="sales_reports_menu"
+                            sequence="7"
+
+                            name="Julio"                
+
+                            action="action_order_report_july"
+                        />
+
+                <menuitem   id="sales_report_sales_august_menu" 
+                            parent="sales_reports_menu"
+                            sequence="8"
+
+                            name="Agosto"               
+
+                            action="action_order_report_august"
+                        />
+
+                <menuitem   id="sales_report_sales_september_menu" 
+                            parent="sales_reports_menu"
+                            sequence="9"
+
+                            name="Setiembre"                
+
+                            action="action_order_report_september"
+                        />
+
+                <menuitem   id="sales_report_sales_october_menu" 
+                            parent="sales_reports_menu"
+                            sequence="10"
+
+                            name="Octubre"              
+
+                            action="action_order_report_october"
+                        />
+
+                <menuitem   id="sales_report_sales_november_menu" 
+                            parent="sales_reports_menu"
+                            sequence="11"
+
+                            name="Noviembre"                
+
+                            action="action_order_report_november"
+
+                        />
+
+                <menuitem   id="sales_report_sales_december_menu" 
+                            parent="sales_reports_menu"
+                            sequence="12"
+
+                            name="Diciembre"                
+
+                            action="action_order_report_december"
+                        />
 
     </data>
 </openerp>

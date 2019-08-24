@@ -1,11 +1,13 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
 <!--
+
+    <data noupdate='1'>
     <data noupdate='0'>
 
 Important !!!
 -->
-    <data noupdate='1'>
+    <data>
 
 
 <!-- Data - Services -->
@@ -13,63 +15,46 @@ Important !!!
 
 
 <!-- Co2 Neck Rej -->
-
-<!--
-            <field name='name'>LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento Cuello Grado 1 - 1</field>
--->
-<!--
--->
         <record id='co2_nec_rn1_one' model='product.template'>
-
             <field name='name'>LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento Cuello Grado 1</field>
-
             <field name='type'>service</field>
-
             <field name='x_name_short'>co2_nec_rn1_one</field>
             <field name='x_treatment'>laser_co2</field>
             <field name='x_zone'>neck</field>
             <field name='x_pathology'>rejuvenation_neck_1</field>
             <field name='price'>5000</field>
-
             <field name='x_time'></field>
             <field name='x_sessions'>1</field>
             <field name='x_price_vip'>2500</field>
             <field name='x_family'>laser</field>
-
             <field name='categ_id' ref="laser_co2"/>
-
             <field name="active" eval="True" />
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
-<!--
-            <field name="active" eval="False" />
-
-            <field name='description'>Co2 Cuello Rejuv 1</field>
-            <field name='default_code'>101</field>
-            <field name='description_sale'>LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento Cuello Grado 1</field>
-            <field name='categ_id' ref="laser_co2"/>
--->
-
 
 
         <record id='co2_nec_rn2_one' model='product.template'>
-
             <field name='name'>LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento Cuello Grado 2</field>
-
             <field name='type'>service</field>
-
             <field name='x_name_short'>co2_nec_rn2_one</field>
             <field name='x_treatment'>laser_co2</field>
             <field name='x_zone'>neck</field>
             <field name='x_pathology'>rejuvenation_neck_2</field>
             <field name='price'>6000</field>
-
             <field name='x_time'></field>
             <field name='x_sessions'>1</field>
             <field name='x_price_vip'>3000</field>
             <field name='x_family'>laser</field>
-
             <field name='categ_id' ref="laser_co2"/>
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
         <record id='co2_nec_rn3_one' model='product.template'>
@@ -89,7 +74,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
         <record id='co2_nec_rn4_one' model='product.template'>
@@ -109,7 +98,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
 
@@ -143,7 +136,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
 
@@ -175,7 +172,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
 
@@ -194,7 +195,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_che_as3_one' model='product.template'>
             <field name='type'>service</field>
@@ -211,7 +216,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_faa_as5_one' model='product.template'>
             <field name='type'>service</field>
@@ -228,7 +237,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_faa_as1_one' model='product.template'>
             <field name='type'>service</field>
@@ -245,7 +258,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_faa_rf1_one' model='product.template'>
             <field name='type'>service</field>
@@ -262,7 +279,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_che_st2_one' model='product.template'>
             <field name='type'>service</field>
@@ -279,7 +300,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_faa_rf4_one' model='product.template'>
             <field name='type'>service</field>
@@ -296,7 +321,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_che_st1_one' model='product.template'>
             <field name='type'>service</field>
@@ -313,7 +342,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_faa_st2_one' model='product.template'>
             <field name='type'>service</field>
@@ -330,7 +363,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_che_as1_one' model='product.template'>
             <field name='type'>service</field>
@@ -347,7 +384,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_faa_as4_one' model='product.template'>
             <field name='type'>service</field>
@@ -364,7 +405,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_faa_rf2_one' model='product.template'>
             <field name='type'>service</field>
@@ -381,7 +426,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_faa_as2_one' model='product.template'>
             <field name='type'>service</field>
@@ -398,7 +447,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
         <record id='co2_che_as4_one' model='product.template'>
@@ -416,7 +469,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
         <record id='co2_faa_rf5_one' model='product.template'>
@@ -434,7 +491,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_faa_st5_one' model='product.template'>
             <field name='type'>service</field>
@@ -451,7 +512,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_faa_st1_one' model='product.template'>
             <field name='type'>service</field>
@@ -468,7 +533,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_che_as2_one' model='product.template'>
             <field name='type'>service</field>
@@ -485,7 +554,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_faa_st4_one' model='product.template'>
             <field name='type'>service</field>
@@ -502,7 +575,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_che_as5_one' model='product.template'>
             <field name='type'>service</field>
@@ -519,7 +596,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_che_st3_one' model='product.template'>
             <field name='type'>service</field>
@@ -536,7 +617,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_che_st4_one' model='product.template'>
             <field name='type'>service</field>
@@ -553,7 +638,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_fal_ke2_one' model='product.template'>
             <field name='type'>service</field>
@@ -570,7 +659,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_che_st5_one' model='product.template'>
             <field name='type'>service</field>
@@ -587,7 +680,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_fal_st3_one' model='product.template'>
             <field name='type'>service</field>
@@ -604,7 +701,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_fal_ke5_one' model='product.template'>
             <field name='type'>service</field>
@@ -621,7 +722,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_fal_ke4_one' model='product.template'>
             <field name='type'>service</field>
@@ -638,7 +743,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_fal_ke3_one' model='product.template'>
             <field name='type'>service</field>
@@ -655,7 +764,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_han_rh3_one' model='product.template'>
             <field name='type'>service</field>
@@ -672,7 +785,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_han_rh5_one' model='product.template'>
             <field name='type'>service</field>
@@ -689,7 +806,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
 
@@ -708,7 +829,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_fal_st2_one' model='product.template'>
             <field name='type'>service</field>
@@ -725,7 +850,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_fal_mo1_one' model='product.template'>
             <field name='type'>service</field>
@@ -742,7 +871,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
         <record id='co2_fal_ke1_one' model='product.template'>
@@ -760,7 +893,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_fal_st5_one' model='product.template'>
             <field name='type'>service</field>
@@ -777,7 +914,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_han_rh4_one' model='product.template'>
             <field name='type'>service</field>
@@ -794,7 +935,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_han_rh2_one' model='product.template'>
             <field name='type'>service</field>
@@ -811,7 +956,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_nec_rn5_one' model='product.template'>
             <field name='type'>service</field>
@@ -828,7 +977,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_fal_st4_one' model='product.template'>
             <field name='type'>service</field>
@@ -845,7 +998,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_fal_mo2_one' model='product.template'>
             <field name='type'>service</field>
@@ -862,7 +1019,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_fal_st1_one' model='product.template'>
             <field name='type'>service</field>
@@ -879,7 +1040,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_fal_mo3_one' model='product.template'>
             <field name='type'>service</field>
@@ -896,7 +1061,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_fal_mo4_one' model='product.template'>
             <field name='type'>service</field>
@@ -913,7 +1082,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_fal_cy5_one' model='product.template'>
             <field name='type'>service</field>
@@ -930,7 +1103,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_fal_sc1_one' model='product.template'>
             <field name='type'>service</field>
@@ -947,7 +1124,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_fal_sc5_one' model='product.template'>
             <field name='type'>service</field>
@@ -964,7 +1145,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_fal_sc4_one' model='product.template'>
             <field name='type'>service</field>
@@ -981,7 +1166,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_bol_st1_one' model='product.template'>
             <field name='type'>service</field>
@@ -998,7 +1187,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_fal_mo5_one' model='product.template'>
             <field name='type'>service</field>
@@ -1015,7 +1208,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_fal_cy3_one' model='product.template'>
             <field name='type'>service</field>
@@ -1032,7 +1229,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_bol_st5_one' model='product.template'>
             <field name='type'>service</field>
@@ -1049,7 +1250,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_fal_sc3_one' model='product.template'>
             <field name='type'>service</field>
@@ -1066,7 +1271,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_fal_wa3_one' model='product.template'>
             <field name='type'>service</field>
@@ -1083,7 +1292,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_fal_wa1_one' model='product.template'>
             <field name='type'>service</field>
@@ -1100,7 +1313,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_fal_wa5_one' model='product.template'>
             <field name='type'>service</field>
@@ -1117,7 +1334,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_fal_cy1_one' model='product.template'>
             <field name='type'>service</field>
@@ -1134,7 +1355,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_bol_st2_one' model='product.template'>
             <field name='type'>service</field>
@@ -1151,7 +1376,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_fal_cy4_one' model='product.template'>
             <field name='type'>service</field>
@@ -1168,7 +1397,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_fal_sc2_one' model='product.template'>
             <field name='type'>service</field>
@@ -1185,7 +1418,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_bol_st4_one' model='product.template'>
             <field name='type'>service</field>
@@ -1202,7 +1439,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_fal_wa2_one' model='product.template'>
             <field name='type'>service</field>
@@ -1219,7 +1460,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_fal_cy2_one' model='product.template'>
             <field name='type'>service</field>
@@ -1236,7 +1481,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_bol_as1_one' model='product.template'>
             <field name='type'>service</field>
@@ -1253,7 +1502,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_fal_wa4_one' model='product.template'>
             <field name='type'>service</field>
@@ -1270,7 +1523,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_bol_st3_one' model='product.template'>
             <field name='type'>service</field>
@@ -1287,7 +1544,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_bol_as2_one' model='product.template'>
             <field name='type'>service</field>
@@ -1304,7 +1565,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_bol_as3_one' model='product.template'>
             <field name='type'>service</field>
@@ -1321,7 +1586,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_bol_mo5_one' model='product.template'>
             <field name='type'>service</field>
@@ -1338,7 +1607,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_bol_ke4_one' model='product.template'>
             <field name='type'>service</field>
@@ -1355,7 +1628,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_bol_cy3_one' model='product.template'>
             <field name='type'>service</field>
@@ -1372,7 +1649,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_bol_wa5_one' model='product.template'>
             <field name='type'>service</field>
@@ -1389,7 +1670,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_bol_wa2_one' model='product.template'>
             <field name='type'>service</field>
@@ -1406,7 +1691,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_bol_cy2_one' model='product.template'>
             <field name='type'>service</field>
@@ -1423,7 +1712,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_bol_as4_one' model='product.template'>
             <field name='type'>service</field>
@@ -1440,7 +1733,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_bol_ke2_one' model='product.template'>
             <field name='type'>service</field>
@@ -1457,7 +1754,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_bol_mo4_one' model='product.template'>
             <field name='type'>service</field>
@@ -1474,7 +1775,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_bol_mo2_one' model='product.template'>
             <field name='type'>service</field>
@@ -1491,7 +1796,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_bol_ke5_one' model='product.template'>
             <field name='type'>service</field>
@@ -1508,7 +1817,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_bol_wa4_one' model='product.template'>
             <field name='type'>service</field>
@@ -1525,7 +1838,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_bol_as5_one' model='product.template'>
             <field name='type'>service</field>
@@ -1542,7 +1859,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_bol_cy1_one' model='product.template'>
             <field name='type'>service</field>
@@ -1559,7 +1880,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_bol_ke3_one' model='product.template'>
             <field name='type'>service</field>
@@ -1576,7 +1901,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_bol_wa3_one' model='product.template'>
             <field name='type'>service</field>
@@ -1593,7 +1922,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_bol_sc1_one' model='product.template'>
             <field name='type'>service</field>
@@ -1610,7 +1943,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_bol_mo1_one' model='product.template'>
             <field name='type'>service</field>
@@ -1627,7 +1964,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_bol_ke1_one' model='product.template'>
             <field name='type'>service</field>
@@ -1644,7 +1985,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_bol_cy4_one' model='product.template'>
             <field name='type'>service</field>
@@ -1661,7 +2006,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_bol_mo3_one' model='product.template'>
             <field name='type'>service</field>
@@ -1678,7 +2027,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_bol_cy5_one' model='product.template'>
             <field name='type'>service</field>
@@ -1695,7 +2048,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_bol_wa1_one' model='product.template'>
             <field name='type'>service</field>
@@ -1712,7 +2069,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_bol_sc2_one' model='product.template'>
             <field name='type'>service</field>
@@ -1729,7 +2090,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_bol_sc3_one' model='product.template'>
             <field name='type'>service</field>
@@ -1746,7 +2111,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_bol_sc4_one' model='product.template'>
             <field name='type'>service</field>
@@ -1763,7 +2132,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_bol_sc5_one' model='product.template'>
             <field name='type'>service</field>
@@ -1780,7 +2153,11 @@ Important !!!
             <field name='x_family'>laser</field>
 
             <field name='categ_id' ref="laser_co2"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='co2_vag_mon_one' model='product.template'>
             <field name='type'>service</field>
@@ -1790,14 +2167,17 @@ Important !!!
             <field name='x_zone'>vagina</field>
             <field name='x_pathology'>monalisa_touch</field>
             <field name='price'>3000</field>
-
             <field name='x_time'></field>
             <field name='x_sessions'>1</field>
             <field name='x_price_vip'>1500</field>
             <field name='x_family'>laser</field>
-
             <field name='categ_id' ref="laser_co2"/>
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
     </data>
 </openerp>

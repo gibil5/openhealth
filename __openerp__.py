@@ -143,8 +143,8 @@
 
 
 		'data/prods/odoo_data_services_consult.xml',
-
 		'data/prods/odoo_data_services_co2.xml',
+
 		'data/prods/odoo_data_services_exc.xml',
 		'data/prods/odoo_data_services_m22.xml',
 		'data/prods/odoo_data_services_med.xml',		

@@ -4,28 +4,13 @@
         
 
 
-
-
-
 <!-- ACTION -->
         <record model="ir.actions.act_window" id="configurator_list_action">   
             <field name="name">Configurators</field>
-            
             <field name="res_model">openhealth.configurator</field>
-
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-            <!--
-            <field name="domain">[]</field>
-            <field name="context">{}</field>
-            <field name="view_id" eval="False"/>            
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create">Create the first order
-                </p>
-            </field>
-            -->
         </record>
-
 
     </data>
 </openerp>

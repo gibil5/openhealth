@@ -160,33 +160,21 @@
 
 
 
-		<!-- ACTION - EMR -->
+<!-- ACTION - EMR -->
 		<record model="ir.actions.act_window" id="configurator_emr_list_action">
-
 			<field name="name">Configuracion - Clinica Chavarri</field>
-			
 			<field name="res_model">openhealth.configurator.emr</field>
-
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
-			<!--
-			<field name="domain">[]</field>
-			<field name="context">{}</field>
-			<field name="view_id" eval="False"/>            
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first order
-				</p>
-			</field>
-			-->
 		</record>
-
 
 
 <!-- Config -->
         <menuitem   id="main_config_menu" 
+
                     sequence="-16"
 
-                    name="Configuracion - N"
+                    name="Config - N"
 
 					groups="openhealth.roots,openhealth.directors,openhealth.managers"
             />
@@ -197,7 +185,7 @@
         <menuitem   id="openhealth_config_menu"
                     parent="main_config_menu"
                     sequence="1"
-                    name="Configuracion - N"
+                    name="Config - N"
                 />
 
         <!-- EMR --> 

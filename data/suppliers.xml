@@ -3,7 +3,6 @@
     <data noupdate='1'>
 
 
-
 <!-- Revilla y Asoc -->
         <record id="supplier_revilla_y_asociados_inc" model="res.partner">
             <field name="name">Revilla y Asociados Inc</field>
@@ -12,16 +11,13 @@
             <field name="supplier" eval="True" />
         </record>
 
-
-
-<!-- For Backwar compatibility - With the Prod --> 
+<!-- For Backward compatibility - With Production --> 
         <record id="supplier_revilla_rondon" model="res.partner">
             <field name="name">Y</field>
             <field name="email">jrevilla55@gmail.com</field>
             <field name="customer" eval="False" />
             <field name="supplier" eval="True" />
         </record>
-
 
     </data>
 </openerp>

@@ -6,7 +6,7 @@
 
 	'description': """
 
-		23 Aug 2019
+		24 Aug 2019
 
 		Remember, Hunter and Westerman:
 			- Step 1 - New Thinking: Avoid the 7 Value Traps.
@@ -131,32 +131,30 @@
 		# ----------------------------------------------------------- Data - Products ------------------------------------------------------
 
 		'data/prods/odoo_data_products.xml',
-
 		'data/prods/odoo_data_products_new.xml',			# Has integrated the following
 		
-		#'data/prods/odoo_data_products_dep.xml',			# Dep
-		#'data/prods/odoo_data_products_new_20181212.xml',	# Dep
-		#'data/prods/odoo_data_products_new_20190128.xml',	# Dep 
+		#'data/prods/odoo_data_products_dep.xml',				# Dep
+		#'data/prods/odoo_data_products_new_20181212.xml',		# Dep
+		#'data/prods/odoo_data_products_new_20190128.xml',		# Dep 
 		#'data/prods/odoo_data_products_new_2019-03-06.xml',	# Dep
-		#'data/prods/odoo_data_products_credit_notes.xml',	# Dep
-
-
+		#'data/prods/odoo_data_products_credit_notes.xml',		# Dep
 
 		'data/prods/odoo_data_services_consult.xml',
 		'data/prods/odoo_data_services_co2.xml',
 		'data/prods/odoo_data_services_exc.xml',
 		'data/prods/odoo_data_services_m22.xml',
-
 		'data/prods/odoo_data_services_med.xml',
-				
 		'data/prods/odoo_data_services_cos.xml',
 		'data/prods/odoo_data_services_med_dep.xml',	# Dependance
+
 
 		# Pricelists - Vip
 		'data/pricelists/pricelists.xml',
 		
-		# Suppliers 
-		'data/suppliers.xml',							# Very Important - Account Invoice Dependance
+
+		# Suppliers - MUST CLEAN THIS !!!
+		#'data/suppliers.xml',							# Very Important - Account Invoice Dependance
+
 
 
 
@@ -170,7 +168,7 @@
 
 # ----------------------------------------------------------- Configurators ------------------------------------------------------
 		'views/configurators/scheduler.xml',
-		'views/configurators/configurator.xml',
+		#'views/configurators/configurator.xml',			# Dep ?
 		'views/configurators/configurator_emr.xml',			# Includes Menu
 		'views/configurators/configurator_report.xml',
 
@@ -185,7 +183,7 @@
 
 # ----------------------------------------------------------- Recent ------------------------------------------------------
 
-		# Product Selector  
+		# Product Selector  - RSP
 		'views/report_sale/report_sale_product.xml',
 		'views/report_sale/item_counter.xml',
 

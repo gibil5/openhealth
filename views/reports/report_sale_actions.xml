@@ -292,8 +292,9 @@
 
 
 
+
+
 <!--
-groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.managers,openhealth.directors"
 groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.managers,openhealth.directors"
 -->
 
@@ -302,7 +303,7 @@ groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.manager
     
             sequence="-6"
     
-            name="Reporte de Ventas - N"
+            name="Rep Ventas - N"
 
             groups="openhealth.roots,openhealth.caja,openhealth.managers,openhealth.directors"
         />

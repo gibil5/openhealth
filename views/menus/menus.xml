@@ -254,9 +254,6 @@
                     groups="openhealth.roots,openhealth.reception,openhealth.directors"
                     />
 
-<!--
-                    action="counter_list_action"
--->
         <menuitem   id="emr_counters_menu" 
                     name="Contador Historias" 
                     parent="emr_config_menu"
@@ -264,32 +261,6 @@
                     
                     action="counter_medical_list_action"
                 />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -327,10 +298,7 @@ Action in partner.xml
                     sequence="75"
 
                     groups="base.group_hr_manager"
-                    />
-
-
-
+                />
 
     </data>
 </openerp>

@@ -22,7 +22,7 @@ from . import control
 from . import session 
 from . import session_med
 
-from . import physician 		# Dep ?
+from . import physician
 
 from . import doctor 
 

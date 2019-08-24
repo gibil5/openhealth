@@ -1,0 +1,724 @@
+
+
+<!--
+            <field name="x_type">doctor</field>
+-->        
+            <field name="image" type="base64" file="base/static/img/main_partner-image.png"/>
+            <field name="idx">9</field>
+
+
+
+<!-- Availability - Dep ! -->
+
+        <!-- Chavarri -->
+        <!-- Days -->
+        <record id="ava_cha_mon" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_chavarri"/>
+            <field name="name">Monday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+
+        <record id="ava_cha_tue" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_chavarri"/>
+            <field name="name">Tuesday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_cha_wed" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_chavarri"/>
+            <field name="name">Wednesday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_cha_thu" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_chavarri"/>
+            <field name="name">Thursday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_cha_fri" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_chavarri"/>
+            <field name="name">Friday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_cha_sat" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_chavarri"/>
+            <field name="name">Saturday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_cha_sun" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_chavarri"/>
+            <field name="name">Sunday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+
+
+
+
+
+
+       <record id="ava_can_mon" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_canales"/>
+            <field name="name">Monday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+
+        <record id="ava_can_tue" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_canales"/>
+            <field name="name">Tuesday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_can_wed" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_canales"/>
+            <field name="name">Wednesday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_can_thu" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_canales"/>
+            <field name="name">Thursday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_can_fri" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_canales"/>
+            <field name="name">Friday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_can_sat" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_canales"/>
+            <field name="name">Saturday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_can_sun" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_canales"/>
+            <field name="name">Sunday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+
+
+
+
+
+
+
+
+
+        <record id="ava_esc_mon" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_escudero"/>
+            <field name="name">Monday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+
+        <record id="ava_esc_tue" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_escudero"/>
+            <field name="name">Tuesday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_esc_wed" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_escudero"/>
+            <field name="name">Wednesday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_esc_thu" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_escudero"/>
+            <field name="name">Thursday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_esc_fri" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_escudero"/>
+            <field name="name">Friday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_esc_sat" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_escudero"/>
+            <field name="name">Saturday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_esc_sun" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_escudero"/>
+            <field name="name">Sunday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+
+
+
+
+
+
+
+        <record id="ava_gon_mon" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_gonzales"/>
+            <field name="name">Monday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+
+        <record id="ava_gon_tue" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_gonzales"/>
+            <field name="name">Tuesday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_gon_wed" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_gonzales"/>
+            <field name="name">Wednesday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_gon_thu" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_gonzales"/>
+            <field name="name">Thursday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_gon_fri" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_gonzales"/>
+            <field name="name">Friday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_gon_sat" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_gonzales"/>
+            <field name="name">Saturday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_gon_sun" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_gonzales"/>
+            <field name="name">Sunday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+
+
+
+
+
+
+
+
+        <record id="ava_mon_mon" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_monteverde"/>
+            <field name="name">Monday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+
+        <record id="ava_mon_tue" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_monteverde"/>
+            <field name="name">Tuesday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_mon_wed" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_monteverde"/>
+            <field name="name">Wednesday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_mon_thu" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_monteverde"/>
+            <field name="name">Thursday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_mon_fri" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_monteverde"/>
+            <field name="name">Friday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_mon_sat" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_monteverde"/>
+            <field name="name">Saturday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_mon_sun" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_monteverde"/>
+            <field name="name">Sunday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <record id="ava_eul_mon" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="eulalia"/>
+            <field name="name">Monday</field>
+            <field name="end_time">20.0166666667</field>
+            <field name="start_time">9.98333333333</field>
+        </record>
+
+        <record id="ava_eul_tue" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="eulalia"/>
+            <field name="name">Tuesday</field>
+            <field name="end_time">20.0166666667</field>
+            <field name="start_time">9.98333333333</field>
+        </record>
+        
+        <record id="ava_eul_wed" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="eulalia"/>
+            <field name="name">Wednesday</field>
+            <field name="end_time">20.0166666667</field>
+            <field name="start_time">9.98333333333</field>
+        </record>
+        
+        <record id="ava_eul_thu" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="eulalia"/>
+            <field name="name">Thursday</field>
+            <field name="end_time">20.0166666667</field>
+            <field name="start_time">9.98333333333</field>
+        </record>
+        
+        <record id="ava_eul_fri" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="eulalia"/>
+            <field name="name">Friday</field>
+            <field name="end_time">20.0166666667</field>
+            <field name="start_time">9.98333333333</field>
+        </record>
+        
+        <record id="ava_eul_sat" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="eulalia"/>
+            <field name="name">Saturday</field>
+            <field name="end_time">20.0166666667</field>
+            <field name="start_time">9.98333333333</field>
+        </record>
+        
+        <record id="ava_eul_sun" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="eulalia"/>
+            <field name="name">Sunday</field>
+            <field name="end_time">20.0166666667</field>
+            <field name="start_time">9.98333333333</field>
+        </record>
+
+
+
+
+        <!-- Days -->
+        <record id="cas_mon" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_castillo"/>
+            <field name="name">Monday</field>
+            <field name="start_time">8.98333333333</field>
+            <field name="end_time">21.0166666667</field>
+        </record>
+
+        <record id="cas_tue" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_castillo"/>
+            <field name="name">Tuesday</field>
+            <field name="start_time">8.98333333333</field>
+            <field name="end_time">21.0166666667</field>
+        </record>
+        
+        <record id="cas_wed" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_castillo"/>
+            <field name="name">Wednesday</field>
+            <field name="start_time">8.98333333333</field>
+            <field name="end_time">21.0166666667</field>
+        </record>
+        
+        <record id="cas_thu" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_castillo"/>
+            <field name="name">Thursday</field>
+            <field name="start_time">8.98333333333</field>
+            <field name="end_time">21.0166666667</field>
+        </record>
+        
+        <record id="cas_fri" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_castillo"/>
+            <field name="name">Friday</field>
+            <field name="start_time">8.98333333333</field>
+            <field name="end_time">21.0166666667</field>
+        </record>
+        
+        <record id="cas_sat" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_castillo"/>
+            <field name="name">Saturday</field>
+            <field name="start_time">8.98333333333</field>
+            <field name="end_time">21.0166666667</field>
+        </record>
+
+        <record id="cas_sun" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_castillo"/>
+            <field name="name">Sunday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+
+
+
+
+
+
+
+        <!-- Days -->
+        <record id="abr_mon" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_abriojo"/>
+            <field name="name">Monday</field>
+            <field name="start_time">8.98333333333</field>
+            <field name="end_time">21.0166666667</field>
+        </record>
+
+        <record id="abr_tue" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_abriojo"/>
+            <field name="name">Tuesday</field>
+            <field name="start_time">8.98333333333</field>
+            <field name="end_time">21.0166666667</field>
+        </record>
+        
+        <record id="abr_wed" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_abriojo"/>
+            <field name="name">Wednesday</field>
+            <field name="start_time">8.98333333333</field>
+            <field name="end_time">21.0166666667</field>
+        </record>
+        
+        <record id="abr_thu" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_abriojo"/>
+            <field name="name">Thursday</field>
+            <field name="start_time">8.98333333333</field>
+            <field name="end_time">21.0166666667</field>
+        </record>
+        
+        <record id="abr_fri" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_abriojo"/>
+            <field name="name">Friday</field>
+            <field name="start_time">8.98333333333</field>
+            <field name="end_time">21.0166666667</field>
+        </record>
+        
+        <record id="abr_sat" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_abriojo"/>
+            <field name="name">Saturday</field>
+            <field name="start_time">8.98333333333</field>
+            <field name="end_time">21.0166666667</field>
+        </record>
+        
+        <record id="abr_sun" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_abriojo"/>
+            <field name="name">Sunday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+
+
+       
+        <!-- Days -->
+        <record id="loa_mon" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_loayza"/>
+            <field name="name">Monday</field>
+            <field name="start_time">8.98333333333</field>
+            <field name="end_time">21.0166666667</field>
+        </record>
+
+        <record id="loa_tue" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_loayza"/>
+            <field name="name">Tuesday</field>
+            <field name="start_time">8.98333333333</field>
+            <field name="end_time">21.0166666667</field>
+        </record>
+        
+        <record id="loa_wed" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_loayza"/>
+            <field name="name">Wednesday</field>
+            <field name="start_time">8.98333333333</field>
+            <field name="end_time">21.0166666667</field>
+        </record>
+        
+        <record id="loa_thu" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_loayza"/>
+            <field name="name">Thursday</field>
+            <field name="start_time">8.98333333333</field>
+            <field name="end_time">21.0166666667</field>
+        </record>
+        
+        <record id="loa_fri" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_loayza"/>
+            <field name="name">Friday</field>
+            <field name="start_time">8.98333333333</field>
+            <field name="end_time">21.0166666667</field>
+        </record>
+        
+        <record id="loa_sat" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_loayza"/>
+            <field name="name">Saturday</field>
+            <field name="start_time">8.98333333333</field>
+            <field name="end_time">21.0166666667</field>
+        </record>
+        
+        <record id="loa_sun" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_loayza"/>
+            <field name="name">Sunday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+
+
+
+
+
+
+
+      <record id="ava_vas_mon" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_vasquez"/>
+            <field name="name">Monday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+
+        <record id="ava_vas_tue" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_vasquez"/>
+            <field name="name">Tuesday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_vas_wed" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_vasquez"/>
+            <field name="name">Wednesday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_vas_thu" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_vasquez"/>
+            <field name="name">Thursday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_vas_fri" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_vasquez"/>
+            <field name="name">Friday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_vas_sat" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_vasquez"/>
+            <field name="name">Saturday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_vas_sun" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_vasquez"/>
+            <field name="name">Sunday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+
+
+
+
+        <record id="dr_vasquez" model="oeh.medical.physician">
+            <field name="line_id" ref="ava_vas_mon"/>
+            <field name="line_id" ref="ava_vas_tue"/>
+            <field name="line_id" ref="ava_vas_wed"/>
+            <field name="line_id" ref="ava_vas_thu"/>
+            <field name="line_id" ref="ava_vas_fri"/>
+            <field name="line_id" ref="ava_vas_sat"/>
+            <field name="line_id" ref="ava_vas_sun"/>
+        </record>
+
+
+
+
+
+
+
+        <record id="ava_ala_mon" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_alarcon"/>
+            <field name="name">Monday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+
+        <record id="ava_ala_tue" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_alarcon"/>
+            <field name="name">Tuesday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_ala_wed" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_alarcon"/>
+            <field name="name">Wednesday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_ala_thu" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_alarcon"/>
+            <field name="name">Thursday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_ala_fri" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_alarcon"/>
+            <field name="name">Friday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_ala_sat" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_alarcon"/>
+            <field name="name">Saturday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_ala_sun" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_alarcon"/>
+            <field name="name">Sunday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+
+
+
+        <record id="dr_alarcon" model="oeh.medical.physician">
+            <field name="line_id" ref="ava_ala_mon"/>
+            <field name="line_id" ref="ava_ala_tue"/>
+            <field name="line_id" ref="ava_ala_wed"/>
+            <field name="line_id" ref="ava_ala_thu"/>
+            <field name="line_id" ref="ava_ala_fri"/>
+            <field name="line_id" ref="ava_ala_sat"/>
+            <field name="line_id" ref="ava_ala_sun"/>
+        </record>
+
+
+
+
+
+
+        <record id="ava_men_mon" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_mendez"/>
+            <field name="name">Monday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+
+        <record id="ava_men_tue" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_mendez"/>
+            <field name="name">Tuesday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_men_wed" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_mendez"/>
+            <field name="name">Wednesday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_men_thu" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_mendez"/>
+            <field name="name">Thursday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_men_fri" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_mendez"/>
+            <field name="name">Friday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_men_sat" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_mendez"/>
+            <field name="name">Saturday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+        
+        <record id="ava_men_sun" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_mendez"/>
+            <field name="name">Sunday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+
+
+
+        <record id="dr_mendez" model="oeh.medical.physician">
+            <field name="line_id" ref="ava_men_mon"/>
+            <field name="line_id" ref="ava_men_tue"/>
+            <field name="line_id" ref="ava_men_wed"/>
+            <field name="line_id" ref="ava_men_thu"/>
+            <field name="line_id" ref="ava_men_fri"/>
+            <field name="line_id" ref="ava_men_sat"/>
+            <field name="line_id" ref="ava_men_sun"/>
+        </record>
+
+
+
+
+        <record id="ava_med_thu" model="oeh.medical.physician.line">
+            <field name="physician_id" ref="dr_medico"/>
+            <field name="name">Thursday</field>
+            <field name="end_time">21.0166666667</field>
+            <field name="start_time">8.98333333333</field>
+        </record>
+
+        <record id="dr_medico" model="oeh.medical.physician">
+            <field name="line_id" ref="ava_med_thu"/>
+        </record>
+
+
+

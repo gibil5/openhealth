@@ -7,12 +7,7 @@
 <!-- Product Category --> 
         <record id='cosmetology' model='product.category'>
             <field name='name'>Cosmeatria</field>
-            <field name='pl_price_list'>2018</field>
-            <field name="sale_ok" eval="True" />
-            <field name="purchase_ok" eval="False" />
         </record>
-
-
 
 
 

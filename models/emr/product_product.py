@@ -18,11 +18,15 @@ class ProductProduct(models.Model):
 
 # ----------------------------------------------------------- Print Ticket -------------------------------
 
+	x_name_ticket = fields.Char()
+
+
 	def get_name_ticket(self):
 		"""
 		Used by Print Ticket.
 		"""
 		return self.x_name_ticket
+		#return False
 
 
 

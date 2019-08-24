@@ -1,0 +1,30 @@
+
+<!-- Contacts -->           
+        <menuitem   id="mail.menu_contacts"
+                    name="Contacts"
+                    sequence="4"
+                    action="mail.action_contacts"
+                    web_icon="mail,static/description/icon2.png"
+                    groups="base.group_user,base.group_partner_manager"
+                />
+<!--
+Action in partner.xml
+-->
+
+<!-- Oe Health -->
+        <menuitem   id="oehealth.oeh_medical_menu" 
+                    name="oeHealth" 
+                    icon="STOCK_ZOOM_IN"
+
+                    groups="openhealth.roots"
+                />
+
+<!-- Employees -->
+        <menuitem   name="Employees"
+                    id="hr.menu_hr_root"                    
+                    icon="fa-user"
+                    web_icon="hr,static/description/icon.png"
+                    sequence="75"
+
+                    groups="base.group_hr_manager"
+                />

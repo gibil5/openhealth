@@ -4,7 +4,8 @@
 
 
 
-        <!-- Data - Services -->
+<!-- Data - Services - EXC -->
+
         <record id='exc_arp_vit_5m_one' model='product.template'>
             <field name='type'>service</field>
             <field name='x_name_short'>exc_arp_vit_5m_one</field>
@@ -13,13 +14,18 @@
             <field name='x_zone'>armpits</field>
             <field name='x_pathology'>vitiligo</field>
             <field name='price'>300</field>
-
             <field name='x_time'>5 min</field>
             <field name='x_sessions'>1</field>
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
+
 
         <record id='exc_bre_vit_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -29,13 +35,17 @@
             <field name='x_zone'>breast</field>
             <field name='x_pathology'>vitiligo</field>
             <field name='price'>600</field>
-
             <field name='x_time'>15 min</field>
             <field name='x_sessions'>1</field>
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_han_vit_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -45,13 +55,17 @@
             <field name='x_zone'>hands</field>
             <field name='x_pathology'>vitiligo</field>
             <field name='price'>600</field>
-
             <field name='x_time'>15 min</field>
             <field name='x_sessions'>1</field>
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_nec_vit_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -61,13 +75,17 @@
             <field name='x_zone'>neck</field>
             <field name='x_pathology'>vitiligo</field>
             <field name='price'>600</field>
-
             <field name='x_time'>15 min</field>
             <field name='x_sessions'>1</field>
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_fee_vit_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -77,13 +95,17 @@
             <field name='x_zone'>feet</field>
             <field name='x_pathology'>vitiligo</field>
             <field name='price'>300</field>
-
             <field name='x_time'>5 min</field>
             <field name='x_sessions'>1</field>
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_sho_vit_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -99,7 +121,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_fac_vit_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -115,7 +141,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_bac_vit_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -131,7 +161,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_bre_vit_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -147,7 +181,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_han_vit_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -163,7 +201,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_arp_vit_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -179,7 +221,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_nec_vit_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -195,7 +241,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_fac_vit_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -211,7 +261,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_leg_vit_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -227,7 +281,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_fee_vit_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -243,7 +301,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_bel_vit_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -259,7 +321,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_glu_vit_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -275,7 +341,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_fac_vit_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -291,7 +361,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_are_vit_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -307,7 +381,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_bac_vit_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -323,7 +401,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_are_vit_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -339,7 +421,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_leg_vit_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -355,7 +441,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_arm_vit_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -371,7 +461,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_arm_vit_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -387,7 +481,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_bel_vit_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -403,7 +501,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_sho_vit_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -419,7 +521,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_nec_vit_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -435,7 +541,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_glu_vit_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -451,7 +561,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_are_vit_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -467,7 +581,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_sho_vit_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -483,7 +601,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_arm_vit_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -499,7 +621,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_leg_pso_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -515,7 +641,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_bel_pso_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -531,7 +661,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_fee_vit_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -547,7 +681,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_arp_vit_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -563,7 +701,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_fac_pso_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -579,7 +721,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_sho_pso_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -595,7 +741,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_bac_vit_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -611,7 +761,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_glu_pso_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -627,7 +781,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_han_vit_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -643,7 +801,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_bre_vit_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -659,7 +821,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_are_pso_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -675,7 +841,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_fac_pso_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -691,7 +861,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_bre_pso_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -707,7 +881,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_glu_vit_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -723,7 +901,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_bac_pso_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -739,7 +921,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_bel_vit_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -755,7 +941,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_leg_vit_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -771,7 +961,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_are_pso_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -787,7 +981,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_arm_pso_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -803,7 +1001,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_han_pso_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -819,7 +1021,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_nec_pso_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -835,7 +1041,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_nec_pso_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -851,7 +1061,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_arp_pso_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -867,7 +1081,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_fee_pso_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -883,7 +1101,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_arp_pso_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -899,7 +1121,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_bre_pso_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -915,7 +1141,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_glu_pso_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -931,7 +1161,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_nec_pso_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -946,7 +1180,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_leg_pso_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -961,7 +1199,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_han_pso_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -976,7 +1218,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_sho_pso_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -991,7 +1237,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_bel_pso_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1007,7 +1257,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_fee_pso_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1022,7 +1276,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_sho_pso_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1038,7 +1296,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_fee_pso_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1053,7 +1315,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_bre_pso_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1068,7 +1334,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_are_pso_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1083,7 +1353,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_arm_pso_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1099,7 +1373,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_arm_pso_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1114,7 +1392,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_bre_alo_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1129,7 +1411,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_fac_alo_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1144,7 +1430,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_han_pso_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1160,7 +1450,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_glu_pso_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1175,7 +1469,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_fac_pso_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1190,7 +1488,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_bac_pso_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1206,7 +1508,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_arp_alo_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1221,7 +1527,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_are_alo_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1236,7 +1546,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_arp_pso_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1251,7 +1565,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_leg_pso_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1266,7 +1584,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_bel_pso_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1281,7 +1603,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_nec_alo_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1296,7 +1622,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_bac_pso_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1311,7 +1641,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_bel_alo_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1326,7 +1660,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_arm_alo_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1341,7 +1679,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_bac_alo_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1356,7 +1698,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_nec_alo_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1371,7 +1717,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_arm_alo_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1386,7 +1736,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_leg_alo_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1401,7 +1755,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_glu_alo_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1416,7 +1774,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_bre_alo_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1431,7 +1793,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_glu_alo_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1446,7 +1812,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_bre_alo_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1461,7 +1831,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_arp_alo_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1476,7 +1850,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_han_alo_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1491,7 +1869,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_are_alo_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1506,7 +1888,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_fee_alo_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1521,7 +1907,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_sho_alo_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1536,7 +1926,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_arm_alo_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1551,7 +1945,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_bac_alo_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1566,7 +1964,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_bel_alo_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1581,7 +1983,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_nec_alo_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1596,7 +2002,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_fac_alo_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1611,7 +2021,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_fac_alo_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1626,7 +2040,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_han_alo_5m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1641,7 +2059,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_arp_alo_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1656,7 +2078,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_sho_alo_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1671,7 +2097,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_fee_alo_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1686,7 +2116,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_bel_alo_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1701,7 +2135,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_leg_alo_15m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1716,7 +2154,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_are_alo_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1731,7 +2173,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_bac_alo_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1746,7 +2192,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_glu_alo_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1761,7 +2211,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_sho_alo_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1776,7 +2230,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_han_alo_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1793,7 +2251,11 @@
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_leg_alo_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1803,13 +2265,17 @@
             <field name='x_zone'>legs</field>
             <field name='x_pathology'>alopecia</field>
             <field name='price'>1000</field>
-
             <field name='x_time'>30 min</field>
             <field name='x_sessions'>1</field>
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
         <record id='exc_fee_alo_30m_one' model='product.template'>
             <field name='type'>service</field>
@@ -1819,13 +2285,17 @@
             <field name='x_zone'>feet</field>
             <field name='x_pathology'>alopecia</field>
             <field name='price'>1000</field>
-
             <field name='x_time'>30 min</field>
             <field name='x_sessions'>1</field>
             <field name='x_price_vip'></field>
             <field name='x_family'>laser</field>
             <field name='categ_id' ref="laser_excilite"/>
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
     </data>
 </openerp>

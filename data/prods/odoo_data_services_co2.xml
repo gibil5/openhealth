@@ -1,17 +1,14 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
 <!--
-
     <data noupdate='1'>
     <data noupdate='0'>
-
 Important !!!
 -->
     <data>
 
 
-<!-- Data - Services -->
-
+<!-- Data - Services - CO2 -->
 
 
 <!-- Co2 Neck Rej -->

@@ -1,7 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
+
     <data noupdate='0'>
 
+
+
+<!-- Products -->
 
 
         <!-- ACNECLEAN -->
@@ -20,21 +24,18 @@
             <field name='categ_id' ref="topical"/>
 
             <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
 
 
 
         <!-- ACNETOPIC 200 ML -->
         <record id='acnetopic_200ml' model='product.template'>
-
             <field name='name'>ACNETOPIC 200 ML</field>
-
             <field name='x_name_short'>acnetopic_200ml</field>
-
             <field name='type'>product</field>
-
             <field name='default_code'>694</field>
-            
             <field name='price'>120.0</field>
             <field name='standard_price'>120.0</field>          
             <field name='x_family'>topical</field>
@@ -42,7 +43,10 @@
             <field name='categ_id' ref="topical"/>
 
             <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
         <!-- ACNETOPIC WASH -->
@@ -63,7 +67,10 @@
             <field name='categ_id' ref="topical"/>
 
             <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
 
@@ -84,7 +91,10 @@
             <field name='categ_id' ref="topical"/>
 
             <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
         <!-- ANTIRROJECES -->
@@ -103,7 +113,10 @@
             <field name='categ_id' ref="topical"/>
 
             <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
 
@@ -128,7 +141,10 @@
             <field name='categ_id' ref="topical"/>
 
             <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
 
@@ -151,7 +167,10 @@
             <field name='categ_id' ref="topical"/>
 
             <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
 
@@ -172,7 +191,10 @@
             <field name='categ_id' ref="topical"/>
 
             <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
 
@@ -193,7 +215,10 @@
             <field name='categ_id' ref="topical"/>
 
             <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
 
@@ -214,7 +239,10 @@
             <field name='categ_id' ref="topical"/>
 
             <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
 
@@ -239,7 +267,10 @@
             <field name='categ_id' ref="topical"/>
 
             <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
         <!-- DESPIGMENTANTE BF-D8 -->
@@ -259,7 +290,10 @@
             <field name='categ_id' ref="topical"/>
 
             <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
         <!-- DESPIGMENTANTE GLI-KO -->
@@ -278,7 +312,10 @@
             <field name='categ_id' ref="topical"/>
 
             <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
 
@@ -304,7 +341,10 @@
 
             <field name='categ_id' ref="topical"/>
             <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
 
@@ -324,7 +364,10 @@
 
             <field name='categ_id' ref="topical"/>
             <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
 
@@ -344,7 +387,10 @@
 
             <field name='categ_id' ref="topical"/>
             <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
 
@@ -370,7 +416,10 @@
             <field name='x_price_vip_return'>4</field>
             <field name='categ_id' ref="topical"/>
             <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
 
@@ -390,7 +439,10 @@
 
             <field name='categ_id' ref="topical"/>
             <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
 
@@ -410,7 +462,10 @@
 
             <field name='categ_id' ref="topical"/>
             <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
 
@@ -436,7 +491,10 @@
 
             <field name='categ_id' ref="topical"/>
             <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
 
@@ -457,7 +515,10 @@
 
             <field name='categ_id' ref="topical"/>
             <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
 
@@ -478,7 +539,10 @@
 
             <field name='categ_id' ref="topical"/>
             <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
 
@@ -505,7 +569,10 @@
 
             <field name='categ_id' ref="topical"/>
             <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
 
@@ -528,7 +595,10 @@
             <field name='x_price_vip_return'>4</field>
             <field name='categ_id' ref="topical"/>
             <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
 
@@ -549,7 +619,10 @@
 
             <field name='categ_id' ref="consumable"/>
             <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
 
@@ -574,7 +647,10 @@
 
             <field name='categ_id' ref="topical"/>
             <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
 
@@ -594,7 +670,10 @@
 
             <field name='categ_id' ref="topical"/>
             <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
 
@@ -616,7 +695,10 @@
             <field name='x_price_vip_return'>4</field>
             <field name='categ_id' ref="topical"/>
             <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
 
@@ -638,7 +720,10 @@
             <field name='x_price_vip_return'>4</field>
             <field name='categ_id' ref="topical"/>
             <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
 
@@ -665,7 +750,10 @@
 
             <field name='categ_id' ref="topical"/>
             <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
 
 
 
@@ -687,10 +775,9 @@
             <field name='categ_id' ref="topical"/>
             
             <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
-
-
-
 
     </data>
 </openerp>

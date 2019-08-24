@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
+
     <data noupdate='0'>
 
 
 
 <!-- New -->
-
 
         <!-- Producto 1 -->
         <record id='product_1' model='product.template'>
@@ -14,7 +14,13 @@
             <field name='type'>product</field>
             <field name='price'>200</field>
             <field name='standard_price'>200</field>
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
+
 
 
 
@@ -26,9 +32,14 @@
             <field name='default_code'>778</field>
             <field name='price'>200.00</field>
             <field name='x_family'>topical</field>
-            <field name="sale_ok" eval="True" />
             <field name='categ_id' ref="topical"/>
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
+
 
 
 
@@ -40,9 +51,14 @@
             <field name='default_code'>537</field>
             <field name='price'>55</field>
             <field name='x_family'>topical</field>
-            <field name="sale_ok" eval="True" />
             <field name='categ_id' ref="topical"/>
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
+
 
 
 
@@ -54,9 +70,14 @@
             <field name='default_code'>619</field>
             <field name='price'>55</field>
             <field name='x_family'>topical</field>
-            <field name="sale_ok" eval="True" />
             <field name='categ_id' ref="topical"/>
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
+
 
 
         <!-- DEXPANTENOL 5 ML -->
@@ -67,9 +88,14 @@
             <field name='default_code'>433</field>
             <field name='price'>55</field>
             <field name='x_family'>topical</field>
-            <field name="sale_ok" eval="True" />
             <field name='categ_id' ref="topical"/>
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
+
 
 
 
@@ -79,9 +105,14 @@
         <!-- Fill Derma -->
         <record id='fillderma_ultra' model='product.template'>
             <field name='name'>DEP - FILLDERMA</field>
-            <field name="sale_ok" eval="False" />
             <field name="active" eval="False" />
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
+
 
 
         <!-- Token -->
@@ -97,9 +128,14 @@
             <field name='x_price_vip_return'>4</field>
             <field name='x_family'>topical</field>
             <field name='categ_id' ref="topical"/>
-            <field name="sale_ok" eval="False" />
             <field name="active" eval="False" />
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
+
 
 
         <!-- Generic Product -->
@@ -113,9 +149,14 @@
             <field name='standard_price'>0.0</field>
             <field name='x_price_vip'></field>
             <field name='categ_id' ref="legacy"/>
-            <field name="sale_ok" eval="False" />
             <field name="active" eval="False" />
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
+
 
 
         <!-- Generic Service -->
@@ -129,9 +170,14 @@
             <field name='standard_price'>0.0</field>
             <field name='x_price_vip'></field>
             <field name='categ_id' ref="legacy"/>
-            <field name="sale_ok" eval="False" />
             <field name="active" eval="False" />
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
+
 
 
 
@@ -147,7 +193,13 @@
             <field name='standard_price'>250</field>
             <field name='x_family'>topical</field>
             <field name='categ_id' ref="topical"/>
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
+
 
 
 
@@ -160,7 +212,13 @@
             <field name='standard_price'>300</field>
             <field name='x_family'>topical</field>
             <field name='categ_id' ref="topical"/>
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
+
 
 
         <!-- Vitamina K -->
@@ -172,7 +230,13 @@
             <field name='standard_price'>250</field>
             <field name='x_family'>topical</field>
             <field name='categ_id' ref="topical"/>
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
+
 
 
 
@@ -186,7 +250,13 @@
             <field name='x_family'>topical</field>
             <field name='type'>product</field>
             <field name='categ_id' ref="topical"/>
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
+
 
         <!-- CAJA AGELESS -->
         <record id='ageless_box' model='product.template'>
@@ -196,7 +266,13 @@
             <field name='x_family'>topical</field>
             <field name='type'>product</field>
             <field name='categ_id' ref="topical"/>
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
+
 
         <!-- BLISTER AGELESS -->
         <record id='ageless_blister' model='product.template'>
@@ -206,7 +282,13 @@
             <field name='x_family'>topical</field>
             <field name='type'>product</field>
             <field name='categ_id' ref="topical"/>
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
+
 
 
 
@@ -223,7 +305,13 @@
             <field name='type'>product</field>
             <field name='default_code'>1160</field>
             <field name='categ_id' ref="topical"/>
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
+
 
 <!-- PROTECTOR SOLAR DE 100GR CLINICA CHAVARRI - COOPER -->
         <record id='solar_protector_chavarri_100gr' model='product.template'>
@@ -234,7 +322,13 @@
             <field name='type'>product</field>
             <field name='default_code'>1136</field>
             <field name='categ_id' ref="topical"/>
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
+
 
 <!-- FLUVIX FCO X 15ML -->
         <record id='fluvix_15ml' model='product.template'>
@@ -245,7 +339,13 @@
             <field name='type'>product</field>
             <field name='default_code'>1186</field>
             <field name='categ_id' ref="topical"/>
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
+
 
 
 
@@ -262,7 +362,13 @@
             <field name='x_name_short'>devolution</field>
             <field name='x_family'>credit_note</field>
             <field name='type'>consu</field>
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
+
 
 
         <!-- CANCEL -->
@@ -271,7 +377,13 @@
             <field name='x_name_short'>cancel</field>
             <field name='x_family'>credit_note</field>
             <field name='type'>consu</field>
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
+
 
 
         <!-- CANCEL ERROR RUC -->
@@ -280,7 +392,13 @@
             <field name='x_name_short'>cancel_error_ruc</field>
             <field name='x_family'>credit_note</field>
             <field name='type'>consu</field>
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
+
 
 
         <!-- CORRECT ERROR DESC -->
@@ -289,7 +407,13 @@
             <field name='x_name_short'>correct_error_desc</field>
             <field name='x_family'>credit_note</field>
             <field name='type'>consu</field>
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
+
 
 
         <!-- discount -->
@@ -298,7 +422,13 @@
             <field name='x_name_short'>discount</field>
             <field name='x_family'>credit_note</field>
             <field name='type'>consu</field>
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
+
 
 
         <!-- discount_item -->
@@ -307,7 +437,13 @@
             <field name='x_name_short'>discount_item</field>
             <field name='x_family'>credit_note</field>
             <field name='type'>consu</field>
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
+
 
 
        <!-- return -->
@@ -316,7 +452,13 @@
             <field name='x_name_short'>return</field>
             <field name='x_family'>credit_note</field>
             <field name='type'>consu</field>
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
+
 
 
        <!-- return_item -->
@@ -325,7 +467,13 @@
             <field name='x_name_short'>return_item</field>
             <field name='x_family'>credit_note</field>
             <field name='type'>consu</field>
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
+
 
 
        <!-- bonus -->
@@ -334,7 +482,13 @@
             <field name='x_name_short'>bonus</field>
             <field name='x_family'>credit_note</field>
             <field name='type'>consu</field>
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
+
 
        <!-- value_drop -->
         <record id='value_drop' model='product.template'>
@@ -342,7 +496,13 @@
             <field name='x_name_short'>value_drop</field>
             <field name='x_family'>credit_note</field>
             <field name='type'>consu</field>
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
+
+
 
        <!-- other -->
         <record id='other' model='product.template'>
@@ -350,8 +510,11 @@
             <field name='x_name_short'>other</field>
             <field name='x_family'>credit_note</field>
             <field name='type'>consu</field>
-        </record>
 
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
+        </record>
 
 
     </data>

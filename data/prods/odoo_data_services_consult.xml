@@ -10,55 +10,45 @@
         <!-- CONSULTA MEDICA -->
         <record id='con_med' model='product.template'>
             <field name='type'>service</field>
-
             <field name='x_name_short'>con_med</field>
-            
             <field name='name'>CONSULTA MEDICA</field>
-            
             <field name='price'>200</field>
             <field name='x_price_vip'>200</field>
-            
             <field name='x_sessions'>1</field>
             <field name='x_treatment'>consultation</field>
             <field name='x_zone'></field>
             <field name='x_pathology'></field>
             <field name='x_time'></field>
-
             <field name='x_family'>consultation</field>
-
             <field name='categ_id' ref="consultation_categ"/>
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
-<!--            
-            <field name='x_price_vip'></field>
--->
 
 
 
         <!-- CONSULTA GINECOLOGICA -->
         <record id='con_gyn' model='product.template'>
             <field name='type'>service</field>
-
             <field name='x_name_short'>con_gyn</field>
-            
             <field name='name'>CONSULTA GINECOLOGICA</field>
-            
             <field name='price'>200</field>
             <field name='x_price_vip'>200</field>
-            
             <field name='x_sessions'>1</field>
             <field name='x_treatment'>consultation</field>
             <field name='x_zone'></field>
             <field name='x_pathology'></field>
             <field name='x_time'></field>
-            
             <field name='x_family'>consultation</field>
-
             <field name='categ_id' ref="consultation_categ"/>
+
+            <field name='pl_price_list'>2018</field>
+            <field name="sale_ok" eval="True" />
+            <field name="purchase_ok" eval="False" />
         </record>
-<!--
-            <field name='x_price_vip'></field>
-            <field name='x_family'>consultation</field>
--->
+
 
     </data>
 </openerp>

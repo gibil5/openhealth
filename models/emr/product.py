@@ -24,6 +24,68 @@ class Product(models.Model):
 
 
 
+# ----------------------------------------------------------- Fix ------------------------
+
+	@api.multi
+	def fix_procurements(self):
+		"""
+		Fix Procurements
+		Set State to Cancel. For Manual Cancellation.
+		"""
+		print()
+		print('Fix Procurements')
+
+
+		procs = self.env['procurement.order'].search([
+															#('type', 'in', ['product']),
+															#('sale_ok', 'in', [True]),
+												],
+													#order='name asc',
+													#limit=1,
+												)
+
+		for procurement in procs:
+			#print()
+			#print(procurement)
+			#print(procurement.name)
+			#print(procurement.state)
+			#procurement.unlink()
+			procurement.state = 'cancel'
+		
+		print('Finished !')
+
+
+
+	@api.multi
+	def fix_stock(self):
+		"""
+		Cancels stock moves
+		Remove manually
+		"""
+		print('Fix fstock')
+
+		# Search
+		moves = self.env['stock.move'].search([
+													#('x_name_short', 'in', [name]),
+												],
+												#order='date_begin asc',
+												#limit=10,
+											)
+		for stock_move in moves:
+			#print()
+			#print(stock_move)
+			#print(stock_move.name)
+			#print(stock_move.state)
+			#stock_move.unlink()
+			stock_move.state = 'cancel'
+
+		print('Finished !')
+
+	# clean_stock_moves
+
+
+
+
 # ----------------------------------------------------------- Price List ------------------------
 
 	pl_price_list = fields.Selection(

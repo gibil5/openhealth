@@ -133,7 +133,7 @@
 		'data/prods/odoo_data_products.xml',
 
 		'data/prods/odoo_data_products_new.xml',			# Has integrated the following
-
+		
 		#'data/prods/odoo_data_products_dep.xml',			# Dep
 		#'data/prods/odoo_data_products_new_20181212.xml',	# Dep
 		#'data/prods/odoo_data_products_new_20190128.xml',	# Dep 
@@ -142,12 +142,12 @@
 
 
 
+		'data/prods/odoo_data_services_consult.xml',
 
 		'data/prods/odoo_data_services_co2.xml',
 		'data/prods/odoo_data_services_exc.xml',
 		'data/prods/odoo_data_services_m22.xml',
 		'data/prods/odoo_data_services_med.xml',		
-		'data/prods/odoo_data_services_consult.xml',
 		'data/prods/odoo_data_services_cos.xml',
 		'data/prods/odoo_data_services_med_dep.xml',	# Dependance
 
@@ -415,11 +415,16 @@
 
 # ----------------------------------------------------------- Menus ------------------------------------------------------
 		'views/menus/menus.xml',
+
 		#'views/menus/menus_openhealth.xml',		# Dep
+		'views/menus/menus_dev.xml',
+
 		'views/menus/menus_caja.xml',
 		'views/menus/menus_marketing.xml',
 		'views/menus/menus_management.xml',
 		'views/menus/menus_account.xml',
+
+		'views/menus/menus_products.xml',
 
 
 

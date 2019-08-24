@@ -523,147 +523,34 @@
 			"file": "__openerp__.py",
 			"settings":
 			{
-				"buffer_size": 11130,
+				"buffer_size": 11291,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "__init__.py",
+			"file": "models/emr/product.py",
 			"settings":
 			{
-				"buffer_size": 266,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "security/ir.model.access.csv",
-			"settings":
-			{
-				"buffer_size": 16446,
+				"buffer_size": 8054,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "security/buff.txt",
+			"file": "views/products/product_template.xml",
 			"settings":
 			{
-				"buffer_size": 783,
+				"buffer_size": 3138,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "security/openhealth_security_readers.xml",
+			"file": "views/menus/menus_dev.xml",
 			"settings":
 			{
-				"buffer_size": 10663,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/management/management_trees.xml",
-			"settings":
-			{
-				"buffer_size": 5808,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/management/management.xml",
-			"settings":
-			{
-				"buffer_size": 12782,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/management/management.TRASH.xml",
-			"settings":
-			{
-				"buffer_size": 11383,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/management/management_actions.xml",
-			"settings":
-			{
-				"buffer_size": 8123,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/management/management_order_line.xml",
-			"settings":
-			{
-				"buffer_size": 3692,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "security/openhealth_security.xml",
-			"settings":
-			{
-				"buffer_size": 11721,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/emr/__init__.py",
-			"settings":
-			{
-				"buffer_size": 1105,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/emr/physician.py",
-			"settings":
-			{
-				"buffer_size": 2272,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/emr/doctor.py",
-			"settings":
-			{
-				"buffer_size": 842,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/emr/evaluation.py",
-			"settings":
-			{
-				"buffer_size": 8529,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/patient/patient.py",
-			"settings":
-			{
-				"buffer_size": 22385,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/menus/menus_account.xml",
-			"settings":
-			{
-				"buffer_size": 2075,
+				"buffer_size": 775,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -673,7 +560,6 @@
 			"settings":
 			{
 				"buffer_size": 2445,
-				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
@@ -682,78 +568,14 @@
 			"settings":
 			{
 				"buffer_size": 1411,
-				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "views/coders/coder.xml",
+			"file": "data/prods/odoo_data_products.xml",
 			"settings":
 			{
-				"buffer_size": 4351,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "openerp.TRASH.py",
-			"settings":
-			{
-				"buffer_size": 4077,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/__init__.py",
-			"settings":
-			{
-				"buffer_size": 2467,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/electronic/coder.py",
-			"settings":
-			{
-				"buffer_size": 627,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/reports/report_sale_actions.xml",
-			"settings":
-			{
-				"buffer_size": 18204,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/reports/report_sale.xml",
-			"settings":
-			{
-				"buffer_size": 5746,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/configurators/configurator_emr.xml",
-			"settings":
-			{
-				"buffer_size": 4841,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/menus/menus.xml",
-			"settings":
-			{
-				"buffer_size": 7111,
+				"buffer_size": 23865,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -832,6 +654,46 @@
 	},
 	"file_history":
 	[
+		"/Users/gibil/cellar/github/openhealth/views/menus/menus.xml",
+		"/Users/gibil/cellar/github/openhealth/data/prods/odoo_data_products_new.xml",
+		"/Users/gibil/cellar/github/openhealth/views/menus/menus_products.xml",
+		"/Users/gibil/cellar/github/openhealth/views/orders/order.xml",
+		"/Users/gibil/cellar/github/openhealth/models/order/order.py",
+		"/Users/gibil/cellar/github/openhealth/views/products/product_template.TRASH.xml",
+		"/Users/gibil/cellar/github/openhealth/views/products/product_template.xml",
+		"/Users/gibil/cellar/github/openhealth/data/prods/odoo_data_products.xml",
+		"/Users/gibil/cellar/github/openhealth/data/prods/odoo_data_products_dep.xml",
+		"/Users/gibil/cellar/github/openhealth/data/prods/odoo_data_products_new_2019-03-06.xml",
+		"/Users/gibil/cellar/github/openhealth/data/prods/odoo_data_products_new_20190128.xml",
+		"/Users/gibil/cellar/github/openhealth/data/prods/odoo_data_products_credit_notes.xml",
+		"/Users/gibil/cellar/github/openhealth/data/prods/odoo_data_products_new_20181212.xml",
+		"/Users/gibil/cellar/github/openhealth/models/emr/product.py",
+		"/Users/gibil/cellar/github/openhealth/models/emr/product.TRASH.py",
+		"/Users/gibil/cellar/github/openhealth/views/management/management.xml",
+		"/Users/gibil/cellar/github/openhealth/views/management/management_actions.xml",
+		"/Users/gibil/cellar/github/openhealth/views/management/management.TRASH.xml",
+		"/Users/gibil/cellar/github/openhealth/views/management/management_trees.xml",
+		"/Users/gibil/cellar/github/openhealth/views/management/management_order_line.xml",
+		"/Users/gibil/cellar/github/openhealth/security/openhealth_security.xml",
+		"/Users/gibil/cellar/github/openhealth/models/emr/physician.py",
+		"/Users/gibil/cellar/github/openhealth/models/patient/patient.py",
+		"/Users/gibil/cellar/github/openhealth/views/configurators/configurator_emr.xml",
+		"/Users/gibil/cellar/github/openhealth/views/reports/report_sale.xml",
+		"/Users/gibil/cellar/github/openhealth/views/reports/report_sale_actions.xml",
+		"/Users/gibil/cellar/github/openhealth/models/electronic/coder.py",
+		"/Users/gibil/cellar/github/openhealth/models/__init__.py",
+		"/Users/gibil/cellar/github/openhealth/openerp.TRASH.py",
+		"/Users/gibil/cellar/github/openhealth/views/coders/coder.xml",
+		"/Users/gibil/cellar/github/openhealth/views/menus/menus_openhealth.TRASH.xml",
+		"/Users/gibil/cellar/github/openhealth/views/menus/menus_openhealth.xml",
+		"/Users/gibil/cellar/github/openhealth/views/menus/menus_account.xml",
+		"/Users/gibil/cellar/github/openhealth/models/emr/evaluation.py",
+		"/Users/gibil/cellar/github/openhealth/models/emr/doctor.py",
+		"/Users/gibil/cellar/github/openhealth/models/emr/__init__.py",
+		"/Users/gibil/cellar/github/openhealth/security/openhealth_security_readers.xml",
+		"/Users/gibil/cellar/github/openhealth/security/buff.txt",
+		"/Users/gibil/cellar/github/openhealth/security/ir.model.access.csv",
+		"/Users/gibil/cellar/github/openhealth/__init__.py",
 		"/Users/gibil/cellar/github/openhealth/readme.txt",
 		"/Users/gibil/cellar/github/openhealth/views/menus/menus_config.TRASH.xml",
 		"/Users/gibil/cellar/github/openhealth/views/menus/menus_config.xml",
@@ -848,15 +710,12 @@
 		"/Users/gibil/cellar/github/openhealth/data/physicians/base_data_physicians_inactive.xml",
 		"/Users/gibil/cellar/github/openhealth/views/patients/patient.TRASH.xml",
 		"/Users/gibil/cellar/github/openhealth/views/patients/patient_personal.xml",
-		"/Users/gibil/cellar/github/openhealth/models/patient/patient.py",
 		"/Users/gibil/cellar/github/openhealth/views/patients/patient_search.xml",
 		"/Users/gibil/cellar/github/openhealth/views/reports/report_sale_months.xml",
 		"/Users/gibil/cellar/github/openhealth/views/report_sale/report_sale_product.xml",
 		"/Users/gibil/cellar/github/openhealth/views/report_sale/report_sale.txt",
-		"/Users/gibil/cellar/github/openhealth/views/menus/menus.xml",
 		"/Users/gibil/cellar/github/openhealth/views/physicians/physician.xml",
 		"/Users/gibil/cellar/github/openhealth/data/physicians/base_data_physicians.xml",
-		"/Users/gibil/cellar/github/openhealth/models/order/order.py",
 		"/Users/gibil/cellar/github/openhealth/views/treatments/treatment.xml",
 		"/Users/gibil/cellar/github/openhealth/views/orders/order_actions.xml",
 		"/Users/gibil/cellar/github/openhealth/views/reports/report_sale_graphs.xml",
@@ -864,19 +723,15 @@
 		"/Users/gibil/cellar/github/openhealth/views/treatments/treatment_services.xml",
 		"/Users/gibil/cellar/github/openhealth/static/src/css/jx.css",
 		"/Users/gibil/cellar/github/openhealth/models/emr/appointment.DEP.txt",
-		"/Users/gibil/cellar/github/openhealth/views/orders/order.xml",
 		"/Users/gibil/cellar/github/openhealth/models/marketing/marketing.py",
 		"/Users/gibil/cellar/github/openhealth/models/patient/partner.py",
 		"/Users/gibil/cellar/github/openhealth/reports/print_ticket_receipt_electronic.xml",
-		"/Users/gibil/cellar/github/openhealth/security/ir.model.access.csv",
 		"/Users/gibil/cellar/github/openhealth/models/management/management.py",
 		"/Users/gibil/cellar/github/openhealth/views/menus/menus_calendar.TRASH.xml",
 		"/Users/gibil/cellar/github/openhealth/views/menus/menus_app.TRASH.xml",
 		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_staff.xml",
-		"/Users/gibil/cellar/github/openhealth/security/buff.txt",
 		"/Users/gibil/cellar/github/openhealth/data/categs/base_data_categs_partners.xml",
 		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_managers.xml",
-		"/Users/gibil/cellar/github/openhealth/security/openhealth_security.xml",
 		"/Users/gibil/cellar/github/openhealth/views/orders/order_line.xml",
 		"/Users/gibil/cellar/github/openhealth/reports/paper_format.xml",
 		"/Users/gibil/cellar/github/openhealth/models/order/order_line.py",
@@ -889,13 +744,9 @@
 		"/Users/gibil/cellar/github/openhealth/views/marketing/patient_line.xml",
 		"/Users/gibil/cellar/github/openhealth/models/marketing/patient_line.py",
 		"/Users/gibil/cellar/github/openhealth/models/emr/prodvars.py",
-		"/Users/gibil/cellar/github/openhealth/models/emr/evaluation.py",
 		"/Users/gibil/cellar/github/openhealth/models/emr/procedure.py",
-		"/Users/gibil/cellar/github/openhealth/models/emr/product.py",
 		"/Users/gibil/cellar/github/openhealth/models/order/test_order.py",
 		"/Users/gibil/cellar/github/openhealth/models/emr/treatment.py",
-		"/Users/gibil/cellar/github/openhealth/views/menus/menus_products.xml",
-		"/Users/gibil/cellar/github/openhealth/models/__init__.py",
 		"/Users/gibil/cellar/github/openhealth/models/marketing/__init__.py",
 		"/Users/gibil/cellar/github/openhealth/models/patient/patient_line.py",
 		"/Users/gibil/cellar/github/openhealth/models/management/mgt_funcs.py",
@@ -905,12 +756,10 @@
 		"/Users/gibil/cellar/github/openhealth/models/marketing/marketing.DEP.txt",
 		"/Users/gibil/cellar/github/openhealth/models/marketing/mkt_funcs.py",
 		"/Users/gibil/cellar/github/openhealth/views/patients/patient_actions.xml",
-		"/Users/gibil/cellar/github/openhealth/views/configurators/configurator_emr.xml",
 		"/Users/gibil/cellar/github/openhealth/models/containers/export.py",
 		"/Users/gibil/cellar/github/openhealth/models/management/configurator_emr.py",
 		"/Users/gibil/cellar/github/openhealth/models/containers/container.py",
 		"/Users/gibil/cellar/github/openhealth/models/electronic/electronic_line.py",
-		"/Users/gibil/cellar/github/openhealth/views/management/management_order_line.xml",
 		"/Users/gibil/cellar/github/openhealth/views/electronic/electronic_order.xml",
 		"/Users/gibil/cellar/github/openhealth/models/containers/lib_exp.py",
 		"/Users/gibil/cellar/github/openhealth/views/account/patient_line_actions.xml",
@@ -927,39 +776,12 @@
 		"/Users/gibil/cellar/github/openhealth/views/closings/closings.xml",
 		"/Users/gibil/cellar/github/openhealth/models/order/report_sale_product.py",
 		"/Users/gibil/cellar/github/openhealth/models/management/configurator.py",
-		"/Users/gibil/cellar/github/openhealth/views/management/management.xml",
 		"/Users/gibil/cellar/github/openhealth/reports/patient/report_patient.xml",
 		"/Users/gibil/cellar/github/openhealth/models/order/ord_vars.py",
 		"/Users/gibil/cellar/github/openhealth/views/containers/container.xml",
 		"/Users/gibil/cellar/github/openhealth/models/patient/pat_vars.py",
 		"/Users/gibil/cellar/github/openhealth/models/marketing/media_line.py",
-		"/Users/gibil/cellar/github/openhealth/models/marketing/lib_marketing.py",
-		"/Users/gibil/cellar/github/openhealth/views/marketing/media_line.xml",
-		"/Users/gibil/cellar/github/openhealth/security/openhealth_security_readers.xml",
-		"/Users/gibil/cellar/github/openhealth/models/service/service_cosmetology.py",
-		"/Users/gibil/cellar/github/price_list/security/ir.model.access.BUFF.csv",
-		"/Users/gibil/cellar/github/price_list/security/ir.model.access.csv",
-		"/Users/gibil/cellar/github/openhealth/models/service/service.py",
-		"/Users/gibil/cellar/github/openhealth/models/service/__init__.py",
-		"/Users/gibil/cellar/github/openhealth/models/management/family_line.py",
-		"/Users/gibil/cellar/github/openhealth/models/management/day_doctor_line.py",
-		"/Users/gibil/cellar/github/openhealth/models/management/doctor_line.py",
-		"/Users/gibil/cellar/github/openhealth/models/management/buff.py",
-		"/Users/gibil/cellar/github/openhealth/models/service/service_cosmetology.TRASH.py",
-		"/Users/gibil/cellar/github/openhealth/models/management/mgt_vars.py",
-		"/Users/gibil/cellar/github/openhealth/models/service/service_co2.py",
-		"/Users/gibil/cellar/github/openhealth/views/menus/menus_marketing.xml",
-		"/Users/gibil/cellar/github/openhealth/views/management/management_actions.xml",
-		"/Users/gibil/cellar/github/openhealth/views/menus/menus_management.xml",
-		"/Users/gibil/cellar/github/openhealth/views/account/patient_line_search.xml",
-		"/Users/gibil/cellar/github/openhealth/views/products/product_search.txt",
-		"/Users/gibil/cellar/github/openhealth/models/libs/creates.py",
-		"/Users/gibil/cellar/github/openhealth/models/libs/user.py",
-		"/Users/gibil/cellar/github/openhealth/views/products/product_actions.xml",
-		"/Users/gibil/cellar/github/openhealth/models/libs/lib.py",
-		"/Users/gibil/cellar/github/openhealth/models/libs/acc_funcs.py",
-		"/Users/gibil/cellar/github/openhealth/models/management/mangement.DEP.GRAPH.py",
-		"/Users/gibil/cellar/github/openhealth/models/management/data_model.py"
+		"/Users/gibil/cellar/github/openhealth/models/marketing/lib_marketing.py"
 	],
 	"find":
 	{
@@ -978,6 +800,18 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"        </record>",
+			"sale",
+			"ageless",
+			"acneto",
+			"        </record>",
+			"sale_ok",
+			"ok",
+			"name=\"patient",
+			"patient",
+			"        </record>",
+			"product",
+			"product_",
 			"order_line_form_action",
 			"form_action",
 			"management_view",
@@ -1093,19 +927,7 @@
 			"clear(",
 			"clear",
 			"reset",
-			"update_patients",
-			"how_",
-			"x_first",
-			"order_line",
-			"patient_line",
-			"patient_proc_count",
-			"update_patients",
-			"avg_co2 =",
-			"avg_",
-			"ratio_pro_con",
-			"ration_pro_con",
-			"reset_macro",
-			"nr_consultation"
+			"update_patients"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1113,6 +935,9 @@
 		"regex": false,
 		"replace_history":
 		[
+			"            <field name=\"sale_ok\" eval=\"True\" />\n            <field name=\"purchase_ok\" eval=\"False\" />\n        </record>\n",
+			"\n            <field name='pl_price_list'>2018</field>\n        </record>\n",
+			"            <field name='pl_price_list'>2018</field>\n        </record>\n",
 			"marketing",
 			"ruc",
 			"phone",
@@ -1237,10 +1062,7 @@
 			"repo",
 			"marketing",
 			"delta_fast",
-			"delta_doctor",
-			"delta_fast",
-			"configurator",
-			"scheduler"
+			"delta_doctor"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -1251,7 +1073,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -1260,15 +1082,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11130,
+						"buffer_size": 11291,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								10969,
-								10969
+								10372,
+								10372
 							]
 						],
 						"settings":
@@ -1286,88 +1108,62 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "__init__.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 266,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								235,
-								266
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 6853.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "security/ir.model.access.csv",
+					"buffer": 1,
+					"file": "models/emr/product.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 16446,
+						"buffer_size": 8054,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								12897,
-								16446
+								924,
+								924
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 4809.0,
+						"translation.y": 412.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "security/buff.txt",
+					"buffer": 2,
+					"file": "views/products/product_template.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 783,
+						"buffer_size": 3138,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								540,
-								540
+								882,
+								898
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1377,388 +1173,36 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "security/openhealth_security_readers.xml",
+					"buffer": 3,
+					"file": "views/menus/menus_dev.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10663,
+						"buffer_size": 775,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								682,
+								682
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/XML/XML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 240.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "views/management/management_trees.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5808,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								43,
-								43
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2926.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "views/management/management.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 12782,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								12169,
-								12169
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "views/management/management.TRASH.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 11383,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1265,
-								1265
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "views/management/management_actions.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8123,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								8103,
-								8123
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 5085.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "views/management/management_order_line.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3692,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1039.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "security/openhealth_security.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 11721,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 262.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "models/emr/__init__.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1105,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								419,
-								419
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 12,
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "models/emr/physician.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2272,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								358,
-								358
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 151.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "models/emr/doctor.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 842,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								140,
-								140
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 14,
-					"type": "text"
-				},
-				{
-					"buffer": 14,
-					"file": "models/emr/evaluation.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8529,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								947,
-								947
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 398.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 13,
-					"type": "text"
-				},
-				{
-					"buffer": 15,
-					"file": "models/patient/patient.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 22385,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								9245,
-								9245
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 6787.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 15,
-					"type": "text"
-				},
-				{
-					"buffer": 16,
-					"file": "views/menus/menus_account.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2075,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								320,
-								320
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 17,
-					"type": "text"
-				},
-				{
-					"buffer": 17,
+					"buffer": 4,
 					"file": "views/menus/menus_openhealth.xml",
 					"semi_transient": false,
 					"settings":
@@ -1770,8 +1214,8 @@
 						"selection":
 						[
 							[
-								2420,
-								2420
+								2422,
+								2445
 							]
 						],
 						"settings":
@@ -1781,14 +1225,14 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 749.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 18,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 18,
+					"buffer": 5,
 					"file": "views/menus/menus_openhealth.TRASH.xml",
 					"semi_transient": false,
 					"settings":
@@ -1800,186 +1244,8 @@
 						"selection":
 						[
 							[
-								1411,
-								1411
-							]
-						],
-						"settings":
-						{
-							"auto_name": "",
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 120.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 19,
-					"type": "text"
-				},
-				{
-					"buffer": 19,
-					"file": "views/coders/coder.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4351,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3915,
-								3915
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1803.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 20,
-					"type": "text"
-				},
-				{
-					"buffer": 20,
-					"file": "openerp.TRASH.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4077,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4077,
-								4077
-							]
-						],
-						"settings":
-						{
-							"auto_name": "",
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2534.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 22,
-					"type": "text"
-				},
-				{
-					"buffer": 21,
-					"file": "models/__init__.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2467,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								467,
-								467
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 142.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 23,
-					"type": "text"
-				},
-				{
-					"buffer": 22,
-					"file": "models/electronic/coder.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 627,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								51,
-								51
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 16,
-					"type": "text"
-				},
-				{
-					"buffer": 23,
-					"file": "views/reports/report_sale_actions.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 18204,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								13468,
-								13468
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 4938.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 24,
-					"type": "text"
-				},
-				{
-					"buffer": 24,
-					"file": "views/reports/report_sale.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5746,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
+								581,
+								584
 							]
 						],
 						"settings":
@@ -1992,52 +1258,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 25,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 25,
-					"file": "views/configurators/configurator_emr.xml",
+					"buffer": 6,
+					"file": "data/prods/odoo_data_products.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4841,
+						"buffer_size": 23865,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4246,
-								4318
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 21,
-					"type": "text"
-				},
-				{
-					"buffer": 26,
-					"file": "views/menus/menus.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7111,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
+								2224,
+								2228
 							]
 						],
 						"settings":
@@ -2050,7 +1288,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 26,
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -2107,7 +1345,7 @@
 	"project": "OpenHealth-MIN.sublime-project",
 	"replace":
 	{
-		"height": 66.0
+		"height": 166.0
 	},
 	"save_all_on_build": true,
 	"select_file":

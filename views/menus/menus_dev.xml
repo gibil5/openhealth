@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+
+<!-- Main - DEV -->
+<menuitem   	id="main_dev_menu"
+				sequence="-6"
+				name="DEV"
+				groups="openhealth.roots"
+		/>
+
+		<!-- DEV --> 
+		<menuitem   id="parent_dev_menu" 
+							name="DEV"
+							parent="main_dev_menu"
+							sequence="1"
+						/>
+
+
+
+
+		<!-- Procurement Orders --> 
+		<menuitem   id="dev_procurement_order_menu"
+
+					parent="parent_dev_menu"
+			
+					sequence="15"
+
+					name="Procurement Orders"
+
+					action="procurement_order_list_action"
+				/>
+<!--
+procurement.order
+-->
+
+		<!-- Stock Moves --> 
+		<menuitem   id="dev_stock_move_menu"
+
+					parent="parent_dev_menu"
+			
+					sequence="16"
+
+					name="Stock Moves"
+
+					action="stock_move_list_action"
+				/>
+<!--
+stock.move
+-->
+
+
+
+    </data>
+</openerp>

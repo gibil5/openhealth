@@ -131,12 +131,18 @@
 		# ----------------------------------------------------------- Data - Products ------------------------------------------------------
 
 		'data/prods/odoo_data_products.xml',
-		'data/prods/odoo_data_products_new.xml',
-		'data/prods/odoo_data_products_dep.xml',			# Important
-		'data/prods/odoo_data_products_new_20181212.xml',
-		'data/prods/odoo_data_products_new_20190128.xml',	# New !
-		'data/prods/odoo_data_products_credit_notes.xml',	# New !
-		'data/prods/odoo_data_products_new_2019-03-06.xml',
+
+		'data/prods/odoo_data_products_new.xml',			# Has integrated the following
+
+		#'data/prods/odoo_data_products_dep.xml',			# Dep
+		#'data/prods/odoo_data_products_new_20181212.xml',	# Dep
+		#'data/prods/odoo_data_products_new_20190128.xml',	# Dep 
+		#'data/prods/odoo_data_products_new_2019-03-06.xml',	# Dep
+		#'data/prods/odoo_data_products_credit_notes.xml',	# Dep
+
+
+
+
 		'data/prods/odoo_data_services_co2.xml',
 		'data/prods/odoo_data_services_exc.xml',
 		'data/prods/odoo_data_services_m22.xml',
@@ -341,6 +347,8 @@
 		# Products
 		'views/products/product_actions.xml',
 		'views/products/product_product.xml',
+
+		'views/products/product_template.xml',
 
 
 		# Cards 

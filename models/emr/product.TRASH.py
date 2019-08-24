@@ -1,5 +1,34 @@
 
 
+
+
+
+# ----------------------------------------------------------- Print Ticket -------------------------------
+	#def get_name_ticket(self):
+	#	"""
+	#	Used by Print Ticket.
+	#	"""
+	#	return self.x_name_ticket
+
+
+# ----------------------------------------------------------- Canonical -------------------------------
+	#name = fields.Char(
+	#	'Name', 
+	#	required=True, 
+	#	translate=True, 
+	#	select=True
+	#	)
+
+	#type = fields.Selection(
+	#		_get_product_template_type_wrapper, 
+	#		'Product Type', 
+	#		required=True,
+	#       help="A consumable is a product for which you don't manage stock, a service is a non-material product provided by a company or an individual."
+	#	)
+
+
+
+
 # ----------------------------------------------------------- Checksum - Dep ----------------------------
 
 	# Checksum 1 - Generated vs Name

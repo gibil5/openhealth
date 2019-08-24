@@ -2,71 +2,7 @@
 <openerp>
     <data>
 
-
-
-<!-- Products - New - 17 DEc 2018-->
-
-        <!-- Vitamin c serum -->
-        <record id='vitamin_c_serum' model='product.template'>
-
-            <field name='name'>VITAMINA C SERUM</field>
-
-            <field name='x_name_short'>vitamin_c_serum</field>
-
-            <field name='type'>product</field>
-
-            <field name='price'>250</field>
-
-            <field name='standard_price'>250</field>
-
-            <field name='x_family'>topical</field>
-
-            <field name='categ_id' ref="topical"/>
-        </record>
-
-
-
-
-<!-- Products - New - 12 DEc 2018-->
-
-        <!-- Claridermil -->
-        <record id='claridermil' model='product.template'>
-
-            <field name='name'>CLARIDERMIL</field>
-
-            <field name='x_name_short'>claridermil</field>
-
-            <field name='type'>product</field>
-
-            <field name='price'>300</field>
-
-            <field name='standard_price'>300</field>
-
-            <field name='x_family'>topical</field>
-
-            <field name='categ_id' ref="topical"/>
-        </record>
-
-
-
-        <!-- Vitamina K -->
-        <record id='vitamin_k' model='product.template'>
-
-            <field name='name'>VITAMINA K</field>
-
-            <field name='x_name_short'>vitamin_k</field>
-
-            <field name='type'>product</field>
-
-            <field name='price'>250</field>
-
-            <field name='standard_price'>250</field>
-
-            <field name='x_family'>topical</field>
-
-            <field name='categ_id' ref="topical"/>
-        </record>
-
+<!-- Dep -->
 
     </data>
 </openerp>

@@ -23,28 +23,17 @@ class Product(models.Model):
 
 
 
-# ----------------------------------------------------------- Print Ticket -------------------------------
-	#def get_name_ticket(self):
-	#	"""
-	#	Used by Print Ticket.
-	#	"""
-	#	return self.x_name_ticket
 
+# ----------------------------------------------------------- Price List ------------------------
 
-# ----------------------------------------------------------- Canonical -------------------------------
-	#name = fields.Char(
-	#	'Name', 
-	#	required=True, 
-	#	translate=True, 
-	#	select=True
-	#	)
+	pl_price_list = fields.Selection(
+			[
+				('2019', '2019'),
+				('2018', '2018'),
+			],
+			string='Lista de Precios',
+		)
 
-	#type = fields.Selection(
-	#		_get_product_template_type_wrapper, 
-	#		'Product Type', 
-	#		required=True,
-	#       help="A consumable is a product for which you don't manage stock, a service is a non-material product provided by a company or an individual."
-	#	)
 
 
 

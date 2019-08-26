@@ -4,11 +4,6 @@
 
 
 
-
-
-
-
-
 <!-- Parents --> 
 
         <!-- Laser --> 
@@ -16,21 +11,15 @@
             <field name='name'>Laser</field>
         </record>
 
-
-
         <!-- Procedure --> 
         <record id='procedure_categ' model='product.category'>
             <field name='name'>Procedimiento</field>
         </record>
 
-
-
         <!-- Consultation --> 
         <record id='consultation_categ' model='product.category'>
             <field name='name'>Consulta</field>
         </record>
-
-
 
         <!-- Consultation --> 
         <record id='consultation_service_categ' model='product.category'>
@@ -44,7 +33,6 @@
 
 
 <!-- Services --> 
-
 
 
         <!-- Quick --> 

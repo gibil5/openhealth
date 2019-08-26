@@ -1,6 +1,30 @@
 
 
 
+
+	def action_confirm_nex(self):
+
+
+		#if self.x_serial_nr != '' and self.x_admin_mode == False:
+			# Prefix
+			#prefix = ord_vars._dic_prefix[self.x_type]
+
+			# Padding
+			#padding = ord_vars._dic_padding[self.x_type]
+
+			# Serial Nr
+			#self.x_serial_nr = prefix + self.x_separator + str(self.x_counter_value).zfill(padding)
+
+			#self.x_counter_value = user.get_counter_value(self)
+
+			#self.x_serial_nr = user.get_serial_nr(self.x_type, self.x_counter_value)
+
+
+		#res = super(sale_order, self).action_confirm()
+
+
+
+
 # ----------------------------------------------------- Product Selector - Dep --------------------------
 
 	@api.multi

@@ -2,15 +2,17 @@
 <openerp>
     <data>
         
+<!-- Dep ? -->
 
 
 <!-- ACTION -->
+<!--
         <record model="ir.actions.act_window" id="configurator_list_action">   
             <field name="name">Configurators</field>
             <field name="res_model">openhealth.configurator</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
         </record>
-
+-->
     </data>
 </openerp>

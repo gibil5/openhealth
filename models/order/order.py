@@ -3,10 +3,9 @@
 	Order
 
 	Created: 			26 Aug 2016
-	Last mod: 			12 Apr 2019
+	Last mod: 			24 Aug 2019
 """
 from __future__ import print_function
-
 import math
 import datetime
 try:
@@ -24,14 +23,243 @@ from . import lib_qr
 from . import test_order
 from . import chk_order
 
+from . import exc_ord
+
 class sale_order(models.Model):
 	"""
-	high level support for doing this and that.
+	Sale Class
+	Inherited from the medical Module OeHealth
+	Has the Business Logic of the Clinic
 	"""
 	_inherit = 'sale.order'
 
 	_description = 'Order'
 
+
+
+# ----------------------------------------------------------- Relational -------------------------
+
+	def _default_configurator(self):
+		print()
+		print('Default Configurator')
+
+		# Doctors
+		configurator = self.env['openhealth.configurator.emr'].search([
+																		#('active', 'in', [True]),
+											],
+												#order='x_serial_nr asc',
+												limit=1,
+											)
+		print(configurator)
+		print(configurator.name)
+		print(configurator.id)
+
+		# Manage Exception
+		try:
+			configurator.ensure_one()
+
+		except:
+			msg = "ERROR: Record Must be One."
+			class_name = type(configurator).__name__
+			#obj_name = counter.name
+			#msg =  msg + '\n' + class_name + '\n' + obj_name
+			#msg =  msg 
+			msg =  msg + '\n' + class_name
+
+			raise UserError(_(msg))
+
+		return configurator.id
+
+
+	configurator = fields.Many2one(
+			'openhealth.configurator.emr',
+			string="Config",
+
+			#required=True,
+
+			default=_default_configurator,
+		)
+
+
+
+# ----------------------------------------------------------- Validate Button ----------------------------
+
+	# Action confirm
+	@api.multi
+	def validate(self):
+		"""
+		Validate the order. 
+		Before Confirmation.
+		"""
+		print()
+		print('Validate')
+
+
+		# Handle Exceptions
+		exc_ord.handle_exceptions(self)
+
+
+		# If Everything is OK
+		self.check_and_generate()
+
+
+
+
+
+	def check_and_generate(self):
+		"""
+		Generate and Check
+		"""
+		print()
+		print('Validate')
+
+		# Payment method validation
+		self.check_payment_method()
+
+
+		# Doctor User Name
+		if self.x_doctor.name != False:
+			uid = self.x_doctor.x_user_name.id
+			self.x_doctor_uid = uid
+
+
+		# Date - Must be that of the Sale, not the Budget.
+		self.date_order = datetime.datetime.now()
+		self.update_day_month()
+
+
+		# Update Descriptors (family and product)
+		self.update_descriptors()
+
+
+		# Change Appointment State - To Invoiced
+		self.update_appointment()
+
+
+		# Vip Card - Detect and Create
+		self.detect_create_card()
+
+
+		# Type
+		#print 'Type'
+		if self.x_payment_method.saledoc != False:
+			self.x_type = self.x_payment_method.saledoc
+		#print self.x_type
+
+
+
+		# Create Procedure 
+		if self.treatment.name != False:
+			for line in self.order_line:
+				if line.product_id.x_family in ['laser', 'medical', 'cosmetology']:
+					self.treatment.create_procedure(False, line.product_id.x_treatment, line.product_id.id)
+				line.update_recos()
+			# Update
+			self.x_procedure_created = True
+			self.treatment.update_appointments()
+
+
+		# Id Doc and Ruc
+		#print self.x_type
+		#print self.x_id_doc
+		#print self.x_ruc
+
+		# Invoice
+		if self.x_type in ['ticket_invoice', 'invoice']:
+			if self.x_ruc in [False, '']:
+				msg = "Error: RUC Ausente."
+				#raise Warning(_(msg))
+				raise UserError(_(msg))
+
+		# Receipt
+		elif self.x_type in ['ticket_receipt', 'receipt']:
+			if self.x_id_doc_type in [False, '']  or self.x_id_doc in [False, '']:
+				msg = "Error: Documento de Identidad Ausente."
+				#raise Warning(_(msg))
+				raise UserError(_(msg))
+
+
+
+		# Update Patient
+		if self.patient.x_id_doc in [False, '']:
+			self.patient.x_id_doc_type = self.x_id_doc_type
+			self.patient.x_id_doc = self.x_id_doc
+
+
+		# Change Electronic
+		self.x_electronic = True
+
+
+		# Title
+		if self.x_type in ['ticket_receipt', 'receipt']:
+			self.x_title = 'Boleta de Venta Electrónica'
+		elif self.x_type in ['ticket_invoice', 'invoice']:
+			self.x_title = 'Factura de Venta Electrónica'
+		else:
+			self.x_title = 'Venta Electrónica'
+
+
+		# Change State
+		self.state = 'validated'
+
+	# validate
+
+
+
+
+# ----------------------------------------------------------- Confirm - Button ----------------------
+
+	@api.multi
+	def action_confirm_nex(self):
+		"""
+		Button
+		Confirms the Sale.
+		After Validation
+		"""
+		print()
+		print('Action confirm - Nex')
+
+
+		# Generate Serial Number
+		if self.x_serial_nr != '' and not self.x_admin_mode:
+			# Counter
+			self.x_counter_value = user.get_counter_value(self, self.x_type, self.state)
+			# Serial Nr
+			self.x_serial_nr = user.get_serial_nr(self.x_type, self.x_counter_value, self.state)
+
+
+		# The parent procedure
+		super(sale_order, self).action_confirm()
+
+
+		# QR
+		if self.x_type in ['ticket_receipt', 'ticket_invoice']:
+			self.make_qr()
+
+	# action_confirm_nex
+
+
+
+# ----------------------------------------------------------- Make QR ----------------------
+	# Make QR
+	@api.multi
+	def make_qr(self):
+		"""
+		Make QR Image for Electronic Billing
+		"""
+
+		# Create Data
+		self.x_qr_data = lib_qr.get_qr_data(self)
+
+		# Create Img
+		img_str, name = lib_qr.get_qr_img(self.x_qr_data)
+
+		# Update
+		self.write({
+						'x_qr_img': img_str,
+						'qr_product_name':name,
+				})
+	# make_qr
 
 
 
@@ -787,33 +1015,13 @@ class sale_order(models.Model):
 		)
 
 
-	# Make QR
-	@api.multi
-	def make_qr(self):
-		"""
-		high level support for doing this and that.
-		"""
-
-		# Create Data
-		self.x_qr_data = lib_qr.get_qr_data(self)
-
-		# Create Img
-		img_str, name = lib_qr.get_qr_img(self.x_qr_data)
-
-		# Update
-		self.write({
-						'x_qr_img': img_str,
-						'qr_product_name':name,
-				})
-
-	# make_qr
 
 
 
 # ----------------------------------------------------------- Mode Admin --------------------------
 	x_admin_mode = fields.Boolean(
 			'Modo Admin',
- 			help='Activa el Modo Administrador.',
+			help='Activa el Modo Administrador.',
 		)
 
 
@@ -1115,185 +1323,7 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Validate ----------------------------
 
-	# Action confirm
-	@api.multi
-	def validate(self):
-		"""
-		high level support for doing this and that.
-		"""
-		#print()
-		#print('Validate')
-
-
-		# Payment method validation
-		self.check_payment_method()
-
-
-		# Doctor User Name
-		if self.x_doctor.name != False:
-			uid = self.x_doctor.x_user_name.id
-			self.x_doctor_uid = uid
-
-
-
-
-		# Date - Must be that of the Sale, not the Budget.
-		self.date_order = datetime.datetime.now()
-		self.update_day_month()
-
-
-
-		# Update Descriptors (family and product)
-		self.update_descriptors()
-
-
-		# Change Appointment State - To Invoiced
-		self.update_appointment()
-
-
-		# Vip Card - Detect and Create
-		self.detect_create_card()
-
-
-		# Type
-		#print 'Type'
-		if self.x_payment_method.saledoc != False:
-			self.x_type = self.x_payment_method.saledoc
-		#print self.x_type
-
-
-
-		# Create Procedure 
-		if self.treatment.name != False:
-			for line in self.order_line:
-				if line.product_id.x_family in ['laser', 'medical', 'cosmetology']:
-
-
-					# Create with Appointment - Dep !
-					#creates.create_procedure_wapp(self, line.product_id.x_treatment, line.product_id.id)
-
-					# Create
-					#creates.create_procedure_go(self, False, line.product_id.x_treatment, line.product_id.id)
-					self.treatment.create_procedure(False, line.product_id.x_treatment, line.product_id.id)
-
-
-				line.update_recos()
-			# Update
-			self.x_procedure_created = True
-			self.treatment.update_appointments()
-
-
-
-
-		# Id Doc and Ruc
-		#print self.x_type
-		#print self.x_id_doc
-		#print self.x_ruc
-
-		# Invoice
-		if self.x_type in ['ticket_invoice', 'invoice']:
-			if self.x_ruc in [False, '']:
-				msg = "Error: RUC Ausente."
-				#raise Warning(_(msg))
-				raise UserError(_(msg))
-
-		# Receipt
-		elif self.x_type in ['ticket_receipt', 'receipt']:
-			if self.x_id_doc_type in [False, '']  or self.x_id_doc in [False, '']:
-				msg = "Error: Documento de Identidad Ausente."
-				#raise Warning(_(msg))
-				raise UserError(_(msg))
-
-
-
-
-
-		# Update Patient
-		if self.patient.x_id_doc in [False, '']:
-			self.patient.x_id_doc_type = self.x_id_doc_type
-			self.patient.x_id_doc = self.x_id_doc
-
-
-
-		# Change Electronic
-		self.x_electronic = True
-
-		# Title
-		if self.x_type in ['ticket_receipt', 'receipt']:
-			self.x_title = 'Boleta de Venta Electrónica'
-		elif self.x_type in ['ticket_invoice', 'invoice']:
-			self.x_title = 'Factura de Venta Electrónica'
-		else:
-			self.x_title = 'Venta Electrónica'
-
-
-
-		# Change State
-		self.state = 'validated'
-	# validate
-
-
-
-# ----------------------------------------------------------- Action Confirm ----------------------
-
-	# Action confirm
-	@api.multi
-	def action_confirm_nex(self):
-		"""
-		high level support for doing this and that.
-		"""
-		#print
-		#print 'Action confirm - Nex'
-
-
-		#Write your logic here - Begin
-
-		# Generate Serial Number
-		#if self.x_serial_nr != '' and self.x_admin_mode == False:
-		if self.x_serial_nr != '' and not self.x_admin_mode:
-
-
-			# Prefix
-			#prefix = ord_vars._dic_prefix[self.x_type]
-
-			# Padding
-			#padding = ord_vars._dic_padding[self.x_type]
-
-			# Serial Nr
-			#self.x_serial_nr = prefix + self.x_separator + str(self.x_counter_value).zfill(padding)
-
-
-
-			# Counter
-			#self.x_counter_value = user.get_counter_value(self)
-			self.x_counter_value = user.get_counter_value(self, self.x_type, self.state)
-
-			# Serial Nr
-			#self.x_serial_nr = user.get_serial_nr(self.x_type, self.x_counter_value)
-			self.x_serial_nr = user.get_serial_nr(self.x_type, self.x_counter_value, self.state)
-
-
-
-
-		#Write your logic here - End
-
-
-		# The actual procedure
-		#res = super(sale_order, self).action_confirm()
-		super(sale_order, self).action_confirm()
-
-
-		#Write your logic here
-
-
-
-		# QR
-		if self.x_type in ['ticket_receipt', 'ticket_invoice']:
-			self.make_qr()
-
-	# action_confirm_nex
 
 
 

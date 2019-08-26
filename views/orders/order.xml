@@ -386,6 +386,10 @@
 				<!-- Price list --> 
 				<xpath expr="//field[@name='pricelist_id']" position="replace">
 
+
+					<field name="configurator"			required="1"/>
+
+
 					<field name="x_admin_mode"          groups="openhealth.roots,openhealth.managers,openhealth.caja,openhealth.directors"/>
 					
 					<field name="pricelist_id"          readonly="1"/>
@@ -565,7 +569,7 @@
 				<!-- Partner --> 
 				<field name="partner_id" position="replace">
 
-					<field name="patient"       required="0"            options="{'no_create': False, 'no_create_edit':True}"       />
+					<field name="patient"       required="1"            options="{'no_create': False, 'no_create_edit':True}"       />
 				
 				</field>
 
@@ -623,33 +627,21 @@
 				<field name="patient" position="after"  >
 
 <!--
-					<field name="x_id_doc_type"     
-														attrs="{
-																		'required':[('x_type', 'not in', ['ticket_invoice', 'invoice'])], 
-																}"
-						/>
-
-					<field name="x_id_doc"          
-														attrs="{
-																		'required':[('x_type', 'not in', ['ticket_invoice', 'invoice'])], 
-																}"
-						/>
--->
-
 					<field name="x_id_doc_type"     required="0"/>
 
 					<field name="x_id_doc"          required="0"/>
+-->
 
+
+					<field name="x_id_doc_type"	attrs="{'required':[('x_type', 'not in', ['ticket_invoice', 'invoice'])],}"/>
+
+					<field name="x_id_doc"   	attrs="{'required':[('x_type', 'not in', ['ticket_invoice', 'invoice'])],}"/>
 
 					<field name="x_dni"/>
 
 					<field name="vspace"/>
 
-					<field name="x_ruc"
-														attrs="{
-																		'required':[('x_type', 'in', ['ticket_invoice', 'invoice'])], 
-																}"
-						/>
+					<field name="x_ruc"			attrs="{'required':[('x_type', 'in', ['ticket_invoice', 'invoice'])],}"/>
 				</field>
 
 

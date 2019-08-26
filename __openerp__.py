@@ -6,7 +6,7 @@
 
 	'description': """
 
-		24 Aug 2019
+		26 Aug 2019
 
 		Remember, Hunter and Westerman:
 			- Step 1 - New Thinking: Avoid the 7 Value Traps.
@@ -101,7 +101,7 @@
 		# Check that data is not updated. All the time. 
 
 		# Categs
-		'data/categs/base_data_categs_partners.xml',			
+		#'data/categs/base_data_categs_partners.xml',		# Dep !	
 		'data/categs/base_data_categs_prods.xml',			
 
 		# Allergy 

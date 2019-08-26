@@ -3,12 +3,10 @@
  		*** RES PARTNER
  
  		Created: 			26 Aug 2016
-		Last updated: 	 	 5 Nov 2018
+		Last updated: 	 	26 Aug 2019
 """
 from openerp import models, fields, api
 from . import partner_vars
-#from . import lib
-
 
 class Partner(models.Model):
 	"""
@@ -18,13 +16,7 @@ class Partner(models.Model):
 
 
 
-
-
-# ----------------------------------------------------------- Notes -----------------------------	
-	# Note
-	#x_note = fields.Text(
-	#		'Nota', 
-	#	)
+# ----------------------------------------------------------- Dep -----------------------------	
 
 
 
@@ -48,22 +40,13 @@ class Partner(models.Model):
 # ----------------------------------------------------------- Hard wired - With Patient -----------
 
 	# Company
-
-	#x_firm_address = fields.Char(
-	#		"Dirección (Razón social)",
-	#	)
-
-
 	x_firm = fields.Char(
 			"Razón social",
 		)
 
-
 	x_ruc = fields.Char(
 			"RUC",
 		)
-
-
 
 	# Phones
 	phone = fields.Char(
@@ -81,7 +64,6 @@ class Partner(models.Model):
 			required=False,
 		)
 
-
 	# Address
 	country_id = fields.Many2one(
 			'res.country',
@@ -92,10 +74,7 @@ class Partner(models.Model):
 		)
 
 	city = fields.Selection(
-
-			#selection = pat_vars._city_list,
 			selection = partner_vars._city_list,
-
 			string = 'Departamento',
 			default = 'lima',
 			required=False,
@@ -119,13 +98,8 @@ class Partner(models.Model):
 		)
 
 	street2_sel = fields.Selection(
-
-			#selection = pat_vars._street2_list,
 			selection = partner_vars._street2_list,
-
-			string = "Distrito", 	
-			
-			#required=True, 
+			string = "Distrito",
 			required=False, 
 		)
 
@@ -142,17 +116,14 @@ class Partner(models.Model):
 			required=False,
 		)
 
-
 	# Only for foreign addresses
 	x_foreign = fields.Boolean(
 			string="Dirección en el extranjero",
 		)
 
-
 	x_address_foreign = fields.Text(
 			string=".",
 		)
-
 
 	# Vspace
 	vspace = fields.Char(
@@ -176,8 +147,6 @@ class Partner(models.Model):
 			"DNI", 	
 			index=True,
 			required=False,
-
-			#readonly=True
 		)
 
 # ----------------------------------------------------------- My Company ------------------------------------------------------
@@ -186,7 +155,6 @@ class Partner(models.Model):
 	x_my_company = fields.Boolean(
 			'Mi compañía ?', 
 		)
-
 
 	# Series 
 	x_series = fields.Char(
@@ -209,14 +177,6 @@ class Partner(models.Model):
 		)
 
 
-
-
-
-
-
-
-
-
 # ----------------------------------------------------------- Vip ------------------------------------------------------
 	# Vip 
 	x_vip = fields.Boolean(
@@ -229,8 +189,6 @@ class Partner(models.Model):
 	@api.multi
 	#@api.depends('x_card')
 	def _compute_x_vip(self):
-		#print
-		#print 'Compute  - Partner - Vip'
 
 		# Does he have a Vip card ?
 		for record in self:
@@ -257,11 +215,7 @@ class Partner(models.Model):
 	@api.multi
 	def action_ppl_public(self):  
 
-		#print 'jx'
-		#print 'PPL Public'
-
 		pricelist_name = 'Public Pricelist'
-
 
 		# Pricelist 
 		pricelist = self.env['product.pricelist'].search([
@@ -277,9 +231,6 @@ class Partner(models.Model):
 	@api.multi
 	def action_ppl_vip(self):  
 
-		#print 'jx'
-		#print 'PPL Vip'
-
 		pricelist_name = 'VIP'
 
 		# Pricelist 
@@ -290,11 +241,6 @@ class Partner(models.Model):
 														limit=1,)
 		self.property_product_pricelist = pricelist
 	# action_ppl_vip
-
-
-
-
-
 
 
 # ----------------------------------------------------------- On Changes ------------------------------------------------------
@@ -310,36 +256,10 @@ class Partner(models.Model):
 			name = self.name.strip().upper()
 			self.name = " ".join(name.split())			
 
-
 	# Foreign 
 	@api.onchange('x_foreign')
 	def _onchange_x_foreign(self):
 		self.city = "" if self.x_foreign == True else 'don'
-
-
-
-
-	# Dni - Test - For Digits and Length - Deprecated !
-	#@api.onchange('x_dni')
-	#def _onchange_x_dni(self):
-
-	#	ret = lib.test_for_digits(self, self.x_dni)		
-	#	return ret if ret != 0 else 'don'
-
-	#	ret = lib.test_for_length(self, self.x_dni, 8)
-	#	return ret if ret != 0 else 'don'
-
-
-	# Ruc - Test - For Digits - Deprecated
-	#@api.onchange('x_ruc')
-	#def _onchange_x_ruc(self):
-		
-	#	ret = lib.test_for_digits(self, self.x_ruc)		
-	#	return ret if ret != 0 else 'don'
-
-	#	ret = lib.test_for_length(self, self.x_ruc, 11)		
-	#	return ret if ret != 0 else 'don'
-
 
 
 
@@ -355,7 +275,6 @@ class Partner(models.Model):
 	
 		# Compact and Uppercase Name
 		if 'name' in vals:
-
 			#  Name to upper. And strips beg and end spaces. 
 			#print 'Compact'
 			name = vals['name']
@@ -363,24 +282,9 @@ class Partner(models.Model):
 			name = " ".join(name.split())		# Compact - Strip beginning, inside and ending extra spaces
 			vals['name'] = name 
 
-
-
-
 		# Put your logic here 
 		res = super(Partner, self).create(vals)
 		# Put your logic here 
-
-
-		# Search 
- 		#patient = self.env['oeh.medical.patient'].search([
-		#														('name', '=', res.name), 
-		#												],
-		#													#order='write_date desc',
-		#													limit=1,
-		#												)
- 		#if patient.x_test != False: 
-		#	res.x_test = patient.x_test
-
 
 		return res
 	# CRUD - Create 

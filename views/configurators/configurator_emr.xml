@@ -19,30 +19,18 @@
 
 					<!-- Sheet -->  
 					<sheet>
-<!--
+
+						<!-- Base -->
 						<group>
 							<group>
 								<field name="name"/>
-							</group>
-							<group>
-							</group>
-						</group>
-
-						<group>
-							<group>
 								<field name="x_type"/>
 							</group>
 							<group>
+								<field name="company_ruc"/>
 							</group>
 						</group>
--->
-						<group>
-							<field name="name"/>
-							<field name="x_type"/>
-						</group>
-
-
-
+						
 
 						<group  string="Horarios">
 							<group>
@@ -54,34 +42,21 @@
 						</group>
 
 
-<!--
-                        <group  string="Feriados"  col="2" >
-                            <group>
-                            </group>
-                            <group>
-                            </group>
-                        </group>
--->
-
 						<!-- Notebook --> 
 						<notebook>
 
+							<!-- Holidays --> 
+							<page   string="Feriados">
+								<field name="day_line">
+									<tree string="Holidays">
+										<field name="date"/>
+										<field name="holiday"/>
+									</tree>
+								</field>
+							</page>
 
-                            <!-- Holidays --> 
-                            <page   string="Feriados">
-                                <field name="day_line">
-                                    <tree string="Holidays">
-                                        <field name="date"/>
-                                        <field name="holiday"/>
-                                    </tree>
-                                </field>
-                            </page>
-<!--
-                                        <field name="name"/>
--->
-
-                            <!-- Medical --> 
-                            <page   string="Laser">
+							<!-- Medical --> 
+							<page   string="Laser">
 
 								<group>
 									<group  string="Nr Sesiones">
@@ -100,33 +75,18 @@
 										<field name="nr_controls_ndyag"/>
 									</group>
 								</group>
+							</page>
 
-<!--
-						<group  string="Nr Controles">
-							<group></group>
-						</group>
--->
-                            </page>
-
-
-
-
-
-
-
-
-
-
-                            <!-- Doctors --> 
+							<!-- Doctors --> 
 <!--                            
-                            <page   string="Medicos Activos">
-                                <field name="doctor_line">
-                                    <tree string="Drs.">
-                                        <field name="name"/>
-                                        <field name="active"/>
-                                    </tree>
-                                </field>
-                            </page>
+							<page   string="Medicos Activos">
+								<field name="doctor_line">
+									<tree string="Drs.">
+										<field name="name"/>
+										<field name="active"/>
+									</tree>
+								</field>
+							</page>
 -->
 
 						</notebook>
@@ -140,17 +100,18 @@
 
 <!-- TREE -->
 		<record model="ir.ui.view" id="configurator_emr_view_tree">
-			
 			<field name="name">openhealth.configurator.emr.tree</field>
-
 			<field name="model">openhealth.configurator.emr</field>
-
 			<field name="arch" type="xml">
-
 				<tree string="Configurator EMR Tree">
 					
+					<field name="id"/>
+
 					<field name="name"/>
 
+					<field name="x_type"/>
+					
+					<field name="company_ruc"/>
 				</tree>
 			</field>
 		</record>
@@ -169,34 +130,35 @@
 		</record>
 
 
+
 <!-- Config -->
-        <menuitem   id="main_config_menu" 
+		<menuitem   id="main_config_menu" 
+					sequence="-16"
 
-                    sequence="-16"
-
-                    name="Config - N"
+					name="Config - N"
 
 					groups="openhealth.roots,openhealth.directors,openhealth.managers"
-            />
+			/>
 
 
 
-        <!-- Config -->
-        <menuitem   id="openhealth_config_menu"
-                    parent="main_config_menu"
-                    sequence="1"
-                    name="Config - N"
-                />
+		<!-- Config -->
+		<menuitem   id="openhealth_config_menu"
+					parent="main_config_menu"
+					sequence="1"
+					name="Config - N"
+				/>
 
-        <!-- EMR --> 
-        <menuitem   id="config_emr_menu" 
+		<!-- EMR --> 
+		<menuitem   id="config_emr_menu" 
 
-                    name="Clinicas - N" 
+					name="Clinicas - N" 
 
-                    parent="openhealth_config_menu"
-                    sequence="1"
-                    action="configurator_emr_list_action"
-            />
+					parent="openhealth_config_menu"
+					sequence="1"
+
+					action="configurator_emr_list_action"
+			/>
 
 
 

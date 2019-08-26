@@ -2,79 +2,62 @@
 <openerp>
     <data noupdate='0'>
 
+<!--
+pk2ry333
+q39cwmmv
+rn9vstcw
+jm48h6bd
+e9mp2v4w
+n2vp2fbt
+827fndzr
+ah5k7j2h
+-->
 
 
-<!-- Johanna Lopez -->
-        <record id="jlopez" model="res.partner">
-            <field name="name">Johanna Lopez</field>
-            <field name="email">jlopez@clinicachavarri.com</field>
+
+<!-- Daniela Urdanivia -->
+        <record id="durdanivia" model="res.partner">
+            <field name="name">Daniela Urdanivia</field>
+            <field name="email">durdanivia@clinicachavarri.com</field>
             <field name="function">reception</field>
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
         </record>
 
-        <record id="jlopez_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
-            <field name="name">Johanna Lopez</field>
-            <field name="login">jlopez@clinicachavarri.com</field>
+        <record id="durdanivia_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
+            <field name="name">Daniela Urdanivia</field>
+            <field name="login">durdanivia@clinicachavarri.com</field>
 
-            <field name="password">4trBYrvB</field>
+            <field name="password">u6zhrxw9</field>
 
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="active">True</field>
             <field name="tz">America/Lima</field>
             <field name="lang">es_ES</field>
 
-            <field name="partner_id" ref="jlopez"/>
+            <field name="partner_id" ref="durdanivia"/>
         </record>
 
 
-
-
-
-<!-- Paulo Ramirez -->
-        <record id="pramirez" model="res.partner">
-            <field name="name">Paulo Ramirez</field>
-            <field name="email">pramirez@clinicachavarri.com</field>
+<!-- Salvador Saucedo -->
+        <record id="ssaucedo" model="res.partner">
+            <field name="name">Salvador Saucedo</field>
+            <field name="email">ssaucedo@clinicachavarri.com</field>
             <field name="function">reception</field>
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
         </record>
 
-        <record id="pramirez_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
-            <field name="name">Paulo Ramirez</field>
-            <field name="login">pramirez@clinicachavarri.com</field>
+        <record id="ssaucedo_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
+            <field name="name">Salvador Saucedo</field>
+            <field name="login">ssaucedo@clinicachavarri.com</field>
 
-            <field name="password">4YgDw9wq</field>
-
-            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-            <field name="active">True</field>
-            <field name="tz">America/Lima</field>           
-            <field name="lang">es_ES</field>
-
-            <field name="partner_id" ref="pramirez"/>
-        </record>
-
-
-
-
-<!-- Cinthya Ramirez -->
-        <record id="cramirez" model="res.partner">
-            <field name="name">Cinthya Ramirez</field>
-            <field name="email">cramirez@clinicachavarri.com</field>
-            <field name="function">reception</field>
-            <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
-        </record>
-
-        <record id="cramirez_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
-            <field name="name">Cinthya Ramirez</field>
-            <field name="login">cramirez@clinicachavarri.com</field>
-
-            <field name="password">Q6m3a8jr</field>
+            <field name="password">suv3bm7q</field>
 
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="active">True</field>
             <field name="tz">America/Lima</field>
             <field name="lang">es_ES</field>
 
-            <field name="partner_id" ref="cramirez"/>
+            <field name="partner_id" ref="ssaucedo"/>
         </record>
 
 
@@ -91,9 +74,6 @@
             <field name="name">Nicolas Escobar</field>
             <field name="login">nescobar@clinicachavarri.com</field>
 
-<!--            
-            <field name="password">nescobar</field>
--->
             <field name="password">DnXZh7FW</field>
 
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
@@ -118,11 +98,7 @@
             <field name="name">Ivanna Michelot</field>
             <field name="login">imichelot@clinicachavarri.com</field>
 
-<!--
-            <field name="password">imichelot</field>
--->
             <field name="password">Agt5afvb</field>
-
 
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="active">True</field>
@@ -145,9 +121,7 @@
         <record id="gnunhez_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Gilda Nuñez</field>
             <field name="login">gnunhez@clinicachavarri.com</field>
-<!--
-            <field name="password">gnunhez</field>
--->
+
             <field name="password">RSZ8wxaj</field>
             
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
@@ -158,32 +132,6 @@
             <field name="partner_id" ref="gnunhez_partner"/>
         </record>
 
-
-
-<!-- Mariana Grieve -->
-        <record id="mgrieve" model="res.partner">
-            <field name="name">Mariana Grieve</field>
-            <field name="email">mgrieve@clinicachavarri.com</field>
-            <field name="function">reception</field>
-            <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
-        </record>
-
-        <record id="mgrieve_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
-            <field name="name">Mariana Grieve</field>
-            <field name="login">mgrieve@clinicachavarri.com</field>
-            
-<!--
-            <field name="password">mgrieve</field>
--->
-            <field name="password">UjQmL4rp</field>
-
-            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-            <field name="active">True</field>
-            <field name="tz">America/Lima</field>
-            <field name="lang">es_ES</field>
-
-            <field name="partner_id" ref="mgrieve"/>
-        </record>
 
 
 
@@ -198,9 +146,7 @@
         <record id="ktejada_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Karla Tejeda</field>
             <field name="login">ktejeda@clinicachavarri.com</field>
-<!--
-            <field name="password">ktejada</field>
--->         
+
             <field name="password">kE3LQPzA</field>
 
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
@@ -209,34 +155,6 @@
             <field name="lang">es_ES</field>
 
             <field name="partner_id" ref="ktejada"/>
-        </record>
-
-
-
-<!-- Claudia Torrealba -->
-        <record id="ctorrealba" model="res.partner">
-            <field name="name">Claudia Torrealba</field>
-            <field name="email">ctorrealba@clinicachavarri.com</field>
-            <field name="function">reception</field>
-            <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
-        </record>
-
-        <record id="ctorrealba_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
-            <field name="name">Claudia Torrealba</field>
-            <field name="login">ctorrealba@clinicachavarri.com</field>
-
-<!--
-            <field name="password">ctorrealba</field>
--->
-            <field name="password">XpC7CA3j</field>
-
-
-            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-            <field name="active">True</field>
-            <field name="tz">America/Lima</field>
-            <field name="lang">es_ES</field>
-
-            <field name="partner_id" ref="ctorrealba"/>
         </record>
 
     </data>

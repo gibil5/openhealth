@@ -1,3 +1,11 @@
+access_res_partner_almacen,res.partner.almacen,model_res_partner,openhealth.almacens,1,1,1,0
+
+
+
+
+
+
+
 access_stock_inventory_manager,stock.inventory manager,stock.model_stock_inventory,openhealth.caja,1,1,1,1
 access_ir_property_caja,ir.property.caja,base.model_ir_property,openhealth.caja,1,1,1,0
 access_stock_picking,stock.picking,stock.model_stock_picking,,1,1,1,1

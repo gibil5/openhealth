@@ -108,7 +108,9 @@ class Patient(models.Model):
 				'view_type': 'form',
 				'view_mode': 'form',
 				'target': 'current',
+
 				'res_model': 'openhealth.order.report.nex',
+
 				'res_id': res_id,
 				'flags': 	{
 								#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}

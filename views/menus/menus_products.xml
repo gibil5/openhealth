@@ -11,8 +11,8 @@
 
             name="Productos"
 
-            groups="openhealth.roots,openhealth.caja,openhealth.directors,openhealth.managers,openhealth.physicians,openhealth.assistants,openhealth.staffs,openhealth.reception"
-            />
+groups="openhealth.roots,openhealth.caja,openhealth.directors,openhealth.managers,openhealth.physicians,openhealth.assistants,openhealth.reception"
+/>
 
 
 

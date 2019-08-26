@@ -3,6 +3,8 @@
     <data noupdate='1'>
 
 
+<!-- Dep ? -->
+
 
 <!-- Plataforma -->
         <record id="plataforma_partner" model="res.partner">
@@ -29,7 +31,6 @@
             <field name="tz">America/Lima</field>
             <field name="partner_id" ref="plataforma_partner"/>
         </record>
-
 
 
 

@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from . import report_order_line
-from . import order_report_nex			# Estado de Cuenta 
+
+#from . import report_order_line
+#from . import order_report_nex			# Estado de Cuenta - Used by Patient - Moved
+
+
 from . import report_sale_product
 
 

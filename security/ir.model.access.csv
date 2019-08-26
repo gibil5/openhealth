@@ -29,7 +29,6 @@ access_openhealth_electronic_line,openhealth.electronic_line,model_openhealth_el
 access_res_partner_directors,res.partner.directors,model_res_partner,openhealth.directors,1,1,1,1
 access_res_partner_reception,res.partner.reception,model_res_partner,openhealth.reception,1,1,1,0
 access_res_partner_caja,res.partner.caja,model_res_partner,openhealth.caja,1,1,1,0
-access_res_partner_almacen,res.partner.almacen,model_res_partner,openhealth.almacens,1,1,1,0
 
 
 

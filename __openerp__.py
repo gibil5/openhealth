@@ -98,34 +98,55 @@
 
 # ----------------------------------------------------------- Data - First ------------------------------------------------------
 
+		# Inactive
+		#'data/users/base_data_users_inactive.xml',	
+
+
+
 		# Check that data is not updated. All the time. 
 
 		# Categs
 		#'data/categs/base_data_categs_partners.xml',		# Dep !	
-		'data/categs/base_data_categs_prods.xml',			
+		'data/categs/base_data_categs_prods.xml',
 
-		# Allergy 
+
+		# Allergies
 		'data/allergies/allergy.xml',
 
 		# Doctors
-		'data/physicians/base_data_physicians.xml',				# Aggregates all
+		'data/physicians/base_data_physicians.xml',					# Aggregates all
 		'data/physicians/base_data_physicians_inactive.xml',		
 		#'data/physicians/base_data_physicians_new.xml',			# Dep
 
 
-		# Generics 
-		'data/users/base_data_users_generics.xml',	
 
 		# Users - With pw
+		#'data/users/base_data_users_generics.xml',					# Dep ?
+		#'data/users/base_data_users_almacen.xml',					# Dep 
+		#'data/users/base_data_users_doctors_new.xml',				# Dep !
+		#'data/users/base_data_users_platform_new.xml',	
+		#'data/users/base_data_users_staff.xml',		
+
 		'data/users/base_data_users_platform.xml',	
-		'data/users/base_data_users_platform_new.xml',	
-		'data/users/base_data_users_cash.xml',		
-		'data/users/base_data_users_doctors.xml',
-		'data/users/base_data_users_assistants.xml',	
-		'data/users/base_data_users_staff.xml',		
-		'data/users/base_data_users_almacen.xml',		
+
+		'data/users/base_data_users_cash.xml',
+
+		'data/users/base_data_users_account.xml',		
+
 		'data/users/base_data_users_managers.xml',	
-		'data/users/base_data_users_doctors_new.xml',		
+
+		'data/users/base_data_users_doctors.xml',
+
+		'data/users/base_data_users_assistants.xml',	
+
+
+
+# ----------------------------------------------------------- Security - Users - First ------------------------------------------------------
+		'security/openhealth_security.xml',				# Groups
+		
+		'security/openhealth_security_readers.xml',		# Dep ?
+
+
 
 
 
@@ -158,10 +179,6 @@
 
 
 
-
-# ----------------------------------------------------------- Security - First ------------------------------------------------------
-		'security/openhealth_security.xml',				# Groups
-		'security/openhealth_security_readers.xml',
 
 
 
@@ -231,7 +248,6 @@
 		'views/management/management_order_line.xml',
 		'views/management/management_doctor_line.xml',
 
-
 		'views/management/management_trees.xml',
 		'views/management/management_actions.xml',
 		'views/management/management.xml',
@@ -260,8 +276,8 @@
 		'reports/print_ticket_receipt_electronic.xml',
 
 		# Ticket
-		'reports/phys/report_ticket_invoice_nex.xml',
-		'reports/phys/report_ticket_receipt_nex.xml',
+		#'reports/phys/report_ticket_invoice_nex.xml',		# Dep !
+		#'reports/phys/report_ticket_receipt_nex.xml',		# Dep !
 
 
 
@@ -275,7 +291,8 @@
 # ----------------------------------------------------------- Views - First Level ------------------------------------------------------
 
 		# Users
-		'views/users/user.xml',
+		#'views/users/user.xml',
+		'views/users/user_actions.xml',
 
 
 		# Orders

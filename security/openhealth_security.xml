@@ -12,9 +12,6 @@
         </record>
 
 
-<!--
-                                                        (4, ref('openhealth.rzevallos')), 
--->
 <!-- Roots --> 
         <record id="roots" model="res.groups">
             <field name="name">roots</field>
@@ -27,22 +24,11 @@
         </record>
 
 
-
-<!--
-                                                    (4, ref('openhealth.rzevallos')), 
--->
 <!-- Directors --> 
         <record id="directors" model="res.groups">
-
             <field name="name">Directores</field>
             <field name="category_id" ref="module_openhealth_category"/>
             <field name="comment">cc</field>
-<!--
-            <field name="implied_ids" eval="[(4, ref('purchase.group_purchase_manager'))]"/>
-            <field name="implied_ids" eval="[(4, ref('stock.group_stock_manager'))]"/>
-            <field name="implied_ids" eval="[(4, ref('base.group_hr_manager'))]"/>
-            <field name="implied_ids" eval="[(4, ref('oehealth.group_oeh_medical_manager'))]"/>
--->
 
             <field name="implied_ids" eval="[       
                                                     (4, ref('purchase.group_purchase_manager')),
@@ -51,17 +37,13 @@
                                                     (4, ref('oehealth.group_oeh_medical_manager')),
                                                 ]"/>
 
-
-
             <field name="users" eval="[
-                                                    (4, ref('openhealth.rchavarri_clinicachavarri')),
-
                                                     (4, ref('openhealth.director_clinicachavarri')),
+
+                                                    (4, ref('openhealth.rchavarri_clinicachavarri')),
                                                     (4, ref('openhealth.fchavarri_clinicachavarri')),
                                     ]"/>
         </record>
-
-
 
 
 
@@ -75,10 +57,6 @@
             <field name="users" eval="[ 
                                         (4, ref('openhealth.manager_clinicachavarri')),
 
-                                        (4, ref('openhealth.lloli_clinicachavarri')),
-
-                                        (4, ref('openhealth.vmori_clinicachavarri')),
-                                        (4, ref('openhealth.jessenwanger_clinicachavarri')),
                                         (4, ref('openhealth.pbalboa_clinicachavarri')),
                                         (4, ref('openhealth.achaponan_clinicachavarri')),
                                         (4, ref('openhealth.fcatpo_clinicachavarri')),
@@ -88,17 +66,8 @@
 
 
 
-
-
-
-
-
-
-
-
 <!-- Archivers -->
         <record id="archivers" model="res.groups">
-            
             <field name="name">Archivadores</field>
             <field name="category_id" ref="module_openhealth_category"/>
             <field name="comment">cc</field>
@@ -111,88 +80,6 @@
 
 
 
-
-<!-- Almacen  Manager --> 
-        <record id="almacen_managers" model="res.groups">
-            <field name="name">Almacen Managers</field>
-            <field name="category_id" ref="module_openhealth_category"/>
-
-
-            <field name="comment">cc</field>
-
-<!--
-            <field name="implied_ids" eval="[
-            ]"/>
-            <field name="implied_ids" eval="[
-            (4, ref('purchase.group_purchase_user'))
-            (4, ref('stock.group_stock_manager'))
-            ]"/>
--->
-            <field name="implied_ids" eval="[       
-                                                (4, ref('purchase.group_purchase_user')),
-                                                (4, ref('stock.group_stock_manager')),
-                                            ]"/>
-
-
-            <field name="users" eval="[ 
-                                        (4, ref('openhealth.almacen_clinicachavarri')),
-                                        (4, ref('openhealth.yramirez_clinicachavarri')),
-
-                                    ]"/>
-        </record>
-
-
-
-
-
-
-<!-- Almacen --> 
-        <record id="almacens" model="res.groups">
-            <field name="name">Almacens</field>
-            <field name="category_id" ref="module_openhealth_category"/>
-
-<!--
-            <field name="comment">cc</field>
--->
-<!--
-            <field name="implied_ids" eval="[(4, ref('purchase.group_purchase_user'))]"/>
-            <field name="implied_ids" eval="[(4, ref('stock.group_stock_user'))]"/>
--->
-            <field name="implied_ids" eval="[       
-                                                (4, ref('purchase.group_purchase_user')),
-                                                (4, ref('stock.group_stock_user')),
-                                            ]"/>
-
-
-<!--
-                                        (4, ref('openhealth.almacen_clinicachavarri')),
-                                        (4, ref('openhealth.yramirez_clinicachavarri')),
--->
-            <field name="users" eval="[]"/>
-        </record>
-
-
-
-
-
-
-
-
-
-<!--
-                                        (4, ref('base.user_root')), 
--->
-
-
-
-<!--
-                                        (4, ref('openhealth.galarcon_clinicachavarri')),
-                                        (4, ref('openhealth.cmendez_clinicachavarri')),
-                                        (4, ref('openhealth.jvasquez_clinicachavarri')),
-                                        (4, ref('openhealth.dacosta_clinicachavarri')),
-                                        (4, ref('openhealth.lache_clinicachavarri')),
-                                        (4, ref('openhealth.fchavarri_clinicachavarri')),
--->
 <!-- Medicos --> 
         <record id="physicians" model="res.groups">
             <field name="name">Medicos</field>
@@ -206,18 +93,12 @@
                                         (4, ref('openhealth.pcanales_clinicachavarri')),
                                         (4, ref('openhealth.lgonzales_clinicachavarri')),
                                         (4, ref('openhealth.pmonteverde_clinicachavarri')),
-                                        (4, ref('openhealth.cescudero_clinicachavarri')),
-                                        (4, ref('openhealth.rloayza_clinicachavarri')),
-                                        (4, ref('openhealth.lcastillo_clinicachavarri')),
+
                                         (4, ref('openhealth.cabriojo_clinicachavarri')),
 
                                     ]"/>
 
         </record>
-
-
-
-
 
 
 
@@ -230,6 +111,7 @@
 
             <field name="users" eval="[ 
                                         (4, ref('openhealth.asistente_clinicachavarri')),
+
                                         (4, ref('openhealth.rmendoza_clinicachavarri')),
                                         (4, ref('openhealth.nmendoza_clinicachavarri')),
                                         (4, ref('openhealth.yochante_clinicachavarri')),
@@ -240,11 +122,6 @@
 
 
 
-
-
-
-
-
 <!-- Plataforma --> 
         <record id="reception" model="res.groups">
             <field name="name">Plataforma</field>
@@ -252,28 +129,16 @@
             <field name="comment">cc</field>
 
             <field name="users" eval="[ 
-                                        (4, ref('openhealth.ssaucedo_clinicachavarri')),
-                                        (4, ref('openhealth.dchumpitaz_clinicachavarri')),
-                                        (4, ref('openhealth.durdanivia_clinicachavarri')),
-
                                         (4, ref('openhealth.plataforma_clinicachavarri')),
-                                        (4, ref('openhealth.jlopez_clinicachavarri')),
+
+                                        (4, ref('openhealth.ssaucedo_clinicachavarri')),
+                                        (4, ref('openhealth.durdanivia_clinicachavarri')),
                                         (4, ref('openhealth.rgarcia_clinicachavarri')),
                                         (4, ref('openhealth.imichelot_clinicachavarri')),
                                         (4, ref('openhealth.gnunhez_clinicachavarri')),
-                                        (4, ref('openhealth.mgrieve_clinicachavarri')),
                                         (4, ref('openhealth.ktejada_clinicachavarri')),
-                                        (4, ref('openhealth.cramirez_clinicachavarri')),
-                                        (4, ref('openhealth.pramirez_clinicachavarri')),
-                                        (4, ref('openhealth.ctorrealba_clinicachavarri')),
                                     ]"/>
         </record>
-
-
-
-
-
-
 
 
 
@@ -288,30 +153,6 @@
                                         (4, ref('openhealth.mpedemonte_clinicachavarri')),
                                     ]"/>
         </record>
-
-
-
-
-<!--
-                                        (4, ref('openhealth.lloli_clinicachavarri')),
-                                        (4, ref('openhealth.rbustios_clinicachavarri')),
--->
-
-<!-- Staff --> 
-        <record id="staffs" model="res.groups">
-            <field name="name">Staff</field>
-            <field name="category_id" ref="module_openhealth_category"/>
-            <field name="comment">cc</field>
-
-            <field name="users" eval="[ 
-                                        (4, ref('openhealth.staff_clinicachavarri')),
-                                        (4, ref('openhealth.lmasias_clinicachavarri')),
-                                        (4, ref('openhealth.ipuga_clinicachavarri')),
-                                    ]"/>
-        </record>
-
-
-
 
     </data>
 </openerp>

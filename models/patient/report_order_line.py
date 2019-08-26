@@ -1,30 +1,30 @@
 # -*- coding: utf-8 -*-
 """
-		Line
- 		Inherited by: 
+	Order Line Report
 
- 			- order_report_nex_line, 
-
- 			- management_order_line, 
- 			- marketing_order_line, 
- 			- electronic_line 
- 		
- 		Created: 				26 May 2018
- 		Last updated: 			25 Jan 2019
+	Created: 			28 May 2018
+	Last updated: 	 		30 Apr 2019
 """
 from openerp import models, fields, api
+from openerp.addons.openhealth.models.order import ord_vars
 import openerp.addons.decimal_precision as dp
 from openerp.addons.openhealth.models.libs import lib
 
-class Line(models.Model):	
+class order_report_nex_line(models.Model):
+	"""
+	Used by:
+		- Patient - Estado de Cuenta
+		- Order - Report Sale Product
+	"""
+	_name = 'openhealth.report.order_line'
 
-	_name = 'openhealth.line'
+	#_inherit='openhealth.line'
 
-	_order = 'x_date_created asc'
+	_description = "Openhealth Report Order Line"
 
 
 
-# ----------------------------------------------------------- Dates ------------------------------------------------------
+# ----------------------------------------------------------- Inherited ------------------------------------------------------
 
 	# Date Created 
 	x_date_created = fields.Datetime(
@@ -32,22 +32,6 @@ class Line(models.Model):
 			string='Fecha y Hora', 
 		)
 
-
-	# Date Date
-	#date_order_date = fields.Date(
-	date_order_date = fields.Datetime(
-		'Fecha',
-	)
-
-
-
-# ----------------------------------------------------------- Core ------------------------------------------------------
-
-	# Name 
-	name = fields.Char(
-			string="Nombre", 		
-			#required=True, 
-		)
 
 	# Product Product 
 	product_id = fields.Many2one(
@@ -57,10 +41,17 @@ class Line(models.Model):
 			string='Producto', 
 			domain=[('sale_ok', '=', True)], 
 			change_default=True, 
-			ondelete='restrict', 			
-			#required=True, 
+			ondelete='restrict',
 		)
 
+	# Subtotal 
+	price_subtotal = fields.Float(
+			string='Subtotal', 
+			readonly=True, 
+			store=True, 
+
+			compute='_compute_amount', 
+		)
 
 
 	# Qty
@@ -80,42 +71,14 @@ class Line(models.Model):
 			required=True, 
 		)
 
-
-
-
-# ----------------------------------------------------------- Prices - Computes ------------------------------------------------------
-
-	# Unit Net 
-	price_unit_net = fields.Float(
-			string='Precio Unitario Neto', 
+	# Tax 
+	price_tax = fields.Float(
+			string='Tax', 
 			#readonly=True, 
 			store=True, 
 
 			compute='_compute_amount', 
 		)
-	
-	# Unit Tax
-	#price_unit_tax = fields.Float(
-	#		string='Precio Unitario Tax', 
-			#readonly=True, 
-	#		store=True, 
-
-	#		compute='_compute_amount', 
-	#	)
-
-
-
-
-	
-	# Subtotal 
-	price_subtotal = fields.Float(
-			string='Subtotal', 
-			readonly=True, 
-			store=True, 
-
-			compute='_compute_amount', 
-		)
-	
 
 	# Net 
 	price_net = fields.Float(
@@ -126,15 +89,15 @@ class Line(models.Model):
 			compute='_compute_amount', 
 		)
 
-	# Tax 
-	price_tax = fields.Float(
-			string='Tax', 
+	# Unit Net 
+	price_unit_net = fields.Float(
+			string='Precio Unitario Neto', 
 			#readonly=True, 
 			store=True, 
 
 			compute='_compute_amount', 
 		)
-
+	
 
 
 	# Total 
@@ -145,6 +108,8 @@ class Line(models.Model):
 
 			compute='_compute_amount', 
 		)
+
+
 
 
 	# Compute - Total and Subtotal 
@@ -171,3 +136,37 @@ class Line(models.Model):
 			})
 
 
+
+
+
+# ----------------------------------------------------------- Handles -----------------------------
+	# Order Report Nex 
+	order_report_nex_id = fields.Many2one(
+			
+			'openhealth.order.report.nex',
+			
+			string='Report Reference',
+
+			ondelete='cascade', 
+	)
+
+
+# ----------------------------------------------------------- Report Sale Product -----------------
+	# Report Sale Product 
+	report_sale_product_id = fields.Many2one(
+
+		'openhealth.report.sale.product', 
+		
+		string='Report Reference', 		
+
+		ondelete='cascade', 
+	)
+
+
+
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
+	# State 
+	state = fields.Selection(
+			selection = ord_vars._state_list, 
+			string='Estado',
+		)

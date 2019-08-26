@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate='0'>
+
+
+
+<!-- Percy Balboa -->
+        <record id="pbalboa" model="res.partner">
+            <field name="name">Percy Balboa</field>
+            <field name="email">pbalboa@clinicachavarri.com</field>
+            <field name="function">accounting</field>
+            <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
+        </record>
+
+        <record id="pbalboa_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
+            <field name="name">Percy Balboa</field>
+            <field name="login">pbalboa@clinicachavarri.com</field>
+
+            <field name="password">kPh2C52W</field>
+
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="tz">America/Lima</field>
+            <field name="lang">es_ES</field>
+            <field name="partner_id" ref="pbalboa"/>            
+            <field name="active">True</field>
+        </record>
+
+
+
+
+<!-- Angelo Chapoñan -->
+        <record id="achaponan" model="res.partner">
+            <field name="name">Angelo Chapoñan</field>
+            <field name="email">achaponan@clinicachavarri.com</field>
+            <field name="function">accounting</field>
+            <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
+        </record>
+
+        <record id="achaponan_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
+            <field name="name">Angelo Chapoñan</field>
+            <field name="login">achaponan@clinicachavarri.com</field>
+
+            <field name="password">HH3PXus4</field>
+
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="tz">America/Lima</field>
+            <field name="lang">es_ES</field>
+            <field name="partner_id" ref="achaponan"/>            
+            <field name="active">True</field>
+        </record>
+
+
+<!-- Fatima Catpo -->
+        <record id="fcatpo" model="res.partner">
+            <field name="name">Fatima Catpo</field>
+            <field name="email">fcatpo@clinicachavarri.com</field>
+            <field name="function">accounting</field>
+            <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
+        </record>
+
+        <record id="fcatpo_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
+            <field name="name">Fatima Catpo</field>
+            <field name="login">fcatpo@clinicachavarri.com</field>
+
+            <field name="password">Capd6qDN</field>
+
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="tz">America/Lima</field>
+            <field name="lang">es_ES</field>
+            <field name="partner_id" ref="fcatpo"/>            
+            <field name="active">True</field>
+        </record>
+
+
+
+
+    </data>
+</openerp> 

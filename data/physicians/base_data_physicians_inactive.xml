@@ -11,8 +11,9 @@
         <record id="dr_clinica_chavarri" model="oeh.medical.physician">
             <field name="name">Clinica Chavarri</field>
             <field name="consultancy_type">Residential</field>
-
+<!--
             <field name="active" eval="True" />
+-->
             <field name="active" eval="False" />
         </record>
 

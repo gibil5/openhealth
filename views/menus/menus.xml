@@ -125,6 +125,30 @@
                     groups="openhealth.roots,openhealth.directors"
                     />
 
+
+        <!-- users --> 
+        <menuitem   id="emr_users_inactive_menu" 
+
+                    name="Users" 
+
+                    parent="emr_inactive_menu"
+                    
+                    sequence="3"
+
+                    action="base.action_res_users_inactive"
+                    />
+
+
+        <!-- Partners --> 
+        <menuitem   id="emr_partners_inactive_menu" 
+                    name="Partners" 
+                    parent="emr_inactive_menu"
+                    sequence="5"
+
+                    action="partner_inactive_list_action"
+                    />
+
+
         <!-- Patients --> 
         <menuitem   id="emr_patients_inactive_menu" 
                     name="Pacientes" 
@@ -134,14 +158,6 @@
                     action="patient_inactive_list_action"
                     />
 
-        <!-- Partners --> 
-        <menuitem   id="emr_partners_inactive_menu" 
-                    name="Partners" 
-                    parent="emr_inactive_menu"
-                    sequence="13"
-
-                    action="partner_inactive_list_action"
-                    />
 
         <!-- Treatments --> 
 <!--        

@@ -1,0 +1,123 @@
+
+<!--
+                                                        (4, ref('openhealth.rzevallos')), 
+-->
+<!--
+                                                    (4, ref('openhealth.rzevallos')), 
+-->
+
+
+
+<!--
+            <field name="implied_ids" eval="[(4, ref('purchase.group_purchase_manager'))]"/>
+            <field name="implied_ids" eval="[(4, ref('stock.group_stock_manager'))]"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_hr_manager'))]"/>
+            <field name="implied_ids" eval="[(4, ref('oehealth.group_oeh_medical_manager'))]"/>
+-->
+
+
+                                        (4, ref('openhealth.lloli_clinicachavarri')),
+                                        (4, ref('openhealth.vmori_clinicachavarri')),
+                                        (4, ref('openhealth.jessenwanger_clinicachavarri')),
+
+
+
+
+
+<!-- Almacen  Manager --> 
+        <record id="almacen_managers" model="res.groups">
+            <field name="name">Almacen Managers</field>
+            <field name="category_id" ref="module_openhealth_category"/>
+            <field name="comment">cc</field>
+            <field name="implied_ids" eval="[       
+                                                (4, ref('purchase.group_purchase_user')),
+                                                (4, ref('stock.group_stock_manager')),
+                                            ]"/>
+            <field name="users" eval="[ 
+                                        (4, ref('openhealth.almacen_clinicachavarri')),
+                                        (4, ref('openhealth.yramirez_clinicachavarri')),
+
+                                    ]"/>
+        </record>
+
+<!-- Almacen --> 
+        <record id="almacens" model="res.groups">
+            <field name="name">Almacens</field>
+            <field name="category_id" ref="module_openhealth_category"/>
+
+            <field name="implied_ids" eval="[       
+                                                (4, ref('purchase.group_purchase_user')),
+                                                (4, ref('stock.group_stock_user')),
+                                            ]"/>
+<!--
+                                        (4, ref('openhealth.almacen_clinicachavarri')),
+                                        (4, ref('openhealth.yramirez_clinicachavarri')),
+-->
+            <field name="users" eval="[]"/>
+        </record>
+
+
+
+
+
+
+
+
+
+<!--
+                                        (4, ref('base.user_root')), 
+-->
+
+
+
+<!--
+                                        (4, ref('openhealth.galarcon_clinicachavarri')),
+                                        (4, ref('openhealth.cmendez_clinicachavarri')),
+                                        (4, ref('openhealth.jvasquez_clinicachavarri')),
+                                        (4, ref('openhealth.dacosta_clinicachavarri')),
+                                        (4, ref('openhealth.lache_clinicachavarri')),
+                                        (4, ref('openhealth.fchavarri_clinicachavarri')),
+-->
+
+
+
+
+
+<!--
+                                        (4, ref('openhealth.lloli_clinicachavarri')),
+                                        (4, ref('openhealth.rbustios_clinicachavarri')),
+-->
+
+
+
+
+<!-- Staff --> 
+        <record id="staffs" model="res.groups">
+            <field name="name">Staff</field>
+            <field name="category_id" ref="module_openhealth_category"/>
+            <field name="comment">cc</field>
+
+            <field name="users" eval="[ 
+                                        (4, ref('openhealth.staff_clinicachavarri')),
+                                        (4, ref('openhealth.lmasias_clinicachavarri')),
+                                        (4, ref('openhealth.ipuga_clinicachavarri')),
+                                    ]"/>
+        </record>
+
+
+
+
+                                        (4, ref('openhealth.cescudero_clinicachavarri')),
+                                        (4, ref('openhealth.rloayza_clinicachavarri')),
+                                        (4, ref('openhealth.lcastillo_clinicachavarri')),
+
+
+
+
+
+                                        (4, ref('openhealth.dchumpitaz_clinicachavarri')),
+                                        (4, ref('openhealth.mgrieve_clinicachavarri')),
+                                        (4, ref('openhealth.jlopez_clinicachavarri')),
+                                        (4, ref('openhealth.ctorrealba_clinicachavarri')),
+                                        (4, ref('openhealth.cramirez_clinicachavarri')),
+                                        (4, ref('openhealth.pramirez_clinicachavarri')),

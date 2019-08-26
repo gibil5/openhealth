@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*-
 """
-	Order Report Nex - Estado de Cuenta 
+	Order Report Nex - Estado de Cuenta - Dep ?
+
+	Can be done by a One2many varible, in Patient.
 
 	Created: 				14 Nov 2017
 	Last updated: 	 		30 Apr 2019
 """
 from __future__ import print_function
 from openerp import models, fields, api
-from . import ord_vars
+from openerp.addons.openhealth.models.order import ord_vars
 
 class order_report_nex(models.Model):
 	"""
@@ -158,5 +160,4 @@ class order_report_nex(models.Model):
 		self.amount_total_report = total
 		self.amount_total_sale = total_sale
 		self.amount_total_budget = total_budget
-
 

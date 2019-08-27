@@ -8,12 +8,9 @@
         <record model="ir.ui.view" id="order_admin_form_view">
             <field name="name">order.admin.form</field>
             <field name="model">sale.order</field>
-            
             <field name="priority" eval="2"/>
-            
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
-
 
                 <notebook position="inside">
                     
@@ -54,7 +51,12 @@
 
                                     <field name="vspace" />
 
+
+<!--
+dep
                                     <field name="x_my_company"  />
+-->
+
 
                                     <field name="vspace" />
                                     

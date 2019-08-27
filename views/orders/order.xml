@@ -91,6 +91,18 @@
 					/>
 
 
+					<!-- Make QR -->
+					<button 
+							type="object" 
+							class="oe_highlight"
+
+							name="make_qr"
+
+							string="Make QR"
+							
+							states="validated"
+					/>
+
 
 					<!-- Correct -->
 					<button 

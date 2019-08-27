@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
- 		Appointment
+ 		Appointment - DEP !
 
  		Created: 			14 Nov 2016
 		Last updated: 	 	23 Jan 2019
@@ -21,7 +21,6 @@ class Appointment(models.Model):
 
 	_inherit = 'oeh.medical.appointment'
 
-	#_order = 'appointment_date desc'
 	_order = 'appointment_date asc'
 
 

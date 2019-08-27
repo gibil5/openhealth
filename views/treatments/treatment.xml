@@ -203,6 +203,7 @@
                             
                             
                                 <!-- Appointments -->
+<!--                                
                                 <button type="action" class="oe_stat_button"
                                     name="%(appointment_form_action)d"
                                     context="{
@@ -213,7 +214,7 @@
                                     >
                                     <field string="Citas" name="nr_appointments" widget="statinfo"/>
                                 </button>
-
+-->
 
                                 <!-- Budgets - Cons - IMPORTANT -->
                                 <button type="action" class="oe_stat_button" icon="fa-list"

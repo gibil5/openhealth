@@ -9,13 +9,16 @@ from . import product_product
 
 
 # Medical
+
+#from . import appointment 			# Dep
+
+
 from . import product
 from . import image		
 from . import allergy
 from . import process
 from . import treatment
 from . import evaluation  
-from . import appointment 
 from . import consultation
 from . import procedure
 from . import control

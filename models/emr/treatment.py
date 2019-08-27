@@ -15,8 +15,6 @@ from openerp.addons.openhealth.models.libs import lib, user
 from . import test_foo
 from . import test_treatment
 
-#from . import reco_funcs
-
 class Treatment(models.Model):
 
 	_inherit = 'openhealth.process'
@@ -26,6 +24,41 @@ class Treatment(models.Model):
 	_order = 'write_date desc'
 
 	_description = 'Treatment'
+
+
+
+# ----------------------------------------------------------- Dep !!! ------------------------
+	# Appointments
+	#appointment_ids = fields.One2many(
+	#		'oeh.medical.appointment',
+	#		'treatment',
+	#		string="Citas",
+	#	)
+
+	# Reservations
+	#reservation_ids = fields.One2many(
+	#		'oeh.medical.appointment',
+	#		'treatment',
+	#		string="Reserva de sala",
+	#		domain=[
+						#('x_machine', '!=', 'false'),
+	#				],
+	#		)
+
+
+	# Appointments
+	#nr_appointments = fields.Integer(
+	#		string="Citas",
+	#		compute="_compute_nr_appointments",
+	#)
+	#@api.multi
+	#def _compute_nr_appointments(self):
+	#	for record in self:
+	#		record.nr_appointments = self.env['oeh.medical.appointment'].search_count([
+	#																					('treatment', '=', record.id),
+	#																					#('x_target', '=', 'doctor'),
+	#																])
+
 
 
 
@@ -96,27 +129,15 @@ class Treatment(models.Model):
 			string="Scenarios",
 		)
 
-
-
 	x_test = fields.Boolean(
 			'Test',
 		)
-
-
-
-
-
-
-
 
 	# Electronic
 	electronic_order = fields.One2many(
 			'openhealth.electronic.order',
 			'treatment_id',
 		)
-
-
-
 
 
 # ----------------------------------------------------------- Optimization ------------------------
@@ -127,13 +148,6 @@ class Treatment(models.Model):
 	delta_2 = fields.Float(
 			'Delta 2',
 		)
-
-
-
-
-
-
-
 
 
 # ----------------------------------------------------------- Test Flags --------------------------
@@ -192,204 +206,6 @@ class Treatment(models.Model):
 
 
 
-
-
-
-# ----------------------------------------------------------- Create Appointment  -----------------
-
-	# Create Appointment Consultation
-	@api.multi
-	def create_appointment_consultation(self):
-
-		# Consultation
-		x_type = 'consultation'
-		subtype = 'consultation'
-		state = 'pre_scheduled'
-
-		self.create_appointment_nex(x_type, subtype, state)
-
-
-
-	# Create Appointment Nex
-	@api.multi
-	#def create_appointment_nex(self):
-	def create_appointment_nex(self, x_type, subtype, state):
-		#print
-		#print 'Create Appointment'
-
-
-		# Init
-		doctor_name = self.physician.name
-
-
-
-		# Consultation, Procedure
-		if x_type in ['consultation', 'procedure']: 	# Appointment is Today. With time. So check for availability.
-
-
-			# Get Next Slot - Real Time version
-			appointment_date = lib.get_next_slot(self)						# Get Next Slot
-			#print appointment_date
-
-
-			if appointment_date != False:
-
-
-				# Init
-				states = False
-				duration = 0.5
-
-
-
-				# Check and Push
-				#appointment_date_str = procedure_funcs.check_and_push(self, appointment_date, duration, x_type, doctor_name, states)
-				#appointment_date_str = user.check_and_push(self, appointment_date, duration, x_type, doctor_name, states)
-				appointment_date_str = user.check_and_push(self, appointment_date, duration, doctor_name, states)
-				#print appointment_date_str
-
-
-
-				# Create
-				#print 'Create'
-				#appointment = self.env['oeh.medical.appointment'].create({
-				appointment = self.appointment_ids.create({
-																			'appointment_date': appointment_date_str,
-																			'patient':			self.patient.id,
-																			'doctor':			self.physician.id,
-
-																			#'state': 			'pre_scheduled',
-																			#'x_type': 			'consultation',
-																			#'x_subtype': 		'consultation',
-
-																			'state': 			state,
-																			'x_type': 			x_type,
-																			'x_subtype': 		subtype,
-
-																			'treatment':	self.id,
-																	})
-				#print appointment
-
-
-
-		# Session, Control
-		else: 	# Appointment is not Today. Without time.
-
-			#print 'Appointment not Today'
-
-
-			# Init
-			if x_type == 'control':
-				duration = 0.25
-				state = 'pre_scheduled_control'
-				states = ['pre_scheduled_control']
-			else:
-				duration = 0.5
-				state = 'pre_scheduled_session'
-				states = ['pre_scheduled_session']
-				#state = 'pre_scheduled_control'
-				#states = ['pre_scheduled_control']
-
-
-
-
-			# Control
-			nr_days = 0
-			#nr_days = 1
-
-
-			#start_date = self.start_date
-			start_date = datetime.datetime.now() + datetime.timedelta(hours=-5, minutes=0)
-			#date_2_format = "%Y-%m-%d"
-			date_format = "%Y-%m-%d %H:%M:%S"
-			start_date_str = start_date.strftime(date_format)
-
-
-
-
-			# Control date
-			#appointment_date = procedure_funcs.get_next_date(self, start_date_str, nr_days)
-			appointment_date = lib.get_next_date(self, start_date_str, nr_days)
-
-			#print appointment_date
-
-
-			# Cut Time out
-			appointment_date_str = appointment_date.strftime("%Y-%m-%d")
-			appointment_date_str = appointment_date_str + ' 14:00:00'			# 09:00:00
-			#print appointment_date_str
-
-
-
-			# Check and Push
-			#appointment_date_str = procedure_funcs.check_and_push(self, appointment_date_str, duration, x_type, doctor_name, states)
-			#appointment_date_str = user.check_and_push(self, appointment_date_str, duration, x_type, doctor_name, states)
-			appointment_date_str = user.check_and_push(self, appointment_date_str, duration, doctor_name, states)
-
-
-
-			# Create
-			appointment = self.env['oeh.medical.appointment'].create({
-																			'appointment_date': appointment_date_str,
-																			'patient':			self.patient.id,
-																			'doctor':			self.physician.id,
-																			'duration': duration,
-
-																			#'x_create_procedure_automatic': False,
-																			#'x_chief_complaint': chief_complaint,
-																			#'x_target': 'doctor',
-
-																			'state': state,
-																			'x_type': x_type,
-																			'x_subtype': subtype,
-
-																			'treatment':	self.id,
-																	})
-
-
-
-
-# ----------------------------------------------------------- Update Apps  ------------------------
-
-	# Update Appointments
-	@api.multi
-	def update_appointments(self):
-
-		#print
-		#print 'Update Appointments'
-
-		# Consultations
-		for consultation in self.consultation_ids:
-			if consultation.appointment.appointment_date != False: 
-				consultation.evaluation_start_date = consultation.appointment.appointment_date
-
-		# Sessions
-		for session in self.session_ids:
-			if session.appointment.appointment_date != False:
-				session.evaluation_start_date = session.appointment.appointment_date
-
-	# update_appointments
-
-
-
-# ----------------------------------------------------------- Creates  ----------------------------
-
-	# Create Sessions
-	#@api.multi
-	#def create_sessions(self):
-	#	print
-	#	print 'Create Sessions'
-	#	for procedure in self.procedure_ids:
-	#		procedure.create_sessions()
-
-
-
-
-
-
-
-
-
-
 # ----------------------------------------------------------- Create Procedure  -------------------
 	# Create Procedure
 	@api.multi
@@ -427,11 +243,6 @@ class Treatment(models.Model):
 											#'procedure':procedure_id,
 									})
 	# create_controls
-
-
-
-
-
 
 
 
@@ -736,25 +547,7 @@ class Treatment(models.Model):
 			string="Controles",
 		)
 
-	# Reservations
-	reservation_ids = fields.One2many(
-			'oeh.medical.appointment',
-			'treatment',
-			string="Reserva de sala",
-			domain=[
-						#('x_machine', '!=', 'false'),
-					],
-			)
 
-	# Appointments
-	appointment_ids = fields.One2many(
-			'oeh.medical.appointment',
-			'treatment',
-			string="Citas",
-			#domain = [
-			#			('x_target', '=', 'doctor'),
-			#		],
-		)
 
 	# Orders
 	order_ids = fields.One2many(
@@ -937,8 +730,8 @@ class Treatment(models.Model):
 			elif record.nr_budgets_cons > 0:
 				state = 'budget_consultation'
 
-			elif record.nr_appointments > 0:
-				state = 'appointment'
+			#elif record.nr_appointments > 0:
+			#	state = 'appointment'
 
 
 			# Assign
@@ -951,20 +744,6 @@ class Treatment(models.Model):
 
 
 # ----------------------------------------------------------- Number ofs --------------------------
-
-	# Appointments
-	nr_appointments = fields.Integer(
-			string="Citas",
-
-			compute="_compute_nr_appointments",
-	)
-	@api.multi
-	def _compute_nr_appointments(self):
-		for record in self:
-			record.nr_appointments = self.env['oeh.medical.appointment'].search_count([
-																						('treatment', '=', record.id),
-																						#('x_target', '=', 'doctor'),
-																	])
 
 
 	# Budgets - Consultations 			# DEP ?
@@ -1437,16 +1216,16 @@ class Treatment(models.Model):
 
 
 		# Apointment
-		if False:
-			appointment = self.env['oeh.medical.appointment'].search([
-																		('patient', '=', self.patient.name),
-																		('doctor', '=', self.physician.name),
-																		('x_type', '=', 'consultation'),
-																],
-																order='appointment_date desc', limit=1)
-			appointment_id = appointment.id
+		#if False:
+		#	appointment = self.env['oeh.medical.appointment'].search([
+		#																('patient', '=', self.patient.name),
+		#																('doctor', '=', self.physician.name),
+		#																('x_type', '=', 'consultation'),
+		#														],
+		#														order='appointment_date desc', limit=1)
+		#	appointment_id = appointment.id
 		
-		appointment_id = False
+		#appointment_id = False
 
 
 
@@ -1462,9 +1241,9 @@ class Treatment(models.Model):
 		if consultation.name == False:
 
 			# Change App state
-			if False:
-				if appointment.name != False:
-					appointment.state = 'Scheduled'
+			#if False:
+			#	if appointment.name != False:
+			#		appointment.state = 'Scheduled'
 
 
 			# Consultation
@@ -1473,20 +1252,22 @@ class Treatment(models.Model):
 																		'treatment': treatment_id,
 																		'evaluation_start_date': evaluation_start_date,
 																		'chief_complaint': chief_complaint,
-																		'appointment': appointment_id,
+																		#'appointment': appointment_id,
 																		'doctor': doctor_id,
 													})
 			consultation_id = consultation.id
 
 
 			# Update
-			if False:
-				rec_set = self.env['oeh.medical.appointment'].browse([
-																		appointment_id
-																	])
-				ret = rec_set.write({
-										'consultation': consultation_id,
-									})
+			#if False:
+			#	rec_set = self.env['oeh.medical.appointment'].browse([
+			#															appointment_id
+			#														])
+			#	ret = rec_set.write({
+			#							'consultation': consultation_id,
+			#						})
+
+
 
 		consultation_id = consultation.id
 
@@ -1521,7 +1302,7 @@ class Treatment(models.Model):
 							'default_treatment': treatment_id,
 							'default_evaluation_start_date': evaluation_start_date,
 							'default_chief_complaint': chief_complaint,
-							'default_appointment': appointment_id,
+							#'default_appointment': appointment_id,
 			}
 		}
 	# create_consultation_man
@@ -1577,10 +1358,6 @@ class Treatment(models.Model):
 	# create_service
 
 
-
-
-
-
 # ----------------------------------------------------------- Update ------------------------------
 	# Flag
 	flag = fields.Boolean(
@@ -1594,10 +1371,6 @@ class Treatment(models.Model):
 		#print 'Update'
 		self.flag = not self.flag
 	# update
-
-
-
-
 
 
 # ----------------------------------------------------------- Test Libs --------------------
@@ -1657,20 +1430,6 @@ class Treatment(models.Model):
 
 	# test_libs
 
-
-
-
-# ----------------------------------------------------------- Testing Unit ------------------------
-	# Treatment - Unit
-	#@api.multi
-	#def test_unit(self):
-	#	if self.patient.x_test:
-			#self.test()
-	#		self.test_create_recos()
-
-
-
-
 # ----------------------------------------------------------- Test - Computes ---------------------
 	def test_computes(self):
 		print()
@@ -1686,7 +1445,7 @@ class Treatment(models.Model):
 		print(self.patient_city)
 		print(self.x_vip_inprog)
 		print(self.consultation_progress)
-		print(self.nr_appointments)
+		#print(self.nr_appointments)
 		print(self.nr_consultations)
 		print(self.nr_budgets_cons)
 		print(self.nr_invoices_cons)
@@ -1758,18 +1517,10 @@ class Treatment(models.Model):
 	@api.multi
 	def test(self):
 		print()
-		print('Treatment - Test')
-		
+		print('Treatment - Test')		
 		if self.patient.x_test:
-
 			self.test_reset()
-
 			self.test_integration()
-
 			self.test_create_recos()
-			
 			self.test_computes()
-
 			#self.test_libs()
-
-

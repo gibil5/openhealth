@@ -10,9 +10,6 @@ import base64
 import cStringIO
 import qrcode
 
-
-
-
 #------------------------------------------------ Get QR Data -------------------------------------
 # Get QR Data
 def get_qr_data(self):

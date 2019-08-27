@@ -5,12 +5,11 @@ from . import company
 from . import partner
 
 
-from . import report_order_line
-from . import order_report_nex			# Estado de Cuenta - Used by Patient
+from . import report_order_line			# Used by Order Report Nex 				# Dep !
+from . import order_report_nex			# Estado de Cuenta - Used by Patient  	# Dep !
 
 
 from . import patient
-
 
 #from . import patient_line
 

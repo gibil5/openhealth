@@ -19,7 +19,10 @@ from openerp.addons.openhealth.models.libs import creates, user
 from openerp.addons.openhealth.models.libs import lib
 from openerp.addons.openhealth.models.patient import pat_vars, chk_patient
 from . import ord_vars
-from . import lib_qr
+
+#from . import lib_qr
+from . import qr
+
 from . import test_order
 from . import chk_order
 
@@ -28,12 +31,38 @@ from . import exc_ord
 class sale_order(models.Model):
 	"""
 	Sale Class
-	Inherited from the medical Module OeHealth
-	Has the Business Logic of the Clinic
+	Inherited from the medical Module OeHealth. Has the Business Logic of the Clinic.
 	"""
 	_inherit = 'sale.order'
 
 	_description = 'Order'
+
+
+# ----------------------------------------------------------- Dep ! -------------------------
+
+	# My company
+	#x_my_company = fields.Many2one(
+	#		'res.partner',
+	#		string="Mi compañía",
+	#		domain=[
+	#					('company_type', '=', 'company'),
+	#				],
+
+	#		compute="_compute_x_my_company",
+	#	)
+
+	#@api.multi
+	#def _compute_x_my_company(self):
+	#	for record in self:
+	#			com = self.env['res.partner'].search([
+	#														('x_my_company', '=', True),
+	#												],
+	#												order='date desc',
+	#												limit=1,
+	#				)
+	#			record.x_my_company = com
+
+
 
 
 
@@ -101,8 +130,6 @@ class sale_order(models.Model):
 
 		# If Everything is OK
 		self.check_and_generate()
-
-
 
 
 
@@ -240,25 +267,45 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Make QR ----------------------
+# ----------------------------------------------------------- Make QR - BUtton ----------------------
 	# Make QR
 	@api.multi
 	def make_qr(self):
 		"""
 		Make QR Image for Electronic Billing
 		"""
+		print()
+		print('Make QR')
 
 		# Create Data
-		self.x_qr_data = lib_qr.get_qr_data(self)
+		#self.x_qr_data = lib_qr.get_qr_data(self)
 
 		# Create Img
-		img_str, name = lib_qr.get_qr_img(self.x_qr_data)
+		#img_str, name = lib_qr.get_qr_img(self.x_qr_data)
+
+
+		# Init
+		#ruc_company = self.x_my_company.x_ruc
+		ruc_company = self.configurator.company_ruc
+
+		x_type = self.x_type
+		serial_nr = self.x_serial_nr
+		amount_total = self.amount_total
+		total_tax = self.x_total_tax
+
+		qr = qr.QR(ruc_company, x_type, serial_nr, amount_total, total_tax)
+
+		img_str = qr.get_img_str()
+
+		name = qr.get_name()
+
 
 		# Update
 		self.write({
 						'x_qr_img': img_str,
 						'qr_product_name':name,
 				})
+
 	# make_qr
 
 
@@ -316,27 +363,30 @@ class sale_order(models.Model):
 
 
 
-
-
 	def get_warning(self):
 		"""
 		high level support for doing this and that.
 		"""
 		print()
 		print('Get Warning')
-		return self.x_my_company.x_warning
+		#return self.x_my_company.x_warning
+		return False
+
 
 	def get_website(self):
 		"""
 		high level support for doing this and that.
 		"""
-		return self.x_my_company.website
+		#return self.x_my_company.website
+		return False
+
 
 	def get_email(self):
 		"""
 		high level support for doing this and that.
 		"""
-		return self.x_my_company.email
+		#return self.x_my_company.email
+		return False
 
 
 
@@ -1564,27 +1614,6 @@ class sale_order(models.Model):
 
 
 
-	# My company
-	x_my_company = fields.Many2one(
-			'res.partner',
-			string="Mi compañía",
-			domain=[
-						('company_type', '=', 'company'),
-					],
-
-			compute="_compute_x_my_company",
-		)
-
-	@api.multi
-	def _compute_x_my_company(self):
-		for record in self:
-				com = self.env['res.partner'].search([
-															('x_my_company', '=', True),
-													],
-													order='date desc',
-													limit=1,
-					)
-				record.x_my_company = com
 
 
 

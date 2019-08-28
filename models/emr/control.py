@@ -1,16 +1,17 @@
 # -*- coding: utf-8 -*-
 """
- 		Control 	
- 
- 		Created: 			01 Nov 2016
-		Last updated: 	 	23 Jan 2019
+Control
+
+Created: 			01 Nov 2016
+Last updated: 	 	23 Jan 2019
 """
 import datetime
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.libs import lib
-from . import app_vars
 from . import time_funcs
 from . import control_vars
+
+#from . import app_vars
 
 class Control(models.Model):
 	
@@ -22,14 +23,38 @@ class Control(models.Model):
 
 
 
+#----------------------------------------------------------- Deprecated ------------------------------------------------------------
+
+	# Appointment 
+	#appointment = fields.Many2one(
+	#		'oeh.medical.appointment',
+	#		'Cita', 
+	#		required=False, 
+	#	)
+
+
+	# State Appointment 
+	#state_app = fields.Selection(
+	#		selection = app_vars._state_list, 
+	#		string = 'Estado Cita', 
+
+	#		compute='_compute_state_app', 
+	#	)
+	
+	#@api.multi
+	#@api.depends('state')
+	#def _compute_state_app(self):
+	#	for record in self:		
+	#		record.state_app = record.appointment.state
+
+
+
 
 # ----------------------------------------------------------- Dates ------------------------------------------------------
 
 	# Real date 
 	control_date = fields.Datetime(
-			#string = "Fecha Real",
 			string = "Fecha Control",
-			#readonly=True,
 
 			#compute='_compute_control_date',
 		)
@@ -41,16 +66,10 @@ class Control(models.Model):
 
 
 
-
-
-
 	# Date
 	evaluation_start_date = fields.Datetime(
 			string = "Fecha", 	
-			required=False, 
-		
-			#compute='_compute_evaluation_start_date',
-			#compute='_compute_evaluation_start_date_nex',
+			required=False, 		
 		)
 
 	@api.multi
@@ -70,14 +89,10 @@ class Control(models.Model):
 			readonly=True,
 		)
 
-
-
 	# Real date 
 	real_date = fields.Datetime(
 			string = "Fecha Real",
 		)
-
-
 
 # ----------------------------------------------------------- State ------------------------------------------------------
 	
@@ -218,39 +233,12 @@ class Control(models.Model):
 
 
 
-	# Appointment 
-	appointment = fields.Many2one(
-			'oeh.medical.appointment',			
-			
-			#'Cita #', 
-			'Cita', 
-			
-			required=False, 
-			#required=True, 
-			
-			#ondelete='cascade', 
-		)
 
 
 
 
 
 
-	# State Appointment 
-	state_app = fields.Selection(
-			selection = app_vars._state_list, 
-
-			string = 'Estado Cita', 
-
-			compute='_compute_state_app', 
-		)
-	
-	@api.multi
-	#@api.depends('state')
-	def _compute_state_app(self):
-		for record in self:
-			
-			record.state_app = record.appointment.state
 
 
 
@@ -362,74 +350,6 @@ class Control(models.Model):
 			
 
 # ----------------------------------------------------------- Actions ------------------------------------------------------
-
-	# Open Appointment 
-	@api.multi
-	def open_appointment(self):  
-
-
-		#print 
-		#print 'open appointment'
-
-
-		owner_id = self.id 
-		owner_type = self.owner_type
-
-
-		patient_id = self.patient.id
-		doctor_id = self.doctor.id
-
-		#treatment_id = self.treatment.id 
-		treatment_id = self.procedure.treatment.id 
-
-
-
-		GMT = time_funcs.Zone(0,False,'GMT')
-		#appointment_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
-		appointment_date = datetime.datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
-		#appointment_date = '2016-12-23'
-
-
-		return {
-				'type': 'ir.actions.act_window',
-
-				'name': ' New Appointment', 
-				
-				'view_type': 'form',
-				
-				#'view_mode': 'form',			
-				'view_mode': 'calendar',			
-				
-				'target': 'current',
-				
-
-				'res_model': 'oeh.medical.appointment',				
-				
-				'flags': 	{
-							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-							'form': {'action_buttons': True, }
-							},
-
-
-				'context': {
-							'default_control': owner_id,
-
-							'default_treatment': treatment_id,
-							'default_patient': patient_id,
-							'default_doctor': doctor_id,
-
-							'default_x_type': owner_type,
-
-
-							'default_appointment_date': appointment_date,
-							}
-				}
-
-
-
-
-
-
 	# Open Line 
 	@api.multi
 	def open_line_current(self):  

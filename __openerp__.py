@@ -35,8 +35,7 @@
 
         Critical Use Cases: 
         - New patient wants a consultation. 
-        - Existing patient wants to change Control Appointment. 
-          Dr has not created anything.
+        - Existing patient wants to change Control Appointment. Dr has not created anything.
 
 
         Code without Tests is broken by design. Jacob Kaplan-Moss

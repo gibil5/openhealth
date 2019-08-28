@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-	Order
+Order
 
-	Created: 			26 Aug 2016
-	Last mod: 			24 Aug 2019
+Created: 			26 Aug 2016
+Last mod: 			24 Aug 2019
 """
 from __future__ import print_function
 import math
@@ -25,7 +25,6 @@ from . import qr
 
 from . import test_order
 from . import chk_order
-
 from . import exc_ord
 
 class sale_order(models.Model):
@@ -36,6 +35,27 @@ class sale_order(models.Model):
 	_inherit = 'sale.order'
 
 	_description = 'Order'
+
+
+
+# ----------------------------------------------------------- Appointments - Dep !!! -----------------
+
+	# Update Appointment in Treatment
+	#@api.multi
+	#def update_appointment(self):
+	#	"""
+	#	high level support for doing this and that.
+	#	"""
+	#	if self.x_family == 'consultation':
+	#		for app in self.treatment.appointment_ids:
+	#			if app.x_type == 'consultation':
+	#				app.state = 'Scheduled'
+	#	if self.x_family == 'procedure':
+	#		for app in self.treatment.appointment_ids:
+	#			if app.x_type == 'procedure':
+	#				app.state = 'Scheduled'
+
+
 
 
 # ----------------------------------------------------------- Dep ! -------------------------
@@ -159,8 +179,8 @@ class sale_order(models.Model):
 		self.update_descriptors()
 
 
-		# Change Appointment State - To Invoiced
-		self.update_appointment()
+		# Change Appointment State - To Invoiced - DEP !!!
+		#self.update_appointment()
 
 
 		# Vip Card - Detect and Create
@@ -183,7 +203,7 @@ class sale_order(models.Model):
 				line.update_recos()
 			# Update
 			self.x_procedure_created = True
-			self.treatment.update_appointments()
+			#self.treatment.update_appointments()
 
 
 		# Id Doc and Ruc
@@ -293,11 +313,26 @@ class sale_order(models.Model):
 		amount_total = self.amount_total
 		total_tax = self.x_total_tax
 
-		qr = qr.QR(ruc_company, x_type, serial_nr, amount_total, total_tax)
+		date = self.date_order
 
-		img_str = qr.get_img_str()
+		
 
-		name = qr.get_name()
+		receptor_id_doc_type = self.x_id_doc_type
+
+		receptor_id_doc = self.x_id_doc
+
+		receptor_ruc = self.x_ruc
+
+
+
+		#qr_obj = qr.QR(ruc_company, x_type, serial_nr, amount_total, total_tax)
+		#qr_obj = qr.QR(date, ruc_company, x_type, serial_nr, amount_total, total_tax)
+		qr_obj = qr.QR(date, ruc_company, receptor_id_doc_type, receptor_id_doc, receptor_ruc, x_type, serial_nr, amount_total, total_tax)
+
+
+		img_str = qr_obj.get_img_str()
+
+		name = qr_obj.get_name()
 
 
 		# Update
@@ -1899,23 +1934,6 @@ class sale_order(models.Model):
 			return self.env['report'].get_action(self, name)
 
 
-
-# ----------------------------------------------------------- Update Appointments -----------------
-
-	# Update Appointment in Treatment
-	@api.multi
-	def update_appointment(self):
-		"""
-		high level support for doing this and that.
-		"""
-		if self.x_family == 'consultation':
-			for app in self.treatment.appointment_ids:
-				if app.x_type == 'consultation':
-					app.state = 'Scheduled'
-		if self.x_family == 'procedure':
-			for app in self.treatment.appointment_ids:
-				if app.x_type == 'procedure':
-					app.state = 'Scheduled'
 
 
 

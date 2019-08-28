@@ -6,9 +6,11 @@
 	Last updated: 	 	 	 6 Feb 2019
 """
 from openerp import models, fields, api
-from . import app_vars
 from . import pro_con_funcs
 from . import pro_ses_funcs
+
+#from . import app_vars
+
 
 class Procedure(models.Model):
 
@@ -19,6 +21,17 @@ class Procedure(models.Model):
 	_description = 'Procedure'
 
 	#_order = 'write_date desc'
+
+
+
+#----------------------------------------------------------- Deprecated ------------------------------------------------------------
+
+	# Machine 
+	#machine = fields.Selection(
+	#		selection=app_vars._subtype_list, 
+	#		string="Sala", 
+	#	)
+
 
 
 
@@ -332,11 +345,6 @@ class Procedure(models.Model):
 
 
 
-	# Machine 
-	machine = fields.Selection(
-			string="Sala", 
-			selection=app_vars._subtype_list, 
-		)
 
 
 

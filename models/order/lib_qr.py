@@ -38,36 +38,39 @@ def get_qr_data(self):
 	}
 
 
-	ruc_company = self.x_my_company.x_ruc
+
+	ruc_company = self.ruc_company
 
 	type_code = _dic_type_code[self.x_type]
 
-	series = self.x_serial_nr.split('-')[0]
+	series = self.serial_nr.split('-')[0]
 
-	number = self.x_serial_nr.split('-')[1]
+	number = self.serial_nr.split('-')[1]
 
-	igv = str(self.x_total_tax)
+	igv = str(self.total_tax)
 
 	total = str(self.amount_total)
 
 
 	date_format = "%Y-%m-%d %H:%M:%S"
 	date_format_pe = "%d/%m/%Y"
-	date = (datetime.datetime.strptime(self.date_order, date_format) - datetime.timedelta(hours=5)).strftime(date_format_pe)
+
+	#date = (datetime.datetime.strptime(self.date_order, date_format) - datetime.timedelta(hours=5)).strftime(date_format_pe)
+	date = (datetime.datetime.strptime(self.date, date_format) - datetime.timedelta(hours=5)).strftime(date_format_pe)
 
 
 	type_doc = ''
 	doc = ''
 
 	if self.x_type in ['ticket_receipt', 'credit_note']:
-		if self.x_id_doc_type not in [False] and self.x_id_doc not in [False, '']:
-			type_doc = _dic_type_doc[self.x_id_doc_type]
-			doc = self.x_id_doc
+		if self.receptor_id_doc_type not in [False] and self.receptor_id_doc not in [False, '']:
+			type_doc = _dic_type_doc[self.receptor_id_doc_type]
+			doc = self.receptor_id_doc
 
-	elif self.x_type in ['ticket_invoice']:
-		if self.x_ruc not in [False, '']:
+	elif self.receptor_type in ['ticket_invoice']:
+		if self.receptor_ruc not in [False, '']:
 			type_doc = '6'
-			doc = self.x_ruc
+			doc = self.receptor_ruc
 
 
 	se = '|'

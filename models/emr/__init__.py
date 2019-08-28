@@ -10,12 +10,12 @@ from . import product_product
 
 # Medical
 
-#from . import appointment 			# Dep
+#from . import appointment 			# Highly Deprecated
 
 
 from . import product
 from . import image		
-from . import allergy
+from . import allergy				
 from . import process
 from . import treatment
 from . import evaluation  
@@ -24,9 +24,7 @@ from . import procedure
 from . import control
 from . import session 
 from . import session_med
-
 from . import physician
-
 from . import doctor 
 
 

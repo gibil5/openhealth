@@ -214,8 +214,9 @@
                                 <field name="evaluation_start_date"/>
                                 <field name="session_date"/>
                                 <field name="appointment"   required="0"/>  
+<!--                                
                                 <field name="machine"/>
-
+-->
                                 <field name="vspace"/>
                                 <field name="configurator"/>
                             </group>

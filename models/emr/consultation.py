@@ -8,7 +8,9 @@
 from datetime import datetime,tzinfo,timedelta
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.libs import eval_vars
-from . import app_vars
+
+#from . import app_vars
+
 
 class Consultation(models.Model):
 
@@ -22,37 +24,6 @@ class Consultation(models.Model):
 
 
 	#----------------------------------------------------------- Deprecated ------------------------------------------------------------
-
-	#service_co2_ids = fields.Char()
-
-	#service_excilite_ids = fields.Char()
-
-	#service_ipl_ids = fields.Char()
-
-	#service_ndyag_ids = fields.Char()
-
-	#service_medical_ids = fields.Char()
-
-	#service_ids = fields.Char()
-
-
-
-	# Target 
-	#x_target = fields.Selection(
-	#		string="Target", 
-	#		selection = app_vars._target_list, 
-	#		default="doctor", 
-			#required=True, 
-	#	)
-
-	# Owner 
-	#owner_type = fields.Char(
-	#		default = 'consultation',
-	#	)
-
-	#evaluation_type = fields.Selection(
-	#		default = 'Pre-arraganged Appointment', 
-	#		)
 
 	# Appointments 
 	#appointment_ids = fields.One2many(
@@ -91,8 +62,20 @@ class Consultation(models.Model):
 
 	# Profile 
 	x_profile = fields.Selection(
+
+			#selection=app_vars._profile_list, 
+
+			[
+				('normal','Normal'), 
+				('anxious','Ansioso'), 
+				('psychiatric','Psiquiátrico'), 
+				('plaintif','Quejoso'), 
+				('depressed','Deprimido'), 
+				('histroinic','Histriónico'), 
+				('other','Otro'), 		
+			],
+
 			string="Perfil psicológico", 
-			selection=app_vars._profile_list, 
 		)
 
 

@@ -9,7 +9,7 @@
 
     'description': """
 
-        26 Aug 2019
+        28 Aug 2019
 
         Remember, Hunter and Westerman:
             - Step 1 - New Thinking: Avoid the 7 Value Traps.
@@ -84,25 +84,21 @@
     """,
 
     'author': "DataMetrics",
+
     'website': "http://jrevilla.com/",
+    
     'category': 'Object Oriented',
+    
     'version': '3.0',
 
     'depends': ['base', 'oehealth', 'base_multi_image'],
 
     'data': [
 
-
-
-
-
-
-
 # ----------------------------------------------------------- Data - First ------------------------------------------------------
 
         # Inactive
         #'data/users/base_data_users_inactive.xml', 
-
 
 
         # Check that data is not updated. All the time. 

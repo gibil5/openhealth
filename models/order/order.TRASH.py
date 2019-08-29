@@ -1,3 +1,146 @@
+# 29 Aug 2019 - Computes
+
+
+
+
+
+# 29 Aug 2019 - Getters
+
+
+# ----------------------------------------------------------- Ticket - Getters ----------------
+
+	# Company
+
+	def get_company_name(self):
+		"""
+		Used by Print Ticket.
+		"""
+		company_name = 'SERVICIOS MÉDICOS ESTÉTICOS S.A.C'
+		return company_name
+
+
+	def get_company_address(self):
+		"""
+		Used by Print Ticket.
+		"""
+		company_address = 'Av. La Merced 161 Miraflores - Lima'
+		return company_address
+
+
+	def get_company_phone(self):
+		"""
+		Used by Print Ticket.
+		"""
+		company_phone = 'Teléfono: (051) 321 2394'
+		return company_phone
+
+
+	def get_company_ruc(self):
+		"""
+		Used by Print Ticket.
+		"""
+		company_ruc = 'R.U.C.: 20523424221'
+		return company_ruc
+
+
+	def get_title(self):
+		"""
+		Used by Print Ticket.
+		"""
+		return self.x_title
+
+
+	def get_serial_nr(self):
+		"""
+		Used by Print Ticket.
+		"""
+		return self.x_serial_nr
+
+
+
+	def get_warning(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Get Warning')
+		#return self.x_my_company.x_warning
+		return False
+
+
+	def get_website(self):
+		"""
+		high level support for doing this and that.
+		"""
+		#return self.x_my_company.website
+		return False
+
+
+	def get_email(self):
+		"""
+		high level support for doing this and that.
+		"""
+		#return self.x_my_company.email
+		return False
+
+
+
+# ----------------------------------------------------------- Electronic - Getters ----------------
+
+	#def get_patient_address(self):
+	#	"""
+	#	high level support for doing this and that.
+	#	"""
+		#print
+		#print 'Get Patient Address'
+	#	return self.partner_id.x_address
+
+
+	#def get_firm_address(self):
+	#	"""
+	#	high level support for doing this and that.
+	#	"""
+	#	return self.partner_id.x_address
+
+
+
+	def get_credit_note_type(self):
+		"""
+		Used by Print Ticket.
+		"""
+		_dic_cn = {
+					'cancel': 					'Anulación de la operación.',
+					'cancel_error_ruc': 		'Anulación por error en el RUC.',
+					'correct_error_desc': 		'Corrección por error en la descripción.',
+					'discount': 				'Descuento global.',
+					'discount_item': 			'Descuento por item.',
+					'return': 					'Devolución total.',
+					'return_item': 				'Devolución por item.',
+					'bonus': 					'Bonificación.',
+					'value_drop': 				'Disminución en el valor.',
+					'other': 					'Otros.',
+					False: 						'',
+		}
+		return _dic_cn[self.x_credit_note_type]
+
+
+	def get_credit_note_owner_amount(self):
+		"""
+		Used by Print Ticket.
+		"""
+		return self.x_credit_note_owner_amount
+
+
+
+
+
+
+
+
+
+
+
+
 # 28 Aug 2019
 # App is Highly Deprecated !
 # My Company also

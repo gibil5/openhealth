@@ -24,6 +24,8 @@ from . import test_order
 from . import chk_order
 from . import exc_ord
 
+from . import tick_funcs
+
 class sale_order(models.Model):
 	"""
 	Sale Class - Inherited from the medical Module OeHealth. Has the Business Logic of the Clinic.
@@ -31,6 +33,193 @@ class sale_order(models.Model):
 	_inherit = 'sale.order'
 
 	_description = 'Order'
+
+
+
+# ----------------------------------------------------------- Print Ticket - Header and Footer -------------------------------
+
+	def get_title(self):
+		"""
+		Used by Print Ticket.
+		"""
+		return self.x_title
+
+
+	def get_serial_nr(self):
+		"""
+		Used by Print Ticket.
+		"""
+		return self.x_serial_nr
+
+
+	# Patient Firm Address
+	def get_firm_address(self):
+		"""
+		Used by Print Ticket
+		"""
+		return self.patient.x_firm_address
+
+
+	def get_patient_address(self):
+		"""
+		Used by Print Ticket
+		"""
+		return self.patient.x_address
+
+
+
+# ----------------------------------------------------------- Credit Notes - Getters ----------------
+
+	def get_credit_note_type(self):
+		"""
+		Used by Print Ticket.
+		"""
+		_dic_cn = {
+					'cancel': 					'Anulación de la operación.',
+					'cancel_error_ruc': 		'Anulación por error en el RUC.',
+					'correct_error_desc': 		'Corrección por error en la descripción.',
+					'discount': 				'Descuento global.',
+					'discount_item': 			'Descuento por item.',
+					'return': 					'Devolución total.',
+					'return_item': 				'Devolución por item.',
+					'bonus': 					'Bonificación.',
+					'value_drop': 				'Disminución en el valor.',
+					'other': 					'Otros.',
+					False: 						'',
+		}
+		return _dic_cn[self.x_credit_note_type]
+
+
+	def get_credit_note_owner_amount(self):
+		"""
+		Used by Print Ticket.
+		"""
+		return self.x_credit_note_owner_amount
+
+
+
+
+# ----------------------------------------------------------- Ticket - Header - Getters ----------------
+
+	# Company Address
+	def get_company_name(self):
+		"""
+		Used by Print Ticket
+		"""
+		company_name = self.configurator.company_name
+		return company_name
+
+
+	# Company Address
+	def get_company_address(self):
+		"""
+		Used by Print Ticket
+		"""
+		company_address = self.configurator.ticket_company_address
+		return company_address
+
+
+	# Company Address
+	def get_company_phone(self):
+		"""
+		Used by Print Ticket
+		"""
+		company_phone = self.configurator.company_phone
+		return company_phone
+
+
+	# Company Address
+	def get_company_ruc(self):
+		"""
+		Used by Print Ticket
+		"""
+		company_ruc = self.configurator.ticket_company_ruc
+		return company_ruc
+
+
+# ----------------------------------------------------------- Ticket - Footer - Getters ----------------
+
+	# Description
+	def get_description(self):
+		"""
+		Used by Print Ticket
+		"""
+		description = self.configurator.ticket_description
+		return description
+
+
+	# Warning
+	def get_warning(self):
+		"""
+		Used by Print Ticket
+		"""
+		warning = self.configurator.ticket_warning
+		return warning
+
+
+	# Website
+	def get_website(self):
+		"""
+		Used by Print Ticket
+		"""
+		website = self.configurator.website
+		return website
+
+
+	# Email
+	def get_email(self):
+		"""
+		Used by Print Ticket
+		"""
+		email = self.configurator.email
+		return email
+
+
+
+
+# ----------------------------------------------------------- Print Ticket - Amounts -------------------------------
+
+	def get_amount_total(self):
+		"""
+		Used by Print Ticket.
+		"""
+		return self.amount_total
+
+
+	def get_total_net(self):
+		"""
+		Used by Print Ticket.
+		"""
+		return self.x_total_net
+
+
+	def get_total_tax(self):
+		"""
+		Used by Print Ticket.
+		"""
+		return self.x_total_tax
+
+
+	def get_total_in_words(self):
+		"""
+		Used by Print Ticket.
+		"""
+		return self.x_total_in_words
+
+
+	def get_total_cents(self):
+		"""
+		Used by Print Ticket.
+		"""
+		return self.x_total_cents
+
+
+	#def get_note(self):  		# Dep
+	#	"""
+	#	Used by Print Ticket.
+	#	"""
+	#	return self.note
+
 
 
 
@@ -247,177 +436,6 @@ class sale_order(models.Model):
 						'qr_product_name':name,
 				})
 	# make_qr
-
-
-# ----------------------------------------------------------- Ticket - Getters ----------------
-	def get_company_name(self):
-		"""
-		Used by Print Ticket.
-		"""
-		company_name = 'SERVICIOS MÉDICOS ESTÉTICOS S.A.C'
-		return company_name
-
-
-	def get_company_address(self):
-		"""
-		Used by Print Ticket.
-		"""
-		company_address = 'Av. La Merced 161 Miraflores - Lima'
-		return company_address
-
-
-	def get_company_phone(self):
-		"""
-		Used by Print Ticket.
-		"""
-		company_phone = 'Teléfono: (051) 321 2394'
-		return company_phone
-
-
-	def get_company_ruc(self):
-		"""
-		Used by Print Ticket.
-		"""
-		company_ruc = 'R.U.C.: 20523424221'
-		return company_ruc
-
-
-
-
-# ----------------------------------------------------------- Ticket - Getters ----------------
-
-	def get_title(self):
-		"""
-		Used by Print Ticket.
-		"""
-		return self.x_title
-
-
-	def get_serial_nr(self):
-		"""
-		Used by Print Ticket.
-		"""
-		return self.x_serial_nr
-
-
-
-	def get_warning(self):
-		"""
-		high level support for doing this and that.
-		"""
-		print()
-		print('Get Warning')
-		#return self.x_my_company.x_warning
-		return False
-
-
-	def get_website(self):
-		"""
-		high level support for doing this and that.
-		"""
-		#return self.x_my_company.website
-		return False
-
-
-	def get_email(self):
-		"""
-		high level support for doing this and that.
-		"""
-		#return self.x_my_company.email
-		return False
-
-
-
-
-# ----------------------------------------------------------- Electronic - Getters ----------------
-
-	def get_patient_address(self):
-		"""
-		high level support for doing this and that.
-		"""
-		#print
-		#print 'Get Patient Address'
-		return self.partner_id.x_address
-
-
-	def get_firm_address(self):
-		"""
-		high level support for doing this and that.
-		"""
-		#print
-		#print 'Get Firm Address'
-		#return self.partner_id.x_firm_address
-		return self.partner_id.x_address
-
-
-
-	def get_credit_note_type(self):
-		"""
-		Used by Print Ticket.
-		"""
-		_dic_cn = {
-					'cancel': 					'Anulación de la operación.',
-					'cancel_error_ruc': 		'Anulación por error en el RUC.',
-					'correct_error_desc': 		'Corrección por error en la descripción.',
-					'discount': 				'Descuento global.',
-					'discount_item': 			'Descuento por item.',
-					'return': 					'Devolución total.',
-					'return_item': 				'Devolución por item.',
-					'bonus': 					'Bonificación.',
-					'value_drop': 				'Disminución en el valor.',
-					'other': 					'Otros.',
-					False: 						'',
-		}
-		return _dic_cn[self.x_credit_note_type]
-
-
-	def get_credit_note_owner_amount(self):
-		"""
-		Used by Print Ticket.
-		"""
-		return self.x_credit_note_owner_amount
-
-
-
-# ----------------------------------------------------------- Print Ticket -------------------------------
-
-	def get_total_net(self):
-		"""
-		Used by Print Ticket.
-		"""
-		return self.x_total_net
-
-	def get_total_tax(self):
-		"""
-		Used by Print Ticket.
-		"""
-		return self.x_total_tax
-
-	def get_amount_total(self):
-		"""
-		Used by Print Ticket.
-		"""
-		return self.amount_total
-
-
-	def get_total_in_words(self):
-		"""
-		Used by Print Ticket.
-		"""
-		return self.x_total_in_words
-
-	def get_total_cents(self):
-		"""
-		Used by Print Ticket.
-		"""
-		return self.x_total_cents
-
-
-	def get_note(self):
-		"""
-		Used by Print Ticket.
-		"""
-		return self.note
 
 
 

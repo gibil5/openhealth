@@ -1,5 +1,279 @@
+# 29 Aug 2019 - Update Legacy
+# Deprecated !
+
+
+	# Update Legacy Jan
+	@api.multi
+	def update_legacy_jan(self):
+		"""
+		high level support for doing this and that.
+		"""
+		orders = self.env['sale.order'].search([
+																('date_order', '>=', '2018-01-01'),
+																('date_order', '<', '2018-02-01'),
+													],
+																order='date_order asc',
+																#limit=1000,
+												)
+		for order in orders:
+			order.update_legacy()
+
+
+	# Update Legacy Fev
+	@api.multi
+	def update_legacy_fev(self):
+		"""
+		high level support for doing this and that.
+		"""
+
+		orders = self.env['sale.order'].search([
+																('date_order', '>=', '2018-02-01'),
+																('date_order', '<', '2018-03-01'),
+													],
+																order='date_order asc',
+																#limit=1000,
+												)
+		for order in orders:
+			order.update_legacy()
+
+
+
+	# Update Legacy Mar
+	@api.multi
+	def update_legacy_mar(self):
+		"""
+		high level support for doing this and that.
+		"""
+		orders = self.env['sale.order'].search([
+																('date_order', '>=', '2018-03-01'),
+																('date_order', '<', '2018-03-06'),
+													],
+																order='date_order asc',
+																#limit=1000,
+												)
+		for order in orders:
+			order.update_legacy()
+	# update_type_legacy_mar
+
+
+	# Update Legacy
+	#@api.multi
+	#def update_legacy(self):
+	#	"""
+	#	high level support for doing this and that.
+	#	"""
+	#	self.x_legacy = True
+
+
+
+
+
+
+
+# 29 Aug 2019 - Update Descriptors All
+# Deprecated !
+
+# ----------------------------------------------------------- Update Descriptors ------------------
+
+	# For batch
+	@api.multi
+	def update_descriptors_all(self):
+		"""
+		high level support for doing this and that.
+		"""
+		orders = self.env['sale.order'].search([
+													('state', '=', 'sale'),
+											],
+												order='date_order desc',
+												#limit=2000,
+												limit=300,
+											)
+		#print orders
+		for order in orders:
+			order.update_descriptors()
+
+
+
+
+
+
+
+# 29 Aug 2019 - Update Month Day All
+# Deprecated !
+
+	# Update Day Month - All
+	@api.multi
+	def update_day_month_all(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Update Day Month - All')
+		orders = self.env['sale.order'].search([
+																('date_order', '>=', '2018-01-01'),
+													],
+																order='date_order asc',
+																#limit=1000,
+												)
+		for order in orders:
+			if order.x_day_order in [False] and order.x_month_order in [False]:
+				order.update_day_month()
+
+
+
+
+
+
+
+
+
+# 29 Aug 2019 - Print Ticket Old
+# Deprecated !
+
+	# Print Ticket - Deprecated !
+	@api.multi
+	def print_ticket(self):
+		"""
+		high level support for doing this and that.
+		"""
+		if self.x_type == 'ticket_receipt':
+			name = 'openhealth.report_ticket_receipt_nex_view'
+			return self.env['report'].get_action(self, name)
+		elif self.x_type == 'ticket_invoice':
+			name = 'openhealth.report_ticket_invoice_nex_view'
+			return self.env['report'].get_action(self, name)
+
+
+
+
+
+
+
+
+
+# 29 Aug 2019 - Testing
+# Deprecated !
+
+	# Test Case
+	x_test_case = fields.Char()
+
+
+	# Test
+	@api.multi
+	def test(self):
+		"""
+		high level support for doing this and that.
+		"""
+		#print
+		#print 'Order - Test - Interface'
+		test_order.test(self)
+
+
+	def test_actions(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print('')
+		print('Test Actions')
+		self.print_ticket_electronic()
+		self.correct_pm()
+		self.create_credit_note()
+		self.cancel_order()
+		self.activate_order()
+
+
+	def test_computes(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print('')
+		print('Test Computes')
+
+		print(self.x_type_code)
+		print(self.nr_lines)
+		print(self.x_partner_vip)
+		#print(self.x_total_in_words)
+		#print(self.x_total_cents)
+		#print(self.x_total_net)
+		#print(self.x_total_tax)
+		#print(self.x_my_company)
+		#print(self.x_date_order_corr)
+		#print(self.x_amount_total)
+		#print(self.)
+
+
+
+
+
+
+
+
+# 29 Aug 2019 - Automatec Actions - Called by Appointment
+# Highly Deprecated !!!
+
+
+# ----------------------------------------------------------- Automatic - Highly Deprecated !!! ---------------------------
+
+	# Get Control Date Auto
+	#@api.multi
+	#def get_date_order_auto(self, date):
+	#	"""
+	#	Get Date Order Auto
+	#	Used by Automated Actions - Appointments
+	#	"""
+	#	print()
+	#	print('Get Date Order Auto')
+	#	print('Do Nothing')
+	#
+	#	#print(date)
+	#
+	#	if date not in [False]:
+	#		date_format = "%Y-%m-%d %H:%M:%S"
+	#		date_dt = datetime.datetime.strptime(date, date_format) + datetime.timedelta(hours=-5, minutes=0)
+	#		date_str = date_dt.strftime(date_format)
+	#	else:
+	#		date_str = False
+	#
+	#	return date_str
+
+
+
+
+
+
+
+
+# 29 Aug 2019 - Confirm
+
+	@api.multi
+	def action_confirm_nex(self):
+
+		# Call the Parent Procedure - Highly Deprecated. Generates Procurement and Stock  !!!
+		#super(sale_order, self).action_confirm()
+
+
+
+
 # 29 Aug 2019 - Computes
 
+	# Total in Words
+	#x_total_in_words = fields.Char(
+	#		"",
+			#compute='_compute_x_total_in_words',
+	#	)
+
+	# Total in cents
+	#x_total_cents = fields.Integer(
+	#		"Céntimos",
+			#compute='_compute_x_total_cents',
+	#	)
+
+
+	# Date corrected
+	#x_date_order_corr = fields.Char(
+	#		string='Order Date Corr',
+			#compute="_compute_date_order_corr",
+	#	)
 
 
 

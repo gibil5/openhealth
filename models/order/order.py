@@ -6,12 +6,7 @@ Created: 			26 Aug 2016
 Last mod: 			29 Aug 2019
 """
 from __future__ import print_function
-import math
 import datetime
-try:
-	from num2words import num2words
-except (ImportError, IOError) as err:
-	_logger.debug(err)
 from openerp import models, fields, api
 from openerp import _
 from openerp.exceptions import Warning as UserError
@@ -25,14 +20,67 @@ from . import chk_order
 from . import exc_ord
 
 from . import tick_funcs
+from . import ord_funcs
 
 class sale_order(models.Model):
 	"""
 	Sale Class - Inherited from the medical Module OeHealth. Has the Business Logic of the Clinic.
+	This is only a Data Model. Must NOT contain Business Rules. 
+	All BRs should be in Classes and Libraries. 
 	"""
 	_inherit = 'sale.order'
 
 	_description = 'Order'
+
+
+
+# ----------------------------------------------------------- Partner - Not Dep -------------------------
+	# Partner
+	# Already Created by OeHealth
+
+	partner_id = fields.Many2one(
+			'res.partner',
+			string="Cliente",
+			required=False,
+			states={
+					'draft': [('readonly', False)],
+					'sent': [('readonly', True)],
+					'sale': [('readonly', True)],
+				},
+
+			ondelete='cascade',  		# Is this the new property ?
+		)
+
+	# On Change Partner
+	@api.onchange('partner_id')
+	def _onchange_partner_id(self):
+		if self.partner_id.name != False:
+			self.x_partner_dni = self.partner_id.x_dni
+
+
+
+	# DNI
+	# Used by Budget
+	# Allows research of Patient by DNI - Important
+	x_partner_dni = fields.Char(
+			string='DNI',
+			states={
+						'draft': 	[('readonly', False)],
+						'sent': 	[('readonly', True)],
+						'sale': 	[('readonly', True)],
+						'cancel': 	[('readonly', True)],
+						'done': 	[('readonly', True)],
+					},
+		)
+
+
+	# On Change Partner Dni
+	@api.onchange('x_partner_dni')
+	def _onchange_x_partner_dni(self):
+
+		self.patient = ord_funcs.search_patient_by_id_document(self)
+
+	# _onchange_x_partner_dni
 
 
 
@@ -65,6 +113,13 @@ class sale_order(models.Model):
 		Used by Print Ticket
 		"""
 		return self.patient.x_address
+
+
+	def get_note(self):
+		"""
+		Used by Print Ticket.
+		"""
+		return self.note
 
 
 
@@ -175,21 +230,24 @@ class sale_order(models.Model):
 		return email
 
 
-
-
 # ----------------------------------------------------------- Print Ticket - Amounts -------------------------------
 
 	def get_amount_total(self):
 		"""
 		Used by Print Ticket.
 		"""
-		return self.amount_total
+		print()
+		print('Get Amount Total')
+		return tick_funcs.get_total(self)
 
 
 	def get_total_net(self):
 		"""
 		Used by Print Ticket.
 		"""
+		print()
+		print('Get Total Net')
+		self.x_total_net =  tick_funcs.get_net(self)
 		return self.x_total_net
 
 
@@ -197,6 +255,9 @@ class sale_order(models.Model):
 		"""
 		Used by Print Ticket.
 		"""
+		print()
+		print('Get Total Tax')
+		self.x_total_tax = tick_funcs.get_tax(self)
 		return self.x_total_tax
 
 
@@ -204,23 +265,135 @@ class sale_order(models.Model):
 		"""
 		Used by Print Ticket.
 		"""
-		return self.x_total_in_words
+		print()
+		print('Get Total Words')
+		return tick_funcs.get_words(self)
 
 
 	def get_total_cents(self):
 		"""
 		Used by Print Ticket.
 		"""
-		return self.x_total_cents
+		print()
+		print('Get Total Cents')
+		return tick_funcs.get_cents(self)
 
 
-	#def get_note(self):  		# Dep
-	#	"""
-	#	Used by Print Ticket.
-	#	"""
-	#	return self.note
+	def get_date_corrected(self):
+		"""
+		Used by Print Ticket.
+		"""
+		print()
+		print('Get Date Corrected')
+		return tick_funcs.get_date_corrected(self)
 
 
+
+# ----------------------------------------------------------- Natives  - Computes OK -------------------------
+
+	# Type Code - OK
+	x_type_code = fields.Char(
+			string='Tipo Codigo',
+
+			compute='_compute_x_type_code',
+		)
+
+	@api.multi
+	def _compute_x_type_code(self):
+		for record in self:
+			if record.x_type in ['ticket_receipt', 'ticket_invoice', 'receipt', 'invoice', 'advertisement', 'sale_note']:
+				record.x_type_code = ord_vars._dic_type_code[record.x_type]
+
+
+
+	# Nr lines - OK
+	nr_lines = fields.Integer(
+			default=0,
+			string='Nr líneas',
+			required=False,
+
+			compute='_compute_nr_lines',
+		)
+
+	@api.multi
+	#@api.depends('order_line')
+	def _compute_nr_lines(self):
+		for record in self:
+			ctr = 0
+			for _ in record.order_line:
+				ctr = ctr + 1
+			record.nr_lines = ctr
+
+
+	# Partner Vip - OK
+	x_partner_vip = fields.Boolean(
+			'Vip',
+			default=False,
+
+			compute="_compute_partner_vip",
+		)
+
+	@api.multi
+	def _compute_partner_vip(self):
+		for record in self:
+			count = self.env['openhealth.card'].search_count([
+																('patient_name', '=', record.partner_id.name),
+														])
+			if count == 0:
+				record.x_partner_vip = False
+			else:
+				record.x_partner_vip = True
+
+
+
+
+
+	# Amount total - OK
+	x_amount_total = fields.Float(
+			string="x Total",
+
+			compute="_compute_x_amount_total",
+		)
+
+	@api.multi
+	def _compute_x_amount_total(self):
+		for record in self:
+			sub = 0.0
+			for line in record.order_line:
+				sub = sub + line.price_subtotal
+			record.x_amount_total = sub
+
+
+
+
+	# Amount Flow - Verify !
+	x_amount_flow = fields.Float(
+			'Total F',
+
+			compute='_compute_x_amount_flow',
+		)
+
+	@api.multi
+	def _compute_x_amount_flow(self):
+		for record in self:
+			if record.x_block_flow:
+				record.x_amount_flow = 0
+			elif record.x_credit_note_amount not in [0, False]:
+				record.x_amount_flow = - record.x_credit_note_amount
+			else:
+				record.x_amount_flow = record.amount_total
+
+
+# ----------------------------------------------------------- Natives  - Killed Computes -------------------------
+	# Net
+	x_total_net = fields.Float(
+			"Neto",
+		)
+
+	# Tax
+	x_total_tax = fields.Float(
+			"Impuesto",
+		)
 
 
 # ----------------------------------------------------------- Configurator -------------------------
@@ -268,6 +441,8 @@ class sale_order(models.Model):
 		# If Everything is OK
 		self.check_and_generate()
 
+	# validate
+
 
 
 	def check_and_generate(self):
@@ -288,17 +463,29 @@ class sale_order(models.Model):
 			self.x_doctor_uid = uid
 
 
+
 		# Date - Must be that of the Sale, not the Budget.
 		self.date_order = datetime.datetime.now()
-		self.update_day_month()
+
+
+
+		# Date - Update Day and Month
+		#self.update_day_month()
+		ord_funcs.update_day_and_month(self)
+
+
 
 
 		# Update Descriptors (family and product)
-		self.update_descriptors()
+		#self.update_descriptors()
+		ord_funcs.update_descriptors(self)
+
 
 
 		# Vip Card - Detect and Create
-		self.detect_create_card()
+		#self.detect_create_card()
+		ord_funcs.detect_vip_card_and_create(self)
+
 
 
 
@@ -356,9 +543,7 @@ class sale_order(models.Model):
 		# Change State
 		self.state = 'validated'
 
-	# validate
-
-
+	# check_and_generate
 
 
 # ----------------------------------------------------------- Confirm - Button ----------------------
@@ -375,16 +560,9 @@ class sale_order(models.Model):
 
 
 		# Generate Serial Number
-		if self.x_serial_nr != '' and not self.x_admin_mode:
-			
+		if self.x_serial_nr != '' and not self.x_admin_mode:			
 			self.x_counter_value = user.get_counter_value(self, self.x_type, self.state)  				# Counter
-
 			self.x_serial_nr = user.get_serial_nr(self.x_type, self.x_counter_value, self.state) 		# Serial Nr
-
-
-
-		# Call the Parent Procedure - Highly Deprecated. Generates Procurement and Stock  !!!
-		#super(sale_order, self).action_confirm()
 
 
 		# QR
@@ -392,10 +570,8 @@ class sale_order(models.Model):
 			self.make_qr()
 
 
-
 		# State
 		self.state = 'sale'
-
 
 	# action_confirm_nex
 
@@ -439,16 +615,11 @@ class sale_order(models.Model):
 
 
 
-
-
 # ----------------------------------------------------------- Descriptors -------------------------------
 	# Product
 	x_product = fields.Char(
 			string="Producto",
 		)
-
-
-
 
 	# Family
 	x_family = fields.Selection(
@@ -462,90 +633,12 @@ class sale_order(models.Model):
 		)
 
 
-
-
-
-
-
-# ----------------------------------------------------------- Taxes -------------------------
-	# Net
-	x_total_net = fields.Float(
-			"Neto",
-
-			compute='_compute_x_total_net',
-		)
-
-	@api.multi
-	#@api.depends('')
-	def _compute_x_total_net(self):
-		for record in self:
-
-			if record.x_block_flow:
-
-				record.x_total_net = 0
-
-			else:
-				x = record.amount_total / 1.18
-				g = float("{0:.2f}".format(x))
-
-				record.x_total_net = g
-
-
-
-	# Tax
-	x_total_tax = fields.Float(
-			"Impuesto",
-
-			compute='_compute_x_total_tax',
-		)
-	@api.multi
-	#@api.depends('')
-	def _compute_x_total_tax(self):
-		for record in self:
-
-			if record.x_block_flow:
-
-				record.x_total_tax = 0
-
-			else:
-				x = record.x_total_net * 0.18
-				g = float("{0:.2f}".format(x))
-
-				record.x_total_tax = g
-
-
-
-
 # ----------------------------------------------------------- Credit Note -------------------------
 
 	x_block_flow = fields.Boolean(
 			'Flujo Bloqueado',
 			readonly=True,
 		)
-
-	x_amount_flow = fields.Float(
-			'Total F',
-
-			compute='_compute_x_amount_flow',
-		)
-
-	@api.multi
-	def _compute_x_amount_flow(self):
-		for record in self:
-
-			if record.x_block_flow:
-				record.x_amount_flow = 0
-
-			elif record.x_credit_note_amount not in [0, False]:
-
-				#record.x_amount_flow = record.amount_total - record.x_credit_note_amount
-				record.x_amount_flow = - record.x_credit_note_amount
-
-			else:
-				record.x_amount_flow = record.amount_total
-
-
-
 
 	x_credit_note_type = fields.Selection(
 			selection=ord_vars._credit_note_type_list,
@@ -574,19 +667,15 @@ class sale_order(models.Model):
 		)
 
 
-
-
-
 # ---------------------------------------------- Credit Note - Block Flow -------------------------
 	# Block Flow
 	@api.multi
 	def block_flow(self):
 		"""
-		high level support for doing this and that.
+		Used by Credit Notes
 		"""
 		print()
 		print('Block Flow')
-
 		if self.state in ['credit_note']:
 			self.x_block_flow = True
 			self.x_credit_note_owner.x_block_flow = True
@@ -596,17 +685,13 @@ class sale_order(models.Model):
 	@api.multi
 	def unblock_flow(self):
 		"""
-		high level support for doing this and that.
+		Used by Credit Notes
 		"""
 		print()
 		print('Unblock Flow')
-
 		if self.state in ['credit_note']:
 			self.x_block_flow = False
 			self.x_credit_note_owner.x_block_flow = False
-
-
-
 
 
 
@@ -622,22 +707,13 @@ class sale_order(models.Model):
 		print(self.x_credit_note_type)
 
 		if self.state in ['credit_note']:
-
-
-			#self.x_credit_note_owner_amount = self.amount_total
 			self.x_credit_note_owner_amount = self.x_credit_note_owner.amount_total
-
 			self.order_line.unlink()
-
-
 
 			name = self.x_credit_note_type
 
-
 			# Search
 			product = self.env['product.product'].search([
-															#('name', 'in', ['DEVOLUCION']),
-															#('name', 'in', [name]),
 															('x_name_short', 'in', [name]),
 															],
 															#order='date_begin asc',
@@ -676,7 +752,6 @@ class sale_order(models.Model):
 		# Serial Nr
 		serial_nr = user.get_serial_nr(self.x_type, counter_value, state)
 
-
 		# Duplicate with different fields
 		credit_note = self.copy(default={
 											'x_serial_nr': serial_nr,
@@ -689,10 +764,6 @@ class sale_order(models.Model):
 											'amount_untaxed': self.amount_untaxed,
 								})
 		print(credit_note)
-		#print(credit_note.order_line)
-
-		# Remove Order Lines
-		#credit_note.order_line.unlink()
 
 		# Update Self
 		self.write({
@@ -700,7 +771,6 @@ class sale_order(models.Model):
 					})
 
 	# create_credit_note
-
 
 
 
@@ -716,15 +786,10 @@ class sale_order(models.Model):
 		index=True,
 	)
 
-
 	# Date Date
 	x_date_order_date = fields.Date(
 		'Fecha',
 	)
-
-
-
-
 
 
 	# Month
@@ -740,130 +805,12 @@ class sale_order(models.Model):
 			string='Dia',
 		)
 
-
-
-
-
-
-
-	# Update Day Month - All
-	@api.multi
-	def update_day_month_all(self):
-		"""
-		high level support for doing this and that.
-		"""
-		print()
-		print('Update Day Month - All')
-		orders = self.env['sale.order'].search([
-																#('date_order', '>=', '2018-11-01'),
-																#('date_order', '>=', '2018-06-01'),
-																('date_order', '>=', '2018-01-01'),
-
-																#('date_order', '<', '2018-12-01'),
-													],
-																order='date_order asc',
-																#limit=1000,
-												)
-		for order in orders:
-			if order.x_day_order in [False] and order.x_month_order in [False]:
-				order.update_day_month()
-
-
-
-	# Update Day Month
-	@api.multi
-	def update_day_month(self):
-		"""
-		high level support for doing this and that.
-		"""
-		#print()
-		#print('Update Day Month')
-
-		date_format = "%d"
-		self.x_day_order = lib.get_date_with_format(date_format, self.date_order)
-
-		date_format = "%m"
-		self.x_month_order = lib.get_date_with_format(date_format, self.date_order)
-
-
-
-
-
-
 # ----------------------------------------------------------- Legacy ------------------------------
 	# Legacy
 	x_legacy = fields.Boolean(
 			'Legacy',
 			default=False,
 		)
-
-
-	# Update Legacy Jan
-	@api.multi
-	def update_legacy_jan(self):
-		"""
-		high level support for doing this and that.
-		"""
-		orders = self.env['sale.order'].search([
-																('date_order', '>=', '2018-01-01'),
-																('date_order', '<', '2018-02-01'),
-													],
-																order='date_order asc',
-																#limit=1000,
-												)
-		for order in orders:
-			order.update_legacy()
-
-
-	# Update Legacy Fev
-	@api.multi
-	def update_legacy_fev(self):
-		"""
-		high level support for doing this and that.
-		"""
-
-		orders = self.env['sale.order'].search([
-																('date_order', '>=', '2018-02-01'),
-																('date_order', '<', '2018-03-01'),
-													],
-																order='date_order asc',
-																#limit=1000,
-												)
-		for order in orders:
-			order.update_legacy()
-
-
-
-	# Update Legacy Mar
-	@api.multi
-	def update_legacy_mar(self):
-		"""
-		high level support for doing this and that.
-		"""
-		orders = self.env['sale.order'].search([
-																('date_order', '>=', '2018-03-01'),
-																('date_order', '<', '2018-03-06'),
-													],
-																order='date_order asc',
-																#limit=1000,
-												)
-		for order in orders:
-			order.update_legacy()
-	# update_type_legacy_mar
-
-
-
-
-	# Update Legacy
-	#@api.multi
-	#def update_legacy(self):
-	#	"""
-	#	high level support for doing this and that.
-	#	"""
-	#	self.x_legacy = True
-
-
-
 
 # ----------------------------------------------------------- Payment ----------------------------
 	x_pm_cash = fields.Float(
@@ -903,7 +850,6 @@ class sale_order(models.Model):
 			default=5,
 		)
 
-
 	# Checksum Func
 	@api.multi
 	def checksum(self):
@@ -912,17 +858,12 @@ class sale_order(models.Model):
 		"""
 		#print
 		#print 'CheckSum'
-
 		self.check_payment_method()
-
 		delta = int(self.amount_total) - int(self.x_pm_total)
-
 		if delta != 0:
 			self.x_checksum = 1
 		else:
 			self.x_checksum = 0
-
-
 
 
 	# Pm Total
@@ -940,10 +881,8 @@ class sale_order(models.Model):
 		#print
 		#print 'Check Payment Method'
 		pm_total = 0
-
 		for pm in self.x_payment_method.pm_line_ids:
 			pm_total = pm_total + pm.subtotal
-
 		self.x_pm_total = pm_total
 
 
@@ -977,7 +916,6 @@ class sale_order(models.Model):
 	@api.constrains('x_ruc')
 	def _check_x_ruc(self):
 		if self.x_type in ['ticket_invoice', 'invoice']:
-			#chk_order.check_ruc(self)
 			chk_patient.check_x_ruc(self)
 
 
@@ -988,15 +926,10 @@ class sale_order(models.Model):
 			chk_patient.check_x_id_doc(self)
 
 
-
-
 	# Check Serial Nr
 	@api.constrains('x_serial_nr')
 	def _check_x_serial_nr(self):
 		chk_order.check_serial_nr(self)
-
-
-
 
 
 
@@ -1022,61 +955,11 @@ class sale_order(models.Model):
 
 
 
-
-
 # ----------------------------------------------------------- Mode Admin --------------------------
 	x_admin_mode = fields.Boolean(
 			'Modo Admin',
 			help='Activa el Modo Administrador.',
 		)
-
-
-
-
-
-
-
-# ----------------------------------------------------------- Onchange - DNI ----------------------
-	# Dni
-	@api.onchange('x_partner_dni')
-	def _onchange_x_partner_dni(self):
-		#print
-		#print 'On Change - DNI'
-
-		if self.x_partner_dni != False:
-
-			#print 'By Id Doc'
-
-			# Search Patient - by ID IDOC
-			patient = self.env['oeh.medical.patient'].search([
-																('x_id_doc', '=', self.x_partner_dni),
-												],
-													order='write_date desc',
-													limit=1,
-												)
-			#print patient.name
-
-
-
-			if patient.name == False:
-
-				#print 'By Dni'
-
-				# Search Patient - by DNI
-				patient = self.env['oeh.medical.patient'].search([
-																	('x_dni', '=', self.x_partner_dni),
-													],
-														order='write_date desc',
-														limit=1,
-													)
-				#print patient.name
-
-			# Update
-			self.patient = patient.id
-
-	# _onchange_x_partner_dni
-
-
 
 
 # ----------------------------------------------------------- Id Doc ------------------------------
@@ -1087,29 +970,12 @@ class sale_order(models.Model):
 			required=False,
 		)
 
-
 	# Id Document Type
 	x_id_doc_type = fields.Selection(
 			selection=pat_vars._id_doc_type_list,
 			string='Tipo de documento',
 			required=False,
 		)
-
-
-	# Type Code
-	x_type_code = fields.Char(
-			string='Tipo Codigo',
-
-			compute='_compute_x_type_code',
-		)
-
-	@api.multi
-	def _compute_x_type_code(self):
-		for record in self:
-			if record.x_type in ['ticket_receipt', 'ticket_invoice', 'receipt', 'invoice', 'advertisement', 'sale_note']:
-				record.x_type_code = ord_vars._dic_type_code[record.x_type]
-
-
 
 	# Type
 	x_type = fields.Selection(
@@ -1133,7 +999,6 @@ class sale_order(models.Model):
 		)
 
 
-
 # ----------------------------------------------------------- Correct -----------------------------
 	# Correct payment method
 	@api.multi
@@ -1148,7 +1013,6 @@ class sale_order(models.Model):
 																					'partner':	self.partner_id.id,
 																					'total':	self.amount_total,
 																			})
-
 		res_id = self.x_payment_method.id
 
 		return {
@@ -1156,9 +1020,7 @@ class sale_order(models.Model):
 			'type': 'ir.actions.act_window',
 			'name': 'Open Payment Method Current',
 			# Window action
-
 			'res_id': res_id,
-
 			'res_model': 'openhealth.payment_method',
 			# Views
 			"views": [[False, "form"]],
@@ -1172,13 +1034,9 @@ class sale_order(models.Model):
 						#'form': {'action_buttons': True, }
 						#'form': {'action_buttons': False, }
 					},
-			'context': {
-						#'default_order': order_id,
-					}
+			'context': {}
 		}
 	# correct_pm
-
-
 
 
 # ----------------------------------------------------------- Pay ---------------------------------
@@ -1193,7 +1051,6 @@ class sale_order(models.Model):
 			string='RUC',
 			#readonly=True,
 		)
-
 
 # ----------------------------------------------------------- Locked - By State -------------------
 
@@ -1230,30 +1087,17 @@ class sale_order(models.Model):
 			states=READONLY_STATES,
 		)
 
-
-
-
-	#ORDER_LINE_READONLY_STATES = {
-	#								'draft': 		[('readonly', False)],
-	#								'sent': 		[('readonly', False)],
-	#								'sale': 		[('readonly', False)],
-	#								'cancel': 		[('readonly', False)],
-	#}
-
 	# Order Line
 	order_line = fields.One2many(
 			'sale.order.line',
 			'order_id',
 			string='Order Lines',
 
-			#states=READONLY_STATES, 			# By XML
-			
-			#states=ORDER_LINE_READONLY_STATES,
+			#states=READONLY_STATES, 			# Done by the View
 		)
 
 
 # ----------------------------------------------------------- On Changes --------------------------
-
 
 	# Patient
 	@api.onchange('patient')
@@ -1267,10 +1111,8 @@ class sale_order(models.Model):
 			self.x_ruc = False
 			self.partner_id = self.patient.partner_id.id
 
-
 			#print self.patient.x_id_doc
 			#print self.patient.x_id_doc_type
-
 
 			# Id Doc
 			if self.patient.x_id_doc != False:
@@ -1296,8 +1138,6 @@ class sale_order(models.Model):
 
 
 
-
-
 	# Doctor
 	@api.onchange('x_doctor')
 	def _onchange_x_doctor(self):
@@ -1310,30 +1150,6 @@ class sale_order(models.Model):
 														limit=1,
 													)
 			self.treatment = treatment
-
-
-
-
-	# Partner
-	@api.onchange('partner_id')
-	def _onchange_partner_id(self):
-		if self.partner_id.name != False:
-			self.x_partner_dni = self.partner_id.x_dni
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 # ---------------------------------------------- Update Counter -----------------------------------
@@ -1362,80 +1178,12 @@ class sale_order(models.Model):
 
 
 
-
-
-
-
-
-
-
-# ----------------------------------------------------------- Create Card -------------------------
-
-	# Create Card Vip
-	@api.multi
-	def detect_create_card(self):
-		"""
-		high level support for doing this and that.
-		"""
-
-		# Detect if Card in Sale
-		sale_card = False
-
-		for line in self.order_line:
-			if line.product_id.x_name_short == 'vip_card':
-				sale_card = True
-
-
-
-
-		# If Card in Sale
-		if sale_card:
-
-
-			# Search Card in the Db
-			card = self.env['openhealth.card'].search([('patient_name', '=', self.partner_id.name),], order='date_created desc', limit=1)
-
-
-
-			# If it does not exist - Create
-			if card.name == False:
-				card = self.env['openhealth.card'].create({
-																'patient_name': self.partner_id.name,
-															})
-
-
-
-
-			# Update Partner - Vip Price List
-			pl = self.env['product.pricelist'].search([
-															('name', '=', 'VIP'),
-													],
-															#order='appointment_date desc',
-															limit=1,)
-			self.partner_id.property_product_pricelist = pl
-
-
-
-	# detect_create_card
-
-
-
-
-
-
-
-
-
-# ----------------------------------------------------------- Vars --------------------------------
+# ----------------------------------------------------------- Primitives --------------------------
 
 	# Delta
 	x_delta = fields.Integer(
 			'Delta',
 		)
-
-
-
-
 
 	# State
 	state = fields.Selection(
@@ -1448,7 +1196,6 @@ class sale_order(models.Model):
 			index=True,
 		)
 
-
 	# Pricelist
 	pricelist_id = fields.Many2one(
 			'product.pricelist',
@@ -1456,10 +1203,8 @@ class sale_order(models.Model):
 			readonly=True,
 			states={'draft': [('readonly', False)], 'sent': [('readonly', False)]},
 			help="Pricelist for current sales order.",
-
 			required=True,
 		)
-
 
 	# Payment Method
 	x_payment_method = fields.Many2one(
@@ -1468,137 +1213,17 @@ class sale_order(models.Model):
 			states=READONLY_STATES,
 		)
 
-
-
 	x_doctor_uid = fields.Many2one(
 			'res.users',
 			string="Médico Uid",
 			readonly=True,
 		)
 
-
-	# Nr lines
-	nr_lines = fields.Integer(
-			default=0,
-			string='Nr líneas',
-			required=False,
-
-			compute='_compute_nr_lines',
-			)
-
-	@api.multi
-	#@api.depends('order_line')
-	def _compute_nr_lines(self):
-		for record in self:
-			ctr = 0
-			#for l in record.order_line:
-			for _ in record.order_line:
-				ctr = ctr + 1
-			record.nr_lines = ctr
-
-
-
-	# Partner Vip
-	x_partner_vip = fields.Boolean(
-			'Vip',
-			default=False,
-
-			compute="_compute_partner_vip",
-			)
-
-	@api.multi
-	def _compute_partner_vip(self):
-		for record in self:
-			count = self.env['openhealth.card'].search_count([
-																('patient_name', '=', record.partner_id.name),
-														])
-			if count == 0:
-				record.x_partner_vip = False
-			else:
-				record.x_partner_vip = True
-
-
-
-
-# ----------------------------------------------------------- Primitives --------------------------
-
 	# Blank line
 	vspace = fields.Char(
 			' ',
 			readonly=True
 		)
-
-
-
-
-
-
-# ----------------------------------------------------------- Print Tickets -----------------------
-
-	# Total in Words
-	x_total_in_words = fields.Char(
-			"",
-
-			compute='_compute_x_total_in_words',
-		)
-
-	@api.multi
-	#@api.depends('')
-	def _compute_x_total_in_words(self):
-		for record in self:
-			words = num2words(record.amount_total, lang='es')
-			if 'punto' in words:
-				words = words.split('punto')[0]
-			record.x_total_in_words = words.title()
-
-
-
-	# Total in cents
-	x_total_cents = fields.Integer(
-			"Céntimos",
-
-			compute='_compute_x_total_cents',
-		)
-
-	@api.multi
-	#@api.depends('')
-	def _compute_x_total_cents(self):
-		for record in self:
-			frac, whole = math.modf(record.amount_total)
-			record.x_total_cents = frac * 100
-
-
-
-
-
-
-
-
-
-	# Date corrected
-	x_date_order_corr = fields.Char(
-			string='Order Date Corr',
-
-			compute="_compute_date_order_corr",
-		)
-
-	@api.multi
-	#@api.depends('partner_id')
-
-	def _compute_date_order_corr(self):
-		for record in self:
-
-			DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
-			date_field1 = datetime.datetime.strptime(record.date_order, DATETIME_FORMAT)
-
-			date_field2 = date_field1 + datetime.timedelta(hours=-5, minutes=0)
-			DATETIME_FORMAT_2 = "%d-%m-%Y %H:%M:%S"
-			date_field2 = date_field2.strftime(DATETIME_FORMAT_2)
-			record.x_date_order_corr = date_field2
-
-
-
-
 
 
 # ----------------------------------------------------------- Primitives --------------------------
@@ -1610,67 +1235,11 @@ class sale_order(models.Model):
 		)
 
 
-
-	# Partner
-	partner_id = fields.Many2one(
-			'res.partner',
-			string="Cliente",
-			ondelete='cascade',
-			#required=True,
-			required=False,
-
-			states={
-					'draft': [('readonly', False)],
-					'sent': [('readonly', True)],
-					'sale': [('readonly', True)],
-				},
-		)
-
-
-
-	# DNI
-	x_partner_dni = fields.Char(
-			string='DNI',
-
-			states={
-						'draft': 	[('readonly', False)],
-						'sent': 	[('readonly', True)],
-						'sale': 	[('readonly', True)],
-						'cancel': 	[('readonly', True)],
-						'done': 	[('readonly', True)],
-					},
-		)
-
-
-
-
-
-# ---------------------------------------------- Create Payment Method - Amount Total -------------
-
-	# Amount total
-	x_amount_total = fields.Float(
-			string="x Total",
-
-			compute="_compute_x_amount_total",
-		)
-
-	@api.multi
-	def _compute_x_amount_total(self):
-		for record in self:
-			sub = 0.0
-			for line in record.order_line:
-				sub = sub + line.price_subtotal
-			#if sub == 0.0:
-			#	sub = float(record.x_ruc)
-			record.x_amount_total = sub
-
-
-
-# ---------------------------------------------- Create Payment Method ----------------------------
+# ---------------------------------------------- Create Payment Method - Button Pagar ----------------------------
 	@api.multi
 	def create_payment_method(self):
 		"""
-		high level support for doing this and that.
+		Button Pagar
 		"""
 
 		# Update Descriptors
@@ -1683,8 +1252,6 @@ class sale_order(models.Model):
 		firm = self.patient.x_firm
 		ruc = self.patient.x_ruc
 
-
-
 		# Create
 		self.x_payment_method = self.env['openhealth.payment_method'].create({
 																				'order': self.id,
@@ -1693,15 +1260,8 @@ class sale_order(models.Model):
 																				'total': self.x_amount_total,
 																				'partner': self.partner_id.id,
 																				'date_created': self.date_order,
-
 																				'firm': firm,
 																				'ruc': ruc,
-
-																				# Deprecated
-																				#'name': name,
-																				#'dni': dni,
-																				#'id_doc_type': 	id_doc_type,
-																				#'id_doc': 			id_doc,
 																			})
 		payment_method_id = self.x_payment_method.id
 
@@ -1712,14 +1272,12 @@ class sale_order(models.Model):
 		subtotal = self.x_amount_total
 		payment_method = self.x_payment_method.id
 
-		#ret = self.x_payment_method.pm_line_ids.create({
 		self.x_payment_method.pm_line_ids.create({
 																	'name': name,
 																	'method': method,
 																	'subtotal': subtotal,
 																	'payment_method': payment_method,
 										})
-
 
 		return {
 				'type': 'ir.actions.act_window',
@@ -1735,7 +1293,6 @@ class sale_order(models.Model):
 							'form':{'action_buttons': False, 'options': {'mode': 'edit'}}
 							},
 				'context': {
-
 							'default_order': self.id,
 							'default_name': name,
 							'default_method': method,
@@ -1745,95 +1302,16 @@ class sale_order(models.Model):
 							'default_date_created': self.date_order,
 							'default_firm': firm,
 							'default_ruc': ruc,
-
-							#'default_dni': dni,
-							#'default_saledoc': 'receipt',
-							#'default_pm_total': self.pm_total,
 							}
 				}
 	# create_payment_method
 
 
-
-
-
-
-# ----------------------------------------------------------- Update Descriptors ------------------
-
-	# For batch
-	@api.multi
-	def update_descriptors_all(self):
-		"""
-		high level support for doing this and that.
-		"""
-
-		orders = self.env['sale.order'].search([
-													('state', '=', 'sale'),
-											],
-												order='date_order desc',
-												#limit=2000,
-												limit=300,
-											)
-		#print orders
-
-		for order in orders:
-			order.update_descriptors()
-
-
-
-	# Update Family and Product
-	@api.multi
-	def update_descriptors(self):
-		"""
-		high level support for doing this and that.
-		"""
-
-		out = False
-
-		for line in self.order_line:
-
-			if not out:
-
-				# Consultations
-				if line.product_id.categ_id.name in ['Consulta', 'Consultas']:
-					self.x_family = 'consultation'
-					self.x_product = line.product_id.x_name_ticket
-					out = True
-
-				# Procedures
-				elif line.product_id.categ_id.name in ['Procedimiento', 'Quick Laser', 'Laser Co2', 'Laser Excilite', 'Laser M22', 'Medical']:
-					self.x_family = 'procedure'
-					self.x_product = line.product_id.x_name_ticket
-					out = True
-
-				# Cosmetology
-				elif line.product_id.categ_id.name == 'Cosmeatria':
-					self.x_family = 'cosmetology'
-					self.x_product = line.product_id.x_name_ticket
-					out = True
-
-
-				# Products
-				else:
-					self.x_product = line.product_id.x_name_ticket
-					if self.x_family != 'procedure':
-						self.x_family = 'product'
-
-
-		#print
-		#print 'Update descriptors'
-		#print self.x_family
-		#print self.x_product
-
-	#update_descriptors
-
-
 # ----------------------------------------------------------- Print -------------------------------
-	# Print Ticket - Electronic
 	@api.multi
 	def print_ticket_electronic(self):
 		"""
-		high level support for doing this and that.
+		Print Ticket Electronic
 		"""
 		print('')
 		print('Print Electronic')
@@ -1842,31 +1320,11 @@ class sale_order(models.Model):
 		return action
 
 
-
-	# Print Ticket - Deprecated !
-	@api.multi
-	def print_ticket(self):
-		"""
-		high level support for doing this and that.
-		"""
-		if self.x_type == 'ticket_receipt':
-			name = 'openhealth.report_ticket_receipt_nex_view'
-			return self.env['report'].get_action(self, name)
-		elif self.x_type == 'ticket_invoice':
-			name = 'openhealth.report_ticket_invoice_nex_view'
-			return self.env['report'].get_action(self, name)
-
-
-
-
-
 #----------------------------------------------------------- Quick Button - For Treatment ---------
-
-	# For Treatments Quick access
 	@api.multi
 	def open_line_current(self):
 		"""
-		high level support for doing this and that.
+		# Quick access Button
 		"""
 		consultation_id = self.id
 		return {
@@ -1885,14 +1343,11 @@ class sale_order(models.Model):
 		}
 
 
-
 #----------------------------------------------------------- Qpen myself --------------------------
-
-	# For Payment Method comeback
 	@api.multi
 	def open_myself(self):
 		"""
-		high level support for doing this and that.
+		For Payment Method comeback
 		"""
 		order_id = self.id
 		return {
@@ -1918,7 +1373,6 @@ class sale_order(models.Model):
 			}
 		}
 	# open_myself
-
 
 
 # ----------------------------------------------------------- Remove and Reset ------------
@@ -1949,7 +1403,6 @@ class sale_order(models.Model):
 			self.reset()
 
 
-
 	# Remove Force
 	@api.multi
 	def remove_myself_force(self):
@@ -1960,15 +1413,12 @@ class sale_order(models.Model):
 		self.unlink()
 
 
-
 # ---------------------------------------------- Cancel -------------------------------------------
-
 	# Cancel
 	x_cancel = fields.Boolean(
 			string='',
 			default=False
 		)
-
 
 	# Cancel Order
 	@api.multi
@@ -1981,7 +1431,6 @@ class sale_order(models.Model):
 		self.x_cancel = True
 		self.state = 'cancel'
 
-
 	# Activate
 	@api.multi
 	def activate_order(self):
@@ -1992,89 +1441,12 @@ class sale_order(models.Model):
 		self.state = 'sale'
 
 
-
 # ----------------------------------------------------------- Test --------------------------------
-
-	# Test Case
-	x_test_case = fields.Char()
-
-
-	# Test
-	@api.multi
-	def test(self):
-		"""
-		high level support for doing this and that.
-		"""
-		#print
-		#print 'Order - Test - Interface'
-		test_order.test(self)
-
-
-
-	def test_actions(self):
-		"""
-		high level support for doing this and that.
-		"""
-		print('')
-		print('Test Actions')
-		self.print_ticket_electronic()
-		self.correct_pm()
-		self.create_credit_note()
-		self.cancel_order()
-		self.activate_order()
-
-
-
-	def test_computes(self):
-		"""
-		high level support for doing this and that.
-		"""
-		print('')
-		print('Test Computes')
-
-		print(self.x_type_code)
-		print(self.nr_lines)
-		print(self.x_partner_vip)
-		print(self.x_total_in_words)
-		print(self.x_total_cents)
-		print(self.x_total_net)
-		print(self.x_total_tax)
-		print(self.x_my_company)
-		print(self.x_date_order_corr)
-		print(self.x_amount_total)
-		#print(self.)
-
-
-
-	# Pay myself
 	def pay_myself(self):
 		"""
-		high level support for doing this and that.
-		"""
-		#print
-		#print 'Order - Pay myself - Interface'
-		test_order.pay_myself(self)
-
-
-
-
-# ----------------------------------------------------------- Automatic ---------------------------
-
-	# Get Control Date Auto
-	@api.multi
-	def get_date_order_auto(self, date):
-		"""
-		Get Date Order
+		Pay Myself
+		Used by Treatment Test
 		"""
 		#print()
-		#print('Get Date Order Auto')
-		#print(date)
-
-		if date not in [False]:
-			date_format = "%Y-%m-%d %H:%M:%S"
-			date_dt = datetime.datetime.strptime(date, date_format) + datetime.timedelta(hours=-5, minutes=0)
-			date_str = date_dt.strftime(date_format)
-		else:
-			date_str = False
-
-		return date_str
+		#print('Order - Pay myself')
+		test_order.pay_myself(self)

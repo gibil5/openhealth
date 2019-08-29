@@ -100,7 +100,10 @@ doc.get_patient_address()
 <t t-if="doc.state == 'credit_note'">
 		<tr>
 			<td><b>Fecha:</b></td>
+<!--
 			<td><t t-esc="doc.x_date_order_corr"/></td> 
+-->
+			<td><t t-esc="doc.get_date_corrected()"/></td> 
 		</tr>
 </t>
 
@@ -179,7 +182,9 @@ doc.get_patient_address()
 
 	<tr>
 		<td><b>Fecha de emisión:</b></td>
+
 		<td><t t-esc="doc.x_credit_note_owner.x_date_order_corr"/></td> 
+
 	</tr>
 
 	<tr>
@@ -206,7 +211,10 @@ doc.get_patient_address()
 <table style="width:100%">
 	<tr>
 		<td><b>Fecha:</b></td>
+<!--
 		<td><t t-esc="doc.x_date_order_corr"/></td> 
+-->
+		<td><t t-esc="doc.get_date_corrected()"/></td> 
 	</tr>
 	<tr>
 		<td><b>Ticket:</b></td>

@@ -336,10 +336,6 @@ class Patient(models.Model):
 	@api.multi
 	def _compute_x_data_complete(self):
 		for record in self:
-			#if record.x_legacy or record.x_treatment_count > 0:
-			#	record.x_data_complete = True
-			#else:
-			#	record.x_data_complete = False
 
 			record.x_data_complete = (record.x_legacy or record.x_treatment_count > 0)
 
@@ -885,21 +881,26 @@ class Patient(models.Model):
 		"""
 		print()
 		print('Patient - Computes')
+
+		# Patient
+		print()
+		print('Computes')
+		print(self.name)
+
+		print(self.x_legacy)
+		print(self.x_treatment_count)
+		print(self.x_counter)
+		print(self.x_vip)
+		print(self.x_card)
+
+
 		# Partner
 		print()
 		print('Computes - Partner')
 		print(self.partner_id.city_char)
 		print(self.partner_id.x_address)
 		print(self.partner_id.x_vip)
-		# Patient
-		print()
-		print('Computes')
-		print(self.name)
-		print(self.x_treatment_count)
-		print(self.x_vip)
-		print(self.x_card)
-		print(self.x_legacy)
-		print(self.x_counter)
+
 
 
 	# Actions

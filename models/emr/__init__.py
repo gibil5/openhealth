@@ -11,6 +11,7 @@ from . import product_product
 # Medical
 
 #from . import appointment 			# Highly Deprecated
+from . import appointment_dep		# Min
 
 
 from . import product

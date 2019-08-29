@@ -3,7 +3,7 @@
 Order
 
 Created: 			26 Aug 2016
-Last mod: 			24 Aug 2019
+Last mod: 			29 Aug 2019
 """
 from __future__ import print_function
 import math
@@ -19,18 +19,14 @@ from openerp.addons.openhealth.models.libs import creates, user
 from openerp.addons.openhealth.models.libs import lib
 from openerp.addons.openhealth.models.patient import pat_vars, chk_patient
 from . import ord_vars
-
-#from . import lib_qr
 from . import qr
-
 from . import test_order
 from . import chk_order
 from . import exc_ord
 
 class sale_order(models.Model):
 	"""
-	Sale Class
-	Inherited from the medical Module OeHealth. Has the Business Logic of the Clinic.
+	Sale Class - Inherited from the medical Module OeHealth. Has the Business Logic of the Clinic.
 	"""
 	_inherit = 'sale.order'
 
@@ -38,57 +34,9 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Appointments - Dep !!! -----------------
+# ----------------------------------------------------------- Configurator -------------------------
 
-	# Update Appointment in Treatment
-	#@api.multi
-	#def update_appointment(self):
-	#	"""
-	#	high level support for doing this and that.
-	#	"""
-	#	if self.x_family == 'consultation':
-	#		for app in self.treatment.appointment_ids:
-	#			if app.x_type == 'consultation':
-	#				app.state = 'Scheduled'
-	#	if self.x_family == 'procedure':
-	#		for app in self.treatment.appointment_ids:
-	#			if app.x_type == 'procedure':
-	#				app.state = 'Scheduled'
-
-
-
-
-# ----------------------------------------------------------- Dep ! -------------------------
-
-	# My company
-	#x_my_company = fields.Many2one(
-	#		'res.partner',
-	#		string="Mi compañía",
-	#		domain=[
-	#					('company_type', '=', 'company'),
-	#				],
-
-	#		compute="_compute_x_my_company",
-	#	)
-
-	#@api.multi
-	#def _compute_x_my_company(self):
-	#	for record in self:
-	#			com = self.env['res.partner'].search([
-	#														('x_my_company', '=', True),
-	#												],
-	#												order='date desc',
-	#												limit=1,
-	#				)
-	#			record.x_my_company = com
-
-
-
-
-
-# ----------------------------------------------------------- Relational -------------------------
-
-	def _default_configurator(self):
+	def _get_default_configurator(self):
 		print()
 		print('Default Configurator')
 
@@ -101,39 +49,19 @@ class sale_order(models.Model):
 											)
 		print(configurator)
 		print(configurator.name)
-		print(configurator.id)
-
-		# Manage Exception
-		try:
-			configurator.ensure_one()
-
-		except:
-			msg = "ERROR: Record Must be One."
-			class_name = type(configurator).__name__
-			#obj_name = counter.name
-			#msg =  msg + '\n' + class_name + '\n' + obj_name
-			#msg =  msg 
-			msg =  msg + '\n' + class_name
-
-			raise UserError(_(msg))
-
-		return configurator.id
-
+		return configurator
 
 	configurator = fields.Many2one(
 			'openhealth.configurator.emr',
 			string="Config",
-
-			#required=True,
-
-			default=_default_configurator,
+			required=True,
+			default=_get_default_configurator,
 		)
 
 
 
 # ----------------------------------------------------------- Validate Button ----------------------------
 
-	# Action confirm
 	@api.multi
 	def validate(self):
 		"""
@@ -155,10 +83,11 @@ class sale_order(models.Model):
 
 	def check_and_generate(self):
 		"""
-		Generate and Check
+		Check and Generate
 		"""
 		print()
-		print('Validate')
+		print('Check and Generate')
+
 
 		# Payment method validation
 		self.check_payment_method()
@@ -179,19 +108,14 @@ class sale_order(models.Model):
 		self.update_descriptors()
 
 
-		# Change Appointment State - To Invoiced - DEP !!!
-		#self.update_appointment()
-
-
 		# Vip Card - Detect and Create
 		self.detect_create_card()
 
 
+
 		# Type
-		#print 'Type'
 		if self.x_payment_method.saledoc != False:
 			self.x_type = self.x_payment_method.saledoc
-		#print self.x_type
 
 
 
@@ -203,26 +127,20 @@ class sale_order(models.Model):
 				line.update_recos()
 			# Update
 			self.x_procedure_created = True
-			#self.treatment.update_appointments()
+
 
 
 		# Id Doc and Ruc
-		#print self.x_type
-		#print self.x_id_doc
-		#print self.x_ruc
-
 		# Invoice
 		if self.x_type in ['ticket_invoice', 'invoice']:
 			if self.x_ruc in [False, '']:
 				msg = "Error: RUC Ausente."
-				#raise Warning(_(msg))
 				raise UserError(_(msg))
 
 		# Receipt
 		elif self.x_type in ['ticket_receipt', 'receipt']:
 			if self.x_id_doc_type in [False, '']  or self.x_id_doc in [False, '']:
 				msg = "Error: Documento de Identidad Ausente."
-				#raise Warning(_(msg))
 				raise UserError(_(msg))
 
 
@@ -269,19 +187,26 @@ class sale_order(models.Model):
 
 		# Generate Serial Number
 		if self.x_serial_nr != '' and not self.x_admin_mode:
-			# Counter
-			self.x_counter_value = user.get_counter_value(self, self.x_type, self.state)
-			# Serial Nr
-			self.x_serial_nr = user.get_serial_nr(self.x_type, self.x_counter_value, self.state)
+			
+			self.x_counter_value = user.get_counter_value(self, self.x_type, self.state)  				# Counter
+
+			self.x_serial_nr = user.get_serial_nr(self.x_type, self.x_counter_value, self.state) 		# Serial Nr
 
 
-		# The parent procedure
-		super(sale_order, self).action_confirm()
+
+		# Call the Parent Procedure - Highly Deprecated. Generates Procurement and Stock  !!!
+		#super(sale_order, self).action_confirm()
 
 
 		# QR
 		if self.x_type in ['ticket_receipt', 'ticket_invoice']:
 			self.make_qr()
+
+
+
+		# State
+		self.state = 'sale'
+
 
 	# action_confirm_nex
 
@@ -293,57 +218,35 @@ class sale_order(models.Model):
 	def make_qr(self):
 		"""
 		Make QR Image for Electronic Billing
+		This is an example of how you can apply the Three Layered Model. To encapsulte Business Rules.
 		"""
 		print()
 		print('Make QR')
 
-		# Create Data
-		#self.x_qr_data = lib_qr.get_qr_data(self)
-
-		# Create Img
-		#img_str, name = lib_qr.get_qr_img(self.x_qr_data)
-
-
-		# Init
-		#ruc_company = self.x_my_company.x_ruc
+		# Init vars
 		ruc_company = self.configurator.company_ruc
-
 		x_type = self.x_type
 		serial_nr = self.x_serial_nr
 		amount_total = self.amount_total
 		total_tax = self.x_total_tax
-
 		date = self.date_order
-
-		
-
 		receptor_id_doc_type = self.x_id_doc_type
-
 		receptor_id_doc = self.x_id_doc
-
 		receptor_ruc = self.x_ruc
 
-
-
-		#qr_obj = qr.QR(ruc_company, x_type, serial_nr, amount_total, total_tax)
-		#qr_obj = qr.QR(date, ruc_company, x_type, serial_nr, amount_total, total_tax)
+		# Create Object
 		qr_obj = qr.QR(date, ruc_company, receptor_id_doc_type, receptor_id_doc, receptor_ruc, x_type, serial_nr, amount_total, total_tax)
 
-
+		# Get data
 		img_str = qr_obj.get_img_str()
-
 		name = qr_obj.get_name()
 
-
-		# Update
+		# Update the Database
 		self.write({
 						'x_qr_img': img_str,
 						'qr_product_name':name,
 				})
-
 	# make_qr
-
-
 
 
 # ----------------------------------------------------------- Ticket - Getters ----------------
@@ -1518,7 +1421,9 @@ class sale_order(models.Model):
 
 	# State
 	state = fields.Selection(
+			
 			selection=ord_vars._state_list,
+
 			string='Estado',
 			readonly=False,
 			default='draft',

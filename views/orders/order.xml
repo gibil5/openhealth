@@ -664,6 +664,10 @@
 					<field name="vspace"/>
 
 <!--
+					<field name="x_doctor"      required="0"/>
+
+-->
+
 					<field name="x_doctor"      required="1"        options="{'no_create': True, 'no_create_edit':True}"            
 
 																	attrs="{     
@@ -673,9 +677,7 @@
 																							], 
 																		}"  
 										/>
--->
 
-					<field name="x_doctor"      required="0"/>
 
 					<field name="vspace"/>
 

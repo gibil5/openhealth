@@ -10,9 +10,12 @@
 				groups="openhealth.roots"
 		/>
 
+
 		<!-- DEV --> 
 		<menuitem   id="parent_dev_menu" 
-							name="DEV"
+
+							name="Clean System"
+			
 							parent="main_dev_menu"
 							sequence="1"
 						/>
@@ -50,6 +53,21 @@ procurement.order
 stock.move
 -->
 
+
+		<!-- Product Product --> 
+		<menuitem   id="dev_product_product_menu"
+
+					parent="parent_dev_menu"
+			
+					sequence="21"
+
+					name="Product Product"
+
+					action="product_product_list_action"
+				/>
+<!--
+product.product
+-->
 
 
     </data>

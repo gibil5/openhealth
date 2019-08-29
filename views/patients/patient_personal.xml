@@ -5,9 +5,7 @@
 
 
 
-<!-- FORM -->
-
-        <!-- Personal -->
+<!-- FORM - Personal -->
         <record model="ir.ui.view" id="patient_personal_form_view">
             <field name="name">Patient personal</field>
             <field name="model">oeh.medical.patient</field>

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
-    <data noupdate='1'>
+    <data noupdate='0'>
 
 
 
@@ -360,7 +360,7 @@
             <field name='name'>DEVOLUCION</field>
             <field name='x_name_short'>devolution</field>
             <field name='x_family'>credit_note</field>
-            <field name='type'>consu</field>
+            <field name='type'>product</field>
 
             <field name='pl_price_list'>2018</field>
             <field name="sale_ok" eval="True" />
@@ -375,7 +375,7 @@
             <field name='name'>ANULACION DE LA OPERACION</field>
             <field name='x_name_short'>cancel</field>
             <field name='x_family'>credit_note</field>
-            <field name='type'>consu</field>
+            <field name='type'>product</field>
 
             <field name='pl_price_list'>2018</field>
             <field name="sale_ok" eval="True" />
@@ -390,7 +390,7 @@
             <field name='name'>ANULACION POR ERROR EN EL RUC</field>
             <field name='x_name_short'>cancel_error_ruc</field>
             <field name='x_family'>credit_note</field>
-            <field name='type'>consu</field>
+            <field name='type'>product</field>
 
             <field name='pl_price_list'>2018</field>
             <field name="sale_ok" eval="True" />
@@ -405,7 +405,7 @@
             <field name='name'>CORRECCION POR ERROR EN LA DESCRIPCION</field>
             <field name='x_name_short'>correct_error_desc</field>
             <field name='x_family'>credit_note</field>
-            <field name='type'>consu</field>
+            <field name='type'>product</field>
 
             <field name='pl_price_list'>2018</field>
             <field name="sale_ok" eval="True" />
@@ -420,7 +420,7 @@
             <field name='name'>DESCUENTO GLOBAL</field>
             <field name='x_name_short'>discount</field>
             <field name='x_family'>credit_note</field>
-            <field name='type'>consu</field>
+            <field name='type'>product</field>
 
             <field name='pl_price_list'>2018</field>
             <field name="sale_ok" eval="True" />
@@ -435,7 +435,7 @@
             <field name='name'>DESCUENTO POR ITEM</field>
             <field name='x_name_short'>discount_item</field>
             <field name='x_family'>credit_note</field>
-            <field name='type'>consu</field>
+            <field name='type'>product</field>
 
             <field name='pl_price_list'>2018</field>
             <field name="sale_ok" eval="True" />
@@ -450,7 +450,7 @@
             <field name='name'>DEVOLUCION TOTAL</field>
             <field name='x_name_short'>return</field>
             <field name='x_family'>credit_note</field>
-            <field name='type'>consu</field>
+            <field name='type'>product</field>
 
             <field name='pl_price_list'>2018</field>
             <field name="sale_ok" eval="True" />
@@ -465,7 +465,7 @@
             <field name='name'>DEVOLUCION POR ITEM</field>
             <field name='x_name_short'>return_item</field>
             <field name='x_family'>credit_note</field>
-            <field name='type'>consu</field>
+            <field name='type'>product</field>
 
             <field name='pl_price_list'>2018</field>
             <field name="sale_ok" eval="True" />
@@ -480,7 +480,7 @@
             <field name='name'>BONIFICACION</field>
             <field name='x_name_short'>bonus</field>
             <field name='x_family'>credit_note</field>
-            <field name='type'>consu</field>
+            <field name='type'>product</field>
 
             <field name='pl_price_list'>2018</field>
             <field name="sale_ok" eval="True" />
@@ -494,7 +494,7 @@
             <field name='name'>DISMINUCION EN EL VALOR</field>
             <field name='x_name_short'>value_drop</field>
             <field name='x_family'>credit_note</field>
-            <field name='type'>consu</field>
+            <field name='type'>product</field>
 
             <field name='pl_price_list'>2018</field>
             <field name="sale_ok" eval="True" />
@@ -508,13 +508,12 @@
             <field name='name'>OTROS</field>
             <field name='x_name_short'>other</field>
             <field name='x_family'>credit_note</field>
-            <field name='type'>consu</field>
+            <field name='type'>product</field>
 
             <field name='pl_price_list'>2018</field>
             <field name="sale_ok" eval="True" />
             <field name="purchase_ok" eval="False" />
         </record>
-
 
     </data>
 </openerp>

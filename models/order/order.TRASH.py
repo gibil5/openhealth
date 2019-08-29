@@ -1,3 +1,72 @@
+# 28 Aug 2019
+# App is Highly Deprecated !
+# My Company also
+# 
+
+
+		# Manage Exception
+		try:
+			configurator.ensure_one()
+
+		except:
+			msg = "ERROR: Record Must be One."
+			class_name = type(configurator).__name__
+			#obj_name = counter.name
+			#msg =  msg + '\n' + class_name + '\n' + obj_name
+			#msg =  msg 
+			msg =  msg + '\n' + class_name
+
+			raise UserError(_(msg))
+
+
+
+
+# ----------------------------------------------------------- Appointments - Dep !!! -----------------
+
+	# Update Appointment in Treatment
+	#@api.multi
+	#def update_appointment(self):
+	#	"""
+	#	high level support for doing this and that.
+	#	"""
+	#	if self.x_family == 'consultation':
+	#		for app in self.treatment.appointment_ids:
+	#			if app.x_type == 'consultation':
+	#				app.state = 'Scheduled'
+	#	if self.x_family == 'procedure':
+	#		for app in self.treatment.appointment_ids:
+	#			if app.x_type == 'procedure':
+	#				app.state = 'Scheduled'
+
+
+
+
+# ----------------------------------------------------------- Dep ! -------------------------
+
+	# My company
+	#x_my_company = fields.Many2one(
+	#		'res.partner',
+	#		string="Mi compañía",
+	#		domain=[
+	#					('company_type', '=', 'company'),
+	#				],
+
+	#		compute="_compute_x_my_company",
+	#	)
+
+	#@api.multi
+	#def _compute_x_my_company(self):
+	#	for record in self:
+	#			com = self.env['res.partner'].search([
+	#														('x_my_company', '=', True),
+	#												],
+	#												order='date desc',
+	#												limit=1,
+	#				)
+	#			record.x_my_company = com
+
+
+
 
 
 

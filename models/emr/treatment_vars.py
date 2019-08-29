@@ -5,7 +5,9 @@
 # State 
 _state_list = [
 				('empty', 					'Inicio'),		# OK
-				('appointment', 			'Cita'),		# OK
+
+				#('appointment', 			'Cita'),		# Dep
+
 				('budget_consultation', 	'Presu C'),		# Important	
 				('invoice_consultation', 	'Caja C'),			# OK 
 				('consultation', 			'Consulta'),			# OK				

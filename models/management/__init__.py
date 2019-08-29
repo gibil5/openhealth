@@ -18,9 +18,3 @@ from . import management_order_line
 
 from . import management 
 
-
-
-from . import scheduler
-from . import configurator
-from . import configurator_report
-from . import configurator_emr

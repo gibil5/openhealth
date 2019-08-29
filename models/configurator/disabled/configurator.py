@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-	Configurator
+	Configurator - Dep !!!
 
 	Created: 			28 Dic 2018
 	Last updated: 		28 Dic 2018
@@ -10,23 +10,20 @@ from openerp import models, fields, api
 
 class Configurator(models.Model):
 	"""
-	high level support for doing this and that.
+	Configurator
+	Used by: Configurator EMR and Scheduler
+	Not useful any more
 	"""
 	_name = 'openhealth.configurator'
 
 
-
-
 # ----------------------------------------------------------- Fields --------------------------
 
-	name = fields.Char(
-			#string="Nombre",
-			required=True,
-		)
+	#name = fields.Char(
+	#		required=True,
+	#	)
 
-
-
-	x_type = fields.Char(
-			#string="Tipo",
-		)
+	#x_type = fields.Char(
+	#		#string="Tipo",
+	#	)
 

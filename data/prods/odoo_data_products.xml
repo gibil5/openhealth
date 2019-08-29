@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <openerp>
-    <data noupdate='1'>
+    <data noupdate='0'>
 
 
 
@@ -602,15 +602,16 @@
 
 
 <!--
-            <field name='type'>product</field>
             <field name='categ_id' ref="topical"/>
+            <field name='type'>product</field>
+            <field name='type'>consu</field>
 -->
         <!-- OTHER -->
         <record id='other' model='product.template'>
             <field name='name'>OTROS</field>
             <field name='x_name_short'>other</field>
 
-            <field name='type'>consu</field>
+            <field name='type'>product</field>
 
             <field name='default_code'></field>
             <field name='x_treatment'>other</field>

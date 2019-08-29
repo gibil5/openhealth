@@ -16,10 +16,9 @@ class ConfiguratorEmr(models.Model):
 
 	_name = 'openhealth.configurator.emr'
 
-	_inherit = 'openhealth.configurator'
-
 	_description = 'Configurator Emr'
 
+	#_inherit = 'openhealth.configurator'  		# Dep
 
 
 

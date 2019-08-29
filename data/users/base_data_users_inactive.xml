@@ -40,8 +40,9 @@
             <field name="name">Victor Mori</field>
             <field name="email">vmori@clinicachavarri.com</field>
             <field name="function">manager</field>
+<!--            
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
-
+-->
             <field name="active" eval="False" />
         </record>
 
@@ -85,8 +86,9 @@
             <field name="name">Luis Loli</field>
             <field name="email">lloli@clinicachavarri.com</field>
             <field name="function">marketing</field>
+<!--            
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
-
+-->
             <field name="active" eval="False" />
         </record>
 
@@ -110,8 +112,9 @@
             <field name="name">Ivan Puga</field>
             <field name="email">ipuga@clinicachavarri.com</field>
             <field name="function">hc</field>
+<!--            
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
-
+-->
             <field name="active" eval="False" />
         </record>
 
@@ -135,8 +138,9 @@
             <field name="name">Leonardo Masias</field>
             <field name="email">lmasias@clinicachavarri.com</field>
             <field name="function">marketing</field>
+<!--            
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
-
+-->
             <field name="active" eval="False" />
         </record>
 
@@ -164,8 +168,9 @@
             <field name="name">Diana Chumpitaz</field>
             <field name="email">dchumpitaz@clinicachavarri.com</field>
             <field name="function">reception</field>
+<!--            
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
-
+-->
             <field name="active" eval="False" />
         </record>
 
@@ -187,8 +192,9 @@
             <field name="name">Claudia Torrealba</field>
             <field name="email">ctorrealba@clinicachavarri.com</field>
             <field name="function">reception</field>
+<!--            
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
-
+-->
             <field name="active" eval="False" />
         </record>
 
@@ -212,8 +218,9 @@
             <field name="name">Mariana Grieve</field>
             <field name="email">mgrieve@clinicachavarri.com</field>
             <field name="function">reception</field>
+<!--            
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
-
+-->
             <field name="active" eval="False" />
         </record>
 
@@ -235,8 +242,9 @@
             <field name="name">Paulo Ramirez</field>
             <field name="email">pramirez@clinicachavarri.com</field>
             <field name="function">reception</field>
+<!--            
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
-
+-->
             <field name="active" eval="False" />
         </record>
 
@@ -258,8 +266,9 @@
             <field name="name">Johanna Lopez</field>
             <field name="email">jlopez@clinicachavarri.com</field>
             <field name="function">reception</field>
+<!--            
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
-
+-->
             <field name="active" eval="False" />
         </record>
 
@@ -282,8 +291,9 @@
             <field name="name">Cinthya Ramirez</field>
             <field name="email">cramirez@clinicachavarri.com</field>
             <field name="function">reception</field>
+<!--            
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
-
+-->
             <field name="active" eval="False" />
         </record>
 
@@ -313,8 +323,9 @@
             <field name="name">Yober Ramirez</field>
             <field name="email">yramirez@clinicachavarri.com</field>
             <field name="function">inventory</field>
+<!--            
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
-
+-->
             <field name="active" eval="False" />
         </record>
 

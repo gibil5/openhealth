@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+
+
+<!-- FORM --> 
+        <record model="ir.ui.view" id="treatment_form_view">
+            <field name="name">treatment.form</field>
+            <field name="model">openhealth.treatment</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <form string="Treatment Form">
+
+
+                    <header></header>
+
+                    <sheet>
+                        
+                        <field name="active"/>   
+                        
+
+                        <notebook></notebook>
+                        
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+
+
+
+<!-- FORM 2 --> 
+        <record model="ir.ui.view" id="treatment_2_form_view">
+            <field name="name">treatment.form</field>
+            <field name="model">openhealth.treatment</field>
+            <field name="priority" eval="5"/>
+            <field name="arch" type="xml">
+                <form string="Treatment 2 Form">
+
+                    <header></header>
+                    <sheet></sheet>
+
+                </form>
+            </field>
+        </record>
+
+
+
+<!-- TREE --> 
+        <record model="ir.ui.view" id="treatment_tree_view">
+            <field name="name">treatment.tree</field>
+            <field name="model">openhealth.treatment</field>
+            <field name="arch" type="xml">
+
+                <tree string="Treatment Tree">
+                </tree>
+            </field>
+        </record>
+
+
+        
+<!-- SEARCH -->
+        <record id="view_medical_treatment_filter" model="ir.ui.view">
+           <field name="name">Treatment Search</field>
+           <field name="model">openhealth.treatment</field>
+           <field name="arch" type="xml">
+               <search string="Treatments">
+               </search>
+           </field>
+       </record>
+
+
+    </data>
+</openerp>

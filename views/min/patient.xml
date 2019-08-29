@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+
+
+<!-- FORM --> 
+		<record model="ir.ui.view" id="oeh_medical_patient_view">
+			<field name="name">Patient</field>
+			<field name="model">oeh.medical.patient</field>         
+			<field name="type">form</field>
+			<field name="priority" eval="1"/>
+			<field name="arch" type="xml">
+				<form string="Patient">
+
+
+					<header>
+
+                        <field name="x_legacy"/>   
+
+					</header>
+
+					<sheet>
+						<notebook></notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+		<!-- FORM --> 
+
+
+
+
+<!-- TREE -->
+		<record model="ir.ui.view" id="oehealth.oeh_medical_patient_tree">
+			<field name="name">patient.tree</field>
+			<field name="model">oeh.medical.patient</field>
+			<field name="arch" type="xml">          
+				<tree string="Patient Tree"  default_order='x_id_code desc'>
+				</tree>
+			</field>
+		</record>
+
+
+
+<!-- TREE 2 -->
+		<record model="ir.ui.view" id="oeh_medical_patient_tree_2">
+			<field name="name">patient.tree</field>
+			<field name="model">oeh.medical.patient</field>
+			<field name="arch" type="xml">  
+				<tree string="Patient Tree" >
+				</tree>
+			</field>
+		</record>
+
+	</data>
+</openerp>

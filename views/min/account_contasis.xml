@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        
+
+
+<!-- FORM --> 
+        <record model="ir.ui.view" id="account_contasis_form_view">
+            <field name="name">account.contasis.form</field>
+            <field name="model">openhealth.account.contasis</field>
+            <field name="arch" type="xml">
+                <form string="Account Contasis Form">
+
+                    <!-- Header -->
+                    <header>
+                    </header>
+
+                    <!-- Sheet -->  
+                    <sheet>
+                   </sheet>
+                </form>
+            </field>
+        </record>
+
+
+<!-- TREE --> 
+        <record model="ir.ui.view" id="account_contasis_view_order_tree">
+            <field name="name">openhealth.account.contasis.tree</field>
+            <field name="model">openhealth.account.contasis</field>
+            <field name="arch" type="xml">
+                <tree string="Account Contasis Tree">
+                </tree>
+            </field>
+        </record>
+
+
+
+    </data>
+</openerp>

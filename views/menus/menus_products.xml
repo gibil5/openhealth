@@ -3,13 +3,15 @@
     <data noupdate='0'>
 
 
+<!--
+            name="Productos"
+-->
 
 <!-- Productos -->
         <menuitem id="main_products_menu"
-
             sequence="-6"
 
-            name="Productos"
+            name="Productos 2018"
 
 groups="openhealth.roots,openhealth.caja,openhealth.directors,openhealth.managers,openhealth.physicians,openhealth.assistants,openhealth.reception"
 />

@@ -4,7 +4,7 @@
 
 
 
-        <!-- TREE - Product Product -->
+<!-- TREE - Product Product -->
         <record model="ir.ui.view" id="product.product_product_tree_view">
             <field name="name">product.product.product.tree</field>
             <field name="model">product.product</field>
@@ -15,6 +15,11 @@
                 <tree string="Product Tree - Mod"    default_order="name" >
 
                     <field name="name"/>
+                    <field name="pl_price_list"/>
+                    <field name="sale_ok"/>
+                    <field name="purchase_ok"/>
+
+
 
                     <field name="x_name_short"/>
 
@@ -51,29 +56,7 @@
 
 
 
-        <!-- TREE /list view -->
-        <!-- Window action -->
-<!--
-        <record model="ir.ui.view" id="product.product_product_tree_view">
-            <field name="name">product.product.product.tree</field>
-            <field name="model">product.product</field>
-            <field name="type">tree</field>
-            <field name="priority" eval="1"/>
-            <field name="arch" type="xml">
-                <tree string="Product Tree"    default_order="name" >
-                    <field name="code"/>
-                    <field name="name"/>
-                    <field name="list_price"/>
-                    <field name="price"     invisible="1" />
-                    <field name="uom_id"/>
-                    <field name="barcode"/>
-                    <field name="state" invisible="1"/>
-                </tree>
-            </field>
-        </record>
-
--->
-
+<!-- ACTION -->
 
         <!-- Product Product --> 
         <record model="ir.actions.act_window" id="product_product_list_action">

@@ -27,6 +27,13 @@ class Treatment(models.Model):
 
 
 
+# ----------------------------------------------------------- Conversion ------------------------
+
+	appointment_ids = fields.Char()
+
+
+
+
 # ----------------------------------------------------------- Dep !!! ------------------------
 	# Appointments
 	#appointment_ids = fields.One2many(
@@ -682,7 +689,9 @@ class Treatment(models.Model):
 
 	# State
 	state = fields.Selection(
+
 			selection=treatment_vars._state_list,
+		
 			string='Estado',
 			default='empty',
 

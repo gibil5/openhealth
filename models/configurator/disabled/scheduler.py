@@ -1,19 +1,18 @@
 # -*- coding: utf-8 -*-
 """
-	Scheduler
+	Scheduler - Disabled - Not Dep
 
 	Created: 			27 Dic 2018
-	Last updated: 		27 Dic 2018
+	Last updated: 		28 Aug 2019
 """
 from __future__ import print_function
-
 import datetime
 from openerp import models, fields, api
 
 
 class Scheduler(models.Model):
 	"""
-	high level support for doing this and that.
+	Allows automatic backup of all Reports - DISABLED
 	"""
 	_name = 'openhealth.scheduler'
 
@@ -48,9 +47,6 @@ class Scheduler(models.Model):
 		)
 
 
-
-
-
 # ----------------------------------------------------------- Marketing ---------------------------
 
 	# Marketing
@@ -63,7 +59,6 @@ class Scheduler(models.Model):
 		print('Scheduler - Update Marketing External')
 
 		# Search
-		#configurator = self.env['openhealth.configurator'].search([
 		configurator = self.env['openhealth.configurator.report'].search([
 																			('name', 'in', ['marketing']),
 																		],
@@ -76,11 +71,6 @@ class Scheduler(models.Model):
 		if configurator.name not in [False, '']:
 			date_begin = configurator.date_begin
 			x_type = configurator.x_type
-
-		#else:
-		#	date_begin = '2018-12-01'
-		#	x_type = 'fast'
-
 
 
 		# Search
@@ -95,24 +85,14 @@ class Scheduler(models.Model):
 
 		# Loop
 		for repo in reports:
-
 			print(repo.name)
-
 			if x_type in ['fast']:
 				repo.update_patients()
-
 			elif x_type in ['all']:
 				repo.update_patients()
 				repo.update_sales()
 				repo.update_recos()
-
 			print()
-
-
-
-
-
-
 
 
 # ----------------------------------------------------------- Management --------------------------
@@ -120,7 +100,7 @@ class Scheduler(models.Model):
 	@api.model
 	def update_management_external(self):
 		"""
-		Update Marketing External
+		Update Management External
 		"""
 		print()
 		print('Scheduler - Update Management External ')
@@ -128,7 +108,6 @@ class Scheduler(models.Model):
 
 
 		# Search
-		#configurator = self.env['openhealth.configurator'].search([
 		configurator = self.env['openhealth.configurator.report'].search([
 																			('name', 'in', ['management']),
 																		],
@@ -144,33 +123,20 @@ class Scheduler(models.Model):
 			month_create = configurator.month_create
 			year_create = configurator.year_create
 
-		#else:
-		#	date_begin = '2018-12-01'
-		#	x_type = 'fast'
-		#	month_create = False
-		#	year_create = False
-
-
-
 
 		# Owner - Month
 		owner_arr = []
-
 		if month_create:
 			owner_arr.append('month')
-		
 		if year_create:
 			owner_arr.append('year')
-
 
 
 		# Search
 		reports = self.env['openhealth.management'].search([
 																	('date_begin', '>=', date_begin),
-																	#('owner', 'in', ['month']),
 																	('owner', 'in', owner_arr),
 															],
-																	#order='date_begin,name asc',
 																	order='owner,date_begin,name asc',
 																	#limit=1000,
 														)
@@ -185,12 +151,8 @@ class Scheduler(models.Model):
 				repo.update()
 			print()
 
-
-
 		print()
 		print('End')
-
-
 
 
 # ----------------------------------------------------------- Update ------------------------------
@@ -212,7 +174,6 @@ class Scheduler(models.Model):
 		print('Scheduler Update External')
 
 
-
 # ----------------------------------------------------------- Test --------------------------------
 	@api.model
 	def test_external(self):
@@ -221,7 +182,5 @@ class Scheduler(models.Model):
 		"""
 		print()
 		print('Scheduler Test External')
-
 		now = datetime.datetime.now()
-
 		print(now)

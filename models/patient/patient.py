@@ -380,6 +380,8 @@ class Patient(models.Model):
 	# Default - HC Number
 	@api.model
 	def _get_default_id_code(self):
+		print()
+		print('Get Default Id Code')
 
 		name_ctr = 'emr'
 
@@ -421,7 +423,7 @@ class Patient(models.Model):
 	x_id_code = fields.Char(
 			'Nr Historia Médica',
 
-			#default=_get_default_id_code,
+			default=_get_default_id_code,
 		)
 
 

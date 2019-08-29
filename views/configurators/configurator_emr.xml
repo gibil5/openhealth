@@ -104,13 +104,11 @@
 			<field name="model">openhealth.configurator.emr</field>
 			<field name="arch" type="xml">
 				<tree string="Configurator EMR Tree">
-					
+<!--
 					<field name="id"/>
-
+-->
 					<field name="name"/>
-
 					<field name="x_type"/>
-					
 					<field name="company_ruc"/>
 				</tree>
 			</field>
@@ -135,25 +133,21 @@
 		<menuitem   id="main_config_menu" 
 					sequence="-16"
 
-					name="Config - N"
+					name="Config"
 
 					groups="openhealth.roots,openhealth.directors,openhealth.managers"
 			/>
-
-
 
 		<!-- Config -->
 		<menuitem   id="openhealth_config_menu"
 					parent="main_config_menu"
 					sequence="1"
-					name="Config - N"
+					name="Config"
 				/>
 
 		<!-- EMR --> 
 		<menuitem   id="config_emr_menu" 
-
-					name="Clinicas - N" 
-
+					name="Clinicas" 
 					parent="openhealth_config_menu"
 					sequence="1"
 

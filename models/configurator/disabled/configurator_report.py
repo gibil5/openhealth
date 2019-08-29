@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-	Configurator - Report
+	Configurator - Report - Disabled 
 
 	Created: 			25 Jan 2019
-	Last updated: 		25 Jan 2019
+	Last updated: 		28 Aug 2019
 """
 from __future__ import print_function
 
@@ -11,7 +11,8 @@ from openerp import models, fields, api
 
 class ConfiguratorReport(models.Model):
 	"""
-	high level support for doing this and that.
+	Allows configuration of Automatic Reporting
+	Used by Scheduler
 	"""
 
 	_name = 'openhealth.configurator.report'
@@ -22,19 +23,16 @@ class ConfiguratorReport(models.Model):
 
 
 
-# ----------------------------------------------------------- Redefined ---------------------------
+# ----------------------------------------------------------- Fields --------------------------
 
 	name = fields.Selection(			
 			[
 				('management', 'Management'),
 				('marketing', 'Marketing'),
 			],
-			#string="Nombre",
 			required=True,
 		)
 
-
-# ----------------------------------------------------------- Fields --------------------------
 
 	date_begin = fields.Date(
 			string="Fecha Inicio",
@@ -56,7 +54,6 @@ class ConfiguratorReport(models.Model):
 			required=True,
 		)
 
-
 	# Globals
 	total_amount_year_2018 = fields.Float(
 			string="Monto Total Año 2018",
@@ -74,7 +71,6 @@ class ConfiguratorReport(models.Model):
 			string="Nr Total Año 2019",
 		)
 
-
 	month_create = fields.Boolean(
 			string="Month",
 			default=False,
@@ -85,24 +81,16 @@ class ConfiguratorReport(models.Model):
 			default=False,
 		)
 
-
-
-
 # ----------------------------------------------------------- Update --------------------------
 	# Update
 	@api.multi
 	def update(self):
 		"""
-		high level support for doing this and that.
+		Update
 		"""
 		print()
 		print('Update')
-
 		self.total_nr_year_2018 = 5
 		self.total_amount_year_2018 = 5
-
 		self.total_nr_year_2019 = 55
 		self.total_amount_year_2019 = 55
-
-
-

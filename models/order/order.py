@@ -154,8 +154,8 @@ class sale_order(models.Model):
 												#order='x_serial_nr asc',
 												limit=1,
 											)
-		print(configurator)
-		print(configurator.name)
+		#print(configurator)
+		#print(configurator.name)
 		return configurator
 
 	configurator = fields.Many2one(

@@ -27,20 +27,92 @@
 								<field name="x_type"/>
 							</group>
 							<group>
-								<field name="company_ruc"/>
 							</group>
 						</group>
-						
 
-						<group  string="Horarios">
-							<group>
+
+<!--
+					<group string="Validacion de Errores"	group="openhealth.roots">
+-->
+
+
+						<group  string="">
+
+							<!-- Error Validation -->
+							<group string="Validacion de Errores">
+									<field name="error_validation_electronic"/>
+									<field name="error_validation_patient"/>
+									<field name="error_validation_order"/>
+									<field name="error_validation_product"/>
+									<field name="error_validation_management"/>
+									<field name="error_validation_marketing"/>
+							</group>
+
+							<!-- CSV Pricelist 2019 -->
+							<group string="CSV Pricelist 2019">
+									<field name="path_csv_pricelist"/>
+							</group>
+
+						</group>
+
+
+						<group  string="">
+
+							<!-- Ticket -->
+							<group string="Ticket">
+									<field name="website"/>
+									<field name="email"/>
+									<field name="vspace"/>
+									<field name="ticket_company_address"/>
+									<field name="ticket_company_ruc"/>
+									<field name="ticket_description"/>
+									<field name="ticket_warning"/>
+		<!--
+									<field name="warning"	string="warning - Deprecated"/>
+		-->
+							</group>
+							
+								<!-- Electronic -->
+								<group string="Facturacion Electronica">
+										<field name="company_name"/>
+										<field name="company_address"/>
+										<field name="company_phone"/>
+										<field name="company_ruc"/>
+										<field name="vspace"/>
+										<field name="company_ubigeo"/>
+										<field name="company_country"/>
+										<field name="company_account"/>
+								</group>
+
+						</group>
+
+
+						<group  string="">
+							<group  	string="Horarios">
 								<field name="date_open"     widget="time"/>
 								<field name="date_close"    widget="time"/>
 							</group>
 
-							<group></group>
+							<group  	string="Cuentas Contables">
+
+								<field name="cuentab_services"/>
+								<field name="cuentab_products"/>
+								<field name="cuentab_consu"/>
+								
+							</group>
 						</group>
 
+
+
+						<!--  -->
+<!--						
+						<group string="">
+							<group>
+							</group>
+							<group>
+							</group>
+						</group>
+-->
 
 						<!-- Notebook --> 
 						<notebook>

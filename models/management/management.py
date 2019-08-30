@@ -18,13 +18,250 @@ from . import mgt_vars
 
 class Management(models.Model):
 	"""
-	high level support for doing this and that.
+	Management Report (Gerencia)
+	Reports Sales, for a time period. From a Star Date to an End Date.
+	Allows several analysis like:
+		- Doctor Sale analysis,
+		- Patient Purchase analysis,
+		- Productivity analysis,
+		- Daily Sales, per Doctor,
+		- Statistics, 
+		- Report Validation.
 	"""
 	_name = 'openhealth.management'
 
 	_inherit = 'openhealth.repo'
 
 	_order = 'date_begin asc'
+
+
+
+# ----------------------------------------------------------- PL - Natives ----------------------
+	# All Year Max and Min
+	pl_max = fields.Boolean(
+			'Max',
+		)
+
+	pl_min = fields.Boolean(
+			'Min',
+		)
+
+# ----------------------------------------------------------- PL - Relational ----------------------
+	# Doctor
+	doctor_line = fields.One2many(
+			'openhealth.management.doctor.line',
+			'management_id',
+		)
+
+	# Doctor
+	#doctor_line = fields.One2many(
+	#		'openhealth.management.doctor.line',
+	#		'management_id',
+	#	)
+
+
+# ----------------------------------------------------------- PL - Natives ----------------------
+
+	# New Procedures
+
+	# New - Echography
+	nr_echo = fields.Integer(
+			'Nr Ecografia',
+		)
+	amo_echo = fields.Float(
+			'Monto Ecografia',
+		)
+	per_amo_echo = fields.Float(
+			'% Monto Ecografia',
+		)
+	avg_echo = fields.Float(
+			'Precio Prom. Ecografia',
+		)
+
+
+	# New - Gynecology
+	nr_gyn = fields.Integer(
+			'Nr Ginecologia',
+		)
+	amo_gyn = fields.Float(
+			'Monto Ginecologia',
+		)
+	per_amo_gyn = fields.Float(
+			'% Monto Ginecologia',
+		)
+	avg_gyn = fields.Float(
+			'Precio Prom. Ginecologia',
+		)
+
+
+	# New - Promotions
+	nr_prom = fields.Integer(
+			'Nr Promocion',
+		)
+	amo_prom = fields.Float(
+			'Monto Promocion',
+		)
+	per_amo_prom = fields.Float(
+			'% Monto Promocion',
+		)
+	avg_prom = fields.Float(
+			'Precio Prom. Promocion',
+		)
+
+
+	# Time Line
+	base_dir = fields.Char()
+
+
+
+
+# ----------------------------------------------------------- PL Natives -------------------------
+
+	# Credit Notes
+	per_amo_credit_notes = fields.Float(
+		)
+
+
+	# Consultations
+	nr_sub_con_med = fields.Integer(
+			'Nr Cons Med',
+		)
+
+	amo_sub_con_med = fields.Float(
+			'Monto Cons Med',
+		)
+	
+	per_amo_sub_con_med = fields.Float(
+			'% Monto Cons Med',
+		)
+
+
+	# Gynecology
+	nr_sub_con_gyn = fields.Integer(
+			'Nr Cons Gin',
+		)
+
+	amo_sub_con_gyn = fields.Float(
+			'Monto Cons Gin',
+		)
+	
+	per_amo_sub_con_gyn = fields.Float(
+			'% Monto Cons Gin',
+		)
+
+
+	# Chavarri Brand
+	nr_sub_con_cha = fields.Integer(
+			'Nr Cons Dr. Chav',
+		)
+
+	amo_sub_con_cha = fields.Float(
+			'Monto Cons Dr. Chav',
+		)
+	
+	per_amo_sub_con_cha = fields.Float(
+			'% Monto Sub Cons Dr. Chav',
+		)
+
+
+
+	# Families and Sub Families
+	per_amo_families = fields.Float(
+			'% Monto Familias',
+		)
+
+	per_amo_subfamilies = fields.Float(
+			'% Monto Sub Familias',
+		)
+
+	#per_amo_subfamilies_products = fields.Float(
+	#		'% Monto Sub Familias Productos',
+	#	)
+
+	#per_amo_subfamilies_procedures = fields.Float(
+	#		'% Monto Sub Familias Procedimientos',
+	#	)
+
+
+
+	# Report Sale Product
+	report_sale_product = fields.Many2one(
+			'openhealth.report.sale.product'
+		)
+
+	rsp_count = fields.Integer(
+			'RSP Nr',
+		)
+
+	rsp_total = fields.Float(
+			'RSP Monto',
+		)
+
+	rsp_count_delta = fields.Integer(
+			'RSP Nr Delta',
+		)
+
+	rsp_total_delta = fields.Float(
+			'RSP Total Delta',
+		)
+
+
+
+
+# ----------------------------------------------------------- PL - Admin ---------------------------------------------
+
+	admin_mode = fields.Boolean()
+
+	nr_products_stats = fields.Integer()
+
+	nr_consultations_stats = fields.Integer()
+
+	nr_procedures_stats = fields.Integer()
+
+
+
+# ----------------------------------------------------------- PL - Fields ----------------------
+	# Owner
+	owner = fields.Selection(
+			[
+				('month', 'Month'),
+				('year', 'Year'),
+				('account', 'Account'),
+				('aggregate', 'Aggregate'),
+			],
+			default='month',
+			required=True,
+		)
+
+
+	month = fields.Selection(
+			#selection=pl_mgt_vars._month_order_list,
+			
+			selection=mgt_vars._month_order_list,
+			
+			string='Mes',
+			required=True,
+		)
+
+	#month = fields.Selection(
+	#		selection=ord_vars._month_order_list,
+	#		string='Mes',
+	#		required=True,
+	#	)
+
+
+
+
+
+# ----------------------------------------------------------- PL - Dummy -------------------------
+	# patient
+	#patient_line = fields.One2many(
+	patient_line = fields.Char(
+	#		'openhealth.management.patient.line',
+	#		'management_id',
+	)
+
+
 
 
 
@@ -47,6 +284,7 @@ class Management(models.Model):
 			
 			default=_get_default_configurator,
 		)
+
 
 
 
@@ -342,11 +580,6 @@ class Management(models.Model):
 			required=True,
 		)
 
-	month = fields.Selection(
-			selection=ord_vars._month_order_list,
-			string='Mes',
-			required=True,
-		)
 
 	delta_fast = fields.Float(
 			'Delta Fast',
@@ -360,16 +593,6 @@ class Management(models.Model):
 
 # ----------------------------------------------------------- Fields ----------------------
 
-	# Owner
-	owner = fields.Selection(
-			[
-				('month', 'Month'),
-				('year', 'Year'),
-				('account', 'Account'),
-			],
-			default='month',
-			required=True,
-		)
 
 	# State Array
 	state_arr = fields.Selection(
@@ -403,11 +626,6 @@ class Management(models.Model):
 			'management_tkr_id',
 		)
 
-	# Doctor
-	doctor_line = fields.One2many(
-			'openhealth.management.doctor.line',
-			'management_id',
-		)
 
 	# Family
 	family_line = fields.One2many(

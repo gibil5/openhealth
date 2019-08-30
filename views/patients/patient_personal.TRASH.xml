@@ -1,0 +1,260 @@
+<!-- 29 Aug 2019 -->
+
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+
+
+
+<!-- FORM - Personal -->
+        <record model="ir.ui.view" id="patient_personal_form_view">
+            <field name="name">Patient personal</field>
+            <field name="model">oeh.medical.patient</field>
+            <field name="priority" eval="1"/>
+            <field name="inherit_id" ref="oeh_medical_patient_view"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    
+
+                    <page string="Personal">
+
+
+                        <group>
+
+
+                            <!-- First Group - Address Peru --> 
+                            <group  attrs="{
+                                                'required': [   
+                                                                ('x_foreign', '=', False), 
+                                                            ],
+                                            }"
+                                >
+                                
+                                
+                                
+<!-- Address -->
+
+
+                                <!-- Country --> 
+                                <field name="country_id"    class="oe_no_button" 
+                                                            options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"
+                                                            readonly="0"                                
+                                                            
+                                                            attrs="{
+                                                                        'required':[
+                                                                                        ('x_legacy', '!=', True), 
+                                                                                    ],
+                                                                    }"
+                                />
+                                
+
+
+
+                                <!-- Only Peru --> 
+                                <field name="city" style="width: 40%"               string="Departamento"
+                                    
+                                                                                    attrs="{
+                                                                                                'required':[
+                                                                                                            ('x_foreign', '=', False), 
+                                                                                                            ('x_legacy', '!=', True), 
+                                                                                                            ],
+                                                                                            }"
+
+                                    />
+
+
+
+
+
+<!-- Only Lima --> 
+                                <field name="street2_sel"       required="0"        attrs="{
+                                                                                                'invisible':[('city', '!=', 'lima')],
+
+                                                                                                'required':[
+                                                                                                                ('city', '=', 'lima'), 
+                                                                                                                ('x_foreign', '=', False), 
+                                                                                                                ('x_legacy', '!=', True), 
+                                                                                                            ],
+                                                                                            }"
+                                                                                        />
+
+
+
+<!-- Not Lima --> 
+<!--
+                                                                                                'invisible':[('x_foreign', '!=', False)],
+-->
+                                <field name="street2_char"      required="0"        attrs="{
+                                                                                                'invisible':[('city', '==', 'lima')], 
+
+                                                                                                'required':[
+                                                                                                                ('city', '!=', 'lima'),
+                                                                                                                ('x_foreign', '=', False), 
+                                                                                                                ('x_legacy', '!=', True), 
+                                                                                                            ],
+                                                                                            }"/>
+
+
+                            
+                                <field name="street2"           invisible="1"/>
+
+<!--
+                                                                                                'invisible':[('x_foreign', '!=', False)],
+-->
+
+<!--
+                                <field name="zip" class="oe_no_button" style="width: 37%" options="{&quot;no_open&quot;: True}" on_change="onchange_state(state_id)"   />
+
+
+Relax ! 
+-->
+                                <field name="zip"   required="0"    class="oe_no_button" style="width: 37%" options="{&quot;no_open&quot;: True}" on_change="onchange_state(state_id)"      
+
+                                                                                    attrs="{
+                                                                                                'invisible':[('city', '!=', 'lima')],
+                                                                                                
+                                                                                                'required':[
+                                                                                                                ('city', '=', 'lima'), 
+                                                                                                                ('x_foreign', '=', False),
+                                                                                                                ('x_legacy', '!=', True), 
+                                                                                                            ],
+                                                                                            }" 
+
+                                />
+
+<!--
+                                                                                                'invisible':[('x_foreign', '!=', False)],
+
+Relax !
+                                                                                                'required':[('x_foreign', '=', False)],
+-->
+                                <field name="street"    required="0"
+                                                                                    attrs="{
+                                                                                                'required':[
+                                                                                                            ('x_foreign', '=', False), 
+                                                                                                            ('x_legacy', '!=', True), 
+                                                                                                            ],
+                                                                                            }" 
+
+                                    /> 
+
+                            </group>
+
+
+
+<!-- Second Group --> 
+<!-- Foreign --> 
+
+<!--
+                                                                                                        'invisible':[('x_foreign', '=', False)],
+-->
+                            <group>
+                                <field  name="x_foreign" />
+                                <field name="x_address_foreign"         attrs="{
+                                                                                    'required':[('x_foreign', '!=', False)],
+                                                                                }" 
+                                /> 
+                            </group>
+                        </group>
+
+
+
+
+
+
+                        <group>
+
+
+<!-- Third Group --> 
+                            <group>
+                                <field name="email"     string="Email"      widget="email" />
+                                <field name="phone"     />  
+                                <field name="mobile"    />
+                            </group>
+
+
+<!-- Fourth Group --> 
+                            <group>
+                                <field  name="x_firm"/>
+<!--
+                                <field  name="x_firm_address"/>
+-->                         
+                                <field  name="x_ruc"/>
+                            </group>
+                        </group>
+
+
+        <hr></hr>
+
+
+        <group>
+            <group>
+                <!--
+                <field name="function" string="Ocupación" placeholder="e.g. Sales Director"/>
+                -->
+                <field name="function"  required="0"/>
+            </group>
+
+            <group>
+                <field name="x_education_level" required="0"/>
+            </group>
+        </group>
+
+
+        <hr></hr>
+
+
+        <group string="Acompañante">
+            <group>
+                <field name="x_caregiver_last_name"/>
+                <field name="x_caregiver_first_name"/>
+                <field name="phone_3" />
+            </group>
+
+            <group>
+                <field string="DNI"  name="x_caregiver_dni"/>
+                <field string="Parentesco"  name="x_caregiver_relation"/>
+            </group>
+        </group>
+
+
+
+        <!-- 
+        <group>
+            <group>
+                <field string="Patient Deceased ?"  name="deceased"  invisible="1"/>
+                <field name="cod" attrs="{'invisible':[('deceased','=',False)]}"/>
+            </group>
+
+            <group>
+                <field name="dod" attrs="{'invisible':[('deceased','=',False)],'required':[('deceased','=',True)]}"/>
+            </group>
+        </group>
+
+
+        <group>
+            <group string="Motivo de consulta">
+                <field name="x_reason_consultation" nolabel="1"/>
+            </group>
+
+            <group string="Diagnóstico">
+                <field name="x_diagnosis" nolabel="1"/>
+            </group>
+
+            <group string="Antecedentes médicos">
+                <field name="x_antecedents" nolabel="1"/>
+            </group>
+
+            <group string="Alergias a medicamentos">
+                <field name="x_allergies_medication" nolabel="1"/>
+            </group>
+        </group>
+        --> 
+
+                    </page>
+                </notebook>
+            </field>
+        </record>
+    </data>
+</openerp>

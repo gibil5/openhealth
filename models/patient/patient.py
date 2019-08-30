@@ -11,7 +11,6 @@ from . import pat_vars
 from . import pat_funcs
 from . import chk_patient
 from openerp.addons.openhealth.models.libs import count_funcs
-
 from openerp import _
 from openerp.exceptions import Warning as UserError
 
@@ -33,6 +32,46 @@ class Patient(models.Model):
 	_order = 'x_id_code desc'
 
 	_description = 'Patient'
+
+
+
+# ----------------------------------------------------------- Dummny ------------------------------
+	#appointment_ids = fields.One2many(
+	appointment_ids = fields.Char()
+
+
+
+# ----------------------------------------------------------- Fields ------------------------------
+	x_firm_address = fields.Char(
+			'Direccion de la Empresa',  		# For the Patient
+		)
+
+
+# ----------------------------------------------------------- Configurator ------------------------
+
+	def _get_default_configurator(self):
+		print()
+		print('Default Configurator')
+
+		# Search
+		configurator = self.env['openhealth.configurator.emr'].search([
+																		#('active', 'in', [True]),
+											],
+												#order='x_serial_nr asc',
+												limit=1,
+											)
+		#print(configurator)
+		#print(configurator.name)
+		return configurator
+
+	# Configurator
+	configurator = fields.Many2one(
+			'openhealth.configurator.emr',
+			string="Configuracion",
+
+			default=_get_default_configurator,
+		)
+
 
 
 # ----------------------------------------------------------- First Level - Buttons ---------------------------------------------

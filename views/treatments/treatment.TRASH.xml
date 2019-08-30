@@ -1,0 +1,62 @@
+
+ <!-- Testing -->
+<!--
+
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+                            
+                            name="test" 
+                            
+                            string="TEST" 
+                            
+                            groups="openhealth.roots"
+
+                            help='Tests: Reset, Integration, Create Recos, Computes'
+                        />
+
+
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+                            
+                            name="test_libs" 
+                            
+                            string="TEST LIBS" 
+                            
+                            groups="openhealth.roots"
+
+                            help='Tests: Products, Reports, Patients, Payments'
+                        />
+-->
+
+
+                        <!-- Create Appointment --> 
+                        <!--
+                        <button 
+                            class="oe_highlight"
+                            type="object"
+                            name="create_appointment_consultation" 
+
+                            
+                            string="Crear CITA"
+                            states="empty"
+                        />
+                        -->
+
+
+
+                            
+                                <!-- Appointments -->
+<!--                                
+                                <button type="action" class="oe_stat_button"
+                                    name="%(appointment_form_action)d"
+                                    context="{
+                                                'default_treatment': active_id, 
+                                            }"
+                                    icon="fa-calendar"
+                                    attrs="{ 'invisible':[  ('nr_appointments','=',0),  ]}"
+                                    >
+                                    <field string="Citas" name="nr_appointments" widget="statinfo"/>
+                                </button>
+-->

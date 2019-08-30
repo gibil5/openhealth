@@ -3,12 +3,12 @@
     'name': "Open Health - SERVICE ORIENTED",
 
     'summary': """
-        ERP system, for the Chavarri Clinic. Encapsulates the Business logic. Inherits OeHealth. 
+        ERP system, for the Chavarri Clinic. Contains ALL the Data Model. Encapsulates the Business logic in Classes and Libraries. Inherits OeHealth. 
     """,
 
     'description': """
 
-        29 Aug 2019
+        30 Aug 2019
 
         Remember Robert C. Martin:
             - Respect the Law of Demeter: avoid Train Wreckages.

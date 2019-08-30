@@ -26,6 +26,66 @@ class Treatment(models.Model):
 	_description = 'Treatment'
 
 
+# ----------------------------------------------------------- Pricelist Fields - Dummy --------------------------------
+
+	#report_product = fields.Many2one(
+	report_product = fields.Char(
+		)
+
+
+
+# ----------------------------------------------------------- Pricelist Fields - Test --------------------------------
+
+	x_test_scenario = fields.Selection(
+			[
+				('all', 'All'),
+				('product', 'product'),
+				('laser', 'laser'),
+				('cosmetology', 'cosmetology'),
+				('medical', 'medical'),
+				('new', 'new'),
+			],
+			string="Test Scenarios",
+		)
+
+	test_pricelist_2019 = fields.Boolean(
+			'PL 2019',
+			default=False,
+		)
+
+	test_pricelist_2018 = fields.Boolean(
+			'PL 2018',
+			default=False,
+		)
+
+
+# ----------------------------------------------------------- Price List Fields - Relational ----------------------------------------------
+	# Management
+	report_management = fields.Many2one(
+			'openhealth.management',
+			string="MGT",
+		)
+
+	# Marketing
+	report_marketing = fields.Many2one(
+			'openhealth.marketing',
+			string="MKT",
+		)
+
+	# Contasis
+	report_contasis = fields.Many2one(
+			'openhealth.account.contasis',
+			string="ACC",
+		)
+
+	# Txt
+	report_account = fields.Many2one(
+			'openhealth.container',
+			string="TXT",
+		)
+
+
+
 
 # ----------------------------------------------------------- Conversion ------------------------
 

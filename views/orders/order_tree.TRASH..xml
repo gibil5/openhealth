@@ -1,0 +1,113 @@
+<!--
+29 Aug 2019
+-->
+
+
+
+<!-- TREE - DEP --> 
+		<record model="ir.ui.view" id="sale.view_order_tree">
+			<field name="name">sale.order.tree</field>
+			<field name="model">sale.order</field>
+			<field name="arch" type="xml">
+
+				<tree string="Order Tree"
+
+						colors="
+						red:state=='draft';
+						green:state=='credit_note';
+						blue:state=='sale';
+						grey:state in ('cancel')
+						"
+					>
+
+					<field name="name"          string="Referencia"/>
+
+
+<!--
+					<field name="x_legacy"      groups="openhealth.roots"/>
+					<field name="x_date_order_date"/>
+					<field name="x_payment_method"  groups='openhealth.roots'/>
+					<field name="x_checksum"    groups="openhealth.roots"   />
+					<field name="x_qr_img"  groups="openhealth.roots"/>
+					<field name="x_delta"           groups="openhealth.roots"/>
+					<field name="x_type_code"   groups="openhealth.roots"/>
+-->
+
+
+
+					<field name="date_order"            string="Fecha y hora"/>
+					<field name="x_day_order"   groups="openhealth.roots"/>
+					<field name="x_month_order"           groups='openhealth.roots'   />
+
+
+
+					<field name="x_serial_nr"/>
+					<field name="x_counter_value"   groups="openhealth.roots"/>
+					<field name="x_electronic"  groups="openhealth.roots"/>
+					
+
+
+					<field name="x_type" />
+
+<!--
+					<field name="amount_untaxed"    sum="Total Acumulado"         widget="monetary"       string="Total"  />
+					<field name="amount_untaxed"   	widget="monetary"       string="Total"/>
+-->
+
+
+
+
+					<field name="state"/>
+					<field name="x_credit_note_type"/>
+
+
+
+					<field name="x_block_flow"/>
+					<field name="x_amount_flow"     sum="Total Flujos"/>
+					<field name="x_total_net"/>
+					<field name="x_total_tax"/>
+
+
+
+					<field name="x_id_doc_type"/>
+					<field name="x_id_doc"/>
+					<field name="x_ruc"/>
+
+
+
+
+
+					<field name="patient"/>
+					<field name="x_doctor"/>
+					<field name="treatment"/>
+					<field name="nr_lines"/>
+
+
+
+					<field name="x_family"/>
+					
+					<field name="x_product"/>
+
+					<field name="user_id"       string="Creado por" />
+
+<!--
+					<field name="x_qr_data"     groups="openhealth.roots"/>
+					<field name="x_pm_total"    groups="openhealth.roots"   />
+-->
+				</tree>
+			</field>
+		</record>
+<!--
+					<field name="create_date" />
+					<field name="write_date" />
+					<field name="create_date"/>
+					<field name="user_id"       string="Generado por"   />
+					<field name="comment"/>
+					<field name="note"/>
+					<field name="partner_id"/>
+					<field name="product"/>
+					<field name="x_date_order_corr" string="Fec"    />
+					<field name="x_note"/>
+-->
+
+

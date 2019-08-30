@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Ticket Funcs
-Encapsulate Ticket Business Rules
+	Ticket Funcs
+	Encapsulate Ticket Business Rules
 
-Created: 			29 Aug 2019
-Last up: 	 		29 Aug 2019
+	Created: 			29 Aug 2019
+	Last up: 	 		29 Aug 2019
 """
 import datetime
 import math

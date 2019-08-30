@@ -7,11 +7,9 @@
     """,
 
     'description': """
-
             Minimalist version:
             - Treatment
             - Patient
-
     """,
 
     'author': "",
@@ -67,19 +65,16 @@
 # ----------------------------------------------------------- Views ------------------------------------------------------
 
         'views/min/treatment.xml',
-
         'views/min/treatment_services.xml',
         
         'views/min/patient.xml',
-
         'views/min/patient_personal.xml',
 
         'views/min/order.xml',
 
         'views/min/account_contasis.xml',
 
-        'views/min/configurator_emr.xml',   
-
+        'views/min/configurator_emr.xml',
     ],
 
     

@@ -1,3 +1,38 @@
+# 29 Aug 2019 - Update Counter
+# Deprecated ?
+
+
+# ---------------------------------------------- Update Counter -----------------------------------
+	# Update Counter
+	@api.multi
+	def update_counter(self):
+		"""
+		high level support for doing this and that.
+		"""
+		print()
+		print('Update Counter')
+		#print(self.x_counter_value)
+		#print(self.x_serial_nr)
+
+		counter_value = self.x_counter_value		
+		state = self.state
+		serial_nr = user.get_serial_nr(self.x_type, counter_value, state)
+
+		#print(serial_nr)
+
+		if self.x_serial_nr != serial_nr:
+			print('Gotcha !')
+			counter = user.get_counter_from_serial_nr(self.x_serial_nr)
+			#print(counter)
+			self.x_counter_value = counter
+
+
+
+
+
+
+
+
 # 29 Aug 2019 - Update Legacy
 # Deprecated !
 

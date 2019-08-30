@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-Order
+	Order
 
-Created: 			26 Aug 2016
-Last mod: 			29 Aug 2019
+	Created: 			26 Aug 2016
+	Last mod: 			29 Aug 2019
 """
 from __future__ import print_function
 import datetime
@@ -31,6 +31,140 @@ class sale_order(models.Model):
 	_inherit = 'sale.order'
 
 	_description = 'Order'
+
+
+
+# ----------------------------------------------------------- Price List - Computes ----------------------
+
+	# Price List
+	pl_price_list = fields.Char(
+			string="Pl - Price List",
+
+			compute='_compute_pl_price_list',
+		)
+
+	@api.multi
+	def _compute_pl_price_list(self):
+		for record in self:
+			price_list = ''
+			for line in record.order_line:
+				price_list =line.get_price_list()
+			record.pl_price_list = price_list
+
+
+
+	x_amount_flow = fields.Float(
+			'Pl - Total F',
+
+			compute='_compute_x_amount_flow',
+		)
+
+	@api.multi
+	def _compute_x_amount_flow(self):
+		for record in self:
+			if record.x_block_flow:
+				record.x_amount_flow = 0
+			elif record.state in ['credit_note']  and  record.x_credit_note_amount not in [0, False]:
+				record.x_amount_flow = - record.x_credit_note_amount
+			else:
+				record.x_amount_flow = record.amount_total
+
+
+
+
+	# Descriptor - Family
+	pl_family = fields.Char(
+			string="Pl - Familia",
+
+			compute='_compute_pl_family',
+		)
+
+	@api.multi
+	def _compute_pl_family(self):
+		for record in self:
+			families = ''
+			for line in record.order_line:
+				families = families + line.get_family() + ', '
+			record.pl_family = families
+
+
+
+	# Descriptor - Product
+	pl_product = fields.Char(
+			string="Pl - Producto",
+
+			compute='_compute_pl_product',
+		)
+
+	@api.multi
+	def _compute_pl_product(self):
+		for record in self:
+			products = ''
+			for line in record.order_line:
+				products = products + line.get_product() + ', '
+			record.pl_product = products
+
+
+
+
+
+# ---------------------------------------------- Price List - Fields ------------------------------------------
+
+	# States
+	READONLY_STATES = {
+		'draft': 		[('readonly', False)],
+		'sent': 		[('readonly', False)],
+		'sale': 		[('readonly', True)],
+		'cancel': 		[('readonly', True)],
+	}
+
+	# Doctor
+	x_doctor = fields.Many2one(
+			'oeh.medical.physician',
+			string="Médico",
+			states=READONLY_STATES,
+		)
+
+	# Receptor
+	pl_receptor = fields.Char(
+			string='Receptor',
+		)
+
+	# Transfer Free
+	pl_transfer_free = fields.Boolean(
+			'TRANSFERENCIA GRATUITA',
+		
+			default=False,
+		)
+
+
+
+
+
+# ----------------------------------------------------------- Configurator -------------------------
+
+	def _get_default_configurator(self):
+		print()
+		print('Default Configurator')
+
+		# Search
+		configurator = self.env['openhealth.configurator.emr'].search([
+																		#('active', 'in', [True]),
+											],
+												#order='x_serial_nr asc',
+												limit=1,
+											)
+		print(configurator)
+		print(configurator.name)
+		return configurator
+
+	configurator = fields.Many2one(
+			'openhealth.configurator.emr',
+			string="Config",
+			required=True,
+			
+			default=_get_default_configurator,
+		)
 
 
 
@@ -395,40 +529,12 @@ class sale_order(models.Model):
 			"Impuesto",
 		)
 
-
-# ----------------------------------------------------------- Configurator -------------------------
-
-	def _get_default_configurator(self):
-		print()
-		print('Default Configurator')
-
-		# Doctors
-		configurator = self.env['openhealth.configurator.emr'].search([
-																		#('active', 'in', [True]),
-											],
-												#order='x_serial_nr asc',
-												limit=1,
-											)
-		print(configurator)
-		print(configurator.name)
-		return configurator
-
-	configurator = fields.Many2one(
-			'openhealth.configurator.emr',
-			string="Config",
-			required=True,
-			default=_get_default_configurator,
-		)
-
-
-
 # ----------------------------------------------------------- Validate Button ----------------------------
 
 	@api.multi
 	def validate(self):
 		"""
-		Validate the order. 
-		Before Confirmation.
+		Validate the order. Before Confirmation.
 		"""
 		print()
 		print('Validate')
@@ -474,18 +580,14 @@ class sale_order(models.Model):
 		ord_funcs.update_day_and_month(self)
 
 
-
-
 		# Update Descriptors (family and product)
 		#self.update_descriptors()
 		ord_funcs.update_descriptors(self)
 
 
-
 		# Vip Card - Detect and Create
 		#self.detect_create_card()
 		ord_funcs.detect_vip_card_and_create(self)
-
 
 
 
@@ -518,7 +620,6 @@ class sale_order(models.Model):
 			if self.x_id_doc_type in [False, '']  or self.x_id_doc in [False, '']:
 				msg = "Error: Documento de Identidad Ausente."
 				raise UserError(_(msg))
-
 
 
 		# Update Patient
@@ -574,7 +675,6 @@ class sale_order(models.Model):
 		self.state = 'sale'
 
 	# action_confirm_nex
-
 
 
 # ----------------------------------------------------------- Make QR - BUtton ----------------------
@@ -791,13 +891,11 @@ class sale_order(models.Model):
 		'Fecha',
 	)
 
-
 	# Month
 	x_month_order = fields.Selection(
 			selection=ord_vars._month_order_list,
 			string='Mes',
 		)
-
 
 	# Day
 	x_day_order = fields.Selection(
@@ -984,8 +1082,6 @@ class sale_order(models.Model):
 				('invoice', 'Factura'),
 				('advertisement', 'Canje Publicidad'),
 				('sale_note', 'Canje NV'),
-				#('ticket_receipt', 'Ticket Boleta'),
-				#('ticket_invoice', 'Ticket Factura'),
 				('ticket_receipt', 'Boleta Electronica'),
 				('ticket_invoice', 'Factura Electronica'),
 			],
@@ -1152,32 +1248,6 @@ class sale_order(models.Model):
 			self.treatment = treatment
 
 
-# ---------------------------------------------- Update Counter -----------------------------------
-	# Update Counter
-	@api.multi
-	def update_counter(self):
-		"""
-		high level support for doing this and that.
-		"""
-		print()
-		print('Update Counter')
-		#print(self.x_counter_value)
-		#print(self.x_serial_nr)
-
-		counter_value = self.x_counter_value		
-		state = self.state
-		serial_nr = user.get_serial_nr(self.x_type, counter_value, state)
-
-		#print(serial_nr)
-
-		if self.x_serial_nr != serial_nr:
-			print('Gotcha !')
-			counter = user.get_counter_from_serial_nr(self.x_serial_nr)
-			#print(counter)
-			self.x_counter_value = counter
-
-
-
 # ----------------------------------------------------------- Primitives --------------------------
 
 	# Delta
@@ -1243,7 +1313,9 @@ class sale_order(models.Model):
 		"""
 
 		# Update Descriptors
-		self.update_descriptors()
+		#self.update_descriptors()
+		ord_funcs.update_descriptors(self)
+
 
 		# Init vars
 		name = 'Pago'
@@ -1382,8 +1454,6 @@ class sale_order(models.Model):
 		"""
 		high level support for doing this and that.
 		"""
-		#print
-		#print 'Order - Reset'
 		self.x_payment_method.unlink()
 		self.state = 'draft'
 
@@ -1420,22 +1490,18 @@ class sale_order(models.Model):
 			default=False
 		)
 
-	# Cancel Order
 	@api.multi
 	def cancel_order(self):
 		"""
-		high level support for doing this and that.
+		Cancel Order
 		"""
-		#print
-		#print 'Cancel Order'
 		self.x_cancel = True
 		self.state = 'cancel'
 
-	# Activate
 	@api.multi
 	def activate_order(self):
 		"""
-		high level support for doing this and that.
+		Activate Order
 		"""
 		self.x_cancel = False
 		self.state = 'sale'

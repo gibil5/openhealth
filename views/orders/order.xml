@@ -326,9 +326,15 @@
 <!-- Natives -->
 				<xpath expr="//field[@name='validity_date']" position="before">
 					
+
 					<field name="x_partner_vip"/>
 
 					<field name="vspace"/>
+
+					<field name="pl_transfer_free"/>
+
+					<field name="vspace"/>
+
 
 					<field name="date_order"            string="Fecha"
 
@@ -401,9 +407,17 @@
 
 					<field name="configurator"			required="1"/>
 
-
+<!--
 					<field name="x_admin_mode"          groups="openhealth.roots,openhealth.managers,openhealth.caja,openhealth.directors"/>
-					
+-->
+
+					<field name="x_admin_mode"          attrs="{'invisible':[
+																				('state','not in',['sale', 'credit_note']),
+																	]}"
+							groups="openhealth.roots,openhealth.managers,openhealth.caja,openhealth.directors"
+						/>
+
+
 					<field name="pricelist_id"          readonly="1"/>
 				</xpath>
 
@@ -546,6 +560,8 @@
 							<field name="name"      readonly="1"/>
 -->
 							<field name="x_title"       readonly="0"/>
+
+							<field name="pl_price_list"/>
 						</h3>
 					</group>
 
@@ -816,12 +832,16 @@
 
 <!--
 Angelo - 4 Jun 2019
+<xpath expr="//field[@name='order_line']" position="attributes">
+	<attribute name='attrs'>{'readonly': [('state', 'in', ('sent'))]}</attribute>
+</xpath>
 -->
 <xpath expr="//field[@name='order_line']" position="attributes">
 
 	<attribute name='attrs'>{'readonly': [('state', 'not in', ('sale', 'draft', 'cancel', 'sent', 'credit_note'))]}</attribute>
 
 </xpath>
+
 
 
 

@@ -27,6 +27,29 @@ class Management(models.Model):
 	_order = 'date_begin asc'
 
 
+
+# ----------------------------------------------------------- Configurator ------------------------
+
+	# Default Configurator
+	def _get_default_configurator(self):
+		configurator = self.env['openhealth.configurator.emr'].search([
+																			('x_type', 'in', ['emr']),
+																		],
+																			#order='date_begin,name asc',
+																			limit=1,
+			)
+		return configurator
+
+	# Configurator
+	configurator = fields.Many2one(
+			'openhealth.configurator.emr',
+			string="Configuracion",
+			
+			default=_get_default_configurator,
+		)
+
+
+
 # ----------------------------------------------------------- Update Doctors ----------------------
 	# Update
 	@api.multi
@@ -333,28 +356,6 @@ class Management(models.Model):
 			'Delta Doctor',
 		)
 
-
-# ----------------------------------------------------------- Configurator ------------------------
-	# Default Configurator
-	#@api.model
-	#def _get_default_configurator(self):
-	#	configurator = self.env['openhealth.configurator.emr'].search([
-	#																		('x_type', 'in', ['emr']),
-	#																	],
-																			#order='date_begin,name asc',
-	#																		limit=1,
-	#		)
-	#	return configurator
-
-	# Configurator
-	configurator = fields.Many2one(
-			'openhealth.configurator.emr',
-			string="Configuracion",
-			domain=[
-						#('x_type', '=', 'emr'),
-					],
-			#default=_get_default_configurator,
-		)
 
 
 # ----------------------------------------------------------- Fields ----------------------

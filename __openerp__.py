@@ -1,1 +1,1 @@
-max__openerp__.py
+./min__openerp__.py

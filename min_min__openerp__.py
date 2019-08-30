@@ -7,7 +7,12 @@
     """,
 
     'description': """
-        No Views. No Data. Only Models.
+        Description:
+            - All Models.
+            - All Dependencies.
+            - No Views.
+            - No Data. 
+            - No Security. 
     """,
 
     'author': "",
@@ -18,7 +23,9 @@
     
     'version': '',
 
+
     'depends': ['base', 'oehealth', 'base_multi_image'],
+
     
     'data': [],
 

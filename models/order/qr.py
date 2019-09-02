@@ -45,6 +45,26 @@ class QR(object):
 
 
 
+	def print_obj(self):
+		print()
+
+		# Sale
+		print(self.date)
+		print(self.x_type)
+		print(self.serial_nr)
+		print(self.amount_total)
+		print(self.total_tax)
+
+		# Emitter
+		print(self.ruc_company)
+
+		# Receptor
+		print(self.receptor_id_doc_type)
+		print(self.receptor_id_doc)
+		print(self.receptor_ruc)
+
+
+
 	def get_img_str(self):
 
 		return self.img_str

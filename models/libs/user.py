@@ -2,28 +2,54 @@
 """
 		user.py
 
- 		Bussiness oriented.
- 		Can not be Unit-tested (depends on a third-party library: Odoo).
+ 		Bussiness oriented. Can not be Unit-tested (depends on a third-party library: Odoo).
 
  		Created: 			13 Aug 2018
- 		Last up: 	 		 7 Feb 2019
+ 		Last up: 	 		 2 Sep 2019
 """
 import datetime
 from openerp.addons.openhealth.models.order import ord_vars
 
 
+#------------------------------------------------ Get Counter -------------------------------------
 
-#------------------------------------------------ Get Counter From Serial Nr ----------------------
-# Get Counter From Serial Nr
-def get_counter_from_serial_nr(serial_nr):
+#def get_counter_value(self, x_type, state):
+def get_next_counter_value(self, x_type, state):
 	"""
-	Get Counter. From Serial Nr.
+	Get Next Counter value. Given type and state.
+	If State in Validated or Sale.
 	"""
-	#print()
-	#print('Get Counter From Serial Nr')
-	#print(serial_nr)
-	counter = int(serial_nr.split('-')[1])
-	return counter
+	print()
+	print('Get Counter Value')
+	print(x_type)
+	print(state)
+
+
+	# Sale, Cancel
+	#if state in ['validated']:
+	if state in ['validated', 'sale']:
+
+		order = self.env['sale.order'].search([
+													('x_electronic', '=', True),
+													('x_type', '=', x_type),
+													('state', 'in', ['sale', 'cancel']),
+												],
+											order='x_counter_value desc',
+											limit=1,
+										)
+	# Credit Note
+	elif state in ['credit_note']:
+		order = self.env['sale.order'].search([
+													('x_electronic', '=', True),
+													('x_type', '=', x_type),
+													('state', 'in', ['credit_note']),
+												],
+											order='x_counter_value desc',
+											limit=1,
+										)
+	return order.x_counter_value + 1
+
+
 
 
 
@@ -55,36 +81,21 @@ def get_serial_nr(x_type, counter_value, state):
 
 
 
-#------------------------------------------------ Get Counter -------------------------------------
-# Get the Counter
-def get_counter_value(self, x_type, state):
-	"""
-	Get New Counter value. Given type and state.
-	"""
-	print()
-	print('Get Counter Value')
 
-	# Sale, Cancel
-	if state in ['validated']:
-		order = self.env['sale.order'].search([
-													('x_electronic', '=', True),
-													('x_type', '=', x_type),
-													('state', 'in', ['sale', 'cancel']),
-												],
-											order='x_counter_value desc',
-											limit=1,
-										)
-	# Credit Note
-	elif state in ['credit_note']:
-		order = self.env['sale.order'].search([
-													('x_electronic', '=', True),
-													('x_type', '=', x_type),
-													('state', 'in', ['credit_note']),
-												],
-											order='x_counter_value desc',
-											limit=1,
-										)
-	return order.x_counter_value + 1
+
+
+#------------------------------------------------ Get Counter From Serial Nr ----------------------
+# Get Counter From Serial Nr
+def get_counter_from_serial_nr(serial_nr):
+	"""
+	Get Counter. From Serial Nr.
+	"""
+	#print()
+	#print('Get Counter From Serial Nr')
+	#print(serial_nr)
+	counter = int(serial_nr.split('-')[1])
+	return counter
+
 
 
 

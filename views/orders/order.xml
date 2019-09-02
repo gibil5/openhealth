@@ -66,32 +66,37 @@
 				<!-- Redefine -->
 				<xpath expr="//button[@name='action_confirm']" position="replace">
 
-
+<!--
+							name="validate"
+-->
 					<!-- Validate -->
 					<button 
 							type="object" 
 							class="oe_highlight"
-							name="validate"
 
-							string="Validar"                            
+							name="validate_and_confirm"
+
+							string="Validar y Confirmar"                            
 
 							states="sent"
 					/>
 
 
 					<!-- Confirm -->
+<!--
+-->
 					<button 
 							type="object" 
 							class="oe_highlight"
 							name="action_confirm_nex"
-
 							string="CONFIRMAR"
-							
 							states="validated"
 					/>
 
 
+
 					<!-- Make QR -->
+<!--
 					<button 
 							type="object" 
 							class="oe_highlight"
@@ -102,6 +107,22 @@
 							
 							states="validated"
 					/>
+-->
+
+
+					<!-- Make Serial Nr -->
+<!--
+					<button 
+							type="object" 
+							class="oe_highlight"
+
+							name="make_serial_number"
+
+							string="Make Serial Nr"
+							
+							states="sale"
+					/>
+-->
 
 
 					<!-- Correct -->

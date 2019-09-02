@@ -14,6 +14,10 @@ from libs import *
 # Base
 
 
+# Pricelist
+from pricelist import *
+
+
 
 # Configurator
 from configurator import *

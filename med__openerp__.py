@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Open Health - SERVICE ORIENTED",
+    'name': "Open Health - SERVICE ORIENTED - MED",
 
     'summary': """
         ERP system, for the Chavarri Clinic. Contains ALL the Data Model. Encapsulates the Business logic in Classes and Libraries. Inherits OeHealth. 
@@ -8,7 +8,16 @@
 
     'description': """
 
-        30 Aug 2019
+        2 Sep 2019
+
+        Contains:
+            - All External Dependencies,
+            - All Models,
+            - All Users,
+            - All Views,
+            - No Data,
+            - No Security.
+
 
         Remember Robert C. Martin:
             - Respect the Law of Demeter: avoid Train Wreckages.
@@ -17,7 +26,7 @@
             - Handle Exceptions.
             - The Database should not contain BR. Kill computes.
 
-        Clean your System: 
+        A;ways clean your System: 
             - Procurement Orders, 
             - Stock Moves,
             - Computes.
@@ -52,59 +61,22 @@
     'data': [
 
 
-# ----------------------------------------------------------- Dep ------------------------------------------------------
-        #'data/physicians/base_data_physicians_new.xml',            # Dep
-
-        # Users - With pw
-        #'data/users/base_data_users_almacen.xml',                  # Dep 
-        #'data/users/base_data_users_doctors_new.xml',              # Dep !
-        #'data/users/base_data_users_platform_new.xml', 
-        #'data/users/base_data_users_staff.xml',        
-
-        # Dep
-        #'data/prods/odoo_data_products_dep.xml',               # Dep
-        #'data/prods/odoo_data_products_new_20181212.xml',      # Dep
-        #'data/prods/odoo_data_products_new_20190128.xml',      # Dep 
-        #'data/prods/odoo_data_products_new_2019-03-06.xml',    # Dep
-        #'data/prods/odoo_data_products_credit_notes.xml',      # Dep
-
-        #'views/configurators/scheduler.xml',               # Disabled - Not Dep !
-        #'views/configurators/configurator_report.xml',     # Disabled        
-        #'views/configurators/configurator.xml',            # Dep !
-
-        # Ticket
-        #'reports/phys/report_ticket_invoice_nex.xml',      # Dep !
-        #'reports/phys/report_ticket_receipt_nex.xml',      # Dep !
-
-        # Menus
-        #'views/menus/menus_openhealth.xml',        # Dep
-        #'views/menus/menus_inactive.xml',          # MIN
-
-
-# ----------------------------------------------------------- Data - First ------------------------------------------------------
-
-        # Check that data is not updated. All the time. 
+# ----------------------------------------------------------- Users ------------------------------------------------------
 
         # Categs
         'data/categs/base_data_categs_partners.xml',
-        'data/categs/base_data_categs_prods.xml',
 
-        # Allergies
-        'data/allergies/allergy.xml',
-
-        # Doctors
-        'data/physicians/base_data_physicians.xml',                 # Aggregates all
+        # Users
+        'data/users/base_data_users_generics.xml',                 # Important 
+        'data/physicians/base_data_physicians.xml',                
         'data/physicians/base_data_physicians_inactive.xml',        
-
-        # Users - Active
-        'data/users/base_data_users_generics.xml',                 # Not Dep 
         'data/users/base_data_users_platform.xml',  
         'data/users/base_data_users_cash.xml',
         'data/users/base_data_users_account.xml',       
         'data/users/base_data_users_managers.xml',  
         'data/users/base_data_users_doctors.xml',
         'data/users/base_data_users_assistants.xml',    
-
+        'data/users/base_data_users_directors.xml',  
 
         # Inactive
         'data/users/base_data_users_inactive.xml', 
@@ -112,34 +84,9 @@
 
 # ----------------------------------------------------------- Security - Users - First ------------------------------------------------------
         'security/openhealth_security.xml',             # Groups
-        'security/openhealth_security_readers.xml',     
+        #'security/openhealth_security_readers.xml',     
 
 
-
-
-
-        # ----------------------------------------------------------- Data - Products ------------------------------------------------------
-
-        # Suppliers - MUST CLEAN THIS !!!
-        'data/suppliers.xml',                          # Very Important - Account Invoice Dependance
-
-
-        # Data
-        'data/prods/odoo_data_products.xml',
-        'data/prods/odoo_data_products_new.xml',            # Has integrated the following
-
-        'data/prods/odoo_data_services_consult.xml',
-        'data/prods/odoo_data_services_co2.xml',
-        'data/prods/odoo_data_services_exc.xml',
-        'data/prods/odoo_data_services_m22.xml',
-        'data/prods/odoo_data_services_med.xml',
-        'data/prods/odoo_data_services_cos.xml',
-        'data/prods/odoo_data_services_med_dep.xml',    # Dependance
-
-
-        # Pricelists - Vip
-        'data/pricelists/pricelists.xml',
-        
 
 
 # ----------------------------------------------------------- Configurator ------------------------------------------------------
@@ -234,8 +181,12 @@
 # ----------------------------------------------------------- Views - First Level ------------------------------------------------------
 
         # Users
-        #'views/users/user.xml',
+        'views/users/user.xml',
         'views/users/user_actions.xml',
+
+        # Groups
+        'views/users/group.xml',
+
 
         # Orders
         'views/orders/order.xml',

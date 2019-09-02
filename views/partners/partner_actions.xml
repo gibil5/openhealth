@@ -81,20 +81,9 @@
             <field name="res_model">res.partner</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-
             <field name="domain">[
                                     ('active', '=', False), 
                 ]</field>
-
-            <!--
-            <field name="domain">[]</field>
-            <field name="context">{}</field>
-            <field name="view_id" eval="False"/>            
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create">Create the first partner
-                </p>
-            </field>
-            -->
         </record>
 
 
@@ -106,20 +95,10 @@
             <field name="res_model">res.partner</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-
-            <field name="domain" eval="[    ('property_product_pricelist', '=', ref('pricelist_vip'))   ]"/>                                                        
-
-            <!--
-            <field name="domain">[]</field>
-            <field name="context">{}</field>
-            <field name="view_id" eval="False"/>            
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create">Create the first partner
-                </p>
-            </field>
-            -->
+<!--        
+            <field name="domain" eval="[    ('property_product_pricelist', '=', ref('pricelist_vip'))   ]"/>
+-->
         </record>
-
 
 
 
@@ -132,15 +111,6 @@
             <field name="res_model">res.partner.category</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-            <!--
-            <field name="domain">[]</field>
-            <field name="context">{}</field>
-            <field name="view_id" eval="False"/>            
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create">Create the first partner
-                </p>
-            </field>
-            -->
         </record>
 
     </data>

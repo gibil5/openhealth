@@ -9,6 +9,8 @@
             <field name="name">Maria Luisa Pedemonte</field>
             <field name="email">mpedemonte@clinicachavarri.com</field>
             <field eval="[(6, 0, [ref('cash')])]" name="category_id"/>
+
+            <field name="function">caja</field>
         </record>
 
 

@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        
+
+<!-- TREE - USER --> 
+        <record model="ir.ui.view" id="base.view_users_tree">
+            <field name="name">res.users.tree</field>
+            <field name="model">res.users</field>
+            <field name="arch" type="xml">
+                
+                <tree string="User Tree">
+                    
+                    <field name="name"/>
+
+                    <field name="login"/>
+
+                    <field name="login_date"/>
+
+
+                    <field name="active"/>
+
+                    <field name="function"/>
+                </tree>
+            </field>
+        </record>
+
+
+<!--
+                    <field name="groups_id"/>
+                    <field name="partner_id"/>
+                    <field name="lang"/>
+                    <field name="tz"/>
+
+                    <field name="groups_id"/>
+                    <field name="image"/>
+-->
+
+
+
+
+
+<!-- FILTER --> 
+<!--
+        <record id="sale.view_sales_order_filter" model="ir.ui.view">
+-->
+        <record id="base.view_users_search" model="ir.ui.view">
+
+           <field name="name">res.users.search</field>
+           
+           <field name="model">res.users</field>          
+           
+           <field name="arch" type="xml">
+
+               <search string="users">
+
+
+<!-- Active --> 
+
+
+
+                    <!-- Group By --> 
+                    <group expand="1" string="Group By">
+
+                        <filter name="Funcion" context="{'group_by':'function'}"/>
+
+                    </group>
+
+               </search>           
+           </field>
+       </record>
+
+
+    </data>
+</openerp>
+
+
+

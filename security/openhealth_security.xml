@@ -14,7 +14,9 @@
 
 <!-- Roots --> 
         <record id="roots" model="res.groups">
+
             <field name="name">roots</field>
+            
             <field name="category_id" ref="module_openhealth_category"/>
 
                 <field name="users" eval="[ 
@@ -22,6 +24,7 @@
 
                                     ]"/>
         </record>
+
 
 
 <!-- Directors --> 

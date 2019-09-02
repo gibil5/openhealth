@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		
+
+
+<!-- SEARCH --> 
+		<record id="base.view_groups_search" model="ir.ui.view">
+
+		   	<field name="name">res.groups.search</field>
+		   
+		   	<field name="model">res.groups</field>          
+		   
+		   	<field name="arch" type="xml">
+
+
+			<search string="Groups">
+		  
+					<field name="name" filter_domain="['|', ('name','ilike',self), ('category_id','ilike',self)]" string="Group"/>
+		  
+					<field name="share"/>
+		  
+					<filter name="no_share" string="Internal Groups" domain="[('share','=',False)]"/>
+		  
+			
+
+					<!-- Group By --> 
+					<group expand="1" string="Group By">
+
+						<filter name="Categoria" context="{'group_by':'category_id'}"/>
+
+					</group>
+
+			   </search>           
+		   </field>
+	   </record>
+
+
+	</data>
+</openerp>
+
+
+

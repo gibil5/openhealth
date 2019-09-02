@@ -4,7 +4,7 @@
 
 
 
-        <!-- FORM -->
+<!-- FORM -->
         <record model="ir.ui.view" id="counter_form_view">
             <field name="name">counter.form</field>
             <field name="model">openhealth.counter</field>
@@ -13,69 +13,44 @@
                 <form string="counter - Form">
 
 
-
                     <!-- Header --> 
                     <header>
-
-                        <!-- Increase --> 
-<!--
-                        <button 
-                                name="increase_static"
-                                type="object" 
-                                class="oe_highlight"
-
-                                string="Increase Static"
-                        />                      
---> 
                     </header>
-
 
 
 
                     <!-- Sheet --> 
                     <sheet>
-                        <h1>Contadores</h1>
-
-                        <h2></h2>
-
-                        <field name="vspace" />
                         
-                        <group>
+                        <group string="Contadores">
+
                             <group>
-                                <field name="name"      readonly="0"        />      
-
-                                <field name="vspace" />
+                                <field name="name"      readonly="0"/>      
                                 
-                                <field name="value"   />                                                    
-                                
-                                <field name="vspace" />
-
-<!--
-                                <field name="total"   />                                                    
--->                     
-
-
+                                <field name="value"/>
                             </group>
                             <group>                             
-                                <field name="x_type"    />      
-                                <field name="vspace" />
+                                <field name="x_type"    />
 
                                 <field name="delta"     />      
                             </group>
                         </group>
+<!--
+                                <field name="vspace" />
+-->                     
 
 
                         <group   groups="openhealth.roots"   >                          
                             <group>
                                 <field name="prefix"             />
-                                <field name="vspace"            />
+
                                 <field name="separator"          />
-                                <field name="vspace"            />
+
                                 <field name="padding"           />
                             </group>
                             <group>
                                 <field name="date_created"      readonly="1"    invisible="1"   />
-                                <field name="vspace" />
+
                                 <field name="date_modified"     readonly="1"    invisible="1"   />
                             </group>
                         </group>

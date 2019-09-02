@@ -147,6 +147,7 @@ _dic_prefix = {
 _dic_padding = {
 					'ticket_receipt': 	8,
 					'ticket_invoice': 	8,
+
 					'receipt': 			6,
 					'invoice': 			6,
 					'sale_note': 		10, 

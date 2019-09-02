@@ -18,6 +18,73 @@ class SaleOrderLine(models.Model):
 
 
 
+# ----------------------------------------------------------- Get Product Price List -------------------------------
+	def get_price_list(self):
+		#print()
+		#print('Get Price List')
+		return self.product_id.pl_price_list
+
+
+
+# ----------------------------------------------------------- Get Product Family -------------------------------
+	def get_family(self):
+		#print()
+		#print('Get family')
+
+		_dic_families = {	
+							'chavarri':			'PRODUCTO',
+							'commercial':		'PRODUCTO',
+
+							'consultation':		'CONSULTA',
+							
+							'quick':			'QUICK LASER',
+							'co2':				'LASER CO2',
+							'excilite':				'LASER EXCILITE',
+							'm22':				'LASER M22',
+
+							'medical':			'T MEDICO',
+							'cosmetology':		'COSMEATRIA',
+							
+							'gynecology':		'GINECOLOGIA',
+							'echography':		'ECOGRAFIA',
+							'promotion':		'PROMOCION',
+
+		}
+
+		# 2019
+		if self.product_id.pl_price_list in ['2019']:
+			#print(self.product_id.pl_family)
+			#print(self.product_id.pl_subfamily)
+			if self.product_id.pl_subfamily not in [False]:
+				
+				#value = self.product_id.pl_family
+				#value = self.product_id.pl_subfamily
+
+				if self.product_id.pl_subfamily in _dic_families:
+					value = _dic_families[self.product_id.pl_subfamily]
+				else:
+					value = self.product_id.pl_subfamily
+
+			else:
+				value = 'pl'
+
+		# 2018
+		else:
+			if self.product_id.x_family not in [False]:
+				
+				if self.product_id.x_family in _dic_families:
+					value = _dic_families[self.product_id.x_family]
+				else:
+					value = self.product_id.x_family
+			
+			else:
+				value = 'x'
+
+		return value
+
+
+
+
 
 # ----------------------------------------------------------- Print Ticket -------------------------------
 

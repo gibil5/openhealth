@@ -19,17 +19,19 @@ ah5k7j2h
         <record id="durdanivia" model="res.partner">
             <field name="name">Daniela Urdanivia</field>
             <field name="email">durdanivia@clinicachavarri.com</field>
+
             <field name="function">reception</field>
+
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
         </record>
 
         <record id="durdanivia_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Daniela Urdanivia</field>
             <field name="login">durdanivia@clinicachavarri.com</field>
-
             <field name="password">u6zhrxw9</field>
 
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+
             <field name="active">True</field>
             <field name="tz">America/Lima</field>
             <field name="lang">es_ES</field>

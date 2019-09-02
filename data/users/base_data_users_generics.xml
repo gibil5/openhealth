@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-    <data noupdate='1'>
+<!--
+    <data>
+-->
+    <data noupdate='0'>
 
 
 <!-- Dep ? -->
@@ -10,10 +13,10 @@
         <record id="plataforma_partner" model="res.partner">
             <field name="name">Plataforma</field>
             <field name="email">plataforma@clinicachavarri.com</field>
-            <field name="function">reception</field>
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
-        </record>
 
+            <field name="function">reception</field>
+        </record>
 
         <record id="plataforma_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">PLATAFORMA</field>
@@ -40,6 +43,8 @@
             <field name="name">Caja</field>
             <field name="email">caja@clinicachavarri.com</field>
             <field eval="[(6, 0, [ref('cash')])]" name="category_id"/>
+
+            <field name="function">caja</field>
         </record>
 
 
@@ -71,6 +76,8 @@
             <field name="name">Medico</field>
             <field name="email">medico@clinicachavarri.com</field>
             <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+
+            <field name="function">doctor</field>
         </record>
 
 
@@ -104,6 +111,8 @@
         <record id="archivo_partner" model="res.partner">
             <field name="name">Archivo</field>
             <field name="email">archivo@clinicachavarri.com</field>
+
+            <field name="function">archive</field>
         </record>
 
 
@@ -132,8 +141,9 @@
         <record id="almacen_partner" model="res.partner">
             <field name="name">Almacen</field>
             <field name="email">almacen@clinicachavarri.com</field>
-            <field name="function">inventory</field>
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
+
+            <field name="function">inventory</field>
         </record>
 
 
@@ -161,8 +171,9 @@
         <record id="asistente_partner" model="res.partner">
             <field name="name">Asistente Medico</field>
             <field name="email">asistente@clinicachavarri.com</field>
-            <field name="function">assistant</field>
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
+
+            <field name="function">assistant</field>
         </record>
 
 
@@ -197,6 +208,8 @@
         <record id="staff_partner" model="res.partner">
             <field name="name">staff</field>
             <field name="email">staff@clinicachavarri.com</field>
+
+            <field name="function">staff</field>
         </record>
 
 
@@ -227,6 +240,8 @@
         <record id="manager_partner" model="res.partner">
             <field name="name">Manager</field>
             <field name="email">manager@clinicachavarri.com</field>
+
+            <field name="function">manager</field>
         </record>
 
 
@@ -257,6 +272,8 @@
         <record id="director_partner" model="res.partner">
             <field name="name">Director</field>
             <field name="email">director@clinicachavarri.com</field>
+
+            <field name="function">director</field>
         </record>
 
 

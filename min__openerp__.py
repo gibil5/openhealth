@@ -7,7 +7,7 @@
     """,
 
     'description': """
-        Description:
+        Contains:
             - All Models,
             - All Dependencies,
             - All Data,
@@ -28,11 +28,8 @@
     
     'data': [
 
-        'data/categs/base_data_categs_prods.xml',
 
-        'data/allergies/allergy.xml',
-
-
+        # Users
         'data/physicians/base_data_physicians.xml',                 # Aggregates all
         'data/physicians/base_data_physicians_inactive.xml',        
         'data/users/base_data_users_platform.xml',  
@@ -44,6 +41,8 @@
 
 
         # Data
+        'data/categs/base_data_categs_prods.xml',
+        'data/allergies/allergy.xml',
         'data/prods/odoo_data_products.xml',
         'data/prods/odoo_data_products_new.xml',            # Has integrated the following
         'data/prods/odoo_data_services_consult.xml',

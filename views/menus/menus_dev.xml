@@ -54,6 +54,24 @@ stock.move
 -->
 
 
+		<!-- Product Template --> 
+		<menuitem   id="dev_product_template_menu"
+
+					parent="parent_dev_menu"
+			
+					sequence="17"
+
+					name="Product Template Consu"
+
+					action="product_template_consu_list_action"
+				/>
+<!--
+product.template
+-->
+
+
+
+
 		<!-- Product Product --> 
 		<menuitem   id="dev_product_product_menu"
 
@@ -67,6 +85,24 @@ stock.move
 				/>
 <!--
 product.product
+-->
+
+
+
+
+		<!-- Partners --> 
+		<menuitem   id="dev_res_partners_menu"
+
+					parent="parent_dev_menu"
+			
+					sequence="23"
+
+					name="Partners"
+
+					action="partner_list_action"
+				/>
+<!--
+res.partner
 -->
 
 

@@ -14,13 +14,14 @@ from openerp.addons.openhealth.models.libs import creates, user
 from openerp.addons.openhealth.models.libs import lib
 from openerp.addons.openhealth.models.patient import pat_vars, chk_patient
 from . import ord_vars
-from . import qr
 from . import test_order
 from . import chk_order
 from . import exc_ord
-
 from . import tick_funcs
 from . import ord_funcs
+
+from . import qr
+from . import snr
 
 class sale_order(models.Model):
 	"""
@@ -48,7 +49,9 @@ class sale_order(models.Model):
 		for record in self:
 			price_list = ''
 			for line in record.order_line:
+
 				price_list =line.get_price_list()
+
 			record.pl_price_list = price_list
 
 
@@ -532,7 +535,8 @@ class sale_order(models.Model):
 # ----------------------------------------------------------- Validate Button ----------------------------
 
 	@api.multi
-	def validate(self):
+	#def validate(self):
+	def validate_and_confirm(self):
 		"""
 		Validate the order. Before Confirmation.
 		"""
@@ -547,13 +551,34 @@ class sale_order(models.Model):
 		# If Everything is OK
 		self.check_and_generate()
 
+
+
+		# Make Serial Number
+		#if self.x_serial_nr != '' and not self.x_admin_mode:			
+		if self.state in ['validated']  and  self.x_serial_nr != '' and not self.x_admin_mode:			
+
+			self.make_serial_number()
+
+
+
+		# Make QR
+		if self.x_type in ['ticket_receipt', 'ticket_invoice']:
+			self.make_qr()
+
+
+
+		# State
+		self.state = 'sale'
+
 	# validate
 
 
 
+# ----------------------------------------------------------- Check and Generate ----------------------------
 	def check_and_generate(self):
 		"""
-		Check and Generate
+		Check if everything is OK
+		And Generate several variables.
 		"""
 		print()
 		print('Check and Generate')
@@ -576,17 +601,14 @@ class sale_order(models.Model):
 
 
 		# Date - Update Day and Month
-		#self.update_day_month()
 		ord_funcs.update_day_and_month(self)
 
 
 		# Update Descriptors (family and product)
-		#self.update_descriptors()
 		ord_funcs.update_descriptors(self)
 
 
 		# Vip Card - Detect and Create
-		#self.detect_create_card()
 		ord_funcs.detect_vip_card_and_create(self)
 
 
@@ -641,40 +663,79 @@ class sale_order(models.Model):
 			self.x_title = 'Venta Electrónica'
 
 
+
+		# QR
+		#if self.x_type in ['ticket_receipt', 'ticket_invoice']:
+		#	self.make_qr()
+
+
 		# Change State
 		self.state = 'validated'
 
 	# check_and_generate
 
 
-# ----------------------------------------------------------- Confirm - Button ----------------------
 
-	@api.multi
-	def action_confirm_nex(self):
-		"""
-		Button
-		Confirms the Sale.
-		After Validation
-		"""
-		print()
-		print('Action confirm - Nex')
+# ----------------------------------------------------------- Confirm - Button - Dep ----------------------
+
+	#@api.multi
+	#def action_confirm_nex(self):
+	#	"""
+	#	Button
+	#	Confirms the Sale. After Validation.
+	#	Deprecated
+	#	"""
+	#	print()
+	#	print('Action confirm - Nex')
 
 
 		# Generate Serial Number
-		if self.x_serial_nr != '' and not self.x_admin_mode:			
-			self.x_counter_value = user.get_counter_value(self, self.x_type, self.state)  				# Counter
-			self.x_serial_nr = user.get_serial_nr(self.x_type, self.x_counter_value, self.state) 		# Serial Nr
+	#	if self.x_serial_nr != '' and not self.x_admin_mode:			
 
-
-		# QR
-		if self.x_type in ['ticket_receipt', 'ticket_invoice']:
-			self.make_qr()
+	#		self.make_serial_number()
 
 
 		# State
-		self.state = 'sale'
+	#	self.state = 'sale'
 
 	# action_confirm_nex
+
+
+
+
+# ----------------------------------------------------------- Make SN - BUtton ----------------------
+	# Make Serial Number
+	@api.multi
+	def make_serial_number(self):
+		"""
+		Make Serial Number
+		This is an example of how you can apply the Three Layered Model. To encapsulte Business Rules.
+		"""
+		print()
+		print('Make Serial Number')
+
+		# Init
+		x_type = self.x_type
+		state = self.state
+
+
+		# Create Object
+		snr_obj = snr.SerialNumber(self, x_type, state)
+
+
+		# Get data
+		serial_nr = snr_obj.get_serial_number()
+		counter_value = snr_obj.get_counter()
+		#print(serial_nr)
+
+
+		# Update the Database
+		self.write({
+						'x_serial_nr': serial_nr,
+						'x_counter_value': counter_value,
+				})
+
+
 
 
 # ----------------------------------------------------------- Make QR - BUtton ----------------------
@@ -706,11 +767,20 @@ class sale_order(models.Model):
 		img_str = qr_obj.get_img_str()
 		name = qr_obj.get_name()
 
+
+		# Print
+		qr_obj.print_obj()
+
+
 		# Update the Database
 		self.write({
 						'x_qr_img': img_str,
 						'qr_product_name':name,
 				})
+
+
+
+
 	# make_qr
 
 

@@ -1,1 +1,1 @@
-./min__openerp__.py
+./med__openerp__.py

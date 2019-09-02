@@ -10,6 +10,8 @@
             <field name="name">Carlos Abriojo</field>
             <field name="email">cabriojo@clinicachavarri.com</field>
             <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+
+            <field name="function">doctor</field>
         </record>
 
 
@@ -33,6 +35,8 @@
             <field name="name">Leo Gonzales</field>
             <field name="email">lgonzales@clinicachavarri.com</field>
             <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+
+            <field name="function">doctor</field>
         </record>
 
         <record id="lgonzales_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
@@ -55,6 +59,8 @@
             <field name="name">Piero Monteverde</field>
             <field name="email">pmonteverde@clinicachavarri.com</field>
             <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+
+            <field name="function">doctor</field>
         </record>
 
         <record id="pmonteverde_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
@@ -77,6 +83,8 @@
             <field name="name">Paul Canales</field>
             <field name="email">pcanales@clinicachavarri.com</field>
             <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
+
+            <field name="function">doctor</field>
         </record>
 
         <record id="pcanales_clinicachavarri" model="res.users" context="{'no_reset_password': True}">

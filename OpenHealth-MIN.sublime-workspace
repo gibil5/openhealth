@@ -529,18 +529,11 @@
 			}
 		},
 		{
-			"file": "views/menus/menus_dev.xml",
+			"file": "readme.txt",
 			"settings":
 			{
-				"buffer_size": 1955,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "min__openerp__.py",
-			"settings":
-			{
-				"buffer_size": 2313,
+				"buffer_size": 32,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
@@ -695,6 +688,7 @@
 	"file_history":
 	[
 		"/Users/gibil/cellar/github/openhealth/min__openerp__.py",
+		"/Users/gibil/cellar/github/openhealth/views/menus/menus_dev.xml",
 		"/Users/gibil/cellar/github/openhealth/max__openerp__.py",
 		"/Users/gibil/cellar/github/openhealth/models/order/payment_method.py",
 		"/Users/gibil/cellar/github/openhealth/models/patient/patient.py",
@@ -712,7 +706,6 @@
 		"/Users/gibil/cellar/github/openhealth/views/payment_method/payment_methods.TRASH.xml",
 		"/Users/gibil/cellar/github/openhealth/views/payment_method/payment_methods.xml",
 		"/Users/gibil/cellar/github/openhealth/views/payment_method/payment_method_line.xml",
-		"/Users/gibil/cellar/github/openhealth/views/menus/menus_dev.xml",
 		"/Users/gibil/cellar/github/openhealth/models/order/__init__.py",
 		"/Users/gibil/cellar/github/openhealth/models/counter/counter.py",
 		"/Users/gibil/cellar/github/openhealth/models/libs/creates.py",
@@ -825,7 +818,7 @@
 	],
 	"find":
 	{
-		"height": 37.0
+		"height": 25.0
 	},
 	"find_in_files":
 	{
@@ -840,6 +833,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"transfere",
 			"street2_sel",
 			"autofill",
 			"auto_fill",
@@ -966,8 +960,7 @@
 			"machine",
 			"appointment",
 			"app_vars",
-			"machine",
-			"app_vars"
+			"machine"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -1129,8 +1122,8 @@
 						"selection":
 						[
 							[
-								2241,
-								2241
+								293,
+								293
 							]
 						],
 						"settings":
@@ -1140,7 +1133,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 5240.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1148,28 +1141,27 @@
 				},
 				{
 					"buffer": 1,
-					"file": "views/menus/menus_dev.xml",
+					"file": "readme.txt",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1955,
+						"buffer_size": 32,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1440,
-								1447
+								31,
+								31
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 1768.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -1177,36 +1169,6 @@
 				},
 				{
 					"buffer": 2,
-					"file": "min__openerp__.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2313,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1678,
-								1780
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 432.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
 					"file": "data/prods/odoo_data_products.xml",
 					"semi_transient": false,
 					"settings":
@@ -1236,7 +1198,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 3,
 					"file": "data/prods/odoo_data_products_new.xml",
 					"semi_transient": false,
 					"settings":
@@ -1259,14 +1221,14 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 8150.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 4,
 					"file": "data/prods/odoo_data_services_consult.xml",
 					"semi_transient": false,
 					"settings":
@@ -1296,7 +1258,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 5,
 					"file": "data/prods/odoo_data_services_co2.xml",
 					"semi_transient": false,
 					"settings":
@@ -1326,7 +1288,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 6,
 					"file": "data/prods/odoo_data_services_exc.xml",
 					"semi_transient": false,
 					"settings":
@@ -1356,7 +1318,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 7,
 					"file": "data/prods/odoo_data_services_m22.xml",
 					"semi_transient": false,
 					"settings":
@@ -1386,7 +1348,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 8,
 					"file": "data/prods/odoo_data_services_med.xml",
 					"semi_transient": false,
 					"settings":
@@ -1416,7 +1378,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 9,
 					"file": "data/prods/odoo_data_services_med_dep.xml",
 					"semi_transient": false,
 					"settings":
@@ -1446,7 +1408,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 10,
 					"file": "data/prods/odoo_data_services_cos.xml",
 					"semi_transient": false,
 					"settings":

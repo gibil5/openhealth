@@ -9,11 +9,11 @@
             <field name="name">payment.method.form</field>
             <field name="model">openhealth.payment_method</field>
             <field name="arch" type="xml">
+
                 <form string="Payment Method - Form">
 
 
                     <header>
-
                         <!-- Generate --> 
                         <button 
                                 type="object" 
@@ -22,18 +22,6 @@
                                 name="go_back"
                                 string="Regresar"
                         />
-
-
-                        <!-- Test -->
-<!--
-                        <button 
-                                type="object" 
-                                class="oe_highlight"
-                                name="test"
-                                string="TEST"
-                                groups="openhealth.roots"
-                        />
--->
 
                         <!-- State --> 
                         <field  name="state" 
@@ -45,47 +33,22 @@
 
 
 
-
-
-
-
                     <!-- Sheet --> 
                     <sheet>
                         
-
                         <h1>Módulo de Pago</h1>
 
 
-                        <group>
-                            <group>
-                            </group>
-                        </group>
+                        <!-- Pad -->
+                        <group><group></group></group>
                         
 
+
                         <group>
                             <group>
 
+                                <!-- Partner -->
                                 <field name="partner"   readonly="1"    />      
-
-
-
-                                <!-- DNI -->
-<!--                                
-                                <field name="dni"           attrs="{
-                                                                        'required':[    ('saledoc', 'in', ['receipt','ticket_receipt']),], 
-                                                                }"
-                                    />              
--->
-
-                                <!-- Id Doc Type -->
-                                <!-- Id Doc -->
-<!--
-                                <field name="id_doc_type"/>
-
-                                <field name="id_doc"/>
--->
-
-
 
 
                                 <!-- Firm -->
@@ -99,37 +62,19 @@
                                 <field name="ruc"           attrs="{
                                                                         'required':[    ('saledoc', 'in', ['invoice','ticket_invoice']),], 
                                                                 }"
-
-
                                     />      
 
-
+                                <!-- Nr Pm -->
                                 <field name="nr_pm"   invisible="1" />                                                  
                             </group>
 
-
                             <group>
                                 <field name="order"/>                                                                               
-
                                 <field name="total"/>
-
                                 <field name="pm_total"/>
-
-<!--
-                                <field name="balance"   style="color:Red"   attrs="{'invisible':[   
-                                                                                                    ('balance', '&gt;=', 0),
-                                                                                                ],}"
-                                    />
-                                <field name="balance"   style="color:Blue"  attrs="{'invisible':[   
-                                                                                                    ('balance', '&lt;', 0),
-                                                                                                ],}"
-                                    />
--->
                                 <field name="balance"/>
-                            </group>
-                            
+                            </group>                            
                         </group>
-
 
 
                         <group>
@@ -138,9 +83,6 @@
                             </group>
                             <group></group>
                         </group>
-
-
-
 
 
 <!-- Notebook --> 
@@ -171,13 +113,7 @@
 
 
 
-
-
-
-
-
-
-        <!-- TREE --> 
+<!-- TREE --> 
         <record model="ir.ui.view" id="payment_method_tree_view">
             <field name="name">payment_method.tree</field>
             <field name="model">openhealth.payment_method</field>
@@ -186,19 +122,22 @@
                     <field name="create_date"/>
                     <field name="write_date"/>
                     <field name="order"  />
+                </tree>
+            </field>
+        </record>
 <!--
                     <field name="name"/>
                     <field name="subtotal"   />
                     <field name="method"  />
 -->             
-                </tree>
-            </field>
-        </record>
 
 
 
-        <!-- ACTION -->
+
+
+<!-- ACTION -->
         <record model="ir.actions.act_window" id="payment_method_list_action">
+
             <field name="name">Boletas</field>
             <field name="res_model">openhealth.payment_method</field>
             <field name="view_type">form</field>
@@ -211,27 +150,6 @@
                 </p>
             </field>
         </record>
-
-
-       <!-- payment_method - List action -->
-<!--       
-            <record model="ir.actions.act_window" id="payment_method_list_action">
-
-            <field name="name">Payment methods</field>
-            
-            <field name="res_model">openhealth.payment_method</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-            <field name="domain">[]</field>
-            <field name="context">{}</field>
-            <field name="view_id" eval="False"/>
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create">Create the first payment_method
-                </p>
-            </field>
-        </record>
--->
-
 
     </data>
 </openerp>

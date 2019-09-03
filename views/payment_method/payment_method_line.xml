@@ -4,7 +4,7 @@
 
 
 
-        <!-- Form view -->
+<!-- FORM -->
         <record model="ir.ui.view" id="payment_method_line_form_view">
 
             <field name="name">payment.method.line.form</field>
@@ -142,39 +142,28 @@ attrs="{'invisible':[
 
 
 
-        <!-- Tree view --> 
+<!-- TREE --> 
         <record model="ir.ui.view" id="payment_method_line_tree_view">
             <field name="name">payment_method_line.tree</field>
             <field name="model">openhealth.payment_method_line</field>
             <field name="arch" type="xml">
+
                 <tree string="payment_method_line Tree">
-                    
 
                     <field name="date_time"/>
-
                     <field name="date_char"/>
-
                     <field name="time_char"/>
-
-
-
                     <field name="x_type"/>
-
                     <field name="serial_nr"/>
-
                     <field name="patient"/>                                                 
-
                     <field name="document"/>                
-
                     <field name="document_type"/>
-
                     <field name="method"/>
-
                     <field name="subtotal"/>
-
-
                     <field name="state"/>
-
+                </tree>
+            </field>
+        </record>
 <!--
                     <field name="account_id"   />
                     <field name="currency"  />
@@ -184,22 +173,17 @@ attrs="{'invisible':[
                     <field name="payment_method"   />
 -->             
 
-                </tree>
-            </field>
-        </record>
 
 
 
 
 
-
-
-        <!-- Action -->
+<!-- ACTION - Account -->
         <record model="ir.actions.act_window" id="payment_line_form_action">
-
             <field name="name">Reconciliación de Tarjetas</field>
-            
+
             <field name="res_model">openhealth.payment_method_line</field>
+
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
 
@@ -208,19 +192,24 @@ attrs="{'invisible':[
                                     ('state', '=', 'sale'),
                                 ]
             </field>
-
             <field name="limit">1000</field>
         </record>
 
 
 
-        <!-- Action --> 
+
+<!-- ACTION -->
+<!--
         <record model="ir.actions.act_window" id="openhealth_payment_method_line_form_action">
+-->
+        <record model="ir.actions.act_window" id="payment_method_line_list_action">
+
             <field name="name">Payment method line</field>
+
             <field name="res_model">openhealth.payment_method_line</field>
+            
             <field name="view_type">form</field>
             <field name="view_mode">tree, form</field>
-            
             <field name="domain">[]</field>
             <field name="context">{}</field>
         </record>

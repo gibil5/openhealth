@@ -591,11 +591,23 @@ class Patient(models.Model):
 		self.x_ruc = '09817194123'
 		self.x_firm = 'Revilla y Asociados'
 		self.mobile = '991960734'
-		self.street2_sel = 41
-		self.street = 'Av. San Borja Norte 610'
+
 		self.function = 'Ingeniero'
 		self.x_education_level = 'university'
 		self.x_first_impression = 'normal'
+
+		self.sex = 'Male'
+
+		self.x_id_doc_type = 'dni'
+		self.x_id_doc = '09817194'
+
+		self.x_first_contact = 'website'
+
+		self.street2_sel = 41
+		#self.street = 'A. San Borja Norte 610'
+		self.street = 'Av. San Borja Norte 610'
+
+
 
  		allergy_id = self.env['openhealth.allergy'].search([
 															('name', '=', 'Ninguna'),
@@ -606,8 +618,6 @@ class Patient(models.Model):
  		if allergy_id != False:
 			self.x_allergies = allergy_id
 
-		self.x_id_doc_type = 'dni'
-		self.x_id_doc = '09817195'
 
 
 

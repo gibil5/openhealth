@@ -3,7 +3,7 @@
  		PaymentMethod
 
  		Created: 			26 Aug 2016
-		Last up: 	 		31 Aug 2018
+		Last up: 	 		 2 Sep 2019
 """
 from __future__ import print_function
 
@@ -14,61 +14,48 @@ from . import pm_vars
 
 class PaymentMethod(models.Model):
 	"""
-	high level support for doing this and that.
+	Payment Method
+	Several methods are possible:
+		- ticket receipt, 
+		- ticket invoice, 
+		- advertissement, 
+		- sale note,
 	"""
 
 	_name = 'openhealth.payment_method'
 
 
 
-# ----------------------------------------------------------- Dep ? ------------------------------
-	# For Admin Editing
-	#@api.multi
-	#def state_force(self):
-	#	"""
-	#	high level support for doing this and that.
-	#	"""
-	#	if self.state == 'done':
-	#		self.editable = True
-	#		self.confirmed = False
-	#	elif self.state == 'editable':
-	#		self.editable = False
-	#		self.confirmed = True
-
-
-
-
-# ----------------------------------------------------------- Locked ------------------------------
+# ----------------------------------------------------------- Relational ------------------------------
 
 	# Lines
 	pm_line_ids = fields.One2many(
+			
 			'openhealth.payment_method_line',
+			
 			'payment_method',
+			
 			string="Pago #",
 		)
 
 
 
+
+# ----------------------------------------------------------- Locked ------------------------------
 	# Total
 	total = fields.Float(
 			string='Total a pagar',
 			required=True,
-
 			states=pm_vars.READONLY_STATES,
 		)
-
 
 
 	# Saledoc
 	saledoc = fields.Selection(
 			string="Tipo",
-
 			selection=pm_vars._sale_doc_type_list,
-
 			states=pm_vars.READONLY_STATES,
 		)
-
-
 
 
 
@@ -83,14 +70,10 @@ class PaymentMethod(models.Model):
 			readonly=True,
 		)
 
-
 	# Date created
 	date_created = fields.Datetime(
 			string="Fecha",
-
-			#required=True,
 		)
-
 
 	# Partner
 	partner = fields.Many2one(
@@ -111,13 +94,11 @@ class PaymentMethod(models.Model):
 			default=2,
 		)
 
-
 	# Firm
 	firm = fields.Char(
 			'Razón social',
 			readonly=True,
 		)
-
 
 	# Ruc
 	ruc = fields.Char(
@@ -141,8 +122,6 @@ class PaymentMethod(models.Model):
 			readonly=True,
 			string="Editable",
 		)
-
-
 
 
 # ----------------------------------------------------------- Actions -----------------------------
@@ -260,14 +239,6 @@ class PaymentMethod(models.Model):
 		print(self.state)
 
 
-	#def test_actions(self):
-	#	"""
-	#	high level support for doing this and that.
-	#	"""
-	#	print()
-	#	return self.go_back()
-
-
 	@api.multi
 	def test(self):
 		"""
@@ -275,16 +246,11 @@ class PaymentMethod(models.Model):
 		"""
 		print()
 		print('Test')
-
 		self.test_computes()
-
 		#return self.test_actions()		# Dangerous
 
 
-
-
 # ----------------------------------------------------------- On Changes ---------------------------
-
 	# Pm Line Ids
 	@api.onchange('pm_line_ids')
 	def _onchange_pm_line_ids(self):
@@ -310,7 +276,6 @@ class PaymentMethod(models.Model):
 			raise UserError(_(msg))
 
 	# _onchange_pm_line_ids
-
 
 
 	# On Sale Doc

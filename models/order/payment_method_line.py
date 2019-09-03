@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-	payment method line
+		payment method line
 
- 	Created: 				2016
- 	Last mod: 				28 Aug 2018
+	 	Created: 			 2016
+		Last up: 	 		 2 Sep 2019
 """
 from openerp import models, fields, api
 from . import pm_vars
@@ -11,32 +11,49 @@ from openerp.addons.openhealth.models.libs import acc_lib
 
 class payment_method_line(models.Model):
 	"""
-	high level support for doing this and that.
+	Payment Method Line
+	Allow different forms of payment.
 	"""
 	_name = 'openhealth.payment_method_line'
 
 	_order = 'date_time asc'
 
 
+# ----------------------------------------------------------- Relational --------------------------
+	# Payment Method
+
+	#payment_method = fields.Char()
+
+	payment_method = fields.Many2one(
+			'openhealth.payment_method',
+			ondelete='cascade',
+			required=False,
+		)
+
+
+
+
+	# Account - Contabilidad
+	account_id = fields.Many2one(
+			'openhealth.account.contasis',
+			ondelete='cascade',
+		)
+
+
+
 
 # ----------------------------------------------------------- Method --------------------------------
 	# Method
 	method = fields.Selection(
+
 			selection=pm_vars._payment_method_list,
+
 			string="Forma de Pago",
 			default="cash",
 			required=True,
 		)
 
 
-# ----------------------------------------------------------- Init --------------------------------
-	# Init
-	#def __init__(self, pool, cr):
-	#	print
-	#	print 'Init'
-		#print self
-		#print pool
-		#print cr
 
 
 # ----------------------------------------------------------- Important ---------------------------
@@ -50,19 +67,6 @@ class payment_method_line(models.Model):
 
 
 
-# ----------------------------------------------------------- Relational --------------------------
-	# Payment Method
-	payment_method = fields.Many2one(
-			'openhealth.payment_method',
-			ondelete='cascade',
-			required=False,
-		)
-
-	# Account - Contabilidad
-	account_id = fields.Many2one(
-			'openhealth.account.contasis',
-			ondelete='cascade',
-		)
 
 
 # ----------------------------------------------------------- Meta --------------------------------
@@ -77,14 +81,11 @@ class payment_method_line(models.Model):
 			string="Hora",
 		)
 
-
-
 	# State
 	state = fields.Selection(
 			selection=pm_vars._state_list,
 			string="Estado",
 		)
-
 
 
 	# Document
@@ -133,8 +134,6 @@ class payment_method_line(models.Model):
 			string="#",
 			required=True,
 		)
-
-
 
 	# Currency
 	currency = fields.Char(

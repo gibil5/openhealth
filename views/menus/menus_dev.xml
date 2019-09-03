@@ -106,5 +106,39 @@ res.partner
 -->
 
 
+
+
+		<!-- Payment Method --> 
+		<menuitem   id="dev_payment_method_menu"
+
+					parent="parent_dev_menu"
+			
+					sequence="55"
+
+					name="Payment Methods"
+
+					action="payment_method_list_action"
+				/>
+<!--
+payment.method
+-->
+
+
+		<!-- Payment Method Line --> 
+		<menuitem   id="dev_payment_method_line_menu"
+
+					parent="parent_dev_menu"
+			
+					sequence="57"
+
+					name="Payment Method Lines"
+
+					action="payment_method_line_list_action"
+				/>
+<!--
+payment.method
+-->
+
+
     </data>
 </openerp>

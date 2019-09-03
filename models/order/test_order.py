@@ -35,5 +35,8 @@ def pay_myself(self):
 		self.x_payment_method.saledoc = 'ticket_receipt'
 		self.x_payment_method.state = 'done'
 		self.state = 'sent'
-		self.validate()
-		self.action_confirm_nex()
+
+		#self.validate()
+		#self.action_confirm_nex()
+		self.validate_and_confirm()
+

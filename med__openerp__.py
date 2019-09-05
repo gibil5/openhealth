@@ -8,14 +8,14 @@
 
     'description': """
 
-        3 Sep 2019
+        4 Sep 2019
 
         Contains:
             - All External Dependencies,
             - All Models,
             - All Users,
             - All Views,
-            - No Data,
+            - All Data,
             - No Security.
 
 
@@ -102,7 +102,7 @@
 
 # ----------------------------------------------------------- Security - Users - First ------------------------------------------------------
         'security/openhealth_security.xml',             # Groups
-        #'security/openhealth_security_readers.xml',     
+        'security/openhealth_security_readers.xml',     # Dep ?
 
 
 

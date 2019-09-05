@@ -24,6 +24,55 @@
 
 
 
+<!-- PRICELIST BUTTONS --> 				
+				<xpath expr="//field[@name='state']" position="before">
+
+					<!-- Add Prod -->
+					<button 
+							type="object"
+							class="oe_highlight"
+
+							name="pl_open_product_selector_product"
+
+							states="draft"
+
+							string="Agregar PRODUCTO - 2019"
+						/>
+
+					<!-- Add Serv -->
+					<button 
+							type="object"
+							class="oe_highlight"
+
+							name="pl_open_product_selector_service"
+							
+							states="draft"
+
+							string="Agregar SERVICIO - 2019"
+						/>
+
+					<!-- Clean Lines -->
+					<button 
+							type="object"
+							class="oe_highlight"
+							attrs="{'invisible':[   '|',
+													('x_admin_mode','not in',[True]),
+													('state','not in',['sale', 'credit_note']), 
+											]}"
+
+							name="clean_order_lines"
+
+							string="Eliminar Lineas de Venta"
+
+							help="Esta operación va a eliminar TODAS las Líneas de Venta !!!"
+
+							confirm="Esta operación va a eliminar TODAS las Líneas de Venta !!!"
+						/>
+				</xpath>
+
+
+
+
 <!-- REPLACES -->
 <!-- OLD Buttons - Take them out - NOT DEPRECATED --> 
 

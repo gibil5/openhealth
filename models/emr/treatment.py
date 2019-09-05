@@ -28,17 +28,15 @@ class Treatment(models.Model):
 
 # ----------------------------------------------------------- Pricelist Fields - Dummy --------------------------------
 
-	#report_product = fields.Char(
-	#	)
-
-	report_product = fields.Many2one(
-
-			#'price_list.container',
-			'openhealth.container.pricelist',
-
-			string="PROD",
-			#required=True,
+	report_product = fields.Char(
 		)
+
+	#report_product = fields.Many2one(
+			#'price_list.container',
+	#		'openhealth.container.pricelist',
+	#		string="PROD",
+			#required=True,
+	#	)
 
 
 

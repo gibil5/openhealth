@@ -18,6 +18,7 @@ ah5k7j2h
 <!-- Daniela Urdanivia -->
         <record id="durdanivia" model="res.partner">
             <field name="name">Daniela Urdanivia</field>
+            
             <field name="email">durdanivia@clinicachavarri.com</field>
 
             <field name="function">reception</field>

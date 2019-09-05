@@ -8,8 +8,7 @@
 
     'description': """
 
-        4 Sep 2019
-        20:15 
+        5 Sep 2019
 
         Contains:
             - All External Dependencies,

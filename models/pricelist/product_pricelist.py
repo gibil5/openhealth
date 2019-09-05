@@ -24,10 +24,9 @@ class ProductPricelist(models.Model):
 
 # ----------------------------------------------------------- Handle ------------------------------
 	
-	container_id = fields.Many2one(		
-
-			'openhealth.container.pricelist',
-
-			ondelete='cascade',
-		)
+	container_id = fields.Char()
+	#container_id = fields.Many2one(		
+	#		'openhealth.container.pricelist',
+	#		ondelete='cascade',
+	#	)
 

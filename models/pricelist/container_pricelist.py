@@ -24,12 +24,11 @@ class ContainerPricelist(models.Model):
 # ----------------------------------------------------------- Relational --------------------------
 
 	# Product Pricelist
-	product_ids = fields.One2many(
-
-			'openhealth.product.pricelist',
-
-			'container_id',
-		)
+	product_ids = fields.Char()
+	#product_ids = fields.One2many(
+	#		'openhealth.product.pricelist',
+	#		'container_id',
+	#	)
 
 
 

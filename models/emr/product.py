@@ -24,6 +24,21 @@ class Product(models.Model):
 
 
 
+# ----------------------------------------------------------- Encode Error ------------------------
+
+	@api.multi
+	def encode_error(self):
+		print()
+		print('Encode Error')
+
+		#name = "ECOGRAFIAS MUSCULOESQUELETICAS - Muñeca (Unilateral) - 1 sesion"
+
+		print(self.name)
+
+
+
+
+
 # ----------------------------------------------------------- Fix ------------------------
 
 	@api.multi

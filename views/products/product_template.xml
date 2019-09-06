@@ -38,6 +38,17 @@
 
                             string="FIX STOCK"
                         />
+
+                        <!-- Encode Error -->
+                        <button 
+                                type="object"
+                                class="oe_highlight"
+
+                                name="encode_error"
+
+                                string="Encode Error"
+                        />
+
                 </xpath>
             </field>
         </record>

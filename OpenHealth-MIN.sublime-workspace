@@ -768,7 +768,7 @@
 	],
 	"find":
 	{
-		"height": 30.0
+		"height": 37.0
 	},
 	"find_in_files":
 	{
@@ -1056,7 +1056,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -1082,11 +1082,11 @@
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
-						"translation.x": 6.0,
-						"translation.y": 0.0,
+						"translation.x": 0.0,
+						"translation.y": 1013.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -1116,7 +1116,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{

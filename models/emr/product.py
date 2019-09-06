@@ -36,6 +36,20 @@ class Product(models.Model):
 		print(self.name)
 
 
+	@api.multi
+	def fix_encode_error(self):
+		"""
+		Fix Encode Error
+		"""
+		print()
+		print('Fix Encode Error')
+
+		#self.name.replace("ñ", "nh")
+		#self.name.replace(u"ñ", "nh")
+		self.name = self.name.replace(u"ñ", "nh")
+
+		print('Finished !')
+
 
 
 

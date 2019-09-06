@@ -49,6 +49,15 @@
                                 string="Encode Error"
                         />
 
+                        <!-- Fix Encode Error -->
+                        <button 
+                                type="object"
+                                class="oe_highlight"
+
+                                name="fix_encode_error"
+
+                                string="FIX ENCODE"
+                        />
                 </xpath>
             </field>
         </record>

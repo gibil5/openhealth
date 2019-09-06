@@ -1,6 +1,26 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
+
+access_oeh_medical_physician,oeh.medical.physician,oehealth.model_oeh_medical_physician,,1,1,1,0
+
+
+
+
+
+
+
+
+access_stock_move,stock.move,stock.model_stock_move,,1,1,1,1
+
+access_account_invoice,account.invoice,account.model_account_invoice,,1,1,1,1
+
+access_sale_order,sale.order,model_sale_order,,1,1,1,0
+
+
+
+
+
 access_oeh_medical_appointment,oeh.medical.appointment,oehealth.model_oeh_medical_appointment,oehealth.group_oeh_medical_physician,1,1,1,1
 access_oeh_medical_appointment_caja,oeh.medical.appointment caja,oehealth.model_oeh_medical_appointment,openhealth.caja,1,1,1,0
 access_oeh_medical_appointment_reception,oeh.medical.appointment reception,oehealth.model_oeh_medical_appointment,openhealth.reception,1,1,1,1
@@ -165,12 +185,12 @@ access_openhealth_closing_physicians,openhealth.closing.physicians,model_openhea
 
 access_openhealth_process,access_openhealth_process,model_openhealth_process,,1,1,1,1
 
+
 access_openhealth_treatment,openhealth.treatment,model_openhealth_treatment,,1,1,1,0
 access_openhealth_treatment_physicians,openhealth.treatment.physicians,model_openhealth_treatment,openhealth.physicians,1,1,0,0
 
 
 
-access_product_selector,product.selector,model_openhealth_product_selector,,1,1,1,1
 
 
 access_payment_method,openhealth.payment_method,model_openhealth_payment_method,,1,1,1,1
@@ -211,27 +231,16 @@ access_openhealth_card,openhealth.card,model_openhealth_card,,1,1,1,1
 
 access_openhealth_service,access_openhealth_service,model_openhealth_service,,1,1,1,1
 
-access_openhealth_zone_quick,access_openhealth_zone_quick,model_openhealth_zone_quick,,1,1,1,1
-
-access_openhealth_zone_co2,access_openhealth_zone_co2,model_openhealth_zone_co2,,1,1,1,1
-
-access_openhealth_zone_excilite,access_openhealth_zone_excilite,model_openhealth_zone_excilite,,1,1,1,1
-
-access_openhealth_zone_ipl,access_openhealth_zone_ipl,model_openhealth_zone_ipl,,1,1,1,1
-
-access_openhealth_zone_ndyag,access_openhealth_zone_ndyag,model_openhealth_zone_ndyag,,1,1,1,1
 
 
 access_allergy,allergy,model_openhealth_allergy,,1,1,1,1
 
-access_nexzone,nexzone,model_openhealth_nexzone,,1,1,1,1
 
 
 access_product_pricelist,product.pricelist,product.model_product_pricelist,openhealth.reception,1,1,1,1
 access_product_pricelist_item,jx.product.pricelist.item,product.model_product_pricelist_item,openhealth.reception,1,1,1,1
 
 
-access_sale_order,sale.order,model_sale_order,,1,1,1,0
 
 access_sale_order_roots,sale.order.roots,model_sale_order,openhealth.roots,1,1,1,1
 access_sale_order_caja,sale.order.caja,model_sale_order,openhealth.caja,1,1,1,0
@@ -283,13 +292,6 @@ access_openhealth_procedure_readers,openhealth.procedure.readers,model_openhealt
 access_openhealth_procedure_caja,openhealth.procedure.caja,model_openhealth_procedure,openhealth.caja,1,1,1,0
 
 
-access_oeh_medical_physician,oeh.medical.physician,oehealth.model_oeh_medical_physician,oehealth.group_oeh_medical_physician,1,1,1,1
-access_oeh_medical_physician_directors,oeh.medical.physician directors,oehealth.model_oeh_medical_physician,openhealth.directors,1,1,1,1
-access_oeh_medical_physician_caja,oeh.medical.physician caja,oehealth.model_oeh_medical_physician,openhealth.caja,1,0,0,0
-access_oeh_medical_physician_reception,oeh.medical.physician reception,oehealth.model_oeh_medical_physician,openhealth.reception,1,0,0,0
-access_oeh_medical_physician_line_directors,oeh.medical.physician directors,oehealth.model_oeh_medical_physician_line,openhealth.directors,1,1,1,1
-access_oeh_medical_physician_line_caja,oeh.medical.physician caja,oehealth.model_oeh_medical_physician_line,openhealth.caja,1,0,0,0
-access_oeh_medical_physician_line_reception,oeh.medical.physician reception,oehealth.model_oeh_medical_physician_line,openhealth.reception,1,0,0,0
 
 
 
@@ -303,18 +305,10 @@ access_product_product_stock_user,product_product_stock_user,product.model_produ
 access_product_template_stock_user,product.template stock user,product.model_product_template,stock.group_stock_user,1,0,0,0
 
 
-access_openhealth_pathology_managers,openhealth.pathology.managers,model_openhealth_pathology,openhealth.hc_managers,1,1,1,1
-access_openhealth_pathology_readers,openhealth.pathology.readers,model_openhealth_pathology,openhealth.hc_readers,1,0,0,0
-
-access_openhealth_zone_managers,openhealth.zone.managers,model_openhealth_zone,openhealth.hc_managers,1,1,1,1
-access_openhealth_zone_readers,openhealth.zone.readers,model_openhealth_zone,openhealth.hc_readers,1,0,0,0
 
 
 access_openhealth_doctor,access_openhealth_doctor,model_openhealth_doctor,,1,1,1,1
 access_openhealth_coder,access_openhealth_coder,model_openhealth_coder,,1,1,1,1
 access_openhealth_service_consultation,access_openhealth_service_consultation,model_openhealth_service_consultation,,1,1,1,1
 access_openhealth_corrector,access_openhealth_corrector,model_openhealth_corrector,,1,1,1,1
-access_openhealth_scheduler,access_openhealth_scheduler,model_openhealth_scheduler,,1,1,1,1
-access_openhealth_configurator,access_openhealth_configurator,model_openhealth_configurator,,1,1,1,1
-access_openhealth_configurator_report,access_openhealth_configurator_report,model_openhealth_configurator_report,,1,1,1,1
 

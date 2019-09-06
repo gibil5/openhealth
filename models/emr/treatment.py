@@ -44,6 +44,10 @@ class Treatment(models.Model):
 
 	x_test_scenario = fields.Selection(
 			[
+				('credit_note', 'Nota de Credito'),
+				('block_flow', 'Flujo bloqueado'),
+
+
 				('all', 'All'),
 				('product', 'product'),
 				('laser', 'laser'),
@@ -53,6 +57,7 @@ class Treatment(models.Model):
 			],
 			string="Test Scenarios",
 		)
+
 
 	test_pricelist_2019 = fields.Boolean(
 			'PL 2019',
@@ -189,18 +194,6 @@ class Treatment(models.Model):
 
 # ----------------------------------------------------------- Test --------------------------------
 
-	x_test_scenario = fields.Selection(
-			[
-				('co2', 'Co2'),
-				('exc', 'Exc'),
-				('quick', 'Quick'),
-				('ipl', 'Ipl'),
-				('ndyag', 'Ndyag'),
-
-				('all', 'All'),
-			],
-			string="Scenarios",
-		)
 
 	x_test = fields.Boolean(
 			'Test',

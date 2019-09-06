@@ -32,7 +32,8 @@ class Management(models.Model):
 
 	_inherit = 'openhealth.repo'
 
-	_order = 'date_begin asc'
+	#_order = 'date_begin asc'
+	_order = 'date_begin desc'
 
 
 

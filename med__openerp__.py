@@ -8,7 +8,7 @@
 
     'description': """
 
-        5 Sep 2019
+        6 Sep 2019
 
         Contains:
             - All External Dependencies,
@@ -22,14 +22,15 @@
         Remember Robert C. Martin:
             - Respect the Law of Demeter: avoid Train Wreckages.
             - Do not mix Data and Business Rules. Encapsulate Business Rules. 
-            - Three layered model: Data - Customized Class with BR - General purpose Library.
+            - Three layered model: Odoo Active Data - Customized Class with BR - General purpose Library.
             - Handle Exceptions.
             - The Database should not contain BR. Kill computes.
 
-        A;ways clean your System: 
+        Always clean your System: 
             - Procurement Orders, 
             - Stock Moves,
-            - Computes.
+            - Computes,
+            - Products Consumables.
 
         Deprecated: Ooor, Testcafe, Auto-backup, Inventory. 
 
@@ -57,6 +58,7 @@
     'version': '3.0',
 
     'depends': ['base', 'oehealth', 'base_multi_image'],
+    #'depends': ['base', 'oehealth', 'base_multi_image', 'account'],
 
     'data': [
 
@@ -336,7 +338,7 @@
 
 
 # ----------------------------------------------------------- Security - Models - Last ------------------------------------------------------
-        #'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
         #'security/ir.rule.xml',                # Dep 
 
     ],

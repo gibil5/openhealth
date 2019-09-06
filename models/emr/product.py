@@ -23,6 +23,43 @@ class Product(models.Model):
 
 
 
+# ----------------------------------------------------------- Fix ------------------------
+
+	@api.multi
+	def fix_vic_error(self):
+		"""
+		Fix Vics
+		For VICTAMINA bug
+		"""
+		print()
+		print('Fix Vic Error')
+
+
+		prods = self.env['product.template'].search([
+
+															('name', 'like', 'VICTAMINA'),
+												],
+													#order='name asc',
+													#limit=1,
+												)
+
+		for product in prods:
+			print()
+			#print(procurement)
+			print(product.name)
+			#print(procurement.state)
+			#procurement.unlink()
+			#procurement.state = 'cancel'
+
+			product.name = product.name.replace("VICTAMINA", "VITAMINA")
+		
+
+		print('Finished !')
+
+	# fix_vics
+
+
+
 
 # ----------------------------------------------------------- Encode Error ------------------------
 
@@ -83,6 +120,8 @@ class Product(models.Model):
 		
 		print('Finished !')
 
+	# fix_procurements
+
 
 
 	@api.multi
@@ -110,7 +149,7 @@ class Product(models.Model):
 
 		print('Finished !')
 
-	# clean_stock_moves
+	# fix_stock_moves
 
 
 

@@ -1,3 +1,25 @@
+# 6 Sep 2019
+# Duplication !
+
+	x_test_scenario = fields.Selection(
+			[
+				('co2', 'Co2'),
+				('exc', 'Exc'),
+				('quick', 'Quick'),
+				('ipl', 'Ipl'),
+				('ndyag', 'Ndyag'),
+
+				('all', 'All'),
+			],
+			string="Scenarios",
+		)
+
+
+
+
+
+
+
 # 27 Aug 2019
 # Appointment is Highly Deprecated !
 #

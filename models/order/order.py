@@ -714,14 +714,13 @@ class sale_order(models.Model):
 		print()
 		print('Make Serial Number')
 
+
 		# Init
 		x_type = self.x_type
 		state = self.state
 
-
 		# Create Object
 		snr_obj = snr.SerialNumber(self, x_type, state)
-
 
 		# Get data
 		serial_nr = snr_obj.get_serial_number()
@@ -913,19 +912,38 @@ class sale_order(models.Model):
 		print()
 		print('Create CN')
 
+
 		# State
-		state = 'credit_note'
+		#state = 'credit_note'
 
 		# Counter
-		counter_value = user.get_counter_value(self, self.x_type, state)
+		#counter_value = user.get_counter_value(self, self.x_type, state)
 
 		# Serial Nr
-		serial_nr = user.get_serial_nr(self.x_type, counter_value, state)
+		#serial_nr = user.get_serial_nr(self.x_type, counter_value, state)
+
+
+
+		# Init
+		x_type = self.x_type
+		state = 'credit_note'
+
+		# Create Object
+		snr_obj = snr.SerialNumber(self, x_type, state)
+
+		# Get data
+		serial_nr = snr_obj.get_serial_number()
+		counter_value = snr_obj.get_counter()
+		#print(serial_nr)
+
+
+
 
 		# Duplicate with different fields
 		credit_note = self.copy(default={
 											'x_serial_nr': serial_nr,
 											'x_counter_value': counter_value,
+
 											'x_credit_note_owner': self.id,											
 											'x_title': 'Nota de Crédito Electrónica',
 											'x_payment_method': False,

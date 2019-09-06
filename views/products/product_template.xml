@@ -56,8 +56,20 @@
 
                                 name="fix_encode_error"
 
-                                string="FIX ENCODE"
+                                string="FIX ENCO"
                         />
+
+
+                        <!-- Fix Vic Error -->
+                        <button 
+                                type="object"
+                                class="oe_highlight"
+
+                                name="fix_vic_error"
+
+                                string="FIX VIC"
+                        />
+
                 </xpath>
             </field>
         </record>

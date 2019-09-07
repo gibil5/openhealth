@@ -845,9 +845,15 @@ class sale_order(models.Model):
 		"""
 		print()
 		print('Block Flow')
+
 		if self.state in ['credit_note']:
 			self.x_block_flow = True
 			self.x_credit_note_owner.x_block_flow = True
+
+		elif self.state in ['sale']:
+			self.x_block_flow = True
+
+
 
 
 	# Unblock Flow

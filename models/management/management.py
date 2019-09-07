@@ -37,6 +37,26 @@ class Management(models.Model):
 
 
 
+
+# ----------------------------------------------------------- DEP ----------------------
+
+	# State Array - Dep !
+	#state_arr = fields.Char()
+
+	#state_arr = fields.Selection(
+	#		selection=mgt_vars._state_arr_list,
+	#		string='State Array',
+	#		default='sale',
+	#		required=True,
+	#	)
+
+	# Time Line
+	#base_dir = fields.Char()
+
+
+
+
+
 # ----------------------------------------------------------- PL - Natives ----------------------
 	# All Year Max and Min
 	pl_max = fields.Boolean(
@@ -110,8 +130,6 @@ class Management(models.Model):
 		)
 
 
-	# Time Line
-	base_dir = fields.Char()
 
 
 
@@ -595,13 +613,6 @@ class Management(models.Model):
 # ----------------------------------------------------------- Fields ----------------------
 
 
-	# State Array
-	state_arr = fields.Selection(
-			selection=mgt_vars._state_arr_list,
-			string='State Array',
-			default='sale',
-			required=True,
-		)
 
 	# Type Array
 	type_arr = fields.Selection(

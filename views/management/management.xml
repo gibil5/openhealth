@@ -461,7 +461,9 @@
 							<page   string="Admin"  groups='openhealth.roots'>
 								<group      col="2">
 									<group>
+<!--
 										<field name="state_arr"/>
+-->
 										<field name="type_arr"/>
 									</group>
 									<group>

@@ -17,6 +17,7 @@
 
 
                                         (4, ref('openhealth.lloli_clinicachavarri')),
+
                                         (4, ref('openhealth.vmori_clinicachavarri')),
                                         (4, ref('openhealth.jessenwanger_clinicachavarri')),
 

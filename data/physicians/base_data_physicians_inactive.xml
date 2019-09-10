@@ -1,10 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-
+<!--
     <data noupdate='0'>
+-->
+    <data>
+
  
- 
-<!-- Physicians  Inactive -->
+
+<!-- Physicians  INACTIVE -->
+
+
+
+<!-- Pereira -->
+        <record id="dra_pereira" model="oeh.medical.physician">
+
+            <field name="name">Dra. Pereira jx</field>
+
+            <field name="consultancy_type">Residential</field>
+
+            <field name="x_user_name" search="[('name','=','Adriana Pereira')]"/>
+
+            <field name="idx">8</field>
+            
+            <field name="active" eval="False" />
+        </record>
+
+
+
+<!-- Monteverde -->
+        <record id="dr_monteverde" model="oeh.medical.physician">
+            <field name="name">Dr. Monteverde</field>
+            <field name="consultancy_type">Residential</field>
+            <field name="x_user_name" search="[('name','=','Piero Monteverde')]"/>
+            <field name="idx">3</field>
+
+            <field name="active" eval="False" />
+        </record>
+
+
+
+
+
 
 
 <!-- Clinica Chavarri -->
@@ -20,11 +56,11 @@
 
 <!-- Escudero -->
         <record id="dr_escudero" model="oeh.medical.physician">
-            <field name="name">Dr. Escudero</field>
+            <field name="name">Dr. Escudero - jx</field>
             <field name="consultancy_type">Residential</field>
             <field name="x_user_name" search="[('name','=','Carlos Escudero')]"/>
-
             <field name="idx">8</field>
+
             <field name="active" eval="False" />
         </record>
 
@@ -34,8 +70,8 @@
             <field name="name">Dr. Castillo</field>
             <field name="consultancy_type">Residential</field>
             <field name="x_user_name" search="[('name','=','Luis Castillo')]"/>
-
             <field name="idx">5</field>
+
             <field name="active" eval="False" />
         </record>
 

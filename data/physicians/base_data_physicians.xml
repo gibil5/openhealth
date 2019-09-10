@@ -4,7 +4,7 @@
 
  
 
-<!-- Physicians -->
+<!-- Physicians Active -->
 
 
 
@@ -28,16 +28,6 @@
         </record>
 
 
-<!-- Carlos Abriojo -->
-        <record id="dr_abriojo" model="oeh.medical.physician">
-            <field name="name">Dr. Abriojo</field>
-            <field name="consultancy_type">Residential</field>
-            <field name="x_user_name" search="[('name','=','Carlos Abriojo')]"/>
-
-            <field name="idx">6</field>
-        </record>
-
-
 <!-- Gonzales -->
         <record id="dr_gonzales" model="oeh.medical.physician">
             <field name="name">Dr. Gonzales</field>
@@ -48,14 +38,16 @@
         </record>
 
 
-<!-- Monteverde -->
-        <record id="dr_monteverde" model="oeh.medical.physician">
-            <field name="name">Dr. Monteverde</field>
+<!-- Carlos Abriojo -->
+        <record id="dr_abriojo" model="oeh.medical.physician">
+            <field name="name">Dr. Abriojo</field>
             <field name="consultancy_type">Residential</field>
-            <field name="x_user_name" search="[('name','=','Piero Monteverde')]"/>
+            <field name="x_user_name" search="[('name','=','Carlos Abriojo')]"/>
 
-            <field name="idx">3</field>
+            <field name="idx">6</field>
         </record>
+
+
 
 
 <!-- Eulalia -->

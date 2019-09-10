@@ -65,20 +65,23 @@
 
 # ----------------------------------------------------------- Products ------------------------------------------------------
         # Products
-        #'data/categs/base_data_categs_prods.xml',
-        #'data/allergies/allergy.xml',
 
-        #'data/prods/odoo_data_products.xml',
-        #'data/prods/odoo_data_products_new.xml',            # Has integrated the following
-        #'data/prods/odoo_data_services_consult.xml',
-        #'data/prods/odoo_data_services_co2.xml',
-        #'data/prods/odoo_data_services_exc.xml',
-        #'data/prods/odoo_data_services_m22.xml',
-        #'data/prods/odoo_data_services_med.xml',
-        #'data/prods/odoo_data_services_cos.xml',
-        #'data/prods/odoo_data_services_med_dep.xml',    # Dependance
+        'data/categs/base_data_categs_prods.xml',
+        'data/allergies/allergy.xml',
 
-        #'data/suppliers.xml',                          # Very Important - Account Invoice Dependance
+        'data/prods/odoo_data_products.xml',
+        'data/prods/odoo_data_products_new.xml',
+        'data/prods/odoo_data_services_consult.xml',
+        'data/prods/odoo_data_services_co2.xml',
+        'data/prods/odoo_data_services_exc.xml',
+        'data/prods/odoo_data_services_m22.xml',
+        'data/prods/odoo_data_services_med.xml',
+        'data/prods/odoo_data_services_cos.xml',
+        'data/prods/odoo_data_services_med_dep.xml',
+
+
+        'data/suppliers.xml',                          
+        # Very Important - Account Invoice Dependance
 
 
 
@@ -89,12 +92,16 @@
 
         # Users
         'data/users/base_data_users_generics.xml',                 # Important 
+        
         'data/physicians/base_data_physicians.xml',                
         'data/physicians/base_data_physicians_inactive.xml',        
+        
         'data/users/base_data_users_platform.xml',  
         'data/users/base_data_users_cash.xml',
         'data/users/base_data_users_account.xml',       
+
         'data/users/base_data_users_managers.xml',  
+
         'data/users/base_data_users_doctors.xml',
         'data/users/base_data_users_assistants.xml',    
         'data/users/base_data_users_directors.xml',  
@@ -247,8 +254,13 @@
         'views/treatments/treatment.xml',
         'views/treatments/treatment_actions.xml',
 
+
+
+
         # Physicians 
         'views/physicians/physician.xml',
+
+
 
         # Patients 
         'views/patients/patient.xml',

@@ -13,7 +13,19 @@
 
 
 					<!-- Header -->
-					<header></header>
+					<header>
+						
+                        <!-- Config Doctors -->
+                        <button 
+                                type="object"
+                                class="oe_highlight"
+
+                                name="config_doctors"
+
+                                string="Config Doctors"
+                        />
+						
+					</header>
 
 
 
@@ -39,6 +51,7 @@
 						<group  string="">
 
 							<!-- Error Validation -->
+<!--
 							<group string="Validacion de Errores">
 									<field name="error_validation_electronic"/>
 									<field name="error_validation_patient"/>
@@ -47,13 +60,36 @@
 									<field name="error_validation_management"/>
 									<field name="error_validation_marketing"/>
 							</group>
-
+-->
 							<!-- CSV Pricelist 2019 -->
 							<group string="CSV Pricelist 2019">
 									<field name="path_csv_pricelist"/>
 							</group>
 
 						</group>
+
+
+
+<!-- Notebook --> 
+						<notebook>
+							<!-- Doctors --> 
+<!--                            
+-->
+							<page   string="Médicos">
+	
+								<field name="doctor_line">
+	
+									<tree string="Doctors">
+								
+										<field name="physician"/>
+								
+										<field name="x_active"/>
+									</tree>
+								</field>
+							</page>
+
+						</notebook>
+
 
 
 						<group  string="">

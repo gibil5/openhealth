@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-		*** Physician
+		*** Oeh Medical Physician
  
 		Created: 		 6 Mar 2017
-		Last up:		24 Aug 2019
+		Last up:		10 Sep 2019
 """
 from openerp import models, fields, api
 
@@ -16,6 +16,17 @@ class Physician(models.Model):
 	
 	#_order = 'name'
 	#_order = 'idx asc'
+
+
+
+# ----------------------------------------------------------- Relational --------------------------
+
+	configurator_id = fields.Many2one(
+			
+			'openhealth.configurator.emr'
+
+		)
+
 
 
 

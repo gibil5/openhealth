@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 """
- 		*** Doctor
+ 		*** Openhealth Doctor
  
-		Created: 				1 Feb 2019
-		Last up:				1 Feb 2019
+		Created: 				 1 Feb 2019
+		Last up:				10 Sep 2019
 """
-
 from openerp import models, fields, api
 
 
@@ -15,33 +14,35 @@ class Doctor(models.Model):
 
 	_name = 'openhealth.doctor'
 	
-	_order = 'name'
 	#_order = 'idx asc'
+	#_order = 'name'
+	_order = 'physician'
 
-	#_inherit = 'oeh.medical.physician'
 	
 
-
-
-# ----------------------------------------------------------- Dep --------------------------
-	#configurator_emr_id = fields.Many2one(
-	#		'openhealth.configurator.emr'
-	#	)
+# ----------------------------------------------------------- Relational --------------------------
+	configurator_id = fields.Many2one(
+			'openhealth.configurator.emr',
+			ondelete='cascade', 
+		)
 
 
 
 # ----------------------------------------------------------- Fields --------------------------
 
-	#name = fields.One2many(
-	#name = fields.Char(
-	name = fields.Many2one(
+	# Dep !
+	#name = fields.Many2one(
+	#		'oeh.medical.physician',
+	#	)
+
+
+	physician = fields.Many2one(
 			'oeh.medical.physician',
 		)
 
 
-	active = fields.Boolean(
-			default=False,
+	#active = fields.Boolean(
+	x_active = fields.Boolean(
+			default=True,
 		)
-
-
 

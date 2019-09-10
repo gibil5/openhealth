@@ -26,6 +26,63 @@ class ConfiguratorEmr(models.Model):
 	_description = 'Configurator Emr'
 
 
+# ----------------------------------------------------------- Relational -------------------------------
+
+	# Doctor Line
+	doctor_line = fields.One2many(
+	
+			#'oeh.medical.physician',
+			'openhealth.doctor',
+
+			'configurator_id',
+		)
+
+
+
+
+# ----------------------------------------------------------- Fix ------------------------
+
+	@api.multi
+	def config_doctors(self):
+		"""
+		Configure Doctors
+		Using configurator data
+		"""
+		print()
+		print('Configure Doctors')
+
+		print(self.name)
+
+		#procs = self.env['procurement.order'].search([
+															#('sale_ok', 'in', [True]),
+		#										],
+													#order='name asc',
+													#limit=1,
+		#										)
+
+
+		count = 0
+
+		for doctor in self.doctor_line:
+			print()
+			print(doctor.physician.name)
+			print(doctor.physician.active)
+
+			doctor.physician.active = doctor.x_active
+
+			count = count + 1
+
+			print(count)
+
+
+		print('Finished !')
+
+	# config_doctors
+
+
+
+
+
 # ----------------------------------------------------------- PL - Redefined -------------------------------
 
 	name = fields.Selection(			

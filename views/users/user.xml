@@ -57,6 +57,7 @@
 
 <!-- Active --> 
 
+                    <field name="name" />
 
 
                     <!-- Group By --> 

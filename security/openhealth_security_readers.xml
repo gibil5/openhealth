@@ -57,6 +57,8 @@
 
 <!-- Readers --> 
 
+
+
 		<!-- Product Readers --> 
 		<record id="product_readers" model="res.groups">
 			<field name="name">Product Readers</field>
@@ -70,7 +72,10 @@
 										(4, ref('openhealth.pmonteverde_clinicachavarri')),
 										(4, ref('openhealth.cabriojo_clinicachavarri')),
 
+
 										(4, ref('openhealth.manager_clinicachavarri')),
+										(4, ref('openhealth.svargas_clinicachavarri')),
+
 										
 										(4, ref('openhealth.pbalboa_clinicachavarri')),
 										(4, ref('openhealth.achaponan_clinicachavarri')),
@@ -111,8 +116,9 @@
 
 			<field name="users" eval="[ 
 										(4, ref('openhealth.manager_clinicachavarri')),
-										(4, ref('openhealth.vmori_clinicachavarri')),
-										(4, ref('openhealth.jessenwanger_clinicachavarri')),
+										(4, ref('openhealth.svargas_clinicachavarri')),
+
+
 										(4, ref('openhealth.pbalboa_clinicachavarri')),
 										(4, ref('openhealth.achaponan_clinicachavarri')),
 										(4, ref('openhealth.fcatpo_clinicachavarri')),

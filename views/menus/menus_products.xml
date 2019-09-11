@@ -5,6 +5,7 @@
 
 <!--
             name="Productos"
+groups="openhealth.roots,openhealth.caja,openhealth.directors,openhealth.managers,openhealth.physicians,openhealth.assistants,openhealth.reception"
 -->
 
 <!-- Productos -->
@@ -13,7 +14,7 @@
 
             name="Productos 2018"
 
-groups="openhealth.roots,openhealth.caja,openhealth.directors,openhealth.managers,openhealth.physicians,openhealth.assistants,openhealth.reception"
+groups="openhealth.roots,openhealth.directors"
 />
 
 

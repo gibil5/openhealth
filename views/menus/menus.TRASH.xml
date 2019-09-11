@@ -1,3 +1,66 @@
+<!--
+10 Sep 2019
+
+-->
+
+
+<!-- Test --> 
+<menuitem   id="emr_test_menu" 
+            name="Test"
+            parent="main_emr_menu"
+            sequence="2"
+
+            groups="openhealth.roots"
+        />
+
+        <!-- Patients Test --> 
+        <menuitem   id="emr_patients_test_menu" 
+                    name="Pacientes Test" 
+                    parent="emr_test_menu"
+                    sequence="6"
+
+                    action="patient_test_list_action"
+                />
+
+        <!-- Treatments Test -->
+<!--        
+        <menuitem   id="emr_treatments_test_menu" 
+                    name="Tratamientos Test" 
+                    parent="emr_test_menu"
+                    sequence="7"
+
+                    action="treatment_test_list_action"
+                />
+-->
+
+
+
+
+        <!-- Partners --> 
+        <menuitem   id="emr_partners_inactive_menu" 
+                    name="Partners" 
+                    parent="emr_inactive_menu"
+                    sequence="5"
+
+                    action="partner_inactive_list_action"
+                    />
+
+        <!-- Treatments --> 
+<!--        
+        <menuitem   id="emr_treatments_inactive_menu" 
+                    name="Tratamientos" 
+                    parent="emr_inactive_menu"
+                    sequence="16"
+                    action="treatment_inactive_list_action"
+                    />
+-->
+
+
+
+
+
+
+
 
 <!-- Contacts -->           
         <menuitem   id="mail.menu_contacts"

@@ -10,12 +10,15 @@
             name="Historias"        
             />
 
-        <!-- Historias --> 
-        <menuitem   id="emr_menu" 
-                    name="Historias Médicas"
-                    parent="main_emr_menu"
-                    sequence="1"
-                    />
+
+
+<!-- Historias --> 
+<menuitem   id="emr_menu" 
+            name="Historias Médicas"
+            parent="main_emr_menu"
+            sequence="1"
+            />
+
 
         <!-- Patients --> 
         <menuitem   id="emr_patients_menu" 
@@ -50,49 +53,25 @@
                     />
 
 
-<!-- Test --> 
-<menuitem   id="emr_test_menu" 
-            name="Test"
-            parent="main_emr_menu"
-            sequence="2"
-
-            groups="openhealth.roots"
-        />
-
-        <!-- Patients Test --> 
-        <menuitem   id="emr_patients_test_menu" 
-                    name="Pacientes Test" 
-                    parent="emr_test_menu"
-                    sequence="6"
-
-                    action="patient_test_list_action"
-                />
-
-        <!-- Treatments Test -->
-<!--        
-        <menuitem   id="emr_treatments_test_menu" 
-                    name="Tratamientos Test" 
-                    parent="emr_test_menu"
-                    sequence="7"
-
-                    action="treatment_test_list_action"
-                />
+<!--
+                    groups="openhealth.roots,openhealth.managers,openhealth.directors"
+                    groups="openhealth.roots,openhealth.managers,openhealth.directors"
 -->
 
-
 <!-- Physicians -->
-        <menuitem   id="physician_menu" 
-                    name="Médicos"
-                    parent="main_emr_menu"
-                    sequence="2"
-                    />
+<menuitem   id="physician_menu" 
+            name="Médicos"
+            parent="main_emr_menu"
+            sequence="2"
+            />
+
 
         <menuitem   id="oeh_medical_physician_list"  
                     parent="physician_menu" 
                     sequence="7"
                     name="Médicos"
                     action="physician_list_action" 
-                    groups="openhealth.roots,openhealth.managers,openhealth.directors"
+
                     />
 
         <menuitem   id="oeh_medical_therapeut_list"  
@@ -101,18 +80,19 @@
                     name="Cosmeatras"                   
 
                     action="therapeut_list_action" 
-                    groups="openhealth.roots,openhealth.managers,openhealth.directors"
+                    
                     />
 
 
 <!-- Inactives --> 
-        <menuitem   id="emr_inactive_menu" 
-                    name="Inactivos"
-                    parent="main_emr_menu"
-                    sequence="3"
+<menuitem   id="emr_inactive_menu" 
+            name="Inactivos"
+            parent="main_emr_menu"
+            sequence="3"
 
-                    groups="openhealth.roots,openhealth.managers,openhealth.directors"
-                    />
+            groups="openhealth.roots,openhealth.managers,openhealth.directors"
+            />
+
 
         <!-- Physicians -->
         <menuitem   id="oeh_medical_physician_inactive_list"  
@@ -139,16 +119,6 @@
                     />
 
 
-        <!-- Partners --> 
-        <menuitem   id="emr_partners_inactive_menu" 
-                    name="Partners" 
-                    parent="emr_inactive_menu"
-                    sequence="5"
-
-                    action="partner_inactive_list_action"
-                    />
-
-
         <!-- Patients --> 
         <menuitem   id="emr_patients_inactive_menu" 
                     name="Pacientes" 
@@ -159,15 +129,6 @@
                     />
 
 
-        <!-- Treatments --> 
-<!--        
-        <menuitem   id="emr_treatments_inactive_menu" 
-                    name="Tratamientos" 
-                    parent="emr_inactive_menu"
-                    sequence="16"
-                    action="treatment_inactive_list_action"
-                    />
--->
 
 
 
@@ -176,7 +137,7 @@
                     parent="main_emr_menu"
                     sequence="4"
 
-                    name="Configuración Historias"
+                    name="Configuración"
 
                     groups="openhealth.roots,openhealth.reception,openhealth.directors"
                     />

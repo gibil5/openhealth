@@ -106,6 +106,45 @@ class Patient(models.Model):
 
 # ----------------------------------------------------------- Open Treatment - Button ----------------------
 	@api.multi
+	def create_budget(self):
+		"""
+		Create Budget Button
+		"""
+
+
+		return {
+					# Mandatory
+					'type': 'ir.actions.act_window',
+					'name': 'Open Budget Current',
+					
+					# Model
+					'res_model': 'sale.order',
+
+					#'res_id': treatment.id,
+					
+					# Views
+					"views": [[False, "form"]],
+					
+					'view_mode': 'form',
+					
+					#'target': 'current',
+					'target': 'new',
+					
+					'flags': {
+							#'form': {'action_buttons': True, }
+							'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+					},
+					
+					'context':   {
+									'default_patient': self.id,
+					}
+			}
+	# create_budget
+
+
+
+# ----------------------------------------------------------- Open Treatment - Button ----------------------
+	@api.multi
 	def open_treatment(self):
 		"""
 		Open Treatment Button

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate='0'>
+
+
+
+Doctores
+----------
+Carlos Abriojo
+
+
+
+Director
+---------
+Fernando Chavarri 
+
+
+
+Supervisora
+------------
+Maritza Mattos
+
+
+
+Asistentes
+-----------
+Rosa Mendoza
+Mirella Ostos
+
+
+
+Caja
+-----
+Eulalia Ruiz
+
+
+
+Plataforma
+-----------
+Andrea del Rosario Fuentes
+
+
+
+
+    </data>
+</openerp> 

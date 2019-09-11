@@ -296,6 +296,7 @@
 
 <!--
 groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.managers,openhealth.directors"
+        name="Rep Ventas - N"
 -->
 
 <!-- MENUS -->
@@ -303,7 +304,7 @@ groups="openhealth.roots,openhealth.caja,openhealth.reception,openhealth.manager
     
             sequence="-6"
     
-            name="Rep Ventas - N"
+            name="Reporte Ventas"
 
             groups="openhealth.roots,openhealth.caja,openhealth.managers,openhealth.directors"
         />

@@ -8,7 +8,7 @@
 
     'description': """
 
-        9 Sep 2019
+        11 Sep 2019
 
         Contains:
             - All External Dependencies,
@@ -63,7 +63,7 @@
     'data': [
 
 
-# ----------------------------------------------------------- Products ------------------------------------------------------
+# ----------------------------------------------------------- Legacy - Products - Only for Lima ------------------------------------------------------
         # Products
 
         #'data/categs/base_data_categs_prods.xml',
@@ -79,7 +79,7 @@
         #'data/prods/odoo_data_services_cos.xml',
         #'data/prods/odoo_data_services_med_dep.xml',
 
-
+        # Suppliers
         #'data/suppliers.xml',                          
         # Very Important - Account Invoice Dependance
 
@@ -110,10 +110,11 @@
         'data/users/base_data_users_inactive.xml', 
 
 
+
 # ----------------------------------------------------------- Security - Users - First ------------------------------------------------------
         'security/openhealth_security.xml',             # Groups
 
-        'security/openhealth_security_readers.xml',     # Very important
+        'security/openhealth_security_readers.xml',     # Important
 
 
 
@@ -349,10 +350,13 @@
         'views/menus/menus_account.xml',
         'views/menus/menus_products.xml',
 
+        'views/menus/menus_oeh.xml',
+
 
 # ----------------------------------------------------------- Security - Models - Last ------------------------------------------------------
         'security/ir.model.access.csv',
-        #'security/ir.rule.xml',                # Dep 
+        
+        'security/ir.rule.xml',                # Dep ?
 
     ],
 

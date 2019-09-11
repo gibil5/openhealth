@@ -31,7 +31,6 @@ class ConfiguratorEmr(models.Model):
 	# Doctor Line
 	doctor_line = fields.One2many(
 	
-			#'oeh.medical.physician',
 			'openhealth.doctor',
 
 			'configurator_id',

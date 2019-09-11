@@ -22,9 +22,7 @@ class Physician(models.Model):
 # ----------------------------------------------------------- Relational --------------------------
 
 	configurator_id = fields.Many2one(
-			
-			'openhealth.configurator.emr'
-
+			'openhealth.configurator.emr',
 		)
 
 

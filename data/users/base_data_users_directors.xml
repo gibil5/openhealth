@@ -33,6 +33,11 @@
 
 
 <!-- Fernando Chavarri -->
+<!--
+fchavarri@clinicachavarri.com
+A22H9pfv
+-->
+
         <record id="fchavarri" model="res.partner">
             <field name="name">Fernando Chavarri</field>
             <field name="email">fchavarri@clinicachavarri.com</field>

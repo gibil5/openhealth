@@ -16,16 +16,8 @@ from openerp.exceptions import Warning as UserError
 
 class Patient(models.Model):
 	"""
-	Patient Class. 
-	Inherits OeHealth Patient Class.
-
-	This is a very dangerous thing to do. Should NEVER be done:
-
-	# Container
-	#container_id = fields.Many2one(
-	#	'openhealth.container',
-	#	ondelete='cascade',		# Very Dangerous. When Container is removed, Patient is removed.
-	#)
+	Patient Class
+	Inherits OeHealth Patient Class
 	"""
 	_inherit = 'oeh.medical.patient'
 
@@ -34,6 +26,33 @@ class Patient(models.Model):
 	_description = 'Patient'
 
 
+
+# ----------------------------------------------------------- Caregive ---------------------------
+	# Caregiver
+
+	x_caregiver = fields.Boolean(
+			'Acompañante',
+		)
+
+
+	x_caregiver_last_name = fields.Char(
+			string='Apellidos',
+		)
+
+	x_caregiver_first_name = fields.Char(
+			string='Nombres',
+		)
+
+	x_caregiver_dni = fields.Char(
+			string="DNI",
+		)
+
+	x_caregiver_relation = fields.Selection(
+			#selection=pat_vars._FAMILY_RELATION,
+			selection=pat_vars.get_FAMILY_RELATION(),
+			string='Parentesco',
+			default='none',
+		)
 
 
 # ----------------------------------------------------------- HC Number ---------------------------
@@ -763,27 +782,8 @@ class Patient(models.Model):
 		)
 
 
-	# Caregiver
-	x_caregiver_last_name = fields.Char(
-			string='Apellidos',
-		)
 
-	x_caregiver_first_name = fields.Char(
-			string='Nombres',
-		)
 
-	x_caregiver_dni = fields.Char(
-			string="DNI",
-		)
-
-	x_caregiver_relation = fields.Selection(
-
-			#selection=pat_vars._FAMILY_RELATION,
-			selection=pat_vars.get_FAMILY_RELATION(),
-
-			string='Parentesco',
-			default='none',
-		)
 
 	phone_3 = fields.Char(
 		string="Teléfono",

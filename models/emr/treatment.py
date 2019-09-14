@@ -26,6 +26,15 @@ class Treatment(models.Model):
 	_description = 'Treatment'
 
 
+
+# ----------------------------------------------------------- Test ------------------------
+	x_test = fields.Boolean(
+			'Test',
+		)
+
+
+
+
 # ----------------------------------------------------------- Pricelist Fields - Dummy --------------------------------
 
 	report_product = fields.Char(
@@ -194,10 +203,6 @@ class Treatment(models.Model):
 
 # ----------------------------------------------------------- Test --------------------------------
 
-
-	x_test = fields.Boolean(
-			'Test',
-		)
 
 	# Electronic
 	electronic_order = fields.One2many(

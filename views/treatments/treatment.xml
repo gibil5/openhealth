@@ -137,6 +137,7 @@
 
 
 
+
 <!-- Sheet -->  
                     <sheet>
                         <div>                       
@@ -410,137 +411,45 @@
                                    
 <!-- Fields -->
                         <!-- Padding --> 
-                        <group>
+                        <group col="3">
                             <group>
-                                <field name="patient_sex"       />
-                                <field name="patient_age"       />
-                                <field name="patient_city"      />
+<!--                                
+                                <field name="x_test"   groups="openhealth.roots"/>
+-->
+                                <field name="patient_sex"/>
+                                <field name="patient_age"/>
+                                <field name="patient_city"/>
                                 <field name="vip" />
                             </group>
 
-
-                            <!-- Testing --> 
-                            <group groups="openhealth.roots">
-    <!--
                             <group>
-                                <field name="partner_id"        invisible="0"   />                          
+                                <field name="physician"         required="1"/>
                                 <field name="vspace" />
-                                <field name="pricelist_id" />
-                                <field name="x_vip_inprog"/>
-                                <field name="x_test"   groups="openhealth.roots"     />
-    -->
+                                <field name="chief_complaint"   required="1"/>
+                                <field name="vspace" />
+                                <field name="active"/>
+                            </group>
 
-                                <field name="x_test_scenario"/>
-
-                                <!-- Price lists -->
-                                <field name="test_pricelist_2019"/>
-                                <field name="test_pricelist_2018"/>
-
-                                <!-- Reports -->
-                                <field name="report_management"/>
-                                <field name="report_marketing"/>
-
-                                <field name="report_account"/>
-                                <field name="report_contasis"/>
-
-                                <field name="report_product"/>
-
-
-
-                                <!-- Buttons -->
-                                <group>
-                                    <group>
-                                        <!-- Test Integration -->
-                                        <button 
-                                            type="object" 
-                                            class="oe_highlight"
-                                            help='Test Integration'
-                                            name="test_integration" 
-                                            
-                                            string="Test Integration"
-                                        />
-
-                                        <!-- Reset -->
-                                        <button 
-                                            type="object" 
-                                            class="oe_highlight"
-                                            groups="openhealth.roots"
-                                            help='Tests: Reset'
-                                            name="test_reset"
-
-                                            string="Reset"
-                                        />
-                                    </group>
-                                </group>
-
-                                <group>
-                                    <group>
-                                        <button 
-                                                type="object"
-                                                class="oe_highlight"
-                                                name="test_report_management"
-
-                                                string="MGT"
-                                        />
-
-                                        <button 
-                                                type="object"
-                                                class="oe_highlight"
-                                                name="test_report_marketing"
-
-                                                string="MKT"
-                                        />
-
-                                        <button 
-                                                type="object"
-                                                class="oe_highlight"
-                                                name="test_report_account"
-
-                                                string="TXT"
-                                        />
-
-                                        <button 
-                                                type="object"
-                                                class="oe_highlight"
-                                                name="test_report_contasis"
-
-                                                string="ACC"
-                                        />
-
-
-                                        <button 
-                                                type="object"
-                                                class="oe_highlight"
-                                                name="test_report_product"
-
-                                                string="PROD"
-                                        />
-                                    </group>
-                                </group>
-
-
+                            <group>
+                                <field name="start_date"/>
+                                <field name="vspace" />
+                                <field name="treatment_closed"  invisible="0"/>
+                            </group>
                         </group>
 
 
 
-                        <!-- Padding --> 
-<!--
-                                <field name="user_id"/>
-                                <field name="vspace" />
--->
-
-
-
-
 <!-- Manual --> 
-                        <group  col="7" >
+                        <group  col="5" >
 
                             <!-- CONS --> 
                             <group>
                                 <button 
                                     type="object" 
                                     class="oe_highlight"
+
                                     attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
+                                    
                                     name="create_consultation"
                                     string="CONS"
                                 />
@@ -551,7 +460,9 @@
                                 <button 
                                     type="object" 
                                     class="oe_highlight"
+
                                     attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
+                                    
                                     name="create_service"
                                     string="RECO"
                                 />
@@ -562,68 +473,33 @@
                                 <button 
                                     type="object" 
                                     class="oe_highlight"
+
                                     attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
+                                    
                                     name="create_order_pro"
                                     string="PRESU" 
                                 />
                             </group>
 
+                            <!-- PROC --> 
                             <group>
-                                <!-- PROC --> 
                                 <button 
                                     type="object" 
                                     class="oe_highlight"
+
                                     attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
+                                    
                                     name="create_procedure_man"
                                     string="PROC" 
                                 />
-
-                                <!-- CTRL --> 
-<!--                                
-                                <button 
-                                    type="object" 
-                                    class="oe_highlight"
-                                    attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
-                                    name="create_controls"
-                                    string="CTRL" 
-                                />
--->                             
                             </group>
 
 
-
-
-
-                            </group>
-                            <group></group>
-                        </group>
-
-
-
-
-                        <group>
+                            <!-- Manual -->
                             <group>
-                                <field name="physician"         required="1"/>
-                                <field name="vspace" />
-                                <field name="chief_complaint"   required="1"/>
-                                <field name="vspace" />
-                                <field name="active"/>
-                            </group>                            
-                            <group>
-                                <field name="start_date"/>
-                                <field name="vspace" />
-                                <field name="treatment_closed"  invisible="0"/>
-                                <field name="vspace" />
-                                <field name="vspace" />
 
+                                <field name="add_procedures"    invisible="0"/>
 
-
-                                <!-- Manual -->
-                                <field name="add_procedures"    invisible="1"/>
-
-<!--
-                                    groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
--->
                                 <button 
                                     type="object" 
                                     class="oe_highlight"
@@ -632,7 +508,12 @@
                                     string="Manual"                                     
                                 />
                             </group>
+
                         </group>
+
+
+
+
 
                         <!-- Padding -->
                         <group>
@@ -640,21 +521,25 @@
                             <group></group>
                         </group>
 
-
                         <!-- Notebook --> 
-                        <notebook>
-<!--
-                            <page string="Electronic">
-                                <field name="electronic_order"/>
-                            </page>
--->
-                        </notebook>
-
+                        <notebook></notebook>
                     </sheet>
                 </form>
             </field>
         </record>
         <!-- FORM --> 
+                        <!-- Padding --> 
+
+
+<!--
+                                <field name="user_id"/>
+                                <field name="vspace" />
+-->
+<!--
+                            <page string="Electronic">
+                                <field name="electronic_order"/>
+                            </page>
+-->
 
 
 

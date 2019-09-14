@@ -116,14 +116,18 @@ class Partner(models.Model):
 			required=False,
 		)
 
+
 	# Only for foreign addresses
 	x_foreign = fields.Boolean(
 			string="Dirección en el extranjero",
 		)
 
+
 	x_address_foreign = fields.Text(
-			string=".",
+			'Dirección',
+			#string=".",
 		)
+
 
 	# Vspace
 	vspace = fields.Char(

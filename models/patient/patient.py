@@ -32,6 +32,7 @@ class Patient(models.Model):
 
 	x_caregiver = fields.Boolean(
 			'Acompañante',
+			default=False,
 		)
 
 

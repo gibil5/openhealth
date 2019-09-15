@@ -439,6 +439,8 @@
 
 
 
+<hr></hr>
+
 <!-- Manual --> 
                         <group  col="5" >
 
@@ -497,9 +499,6 @@
 
                             <!-- Manual -->
                             <group>
-
-                                <field name="add_procedures"    invisible="0"/>
-
                                 <button 
                                     type="object" 
                                     class="oe_highlight"
@@ -507,20 +506,24 @@
                                     
                                     string="Manual"                                     
                                 />
+
+                                <field name="add_procedures"    invisible="1"/>
                             </group>
 
                         </group>
+<hr></hr>
 
 
 
 
 
                         <!-- Padding -->
+<!--
                         <group>
                             <group></group>
                             <group></group>
                         </group>
-
+-->
                         <!-- Notebook --> 
                         <notebook></notebook>
                     </sheet>

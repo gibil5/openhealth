@@ -13,6 +13,9 @@ Testing
                                 <field name="x_test"   groups="openhealth.roots"     />
     -->
 
+
+
+                                <!-- Scenarios -->
                                 <field name="x_test_scenario"/>
 
                                 <!-- Price lists -->
@@ -22,10 +25,8 @@ Testing
                                 <!-- Reports -->
                                 <field name="report_management"/>
                                 <field name="report_marketing"/>
-
                                 <field name="report_account"/>
                                 <field name="report_contasis"/>
-
                                 <field name="report_product"/>
 
 

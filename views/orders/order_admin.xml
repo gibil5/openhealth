@@ -1,88 +1,93 @@
 <?xml version="1.0"?>
 <openerp>
-    <data>
+	<data>
 
 
 
-        <!-- FORM -->
-        <record model="ir.ui.view" id="order_admin_form_view">
-            <field name="name">order.admin.form</field>
-            <field name="model">sale.order</field>
-            <field name="priority" eval="2"/>
-            <field name="inherit_id" ref="sale.view_order_form"/>
-            <field name="arch" type="xml">
+<!-- FORM -->
+		<record model="ir.ui.view" id="order_admin_form_view">
+			<field name="name">order.admin.form</field>
+			<field name="model">sale.order</field>
+			<field name="priority" eval="2"/>
+			<field name="inherit_id" ref="sale.view_order_form"/>
+			<field name="arch" type="xml">
 
-                <notebook position="inside">
-                    
+
+				<notebook position="inside">
+					
 
 
 <!--
-                            <page string="Admin"        groups='openhealth.roots'   >
-                            <page string="Admin"    groups='openhealth.roots'    >
+							<page string="Admin"    groups='openhealth.roots'    >
+							<page string="Admin">
 -->
 
-                            <page string="Admin">
+							<page string="Admin"        groups='openhealth.roots'	>
 
 
-                                <group>
-    
+								<group>
 
-                                    <!-- Only for Roots --> 
+	
+
+									<field name="vspace"/>
+
+									<field name="x_family"      readonly="1"    />
+									
+									<field name="x_product"     readonly="1"    />
+
+									<field name="vspace" />
+
+									<field name="x_dni"		string="Obsoleto"/>
+
+									<field name="x_type_code"/>
+
+									<field name="x_legacy"/>
 
 
-                                    <field name="partner_id"                />
+
+									<field name="x_pm_total"/>
+									
+									<field name="x_day_order"/>
+
+									<field name="x_month_order"/>
+								</group>
 
 
-                                    <field name="vspace" />
+								<!-- Only for Roots --> 
+								<group>
+	
+									<field name="partner_id"/>
 
+									<field name="x_procedure_created" />
 
-                                    <field name="x_procedure_created" />
+									<field name="x_doctor_uid"  invisible="1"               />
 
-                                    <field name="vspace" />
+									<field name="user_id"       string="Creado por"     groups='openhealth.roots'   />
 
-                                    <field name="x_doctor_uid"  invisible="1"               />
+									<field name="x_checksum"/>
 
+								</group>
+							</page>
+				</notebook>
 <!--
-                                    <field name="user_id"       string="Generado por"       readonly="1"/>
-                                    <field name="user_id"       string="Creado por"     readonly="1"/>
--->                             
-                                    <field name="user_id"       string="Creado por"     groups='openhealth.roots'   />
+					<field name="vspace"/>
 
+					<field name="x_pm_total"/>
 
-                                    <field name="vspace" />
+									<field name="vspace" />
+									<field name="user_id"       string="Generado por"       readonly="1"/>
+									<field name="user_id"       string="Creado por"     readonly="1"/>
 
+									<field name="x_my_company"  - Dep />
 
-<!--
-dep
-                                    <field name="x_my_company"  />
--->
-
-
-                                    <field name="vspace" />
-                                    
-
-
-                                    <field name="x_checksum"/>
-
-                                    <field name="x_pm_total"/>
-
-
-
-<!--
-                                    <field name="x_legacy" />
-                                    <field name="x_machine"     />
-                                    <field name="x_machine_req"                 />
+									<field name="vspace" />
+									<field name="x_legacy" />
+									<field name="x_machine"     />
+									<field name="x_machine_req"                 />
 --> 
-                                
-                                </group>
 
 
-                            </page>
-
-                </notebook>
-
-
-            </field>
-        </record>
-    </data>
+			</field>
+		</record>
+	</data>
 </openerp>

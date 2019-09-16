@@ -164,7 +164,10 @@ class sale_order(models.Model):
 	configurator = fields.Many2one(
 			'openhealth.configurator.emr',
 			string="Config",
+
 			required=True,
+
+			readonly=True,
 			
 			default=_get_default_configurator,
 		)

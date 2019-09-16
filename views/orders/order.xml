@@ -394,17 +394,11 @@
 
 
 <!-- Natives -->
-				<xpath expr="//field[@name='validity_date']" position="before">
-					
+				<xpath expr="//field[@name='validity_date']" position="before">					
 
 					<field name="x_partner_vip"/>
 
 					<field name="vspace"/>
-
-					<field name="pl_transfer_free"/>
-
-					<field name="vspace"/>
-
 
 					<field name="date_order"            string="Fecha"
 
@@ -415,17 +409,7 @@
 															}"
 												/>
 
-					<field name="x_day_order"           groups='openhealth.roots'   />
-					<field name="x_month_order"           groups='openhealth.roots'   />
-
-
-					<field name="vspace"/>
-
-
-
 					<field name="x_payment_method"      attrs="{'readonly': [('x_admin_mode', '!=', True),],}"/>
-
-
 
 					<field name="x_type"
 														attrs="{     
@@ -435,13 +419,6 @@
 																}"  
 										/>
 
-
-					<field name="x_type_code"           groups="openhealth.roots"/>
-<!--
-					<field name="x_pm_total"/>
--->
-					<field name="vspace"/>
-
 					<field name="x_serial_nr"       attrs="{     
 																		'readonly': [
 																						('x_admin_mode', '!=', True), 
@@ -449,21 +426,6 @@
 																}"  
 
 							/>
-
-					<field name="x_counter_value"       groups="openhealth.roots,openhealth.managers"   
-
-														attrs="{     
-																		'readonly': [
-																						('x_admin_mode', '!=', True), 
-																					], 
-																}"  
-						/>
-
-					<field name="vspace"/>
-
-					<field name="x_electronic"          groups="openhealth.roots"/>
-					<field name="x_legacy"          groups="openhealth.roots"/>
-
 				</xpath>
 
 
@@ -474,19 +436,7 @@
 				<!-- Price list --> 
 				<xpath expr="//field[@name='pricelist_id']" position="replace">
 
-
 					<field name="configurator"			required="1"/>
-
-<!--
-					<field name="x_admin_mode"          groups="openhealth.roots,openhealth.managers,openhealth.caja,openhealth.directors"/>
--->
-
-					<field name="x_admin_mode"          attrs="{'invisible':[
-																				('state','not in',['sale', 'credit_note']),
-																	]}"
-							groups="openhealth.roots,openhealth.managers,openhealth.caja,openhealth.directors"
-						/>
-
 
 					<field name="pricelist_id"          readonly="1"/>
 				</xpath>
@@ -675,41 +625,6 @@
 				<!-- Dni --> 
 				<field name="patient" position="before">
 
-					<field name="x_credit_note"         attrs="{'invisible':[('state', 'in', ['cancel', 'credit_note'])]}"/>
-
-
-
-
-					<field name="x_credit_note_type"    attrs="{    
-																	'invisible':    [('state', 'not in', ['credit_note'])],
-																	'required':     [('state', 'in', ['credit_note'])],
-																}"/>
-
-					<field name="x_block_flow"/>
-
-
-
-
-
-					<field name="x_credit_note_amount"    attrs="{    
-																	'invisible':    [('state', 'not in', ['credit_note'])],
-
-																	'required':     [('state', 'in', ['credit_note'])],
-																}"/>
-					
-
-
-
-
-
-					<field name="x_credit_note_owner"   attrs="{'invisible':[('state', 'not in', ['credit_note'])]}"/>
-					
-					<field name="x_credit_note_owner_amount"/>
-
-
-
-					<field name="vspace"/>
-					
 					<field name="x_partner_dni"
 															attrs="{
 																		'readonly':[('patient', '!=', False)], 
@@ -735,7 +650,6 @@
 
 					<field name="x_id_doc"   	attrs="{'required':[('x_type', 'not in', ['ticket_invoice', 'invoice'])],}"/>
 
-					<field name="x_dni"/>
 
 					<field name="vspace"/>
 
@@ -767,20 +681,8 @@
 
 					<field name="vspace"/>
 
-					<field name="treatment"         
-																	attrs="{     
-																				'readonly': [
-																								('x_admin_mode', '!=', True),
-																							], 
-																		}"  
+					<field name="treatment"/>
 
-						/>
-
-					<field name="vspace"/>
-
-					<field name="x_family"      readonly="1"    />
-					
-					<field name="x_product"     readonly="1"    />
 				</field>    
 
 
@@ -883,6 +785,18 @@
 <xpath expr="//page[1]" position="attributes">
 	<attribute name='string'>Líneas</attribute> 
 </xpath>
+
+
+
+<!-- Hide Other Information - Not Used -->
+<!--
+<xpath expr="//page[2]" position="attributes">
+	<attribute name='string'>Líneas</attribute> 
+-->
+<xpath expr="//page[2]" position="replace">
+</xpath>
+
+
 
 
 

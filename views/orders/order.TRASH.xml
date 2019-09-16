@@ -1,0 +1,12 @@
+<!--
+16 Sep 2019
+-->
+
+
+					<field name="treatment"         
+																	attrs="{     
+																				'readonly': [
+																								('x_admin_mode', '!=', True),
+																							], 
+																		}"
+						/>

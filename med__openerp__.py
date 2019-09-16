@@ -142,8 +142,11 @@
 		'views/report_sale/report_sale_product.xml',
 		'views/report_sale/item_counter.xml',
 
+
 		# Account - Payments
-		'views/payment_method/payment_method_line.xml',
+		#'views/payment_method/payment_method_line.xml',
+		'views/orders/payment_method/payment_method_line.xml',
+
 
 		# Account
 		'views/account/account_line.xml',
@@ -227,11 +230,17 @@
 		'views/orders/order_tree.xml',
 		'views/orders/order_actions.xml',
 		'views/orders/order_search.xml',
+
 		'views/orders/order_admin.xml',
+		'views/orders/order_account.xml',
+
 		'views/orders/order_report_nex.xml',                # Estado de Cuenta New
 
+
 		# Payment methods 
-		'views/payment_method/payment_methods.xml',
+		#'views/payment_method/payment_methods.xml',
+		'views/orders/payment_method/payment_methods.xml',
+
 
 		# Counters 
 		'views/counters/counter.xml',
@@ -276,9 +285,13 @@
 		'views/containers/container.xml',
 		'views/containers/corrector.xml',
 
+
 		# Partners
-		'views/partners/partner.xml',
-		'views/partners/partner_actions.xml',
+		#'views/partners/partner.xml',
+		#'views/partners/partner_actions.xml',
+		'views/patients/partners/partner.xml',
+		'views/patients/partners/partner_actions.xml',
+
 
 		# Products
 		'views/products/product_actions.xml',

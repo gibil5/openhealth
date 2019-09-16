@@ -220,16 +220,20 @@
 		string="Actualizar Citas"                               
 />
 
+
+
 <notebook>
 	<page   string="Citas 2019 - Oh">
 		<field name="appointment_ids"/>
 	</page>
 
+
+
 	<!-- Admin -->
 <!--
-	<page string="Admin"    groups="openhealth.roots"   >
--->
 	<page string="Admin - Oh">
+-->
+	<page string="Admin"    groups="openhealth.roots"   >
 		<group>
 			<field name="configurator"/>
 		</group>

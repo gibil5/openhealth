@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+<!-- FORM -->
+		<record model="ir.ui.view" id="order_account_form_view">
+			<field name="name">order.account.form</field>
+			<field name="model">sale.order</field>
+			<field name="priority" eval="2"/>
+
+			<field name="inherit_id" ref="sale.view_order_form"/>
+
+			<field name="arch" type="xml">
+
+
+				<notebook position="inside">
+
+					<page string="Contabilidad">
+
+						<group>
+
+							<field name="x_admin_mode"          attrs="{'invisible':[
+																							('state','not in',['sale', 'credit_note']),
+																				]}"
+										groups="openhealth.roots,openhealth.managers,openhealth.caja,openhealth.directors"
+								/>
+
+
+							<field name="vspace"/>
+
+							<field name="x_credit_note"         attrs="{'invisible':[('state', 'in', ['cancel', 'credit_note'])]}"/>
+
+
+							<field name="x_credit_note_type"    attrs="{    
+																			'invisible':    [('state', 'not in', ['credit_note'])],
+																			'required':     [('state', 'in', ['credit_note'])],
+																		}"/>
+
+							<field name="x_block_flow"/>
+
+
+
+							<field name="x_credit_note_amount"    attrs="{    
+																			'invisible':    [('state', 'not in', ['credit_note'])],
+
+																			'required':     [('state', 'in', ['credit_note'])],
+																		}"/>
+							
+
+							<field name="x_credit_note_owner"   attrs="{'invisible':[('state', 'not in', ['credit_note'])]}"/>
+							
+
+							<field name="x_credit_note_owner_amount"/>
+
+
+		
+							<field name="vspace"/>
+
+							<field name="pl_transfer_free"/>
+
+							<field name="vspace"/>
+
+							<field name="x_counter_value"       groups="openhealth.roots,openhealth.managers"   
+
+														attrs="{     
+																		'readonly': [
+																						('x_admin_mode', '!=', True), 
+																					], 
+																}"  
+								/>
+
+
+
+							<field name="x_electronic"/>
+				
+
+<!--
+							<field name="vspace"/>
+-->
+
+
+						</group>
+					</page>
+				</notebook>
+			</field>
+		</record>
+	</data>
+</openerp>

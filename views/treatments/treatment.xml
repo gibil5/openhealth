@@ -14,7 +14,6 @@
 					<header>
 
 
-
 <!-- Buttons - State Dependent -->
 						
 						<!-- Create Budget Consultation --> 
@@ -127,10 +126,15 @@
 							groups="openhealth.archivers"
 						/>
 
+<!--
+								statusbar_visible="appointment, invoice_consultation, consultation, service, budget_procedure, invoice_procedure, procedure, sessions, controls, done"
+-->
 						<!-- State -->
 						<field  name="state" 
 								widget="statusbar"
-								statusbar_visible="appointment, invoice_consultation, consultation, service, budget_procedure, invoice_procedure, procedure, sessions, controls, done"
+
+								statusbar_visible="empty, budget_consultation, invoice_consultation, consultation, service, budget_procedure, invoice_procedure, procedure, sessions, controls, done"
+
 						/>
 					</header>
 
@@ -140,39 +144,54 @@
 
 <!-- Sheet -->  
 					<sheet>
+
 						<div>                       
 							<!-- Persona --> 
 							<div class="oe_left"  style="width: 250px;">
 								<div class="oe_title" >
+
 									<h1 class="jx_title">Tratamiento</h1>   
+
+									<h2><field name="name" class="oe_inline"/></h2>
+
 								</div>      
 								<group></group>
 									<h2><field name="patient"/></h2>
 							</div>
-
+<!--
+									<h1><field name="name" class="oe_inline"/></h1>
+-->
 
 
 
 
 <!-- Buttons --> 
+<!--
 							<div class="oe_left" style="width: 400px;" name="buttons">
+							<div class="oe_right" name="buttons">
+-->
+							<div class="oe_left" style="width: 550px;" name="buttons">
 							
 
-								<!-- Budgets - Cons - IMPORTANT -->
+								<!-- Nr Budgets - Consultation -->
 								<button type="action" class="oe_stat_button" icon="fa-list"
+
 										attrs="{ 'invisible':[  ('nr_budgets_cons','=',0),  ]}"
+
 										name="%(order_form_tre_action)d"
+
 										context="{
 													'search_default_patient': patient,
 													'default_treatment': active_id,
 													'default_x_family': 'consultation', 
 												}"  
 										>
-									<field string="Presu - Con" name="nr_budgets_cons" widget="statinfo"/>
+									<field string="Presu Con" name="nr_budgets_cons" widget="statinfo"/>
 								</button>
 
 
-								<!-- Invoices - Con -->
+
+								<!-- Nr Sales - Consultation -->
 								<button type="action" class="oe_stat_button" icon="fa-list"
 										attrs="{ 'invisible':[  ('nr_invoices_cons','in',[ False, 0, ]), ]}"
 										name="%(order_form_tre_action)d"
@@ -182,8 +201,12 @@
 													'default_x_family': 'consultation', 
 												}"  
 										>
-									<field string="Venta - Con" name="nr_invoices_cons" widget="statinfo"/>
+
+									<field string="Venta Con" name="nr_invoices_cons" widget="statinfo"/>
+
 								</button>
+
+
 
 
 								<!-- Consultations -->
@@ -199,10 +222,13 @@
 								</button>
 
 
+
+
 <!--
 								<button type="action" class="oe_stat_button" icon="fa-list" invisible="0"
 -->
-								<!-- Services -->
+
+								<!-- Recommendations -->
 								<button type="action" class="oe_stat_button" icon="fa-list"
 									
 									name="%(service_list_action)d"
@@ -214,11 +240,12 @@
 									attrs="{ 'invisible':[  ('nr_services','=',0), ]}"
 									
 									>
-									<field string="Recomendacion" name="nr_services" widget="statinfo"/>
+									<field string="Recom" name="nr_services" widget="statinfo"/>
 								</button>
 
 
 								<!-- Nr of Services - product --> 
+
 								<button type="action" class="oe_stat_button" icon="fa-list"
 									name="%(service_product_list_action)d"
 									context="{                                  
@@ -329,6 +356,8 @@
 								</button>
 
 
+
+
 								<!-- Nr Budgets Pro - IMPORTANT -->
 								<button type="action" class="oe_stat_button" icon="fa-list"
 										name="%(order_form_tre_action)d"
@@ -339,7 +368,9 @@
 												}"  
 
 										attrs="{ 'invisible':[  ('nr_budgets_pro','=',0), ]}">
-									<field string="Pres. Creado" name="nr_budgets_pro" widget="statinfo"/>
+
+									<field string="Presu Pro" name="nr_budgets_pro" widget="statinfo"/>
+
 								</button>
 
 
@@ -353,7 +384,7 @@
 												}"
 										attrs="{ 'invisible':[  ('nr_invoices_pro','=',0), ]}"
 									>
-									<field string="Venta - Pro" name="nr_invoices_pro" widget="statinfo"/>
+									<field string="Venta Pro" name="nr_invoices_pro" widget="statinfo"/>
 								</button>
 
 
@@ -379,7 +410,7 @@
 									icon="fa-list"
 									attrs="{ 'invisible':[  ('nr_sessions','=',0), ]}"
 									>
-									<field string="Sesiones" name="nr_sessions" widget="statinfo"/>
+									<field string="Ses" name="nr_sessions" widget="statinfo"/>
 								</button>
 						
 
@@ -391,21 +422,21 @@
 											}"
 									attrs="{ 'invisible':[  ('nr_controls','=',0), ]}"
 									>
-									<field string="Controles" name="nr_controls" widget="statinfo"/>
+									<field string="Cont" name="nr_controls" widget="statinfo"/>
 								</button>
 							</div>
 						
 						
 
 <!-- Name --> 
+<!--
 							<div class="oe_right" >
 								<div class="oe_title" >
 									<label class="oe_edit_only" for="name" string="Tratamiento #"/>                                    
 									<h1><field name="name" class="oe_inline"/></h1>
 								</div>
-								<!-- Testing -->
-								<group  groups="openhealth.roots"></group>
 							</div>
+-->
 						</div>
 
 								   
@@ -413,10 +444,8 @@
 						<!-- Padding --> 
 						<group col="3">
 							<group>
-<!--                                
--->
-								<field name="x_test"   groups="openhealth.roots"/>
 
+								<field name="x_test"   groups="openhealth.roots"/>
 								<field name="patient_sex"/>
 								<field name="patient_age"/>
 								<field name="patient_city"/>
@@ -435,82 +464,13 @@
 								<field name="start_date"/>
 								<field name="vspace" />
 								<field name="treatment_closed"  invisible="0"/>
-							</group>
-						</group>
+								<field name="vspace" />
 
 
-
-<hr></hr>
-
-<!-- Manual --> 
-						<group  col="5" >
-
-							<!-- CONS --> 
-							<group>
 								<button 
 									type="object" 
-									class="oe_highlight"
-
-									attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
-									
-									name="create_consultation"
-									string="CONS"
-								/>
-							</group>
-
-							<!-- RECO --> 
-							<group>
-								<button 
-									type="object" 
-									class="oe_highlight"
-
-									attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
-									
-									name="create_service"
-									string="RECO"
-								/>
-							</group>
-
-							<!-- PRESU --> 
-							<group>
-								<button 
-									type="object" 
-									class="oe_highlight"
-
-									attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
-									
-									name="create_order_pro"
-									string="PRESU" 
-								/>
-							</group>
-
-							<!-- PROC --> 
-							<group>
-								<button 
-									type="object" 
-									class="oe_highlight"
-
-									attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
-									
-									name="create_procedure_man"
-									string="PROC" 
-								/>
-							</group>
-
-
-							<!-- Manual -->
-							<group>
-<!--
-									class="oe_highlight"
--->
-								<button 
-									type="object" 
-									
-
 									name="toggle_add_procedures" 
-									
 									attrs="{ 'invisible':[  ('add_procedures','!=',False),  ]}"
-
 									string="Manual"                                     
 								/>
 
@@ -518,25 +478,21 @@
 									type="object" 
 									class="oe_highlight"
 									name="toggle_add_procedures" 
-
 									attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
-									
 									string="Manual"                                     
 								/>
 
 								<field name="add_procedures"    invisible="1"/>
 							</group>
-
 						</group>
+
+
+
+
+
+<!-- Test -->
 <hr></hr>
 
-
-
-
-						<!-- Test -->
-<!--
-						<group 	 groups="openhealth.roots">
--->
 						<group 	 attrs="{ 'invisible':[  ('x_test','==',False),  ]}">
 							<group>
 
@@ -548,18 +504,41 @@
 								<field name="test_pricelist_2018"/>
 
 								<!-- Reports -->
+<!--
 								<field name="report_management"/>
 								<field name="report_marketing"/>
 								<field name="report_account"/>
 								<field name="report_contasis"/>
 								<field name="report_product"/>
+-->
+										<!-- Test Integration -->
+										<button 
+											type="object" 
+											class="oe_highlight"
+											help='Test Integration'
+											name="test_integration" 
+											
+											string="Test Integration"
+										/>
+										<!-- Reset -->
+										<button 
+											type="object" 
+											class="oe_highlight"
+											groups="openhealth.roots"
+											help='Tests: Reset'
+											name="test_reset"
+
+											string="Reset"
+										/>
+
 							</group>
 
 							<group>
 
-
-									<group>
 										<!-- Test Integration -->
+										<!-- Reset -->
+<!--
+									<group>
 										<button 
 											type="object" 
 											class="oe_highlight"
@@ -570,8 +549,8 @@
 										/>
 
 									</group>
+
 									<group>
-										<!-- Reset -->
 										<button 
 											type="object" 
 											class="oe_highlight"
@@ -583,8 +562,116 @@
 										/>
 								
 									</group>
-									<group>
+-->
 
+									<!-- Test Cycle -->
+									<group col="3">
+
+										<!-- Create Budget Consultation -->
+										<button 
+											type="object" 
+											class="oe_highlight"
+
+											name="test_create_budget_consultation" 
+											
+											string="Budget Con"
+										/>
+
+										<!-- Create Sale Consultation -->
+										<button 
+											type="object" 
+											class="oe_highlight"
+
+											name="test_create_sale_consultation" 
+											
+											string="Sale Con"
+										/>
+
+
+
+										<!-- Create Consultation -->
+										<button 
+											type="object" 
+											class="oe_highlight"
+
+											name="test_create_consultation" 
+											
+											string="Consultation"
+										/>
+
+
+										<!-- Create Recommendations -->
+										<button 
+											type="object" 
+											class="oe_highlight"
+
+											name="test_create_recommendations" 
+											
+											string="Recommendations"
+										/>
+
+
+
+										<!-- Create Budget Procedure -->
+										<button 
+											type="object" 
+											class="oe_highlight"
+
+											name="test_create_budget_procedure" 
+											
+											string="Budget Pro"
+										/>
+
+
+										<!-- Create Sale procedure -->
+										<button 
+											type="object" 
+											class="oe_highlight"
+
+											name="test_create_sale_procedure" 
+											
+											string="Sale Pro"
+										/>
+
+
+
+
+										<!-- Create Procedure -->
+										<button 
+											type="object" 
+											class="oe_highlight"
+
+											name="test_create_procedure" 
+											
+											string="Procedure"
+										/>
+
+										<!-- Create Sessions -->
+										<button 
+											type="object" 
+											class="oe_highlight"
+
+											name="test_create_sessions"
+											
+											string="Sessions"
+										/>
+
+										<!-- Create Controls -->
+										<button 
+											type="object" 
+											class="oe_highlight"
+
+											name="test_create_controls" 
+											
+											string="Controls"
+										/>
+
+									</group>
+
+
+									<!-- Reports -->
+<!--
+									<group>
 
 										<button 
 												type="object"
@@ -592,7 +679,6 @@
 												name="test_report_management"
 												string="MGT"
 										/>
-
 
 										<button 
 												type="object"
@@ -608,14 +694,12 @@
 												string="TXT"
 										/>
 
-
 										<button 
 												type="object"
 												class="oe_highlight"
 												name="test_report_contasis"
 												string="ACC"
 										/>
-
 
 										<button 
 												type="object"
@@ -624,9 +708,86 @@
 												string="PROD"
 										/>
 									</group>
+-->
 							</group>
 						</group>
 
+
+
+<!-- Manual --> 
+<!--
+<hr></hr>
+-->
+						<group  col="5" >
+
+							<!-- CONS --> 
+							<group>
+								<button 
+									type="object" 
+									class="oe_highlight"
+									attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
+									name="create_consultation"
+									string="CONS"
+								/>
+							</group>
+
+							<!-- RECO --> 
+							<group>
+								<button 
+									type="object" 
+									class="oe_highlight"
+									attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
+									name="create_service"
+									string="RECO"
+								/>
+							</group>
+
+							<!-- PRESU --> 
+							<group>
+								<button 
+									type="object" 
+									class="oe_highlight"
+									attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
+									name="create_order_pro"
+									string="PRESU" 
+								/>
+							</group>
+
+							<!-- PROC --> 
+							<group>
+								<button 
+									type="object" 
+									class="oe_highlight"
+									attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
+									name="create_procedure_man"
+									string="PROC" 
+								/>
+							</group>
+
+
+							<!-- Manual -->
+							<group>
+<!--								
+								<button 
+									type="object" 
+									name="toggle_add_procedures" 
+									attrs="{ 'invisible':[  ('add_procedures','!=',False),  ]}"
+									string="Manual"                                     
+								/>
+
+								<button 
+									type="object" 
+									class="oe_highlight"
+									name="toggle_add_procedures" 
+									attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
+									string="Manual"                                     
+								/>
+
+								<field name="add_procedures"    invisible="1"/>
+-->
+							</group>
+
+						</group>
 
 
 

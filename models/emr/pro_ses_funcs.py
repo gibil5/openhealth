@@ -37,7 +37,11 @@ def create_sessions(self, nr_sessions, nr_ses_created):
 
 	# Appointment 
 	duration = 0.5
-	machine = self.machine
+
+
+	#machine = self.machine  	# Dep !
+
+
 	x_type = 'session'
 	subtype = self.product.x_treatment 
 

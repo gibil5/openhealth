@@ -31,7 +31,6 @@
 
 									<field name="vspace"/>
 
-									<field name="x_family"      readonly="1"    />
 									
 									<field name="x_product"     readonly="1"    />
 

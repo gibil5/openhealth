@@ -1,5 +1,216 @@
+# 17 Sep 2019
+#
+# All Testing is now done by Pricelist
+
+
+from . import test_foo
+from . import test_treatment
+
+
+# ----------------------------------------------------------- Test Flags --------------------------
+
+	# Clear All
+	@api.multi
+	def clear_all(self):
+		test_treatment.clear_all(self)
+
+	# Set All
+	@api.multi
+	def set_all(self):
+		test_treatment.set_all(self)
+
+
+
+# ----------------------------------------------------------- Test Libs --------------------
+	@api.multi
+	def test_libs(self):
+		"""
+		Test Libraries
+		"""
+
+		print()
+		print('Test Libs')
+
+
+		# Product (Generated Names)
+		lib = test_foo.LibGen()
+		lib.test()
+		print(lib)
+
+
+		# Export TXT
+		#self.electronic_order.unlink()
+		#for order in self.order_ids:
+		#	electronic_order = cre.create_order_electronic(self, order)
+		#	lib = test_foo.LibExp(electronic_order)
+		#	lib.test()
+		#	print(lib)
+
+
+		# Check Patient
+		lib = test_foo.LibChkPatient(self.patient)
+		lib.test()
+		print(lib)
+
+
+		# Products
+		lib = test_foo.Products(self)
+		lib.test()
+		print(lib)
+
+
+		# Reports
+		lib = test_foo.Reports(self)
+		lib.test()
+		print(lib)
+
+
+		# Patients
+		lib = test_foo.Patients(self)
+		lib.test()
+		print(lib)
+
+
+		# Payments
+		lib = test_foo.Payments(self)
+		lib.test()
+		print(lib)
+
+	# test_libs
+
+# ----------------------------------------------------------- Test - Computes ---------------------
+	def test_computes(self):
+		print()
+		print('Treatment - Computes')
+		#t0 = timer()
+		print(self.name)
+		print(self.state)
+		print(self.progress)
+		print(self.vip)
+		print(self.pricelist_id)
+		print(self.patient_sex)
+		print(self.patient_age)
+		print(self.patient_city)
+		print(self.x_vip_inprog)
+		print(self.consultation_progress)
+		#print(self.nr_appointments)
+		print(self.nr_consultations)
+		print(self.nr_budgets_cons)
+		print(self.nr_invoices_cons)
+		print(self.nr_services)
+		print(self.nr_services_co2)
+		print(self.nr_services_excilite)
+		print(self.nr_services_ipl)
+		print(self.nr_services_ndyag)
+		print(self.nr_services_quick)
+		print(self.nr_services_medical)
+		print(self.nr_services_cosmetology)
+		print(self.nr_services_vip)
+		print(self.nr_services_product)
+		print(self.nr_controls)
+		print(self.nr_sessions)
+		print(self.nr_procedures)
+		#t1 = timer()
+		#self.delta_1 = t1 - t0
+		#print self.delta_1
+	# test_computes
+
+
+
+# ----------------------------------------------------------- Test Create Recos --------------------------------
+	# Test
+	def test_create_recos(self):
+		#print
+		#print 'Treatment - Test'
+		ret = self.create_service_product()
+		ret = self.create_service_co2()
+		ret = self.create_service_excilite()
+		ret = self.create_service_ipl()
+		ret = self.create_service_ndyag()
+		ret = self.create_service_quick()
+		ret = self.create_service_medical()
+		ret = self.create_service_cosmetology()
+	# test_create_recos
+
+
+
+# ----------------------------------------------------------- Test Integration --------------------
+	@api.multi
+	def test_integration(self):
+		"""
+		Integration Test of the Treatment Class.
+		"""
+		print()
+		print('Test Integration')
+		if self.patient.x_test:
+
+			# Reset
+			test_treatment.reset_treatment(self)
+
+			# Test Integration
+			test_treatment.test_integration_treatment(self)
+
+
+# ----------------------------------------------------------- Test Reset --------------------------
+	@api.multi
+	def test_reset(self):
+		print()
+		print('Test Case - Reset')
+		if self.patient.x_test:
+			test_treatment.reset_treatment(self)
+
+
+# ----------------------------------------------------------- Test --------------------------------
+	# Test
+	@api.multi
+	def test(self):
+		print()
+		print('Treatment - Test')		
+		if self.patient.x_test:
+			self.test_reset()
+			self.test_integration()
+			self.test_create_recos()
+			self.test_computes()
+			#self.test_libs()
+
+
+
+
+
+
+
+
+# 17 Sep 2019
+#
+# Update ?
+
+# ----------------------------------------------------------- Update ------------------------------
+	# Flag
+	flag = fields.Boolean(
+			'Flag',
+		)
+
+	# Update
+	@api.multi
+	def update(self):
+		#print
+		#print 'Update'
+		self.flag = not self.flag
+	# update
+
+
+
+
+
+
+
+
+
+
 # 6 Sep 2019
+#
 # Duplication !
+
 
 	x_test_scenario = fields.Selection(
 			[

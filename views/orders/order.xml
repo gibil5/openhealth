@@ -697,6 +697,9 @@
 
 					<field name="treatment"/>
 
+					<field name="pl_family"      readonly="1"/>
+
+					<field name="x_family"      readonly="1"/>
 				</field>    
 
 

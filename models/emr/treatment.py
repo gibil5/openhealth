@@ -3,7 +3,7 @@
  		*** Treatment
 
  		Created: 			26 Aug 2016
- 		Last up: 	 		21 Jan 2019
+ 		Last up: 	 		17 Sep 2019
 """
 from __future__ import print_function
 import datetime
@@ -12,18 +12,146 @@ from . import time_funcs
 from . import treatment_vars
 from openerp.addons.openhealth.models.libs import creates as cre
 from openerp.addons.openhealth.models.libs import lib, user
-from . import test_foo
-from . import test_treatment
 
 class Treatment(models.Model):
 
 	_inherit = 'openhealth.process'
-
 	_name = 'openhealth.treatment'
-
 	_order = 'write_date desc'
-
 	_description = 'Treatment'
+
+
+
+
+
+# ----------------------------------------------------------- Number ofs --------------------------
+
+	# Budgets - Consultations 			# DEP ?
+	nr_budgets_cons = fields.Integer(
+			string="Presupuestos Consultas",
+
+			compute="_compute_nr_budgets_cons",
+	)
+	@api.multi
+	def _compute_nr_budgets_cons(self):
+		for record in self:
+			record.nr_budgets_cons = self.env['sale.order'].search_count([
+																			('treatment', '=', record.id),
+																			('state', '=', 'draft'),
+
+																			#('x_family', '=', 'consultation'),
+																			('pl_family', 'like', 'CONSULTA'),
+																	])
+
+	# Invoices - Consultations
+	nr_invoices_cons = fields.Integer(
+			string="Facturas Consultas",
+
+			compute="_compute_nr_invoices_cons",
+	)
+	@api.multi
+	def _compute_nr_invoices_cons(self):
+		for record in self:
+			record.nr_invoices_cons = self.env['sale.order'].search_count([
+																			('treatment', '=', record.id),
+																			('state', '=', 'sale'),
+
+																			#('x_family', '=', 'consultation'),
+																			('pl_family', 'like', 'CONSULTA'),
+																	])
+
+
+
+	# Consultations
+	nr_consultations = fields.Integer(
+			string="Nr Consultas",
+
+			compute="_compute_nr_consultations",
+	)
+	#@api.multi
+	@api.depends('consultation_ids')
+	def _compute_nr_consultations(self):
+		for record in self:
+			ctr = 0
+			for c in record.consultation_ids:
+				ctr = ctr + 1
+			record.nr_consultations = ctr
+
+
+
+
+	# Budgets - Proc   					# DEP ?
+	nr_budgets_pro = fields.Integer(
+			string="Presupuestos - Pro",
+
+			compute="_compute_nr_budgets_pro",
+	)
+	@api.multi
+	def _compute_nr_budgets_pro(self):
+		for record in self:
+			record.nr_budgets_pro = self.env['sale.order'].search_count([
+																		('treatment', '=', record.id),
+																		('x_family', '=', 'procedure'),
+																		('state', '=', 'draft'),
+																	])
+
+	# Invoices - Proc
+	nr_invoices_pro = fields.Integer(
+			string="Facturas",
+
+			compute="_compute_nr_invoices_pro",
+	)
+	@api.multi
+	def _compute_nr_invoices_pro(self):
+		for record in self:
+			record.nr_invoices_pro = self.env['sale.order'].search_count([
+																			('treatment', '=', record.id),
+																			('x_family', '=', 'procedure'),
+																			('state', '=', 'sale'),
+																	])
+
+	# Procedures
+	nr_procedures = fields.Integer(
+			string="Procedimientos",
+
+			compute="_compute_nr_procedures",
+	)
+	@api.multi
+	def _compute_nr_procedures(self):
+		for record in self:
+			record.nr_procedures = self.env['openhealth.procedure'].search_count([
+																					('treatment', '=', record.id),
+																	])
+
+
+	# Sessions
+	nr_sessions = fields.Integer(
+			string="Sesiones",
+
+			compute="_compute_nr_sessions",
+	)
+	@api.multi
+	def _compute_nr_sessions(self):
+		for record in self:
+			record.nr_sessions = self.env['openhealth.session.med'].search_count([
+																					('treatment', '=', record.id),
+																				])
+
+	# Controls
+	nr_controls = fields.Integer(
+			string="Controles",
+
+			compute="_compute_nr_controls",
+	)
+	@api.multi
+	def _compute_nr_controls(self):
+		for record in self:
+			record.nr_controls = 0
+			record.nr_controls = self.env['openhealth.control'].search_count([
+																	('treatment', '=', record.id),
+																	])
+																	#order='appointment_date desc', limit=1)
+
 
 
 
@@ -219,21 +347,6 @@ class Treatment(models.Model):
 	delta_2 = fields.Float(
 			'Delta 2',
 		)
-
-
-# ----------------------------------------------------------- Test Flags --------------------------
-
-	# Clear All
-	@api.multi
-	def clear_all(self):
-		test_treatment.clear_all(self)
-
-	# Set All
-	@api.multi
-	def set_all(self):
-		test_treatment.set_all(self)
-
-
 
 
 # ----------------------------------------------------------- Vip  --------------------------------
@@ -815,143 +928,6 @@ class Treatment(models.Model):
 
 
 
-
-# ----------------------------------------------------------- Number ofs --------------------------
-
-
-	# Budgets - Consultations 			# DEP ?
-	nr_budgets_cons = fields.Integer(
-			string="Presupuestos Consultas",
-
-			compute="_compute_nr_budgets_cons",
-	)
-	@api.multi
-	def _compute_nr_budgets_cons(self):
-		for record in self:
-			record.nr_budgets_cons = self.env['sale.order'].search_count([
-																	('treatment', '=', record.id),
-																	('x_family', '=', 'consultation'),
-																	('state', '=', 'draft'),
-																	])
-
-	# Invoices - Consultations
-	nr_invoices_cons = fields.Integer(
-			string="Facturas Consultas",
-
-			compute="_compute_nr_invoices_cons",
-	)
-	@api.multi
-	def _compute_nr_invoices_cons(self):
-		for record in self:
-			record.nr_invoices_cons = self.env['sale.order'].search_count([
-																			('treatment', '=', record.id),
-																			('x_family', '=', 'consultation'),
-																			('state', '=', 'sale'),
-																	])
-
-	# Consultations
-	nr_consultations = fields.Integer(
-			string="Nr Consultas",
-
-			compute="_compute_nr_consultations",
-	)
-	#@api.multi
-	@api.depends('consultation_ids')
-	def _compute_nr_consultations(self):
-		for record in self:
-			ctr = 0
-			for c in record.consultation_ids:
-				ctr = ctr + 1
-			record.nr_consultations = ctr
-
-
-
-
-
-
-
-	# Budgets - Proc   					# DEP ?
-	nr_budgets_pro = fields.Integer(
-			string="Presupuestos - Pro",
-
-			compute="_compute_nr_budgets_pro",
-	)
-	@api.multi
-	def _compute_nr_budgets_pro(self):
-		for record in self:
-			record.nr_budgets_pro = self.env['sale.order'].search_count([
-																		('treatment', '=', record.id),
-																		('x_family', '=', 'procedure'),
-																		('state', '=', 'draft'),
-																	])
-
-	# Invoices - Proc
-	nr_invoices_pro = fields.Integer(
-			string="Facturas",
-
-			compute="_compute_nr_invoices_pro",
-	)
-	@api.multi
-	def _compute_nr_invoices_pro(self):
-		for record in self:
-			record.nr_invoices_pro = self.env['sale.order'].search_count([
-																			('treatment', '=', record.id),
-																			('x_family', '=', 'procedure'),
-																			('state', '=', 'sale'),
-																	])
-
-	# Procedures
-	nr_procedures = fields.Integer(
-			string="Procedimientos",
-
-			compute="_compute_nr_procedures",
-	)
-	@api.multi
-	def _compute_nr_procedures(self):
-		for record in self:
-			record.nr_procedures = self.env['openhealth.procedure'].search_count([
-																					('treatment', '=', record.id),
-																	])
-
-
-	# Sessions
-	nr_sessions = fields.Integer(
-			string="Sesiones",
-
-			compute="_compute_nr_sessions",
-	)
-	@api.multi
-	def _compute_nr_sessions(self):
-		for record in self:
-			record.nr_sessions = self.env['openhealth.session.med'].search_count([
-																					('treatment', '=', record.id),
-																				])
-
-	# Controls
-	nr_controls = fields.Integer(
-			string="Controles",
-
-			compute="_compute_nr_controls",
-	)
-	@api.multi
-	def _compute_nr_controls(self):
-		for record in self:
-			record.nr_controls = 0
-			record.nr_controls = self.env['openhealth.control'].search_count([
-																	('treatment', '=', record.id),
-																	])
-																	#order='appointment_date desc', limit=1)
-
-
-
-
-
-
-
-
-
-
-
 # ----------------------------------------------------------- Number ofs - Services ---------------
 	# Number of Services
 	nr_services = fields.Integer(
@@ -1431,169 +1407,4 @@ class Treatment(models.Model):
 	# create_service
 
 
-# ----------------------------------------------------------- Update ------------------------------
-	# Flag
-	flag = fields.Boolean(
-			'Flag',
-		)
 
-	# Update
-	@api.multi
-	def update(self):
-		#print
-		#print 'Update'
-		self.flag = not self.flag
-	# update
-
-
-# ----------------------------------------------------------- Test Libs --------------------
-	@api.multi
-	def test_libs(self):
-		"""
-		Test Libraries
-		"""
-
-		print()
-		print('Test Libs')
-
-
-		# Product (Generated Names)
-		lib = test_foo.LibGen()
-		lib.test()
-		print(lib)
-
-
-		# Export TXT
-		#self.electronic_order.unlink()
-		#for order in self.order_ids:
-		#	electronic_order = cre.create_order_electronic(self, order)
-		#	lib = test_foo.LibExp(electronic_order)
-		#	lib.test()
-		#	print(lib)
-
-
-		# Check Patient
-		lib = test_foo.LibChkPatient(self.patient)
-		lib.test()
-		print(lib)
-
-
-		# Products
-		lib = test_foo.Products(self)
-		lib.test()
-		print(lib)
-
-
-		# Reports
-		lib = test_foo.Reports(self)
-		lib.test()
-		print(lib)
-
-
-		# Patients
-		lib = test_foo.Patients(self)
-		lib.test()
-		print(lib)
-
-
-		# Payments
-		lib = test_foo.Payments(self)
-		lib.test()
-		print(lib)
-
-	# test_libs
-
-# ----------------------------------------------------------- Test - Computes ---------------------
-	def test_computes(self):
-		print()
-		print('Treatment - Computes')
-		#t0 = timer()
-		print(self.name)
-		print(self.state)
-		print(self.progress)
-		print(self.vip)
-		print(self.pricelist_id)
-		print(self.patient_sex)
-		print(self.patient_age)
-		print(self.patient_city)
-		print(self.x_vip_inprog)
-		print(self.consultation_progress)
-		#print(self.nr_appointments)
-		print(self.nr_consultations)
-		print(self.nr_budgets_cons)
-		print(self.nr_invoices_cons)
-		print(self.nr_services)
-		print(self.nr_services_co2)
-		print(self.nr_services_excilite)
-		print(self.nr_services_ipl)
-		print(self.nr_services_ndyag)
-		print(self.nr_services_quick)
-		print(self.nr_services_medical)
-		print(self.nr_services_cosmetology)
-		print(self.nr_services_vip)
-		print(self.nr_services_product)
-		print(self.nr_controls)
-		print(self.nr_sessions)
-		print(self.nr_procedures)
-		#t1 = timer()
-		#self.delta_1 = t1 - t0
-		#print self.delta_1
-	# test_computes
-
-
-
-# ----------------------------------------------------------- Test Create Recos --------------------------------
-	# Test
-	def test_create_recos(self):
-		#print
-		#print 'Treatment - Test'
-		ret = self.create_service_product()
-		ret = self.create_service_co2()
-		ret = self.create_service_excilite()
-		ret = self.create_service_ipl()
-		ret = self.create_service_ndyag()
-		ret = self.create_service_quick()
-		ret = self.create_service_medical()
-		ret = self.create_service_cosmetology()
-	# test_create_recos
-
-
-
-# ----------------------------------------------------------- Test Integration --------------------
-	@api.multi
-	def test_integration(self):
-		"""
-		Integration Test of the Treatment Class.
-		"""
-		print()
-		print('Test Integration')
-		if self.patient.x_test:
-
-			# Reset
-			test_treatment.reset_treatment(self)
-
-			# Test Integration
-			test_treatment.test_integration_treatment(self)
-
-
-# ----------------------------------------------------------- Test Reset --------------------------
-	@api.multi
-	def test_reset(self):
-		print()
-		print('Test Case - Reset')
-		if self.patient.x_test:
-			test_treatment.reset_treatment(self)
-
-
-# ----------------------------------------------------------- Test --------------------------------
-	# Test
-	@api.multi
-	def test(self):
-		print()
-		print('Treatment - Test')		
-		if self.patient.x_test:
-			self.test_reset()
-			self.test_integration()
-			self.test_create_recos()
-			self.test_computes()
-			#self.test_libs()

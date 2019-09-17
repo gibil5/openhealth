@@ -35,6 +35,25 @@ class sale_order(models.Model):
 
 
 
+# ----------------------------------------------------------- Descriptors -------------------------------
+
+	# Family
+	x_family = fields.Selection(
+			string="Familia",
+			selection=[
+							('product', 'Producto'),
+							('consultation', 'Consulta'),
+							('procedure', 'Procedimiento'),
+							('cosmetology', 'Cosmiatría'),
+			],
+		)
+
+
+	# Product
+	x_product = fields.Char(
+			string="Producto",
+		)
+
 # ----------------------------------------------------------- Price List - Computes ----------------------
 
 	# Price List
@@ -787,22 +806,6 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Descriptors -------------------------------
-	# Product
-	x_product = fields.Char(
-			string="Producto",
-		)
-
-	# Family
-	x_family = fields.Selection(
-			string="Familia",
-			selection=[
-							('product', 'Producto'),
-							('consultation', 'Consulta'),
-							('procedure', 'Procedimiento'),
-							('cosmetology', 'Cosmiatría'),
-			],
-		)
 
 
 # ----------------------------------------------------------- Credit Note -------------------------

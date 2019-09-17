@@ -26,6 +26,37 @@ class Patient(models.Model):
 	_description = 'Patient'
 
 
+# ----------------------------------------------------------- Treatment Count ---------------------
+
+	# Treatment count
+	x_treatment_count = fields.Integer(
+			string="Nr TRATAMIENTOS",
+			default=0,
+
+			compute='_compute_x_treatment_count',
+		)
+
+	@api.multi
+	def _compute_x_treatment_count(self):
+		for record in self:
+			count = 0
+			#for tr in record.treatment_ids:
+			for _ in record.treatment_ids:
+				count = count + 1
+			record.x_treatment_count = count
+
+
+
+# ----------------------------------------------------------- Relational --------------------------
+
+	# Treatments
+	treatment_ids = fields.One2many(
+			'openhealth.treatment',
+			'patient',
+			string="Tratamientos"
+		)
+
+
 
 # ----------------------------------------------------------- Caregive ---------------------------
 	# Caregiver
@@ -690,14 +721,6 @@ class Patient(models.Model):
 
 
 
-# ----------------------------------------------------------- Relational --------------------------
-
-	# Treatments
-	treatment_ids = fields.One2many(
-			'openhealth.treatment',
-			'patient',
-			string="Tratamientos"
-		)
 
 
 # ----------------------------------------------------------- Re-definitions ----------------------
@@ -853,32 +876,6 @@ class Patient(models.Model):
 			string="Fecha de consentimiento informado",
 			default=fields.Date.today,
 		)
-
-
-# ----------------------------------------------------------- Treatment Count ---------------------
-
-	# Treatment count
-	x_treatment_count = fields.Integer(
-			string="Nr TRATAMIENTOS",
-			default=0,
-
-			compute='_compute_x_treatment_count',
-		)
-
-	@api.multi
-	def _compute_x_treatment_count(self):
-		for record in self:
-			count = 0
-			#for tr in record.treatment_ids:
-			for _ in record.treatment_ids:
-				count = count + 1
-			record.x_treatment_count = count
-
-
-
-
-
-
 
 
 # ----------------------------------------------------------- On Changes --------------------------

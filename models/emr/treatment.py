@@ -57,8 +57,10 @@ class Treatment(models.Model):
 																			('state', '=', 'sale'),
 
 																			#('x_family', '=', 'consultation'),
-																			('pl_family', 'like', 'CONSULTA'),
+																			#('pl_family', 'like', 'CONSULTA'),
+																			('pl_family', '=', 'CONSULTA,'),
 																	])
+
 
 
 

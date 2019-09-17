@@ -38,9 +38,6 @@
 																			'required':     [('state', 'in', ['credit_note'])],
 																		}"/>
 
-							<field name="x_block_flow"/>
-
-
 
 							<field name="x_credit_note_amount"    attrs="{    
 																			'invisible':    [('state', 'not in', ['credit_note'])],
@@ -57,6 +54,8 @@
 
 		
 							<field name="vspace"/>
+
+							<field name="x_block_flow"/>
 
 							<field name="pl_transfer_free"/>
 

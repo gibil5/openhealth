@@ -339,6 +339,7 @@
 		'views/patients/patient_personal.xml',
 		'views/patients/patient_control_docs.xml',
 		'views/patients/patient_legacy.xml',
+		'views/patients/patient_treatments.xml',
 
 
 

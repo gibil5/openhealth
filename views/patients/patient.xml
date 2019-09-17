@@ -111,7 +111,7 @@
 
 
 
-					<!-- Sheet -->  
+<!-- Sheet -->
 					<sheet>
 
 						<!-- Persona --> 
@@ -135,16 +135,20 @@
 						<!-- Active Buttons -->
 						<div class="oe_left" style="width: 100px;">
 
-							<!-- Treatments --> 
+
+							<!-- Nr Treatments --> 
 							<button type="action" class="oe_stat_button" 
 								name="%(treatment_form_action)d"    
 								context="{
 											'search_default_patient': active_id,    
 										}"                                          
 								icon="fa-list">
+
 								<field string="Tratamientos" name="x_treatment_count" widget="statinfo"/>
+
 							</button>                       
 						</div>
+
 
 						<!-- Number Medical history -->
 						<div class="oe_right" >
@@ -194,9 +198,6 @@
 								<field name="x_legacy"                  groups="openhealth.roots"/>
 
 								<field name="x_data_complete"       groups="openhealth.roots"/>
-
-								<field name="x_treatment_count"         groups="openhealth.roots"/>
-
 
 								<field name="property_product_pricelist"    required="1"/>
 

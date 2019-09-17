@@ -255,6 +255,20 @@
 
 
 
+								<!-- Reset --> 
+								<button 
+										type="object" 
+
+										class="oe_highlight"
+
+										name="reset"
+
+										groups="openhealth.roots"
+
+										string="Reset"
+								/>
+
+
 
 
 					<!-- Update CN -->
@@ -719,16 +733,6 @@
 										groups="openhealth.roots"
 										groups="openhealth.roots,openhealth.caja"
 -->
-								<!-- Reset --> 
-								<button 
-										type="object" 
-										class="oe_highlight"
-										name="reset"
-
-										groups="openhealth.roots"
-
-										string="Reset"
-								/>
 
 <!--
 											help="Importante: Esta operación es IRREVERSIBLE !"

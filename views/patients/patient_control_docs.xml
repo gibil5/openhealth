@@ -16,7 +16,9 @@
         <record model="ir.ui.view" id="patient_controldocs_form_view">
             <field name="name">Patient controldocs</field>
             <field name="model">oeh.medical.patient</field>
-            <field name="priority" eval="11"/>
+
+            <field name="priority" eval="3"/>
+
             <field name="inherit_id" ref="oeh_medical_patient_view"/>
             <field name="arch" type="xml">
                 <notebook position="inside">

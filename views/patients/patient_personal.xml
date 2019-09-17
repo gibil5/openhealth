@@ -9,7 +9,9 @@
 		<record model="ir.ui.view" id="openhealth.patient_personal_form_view">
 			<field name="name">Patient personal information</field>
 			<field name="model">oeh.medical.patient</field>
+
 			<field name="priority" eval="1"/>
+
 			<field name="inherit_id" ref="openhealth.oeh_medical_patient_view"/>
 			<field name="arch" type="xml">
 

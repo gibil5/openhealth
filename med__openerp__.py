@@ -8,7 +8,7 @@
 
 	'description': """
 
-		16 Sep 2019
+		17 Sep 2019
 
 		Contains:
 			- All External Dependencies,
@@ -338,6 +338,7 @@
 		# Patients - 2 
 		'views/patients/patient_personal.xml',
 		'views/patients/patient_control_docs.xml',
+		'views/patients/patient_legacy.xml',
 
 
 

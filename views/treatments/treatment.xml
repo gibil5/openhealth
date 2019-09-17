@@ -244,6 +244,8 @@
 								</button>
 
 
+
+<!-- Dep - Begin -->
 								<!-- Nr of Services - product --> 
 
 								<button type="action" class="oe_stat_button" icon="fa-list"
@@ -354,6 +356,9 @@
 									>
 									<field string="Reco Cosmia" name="nr_services_cosmetology" widget="statinfo"/>
 								</button>
+<!-- Dep - End -->
+
+
 
 
 
@@ -410,7 +415,7 @@
 									icon="fa-list"
 									attrs="{ 'invisible':[  ('nr_sessions','=',0), ]}"
 									>
-									<field string="Ses" name="nr_sessions" widget="statinfo"/>
+									<field string="Sesion" name="nr_sessions" widget="statinfo"/>
 								</button>
 						
 
@@ -422,7 +427,7 @@
 											}"
 									attrs="{ 'invisible':[  ('nr_controls','=',0), ]}"
 									>
-									<field string="Cont" name="nr_controls" widget="statinfo"/>
+									<field string="Controles" name="nr_controls" widget="statinfo"/>
 								</button>
 							</div>
 						

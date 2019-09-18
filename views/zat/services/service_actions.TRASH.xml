@@ -1,6 +1,7 @@
-<?xml version="1.0"?>
-<openerp>
-    <data>
+<!--
+18 Sep 2019
+-->
+
 
 
 
@@ -168,7 +169,3 @@
             <field name="context">{}
             </field>
         </record>
-
-
-    </data>
-</openerp>

@@ -221,8 +221,8 @@
 
 # ----------------------------------------------------------- Views - Actions ------------------------------------------------------
 
-		'views/services/service_actions.xml',
-		'views/services/service_search.xml',
+		# Service
+		#'views/services/service_search.xml',  	# Dep
 
 
 # ----------------------------------------------------------- Views - First Level ------------------------------------------------------
@@ -264,8 +264,10 @@
 		# Images 
 		'views/images/image_view.xml',
 
-		# Services
-		'views/services/service.xml',
+
+		# Services - Dep ? 
+		#'views/services/service.xml',
+
 
 		# Procedures
 		'views/procedures/procedure.xml',
@@ -275,6 +277,9 @@
 
 
 		# Treatments 
+		#'views/services/service_actions.xml',  	# Just a dummy
+		'views/treatments/service_actions.xml',  	# Just a dummy
+
 		'views/treatments/treatment.xml',
 		'views/treatments/treatment_actions.xml',
 
@@ -321,16 +326,15 @@
 		'views/sessions/session_config_simple_2.xml',
 
 
-		# Services - 2  
-		'views/services/service_product.xml',
-
-		'views/services/service_co2.xml',
-		'views/services/service_excilite.xml',
-		'views/services/service_ipl.xml',
-		'views/services/service_ndyag.xml',
-		'views/services/service_quick.xml',     
-		'views/services/service_medical.xml',
-		'views/services/service_cosmetology.xml',
+		# Services - 2 - Dep !
+		#'views/services/service_product.xml',
+		#'views/services/service_co2.xml',
+		#'views/services/service_excilite.xml',
+		#'views/services/service_ipl.xml',
+		#'views/services/service_ndyag.xml',
+		#'views/services/service_quick.xml',     
+		#'views/services/service_medical.xml',
+		#'views/services/service_cosmetology.xml',
 
 
 		# Consultation - 2

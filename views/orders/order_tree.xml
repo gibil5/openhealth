@@ -18,10 +18,6 @@
 						grey:state in ('cancel')
 						">
 
-					<field name="pl_family"		string="PL Familia"/>
-					<field name="x_family"		string="X Familia"/>
-
-
 					<field name="pl_price_list"	string="Lista de Precios"  	groups="openhealth.roots"/>
 					<field name="name"          string="Referencia"/>
 					<field name="date_order"            string="Fecha y hora"/>
@@ -50,6 +46,8 @@
 -->
 					<field name="user_id"       string="Creado por"/>
 
+					<field name="pl_family"		string="PL Familia"		groups="openhealth.roots"/>
+					<field name="x_family"		string="X Familia"		groups="openhealth.roots"/>
 				</tree>
 			</field>
 		</record>

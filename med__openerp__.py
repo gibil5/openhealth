@@ -3,49 +3,64 @@
 	'name': "Open Health - SERVICE ORIENTED - MED",
 
 	'summary': """
-		ERP system, for the Chavarri Clinic. Contains ALL the Data Model. Encapsulates the Business logic in Classes and Libraries. Inherits OeHealth. 
+		ERP system, for a Clinic. Inherits OeHealth. Contains ALL the Data Model. Encapsulates the Business logic in classes and libraries.
 	""",
 
 	'description': """
 
-		17 Sep 2019
+		18 Sep 2019
 
 		Contains:
 			- All External Dependencies,
 			- All Models,
 			- All Users,
 			- All Views,
-			- All Data,
-			- No Security.
+			- All Security,
+			- No Data.
 
 
 		Remember Robert C. Martin:
-			- Respect the Law of Demeter: avoid Train Wreckages.
-			- Do not mix Data and Business Rules. Encapsulate Business Rules. 
-			- Three layered model: Odoo Active Data - Customized Class with BR - General purpose Library.
+			- Respect the Law of Demeter: avoid Train Wreckages. When you see more than two dots, this needs fixing.
+			- Do not mix the Data Model and Business Rules. Encapsulate Business Rules in a separate module. 
+			- Use Three layered model: Odoo Active Data - Customized Class with BR - General purpose Library.
 			- Handle Exceptions.
-			- The Database should not contain BR. Kill computes.
+			- The Database should not contain Business rules. Remove computes.
 
 		Always clean your System: 
-			- Procurement Orders, 
-			- Stock Moves,
-			- Computes,
-			- Products Consumables.
+			- Remove Procurement Orders, 
+			- Remove Stock Moves,
+			- Remove Products Consumables,
+			- Remove Computes.
 
-		Deprecated: Ooor, Testcafe, Auto-backup, Inventory. 
+		Deprecated services: 
+			- Ooor, 
+			- Testcafe, 
+			- Auto-backup, 
+			- Inventory. 
+
 
 		Created:        11 Sep 2016
-		Last up:        10 Sep 2018 
+		Last up:        18 Sep 2019
 
 		---
 
-		External:
-			- Oehealth 
-			- Base multi image
+		Odoo config:
+			- Spanish translation,
+
+		External modules:
+			- Spanish translation,
+			- Oehealth,
+			- Base multi image,
+			- Web Export View, 
+			- Accounting and Finance. Adjust tax to zero.
 
 		Python Libs:
-			- Unidecode
-			- pysftp
+			- Unidecode - dep
+			- pysftp - dep
+			- Numpy, Num2words, Pandas, QrCode, 
+
+		For PDF Reporting (tickets):
+			- Install wkhtmltopdf (0.12.2 v). Other versions will not work.
 
 	""",
 
@@ -55,10 +70,10 @@
 	
 	'category': 'Object Oriented',
 	
-	'version': '3.0',
+	'version': '4.0',
 
-	'depends': ['base', 'oehealth', 'base_multi_image'],
 	#'depends': ['base', 'oehealth', 'base_multi_image', 'account'],
+	'depends': ['base', 'oehealth', 'base_multi_image'],
 
 	'data': [
 
@@ -92,23 +107,18 @@
 
 		# Users
 		'data/users/base_data_users_generics.xml',                 # Important 
-		
 		'data/physicians/base_data_physicians.xml',                
 		'data/physicians/base_data_physicians_inactive.xml',        
-		
 		'data/users/base_data_users_platform.xml',  
 		'data/users/base_data_users_cash.xml',
 		'data/users/base_data_users_account.xml',       
-
 		'data/users/base_data_users_managers.xml',  
-
 		'data/users/base_data_users_doctors.xml',
 		'data/users/base_data_users_assistants.xml',    
 		'data/users/base_data_users_directors.xml',  
 
 		# Inactive
 		'data/users/base_data_users_inactive.xml', 
-
 
 		# Users Tacna
 		'data/users/base_data_users_tacna.xml',
@@ -117,8 +127,8 @@
 
 # ----------------------------------------------------------- Security - Users - First ------------------------------------------------------
 		'security/openhealth_security.xml',             # Groups
-		'security/openhealth_security_readers.xml',     # Important
-		'security/openhealth_security_managers.xml',	# Important
+		'security/openhealth_security_readers.xml',   	# Important
+		'security/openhealth_security_managers.xml',
 
 
 

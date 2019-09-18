@@ -226,12 +226,13 @@
 
 <!--
 								<button type="action" class="oe_stat_button" icon="fa-list" invisible="0"
+									name="%(service_list_action)d"
 -->
 
-								<!-- Recommendations -->
+								<!-- Recommendations -->								
 								<button type="action" class="oe_stat_button" icon="fa-list"
 									
-									name="%(service_list_action)d"
+									name=""
 									
 									context="{                                  
 												'search_default_treatment': active_id,
@@ -245,7 +246,33 @@
 
 
 
-<!-- Dep - Begin -->
+
+
+<!-- Dep ? - Begin -->
+<!--
+									attrs="{ 'invisible':[  ('nr_services_co2','=',0), ]}"
+-->
+
+								<!-- Nr of Services - Co2 --> 
+<!--								
+								<button type="action" class="oe_stat_button" icon="fa-list"
+
+									name="%(service_co2_list_action)d"
+
+									attrs="{ 'invisible':[  ('nr_services_co2','=',0), ]}"
+
+									context="{                                  
+												'search_default_treatment': active_id,
+											}"                                          
+									>
+
+									<field string="Reco Co2" name="nr_services_co2" widget="statinfo"/>
+								</button>
+-->
+
+
+
+
 								<!-- Nr of Services - product --> 
 
 								<button type="action" class="oe_stat_button" icon="fa-list"
@@ -285,16 +312,6 @@
 								</button>
 
 
-								<!-- Nr of Services - Co2 --> 
-								<button type="action" class="oe_stat_button" icon="fa-list"
-									name="%(service_co2_list_action)d"
-									attrs="{ 'invisible':[  ('nr_services_co2','=',0), ]}"
-									context="{                                  
-												'search_default_treatment': active_id,
-											}"                                          
-									>
-									<field string="Reco Co2" name="nr_services_co2" widget="statinfo"/>
-								</button>
 
 
 								<!-- Nr of Services - Exc --> 

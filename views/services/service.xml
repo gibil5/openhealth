@@ -320,7 +320,9 @@
 <!-- ACTION -->
         <record model="ir.actions.act_window" id="service_list_action">
             <field name="name">Servicios</field>
+
             <field name="res_model">openhealth.service</field>
+            
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
 <!--

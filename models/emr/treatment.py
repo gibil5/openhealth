@@ -1005,7 +1005,10 @@ class Treatment(models.Model):
 	@api.multi
 	def _compute_nr_services_co2(self):
 		for record in self:
-			services = self.env['openhealth.service.co2'].search_count([('treatment', '=', record.id),])
+			#services = self.env['openhealth.service.co2'].search_count([('treatment', '=', record.id),])
+
+			services = self.env['price_list.service_co2'].search_count([('treatment', '=', record.id),])
+
 			record.nr_services_co2 = services
 
 

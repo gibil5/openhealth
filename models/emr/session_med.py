@@ -11,7 +11,9 @@ from . import session_vars
 from openerp.addons.openhealth.models.libs import lib
 
 class SessionMed(models.Model):	
+
 	_name = 'openhealth.session.med'
+
 	_inherit = ['openhealth.session', 'base_multi_image.owner']
 
 

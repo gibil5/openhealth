@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+
+
+<!-- FORM -->
+
+        <!-- Admin -->
+        <record model="ir.ui.view" id="session_admin_form_view">
+            <field name="name">session.admin.form</field>
+            <field name="model">openhealth.session.med</field>
+            <field name="priority" eval="11"/>
+            <field name="inherit_id" ref="session_med_form_view"/>
+            <field name="arch" type="xml">
+
+                <notebook position="inside">
+
+                    <page string="Admin" groups="openhealth.roots">
+
+                        <!-- Padding --> 
+
+                        <group>
+                            <group>
+                                
+                                <field name="x_autofill"/>
+
+                            </group>
+                            <group></group>
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+
+    </data>
+</openerp>

@@ -9,8 +9,7 @@
             <field name="name">control.form</field>
             <field name="model">openhealth.control</field>
             <field name="arch" type="xml">
-                <form string="Evaluation">
-
+                <form string="Control">
 
 <!-- Header --> 
                     <header>
@@ -41,10 +40,7 @@
                     <sheet>
 
                         <!-- Id -->
-                        <div>                       
-
-
-
+                        <div>
                             <!-- Persona --> 
                             <div class="oe_left"  style="width: 300px;">
                                 
@@ -58,26 +54,14 @@
                                 </h2>
                             </div>
 
-
-
-
                             <!-- Buttons --> 
                             <div class="oe_left" style="width: 300px;" name="buttons">      
-                            </div>
-                        
+                            </div>                        
 
-                        
                             <!-- Number --> 
                             <div class="oe_right" >
                                 <div class="oe_title" >
 
-<!--
-                                    <label class="oe_edit_only" for="name" string="Control #"/>
-                                    <label  for="name" string="Control #"/>
-                                    <h1><field name="name" class="oe_inline"/></h1>
-                                    <h1><field name="treatment" class="oe_inline"/></h1>
-                                    <h2><field name="name"/></h2>
--->
                                     <h1><field name="treatment"     readonly="1"/></h1>
                                     <h2><field name="procedure"     readonly="1"/></h2>
                                 </div>
@@ -86,103 +70,34 @@
 
 
 
-                        <!-- Padding --> 
-<!--
-                        <group></group>
-                        <group></group>
-                        <group></group>
-                        <group></group>
--->
-                        <!--
-                        <div class="oe_left" style="height: 55px;">
-                        </div>
-                        -->
-
-
 
                         <!-- Fields --> 
                         <group>
-                            <!--
-                            <field string="Próxima cita" name="appointment" domain="[('patient', '=', patient)]" options="{'no_create': True}"/>
-                            -->
                             
-
+                            <group></group>
                             <group>
-                            </group>
-                            <group>
-                                <field name="evaluation_type"   invisible="1"   />
+                                <field name="evaluation_type"   invisible="1"/>
                             </group>
                             
 
-
-
-                            
-
-<group
-groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.physicians,openhealth.staffs,openhealth.reception,openhealth.archivers"
->
-
-
+                            <group>
                                 <field name="doctor" options="{'no_create': True}"/>
 
                                 <field name="vspace"/>
 
-                                <field name="appointment"/>
-
-                                <field name="vspace"/>
-
-
-
                                 <field name="evaluation_start_date"/>
 
-
-
-                                <field name="control_date"      readonly="1"/>
-
-                                <field name="real_date"/>
-
                                 <field name="vspace"/>
 
-<!--
-
-                                <field name="first_date"/>
-                                <field name="vspace"/>
--->
-
-
-                                <field name="maturity"/>
-
-
-
-                                <field name="vspace"/>
-
-                                <field name="x_done"    string="Realizado"  />
-
-
-
-<!--
-                                <field name="vspace"/>
-                                <field name="date_actual"/>
-                                <field name="vspace"/>
-                                <field name="id"/>
--->
-
-
-<!--
-                                <field name="vspace"/>
-                                <field name="indication"    />
--->
+                                <field name="appointment"/>
                             </group>
 
 
-
-<group
-groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.physicians,openhealth.staffs,openhealth.reception,openhealth.archivers"
->
+                            <group>
 <!--
-                                <field name="procedure"         invisible="0"   />
-                                <field name="vspace"/>
+                                <field name="x_done"    string="Realizado"/>
 -->
+                                <field name="x_done"/>
 
                                 <field name="chief_complaint"/>                             
 
@@ -192,46 +107,26 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 
                                 <field name="vspace"/>
                                 
-                                <field name="product"/>                         
-
-
-
-                                <field name="nr_days"/>
-
-                                <field name="vspace"/>
-                                
-                                <field name="nr_images"         invisible="0"   />
-
-                                <field name="vspace"/>
-                                
-                                <field name="evaluation_nr"     invisible="0"   />
-
+                                <field name="product"/>
+                            </group>
+                        </group>
 
 <!--
+                                <field name="procedure"         invisible="0"   />
+                                <field name="vspace"/>
+
                                 <field name="vspace"/>
                                 <field name="observation"   />
--->
-                            </group>
-            
-                            
 
-<!--
-                            <group>
-                            </group>
-                            <group>
-                            </group>
-                            <group>
-                            </group>
-                            <group>
-                            </group>
-                            <group> 
-                            </group>
-                            <group>
-                            </group>
+                                <field name="vspace"/>
+                                <field name="date_actual"/>
+                                <field name="vspace"/>
+                                <field name="id"/>
+
+                                <field name="vspace"/>
+                                <field name="indication"    />
 -->
 
-                        </group>
-                            
 
 
 
@@ -284,8 +179,6 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
             <field name="model">openhealth.control</field>
             <field name="arch" type="xml">
                 
-<!--
--->
                 <tree   string="Control Tree"
 
                         colors="
@@ -294,7 +187,6 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
                                 gray:state=='cancel';
                                 blue:state=='done'
                             ">
-                    
 
                     <!-- Quick Button -->
                     <button 
@@ -304,40 +196,39 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
                         name="open_line_current" 
                     />
 
-<!--
-                    <field name="evaluation_nr"/>
-                    <field name="first_date"/>
-                    <field name="state_app"/>
-                    <field name="maturity"/>
--->             
-
                     <field name="name"/>
 
-                    <field name="control_date"      widget="date"/>
-                    <field name="nr_days"/>
                     <field name="appointment"/>
 
 
+                    <field name="evaluation_start_date"/>
+
                     <field name="real_date"/>
+                    <field name="control_date"      widget="date"/>                    
+                    <field name="nr_days"/>
+
 
 
                     <field name="patient" />
-                    
                     <field name="doctor"  />
-
                     <field name="chief_complaint"/>
                     
+
                     <field name="laser"/>
                     
+
                     <field name="nr_images"/>
-
                     <field name="state"/>
-
                     <field name="x_done"/>
                 </tree>
             </field>
         </record>   
 <!--
+                    <field name="evaluation_nr"/>
+                    <field name="first_date"/>
+                    <field name="state_app"/>
+                    <field name="maturity"/>
+
                     <field name="name"/>
                     <field name="treatment"/>
 
@@ -352,16 +243,12 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
         
 
 
-
-
-
-        <!-- Window Form Action --> 
+<!-- ACTION --> 
         <record model="ir.actions.act_window" id="control_form_action">
             <field name="name">Controles</field>
             <field name="res_model">openhealth.control</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-            
             <!--
             <field name="domain">[]</field>
             <field name="context">{}</field>
@@ -375,7 +262,7 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
         
 
 
-        <!-- Filter --> 
+<!-- FILTER --> 
         <record id="view_medical_control_filter" model="ir.ui.view">
            <field name="name">Control Search</field>
            <field name="model">openhealth.control</field>          

@@ -22,6 +22,21 @@ class Evaluation(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Defined on PL -------------------------
+	# Appointment
+	appointment = fields.Char()
+
+	#appointment = fields.Many2one(
+	#		'oeh.medical.appointment',
+	#		string='Cita #',
+	#		required=False,
+	#		readonly=True,
+			#ondelete='cascade',
+	#	)
+
+
+
 # ----------------------------------------------------------- Getters -------------------------
 
 	# Get Treatment
@@ -134,14 +149,6 @@ class Evaluation(models.Model):
 			required=True,
 		)
 
-	# Appointment
-	appointment = fields.Many2one(
-			'oeh.medical.appointment',
-			string='Cita #',
-			required=False,
-			readonly=True,
-			#ondelete='cascade',
-		)
 
 	# Product
 	product = fields.Many2one(

@@ -21,6 +21,18 @@ class Control(models.Model):
 
 
 
+# ----------------------------------------------------------- Redefined ------------------------------------------------------
+
+	# Done
+	#x_done = fields.Boolean(
+			#string="Realizado", 			
+	#		string="R", 			
+	#		default=False,
+	#		readonly=True, 
+	#	)
+
+
+
 # ----------------------------------------------------------- Dates - OK ------------------------------------------------------
 
 	# Date
@@ -76,7 +88,7 @@ class Control(models.Model):
 
 			selection = control_vars._state_list, 
 			
-			compute='_compute_state', 
+			#compute='_compute_state', 
 		)
 
 
@@ -102,13 +114,6 @@ class Control(models.Model):
 
 
 
-	# Done
-	x_done = fields.Boolean(
-			#string="Realizado", 			
-			string="R", 			
-			default=False,
-			readonly=True, 
-		)
 
 
 

@@ -261,8 +261,11 @@
 		# Companies 
 		'views/companies/company.xml',
 
+
 		# Controls
 		'views/controls/control.xml',
+		'views/controls/control_admin.xml',
+
 
 		# Images 
 		'views/images/image_view.xml',
@@ -324,11 +327,14 @@
 # ----------------------------------------------------------- Views - Second ------------------------------------------------------
 
 		# Sessions
+		#'views/sessions/session_actions.xml',
+		#'views/sessions/session_search.xml',
 		'views/sessions/session.xml',
 
 		'views/sessions/session_config_simple_1.xml',
 		'views/sessions/session_config_simple_2.xml',
 
+		'views/sessions/session_admin.xml',
 
 
 		# Services - 2 - Dep !

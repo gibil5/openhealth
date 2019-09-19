@@ -14,6 +14,7 @@ from openerp.addons.openhealth.models.libs import eval_vars
 class Session(models.Model):
 
 	_name = 'openhealth.session'
+	
 	_inherit = ['oeh.medical.evaluation', 'base_multi_image.owner']
 
 

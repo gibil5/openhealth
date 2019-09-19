@@ -1,3 +1,51 @@
+<!--
+19 Sep 2019
+-->
+
+<!--
+                                    <label class="oe_edit_only" for="name" string="Control #"/>
+                                    <label  for="name" string="Control #"/>
+                                    <h1><field name="name" class="oe_inline"/></h1>
+                                    <h1><field name="treatment" class="oe_inline"/></h1>
+                                    <h2><field name="name"/></h2>
+-->
+
+                        <!-- Padding --> 
+<!--
+                        <group></group>
+                        <group></group>
+                        <group></group>
+                        <group></group>
+-->
+                        <!--
+                        <div class="oe_left" style="height: 55px;">
+                        </div>
+                        -->
+
+
+
+                            <!--
+                            <field string="Próxima cita" name="appointment" domain="[('patient', '=', patient)]" options="{'no_create': True}"/>
+                            -->
+
+<group
+groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.physicians,openhealth.staffs,openhealth.reception,openhealth.archivers"
+>
+<group
+groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.physicians,openhealth.staffs,openhealth.reception,openhealth.archivers"
+>
+
+
+
+
+
+
+
+
+
+
+
+
 
                         <!-- Treatment --> 
 <!--

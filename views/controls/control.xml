@@ -133,6 +133,10 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 
 
 
+                                <field name="evaluation_start_date"/>
+
+
+
                                 <field name="control_date"      readonly="1"/>
 
                                 <field name="real_date"/>
@@ -141,7 +145,6 @@ groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.phy
 
 <!--
 
-                                <field name="evaluation_start_date"/>
                                 <field name="first_date"/>
                                 <field name="vspace"/>
 -->

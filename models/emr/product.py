@@ -2,24 +2,38 @@
 """
 		*** Product Template
 
-		Created: 			    Nov 2016
-		Last up: 	 		  9 Apr 2019
+		Created: 			 01 Nov 2016
+		Last up: 	 		 19 Sep 2019
 """
 from __future__ import print_function
 from openerp import models, fields, api
 from openerp.exceptions import ValidationError
 from openerp.addons.openhealth.models.libs import lib
 from . import prodvars
-#from . import gen  		# Dep 2019
-#from . import gen_tic   	# Dep 2019
 
 class Product(models.Model):
 	"""
-	high level support for doing this and that.
+	Product Template
+	Inherited from OeHealth
 	"""
 	_inherit = 'product.template'
 
 	_order = 'name'
+
+
+
+
+# ----------------------------------------------------------- Getters -------------------------
+
+	# Get Treatment
+	def get_treatment(self):
+		"""
+		Get Product Treatment
+		Used by: Session, Control
+		"""
+		return self.x_treatment
+
+
 
 
 

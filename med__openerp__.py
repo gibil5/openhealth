@@ -326,8 +326,8 @@
 		# Sessions
 		'views/sessions/session.xml',
 
-		#'views/sessions/session_config_simple_1.xml',  	# Done by Pl
-		#'views/sessions/session_config_simple_2.xml',  	# Id
+		'views/sessions/session_config_simple_1.xml',
+		'views/sessions/session_config_simple_2.xml',
 
 
 

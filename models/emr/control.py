@@ -21,7 +21,7 @@ class Control(models.Model):
 
 
 
-# ----------------------------------------------------------- Dates ------------------------------------------------------
+# ----------------------------------------------------------- Dates - OK ------------------------------------------------------
 
 	# Date
 	evaluation_start_date = fields.Datetime(
@@ -29,15 +29,11 @@ class Control(models.Model):
 			required=False, 		
 		)
 
-	@api.multi
-	#@api.depends('state')
-	def _compute_evaluation_start_date_nex(self):
-		#print
-		#print 'Compute - Eval Start Date'
-		for record in self:
-			record.evaluation_start_date = record.appointment.appointment_date
 
 
+
+
+# ----------------------------------------------------------- Dates - Dep ------------------------------------------------------
 
 	# Real date 
 	control_date = fields.Datetime(
@@ -50,11 +46,6 @@ class Control(models.Model):
 	def _compute_control_date(self):
 		for record in self:
 			record.control_date = record.appointment.appointment_date
-
-
-
-
-
 
 
 	# First date 

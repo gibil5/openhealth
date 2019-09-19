@@ -22,9 +22,9 @@
 
                         <!-- Laser Co2 --> 
 <!--
-                        <group string="Láser Co2"   attrs="{'invisible':[('laser', '!=', 'laser_co2')]}">
--->
                         <group string="Láser Co2"   attrs="{'invisible':[('laser', 'not in', ['laser_co2', 'LASER CO2 FRACCIONAL'])]}">
+-->
+                        <group string="Láser Co2"   attrs="{'invisible':[('laser', '!=', 'laser_co2')]}">
 
 
                             <group  attrs="{'invisible':[('laser', '!=', 'laser_co2' )]}"   >

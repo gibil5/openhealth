@@ -1,4 +1,19 @@
 # 19 Sep 2019
+
+# Deps
+
+	@api.multi
+	#@api.depends('state')
+	def _compute_evaluation_start_date_nex(self):
+		#print
+		#print 'Compute - Eval Start Date'
+		for record in self:
+			record.evaluation_start_date = record.appointment.appointment_date
+
+
+
+
+
 # Clean up
 
 #----------------------------------------------------------- Deprecated ------------------------------------------------------------

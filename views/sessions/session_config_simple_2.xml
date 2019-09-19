@@ -4,19 +4,19 @@
 
 
 
+<!-- FORM -->
+
         <!-- Configuration - Manual - 2 -->
         <record model="ir.ui.view" id="session_configuration_simple_2_form_view">
             <field name="name">session.configuration.form</field>
             <field name="model">openhealth.session.med</field>
-            
             <field name="priority" eval="2"/>
-            
             <field name="inherit_id" ref="session_med_form_view"/>
             <field name="arch" type="xml">
 
+
                 <notebook position="inside">                                        
                     
-
 
                     <page string="2"    attrs="{'invisible':[
                                                                 ('laser', 'not in', ['laser_co2', 'laser_quick', 'laser_ipl']), 

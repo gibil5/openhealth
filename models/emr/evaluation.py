@@ -22,6 +22,21 @@ class Evaluation(models.Model):
 
 
 
+# ----------------------------------------------------------- Getters -------------------------
+
+	# Get Treatment
+	#@api.multi
+	def get_treatment(self):
+		"""
+		Get Product Treatment
+		Used by: Session, Control
+		Respects the LOD
+		"""
+		return self.product.get_treatment()
+
+
+
+
 # ----------------------------------------------------------- Laser ------------------------
 
 	# Laser
@@ -36,29 +51,25 @@ class Evaluation(models.Model):
 	@api.depends('product')
 	def _compute_laser(self):
 		for record in self:
-			#record.laser = record.product.x_treatment
-			record.laser = record.product.pl_treatment
+			#record.laser = record.product.x_treatment  	# 2018
+			#record.laser = record.product.pl_treatment  	# 2019
+			record.laser = record.get_treatment()  			# RLOD
 
 
 
 
-# ----------------------------------------------------------- Dates ------------------------------------------------------
+# ----------------------------------------------------------- Dates - OK ------------------------------------------------------
 	# Date
 	evaluation_start_date = fields.Datetime(
-			string="Fecha y hora",
+
+			#string="Fecha y hora",
+			string="Evaluation Start Date",
+
 			#default = fields.Date.today,
 			required=True,
-			readonly=True,
+
+			#readonly=True,
 		)
-
-
-
-
-
-# ----------------------------------------------------------- Dates ------------------------
-
-
-
 
 
 

@@ -8,16 +8,22 @@
 from openerp import models, fields, api
 from datetime import datetime
 from . import session_vars
-
-#from . import lib
-#from libs import lib
 from openerp.addons.openhealth.models.libs import lib
-
 
 class SessionMed(models.Model):	
 	_name = 'openhealth.session.med'
-	#_inherit = 'openhealth.session'
 	_inherit = ['openhealth.session', 'base_multi_image.owner']
+
+
+
+# ----------------------------------------------------------- Dates - OK ------------------------------------------------------
+
+	# Date
+	evaluation_start_date = fields.Datetime(
+			string = "Fecha", 	
+			required=False, 		
+		)
+
 
 
 

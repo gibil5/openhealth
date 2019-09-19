@@ -173,7 +173,10 @@
                             <group>
                                 <field name="appointment"/> 
                                 <field name="vspace"/>
+
+
                                 <field name="evaluation_start_date"/>
+
                                 
                                 <field name="evaluation_nr"     readonly="1"    invisible="1"   />
                             </group>
@@ -375,10 +378,10 @@
 
                     <field name="evaluation_start_date"/>
 
+
+
+
                     <field name="nr_days"/>
-
-
-
                     
                     <field name="nr_images"/>
 

@@ -22,6 +22,45 @@ class Evaluation(models.Model):
 
 
 
+# ----------------------------------------------------------- Laser ------------------------
+
+	# Laser
+	laser = fields.Selection(
+			selection=prodvars._laser_type_list,
+			string="Láser",
+
+			compute='_compute_laser',
+		)
+
+	#@api.multi
+	@api.depends('product')
+	def _compute_laser(self):
+		for record in self:
+			#record.laser = record.product.x_treatment
+			record.laser = record.product.pl_treatment
+
+
+
+
+# ----------------------------------------------------------- Dates ------------------------------------------------------
+	# Date
+	evaluation_start_date = fields.Datetime(
+			string="Fecha y hora",
+			#default = fields.Date.today,
+			required=True,
+			readonly=True,
+		)
+
+
+
+
+
+# ----------------------------------------------------------- Dates ------------------------
+
+
+
+
+
 
 # ----------------------------------------------------------- Configurator ------------------------
 
@@ -277,13 +316,6 @@ class Evaluation(models.Model):
 
 # ----------------------------------------------------------- Primitives --------------------------
 
-	# Date
-	evaluation_start_date = fields.Datetime(
-			string="Fecha y hora",
-			#default = fields.Date.today,
-			required=True,
-			readonly=True,
-		)
 
 	# Space
 	vspace = fields.Char(
@@ -410,23 +442,6 @@ class Evaluation(models.Model):
 			string='Tipo',
 			required=True,
 		)
-
-	# Laser
-	laser = fields.Selection(
-
-			selection=prodvars._laser_type_list,
-
-			string="Láser",
-
-			compute='_compute_laser',
-		)
-
-	#@api.multi
-	@api.depends('product')
-	def _compute_laser(self):
-		for record in self:
-			record.laser = record.product.x_treatment
-
 
 
 # ----------------------------------------------------------- Actions -----------------------------

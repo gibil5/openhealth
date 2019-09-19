@@ -1,11 +1,37 @@
+# 19 Sep 2019
+# Clean up
+
+#----------------------------------------------------------- Deprecated ------------------------------------------------------------
+
+	# Appointment 
+	#appointment = fields.Many2one(
+	#		'oeh.medical.appointment',
+	#		'Cita', 
+	#		required=False, 
+	#	)
+
+
+	# State Appointment 
+	#state_app = fields.Selection(
+	#		selection = app_vars._state_list, 
+	#		string = 'Estado Cita', 
+
+	#		compute='_compute_state_app', 
+	#	)
+	
+	#@api.multi
+	#@api.depends('state')
+	#def _compute_state_app(self):
+	#	for record in self:		
+	#		record.state_app = record.appointment.state
+
+
+
+
+
 # 27 Aug 2019
 # Appointment is Highly Deprecated !
 #
-
-
-
-
-
 
 
 

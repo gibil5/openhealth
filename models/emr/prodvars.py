@@ -5,6 +5,12 @@
 # Laser
 _laser_type_list = [
 
+# 2019
+('LASER CO2 FRACCIONAL',	'LASER CO2 FRACCIONAL'),
+
+
+
+# 2018
 		# Consultation 
 		('consultation',			'consultation'), 
 
@@ -14,7 +20,6 @@ _laser_type_list = [
 		('laser_ipl','Laser Ipl'), 
 		('laser_ndyag','Laser Ndyag'), 
 		('laser_quick','QuickLaser'), 
-
 
 
 

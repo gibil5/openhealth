@@ -3,15 +3,13 @@
 Control
 
 Created: 			01 Nov 2016
-Last updated: 	 	23 Jan 2019
+Last updated: 	 	19 Sep 2019
 """
 import datetime
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.libs import lib
 from . import time_funcs
 from . import control_vars
-
-#from . import app_vars
 
 class Control(models.Model):
 	
@@ -23,48 +21,7 @@ class Control(models.Model):
 
 
 
-#----------------------------------------------------------- Deprecated ------------------------------------------------------------
-
-	# Appointment 
-	#appointment = fields.Many2one(
-	#		'oeh.medical.appointment',
-	#		'Cita', 
-	#		required=False, 
-	#	)
-
-
-	# State Appointment 
-	#state_app = fields.Selection(
-	#		selection = app_vars._state_list, 
-	#		string = 'Estado Cita', 
-
-	#		compute='_compute_state_app', 
-	#	)
-	
-	#@api.multi
-	#@api.depends('state')
-	#def _compute_state_app(self):
-	#	for record in self:		
-	#		record.state_app = record.appointment.state
-
-
-
-
 # ----------------------------------------------------------- Dates ------------------------------------------------------
-
-	# Real date 
-	control_date = fields.Datetime(
-			string = "Fecha Control",
-
-			#compute='_compute_control_date',
-		)
-	@api.multi
-	#@api.depends('state')
-	def _compute_control_date(self):
-		for record in self:
-			record.control_date = record.appointment.appointment_date
-
-
 
 	# Date
 	evaluation_start_date = fields.Datetime(
@@ -82,6 +39,23 @@ class Control(models.Model):
 
 
 
+	# Real date 
+	control_date = fields.Datetime(
+			string = "Fecha Control",
+
+			#compute='_compute_control_date',
+		)
+	@api.multi
+	#@api.depends('state')
+	def _compute_control_date(self):
+		for record in self:
+			record.control_date = record.appointment.appointment_date
+
+
+
+
+
+
 
 	# First date 
 	first_date = fields.Datetime(
@@ -93,6 +67,16 @@ class Control(models.Model):
 	real_date = fields.Datetime(
 			string = "Fecha Real",
 		)
+
+	evaluation_next_date = fields.Date(
+			string = "Fecha próximo control", 	
+			#compute='_compute_evaluation_next_date', 
+			#default = fields.Date.today, 
+
+			#required=True, 
+			required=False, 
+			)
+
 
 # ----------------------------------------------------------- State ------------------------------------------------------
 	
@@ -324,14 +308,6 @@ class Control(models.Model):
 
 
 
-	evaluation_next_date = fields.Date(
-			string = "Fecha próximo control", 	
-			#compute='_compute_evaluation_next_date', 
-			#default = fields.Date.today, 
-
-			#required=True, 
-			required=False, 
-			)
 
 
 
@@ -416,6 +392,4 @@ class Control(models.Model):
 
 		# Treatment Flag 
 		self.treatment.update()
-
-
 

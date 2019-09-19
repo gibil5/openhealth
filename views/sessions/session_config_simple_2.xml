@@ -17,6 +17,7 @@
                 <notebook position="inside">                                        
                     
 
+
                     <page string="2"    attrs="{'invisible':[
                                                                 ('laser', 'not in', ['laser_co2', 'laser_quick', 'laser_ipl']), 
                                                             ]}" >

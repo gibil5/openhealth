@@ -165,13 +165,14 @@
 
 
 
-<!-- Buttons --> 
+<!-- Buttons Nr ofs --> 
 <!--
 							<div class="oe_left" style="width: 400px;" name="buttons">
 							<div class="oe_right" name="buttons">
 -->
 							<div class="oe_left" style="width: 550px;" name="buttons">
 							
+
 
 								<!-- Nr Budgets - Consultation -->
 								<button type="action" class="oe_stat_button" icon="fa-list"
@@ -203,7 +204,6 @@
 										>
 
 									<field string="Venta Con" name="nr_invoices_cons" widget="statinfo"/>
-
 								</button>
 
 
@@ -231,152 +231,15 @@
 
 								<!-- Recommendations -->								
 								<button type="action" class="oe_stat_button" icon="fa-list"
-									
 									name=""
-									
 									context="{                                  
 												'search_default_treatment': active_id,
 											}"
 
 									attrs="{ 'invisible':[  ('nr_services','=',0), ]}"
-									
 									>
 									<field string="Recom" name="nr_services" widget="statinfo"/>
 								</button>
-
-
-
-
-
-<!-- Dep ? - Begin -->
-<!--
-									attrs="{ 'invisible':[  ('nr_services_co2','=',0), ]}"
--->
-
-								<!-- Nr of Services - Co2 --> 
-<!--								
-								<button type="action" class="oe_stat_button" icon="fa-list"
-
-									name="%(service_co2_list_action)d"
-
-									attrs="{ 'invisible':[  ('nr_services_co2','=',0), ]}"
-
-									context="{                                  
-												'search_default_treatment': active_id,
-											}"                                          
-									>
-
-									<field string="Reco Co2" name="nr_services_co2" widget="statinfo"/>
-								</button>
--->
-
-
-
-
-								<!-- Nr of Services - product --> 
-
-								<button type="action" class="oe_stat_button" icon="fa-list"
-									name="%(service_product_list_action)d"
-									context="{                                  
-												'search_default_treatment': active_id,
-											}"
-									attrs="{ 'invisible':[  ('nr_services_product','=',0), ]}"
-									>
-
-
-									<field string="Reco Prod" name="nr_services_product" widget="statinfo"/>
-								</button>
-
-
-								<!-- Nr of Services - vip --> 
-								<button type="action" class="oe_stat_button" icon="fa-list"
-									name="%(service_vip_list_action)d"
-									context="{                                  
-												'search_default_treatment': active_id,
-											}"
-									attrs="{ 'invisible':[  ('nr_services_vip','=',0), ]}"
-									>
-									<field string="Reco vip" name="nr_services_vip" widget="statinfo"/>
-								</button>
-
-
-								<!-- Nr of Services - Quick --> 
-								<button type="action" class="oe_stat_button" icon="fa-list"
-									name="%(service_quick_list_action)d"
-									attrs="{ 'invisible':[  ('nr_services_quick','=',0), ]}"
-									context="{                                  
-												'search_default_treatment': active_id,
-											}"                                          
-									>
-									<field string="Reco Quick" name="nr_services_quick" widget="statinfo"/>
-								</button>
-
-
-
-
-								<!-- Nr of Services - Exc --> 
-								<button type="action" class="oe_stat_button"  icon="fa-list"
-									name="%(service_excilite_list_action)d"
-									attrs="{ 'invisible':[  ('nr_services_excilite','=',0), ]}"
-									context="{                                  
-												'search_default_treatment': active_id,
-											}"                                          
-									>
-									<field string="Reco Exc" name="nr_services_excilite" widget="statinfo"/>
-								</button>
-
-
-								<!-- Nr of Services - Ipl --> 
-								<button type="action" class="oe_stat_button" icon="fa-list"
-									name="%(service_ipl_list_action)d"  
-									attrs="{ 'invisible':[  ('nr_services_ipl','=',0), ]}"
-									context="{                                  
-												'search_default_treatment': active_id,
-											}"                                          
-									>
-									<field string="Reco Ipl" name="nr_services_ipl" widget="statinfo"/>
-								</button>
-
-
-								<!-- Nr of Services - Ndyag --> 
-								<button type="action" class="oe_stat_button" icon="fa-list"
-									name="%(service_ndyag_list_action)d"    
-									attrs="{ 'invisible':[  ('nr_services_ndyag','=',0), ]}"
-									context="{                                  
-												'search_default_treatment': active_id,
-											}"                                          
-									>
-									<field string="Reco Ndyag" name="nr_services_ndyag" widget="statinfo"/>
-								</button>
-
-
-								<!-- Nr of Services - Med --> 
-								<button type="action" class="oe_stat_button" icon="fa-list"
-									name="%(service_medical_list_action)d"  
-									attrs="{ 'invisible':[  ('nr_services_medical','=',0), ]}"
-
-									context="{                                  
-												'search_default_treatment': active_id,
-											}"                                          
-									>
-									<field string="Reco TM" name="nr_services_medical" widget="statinfo"/>
-								</button>
-
-
-								<!-- Nr of Services - Cosmeto -->
-								<button type="action" class="oe_stat_button" icon="fa-list"
-									name="%(service_cosmetology_list_action)d"  
-									attrs="{ 'invisible':[  ('nr_services_cosmetology','=',0), ]}"
-									context="{                                  
-												'search_default_treatment': active_id,
-											}"                                          
-									>
-									<field string="Reco Cosmia" name="nr_services_cosmetology" widget="statinfo"/>
-								</button>
-<!-- Dep - End -->
-
-
-
 
 
 
@@ -392,7 +255,6 @@
 										attrs="{ 'invisible':[  ('nr_budgets_pro','=',0), ]}">
 
 									<field string="Presu Pro" name="nr_budgets_pro" widget="statinfo"/>
-
 								</button>
 
 
@@ -447,19 +309,8 @@
 									<field string="Controles" name="nr_controls" widget="statinfo"/>
 								</button>
 							</div>
-						
-						
-
-<!-- Name --> 
-<!--
-							<div class="oe_right" >
-								<div class="oe_title" >
-									<label class="oe_edit_only" for="name" string="Tratamiento #"/>                                    
-									<h1><field name="name" class="oe_inline"/></h1>
-								</div>
-							</div>
--->
 						</div>
+
 
 								   
 <!-- Fields -->

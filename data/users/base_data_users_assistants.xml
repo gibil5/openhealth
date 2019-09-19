@@ -16,6 +16,31 @@
 
 
 
+<!-- Eulalia Ruiz -->
+        <record id="eruiz_partner" model="res.partner">
+            <field name="name">Eulalia Ruiz</field>
+            <field name="email">eruiz@clinicachavarri.com</field>
+            <field name="function">assistant</field>
+            <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
+        </record>
+
+        <record id="eruiz_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
+            <field name="name">Eulalia Ruiz</field>
+            <field name="login">eruiz@clinicachavarri.com</field>
+            
+            <field name="password">emkat9ue</field>
+
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="lang">es_ES</field>
+            <field name="tz">America/Lima</field>
+            <field name="partner_id" ref="eruiz_partner"/>
+            <field name="active">True</field>
+        </record>
+
+
+
+
+
 <!-- Elias Ochante -->
         <record id="yochante_partner" model="res.partner">
             <field name="name">Elias Ochante</field>
@@ -130,26 +155,6 @@
         </record>
 
 
-<!-- Eulalia Ruiz -->
-        <record id="eruiz_partner" model="res.partner">
-            <field name="name">Eulalia Ruiz</field>
-            <field name="email">eruiz@clinicachavarri.com</field>
-            <field name="function">assistant</field>
-            <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
-        </record>
-
-        <record id="eruiz_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
-            <field name="name">Eulalia Ruiz</field>
-            <field name="login">eruiz@clinicachavarri.com</field>
-            
-            <field name="password">emkat9ue</field>
-
-            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-            <field name="lang">es_ES</field>
-            <field name="tz">America/Lima</field>
-            <field name="partner_id" ref="eruiz_partner"/>
-            <field name="active">True</field>
-        </record>
 
     </data>
 </openerp>

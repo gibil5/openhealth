@@ -8,7 +8,7 @@
 
 	'description': """
 
-		18 Sep 2019
+		19 Sep 2019
 
 		Contains:
 			- All External Dependencies,
@@ -61,6 +61,9 @@
 
 		For PDF Reporting (tickets):
 			- Install wkhtmltopdf (0.12.2 v). Other versions will not work.
+
+		For Tickets (right button printing):
+			- On Chrome, install extension: PDF Viewer. Link it to Adobe Reader. 
 
 	""",
 
@@ -322,8 +325,10 @@
 
 		# Sessions
 		'views/sessions/session.xml',
-		'views/sessions/session_config_simple.xml',
-		'views/sessions/session_config_simple_2.xml',
+
+		#'views/sessions/session_config_simple_1.xml',  	# Done by Pl
+		#'views/sessions/session_config_simple_2.xml',  	# Id
+
 
 
 		# Services - 2 - Dep !

@@ -4,6 +4,7 @@
 
 
 
+<!-- FORMS -->
         <!-- Session -->
         <record model="ir.ui.view" id="session_form_view">
             <field name="name">session.form</field>
@@ -13,8 +14,6 @@
                 </form>
             </field>
         </record>
-
-
 
 
         <!-- Session MED -->

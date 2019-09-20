@@ -7,12 +7,16 @@ Last updated: 	 	19 Sep 2019
 """
 import datetime
 from openerp import models, fields, api
-from openerp.addons.openhealth.models.libs import lib
-from . import time_funcs
+#from openerp.addons.openhealth.models.libs import lib
+#from . import time_funcs
 from . import control_vars
 
 class Control(models.Model):
-	
+	"""
+	Class Control
+	Defines the Data Model.
+	Should not define the Business Rules. 
+	"""	
 	_name = 'openhealth.control'
 
 	_inherit = ['oeh.medical.evaluation', 'base_multi_image.owner']
@@ -20,16 +24,21 @@ class Control(models.Model):
 	_description = 'Control'
 
 
+# ----------------------------------------------------------- Dep ------------------------------------------------------
 
-# ----------------------------------------------------------- Redefined ------------------------------------------------------
+	maturity = fields.Integer()
 
-	# Done
-	#x_done = fields.Boolean(
-			#string="Realizado", 			
-	#		string="R", 			
-	#		default=False,
-	#		readonly=True, 
-	#	)
+	nr_days = fields.Integer()
+
+
+
+	control_date = fields.Datetime()
+
+	first_date = fields.Datetime()
+
+	real_date = fields.Datetime()
+
+	evaluation_next_date = fields.Date()
 
 
 
@@ -40,45 +49,6 @@ class Control(models.Model):
 			string = "Fecha", 	
 			required=False, 		
 		)
-
-
-
-
-
-# ----------------------------------------------------------- Dates - Dep ------------------------------------------------------
-
-	# Real date 
-	control_date = fields.Datetime(
-			string = "Fecha Control",
-
-			#compute='_compute_control_date',
-		)
-	@api.multi
-	#@api.depends('state')
-	def _compute_control_date(self):
-		for record in self:
-			record.control_date = record.appointment.appointment_date
-
-
-	# First date 
-	first_date = fields.Datetime(
-			string = "Fecha Inicial",
-			readonly=True,
-		)
-
-	# Real date 
-	real_date = fields.Datetime(
-			string = "Fecha Real",
-		)
-
-	evaluation_next_date = fields.Date(
-			string = "Fecha próximo control", 	
-			#compute='_compute_evaluation_next_date', 
-			#default = fields.Date.today, 
-
-			#required=True, 
-			required=False, 
-			)
 
 
 # ----------------------------------------------------------- State ------------------------------------------------------
@@ -108,81 +78,7 @@ class Control(models.Model):
 			elif record.maturity > 90: 
 				state = 'cancel'
 
-
-
 			record.state = state
-
-
-
-
-
-
-	# Maturity
-	maturity = fields.Integer(
-			string="Madurez", 
-
-			compute='_compute_maturity', 
-		)
-
-	@api.multi
-	#@api.depends('state')
-	def _compute_maturity(self):
-		#print
-		#print 'Compute Maturity'
-		
-		for record in self:
-
-			#today = datetime.datetime.now
-			#date_format = "%Y-%m-%d"
-			#date_format = "%Y-%m-%d "
-
-			date_format = "%Y-%m-%d %H:%M:%S"
-			now = datetime.datetime.now() + datetime.timedelta(hours=-5,minutes=0)	
-			now_date_str = now.strftime(date_format)
-
-			first_date_str = record.first_date
-
-
-			nr = lib.get_nr_days(self, first_date_str, now_date_str)
-
-			record.maturity = nr 
-
-			#print now_date_str
-			#print first_date_str
-			#print nr
-
-
-
-# ----------------------------------------------------------- Nr Days ------------------------------------------------------
-
-	# Nr Days after Session
-	nr_days = fields.Integer(
-			'Nr Dias', 
-
-			compute='_compute_nr_days', 
-		)
-
-	@api.multi
-	#@api.depends('state')
-	def _compute_nr_days(self):
-		for record in self:
-			
-			if record.control_date == False: 
-				record.nr_days = lib.get_nr_days(self, record.procedure.session_date, record.first_date)
-
-			else:
-				record.nr_days = lib.get_nr_days(self, record.procedure.session_date, record.control_date)
-
-
-
-
-
-
-
-
-
-
-
 
 
 # ----------------------------------------------------------- Re Definitions ------------------------------------------------------
@@ -192,41 +88,17 @@ class Control(models.Model):
 			'oeh.medical.patient',
 			string = "Paciente", 	
 			ondelete='cascade', 
-
-			#readonly=True, 
 			readonly=False, 
-
 			required=True, 
-			#required=False, 
 		)
 
 	# Treatment 
 	treatment = fields.Many2one(
 			'openhealth.treatment',
-			ondelete='cascade', 
-
-			readonly=False, 
-
-			required=True, 
-			#required=False, 
+			ondelete='cascade',
+			readonly=False,
+			required=True,
 		)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
@@ -237,7 +109,6 @@ class Control(models.Model):
 			string = 'Nombre',
 		)
 
-
 	# Evaluation Nr
 	evaluation_nr = fields.Integer(
 			string="#", 
@@ -245,8 +116,6 @@ class Control(models.Model):
 
 			#compute='_compute_control_nr', 
 		)
-
-
 
 	# Evaluation type 
 	evaluation_type = fields.Selection(
@@ -258,11 +127,6 @@ class Control(models.Model):
 			#required=True, 
 		)
 
-
-
-
-
-
 	# Product
 	product = fields.Many2one(
 			'product.template',
@@ -271,16 +135,11 @@ class Control(models.Model):
 			#required=True, 
 			required=False, 			
 		)
-	
-
 
 	# Owner 
 	owner_type = fields.Char(
 			default = 'control',
 		)
-
-
-
 
 	# Indications
 	indication = fields.Text(
@@ -291,8 +150,6 @@ class Control(models.Model):
 			required=False,
 			)
 
-
-
 	# Observation
 	observation = fields.Text(
 			string="Observación",
@@ -302,23 +159,12 @@ class Control(models.Model):
 			required=False,
 			)
 
-
-
-
-
-
-
 	# Procedure  
 	procedure = fields.Many2one('openhealth.procedure',
 			string="Procedimiento",
 			readonly=True,
 			ondelete='cascade', 
 			)
-			
-			
-	
-
-
 			
 
 # ----------------------------------------------------------- Actions ------------------------------------------------------
@@ -342,50 +188,3 @@ class Control(models.Model):
 				
 				'context': {}
 		}
-
-
-
-
-# ----------------------------------------------------------- Update ------------------------------
-	# Update Done  
-	@api.multi	
-	def update_done(self):
-		#print
-		#print 'Update Done'
-
-		# Done 
-		if self.x_done == False: 
-			self.x_done = True
-			#self.control_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-		else:
-			self.x_done = False
-
-		# Treatment Flag 
-		self.treatment.update()
-
-
-		# Actual Doctor 
-		#doctor = user.get_actual_doctor(self)
-		#print doctor
-		#self.doctor = doctor
-
-
-
-
-	# Update App  
-	@api.multi	
-	def update_dates(self):
-		#print
-		#print 'Update Dates'
-
-		self.evaluation_start_date = self.appointment.appointment_date
-
-		# Real 
-		#self.control_date = self.appointment.appointment_date
-
-		# First
-		self.first_date = self.appointment.appointment_date
-
-		# Treatment Flag 
-		self.treatment.update()
-

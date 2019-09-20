@@ -1,17 +1,21 @@
 # -*- coding: utf-8 -*-
-#
-# 	*** Session Med
-#
-# Created: 			24 Feb 2017
-# Last up: 	 		14 Aug 2018
-#
+"""
+	*** Session Med
+
+	Created: 			24 Feb 2017
+	Last up: 	 		19 Sep 2019
+"""
 from openerp import models, fields, api
 from datetime import datetime
 from . import session_vars
 from openerp.addons.openhealth.models.libs import lib
 
 class SessionMed(models.Model):	
-
+	"""
+	Class Session Med
+	Defines the Data Model.
+	Should not define the Business Rules. 
+	"""	
 	_name = 'openhealth.session.med'
 
 	_inherit = ['openhealth.session', 'base_multi_image.owner']

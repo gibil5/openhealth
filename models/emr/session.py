@@ -1,18 +1,19 @@
 # -*- coding: utf-8 -*-
-#
-# 	*** Session 	
-# 
-# Created: 				 1 Nov 2016
-#
+"""
+	*** Session - Dep ?
+
+	Created: 			01 Nov 2016
+	Last up: 	 		19 Sep 2019
+"""
 from openerp import models, fields, api
 from datetime import datetime
 from . import time_funcs
-
-#from libs import eval_vars
 from openerp.addons.openhealth.models.libs import eval_vars
 
 class Session(models.Model):
-
+	"""
+	Class Session
+	"""	
 	_name = 'openhealth.session'
 	
 	_inherit = ['oeh.medical.evaluation', 'base_multi_image.owner']
@@ -34,10 +35,8 @@ class Session(models.Model):
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
 	# Evaluation Number 
 	evaluation_nr = fields.Integer(
-		
-			string="Sesión #", 
-		
-			default=1, 
+			string="Sesión #",
+			default=1,
 
 			#compute='_compute_evaluation_nr', 
 		)
@@ -51,109 +50,57 @@ class Session(models.Model):
 
 
 
-
-
-
-
 	# Procedure  
 	procedure = fields.Many2one(
-
-			'openhealth.procedure',
-			
+			'openhealth.procedure',			
 			string="Procedimiento",			
 			readonly=True,
 			ondelete='cascade', 
 		)
 
 
-
-
 	# Date 
 	evaluation_start_date = fields.Datetime(
-
-			string = "Fecha y hora", 	
-		
-			default = fields.Date.today, 
-			
-			required=True, 
-
-			#readonly=True, 
+			string = "Fecha y hora",
+			default = fields.Date.today,
+			required=True,
+			#readonly=True,
 		)
-
-
-
-
-
-
 
 
 	# state 
 	state = fields.Selection(
-
-			selection = eval_vars._state_list, 
-			
+			selection = eval_vars._state_list,
 			default='draft',
 
 			compute='_compute_state', 
 		)
 
-
 	@api.multi
 	#@api.depends('state')
-
 	def _compute_state(self):
 		for record in self:
-
 			state = 'draft'
-
 			if record.x_done: 
 				state = 'done'
-
 			record.state = state
 
 
-
-
-
-
-
-
-
-
-
 	# Autofill
-	@api.onchange('x_autofill')
-	
+	@api.onchange('x_autofill')	
 	def _onchange_x_autofill(self):
-
 		if self.x_autofill == True:
-
-
 			self.co2_mode_emission = 'fractional'
 			self.co2_mode_exposure = 'continuous'
 			self.co2_observations = 'Cicatriz plana hiperpigmentada en pómulo derecho. Pápulas en pómulos.'
-
-
 			self.co2_power = 1.5
 			self.co2_energy = 150
-
-
 			self.co2_frequency = 10
-
 			self.co2_fluency = 20
 			self.co2_density = 30
 			self.co2_time = 40
 			self.co2_distance = 50
-
 			#self.x_indications = 'Láser Co2 Fraccional.'
-
-
-
-
-
-
-
-
 
 
 	# Evaluation type 
@@ -167,8 +114,6 @@ class Session(models.Model):
 			)
 
 
-
-
 	# Treatment 
 	treatment = fields.Many2one(
 
@@ -180,52 +125,21 @@ class Session(models.Model):
 			)
 
 
-
-
-
 	# Owner 
 	owner_type = fields.Char(
 			default = 'session',
 		)
-
-			
-			
-
-
-
-
-
-
-
 
 	name = fields.Char(
 			string = 'Nombre',
 			)
 
 
-
-
-
-
-			
-
-
-
-
-
-
-
-
-
 	#----------------------------------------------------------- Quick Button ------------------------------------------------------------
 
 	@api.multi
 	def open_line_current(self):  
-
-
 		co2_power = self.co2_power
-
-
 		return {
 				'type': 'ir.actions.act_window',
 				'name': 'Edit Session Current', 
@@ -234,7 +148,6 @@ class Session(models.Model):
 				'res_model': self._name,
 				'res_id': self.id,
 				'target': 'current',
-
 				'flags': {
 						'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
 						#'form': {'action_buttons': True, }
@@ -246,6 +159,3 @@ class Session(models.Model):
 						}
 		}
 
-
-
-		

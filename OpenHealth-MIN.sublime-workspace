@@ -541,16 +541,16 @@
 			"file": "models/emr/control.py",
 			"settings":
 			{
-				"buffer_size": 6554,
+				"buffer_size": 3712,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "models/emr/session.py",
+			"file": "views/controls/control.xml",
 			"settings":
 			{
-				"buffer_size": 3375,
+				"buffer_size": 9345,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -559,33 +559,16 @@
 			"file": "models/emr/session_med.py",
 			"settings":
 			{
-				"buffer_size": 8474,
+				"buffer_size": 8567,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "models/emr/__init__.py",
+			"file": "models/emr/session.py",
 			"settings":
 			{
-				"buffer_size": 1160,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/controls/control.xml",
-			"settings":
-			{
-				"buffer_size": 9363,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/controls/control_admin.xml",
-			"settings":
-			{
-				"buffer_size": 1590,
+				"buffer_size": 3280,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -594,7 +577,7 @@
 			"file": "views/sessions/session.xml",
 			"settings":
 			{
-				"buffer_size": 7057,
+				"buffer_size": 7123,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -604,51 +587,6 @@
 			"settings":
 			{
 				"buffer_size": 4437,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/sessions/session.DEP.xml",
-			"settings":
-			{
-				"buffer_size": 7146,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/sessions/session_admin.xml",
-			"settings":
-			{
-				"buffer_size": 981,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/sessions/session_actions.xml",
-			"settings":
-			{
-				"buffer_size": 773,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/sessions/session_search.xml",
-			"settings":
-			{
-				"buffer_size": 1058,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/emr/control.TRASH.py",
-			"settings":
-			{
-				"buffer_size": 2591,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -727,6 +665,13 @@
 	},
 	"file_history":
 	[
+		"/Users/gibil/cellar/github/openhealth/views/controls/control_admin.xml",
+		"/Users/gibil/cellar/github/openhealth/models/emr/__init__.py",
+		"/Users/gibil/cellar/github/openhealth/models/emr/control.TRASH.py",
+		"/Users/gibil/cellar/github/openhealth/views/sessions/session_search.xml",
+		"/Users/gibil/cellar/github/openhealth/views/sessions/session_actions.xml",
+		"/Users/gibil/cellar/github/openhealth/views/sessions/session_admin.xml",
+		"/Users/gibil/cellar/github/openhealth/views/sessions/session.DEP.xml",
 		"/Users/gibil/cellar/github/openhealth/models/emr/product.py",
 		"/Users/gibil/cellar/github/openhealth/models/emr/prodvars.py",
 		"/Users/gibil/cellar/github/openhealth/models/order/order.py",
@@ -802,7 +747,6 @@
 		"/Users/gibil/cellar/github/openhealth/views/orders/order_search.xml",
 		"/Users/gibil/cellar/github/openhealth/views/users/user.xml",
 		"/Users/gibil/cellar/github/openhealth/security/openhealth_security_readers.TRASH.xml",
-		"/Users/gibil/cellar/github/openhealth/models/emr/__init__.py",
 		"/Users/gibil/cellar/github/openhealth/views/physicians/physician.xml",
 		"/Users/gibil/cellar/github/openhealth/models/management/management.py",
 		"/Users/gibil/cellar/github/openhealth/data/physicians/base_data_physicians.TRASH.xml",
@@ -848,13 +792,7 @@
 		"/Users/gibil/cellar/github/openhealth/models/libs/creates.py",
 		"/Users/gibil/cellar/github/openhealth/models/libs/__init__.py",
 		"/Users/gibil/cellar/github/openhealth/models/shell.rb",
-		"/Users/gibil/cellar/github/openhealth/models/order/qr.py",
-		"/Users/gibil/cellar/github/openhealth/models/order/snr.py",
-		"/Users/gibil/cellar/github/openhealth/models/libs/user.py",
-		"/Users/gibil/cellar/github/openhealth/models/order/ord_vars.py",
-		"/Users/gibil/cellar/github/openhealth/views/partners/partner_actions.xml",
-		"/Users/gibil/cellar/github/openhealth/views/users/group.xml",
-		"/Users/gibil/cellar/github/openhealth/views/counters/counter.xml"
+		"/Users/gibil/cellar/github/openhealth/models/order/qr.py"
 	],
 	"find":
 	{
@@ -873,6 +811,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"appointment",
+			"control_vars",
+			"time_funcs",
+			"lib",
 			"state",
 			"appointment",
 			"appointment = ",
@@ -996,11 +938,7 @@
 			"doctor",
 			"doctor_line",
 			"#",
-			"pereira",
-			"phy",
-			"physi",
-			"create_doctor_data",
-			"lloli"
+			"pereira"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -1176,7 +1114,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -1192,8 +1130,8 @@
 						"selection":
 						[
 							[
-								620,
-								773
+								591,
+								591
 							]
 						],
 						"settings":
@@ -1202,7 +1140,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 101.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1214,15 +1152,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6554,
+						"buffer_size": 3712,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1898,
-								1898
+								1423,
+								1434
 							]
 						],
 						"settings":
@@ -1231,39 +1169,40 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1244.0,
+						"translation.y": 866.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "models/emr/session.py",
+					"file": "views/controls/control.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3375,
+						"buffer_size": 9345,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1425,
-								1430
+								128,
+								145
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1330.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -1272,15 +1211,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8474,
+						"buffer_size": 8567,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								879,
-								884
+								380,
+								380
 							]
 						],
 						"settings":
@@ -1289,132 +1228,73 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 373.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 5,
-					"file": "models/emr/__init__.py",
+					"file": "models/emr/session.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1160,
+						"buffer_size": 3280,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								617,
+								628
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.sublime-syntax"
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "views/sessions/session.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7123,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								629,
+								640
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 84.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "views/controls/control.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 9363,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3423,
-								3423
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
 					"buffer": 7,
-					"file": "views/controls/control_admin.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1590,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								946,
-								946
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 221.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "views/sessions/session.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7057,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3491,
-								3497
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1342.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
 					"file": "views/controls/control.DEP.xml",
 					"semi_transient": false,
 					"settings":
@@ -1440,156 +1320,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "views/sessions/session.DEP.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 7146,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								530,
-								530
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "views/sessions/session_admin.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 981,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								981
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 13,
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "views/sessions/session_actions.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 773,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								60
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 14,
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "views/sessions/session_search.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1058,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1026,
-								1026
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 16.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 14,
-					"file": "models/emr/control.TRASH.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2591,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								244,
-								244
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
+					"stack_index": 7,
 					"type": "text"
 				}
 			]
@@ -1818,7 +1549,7 @@
 		[
 			[
 				"",
-				"~/cellar/github/price_list/PriceList.sublime-project"
+				"~/Virtualenvs/Odoo9-min/odoo/addons/matrix/Matrix.sublime-project"
 			],
 			[
 				"\t",

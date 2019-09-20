@@ -1,5 +1,169 @@
 # 19 Sep 2019
 
+# ----------------------------------------------------------- Redefined ------------------------------------------------------
+
+	# Done
+	#x_done = fields.Boolean(
+			#string="Realizado", 			
+	#		string="R", 			
+	#		default=False,
+	#		readonly=True, 
+	#	)
+
+
+
+
+# Deps
+
+# ----------------------------------------------------------- Dates - Dep ------------------------------------------------------
+
+	# Real date 
+	control_date = fields.Datetime(
+			string = "Fecha Control",
+
+			#compute='_compute_control_date',
+		)
+	@api.multi
+	#@api.depends('state')
+	def _compute_control_date(self):
+		for record in self:
+			record.control_date = record.appointment.appointment_date
+
+
+	# First date 
+	first_date = fields.Datetime(
+			string = "Fecha Inicial",
+			readonly=True,
+		)
+
+	# Real date 
+	real_date = fields.Datetime(
+			string = "Fecha Real",
+		)
+
+	evaluation_next_date = fields.Date(
+			string = "Fecha próximo control", 	
+			#compute='_compute_evaluation_next_date', 
+			#default = fields.Date.today, 
+
+			#required=True, 
+			required=False, 
+			)
+
+
+
+
+# ----------------------------------------------------------- Nr Days ------------------------------------------------------
+
+# Deps
+	# Nr Days after Session
+	nr_days = fields.Integer(
+			'Nr Dias', 
+
+			compute='_compute_nr_days', 
+		)
+
+	@api.multi
+	#@api.depends('state')
+	def _compute_nr_days(self):
+		for record in self:
+			
+			if record.control_date == False: 
+				record.nr_days = lib.get_nr_days(self, record.procedure.session_date, record.first_date)
+
+			else:
+				record.nr_days = lib.get_nr_days(self, record.procedure.session_date, record.control_date)
+
+
+
+
+# Deps
+	# Maturity
+	maturity = fields.Integer(
+			string="Madurez", 
+
+			compute='_compute_maturity', 
+		)
+
+	@api.multi
+	#@api.depends('state')
+	def _compute_maturity(self):
+		#print
+		#print 'Compute Maturity'
+		
+		for record in self:
+
+			#today = datetime.datetime.now
+			#date_format = "%Y-%m-%d"
+			#date_format = "%Y-%m-%d "
+
+			date_format = "%Y-%m-%d %H:%M:%S"
+			now = datetime.datetime.now() + datetime.timedelta(hours=-5,minutes=0)	
+			now_date_str = now.strftime(date_format)
+
+			first_date_str = record.first_date
+
+
+			nr = lib.get_nr_days(self, first_date_str, now_date_str)
+
+			record.maturity = nr 
+
+			#print now_date_str
+			#print first_date_str
+			#print nr
+
+
+
+
+
+# Deps
+
+# ----------------------------------------------------------- Update ------------------------------
+	# Update Done  
+	@api.multi	
+	def update_done(self):
+		#print
+		#print 'Update Done'
+
+		# Done 
+		if self.x_done == False: 
+			self.x_done = True
+			#self.control_date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+		else:
+			self.x_done = False
+
+		# Treatment Flag 
+		self.treatment.update()
+
+		# Actual Doctor 
+		#doctor = user.get_actual_doctor(self)
+		#print doctor
+		#self.doctor = doctor
+
+
+
+
+	# Update App  
+	@api.multi	
+	def update_dates(self):
+		#print
+		#print 'Update Dates'
+
+		self.evaluation_start_date = self.appointment.appointment_date
+
+		# Real 
+		#self.control_date = self.appointment.appointment_date
+
+		# First
+		self.first_date = self.appointment.appointment_date
+
+		# Treatment Flag 
+		self.treatment.update()
+
+
+
+
+
 # Deps
 
 	@api.multi

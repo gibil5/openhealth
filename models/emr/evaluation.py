@@ -25,7 +25,7 @@ class Evaluation(models.Model):
 
 # ----------------------------------------------------------- Defined on PL -------------------------
 	# Appointment
-	appointment = fields.Char()
+	#appointment = fields.Char()
 
 	#appointment = fields.Many2one(
 	#		'oeh.medical.appointment',

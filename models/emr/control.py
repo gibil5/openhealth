@@ -30,8 +30,6 @@ class Control(models.Model):
 
 	nr_days = fields.Integer()
 
-
-
 	control_date = fields.Datetime()
 
 	first_date = fields.Datetime()

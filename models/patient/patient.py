@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-		Patient
+		*** Patient
 
- 		Created: 		26 Aug 2016
-		Last up: 		28 Apr 2019
+ 		Created: 			26 Aug 2016
+		Last updated: 	 	20 Sep 2019
 """
 from __future__ import print_function
 from openerp import models, fields, api
@@ -24,6 +24,29 @@ class Patient(models.Model):
 	_order = 'x_id_code desc'
 
 	_description = 'Patient'
+
+
+
+# ----------------------------------------------------------- Primitives ---------------------
+
+	# First
+	x_first_name = fields.Char(
+		#string="Nombres",
+		string="Nombres (obligatorio)",
+		required=True,
+		default='',
+	)
+
+
+	# Last
+	x_last_name = fields.Char(
+		#string="Apellidos",
+		string="Apellidos (obligatorio)",
+		required=True,
+		default='',
+	)
+
+
 
 
 # ----------------------------------------------------------- Treatment Count ---------------------
@@ -758,20 +781,6 @@ class Patient(models.Model):
 
 # ----------------------------------------------------------- Fields ------------------------------
 
-	# First
-	x_first_name = fields.Char(
-		string="Nombres",
-		required=True,
-		default='',
-	)
-
-
-	# Last
-	x_last_name = fields.Char(
-		string="Apellidos",
-		required=True,
-		default='',
-	)
 
 
 	# Active

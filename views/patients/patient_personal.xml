@@ -30,24 +30,30 @@
 														],
 											}">
 
-								<!-- Country --> 
-								<field name="country_id"    class="oe_no_button" 
-															options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"
-															readonly="0"                                
-															
+<!--
 															attrs="{ 'required':[
 																					('x_legacy', '!=', True), 
 																				],
-																	}"/>                                
+																	}"
+
+																					attrs="{ 'required':[
+																											('x_foreign', '=', False), 
+																											('x_legacy', '!=', True), 
+																											],
+																							}"
+-->
+
+								<!-- Country --> 
+								<field name="country_id"    class="oe_no_button" 
+															options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"
+															readonly="0"/>                                
 
 								<!-- Only Peru --> 
 								<field name="city" style="width: 40%"               string="Departamento"
 									
 																					attrs="{ 'required':[
 																											('x_foreign', '=', False), 
-																											('x_legacy', '!=', True), 
-																											],
-																							}"/>
+																								],}"/>
 
 								<!-- Only Lima --> 
 								<field name="street2_sel"       required="0"        attrs="{    'invisible':[('city', '!=', 'lima')],
@@ -55,7 +61,6 @@
 																								'required':[
 																												('city', '=', 'lima'), 
 																												('x_foreign', '=', False), 
-																												('x_legacy', '!=', True), 
 																											],
 																							}"/>
 
@@ -67,9 +72,9 @@
 																								'required':[
 																												('city', '!=', 'lima'),
 																												('x_foreign', '=', False), 
-																												('x_legacy', '!=', True), 
 																											],
-																							}"/>
+																							}"
+									/>
 
 
 							
@@ -84,18 +89,16 @@
 																								'required':[
 																												('city', '=', 'lima'), 
 																												('x_foreign', '=', False),
-																												('x_legacy', '!=', True), 
 																											],
 																							}" 
 
-								/>
+									/>
 
 
 								<!-- Address --> 
 								<field name="street"    required="0"
 																					attrs="{    'required':[
 																											('x_foreign', '=', False), 
-																											('x_legacy', '!=', True), 
 																											],
 																							}" 
 

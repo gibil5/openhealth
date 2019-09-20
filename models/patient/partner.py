@@ -3,7 +3,7 @@
  		*** RES PARTNER
  
  		Created: 			26 Aug 2016
-		Last updated: 	 	26 Aug 2019
+		Last updated: 	 	20 Sep 2019
 """
 from openerp import models, fields, api
 from . import partner_vars
@@ -16,7 +16,17 @@ class Partner(models.Model):
 
 
 
-# ----------------------------------------------------------- Dep -----------------------------	
+
+# ----------------------------------------------------------- Primitives ---------------------
+
+	# Name 
+	name = fields.Char(
+			'Name', 
+			#'(Generado automaticamente, no tocar)',
+			select=True,
+			index=True, 
+		)
+
 
 
 
@@ -139,12 +149,6 @@ class Partner(models.Model):
 
 
 # ----------------------------------------------------------- Indexed ------------------------------------------------------
-	# Name 
-	name = fields.Char(
-			'Name', 
-			select=True,
-			index=True, 
-		)
 
 	# Dni 
 	x_dni = fields.Char(

@@ -118,7 +118,11 @@
 						<div class="oe_left" style="width: 500px;">
 							<field name="image" widget="image" class="oe_left oe_avatar" options="{&quot;preview_image&quot;: &quot;image_medium&quot;, &quot;size&quot;: [90, 90]}"/>
 							<div class="oe_title">
+<!--
 								<label string="Apellidos" class="oe_edit_only"/>
+-->
+								<label string="(Generado automaticamente, no tocar)" class="oe_edit_only"/>
+
 								<h1>
 <!--
 									<field name="name"  class="oe_read_only" />
@@ -165,19 +169,29 @@
 						<group>
 							<group>     
 
-								<field name="x_last_name"   class="oe_edit_only"
+<!--
 															attrs="{     
 																		'required':     [('x_legacy', '!=', True)], 
 																}"
-									/>
-
-								<field name="x_first_name"  class="oe_edit_only"
 															attrs="{     
 																		'required':     [('x_legacy', '!=', True)], 
 																}"  
-									/>
+-->
+
+
+								<field name="x_last_name"   class="oe_edit_only"/>
+
+
+								<field name="x_first_name"  class="oe_edit_only"/>
+
+
+<!--
 
 								<field name="partner_id"  string="Contacto"  readonly="1"  required="0"/>
+-->
+								<field name="partner_id"  string="Contacto"  readonly="1"  required="0"		groups="openhealth.roots"/>
+
+
 
 								<field name="x_date_record"         readonly="1"/>
 
@@ -229,15 +243,16 @@
 
 
 							</group>
-
-							<group>
-								<field string='Sexo' name="sex"     required="1" />
-
-								<field name="x_first_contact"   attrs="{    'required':     [
+<!--
+ attrs="{    'required':     [
 																								('x_legacy', '!=', True)
 																							], 
 																	}"  
-									/>
+-->
+							<group>
+								<field string='Sexo' name="sex"     required="1" />
+
+								<field name="x_first_contact"		required="1"/>
 
 								<field name="x_first_impression"/>
 

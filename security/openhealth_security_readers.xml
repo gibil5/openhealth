@@ -45,14 +45,18 @@
 										
 
 										(4, ref('openhealth.caja_clinicachavarri')),
+													
 													(4, ref('openhealth.eruiz_clinicachavarri')),
+
 										(4, ref('openhealth.mpedemonte_clinicachavarri')),
 										(4, ref('openhealth.gnunhez_clinicachavarri')),
 
 
 
 										(4, ref('openhealth.plataforma_clinicachavarri')),
+
 													(4, ref('openhealth.afuentes_clinicachavarri')),
+
 										(4, ref('openhealth.ssaucedo_clinicachavarri')),
 										(4, ref('openhealth.durdanivia_clinicachavarri')),
 										(4, ref('openhealth.imichelot_clinicachavarri')),
@@ -73,6 +77,7 @@
 
 										(4, ref('openhealth.manager_clinicachavarri')),
 										(4, ref('openhealth.svargas_clinicachavarri')),
+										
 													(4, ref('openhealth.mmattos_clinicachavarri')),
 
 
@@ -86,13 +91,17 @@
 
 
 										(4, ref('openhealth.caja_clinicachavarri')),
+
 													(4, ref('openhealth.eruiz_clinicachavarri')),
+										
 										(4, ref('openhealth.mpedemonte_clinicachavarri')),
 										(4, ref('openhealth.gnunhez_clinicachavarri')),
 
 
 										(4, ref('openhealth.asistente_clinicachavarri')),
+
 													(4, ref('openhealth.mostos_clinicachavarri')),
+										
 										(4, ref('openhealth.yochante_clinicachavarri')),
 										(4, ref('openhealth.rgarcia_clinicachavarri')),
 										(4, ref('openhealth.mtirado_clinicachavarri')),
@@ -102,6 +111,7 @@
 										(4, ref('openhealth.almacen_clinicachavarri')),
 
 
+													(4, ref('openhealth.afuentes_clinicachavarri')),
 									]"/>
 		</record>
 

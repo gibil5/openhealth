@@ -4,7 +4,10 @@
 
 
 <!-- Plataforma -->
-
+<!--
+afuentes@clinicachavarri.com
+4evkcvb3dz
+-->
 <!-- Andrea Fuentes -->
         <record id="afuentes" model="res.partner">
             <field name="name">Andrea Fuentes</field>

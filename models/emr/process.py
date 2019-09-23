@@ -1,20 +1,12 @@
 # -*- coding: utf-8 -*-
-#
-#
-# 		*** OPEN HEALTH - Process
-# 
-# Created: 				18 Feb 2017
-# Last updated: 	 	Id.
+"""
+		*** OPEN HEALTH - Process - Dep !!!
 
+		Created: 				18 Feb 2017
+		Last updated: 	 		20 Sep 2019
+"""
 from openerp import models, fields, api
-
-#from . import eval_vars
-#from libs import eval_vars
 from openerp.addons.openhealth.models.libs import eval_vars
-
-#from . import treatment_vars
-
-
 
 class Process(models.Model):
 	
@@ -25,26 +17,7 @@ class Process(models.Model):
 
 
 
-
-
-
-
-# ----------------------------------------------------------- Constants ------------------------------------------------------
-
-	# States 
-	READONLY_STATES = {
-		'empty': 		[('readonly', False)], 
-		#'done': 		[('readonly', True)], 	
-	}
-
-
-
-
-
-
-# ----------------------------------------------------------- Primitives ------------------------------------------------------
-
-
+# ----------------------------------------------------------- Used ------------------------------------------------------
 	# Patient 
 	patient = fields.Many2one(
 			'oeh.medical.patient',
@@ -57,6 +30,12 @@ class Process(models.Model):
 			states=READONLY_STATES, 
 		)
 
+
+	# States 
+	READONLY_STATES = {
+		'empty': 		[('readonly', False)], 
+		#'done': 		[('readonly', True)], 	
+	}
 
 
 
@@ -71,7 +50,6 @@ class Process(models.Model):
 
 			states=READONLY_STATES, 
 		)
-	
 
 
 
@@ -98,23 +76,7 @@ class Process(models.Model):
 
 
 
-
-
-
-
-# ----------------------------------------------------------- Important ------------------------------------------------------
-
-	# Open 
-	#process_open = fields.Boolean(
-	#		string="Abierto",
-	#		default=True,
-	#)
-
-
-
-
-
-
+# ----------------------------------------------------------- Not Used ------------------------------------------------------
 
 
 	end_date = fields.Date(
@@ -122,42 +84,11 @@ class Process(models.Model):
 			default = fields.Date.today
 			)
 
-
-
-
-	# ----------------------------------------------------------- Variables ------------------------------------------------------
 	
 	name = fields.Char(
 			string="Proceso #", 
 			#required=True, 
 		)
-
-
-
-
-
-
-
-	#therapist = fields.Many2one(
-			#'oeh.medical.therapist',
-	#		'oeh.medical.physician',
-
-
-			#string="Terapeuta",
-	#		string = "Cosmeatra", 	
-
-
-	#		index=True
-	#		)
-
-
-
-
-
-
-
-
-
 
 
 	duration = fields.Integer(
@@ -170,9 +101,6 @@ class Process(models.Model):
 			string='Total', 
 			default = 0, 
 			) 
-
-
-
 
 
 	_state_list = [
@@ -190,15 +118,6 @@ class Process(models.Model):
 			string='Estado', 	
 			default = False, 
 		)
-
-
-
-
-
-
-
-
-
 
 
 	# Progress 
@@ -237,15 +156,9 @@ class Process(models.Model):
 
 
 
-
-
-
-
 	nr_procedures = fields.Integer(
 			string="Procedimientos",
 			#compute="_compute_nr_procedures",
 	)
-
-
 
 # Process

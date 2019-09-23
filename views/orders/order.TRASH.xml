@@ -10,3 +10,11 @@
 																							], 
 																		}"
 						/>
+
+
+
+																	attrs="{     
+																				'readonly': [
+																								('x_admin_mode', '!=', True),
+																							], 
+																		}"

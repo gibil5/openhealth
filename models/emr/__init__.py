@@ -17,8 +17,10 @@ from . import appointment_dep		# Min
 from . import product
 from . import image		
 from . import allergy				
-from . import process
+
+#from . import process
 from . import treatment
+
 from . import evaluation  
 from . import consultation
 from . import procedure

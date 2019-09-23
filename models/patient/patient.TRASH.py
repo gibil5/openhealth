@@ -1,5 +1,84 @@
-# 30 Aug 2019
+# 23 sep 2019
+	@api.multi
+	def test_treatment_ids(self):
+		print()
+		print('Default Treatment Ids')
 
+		print(self.x_doctor)
+		print(self.x_doctor.name)
+		print(self.x_chief_complaint)
+
+		# Doctors
+		doctors = self.env['oeh.medical.physician'].search([
+		#													('active', 'in', [True]),
+															('name', 'in', [self.x_doctor.name]),
+											],
+												#order='x_serial_nr asc',
+												#limit=1,
+											)
+		print(doctors)
+
+		return [
+					(0, 0, {
+							'chief_complaint': self.x_chief_complaint,
+							'physician': self.x_doctor.id,
+				})
+				for d in doctors
+				#for s in slots
+		]
+
+
+
+	# Slots
+	def _default_treatment_ids(self):
+		print()
+		print('Default Treatment Ids')
+
+		print(self.x_doctor)
+		print(self.x_doctor.name)
+		print(self.x_doctor.id)
+		print(self.x_chief_complaint)
+
+
+		# Doctors
+		doctors = self.env['oeh.medical.physician'].search([
+		#													('active', 'in', [True]),
+															('name', 'in', [self.x_doctor.name]),
+											],
+												#order='x_serial_nr asc',
+												#limit=1,
+											)
+		print(doctors)
+
+		return [
+				(0, 0, {
+							'chief_complaint': self.x_chief_complaint,
+							'physician': self.x_doctor.id,
+				})
+				for d in doctors
+				#for s in slots
+		]
+
+	x_doctor = fields.Many2one(
+			'oeh.medical.physician',
+			string="Doctor",
+		)
+
+	x_chief_complaint = fields.Selection(
+			string = 'Motivo de consulta', 						
+
+			selection = eval_vars._chief_complaint_list,
+
+			#required=False,
+			#readonly=False, 
+		)
+
+
+
+
+
+
+# 30 Aug 2019
 
 
 # ----------------------------------------------------------- HC Number ---------------------------

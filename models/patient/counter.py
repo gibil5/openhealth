@@ -99,9 +99,30 @@ class Counter(models.Model):
 
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 
+	# Synchro
+	@api.multi 
+	def synchro(self):
+		print()
+		print('Synchro')
+
+		#patient = self.env['oeh.medical.patient'].search([
+															#('active', '=', 'emr'),
+		#													('active', 'in', [True]),
+		#												],
+														#order='x_counter desc',
+		#												order='x_id_code desc',
+		#												limit=1,)
+		#print(patient)
+		#print(patient.name)
+	# synchro
+
+
+
 	# Increase
 	@api.multi 
 	def increase(self):
+		print()
+		print('Increase')
 		self.value = self.value + 1
 		self.date_modified = fields.datetime.now()
 	# increase
@@ -110,6 +131,8 @@ class Counter(models.Model):
 	# Decrease
 	@api.multi 
 	def decrease(self):
+		print()
+		print('Decrease')
 		self.value = self.value - 1
 		self.date_modified = fields.datetime.now()
 	# decrease

@@ -2,8 +2,8 @@
 """
 		*** Patient
 
- 		Created: 			26 Aug 2016
-		Last updated: 	 	20 Sep 2019
+		Created: 			26 Aug 2016
+		Last updated: 	 	23 Sep 2019
 """
 from __future__ import print_function
 from openerp import models, fields, api
@@ -14,10 +14,11 @@ from openerp.addons.openhealth.models.libs import count_funcs
 from openerp import _
 from openerp.exceptions import Warning as UserError
 
+from openerp.addons.openhealth.models.libs import eval_vars
+
 class Patient(models.Model):
 	"""
-	Patient Class
-	Inherits OeHealth Patient Class
+	Patient Class. Inherits OeHealth Patient Class
 	"""
 	_inherit = 'oeh.medical.patient'
 
@@ -25,6 +26,45 @@ class Patient(models.Model):
 
 	_description = 'Patient'
 
+
+
+# ----------------------------------------------- Dep --------------------------------
+	#x_test_case = fields.Char(
+	#		'Test Case',
+	#	)
+
+
+
+# ----------------------------------------------- Treatment --------------------------------
+
+	# Treatments
+	treatment_ids = fields.One2many(
+			'openhealth.treatment',
+			'patient',
+			string="Tratamientos",
+			#default=_default_treatment_ids,
+		)
+
+# ----------------------------------------------- User --------------------------------
+
+	user_id = fields.Many2one(
+		'res.users', 
+		#string='Salesperson', 
+		string='Creado por', 
+		#index=True,
+		track_visibility='onchange', 
+		default=lambda self: self.env.user,
+	)
+
+
+# ----------------------------------------------- Get Name Code --------------------------------
+
+	#@api.multi
+	def get_name_code(self):
+		words = self.name.upper().split()
+		code = words[0] + '_' + words[1]
+		code = code.replace('.', '')
+		return code
 
 
 # ----------------------------------------------------------- Primitives ---------------------
@@ -45,9 +85,6 @@ class Patient(models.Model):
 		required=True,
 		default='',
 	)
-
-
-
 
 # ----------------------------------------------------------- Treatment Count ---------------------
 
@@ -70,14 +107,6 @@ class Patient(models.Model):
 
 
 
-# ----------------------------------------------------------- Relational --------------------------
-
-	# Treatments
-	treatment_ids = fields.One2many(
-			'openhealth.treatment',
-			'patient',
-			string="Tratamientos"
-		)
 
 
 
@@ -119,20 +148,20 @@ class Patient(models.Model):
 
 		name_ctr = 'emr'
 
- 		counter = self.env['openhealth.counter'].search([
+		counter = self.env['openhealth.counter'].search([
 																('name', '=', name_ctr),
 														],
 															#order='write_date desc',
 															#limit=1,
 														)
 
- 		if counter.name not in [False]:
+		if counter.name not in [False]:
 
-	 		# Init
-	 		prefix = counter.prefix
-	 		separator = counter.separator
-	 		padding = counter.padding
-	 		value = counter.value
+			# Init
+			prefix = counter.prefix
+			separator = counter.separator
+			padding = counter.padding
+			value = counter.value
 
 			name = count_funcs.get_name(self, prefix, separator, padding, value)
 
@@ -162,8 +191,8 @@ class Patient(models.Model):
 												#order='x_serial_nr asc',
 												limit=1,
 											)
-		#print(configurator)
-		#print(configurator.name)
+		print(configurator)
+		print(configurator.name)
 		return configurator
 
 	# Configurator
@@ -327,6 +356,17 @@ class Patient(models.Model):
 		"""
 		self.active = False
 		self.partner_id.active = False
+
+		counter = self.env['openhealth.counter'].search([
+															('name', '=', 'emr'),
+														],
+														#order='appointment_date desc',
+														limit=1,)
+		if counter.name != False:
+			#counter.synchro()
+			counter.decrease()
+
+
 
 # ----------------------------------------------------------- Activate Patient - Button ----------------------------
 	# Activate Patient
@@ -503,9 +543,6 @@ class Patient(models.Model):
 
 
 # ----------------------------------------------------------- Test - Fields -----------------------
-	x_test_case = fields.Char(
-			'Test Case',
-		)
 
 	x_test = fields.Boolean(
 			'Test',
@@ -542,8 +579,13 @@ class Patient(models.Model):
 	@api.multi
 	def _compute_x_legacy(self):
 		for record in self:
-			if record.x_counter < 13963:
+
+			#if record.x_counter < 13963:
+			if (record.x_counter < 13963) and (record.configurator.name in ['Lima'])  :
 				record.x_legacy = True
+
+			else:
+				record.x_legacy = False
 
 
 
@@ -722,13 +764,13 @@ class Patient(models.Model):
 
 
 
- 		allergy_id = self.env['openhealth.allergy'].search([
+		allergy_id = self.env['openhealth.allergy'].search([
 															('name', '=', 'Ninguna'),
 														],
 															#order='write_date desc',
 															limit=1,
 													).id
- 		if allergy_id != False:
+		if allergy_id != False:
 			self.x_allergies = allergy_id
 
 
@@ -1109,7 +1151,7 @@ class Patient(models.Model):
 
 		# Serial Number. Increase must be AFTER creation
 		name_ctr = 'emr'
-	 	counter = self.env['openhealth.counter'].search([
+		counter = self.env['openhealth.counter'].search([
 																	('name', '=', name_ctr),
 															],
 																#order='write_date desc',

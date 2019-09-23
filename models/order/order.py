@@ -34,6 +34,34 @@ class sale_order(models.Model):
 	_description = 'Order'
 
 
+# ----------------------------------------------------------- Relational -------------------------------
+	# Treatment
+	treatment = fields.Many2one(
+			'openhealth.treatment',
+			string="Tratamiento",
+			#states=READONLY_STATES,
+			readonly=False,
+
+			#ondelete='cascade',  		# Danger !!!
+		)
+
+	# Partner
+	# Already Created by OeHealth
+	partner_id = fields.Many2one(
+			'res.partner',
+			string="Cliente",
+			required=False,
+			states={
+					'draft': [('readonly', False)],
+					'sent': [('readonly', True)],
+					'sale': [('readonly', True)],
+				},
+
+			#ondelete='cascade',  		# Is this the new property ?
+			#ondelete='cascade',  		# Danger !!!
+		)
+
+
 
 # ----------------------------------------------------------- Descriptors -------------------------------
 
@@ -104,10 +132,15 @@ class sale_order(models.Model):
 	@api.multi
 	def _compute_pl_family(self):
 		for record in self:
+
 			families = ''
+
 			for line in record.order_line:
 				families = families + line.get_family() + ', '
-			record.pl_family = families
+
+			#record.pl_family = families
+			record.pl_family = families[0:-2]
+
 
 
 
@@ -194,21 +227,7 @@ class sale_order(models.Model):
 
 
 # ----------------------------------------------------------- Partner - Not Dep -------------------------
-	# Partner
-	# Already Created by OeHealth
 
-	partner_id = fields.Many2one(
-			'res.partner',
-			string="Cliente",
-			required=False,
-			states={
-					'draft': [('readonly', False)],
-					'sent': [('readonly', True)],
-					'sale': [('readonly', True)],
-				},
-
-			ondelete='cascade',  		# Is this the new property ?
-		)
 
 	# On Change Partner
 	@api.onchange('partner_id')
@@ -1275,13 +1294,8 @@ class sale_order(models.Model):
 			states=READONLY_STATES,
 		)
 
-	# Treatment
-	treatment = fields.Many2one(
-			'openhealth.treatment',
-			ondelete='cascade',
-			string="Tratamiento",
-			states=READONLY_STATES,
-		)
+
+
 
 	# Order Line
 	order_line = fields.One2many(

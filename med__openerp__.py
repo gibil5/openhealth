@@ -8,7 +8,7 @@
 
 	'description': """
 
-		20 Sep 2019
+		23 Sep 2019
 
 		Contains:
 			- All External Dependencies,
@@ -256,7 +256,9 @@
 
 
 		# Counters 
+		'views/counters/counter_actions.xml',
 		'views/counters/counter.xml',
+
 
 		# Companies 
 		'views/companies/company.xml',
@@ -310,8 +312,8 @@
 		# Partners
 		#'views/partners/partner.xml',
 		#'views/partners/partner_actions.xml',
-		'views/patients/partners/partner.xml',
 		'views/patients/partners/partner_actions.xml',
+		'views/patients/partners/partner.xml',
 
 
 		# Products

@@ -450,6 +450,8 @@
 				<!-- Price list --> 
 				<xpath expr="//field[@name='pricelist_id']" position="replace">
 
+					<field name="x_admin_mode"/>
+
 					<field name="configurator"			required="1"/>
 
 					<field name="pricelist_id"          readonly="1"/>
@@ -695,7 +697,9 @@
 
 					<field name="vspace"/>
 
-					<field name="treatment"/>
+
+					<field name="treatment"		required="1"/>
+
 
 					<field name="pl_family"      readonly="1"/>
 

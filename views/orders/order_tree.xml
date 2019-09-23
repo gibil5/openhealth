@@ -25,7 +25,16 @@
 					<field name="patient"/>
 					<field name="x_doctor"/>
 					<field name="treatment"/>
+
+
+<!--
+-->
 					<field name="nr_lines"/>
+					<field name="pl_product"	string="Producto"/>
+					<field name="pl_family"/>
+					<field name="x_family"		string="X Familia"		groups="openhealth.roots"/>
+
+
 
 					<field name="x_serial_nr"/>
 					<field name="x_type" />
@@ -40,14 +49,7 @@
 					<field name="x_id_doc"/>
 					<field name="x_ruc"/>
 
-					
-<!--
-					<field name="pl_product"	string="Producto"/>
--->
 					<field name="user_id"       string="Creado por"/>
-
-					<field name="pl_family"		string="PL Familia"		groups="openhealth.roots"/>
-					<field name="x_family"		string="X Familia"		groups="openhealth.roots"/>
 				</tree>
 			</field>
 		</record>

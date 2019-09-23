@@ -8,55 +8,33 @@
 <!-- ACTIONS -->
 
 
-        <!-- ACTION -->
-        <record model="ir.actions.act_window" id="mail.action_contacts">
-
-            <field name="name">Contacts</field>
-
+        <!-- Partner Patient Inactive -->
+        <record model="ir.actions.act_window" id="partner_patient_inactive_list_action">
+            <field name="name">Partners Paciente Inactivos</field>
             <field name="res_model">res.partner</field>
-            
             <field name="view_type">form</field>
-            
             <field name="view_mode">tree,form</field>
-            
-            <field name="domain">[]</field>
-
-            <field name="context">{}</field>
-
-
-            <field name="view_id" ref="base.view_partner_tree"/>
+            <field name="domain">[
+                                    ('active', '=', False), 
+                                    ('is_patient', '=', True), 
+                ]</field>
+        </record>
 
 
-            <field name="view_ids" eval="[          (5, 0, 0),
-                                                    (0, 0, {'view_mode': 'tree', 'view_id': ref('base.view_partner_tree')}),
-                                                    (0, 0, {'view_mode': 'form', 'view_id': ref('base.view_partner_form')}),
-                                            ]
-                                        "/>
-
-
-            <!--
-                                                    (0, 0, {'view_mode': 'kanban', 'view_id': ref('base.view_partner_kanban')}),
-
-
-            <field name="domain">
-                [
-                    ('category_id','=','staff'), 
-                ]
-            </field>
-
-            <field name="domain">[]</field>
-            <field name="context">{}</field>
-            <field name="view_id" eval="False"/>            
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create">Create the first partner
-                </p>
-            </field>
-            -->
+        <!-- Partner Inactive -->
+        <record model="ir.actions.act_window" id="partner_inactive_list_action">
+            <field name="name">Partners Inactivos</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[
+                                    ('active', '=', False), 
+                ]</field>
         </record>
 
 
 
-        <!-- Window List action -->
+        <!-- Partner All -->
         <record model="ir.actions.act_window" id="partner_list_action">
             <field name="name">partners</field>
             <field name="res_model">res.partner</field>
@@ -74,22 +52,7 @@
         </record>
 
 
-
-        <!-- Window List action -->
-        <record model="ir.actions.act_window" id="partner_inactive_list_action">
-            <field name="name">Partners Inactivos</field>
-            <field name="res_model">res.partner</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-            <field name="domain">[
-                                    ('active', '=', False), 
-                ]</field>
-        </record>
-
-
-
-
-        <!-- ACTION -->
+        <!-- Partner Vip -->
         <record model="ir.actions.act_window" id="partner_vip_list_action">
             <field name="name">Pacientes Vip</field>
             <field name="res_model">res.partner</field>
@@ -100,18 +63,6 @@
 -->
         </record>
 
-
-
-
-
-
-        <!-- ACTION -->
-        <record model="ir.actions.act_window" id="partner_categories_list_action">
-            <field name="name">partners categories</field>
-            <field name="res_model">res.partner.category</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-        </record>
 
     </data>
 </openerp>

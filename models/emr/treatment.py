@@ -11,15 +11,81 @@ from openerp import models, fields, api
 from . import time_funcs
 from . import treatment_vars
 from openerp.addons.openhealth.models.libs import creates as cre
-from openerp.addons.openhealth.models.libs import lib, user
+from openerp.addons.openhealth.models.libs import lib, user, eval_vars
+#from openerp.addons.openhealth.models.libs import eval_vars
 
 class Treatment(models.Model):
-
-	_inherit = 'openhealth.process'
+	#_inherit = 'openhealth.process'  	# Dep !!!
 	_name = 'openhealth.treatment'
 	_order = 'write_date desc'
 	_description = 'Treatment'
 
+
+
+# ----------------------------------------------------------- Primitive --------------------------
+
+	# Name
+	name = fields.Char(
+			string="Tratamiento #",
+
+			compute='_compute_name',
+		)
+	@api.multi
+	#@api.depends('start_date')
+	def _compute_name(self):
+
+		se = '-'
+
+		for record in self:
+
+			#record.name = 'TR0000' + str(record.id)
+
+			#record.name = 'TR' + se + record.patient.get_name_code() + se + record.physician.get_name_code() 
+			record.name = record.patient.get_name_code() + se + record.physician.get_name_code() 
+
+
+
+
+# ----------------------------------------------------------- Process --------------------------
+	# States 
+	READONLY_STATES = {
+		'empty': 		[('readonly', False)], 
+		#'done': 		[('readonly', True)], 	
+	}
+
+	# Patient 
+	patient = fields.Many2one(
+			'oeh.medical.patient',
+			string="Paciente",
+			index=True, 
+			ondelete='cascade',			
+			readonly=True, 
+			states=READONLY_STATES, 
+		)
+
+	# Physician
+	physician = fields.Many2one(
+			'oeh.medical.physician',
+			string="Médico",
+			index=True,
+			readonly=False, 
+			states=READONLY_STATES, 
+		)
+
+	chief_complaint = fields.Selection(
+			string = 'Motivo de consulta', 						
+			selection = eval_vars._chief_complaint_list, 
+			required=False,
+			readonly=False, 
+		)
+
+
+	start_date = fields.Date(
+			string="Fecha inicio", 
+			default = fields.Date.today,
+			readonly=True, 
+			states=READONLY_STATES, 
+		)
 
 
 
@@ -594,17 +660,6 @@ class Treatment(models.Model):
 
 # ----------------------------------------------------------- Canonical ---------------------------
 
-	# Name
-	name = fields.Char(
-			string="Tratamiento #",
-
-			compute='_compute_name',
-		)
-	@api.multi
-	#@api.depends('start_date')
-	def _compute_name(self):
-		for record in self:
-			record.name = 'TR0000' + str(record.id)
 
 
 	# Space
@@ -742,6 +797,7 @@ class Treatment(models.Model):
 			string="Presupuestos",
 		)
 
+
 	# Orders Procedures
 	order_pro_ids = fields.One2many(
 			'sale.order',
@@ -749,7 +805,8 @@ class Treatment(models.Model):
 			string="Presupuestos",
 			domain=[
 						#('x_family', '=', 'procedure'),
-						('x_family', 'in', ['procedure', 'cosmetology']),
+						#('x_family', 'in', ['procedure', 'cosmetology']),
+						('pl_family', 'in', ['LASER CO2']),
 					],
 		)
 

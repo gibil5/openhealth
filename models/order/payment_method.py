@@ -53,8 +53,12 @@ class PaymentMethod(models.Model):
 	# Saledoc
 	saledoc = fields.Selection(
 			string="Tipo",
+
 			selection=pm_vars._sale_doc_type_list,
+			
 			states=pm_vars.READONLY_STATES,
+
+			default='ticket_receipt',
 		)
 
 

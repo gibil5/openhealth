@@ -16,33 +16,23 @@
 <menuitem   id="emr_menu" 
             name="Historias Médicas"
             parent="main_emr_menu"
+
             sequence="1"
             />
 
-
+<!--
+                    name="Pacientes Con Nr H" 
+-->
         <!-- Patients --> 
         <menuitem   id="emr_patients_menu" 
-                    name="Pacientes Con Nr H" 
+
+                    name="Pacientes" 
+
                     parent="emr_menu"
                     sequence="1"
                     action="patient_list_action"
                     />
 
-        <!-- Patients no id code --> 
-        <menuitem   id="emr_patients_no_idcode_menu" 
-                    name="Pacientes Sin Nr H" 
-                    parent="emr_menu"
-                    sequence="2"
-                    action="patient_no_idcode_list_action"
-                    />
-
-        <!-- Patients All --> 
-        <menuitem   id="emr_patients_all_menu" 
-                    name="Pacientes Todos" 
-                    parent="emr_menu"
-                    sequence="3"
-                    action="patient_all_list_action"
-                    />
 
         <!-- Treatments -->
         <menuitem   id="emr_treatments_menu" 
@@ -51,6 +41,37 @@
                     sequence="5"
                     action="treatment_list_action"
                     />
+
+
+<!-- Historias --> 
+        <!-- Patients no id code --> 
+        <!-- Patients All --> 
+<!--
+<menuitem   id="emr_legacy_menu" 
+            name="Historias Médicas - Antiguos"
+            parent="main_emr_menu"
+
+            sequence="3"
+            />
+
+        <menuitem   id="emr_patients_no_idcode_menu" 
+
+                    name="Pacientes Sin Nr Historia" 
+            
+                    parent="emr_legacy_menu"
+
+                    sequence="1"
+                    action="patient_no_idcode_list_action"
+                    />
+
+        <menuitem   id="emr_patients_all_menu" 
+                    name="Pacientes Todos" 
+                    parent="emr_legacy_menu"
+                    sequence="3"
+                    action="patient_all_list_action"
+                    />
+-->
+
 
 
 <!--
@@ -62,7 +83,8 @@
 <menuitem   id="physician_menu" 
             name="Médicos"
             parent="main_emr_menu"
-            sequence="2"
+
+            sequence="5"
             />
 
 
@@ -88,17 +110,44 @@
 <menuitem   id="emr_inactive_menu" 
             name="Inactivos"
             parent="main_emr_menu"
-            sequence="3"
+            
+            sequence="7"
 
             groups="openhealth.roots,openhealth.managers,openhealth.directors"
             />
+
+
+        <!-- Patients --> 
+        <menuitem   id="emr_patients_inactive_menu" 
+                    name="Pacientes" 
+                    parent="emr_inactive_menu"
+                    sequence="1"
+
+                    action="patient_inactive_list_action"
+                    />
+
+
+        <!-- Partners --> 
+        <menuitem   id="emr_partners_inactive_menu" 
+
+                    name="Partners" 
+
+                    parent="emr_inactive_menu"
+
+                    sequence="2"
+
+                    action="partner_patient_inactive_list_action"
+                    />
+
+
 
 
         <!-- Physicians -->
         <menuitem   id="oeh_medical_physician_inactive_list"  
                     name="Médicos"
                     parent="emr_inactive_menu"
-                    sequence="1"
+
+                    sequence="3"
 
                     action="physician_inactive_list_action" 
 
@@ -113,33 +162,28 @@
 
                     parent="emr_inactive_menu"
                     
-                    sequence="3"
+                    sequence="5"
 
                     action="base.action_res_users_inactive"
                     />
 
 
-        <!-- Patients --> 
-        <menuitem   id="emr_patients_inactive_menu" 
-                    name="Pacientes" 
-                    parent="emr_inactive_menu"
-                    sequence="12"
-
-                    action="patient_inactive_list_action"
-                    />
 
 
 
 
-
+<!--
+                    groups="openhealth.roots,openhealth.reception,openhealth.directors"
+-->
 <!-- Config HC --> 
         <menuitem   id="emr_config_menu" 
                     parent="main_emr_menu"
-                    sequence="4"
+
+                    sequence="9"
 
                     name="Configuración"
 
-                    groups="openhealth.roots,openhealth.reception,openhealth.directors"
+                    groups="openhealth.roots,openhealth.reception,openhealth.directors,openhealth.managers"
                     />
 
         <menuitem   id="emr_counters_menu" 

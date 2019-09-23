@@ -20,15 +20,15 @@
 					<page string="Contabilidad">
 
 						<group>
-
+<!--
 							<field name="x_admin_mode"          attrs="{'invisible':[
 																							('state','not in',['sale', 'credit_note']),
 																				]}"
 										groups="openhealth.roots,openhealth.managers,openhealth.caja,openhealth.directors"
 								/>
-
-
 							<field name="vspace"/>
+-->
+
 
 							<field name="x_credit_note"         attrs="{'invisible':[('state', 'in', ['cancel', 'credit_note'])]}"/>
 

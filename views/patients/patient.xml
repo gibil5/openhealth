@@ -14,7 +14,7 @@
 				<form string="Patient">
 
 
-					<!-- Header --> 
+<!-- Header -->
 					<header>
 
 						<!-- First Treatment -->
@@ -47,14 +47,17 @@
 
 						<!-- Test -->
 <!--
+-->
 						<button 
 							type="object" 
 							class="oe_highlight"
+
 							name="test" 
-							string="TEST" 
+
+							string="Test" 
 							groups="openhealth.roots"
 						/>
--->
+
 
 						<!-- Budget --> 
 <!--
@@ -73,12 +76,24 @@
 
 						<!-- Right Buttons --> 
 
+						<!-- Print --> 
+						<button 
+							type="object" 
+							class="oe_highlight oe_right"
+							name="print_patient_hc" 
+							string="Imprimir" 
+
+							confirm="Importante: La ficha del Paciente va a ser IMPRESA. Desea continuar ?"
+						/>
+
 						<!-- Deactivate --> 
 						<button 
 							type="object" 
 							class="oe_highlight oe_right"
 							name="deactivate_patient" 
 							string="Desactivar" 
+							
+							confirm="Importante: El Paciente va a ser DESACTIVADO. Desea continuar ?"
 						/>
 
 						<!-- Activate --> 
@@ -88,17 +103,13 @@
 							name="activate_patient" 
 							string="Activar" 
 							groups="openhealth.roots"
+
+							confirm="Importante: El Paciente va a ser ACTIVADO. Desea continuar ?"
 						/>
 
-						<!-- Print --> 
-						<button 
-							type="object" 
-							class="oe_highlight oe_right"
-							name="print_patient_hc" 
-							string="Imprimir" 
-						/>
 
 						<!-- Validate --> 
+<!--
 						<button 
 							type="object" 
 							class="oe_highlight oe_right"
@@ -106,6 +117,7 @@
 							string="Validate" 
 							groups="openhealth.roots"
 						/>
+-->
 					</header>
 
 
@@ -165,7 +177,7 @@
 
 
 
-						<!-- Fields -->
+<!-- Fields -->
 						<group>
 							<group>     
 
@@ -181,30 +193,32 @@
 
 								<field name="x_last_name"   class="oe_edit_only"/>
 
-
 								<field name="x_first_name"  class="oe_edit_only"/>
-
-
-<!--
-
-								<field name="partner_id"  string="Contacto"  readonly="1"  required="0"/>
--->
-								<field name="partner_id"  string="Contacto"  readonly="1"  required="0"		groups="openhealth.roots"/>
-
-
 
 								<field name="x_date_record"         readonly="1"/>
 
+<!--
+								<field name="vspace"/>
 
+								<field name="partner_id"  string="Contacto"  readonly="1"  required="0"/>
+-->
+
+								<field name="partner_id"  string="Contacto"  readonly="1"  required="0"		groups="openhealth.roots"/>
 
 								<field name="create_date"           readonly="0"	groups="openhealth.roots"/>
 
 								<field name="x_test"    groups="openhealth.roots"/>
 
+<!--
+
 								<field name="x_test_case"    groups="openhealth.roots"/>
+-->
+
 							</group>
 
 							<group>
+								<field name="configurator"/>
+
 								<field name="x_admin_mode"  groups="openhealth.roots"/>
 
 								<field name="x_autofill"    groups="openhealth.roots"/>
@@ -281,35 +295,39 @@
 
 					<field name="name"/>
 
-					<field name="x_test"            groups='openhealth.roots'   />      
-					<field name="x_test_case"       groups='openhealth.roots'   />      
-
 					<field name="x_id_code"/>       
 					<field name="x_date_record"     groups='openhealth.roots'   string="Fecha de creación"  />
-					<field name="x_legacy"/>
-					<field name="x_data_complete"/>
 
+					<field name="x_legacy"/>
 
 					<field name="city"/>
 					<field name="street2_sel"/>
 					<field name="street2_char"/>
 
 					<field name="x_id_doc_type" string="Tipo Doc"/>
-					<field name="x_id_doc_type_code"    string="Cod"/>
 					<field name="x_id_doc"      string="Nr Doc"/>
 
-					<field name="x_dni"/>
 					<field name="x_ruc"/>
 					<field name="x_firm"/>
 
 					<field name="treatment_ids"/>
+
+					<field name="configurator"/>
+					<field name="user_id"       string="Creado por"/>
 				</tree>
 			</field>
 		</record>
-
+<!--
+					<field name="x_id_doc_type_code"    string="Cod"/>
+					<field name="x_dni"/>
+					<field name="x_data_complete"/>
+					<field name="x_test"            groups='openhealth.roots'   />      
+					<field name="x_test_case"       groups='openhealth.roots'   />      
+-->
 
 
 <!-- TREE 2 -->
+<!--
 		<record model="ir.ui.view" id="oeh_medical_patient_tree_2">
 			<field name="name">patient.tree</field>
 			<field name="model">oeh.medical.patient</field>
@@ -326,6 +344,6 @@
 				</tree>
 			</field>
 		</record>
-
+-->
 	</data>
 </openerp>

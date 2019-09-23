@@ -4,13 +4,12 @@
 
 
 
+<!-- FORM --> 
         <!-- Orders-->
         <record model="ir.ui.view" id="treatment_quotation_form_view">
             <field name="name">treatment.quotation.form</field>
             <field name="model">openhealth.treatment</field>
-<!--
-            <field name="priority" eval="1"/>
--->
+
             <field name="priority" eval="-20"/>
             
             <field name="inherit_id" ref="treatment_form_view"/>
@@ -18,84 +17,17 @@
 
 
                 <notebook>
-<!--
-                    <page string="Ventas"            >
-
-
-attrs="{'invisible': [('user_id', '!=', 
-
-eval="[ 
-                                        (4, ref('openhealth.director_clinicachavarri')),
-                                        (4, ref('openhealth.manager_clinicachavarri')),
-                                    ]"
-)]}"
-uid
-
-attrs="{'invisible': [('user_id', '!=', 
-eval="[ 
-                                        (4, ref('openhealth.director_clinicachavarri')),
-                                        (4, ref('openhealth.manager_clinicachavarri')),
-                                    ]"
-)]}"
-
-
-
-
-attrs="{'invisible': [  ('user_id', '!=', 1)
-]}
-"
--->
-
-
-
-<!--
-<page string="Caja">    
-
-
-groups="openhealth.directors,openhealth.managers"
-
-groups="openhealth.directors,openhealth.managers,openhealth.physicians"
-groups="openhealth.roots,openhealth.directors,openhealth.managers,openhealth.physicians"
-
-groups="openhealth.roots,openhealth.reception,openhealth.directors,openhealth.managers,openhealth.physicians,openhealth.archivers"
--->
-
-
-
-
-<page string="Caja" 
->
-
-
-
-
-
-<!--
-                        <field name="order_ids"/>
-                        <field name="order_ids"     readonly="1"        >
-attrs="{'readonly':[('state ', '=', 'done')]}"
--->                 
-
-
-
+                    <page string="Caja">
                         <field name="order_ids"         >
 
-
-                            <tree string="Prespuestos"  create="false"  
+                            <tree string="Orders" create="false"  
 
 colors="
 red:state=='draft';
-
 green:state=='sent';
-
 blue:state=='sale';
-
 grey:state in ('cancel')
-"
-
->                                       
-
-
+">                                       
 
                                 <!-- Hot Button -->
                                 <button 
@@ -106,53 +38,33 @@ grey:state in ('cancel')
                                     string="Entrar"
                                 />
 
+                                <field name="date_order"/>
+                                <field name="patient"/>
+                                <field  name="x_doctor"/>
+                                <field name="state"/>
+            
+
+                                <field name="nr_lines"/>
+                                <field name="pl_product"    string="Producto"/>
+                                <field name="pl_family"/>
+
+
+                                <field name="amount_total"/>
+                                <field name="x_procedure_created"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
 <!--
                                 <field  name="name" string="Presupuesto #"/>
--->
-
                                 <field  name="pricelist_id"/>
-
                                 <field  name="partner_id"/>
-
-
-                                
-                                <field  name="x_doctor"/>
-
                                 <field name="x_product"/>
-
-                                <field name="state"/>
-                                
-                                <field name="nr_lines"/>
-
                                 <field name="amount_total"  groups="openhealth.roots,openhealth.directors,openhealth.managers"/>
-                                
-                                <field name="date_order"/>                  
 
-
-
-                                <field name="x_procedure_created"/>
-
-<!--
                                 <field name="x_target"/>
                                 <field name="x_family"/>
 -->
-                            </tree>
-                        </field>
-
-                    </page>
-                </notebook>
-
-<!--
-                        <notebook>
-                            <page string="Presupuesto"           >
-                                <field name="quotation_ids"/>
-                            </page>
-                            <page string="FACTURADO"         >
-                                <field name="sale_ids"/>
-                            </page>
-                        </notebook>
--->
-
 
             </field>
         </record>

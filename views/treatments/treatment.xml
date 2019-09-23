@@ -364,8 +364,9 @@
 
 
 <!-- Test -->
+<!--
 <hr></hr>
-
+-->
 						<group 	 attrs="{ 'invisible':[  ('x_test','==',False),  ]}">
 							<group>
 
@@ -783,6 +784,7 @@
 
 
 
+
 <!-- TREE --> 
 		<record model="ir.ui.view" id="treatment_tree_view">
 			<field name="name">treatment.tree</field>
@@ -800,6 +802,9 @@ blue:state=='controls'
 					<field name="x_test"/>
 					<field name="physician"/>
 					<field name="chief_complaint"   string="Motivo"/>
+
+					<field name="name"			groups="openhealth.roots"/>
+
 					<field name="start_date"/>
 					<field name="write_date"    string="Fecha actualizacion"/>
 					<field name="state"/>

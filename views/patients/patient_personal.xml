@@ -234,15 +234,15 @@
 
 
 
-	<!-- Admin -->
+	<!-- Admin - Dep -->
 <!--
-	<page string="Admin - Oh">
--->
 	<page string="Admin"    groups="openhealth.roots"   >
 		<group>
 			<field name="configurator"/>
 		</group>
 	</page>
+-->
+
 </notebook>
 
 

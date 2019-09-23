@@ -7,15 +7,27 @@
 """
 from openerp import models, fields, api
 
-
-# ----------------------------------------------------------- Physician ------------------------------------------------------
-
 class Physician(models.Model):
 
 	_inherit = 'oeh.medical.physician'	
 	
 	#_order = 'name'
 	#_order = 'idx asc'
+
+
+# ----------------------------------------------- Get Name Code --------------------------------
+
+	#@api.multi
+	def get_name_code(self):
+
+		words = self.name.upper().split()
+		
+		code = words[0] + '_' + words[1][0:3]
+
+		code = code.replace('.', '')
+		
+		return code
+
 
 
 

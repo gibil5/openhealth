@@ -5,12 +5,13 @@
 
 
 <!-- FORM -->
-		<!-- Legacy -->
-		<record model="ir.ui.view" id="openhealth.patient_legacy_form_view">
-			<field name="name">Patient Legacy Form</field>
+
+		<!-- admin -->
+		<record model="ir.ui.view" id="openhealth.patient_admin_form_view">
+			<field name="name">Patient Admin Form</field>
 			<field name="model">oeh.medical.patient</field>
 
-			<field name="priority" eval="5"/>
+			<field name="priority" eval="11"/>
 
 			<field name="inherit_id" ref="openhealth.oeh_medical_patient_view"/>
 			<field name="arch" type="xml">
@@ -18,9 +19,12 @@
 
 				<notebook position="inside">
 
-					<!-- Legacy -->
-					<page string="Legacy"  groups="openhealth.roots">
+					<!-- Admin -->
+					<page string="Admin"  groups="openhealth.roots">
 						<group>
+
+							<field name="user_id"/>
+
 
 							<field name="x_dni"/>
 

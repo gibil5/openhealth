@@ -601,7 +601,7 @@
 									class="oe_highlight"
 									attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
 									name="create_consultation"
-									string="CONS"
+									string="CONSULTA"
 								/>
 							</group>
 
@@ -612,7 +612,7 @@
 									class="oe_highlight"
 									attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
 									name="create_service"
-									string="RECO"
+									string="RECOM"
 								/>
 							</group>
 
@@ -634,7 +634,7 @@
 									class="oe_highlight"
 									attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
 									name="create_procedure_man"
-									string="PROC" 
+									string="PROCEDIMIENTO" 
 								/>
 							</group>
 

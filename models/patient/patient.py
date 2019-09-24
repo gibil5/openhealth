@@ -100,9 +100,11 @@ class Patient(models.Model):
 	def _compute_x_treatment_count(self):
 		for record in self:
 			count = 0
+
 			#for tr in record.treatment_ids:
 			for _ in record.treatment_ids:
 				count = count + 1
+
 			record.x_treatment_count = count
 
 

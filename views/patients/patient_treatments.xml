@@ -15,11 +15,12 @@
 			<field name="inherit_id" ref="openhealth.oeh_medical_patient_view"/>
 			<field name="arch" type="xml">
 
-
 				<notebook position="inside">
-
-					<!-- treatment -->
+<!--
 					<page string="Tratamientos"  groups="openhealth.roots">
+-->
+					<!-- treatment -->
+					<page string="Tratamientos">
 						<group>
 
 							<field name="treatment_ids"/>

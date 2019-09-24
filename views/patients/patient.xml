@@ -160,7 +160,9 @@
 										}"                                          
 								icon="fa-list">
 
+
 								<field string="Tratamientos" name="x_treatment_count" widget="statinfo"/>
+
 
 							</button>                       
 						</div>
@@ -296,9 +298,9 @@
 					<field name="name"/>
 
 					<field name="x_id_code"/>       
-					<field name="x_date_record"     string="Fecha de creación"  />
+					<field name="x_date_record"     string="Fecha de creación"/>
 
-					<field name="x_legacy"/>
+					<field name="x_legacy"			groups="openhealth.roots"/>
 
 					<field name="city"/>
 					<field name="street2_sel"/>

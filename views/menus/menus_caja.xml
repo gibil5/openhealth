@@ -6,6 +6,7 @@
 
 <!-- Main - Caja -->
 <menuitem   id="main_sales_menu" 
+
             sequence="-29"
 
             name="Caja"
@@ -19,6 +20,7 @@
 <!-- Caja -->           
 <menuitem   id="sales_menu" 
             parent="main_sales_menu"
+
             sequence="1"
 
             groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
@@ -152,7 +154,8 @@
         <menuitem   id="sales_closings_menu" 
                     name="Cierres de caja"
                     parent="main_sales_menu"
-                    sequence="2"
+
+                    sequence="3"
 
             groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
                 />
@@ -175,6 +178,27 @@
 
 
 
+<!-- RSP --> 
+        <menuitem   id="sales_rsp_menu" 
+
+                    parent="main_sales_menu"
+
+                    sequence="5"
+                    
+                    name="Venta de Productos"           
+                />
+
+                <menuitem   id="sales_rsp_submenu" 
+
+                            parent="sales_rsp_menu"
+
+                            sequence="1"
+
+                            name="Por Fecha" 
+                    
+                            action="rsp_list_action"
+                        />
+
 
 
 
@@ -187,7 +211,8 @@
         <menuitem   id="sales_legacy_menu" 
                     name="Legacy"
                     parent="main_sales_menu"
-                    sequence="3"
+
+                    sequence="7"
 
                     groups="openhealth.roots"
                 />

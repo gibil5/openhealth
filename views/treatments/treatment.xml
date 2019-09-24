@@ -798,7 +798,9 @@ green:state in ('appointment', 'invoice_consultation', 'consultation', 'service'
 grey:state=='done';
 blue:state=='controls'
 ">
-					<field name="patient"/>                  
+
+					<field name="patient"/>
+
 					<field name="x_test"/>
 					<field name="physician"/>
 					<field name="chief_complaint"   string="Motivo"/>
@@ -837,7 +839,6 @@ limit = 40
 					<field name="end_date"/>
 					<field name="treatment_open"/>
 					<field name="id"/>
-					<field name="partner_id"/>
 					<field name="nr_appointments"/>                 
 					<field name="nr_consultations"  string="Consultas"  style="text-align:center;"/>
 					<field name="nr_orders"/>
@@ -847,6 +848,8 @@ limit = 40
 					<field name="nr_evaluations"/>
 					<field name="nr_services"/>
 					<field name="price_total"/>
+
+					<field name="partner_id"/>
 -->
 		
 		

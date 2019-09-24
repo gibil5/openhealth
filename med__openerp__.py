@@ -152,8 +152,10 @@
 # ----------------------------------------------------------- Recent ------------------------------------------------------
 
 		# Product Selector  - RSP
-		'views/report_sale/report_sale_product.xml',
-		'views/report_sale/item_counter.xml',
+		#'views/report_sale/report_sale_product.xml',
+		#'views/report_sale/item_counter.xml',
+		'views/rsp/report_sale_product.xml',
+		'views/rsp/item_counter.xml',
 
 
 		# Account - Payments
@@ -385,13 +387,18 @@
 		'views/reports/report_sale_favorites.xml',
 		'views/reports/report_sale_search.xml',
 		'views/reports/report_sale.xml',
-		'views/reports/report_sale_actions.xml',            # With Menus
+
+		#'views/reports/report_sale_actions.xml',            # Dep
+		#'views/rsp/report_sale_actions.xml',            	# Dep
 
 
 # ----------------------------------------------------------- Menus ------------------------------------------------------
 		'views/menus/menus.xml',
 		'views/menus/menus_dev.xml',
+
 		'views/menus/menus_caja.xml',
+		#'views/menus/menus_rsp.xml',		# Dep ?
+
 		'views/menus/menus_marketing.xml',
 		'views/menus/menus_management.xml',
 		'views/menus/menus_account.xml',

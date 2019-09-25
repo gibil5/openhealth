@@ -35,7 +35,75 @@ class Patient(models.Model):
 		print()
 		print('Update')
 
-		#self.update_appointments
+		#self.update_appointments()
+
+		self.update_sales()
+
+
+
+	@api.multi
+	def update_sales(self):
+		"""
+		Update Sales
+		"""
+		print()
+		print('Update Sales')
+
+
+		# Clean
+		self.sale_ids.unlink()
+
+
+		# Search
+		orders = self.env['sale.order'].search([
+													('patient', 'in', [self.name]),
+													('state', 'in', ['sale']),
+											],
+												#order='x_serial_nr asc',
+												#limit=1,
+											)
+		#print(apps)
+
+		for order in orders:
+
+			print(order.patient.name)
+
+
+			# Create
+			#obj = self.order_ids.create({
+			obj = self.sale_ids.create({
+												'patient': 	order.patient.id,												
+												'doctor': 	order.x_doctor.id,
+												'date': 	order.date_order,
+
+												'state': 		order.state,
+
+												'nr_lines': 	order.nr_lines,
+												'product': 		order.pl_product,
+												'family': 		order.pl_family,
+
+												'amount': 		order.amount_total,
+
+												'res_id': 		order.id,
+
+												'patient_id': self.id,
+							})
+
+
+			# Re-use
+			#app.patient_id = self.id  	# Danger !
+
+
+			# Duplicate with different fields
+			#obj = order.copy(default={												
+			#									'patient_id': self.id,
+			#									'state': order.state,
+			#						})
+			#print(obj)
+			# Update Self
+			#obj.write({
+			#					'patient_id': self.id,
+			#			})
 
 
 
@@ -48,15 +116,33 @@ class Patient(models.Model):
 
 
 
-# ----------------------------------------------- Treatment --------------------------------
+# ----------------------------------------------- Relational --------------------------------
 
 	# Treatments
 	treatment_ids = fields.One2many(
 			'openhealth.treatment',
 			'patient',
 			string="Tratamientos",
-			#default=_default_treatment_ids,
 		)
+
+
+	# Sales
+	sale_ids = fields.One2many(
+			'openhealth.patient.sale',
+			'patient_id',
+			string="Ventas",
+		)
+
+
+	# controls
+	control_ids = fields.One2many(
+			'openhealth.patient.control',
+			'patient_id',
+			string="Controles",
+		)
+
+
+
 
 # ----------------------------------------------- User --------------------------------
 

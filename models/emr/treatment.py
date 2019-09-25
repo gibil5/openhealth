@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
- 		*** Treatment
+		*** Treatment
 
- 		Created: 			26 Aug 2016
- 		Last up: 	 		17 Sep 2019
+		Created: 			26 Aug 2016
+		Last up: 	 		17 Sep 2019
 """
 from __future__ import print_function
 import datetime
@@ -1496,4 +1496,28 @@ class Treatment(models.Model):
 	# create_service
 
 
+
+#----------------------------------------------------------- Quick Button - For Patient ---------
+	@api.multi
+	def open_line_current(self):
+		"""
+		# Quick access Button
+		"""
+
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' Edit Order Current',
+				'view_type': 'form',
+				'view_mode': 'form',
+
+				'res_model': self._name,
+				'res_id': self.id,
+				
+				'target': 'current',
+				'flags': {
+						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						'form': {'action_buttons': True, }
+						},
+				'context': {}
+		}
 

@@ -2,12 +2,13 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+access_openhealth_patient_sale,openhealth.patient.sale,model_openhealth_patient_sale,,1,1,1,1
+
+
+
+
+
 access_oeh_medical_physician,oeh.medical.physician,oehealth.model_oeh_medical_physician,,1,1,1,0
-
-
-
-
-
 
 
 

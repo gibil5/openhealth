@@ -21,7 +21,9 @@
 
             <field name="inherit_id" ref="oeh_medical_patient_view"/>
             <field name="arch" type="xml">
-                <notebook position="inside">
+
+                <xpath expr="/form/sheet/notebook[@name='N2']" position="inside">
+
                     <page string="Control de documentos">
                         <group>
                             <group>
@@ -58,7 +60,9 @@
                             <field string="Fecha de consentimiento informado" name="x_date_consent"/>
                         </group>
                     </page>
-                </notebook>
+
+                </xpath>
+
             </field>
         </record>
     </data>

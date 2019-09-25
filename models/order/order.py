@@ -143,6 +143,23 @@ class sale_order(models.Model):
 
 
 # ----------------------------------------------------------- Relational -------------------------------
+
+	# Patient
+	patient_id = fields.Many2one(
+			
+			'oeh.medical.patient',
+			
+			string="Paciente",
+			
+			required=False,
+			
+			#ondelete='cascade',  		# Danger !!!
+		)
+
+
+
+
+
 	# Treatment
 	treatment = fields.Many2one(
 			'openhealth.treatment',
@@ -165,7 +182,6 @@ class sale_order(models.Model):
 					'sale': [('readonly', True)],
 				},
 
-			#ondelete='cascade',  		# Is this the new property ?
 			#ondelete='cascade',  		# Danger !!!
 		)
 

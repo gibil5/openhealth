@@ -13,11 +13,14 @@
 			<field name="priority" eval="1"/>
 
 			<field name="inherit_id" ref="openhealth.oeh_medical_patient_view"/>
+
 			<field name="arch" type="xml">
 
 
+	            <xpath expr="/form/sheet/notebook[@name='N2']" position="inside">
+<!--
 				<notebook position="inside">
-
+-->
 					<!-- Personal -->
 					<page string="Personal - 2019">
 						<group>
@@ -166,78 +169,18 @@
 
 		string="Actualizar"                               
 />
-
+<!--
 <notebook>
-
-	<!-- Treatments -->
-	<page string="Tratamientos">
-<!--
-		<group>
-				<field name="treatment_ids"/>
-		</group>
--->
-
-<!--
-colors="
-red:state=='draft';
-green:state=='sent';
-blue:state=='sale';
-grey:state in ('cancel')
-"
--->
-        <field name="treatment_ids">
-
-            <tree string="Treatments" create="false">
-
-                <!-- Hot Button -->
-                <button 
-                    name="open_line_current" 
-                    type="object" 
-                    class="oe_highlight"    
-                    string="Entrar"
-                />
-
-				<field name="patient"/>
-
-				<field name="physician"/>
-
-				<field name="chief_complaint"   string="Motivo"/>
-
-				<field name="start_date"/>
-
-				<field name="write_date"    string="Fecha actualizacion"/>
-
-				<field name="state"/>
-            </tree>
-        </field>
-<!--
-				<field name="name"			groups="openhealth.roots"/>
--->
-
-	</page>
-<!--
-	<page   string="Citas 2019 - Oh">
-
-		<field name="appointment_ids"/>
-
-	</page>
--->
-
-
-	<!-- Admin - Dep -->
-<!--
-	<page string="Admin"    groups="openhealth.roots"   >
-		<group>
-			<field name="configurator"/>
-		</group>
-	</page>
--->
-
 </notebook>
-
+-->
 
 					</page>
+
+<!--
 				</notebook>
+-->
+				</xpath>
+
 			</field>
 		</record>
 	</data>

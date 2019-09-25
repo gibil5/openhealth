@@ -1,6 +1,23 @@
 <!-- 25 set 2019 -->
 
 
+<!--
+    <page   string="Citas 2019 - Oh">
+
+        <field name="appointment_ids"/>
+
+    </page>
+-->
+
+
+    <!-- Admin - Dep -->
+<!--
+    <page string="Admin"    groups="openhealth.roots"   >
+        <group>
+            <field name="configurator"/>
+        </group>
+    </page>
+-->
 
 <hr></hr>
 

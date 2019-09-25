@@ -152,7 +152,7 @@
 
 									<h1 class="jx_title">Tratamiento</h1>   
 
-									<h2><field name="name" class="oe_inline"/></h2>
+									<h2><field name="name" class="oe_inline" invisible="1"/></h2>
 
 								</div>      
 								<group></group>

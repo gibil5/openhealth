@@ -10,7 +10,7 @@
 			<field name="name">Patient Treatments Form</field>
 			<field name="model">oeh.medical.patient</field>
 
-			<field name="priority" eval="9"/>
+			<field name="priority" eval="3"/>
 
 			<field name="inherit_id" ref="openhealth.oeh_medical_patient_view"/>
 			<field name="arch" type="xml">

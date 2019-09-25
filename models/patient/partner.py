@@ -50,13 +50,15 @@ class Partner(models.Model):
 # ----------------------------------------------------------- Hard wired - With Patient -----------
 
 	# Company
+	x_ruc = fields.Char(
+			"RUC",
+		)
+
 	x_firm = fields.Char(
 			"Razón social",
 		)
 
-	x_ruc = fields.Char(
-			"RUC",
-		)
+
 
 	# Phones
 	phone = fields.Char(

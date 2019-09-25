@@ -10,7 +10,10 @@ import datetime
 from openerp import models, fields, api
 from . import time_funcs
 from . import treatment_vars
-from openerp.addons.openhealth.models.libs import creates as cre
+
+#from openerp.addons.openhealth.models.libs import creates as cre
+from openerp.addons.price_list.models.treatment import pl_creates
+
 from openerp.addons.openhealth.models.libs import lib, user, eval_vars
 #from openerp.addons.openhealth.models.libs import eval_vars
 
@@ -19,6 +22,37 @@ class Treatment(models.Model):
 	_name = 'openhealth.treatment'
 	_order = 'write_date desc'
 	_description = 'Treatment'
+
+
+
+# ----------------------------------------------------------- Create Procedure  -------------------
+	# Create Procedure
+	#@api.multi
+	#def create_procedure(self, date_app, subtype, product_id):
+	def create_procedure(self, product):
+		"""
+		Used by: Order
+		Uses: Price List PL-Creates Library
+		"""
+		print()
+		print('Create Procedure')
+
+		#subtype = product.x_treatment
+
+		print(self)
+		#print(date_app)
+		#print(subtype)
+		print(product)
+
+		#ret = cre.create_procedure_go(self, date_app, subtype, product_id)
+		#ret = pl_creates.create_procedure_go(self, date_app, subtype, product_id.id)
+
+
+		pl_creates.create_procedure_go(self, product)
+
+
+
+	# create_procedure
 
 
 
@@ -41,7 +75,8 @@ class Treatment(models.Model):
 			#record.name = 'TR0000' + str(record.id)
 
 			#record.name = 'TR' + se + record.patient.get_name_code() + se + record.physician.get_name_code() 
-			record.name = record.patient.get_name_code() + se + record.physician.get_name_code() 
+			#record.name = record.patient.get_name_code() + se + record.physician.get_name_code() 
+			record.name = 'TR' + se + record.patient.get_name_code() + se + record.physician.get_name_code() 
 
 
 
@@ -458,14 +493,6 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Create Procedure  -------------------
-	# Create Procedure
-	@api.multi
-	def create_procedure(self, date_app, subtype, product_id):
-		#print
-		#print 'Create Procedure'
-		ret = cre.create_procedure_go(self, date_app, subtype, product_id)
-	# create_procedure
 
 
 

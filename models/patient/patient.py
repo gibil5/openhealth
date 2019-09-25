@@ -28,10 +28,23 @@ class Patient(models.Model):
 
 
 
-# ----------------------------------------------- Dep --------------------------------
-	#x_test_case = fields.Char(
-	#		'Test Case',
-	#	)
+# ----------------------------------------------- Update --------------------------------
+	
+	@api.multi
+	def update(self):
+		print()
+		print('Update')
+
+		#self.update_appointments
+
+
+
+	@api.multi
+	def update_appointments(self):
+		"""
+		Define on Pricelist
+		"""
+		print()
 
 
 
@@ -112,7 +125,20 @@ class Patient(models.Model):
 
 
 
-# ----------------------------------------------------------- Caregive ---------------------------
+# ----------------------------------------------------------- Ruc ---------------------------
+
+	x_ruc_available = fields.Boolean(
+			'RUC',
+			default=False,
+		)
+
+	x_firm_address = fields.Char(
+			'Direccion de la Empresa',  		# For the Patient
+		)
+
+
+
+# ----------------------------------------------------------- Caregiver ---------------------------
 	# Caregiver
 
 	x_caregiver = fields.Boolean(
@@ -446,10 +472,6 @@ class Patient(models.Model):
 
 
 
-# ----------------------------------------------------------- Fields ------------------------------
-	x_firm_address = fields.Char(
-			'Direccion de la Empresa',  		# For the Patient
-		)
 
 
 
@@ -731,7 +753,7 @@ class Patient(models.Model):
 
 # ----------------------------------------------------------- Autofill ----------------------------
 
-	# Open Treatment
+	# Autofill
 	@api.multi
 	def autofill(self):
 		"""

@@ -18,7 +18,8 @@
 
                 <notebook>
                     <page string="Caja">
-                        <field name="order_ids"         >
+
+                        <field name="order_ids">
 
                             <tree string="Orders" create="false"  
 

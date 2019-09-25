@@ -11,7 +11,7 @@
 			<field name="name">Patient Admin Form</field>
 			<field name="model">oeh.medical.patient</field>
 
-			<field name="priority" eval="11"/>
+			<field name="priority" eval="21"/>
 
 			<field name="inherit_id" ref="openhealth.oeh_medical_patient_view"/>
 			<field name="arch" type="xml">

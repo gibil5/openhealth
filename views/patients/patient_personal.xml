@@ -43,6 +43,9 @@
 																							}"
 -->
 
+								<field  name="x_foreign"	invisible="1"/>
+
+
 								<!-- Country --> 
 								<field name="country_id"    class="oe_no_button" 
 															options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"
@@ -113,58 +116,36 @@
 								<field name="mobile"/>
 								<field name="function"  required="0"/>
 								<field name="x_education_level" required="0"/>
-
 <!--
 								<field name="vspace"/>
 -->
 							</group>
 						</group>
 
+
 <hr></hr>
-
-						<group  string="RUC" >
-							<!-- Third Group - Firm --> 
-							<group>
-								<field  name="x_ruc"/>
-								<field  name="x_firm"/>
-							</group>
-
-							<!-- Fourth Group --> 
-							<group>
-								<field  name="x_firm_address"/>
-							</group>
-						</group>
-<!--
-<hr></hr>
--->
-
-
-
-<!-- Fifth Group - Function --> 
-<!--
+<!-- Hidden -->
+						<!-- Ruc --> 
 						<group>
 							<group>
-								<field name="function"  required="0"/>
+								<field  name="x_ruc_available"/>
 							</group>
-							<group>
-								<field name="x_education_level" required="0"/>
+							<group 		attrs="{    'invisible':[('x_ruc_available', '!=', True)],
+									}">
+								<field name="x_ruc"/>
+								<field name="x_firm"/>
+								<field name="x_firm_address"/>
 							</group>
 						</group>
--->
 
 
-<hr></hr>
-
-<!-- Sixth Group - Caregiver --> 
-						<group string="Otros">
+						<!-- Caregiver --> 
+						<group>
 							<group>
-								<field name="x_caregiver"/>
+								<field 	name="x_caregiver"/>
 							</group>
-							<group 		
-										attrs="{    'invisible':[('x_caregiver', '!=', True)],
-												}"
-								>
-
+							<group 		attrs="{    'invisible':[('x_caregiver', '!=', True)],
+									}">
 								<field name="x_caregiver_last_name"/>
 								<field name="x_caregiver_first_name"/>
 								<field name="phone_3" />
@@ -173,65 +154,74 @@
 							</group>
 						</group>
 
-<!--
-						<group string="Dirección en el extranjero">
--->
-						<group>
-							<group>
-								<field  name="x_foreign"/>
-							</group>
-
-							<group 		
-										attrs="{    'invisible':[('x_foreign', '!=', True)],
-												}"
-								>
-								<field name="x_address_foreign"         attrs="{    'required':[('x_foreign', '!=', False)],
-																				}"
-																		nolabel="1"
-																				/> 
-							</group>
-						</group>
-
-
-						<!-- Hidden -->
-<!--
-						<group string="Acompañante"  
-													attrs="{    'invisible':[('x_caregiver', '!=', True)],
-																				}"
-							>
-							<group>
-								<field name="x_caregiver_last_name"/>
-								<field name="x_caregiver_first_name"/>
-								<field name="phone_3" />
-							</group>
-							<group>
-								<field string="DNI"  name="x_caregiver_dni"/>
-								<field string="Parentesco"  name="x_caregiver_relation"/>
-							</group>
-						</group>
--->
-
 
 <hr></hr>
-
 
 <!-- update -->
 <button 
 		type="object" 
 		class="oe_highlight"
 
-		name="update_appointments"
+		name="update"
 
-		string="Actualizar Citas"                               
+		string="Actualizar"                               
 />
 
-
-
 <notebook>
-	<page   string="Citas 2019 - Oh">
-		<field name="appointment_ids"/>
-	</page>
 
+	<!-- Treatments -->
+	<page string="Tratamientos">
+<!--
+		<group>
+				<field name="treatment_ids"/>
+		</group>
+-->
+
+<!--
+colors="
+red:state=='draft';
+green:state=='sent';
+blue:state=='sale';
+grey:state in ('cancel')
+"
+-->
+        <field name="treatment_ids">
+
+            <tree string="Treatments" create="false">
+
+                <!-- Hot Button -->
+                <button 
+                    name="open_line_current" 
+                    type="object" 
+                    class="oe_highlight"    
+                    string="Entrar"
+                />
+
+				<field name="patient"/>
+
+				<field name="physician"/>
+
+				<field name="chief_complaint"   string="Motivo"/>
+
+				<field name="start_date"/>
+
+				<field name="write_date"    string="Fecha actualizacion"/>
+
+				<field name="state"/>
+            </tree>
+        </field>
+<!--
+				<field name="name"			groups="openhealth.roots"/>
+-->
+
+	</page>
+<!--
+	<page   string="Citas 2019 - Oh">
+
+		<field name="appointment_ids"/>
+
+	</page>
+-->
 
 
 	<!-- Admin - Dep -->

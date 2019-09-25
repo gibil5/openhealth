@@ -68,6 +68,30 @@
 
 							confirm="Esta operación va a eliminar TODAS las Líneas de Venta !!!"
 						/>
+
+
+					<!-- Reset --> 
+<!--
+					<button 
+							type="object" 
+							class="oe_highlight"
+							name="reset"
+							string="Reset"
+							groups="openhealth.roots"
+					/>
+-->
+
+					<!-- Quick Sale --> 
+					<button 
+							type="object" 
+							class="oe_highlight"
+
+							name="quick_sale_service"
+
+							string="Quick Sale Service"
+
+							groups="openhealth.roots"
+					/>
 				</xpath>
 
 
@@ -255,18 +279,6 @@
 
 
 
-								<!-- Reset --> 
-								<button 
-										type="object" 
-
-										class="oe_highlight"
-
-										name="reset"
-
-										groups="openhealth.roots"
-
-										string="Reset"
-								/>
 
 
 
@@ -449,6 +461,8 @@
 <!-- REDEFINE -->
 				<!-- Price list --> 
 				<xpath expr="//field[@name='pricelist_id']" position="replace">
+
+					<field name="x_autofill"			groups="openhealth.roots"/>
 
 					<field name="x_admin_mode"/>
 

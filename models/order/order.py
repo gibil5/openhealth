@@ -34,6 +34,114 @@ class sale_order(models.Model):
 	_description = 'Order'
 
 
+# ----------------------------------------------------------- Autofill ----------------------------
+
+	# Autofill
+	x_autofill = fields.Boolean(
+			string="Autofill",
+			default=False,
+		)
+
+	# Autofill
+	@api.onchange('x_autofill')
+	def _onchange_x_autofill(self):
+		if self.x_autofill:
+			self.autofill()
+
+
+	def autofill(self):
+		"""
+		Autofill Order
+		"""
+
+		#self.sex = 'Male'
+
+		# Patient
+		patient = self.env['oeh.medical.patient'].search([
+															('name', 'in', ["REVILLA RONDON JOSE JAVIER"]),
+											],
+												#order='x_serial_nr asc',
+												limit=1,
+											)
+		print(patient.name)
+
+
+
+		# Doctor
+		doctor = self.env['oeh.medical.physician'].search([
+															('name', 'in', ["Dr. Chavarri"]),
+											],
+												#order='x_serial_nr asc',
+												limit=1,
+											)
+		print(doctor.name)
+
+
+
+		# Treatment
+		treatment = self.env['openhealth.treatment'].search([
+															('patient', 'in', ["REVILLA RONDON JOSE JAVIER"]),
+											],
+												#order='x_serial_nr asc',
+												limit=1,
+											)
+		print(treatment.name)
+
+
+
+		# Fill
+		self.patient = patient
+		self.x_doctor = doctor
+		self.treatment = treatment
+
+
+
+# ----------------------------------------------------------- Quick Sale -------------------------------
+
+	@api.multi
+	def quick_sale_service(self):
+		"""
+		Quick Sale Service
+		"""
+		print()
+		print('Quick Sale Service')
+
+		#self.order_line.create
+
+
+		# Product
+
+		name = "LASER CO2 FRACCIONAL - Todo Rostro - Rejuvenecimiento - Grado 1 - 1 sesion"
+
+		product = self.env['product.product'].search([
+															('name', 'in', [name]),
+											],
+												#order='x_serial_nr asc',
+												limit=1,
+											)
+		print(product.name)
+
+
+
+		line = self.order_line.create({
+											'product_id': product.id,
+
+											'product_uom_qty': 1,
+
+											'order_id': self.id,
+
+											#'price_unit': self.x_credit_note_amount,
+										})
+		print(line.product_id.name)
+
+
+		# Pay
+		if self.state in ['draft']:
+			self.pay_myself()
+
+
+
+
 # ----------------------------------------------------------- Relational -------------------------------
 	# Treatment
 	treatment = fields.Many2one(
@@ -227,7 +335,6 @@ class sale_order(models.Model):
 
 
 # ----------------------------------------------------------- Partner - Not Dep -------------------------
-
 
 	# On Change Partner
 	@api.onchange('partner_id')
@@ -659,12 +766,29 @@ class sale_order(models.Model):
 			self.x_type = self.x_payment_method.saledoc
 
 
-
+#jx
 		# Create Procedure 
+		print('Create Procedure')
+
 		if self.treatment.name != False:
 			for line in self.order_line:
-				if line.product_id.x_family in ['laser', 'medical', 'cosmetology']:
-					self.treatment.create_procedure(False, line.product_id.x_treatment, line.product_id.id)
+
+
+				family = line.product_id.get_family()
+				print(family)
+
+				product = line.product_id
+				print(product)
+
+
+				#if line.product_id.x_family in ['laser', 'medical', 'cosmetology']:
+				if family in ['laser', 'medical', 'cosmetology']:
+					
+					#self.treatment.create_procedure(False, line.product_id.x_treatment, line.product_id.id)
+					#self.treatment.create_procedure(False, line.product_id.x_treatment, line.product_id)
+					self.treatment.create_procedure(product)
+
+
 				line.update_recos()
 			# Update
 			self.x_procedure_created = True
@@ -1627,6 +1751,7 @@ class sale_order(models.Model):
 		Pay Myself
 		Used by Treatment Test
 		"""
-		#print()
-		#print('Order - Pay myself')
+		print()
+		print('Order - Pay myself')
+		
 		test_order.pay_myself(self)

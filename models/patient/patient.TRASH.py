@@ -1,3 +1,16 @@
+# 25 sep
+# ----------------------------------------------- Dep --------------------------------
+	#x_test_case = fields.Char(
+	#		'Test Case',
+	#	)
+
+
+
+
+
+
+
+
 # 23 sep 2019
 	@api.multi
 	def test_treatment_ids(self):

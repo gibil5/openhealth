@@ -3,7 +3,7 @@
 		*** Treatment
 
 		Created: 			26 Aug 2016
-		Last up: 	 		17 Sep 2019
+		Last up: 	 		26 Sep 2019
 """
 from __future__ import print_function
 import datetime
@@ -11,7 +11,7 @@ from openerp import models, fields, api
 from . import time_funcs
 from . import treatment_vars
 
-#from openerp.addons.openhealth.models.libs import creates as cre
+#from openerp.addons.openhealth.models.libs import creates as cre  	# Dep !
 from openerp.addons.price_list.models.treatment import pl_creates
 
 from openerp.addons.openhealth.models.libs import lib, user, eval_vars
@@ -284,16 +284,16 @@ class Treatment(models.Model):
 
 	x_test_scenario = fields.Selection(
 			[
+				('all', 'All'),
+				('product', 'Product'),
+				('laser', 'Laser'),
+				('cosmetology', 'Cosmetology'),
+				('medical', 'Medical'),
+
+				('new', 'New'),
+			
 				('credit_note', 'Nota de Credito'),
 				('block_flow', 'Flujo bloqueado'),
-
-
-				('all', 'All'),
-				('product', 'product'),
-				('laser', 'laser'),
-				('cosmetology', 'cosmetology'),
-				('medical', 'medical'),
-				('new', 'new'),
 			],
 			string="Test Scenarios",
 		)
@@ -301,7 +301,8 @@ class Treatment(models.Model):
 
 	test_pricelist_2019 = fields.Boolean(
 			'PL 2019',
-			default=False,
+			#default=False,
+			default=True,
 		)
 
 	test_pricelist_2018 = fields.Boolean(

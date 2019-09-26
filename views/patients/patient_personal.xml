@@ -9,18 +9,12 @@
 		<record model="ir.ui.view" id="openhealth.patient_personal_form_view">
 			<field name="name">Patient personal information</field>
 			<field name="model">oeh.medical.patient</field>
-
 			<field name="priority" eval="1"/>
-
 			<field name="inherit_id" ref="openhealth.oeh_medical_patient_view"/>
-
 			<field name="arch" type="xml">
 
+				<xpath expr="/form/sheet/notebook[@name='N2']" position="inside">
 
-	            <xpath expr="/form/sheet/notebook[@name='N2']" position="inside">
-<!--
-				<notebook position="inside">
--->
 					<!-- Personal -->
 					<page string="Personal - 2019">
 						<group>
@@ -125,29 +119,21 @@
 							</group>
 						</group>
 
-
+<!--
 <hr></hr>
+-->
 <!-- Hidden -->
-						<!-- Ruc --> 
 						<group>
-							<group>
-								<field  name="x_ruc_available"/>
-							</group>
-							<group 		attrs="{    'invisible':[('x_ruc_available', '!=', True)],
+							<!-- Ruc --> 
+							<group 	string="RUC"		attrs="{    'invisible':[('x_ruc_available', '!=', True)],
 									}">
 								<field name="x_ruc"/>
 								<field name="x_firm"/>
 								<field name="x_firm_address"/>
 							</group>
-						</group>
 
-
-						<!-- Caregiver --> 
-						<group>
-							<group>
-								<field 	name="x_caregiver"/>
-							</group>
-							<group 		attrs="{    'invisible':[('x_caregiver', '!=', True)],
+							<!-- Caregiver --> 
+							<group 	string="Acompañante"	attrs="{    'invisible':[('x_caregiver', '!=', True)],
 									}">
 								<field name="x_caregiver_last_name"/>
 								<field name="x_caregiver_first_name"/>
@@ -156,6 +142,8 @@
 								<field string="Parentesco"  name="x_caregiver_relation"/>
 							</group>
 						</group>
+
+
 
 
 <hr></hr>
@@ -169,18 +157,9 @@
 
 		string="Actualizar"                               
 />
-<!--
-<notebook>
-</notebook>
--->
 
 					</page>
-
-<!--
-				</notebook>
--->
 				</xpath>
-
 			</field>
 		</record>
 	</data>

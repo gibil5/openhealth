@@ -1,4 +1,36 @@
 <!--
+26 sep 2019
+-->
+                        <!-- App -->
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+
+                            name="update_appointment"   
+
+                            string="Cambiar Cita"
+                        />
+
+                        <!-- Dates -->
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+
+                            name="update_dates"     
+
+                            string="Actualizar Fechas"
+                        />
+
+
+
+
+
+
+
+
+
+
+<!--
 19 sep 2019
 -->
 

@@ -1,0 +1,87 @@
+<!--
+26 set 2019
+-->
+
+<!--
+                            groups="openhealth.roots,openhealth.archivers,openhealth.managers,openhealth.physicians,openhealth.directors"
+
+                            name="create_controls"
+
+                            attrs="{'invisible':[
+                                                    ('laser', '!=', 'laser_quick'), 
+                                                    ('laser', '!=', 'laser_co2'), 
+                                                ]}"
+-->
+                        <!--
+                            attrs="{ 'invisible':[  ('number_sessions','==',1),     ]}"
+                            groups="openhealth.roots,openhealth.archivers,openhealth.managers,openhealth.physicians,openhealth.directors"
+
+                            name="create_sessions"
+                        --> 
+
+
+
+                        <!-- App -->
+                        <!-- Clear Sessions -->
+                        <!-- Clear Controls -->
+<!--
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+
+                            name="update_appointment"   
+
+                            string="Update App"
+                        />
+
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+                            groups="openhealth.roots"
+                            name="clear_sessions"   
+
+                            string="Clear Sessions"
+                        />
+
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+                            attrs="{'invisible':[
+                                                    ('laser', 'not in', ['laser_quick', 'laser_co2']), 
+                                                ]}"
+                            groups="openhealth.roots"
+                            name="clear_controls"   
+
+                            string="Clear Controls"
+                        />
+-->
+
+
+
+
+                        <!-- Padding --> 
+<!--
+                        <group></group>
+                        <group></group>
+                        <group></group>
+                        <group></group>
+
+                        <div class="oe_left" style="height: 55px;">
+                        </div>
+-->
+
+
+
+							<!--
+							<field string="Próxima cita" name="appointment" domain="[('patient', '=', patient)]" options="{'no_create': True}"/>
+							-->
+							
+<!--
+							<group> 
+							</group>
+							<group>
+								<field name="evaluation_type"   invisible="0"/>
+							</group>
+-->
+
+

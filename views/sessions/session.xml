@@ -18,27 +18,6 @@
 
                     <header>
 
-                        <!-- App -->
-                        <button 
-                            type="object" 
-                            class="oe_highlight"
-
-                            name="update_appointment"   
-
-                            string="Cambiar Cita"
-                        />
-
-                        <!-- Dates -->
-                        <button 
-                            type="object" 
-                            class="oe_highlight"
-
-                            name="update_dates"     
-
-                            string="Actualizar Fechas"
-                        />
-
-
                         <!-- State --> 
                         <field  name="state" 
                             widget="statusbar" 

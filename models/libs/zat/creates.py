@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*-
 """
+	*** Creates - Dep ?
+
 	Encapsulates actual Creation on Database.
  	Can not be Unit-tested (depends on a third-party library: Odoo).
+
+	- Not used by treatment anymore
 
 	Created: 			14 Aug 2018
  	Last up: 	 		 5 Nov 2018

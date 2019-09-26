@@ -1,3 +1,23 @@
+# 26 sep 2019
+	@api.multi
+	def update_appointments(self):
+		"""
+		Define on Pricelist
+		"""
+		print()
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 25 sep
 # ----------------------------------------------- Dep --------------------------------
 	#x_test_case = fields.Char(

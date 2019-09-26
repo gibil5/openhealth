@@ -16,6 +16,9 @@ from . import patient_report
 
 from . import patient_sale
 from . import patient_control
+from . import patient_session
+from . import patient_procedure
+from . import patient_consultation
 
 from . import patient
 

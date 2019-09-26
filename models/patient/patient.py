@@ -37,25 +37,29 @@ class Patient(models.Model):
 
 		#self.update_appointments()
 
-		self.update_sales()
+		self.update_sales('sale.order')
+
+		self.update_consultations('openhealth.consultation')
+
+		self.update_procedures('openhealth.procedure')
 
 
 
+
+# ----------------------------------------------- Update Sales --------------------------------
 	@api.multi
-	def update_sales(self):
+	def update_sales(self, model):
 		"""
 		Update Sales
 		"""
 		print()
 		print('Update Sales')
 
-
 		# Clean
 		self.sale_ids.unlink()
 
-
 		# Search
-		orders = self.env['sale.order'].search([
+		orders = self.env[model].search([
 													('patient', 'in', [self.name]),
 													('state', 'in', ['sale']),
 											],
@@ -65,54 +69,117 @@ class Patient(models.Model):
 		#print(apps)
 
 		for order in orders:
-
-			print(order.patient.name)
-
+			#print(order.patient.name)
 
 			# Create
-			#obj = self.order_ids.create({
 			obj = self.sale_ids.create({
 												'patient': 	order.patient.id,												
 												'doctor': 	order.x_doctor.id,
 												'date': 	order.date_order,
-
 												'state': 		order.state,
-
-												'nr_lines': 	order.nr_lines,
 												'product': 		order.pl_product,
 												'family': 		order.pl_family,
 
-												'amount': 		order.amount_total,
-
 												'res_id': 		order.id,
+												'res_model': 	order._name,
+
+												'nr_lines': 	order.nr_lines,
+												'amount': 		order.amount_total,
 
 												'patient_id': self.id,
 							})
 
 
-			# Re-use
-			#app.patient_id = self.id  	# Danger !
 
-
-			# Duplicate with different fields
-			#obj = order.copy(default={												
-			#									'patient_id': self.id,
-			#									'state': order.state,
-			#						})
-			#print(obj)
-			# Update Self
-			#obj.write({
-			#					'patient_id': self.id,
-			#			})
-
-
-
+# ----------------------------------------------- Update Consultations --------------------------------
 	@api.multi
-	def update_appointments(self):
+	def update_consultations(self, model):
 		"""
-		Define on Pricelist
+		Update Consultations
 		"""
 		print()
+		print('Update Consultations')
+
+		# Clean
+		self.consultation_ids.unlink()
+
+
+		# Search
+		objs = self.env[model].search([
+																('patient', 'in', [self.name]),
+																#('state', 'in', ['sale']),
+											],
+												#order='x_serial_nr asc',
+												#limit=1,
+											)
+		#print(apps)
+
+		for obj in objs:
+
+			print(obj.patient.name)
+
+			# Create
+			consultation = self.consultation_ids.create({
+												'patient': 		obj.patient.id,												
+												'doctor': 		obj.doctor.id,
+												'date': 		obj.evaluation_start_date,
+												'state': 		obj.state,
+
+												#'product': 		obj.pl_product,
+												#'family': 		obj.pl_family,
+
+												'res_id': 		obj.id,
+												'res_model': 	obj._name,
+
+												'patient_id': self.id,
+							})
+
+
+
+# ----------------------------------------------- Update Procedures --------------------------------
+	@api.multi
+	def update_procedures(self, model):
+		"""
+		Update Procedures
+		"""
+		print()
+		print('Update Procedures')
+
+		# Clean
+		self.procedure_ids.unlink()
+
+		# Search
+		objs = self.env[model].search([
+															('patient', 'in', [self.name]),
+															#('state', 'in', ['sale']),
+											],
+												#order='x_serial_nr asc',
+												#limit=1,
+											)
+		#print(apps)
+
+		for obj in objs:
+
+			print(obj.patient.name)
+
+			# Create
+			procedure = self.procedure_ids.create({
+												'patient': 		obj.patient.id,												
+												'doctor': 		obj.doctor.id,
+												'date': 		obj.evaluation_start_date,
+												'state': 		obj.state,
+												'product': 		obj.product,
+												'family': 		obj.pl_laser,
+
+												'res_id': 		obj.id,
+												'res_model': 	obj._name,
+
+												'patient_id': self.id,
+							})
+
+
+
+
 
 
 
@@ -139,6 +206,22 @@ class Patient(models.Model):
 			'openhealth.patient.control',
 			'patient_id',
 			string="Controles",
+		)
+
+
+	# procedures
+	procedure_ids = fields.One2many(
+			'openhealth.patient.procedure',
+			'patient_id',
+			string="Procedimientos",
+		)
+
+
+	# consultations
+	consultation_ids = fields.One2many(
+			'openhealth.patient.consultation',
+			'patient_id',
+			string="Consultas",
 		)
 
 

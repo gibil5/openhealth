@@ -1,339 +1,214 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
-    <data>
+	<data>
 
 
 
-        <!-- Form view -->
-        <record model="ir.ui.view" id="procedure_form_view">
-            <field name="name">procedure.form</field>
-            <field name="model">openhealth.procedure</field>
-            <field name="arch" type="xml">
-                <form string="Evaluation">
+		<!-- Form view -->
+		<record model="ir.ui.view" id="procedure_form_view">
+			<field name="name">procedure.form</field>
+			<field name="model">openhealth.procedure</field>
+			<field name="arch" type="xml">
+				<form string="Evaluation">
 
 
-                    <!-- Header --> 
-                    <header>
+					<!-- Header --> 
+					<header>
 
+						<!-- Controls -->
+						<button 
+							type="object" 
+							class="oe_highlight"
 
+							name="create_controls_manual" 
 
+							string="Crear Controles"                            
+						/>
 
+						<!-- Sessions -->
+						<button 
+							type="object" 
+							class="oe_highlight"
+							name="create_sessions_manual"  
 
-                        <!-- Controls -->
-<!--
-                            groups="openhealth.roots,openhealth.archivers,openhealth.managers,openhealth.physicians,openhealth.directors"
+							string="Crear Sesiones"
+						/>
 
-                            name="create_controls"
+						<!-- Go Treatment --> 
+						<button 
+								type="object"       
+								class="oe_highlight oe_right"
+								name="open_treatment"
+								
+								string="Regresar al TRATAMIENTO"
+							/>
+					</header>
+					
 
-                            attrs="{'invisible':[
-                                                    ('laser', '!=', 'laser_quick'), 
-                                                    ('laser', '!=', 'laser_co2'), 
-                                                ]}"
--->
-                        <button 
-                            type="object" 
-                            class="oe_highlight"
+						
 
-                            name="create_controls_manual" 
+<!-- Sheet --> 
+					<sheet>
 
-                            string="Crear Controles"                            
-                        />
+						<!-- Id -->
+						<div>                       
 
-
-
-                        <!-- Sessions -->
-                        <!--
-                            attrs="{ 'invisible':[  ('number_sessions','==',1),     ]}"
-                            groups="openhealth.roots,openhealth.archivers,openhealth.managers,openhealth.physicians,openhealth.directors"
-
-                            name="create_sessions"
-                        --> 
-                        <button 
-                            type="object" 
-                            class="oe_highlight"
-
-                            name="create_sessions_manual"  
-
-                            string="Crear Sesiones"
-                        />
-
-
-
-
-
-                        <!-- App -->
-                        <!-- Clear Sessions -->
-                        <!-- Clear Controls -->
-<!--
-                        <button 
-                            type="object" 
-                            class="oe_highlight"
-
-                            name="update_appointment"   
-
-                            string="Update App"
-                        />
-
-                        <button 
-                            type="object" 
-                            class="oe_highlight"
-                            groups="openhealth.roots"
-                            name="clear_sessions"   
-
-                            string="Clear Sessions"
-                        />
-
-                        <button 
-                            type="object" 
-                            class="oe_highlight"
-                            attrs="{'invisible':[
-                                                    ('laser', 'not in', ['laser_quick', 'laser_co2']), 
-                                                ]}"
-                            groups="openhealth.roots"
-                            name="clear_controls"   
-
-                            string="Clear Controls"
-                        />
--->
-
-
-
-                        <!-- Right - Treatment --> 
-                        <button 
-                                type="object"       
-                                class="oe_highlight oe_right"
-                                name="open_treatment"
-                                
-                                string="Regresar al TRATAMIENTO"
-                            />
-                    </header>
-                    
-
-                        
-
-
-                    <!-- Sheet --> 
-                    <sheet>
-
-                        <!-- Id -->
-                        <div>                       
-
-                            <!-- Persona --> 
-                            <div class="oe_left"  style="width: 300px;">
-                                <div class="oe_title" >
-                                    <h1 class="jx_title">Procedimiento</h1>                                 
-                                </div>                              
-                                <group></group>
-                                <h2>
-                                    <field name="patient"/>
-                                </h2>
-                                <group></group>
-                                <h2>
-                                    <field name="laser"/>
-                                </h2>
-                            </div>
+							<!-- Persona --> 
+							<div class="oe_left"  style="width: 300px;">
+								<div class="oe_title" >
+									<h1 class="jx_title">Procedimiento</h1>                                 
+								</div>                              
+								<group></group>
+								<h2>
+									<field name="patient"/>
+								</h2>
+								<group></group>
+								<h2>
+									<field name="laser"/>
+								</h2>
+							</div>
 
 
 
 
-                            <!-- Buttons --> 
-                            <div class="oe_left" style="width: 300px;" name="buttons">
+							<!-- Buttons --> 
+							<div class="oe_left" style="width: 300px;" name="buttons">
 
 
-                                <!-- Nr Sessions --> 
-                                <button type="action" class="oe_stat_button" icon="fa-list"
-                                    name="%(session_med_form_action)d"  
-                                    attrs="{ 'invisible':[  ('nr_sessions','=',0), ]}"
-                                    context="{                                  
-                                                'search_default_procedure': active_id,
-                                            }"                                          
-                                    >
-                                    <field string="Sesiones" name="nr_sessions" widget="statinfo"/>
-                                </button>   
+								<!-- Nr Sessions --> 
+								<button type="action" class="oe_stat_button" icon="fa-list"
+									name="%(session_med_form_action)d"  
+									attrs="{ 'invisible':[  ('nr_sessions','=',0), ]}"
+									context="{                                  
+												'search_default_procedure': active_id,
+											}"                                          
+									>
+									<field string="Sesiones" name="nr_sessions" widget="statinfo"/>
+								</button>   
 
 
-                                <!-- Nr Controls -->                                                                
-                                <button type="action" class="oe_stat_button"    
-                                    name="%(control_form_action)d"  
-                                    context="{                                  
-                                                'search_default_procedure': active_id,
-                                            }"  
-                                    attrs="{'invisible':[
-                                                                ('laser', '!=', 'laser_quick'), 
-                                                                ('laser', '!=', 'laser_co2'), 
-                                                        ]}"
-                                    icon="fa-list">
-                                    <field string="Controles" name="nr_controls" widget="statinfo"/>
-                                </button>   
-                            </div>
-                        
+								<!-- Nr Controls -->                                                                
+								<button type="action" class="oe_stat_button"    
+									name="%(control_form_action)d"  
+									context="{                                  
+												'search_default_procedure': active_id,
+											}"  
+									attrs="{'invisible':[
+																('laser', '!=', 'laser_quick'), 
+																('laser', '!=', 'laser_co2'), 
+														]}"
+									icon="fa-list">
+									<field string="Controles" name="nr_controls" widget="statinfo"/>
+								</button>   
+							</div>
+						
 
-                            <!-- Id Number --> 
-                            <div class="oe_right" >
-                                <div class="oe_title" >
-                                    <label class="oe_edit_only" for="name" string="Procedimiento #"/>
-                                    <h1><field name="treatment" class="oe_inline"/></h1>
-                                </div>
-                            </div>
-                        </div>
+							<!-- Id Number --> 
+							<div class="oe_right" >
+								<div class="oe_title" >
+									<label class="oe_edit_only" for="name" string="Procedimiento #"/>
+									<h1><field name="treatment" class="oe_inline"/></h1>
+								</div>
+							</div>
+						</div>
 
 
 
 
 
-                        <!-- Padding --> 
-<!--
-                        <group></group>
-                        <group></group>
-                        <group></group>
-                        <group></group>
 
-                        <div class="oe_left" style="height: 55px;">
-                        </div>
--->
+<!-- Fields -->
+						<group>
+							<group>
+								<field name="doctor" options="{'no_create': True}"  />
+								<field name="evaluation_start_date"/>
+							</group>
 
-
-
-                        <!-- Fields --> 
-                        <group>
-                            <!--
-                            <field string="Próxima cita" name="appointment" domain="[('patient', '=', patient)]" options="{'no_create': True}"/>
-                            -->
-                            
-<!--
-                            <group> 
-                            </group>
-                            <group>
-                                <field name="evaluation_type"   invisible="0"/>
-                            </group>
--->
-
-                            
-                            <group>
-                                <field name="doctor" options="{'no_create': True}"  />
-                                <field name="evaluation_start_date"/>
-                                <field name="session_date"/>
-                                <field name="appointment"   required="0"/>  
+							<group>
+								<field name="chief_complaint"/>                           
+								<field name="product"/>
+							</group>							
+						</group>
 <!--                                
-                                <field name="machine"/>
+								<field name="number_sessions"/>                             
+								<field name="number_controls"/>                             
+								<field name="session_date"/>
+								<field name="vspace"/>
+								<field name="laser"/>
+								<field name="machine"/>
+								<field name="appointment"   required="0"/>  
+								<field name="vspace"/>
+								<field name="configurator"/>
 -->
-                                <field name="vspace"/>
-                                <field name="configurator"/>
-                            </group>
-                            <group>
-                                <field name="chief_complaint"/>                           
-                                <field name="number_sessions"/>                             
-                                <field name="number_controls"/>                             
-                                <field name="product"/>
-                            </group>
-                            
+
+
+
+						<!-- Notebook --> 
+						<notebook>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+
+
+
+<!-- TREE --> 
+		<record model="ir.ui.view" id="procedure_tree_view">
+			<field name="name">procedure.tree</field>
+			<field name="model">openhealth.procedure</field>
+			<field name="arch" type="xml">
+				<tree string="Procedure Tree">
+
+					<!-- Quick Button -->
+					<button 
+						type="object" 
+						class="oe_highlight"    
+						string="E"
+						name="open_line_current" 
+					/>
+
+					<field name="appointment"/>
+
+					<field name="patient"/>
+
+					<field name="doctor"/>
+
+					<field name="chief_complaint"/>
+
+					<field name="laser"/>
+
+
+					<field name="evaluation_start_date"/>
+
+					<field name="nr_sessions"/>
+
+					<field name="nr_controls"/>
+				</tree>
+			</field>
+		</record>
 <!--
-                            <group>
-                            </group>
-                            <group>                         
-                            </group>
-
-                                <field name="vspace"/>
-                                <field name="laser"/>
+					<field name="product"/>
+					<field name="name"/>
+					<field name="treatment"/>
 -->
-                        </group>
+		
+		
+		
+		
+<!-- FILTER --> 
+		<record id="view_medical_procedure_filter" model="ir.ui.view">
+		   <field name="name">Procedure Search</field>
+		   <field name="model">openhealth.procedure</field>        
+		   <field name="arch" type="xml">
+			   <search string="Procedures">
+				   <field name="treatment" />
+			   </search>
+		   </field>
+	   </record>
 
 
-
-                        <!-- Notebook --> 
-                        <notebook>
-                        </notebook>
-                    </sheet>
-                </form>
-            </field>
-        </record>
-
-
-
-
-
-        <!-- Tree view --> 
-        <record model="ir.ui.view" id="procedure_tree_view">
-            <field name="name">procedure.tree</field>
-            <field name="model">openhealth.procedure</field>
-            <field name="arch" type="xml">
-                <tree string="Procedure Tree">
-
-                    <!-- Quick Button -->
-                    <button 
-                        type="object" 
-                        class="oe_highlight"    
-                        string="E"
-                        name="open_line_current" 
-                    />
-
-                    <field name="appointment"/>
-
-                    <field name="patient"/>
-
-                    <field name="doctor"/>
-
-                    <field name="chief_complaint"/>
-
-                    <field name="laser"/>
-
-
-                    <field name="evaluation_start_date"/>
-
-                    <field name="nr_sessions"/>
-
-                    <field name="nr_controls"/>
-                </tree>
-            </field>
-        </record>
-<!--
-                    <field name="product"/>
-                    <field name="name"/>
-                    <field name="treatment"/>
--->
-        
-        
-        
-        
-        <!-- Filter --> 
-        <record id="view_medical_procedure_filter" model="ir.ui.view">
-           <field name="name">Procedure Search</field>
-           <field name="model">openhealth.procedure</field>        
-           <field name="arch" type="xml">
-               <search string="Procedures">
-                   <field name="treatment" />
-               </search>
-           </field>
-       </record>
-
-
-
-
-
-        <!-- Menus --> 
-        <!-- top level menu: no parent -->
-        <!--
-        <menuitem id="main_openextension_menu" name="Open Health"/>
-        --> 
-
-        <!-- A first level in the left side menu is needed
-        before using action= attribute -->
-        <!--
-        <menuitem id="openextension_menu" name="Open Health"
-            parent="main_openextension_menu"/>
-        --> 
-
-        <!-- the following menuitem should appear *after*
-        its parent openextension_menu and *after* its
-        action procedure_list_action -->
-        <!--
-        <menuitem id="procedures_menu" name="Procedimientos" parent="openextension_menu"
-            action="procedure_list_action"/>
-        --> 
-
-
-        <!-- Full id location:
-        action="openextension.procedure_list_action"
-        It is not required when it is the same module -->
-    </data>
+	</data>
 </openerp>

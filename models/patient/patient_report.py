@@ -26,9 +26,6 @@ class patient_report(models.Model):
 
 # ----------------------------------------------------------- Natives -------------------------------
 
-	# Res Handle
-	res_id = fields.Integer()
-
 
 	# Patient Handle
 	patient_id = fields.Many2one(
@@ -85,6 +82,13 @@ class patient_report(models.Model):
 
 
 
+	# Res Handles
+
+	res_id = fields.Integer()
+
+	res_model = fields.Char()
+
+
 #----------------------------------------------------------- Quick Button ---------
 	@api.multi
 	def open_line_current(self):
@@ -93,7 +97,8 @@ class patient_report(models.Model):
 		"""
 		
 		res_id = self.res_id
-		
+		res_model = self.res_model
+
 		return {
 				'type': 'ir.actions.act_window',
 				'name': ' Edit Order Current',
@@ -101,7 +106,8 @@ class patient_report(models.Model):
 				'view_mode': 'form',
 
 
-				'res_model': 'sale.order',
+				#'res_model': 'sale.order',
+				'res_model': res_model,
 
 				'res_id': res_id,
 				

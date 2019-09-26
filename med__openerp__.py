@@ -8,7 +8,7 @@
 
 	'description': """
 
-		25 Sep 2019
+		26 Sep 2019
 
 		Contains:
 			- All External Dependencies,
@@ -360,8 +360,8 @@
 		'views/treatments/treatment_orders.xml',
 		'views/treatments/treatment_consultations.xml',
 		'views/treatments/treatment_procedures.xml',
-		'views/treatments/treatment_sessions.xml',
-		'views/treatments/treatment_controls.xml',
+		#'views/treatments/treatment_sessions.xml',  	# Sab
+		#'views/treatments/treatment_controls.xml', 	# Sab
 		
 
 		# Patients - 2 

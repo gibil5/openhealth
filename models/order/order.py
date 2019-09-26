@@ -10,7 +10,9 @@ import datetime
 from openerp import models, fields, api
 from openerp import _
 from openerp.exceptions import Warning as UserError
-from openerp.addons.openhealth.models.libs import creates, user
+
+#from openerp.addons.openhealth.models.libs import creates, user  	# Dep !
+
 from openerp.addons.openhealth.models.libs import lib
 from openerp.addons.openhealth.models.patient import pat_vars, chk_patient
 from . import ord_vars

@@ -146,17 +146,7 @@
 
 
 
-<hr></hr>
 
-<!-- update -->
-<button 
-		type="object" 
-		class="oe_highlight"
-
-		name="update"
-
-		string="Actualizar"                               
-/>
 
 					</page>
 				</xpath>

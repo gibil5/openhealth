@@ -168,7 +168,7 @@ class Patient(models.Model):
 												'doctor': 		obj.doctor.id,
 												'date': 		obj.evaluation_start_date,
 												'state': 		obj.state,
-												'product': 		obj.product,
+												'product': 		obj.product.name,
 												'family': 		obj.pl_laser,
 
 												'res_id': 		obj.id,

@@ -280,6 +280,7 @@
 
 
 		# Procedures
+		'views/procedures/procedure_actions.xml',
 		'views/procedures/procedure.xml',
 
 		# Consultation

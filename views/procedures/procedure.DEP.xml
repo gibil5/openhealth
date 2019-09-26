@@ -4,26 +4,16 @@
 
 
 
-<!-- FORM -->
-		<record model="ir.ui.view" id="openhealth.procedure_form_view">
+		<!-- Form view -->
+		<record model="ir.ui.view" id="procedure_form_view">
 			<field name="name">procedure.form</field>
 			<field name="model">openhealth.procedure</field>
 			<field name="arch" type="xml">
-				<form string="Procedure">
+				<form string="Evaluation">
 
 
-<!-- Header --> 
+					<!-- Header --> 
 					<header>
-
-						<!-- Sessions -->
-						<button 
-							type="object" 
-							class="oe_highlight"
-
-							name="create_sessions_manual"  
-
-							string="Crear Sesiones"
-						/>
 
 						<!-- Controls -->
 						<button 
@@ -35,8 +25,16 @@
 							string="Crear Controles"                            
 						/>
 
+						<!-- Sessions -->
+						<button 
+							type="object" 
+							class="oe_highlight"
+							name="create_sessions_manual"  
 
-						<!-- Right - Treatment --> 
+							string="Crear Sesiones"
+						/>
+
+						<!-- Go Treatment --> 
 						<button 
 								type="object"       
 								class="oe_highlight oe_right"
@@ -47,8 +45,9 @@
 					</header>
 					
 
+						
 
-					<!-- Sheet --> 
+<!-- Sheet --> 
 					<sheet>
 
 						<!-- Id -->
@@ -64,23 +63,21 @@
 									<field name="patient"/>
 								</h2>
 								<group></group>
-								<h2></h2>
+								<h2>
+									<field name="laser"/>
+								</h2>
 							</div>
 
 
 
-<!--
-Nr sessions and controls
--->
-							<!-- Buttons --> 
 
+							<!-- Buttons --> 
 							<div class="oe_left" style="width: 300px;" name="buttons">
+
 
 								<!-- Nr Sessions --> 
 								<button type="action" class="oe_stat_button" icon="fa-list"
-
 									name="%(session_med_form_action)d"  
-									
 									attrs="{ 'invisible':[  ('nr_sessions','=',0), ]}"
 									context="{                                  
 												'search_default_procedure': active_id,
@@ -90,7 +87,7 @@ Nr sessions and controls
 								</button>   
 
 
-								<!-- Nr Controls -->
+								<!-- Nr Controls -->                                                                
 								<button type="action" class="oe_stat_button"    
 									name="%(control_form_action)d"  
 									context="{                                  
@@ -104,7 +101,7 @@ Nr sessions and controls
 									<field string="Controles" name="nr_controls" widget="statinfo"/>
 								</button>   
 							</div>
-
+						
 
 							<!-- Id Number --> 
 							<div class="oe_right" >
@@ -118,72 +115,42 @@ Nr sessions and controls
 
 
 
-<!-- Fields --> 
+
+
+<!-- Fields -->
 						<group>
 							<group>
 								<field name="doctor" options="{'no_create': True}"  />
 								<field name="evaluation_start_date"/>
 							</group>
+
 							<group>
 								<field name="chief_complaint"/>                           
 								<field name="product"/>
-								<field name="laser"/>
-							</group>                            
+							</group>							
 						</group>
+<!--                                
+								<field name="number_sessions"/>                             
+								<field name="number_controls"/>                             
+								<field name="session_date"/>
+								<field name="vspace"/>
+								<field name="laser"/>
+								<field name="machine"/>
+								<field name="appointment"   required="0"/>  
+								<field name="vspace"/>
+								<field name="configurator"/>
+-->
 
 
-<!-- Notebook -->
+
+						<!-- Notebook --> 
 						<notebook>
-
-							<!-- Sessions -->
-						   	<page string="Sesiones">
-
-								<field 	name="session_ids"   
-										context="{
-										'default_patient': patient,
-										'default_treatment': treatment,
-										'default_doctor': doctor,
-										'default_chief_complaint': chief_complaint,
-										'default_state': 'draft',
-										}"
-								/>
-							</page>
-
-							<!-- Controls -->
-							<page string="Controles">
-
-								<field 	name="control_ids"       
-										context="{
-										'default_patient': patient,
-										'default_chief_complaint': chief_complaint,
-										'default_product': product,
-										'default_doctor': doctor,
-										'default_treatment': treatment,
-										'default_evaluation_type': 'control',
-										'default_evaluation_nr': nr_controls + 1,
-										'default_control_date': evaluation_start_date,
-										}"
-								/>
-							</page>
 						</notebook>
 					</sheet>
 				</form>
 			</field>
 		</record>
 
-<!--
-								<field name="pl_laser"/>
-								<field name="number_sessions"/>                             
-								<field name="number_controls"/>                             
-
-								<field name="session_date"/>
-								<field name="appointment"   required="0"/>  
-								<field name="laser"/>
-								<field name="pl_laser"/>
-								<field name="machine"/>
-								<field name="vspace"/>
-								<field name="configurator"/>
--->
 
 
 
@@ -194,6 +161,7 @@ Nr sessions and controls
 			<field name="model">openhealth.procedure</field>
 			<field name="arch" type="xml">
 				<tree string="Procedure Tree">
+
 					<!-- Quick Button -->
 					<button 
 						type="object" 
@@ -201,23 +169,35 @@ Nr sessions and controls
 						string="E"
 						name="open_line_current" 
 					/>
+
+					<field name="appointment"/>
+
 					<field name="patient"/>
+
 					<field name="doctor"/>
+
 					<field name="chief_complaint"/>
+
 					<field name="laser"/>
-					<field name="pl_laser"/>
+
+
 					<field name="evaluation_start_date"/>
+
+					<field name="nr_sessions"/>
+
+					<field name="nr_controls"/>
 				</tree>
 			</field>
 		</record>
 <!--
-					<field name="appointment"/>
 					<field name="product"/>
 					<field name="name"/>
 					<field name="treatment"/>
 -->
-
-
+		
+		
+		
+		
 <!-- FILTER --> 
 		<record id="view_medical_procedure_filter" model="ir.ui.view">
 		   <field name="name">Procedure Search</field>
@@ -229,7 +209,6 @@ Nr sessions and controls
 		   </field>
 	   </record>
 
-		
-		
+
 	</data>
 </openerp>

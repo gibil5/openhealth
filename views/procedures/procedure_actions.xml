@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+
+
+
+<!-- ACTIONS -->
+
+        <!-- Contasis -->
+        <record model="ir.actions.act_window" id="session_med_form_action">
+            <field name="name">Session Med Form Action</field>
+            
+            <field name="res_model">openhealth.session.med</field>
+            
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="limit">1000</field>
+<!--
+            <field name="view_id" ref="account_line_view_contasis_tree"/>
+-->
+        </record>
+
+        <!-- Contasis -->
+        <record model="ir.actions.act_window" id="control_form_action">
+            <field name="name">Contro Form Action</field>
+            
+            <field name="res_model">openhealth.control</field>
+            
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="limit">1000</field>
+<!--
+            <field name="view_id" ref="account_line_view_contasis_tree"/>
+-->
+        </record>
+
+
+
+    </data>
+</openerp>

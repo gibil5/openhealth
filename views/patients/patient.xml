@@ -283,6 +283,20 @@
 <notebook 	name="N2"></notebook>
 
 
+<hr></hr>
+<!-- update -->
+<button 
+		type="object" 
+		class="oe_highlight"
+
+		name="update"
+
+		string="Actualizar"                               
+/>
+<hr></hr>
+
+
+
 <!-- Notebook 1 -->
 <notebook 	name="N1">
 	
@@ -375,12 +389,13 @@ grey:state in ('cancel')
                 <field name="patient"/>
                 <field  name="doctor"/>
                 <field name="state"/>
-                <field name="product"    string="Producto"/>
-                <field name="family"/>
             </tree>
         </field>
 	</page>
-
+<!--
+                <field name="product"    string="Producto"/>
+                <field name="family"/>
+-->
 
 
 	<!-- Procedures -->
@@ -479,25 +494,5 @@ grey:state in ('cancel')
 					<field name="x_test_case"       groups='openhealth.roots'   />      
 -->
 
-
-<!-- TREE 2 -->
-<!--
-		<record model="ir.ui.view" id="oeh_medical_patient_tree_2">
-			<field name="name">patient.tree</field>
-			<field name="model">oeh.medical.patient</field>
-			<field name="arch" type="xml">  
-				<tree string="Patient Tree" >
-					<field name="name"/>
-					<field name="x_id_code"/>       
-					<field name="x_id_doc_type" string="Tipo Doc"/>
-					<field name="x_id_doc_type_code"    string="Cod"/>
-					<field name="x_id_doc"      string="Nr Doc"/>
-					<field name="x_dni"/>
-					<field name="x_ruc"/>
-					<field name="city"          string="Depto"/>
-				</tree>
-			</field>
-		</record>
--->
 	</data>
 </openerp>

@@ -1,3 +1,88 @@
+<!--
+26 sep 2019
+-->
+
+
+
+<!-- FORM -->
+        <record model="ir.ui.view" id="product_form">
+            <field name="name">product.template.product.form</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="mode">primary</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+
+                <!-- Xpaths --> 
+                <xpath expr="//field[@name='invoice_policy']" position="after">
+                        <field name="default_code"/>
+
+                        <!-- Fix -->
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+                            help=''
+                            
+                            name="fix_procurements" 
+
+                            string="FIX PROC"
+                        />
+
+                        <!-- Fix -->
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+                            help=''
+                            
+                            name="fix_stock" 
+
+                            string="FIX STOCK"
+                        />
+
+                        <!-- Encode Error -->
+                        <button 
+                                type="object"
+                                class="oe_highlight"
+
+                                name="encode_error"
+
+                                string="Encode Error"
+                        />
+
+                        <!-- Fix Encode Error -->
+                        <button 
+                                type="object"
+                                class="oe_highlight"
+
+                                name="fix_encode_error"
+
+                                string="FIX ENCO"
+                        />
+
+                        <!-- Fix Vic Error -->
+                        <button 
+                                type="object"
+                                class="oe_highlight"
+
+                                name="fix_vic_error"
+
+                                string="FIX VIC"
+                        />
+                </xpath>
+            </field>
+        </record>
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- Deprecated ->
 
 

@@ -390,12 +390,10 @@ grey:state in ('cancel')
                 <field name="date"/>
                 <field name="patient"/>
                 <field  name="doctor"/>
-<!--
-                <field name="state"/>
 
+                <field name="state"/>
                 <field name="product"    string="Producto"/>
                 <field name="family"/>
--->
             </tree>
         </field>
 	</page>

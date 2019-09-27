@@ -529,36 +529,46 @@
 			}
 		},
 		{
+			"file": "readme.txt",
+			"settings":
+			{
+				"buffer_size": 26,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/order/order.py",
+			"settings":
+			{
+				"buffer_size": 36717,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/orders/order.xml",
+			"settings":
+			{
+				"buffer_size": 17079,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/orders/order_admin.xml",
+			"settings":
+			{
+				"buffer_size": 1737,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "models/emr/treatment.py",
 			"settings":
 			{
-				"buffer_size": 19844,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/libs/user.py",
-			"settings":
-			{
-				"buffer_size": 8321,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/emr/treatment.TRASH.py",
-			"settings":
-			{
-				"buffer_size": 21021,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/treatments/treatment.TRASH.xml",
-			"settings":
-			{
-				"buffer_size": 17935,
+				"buffer_size": 19464,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -567,16 +577,8 @@
 			"file": "views/treatments/treatment.xml",
 			"settings":
 			{
-				"buffer_size": 21121,
+				"buffer_size": 21191,
 				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/libs/zat/creates.py",
-			"settings":
-			{
-				"buffer_size": 21401,
 				"line_ending": "Unix"
 			}
 		},
@@ -663,6 +665,10 @@
 	},
 	"file_history":
 	[
+		"/Users/gibil/cellar/github/openhealth/models/libs/user.py",
+		"/Users/gibil/cellar/github/openhealth/models/libs/zat/creates.py",
+		"/Users/gibil/cellar/github/openhealth/views/treatments/treatment.TRASH.xml",
+		"/Users/gibil/cellar/github/openhealth/models/emr/treatment.TRASH.py",
 		"/Users/gibil/cellar/github/openhealth/views/patients/patient.xml",
 		"/Users/gibil/cellar/github/openhealth/views/patients/patient_personal.xml",
 		"/Users/gibil/cellar/github/openhealth/views/products/product_template.TRASH.xml",
@@ -762,7 +768,6 @@
 		"/Users/gibil/cellar/github/openhealth/views/sessions/session_actions.xml",
 		"/Users/gibil/cellar/github/openhealth/views/sessions/session_admin.xml",
 		"/Users/gibil/cellar/github/openhealth/models/emr/prodvars.py",
-		"/Users/gibil/cellar/github/openhealth/views/treatments/treatment.TRASH.xml",
 		"/Users/gibil/cellar/github/openhealth/views/sessions/session_config_simple_1.xml",
 		"/Users/gibil/cellar/github/openhealth/views/sessions/session_admin_1.xml",
 		"/Users/gibil/cellar/github/openhealth/models/emr/product.TRASH.py",
@@ -774,7 +779,6 @@
 		"/Users/gibil/cellar/github/openhealth/models/patient/patient.py",
 		"/Users/gibil/cellar/github/openhealth/models/order/ord_funcs.py",
 		"/Users/gibil/cellar/github/openhealth/models/emr/pro_ses_funcs.py",
-		"/Users/gibil/cellar/github/openhealth/models/emr/treatment.TRASH.py",
 		"/Users/gibil/cellar/github/openhealth/models/emr/treatment_vars.py",
 		"/Users/gibil/cellar/github/openhealth/data/physicians/base_data_physicians_inactive.xml",
 		"/Users/gibil/cellar/github/openhealth/data/physicians/base_data_physicians.xml",
@@ -788,9 +792,7 @@
 		"/Users/gibil/cellar/github/openhealth/views/menus/menus.TRASH.xml",
 		"/Users/gibil/cellar/github/openhealth/security/ir.rule.xml",
 		"/Users/gibil/cellar/github/openhealth/views/configurators/configurator_emr.xml",
-		"/Users/gibil/cellar/github/openhealth/models/emr/doctor.py",
-		"/Users/gibil/cellar/github/openhealth/models/configurator/configurator_emr.py",
-		"/Users/gibil/cellar/github/openhealth/security/ir.rule.DEP.xml"
+		"/Users/gibil/cellar/github/openhealth/models/emr/doctor.py"
 	],
 	"find":
 	{
@@ -809,6 +811,8 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"create_",
+			"create_procedure",
 			"pl_create",
 			"dateti",
 			"time_funcs",
@@ -934,9 +938,7 @@
 			"contact",
 			"data_complete",
 			"legacy",
-			"configurator",
-			"x_admin",
-			"configu"
+			"configurator"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -1098,8 +1100,8 @@
 						"selection":
 						[
 							[
-								8693,
-								8693
+								258,
+								258
 							]
 						],
 						"settings":
@@ -1112,30 +1114,29 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "models/emr/treatment.py",
+					"file": "readme.txt",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 19844,
+						"buffer_size": 26,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								455,
-								464
+								26,
+								26
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1146,19 +1147,19 @@
 				},
 				{
 					"buffer": 2,
-					"file": "models/libs/user.py",
+					"file": "models/order/order.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 8321,
+						"buffer_size": 36717,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6127,
-								6127
+								15476,
+								15476
 							]
 						],
 						"settings":
@@ -1167,48 +1168,19 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 4184.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "models/emr/treatment.TRASH.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 21021,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 13006.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "views/treatments/treatment.TRASH.xml",
+					"buffer": 3,
+					"file": "views/orders/order.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 17935,
+						"buffer_size": 17079,
 						"regions":
 						{
 						},
@@ -1222,8 +1194,65 @@
 						"settings":
 						{
 							"syntax": "Packages/XML/XML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "views/orders/order_admin.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1737,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								474,
+								474
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 46.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "models/emr/treatment.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 19464,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								635,
+								635
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1233,20 +1262,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "views/treatments/treatment.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 21121,
+						"buffer_size": 21191,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								56,
-								56
+								14836,
+								14836
 							]
 						],
 						"settings":
@@ -1255,39 +1284,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 34.0,
+						"translation.y": 9475.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "models/libs/zat/creates.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 21401,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -1316,7 +1316,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 7,
 					"type": "text"
 				}
 			]

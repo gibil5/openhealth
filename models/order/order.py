@@ -791,25 +791,20 @@ class sale_order(models.Model):
 		if self.treatment.name != False:
 			for line in self.order_line:
 
-
-				family = line.product_id.get_family()
-				print(family)
-
+				# Init
 				product = line.product_id
-				print(product)
 
-
-				#if line.product_id.x_family in ['laser', 'medical', 'cosmetology']:
-				if family in ['laser', 'medical', 'cosmetology']:
-					
-					#self.treatment.create_procedure(False, line.product_id.x_treatment, line.product_id.id)
-					#self.treatment.create_procedure(False, line.product_id.x_treatment, line.product_id)
-					self.treatment.create_procedure(product)
+				# Conditional
+				if product.is_procedure():
+					self.treatment.create_procedure_auto(product)
 
 
 				line.update_recos()
-			# Update
-			self.x_procedure_created = True
+
+
+			# Update Order
+			#self.x_procedure_created = True
+			self.set_procedure_created(True)
 
 
 

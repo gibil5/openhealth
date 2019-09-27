@@ -23,25 +23,6 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Create Procedure  -------------------
-	# Create Procedure
-	#@api.multi
-	def create_procedure(self, product):
-		"""
-		Used by: Order
-		Uses: Price List PL-Creates Library
-		"""
-		print()
-		print('OH - Create Procedure')
-		print(self)
-		print(product)
-
-		pl_creates.create_procedure_go(self, product)
-
-	# create_procedure
-
-
-
 # ----------------------------------------------------------- Primitive --------------------------
 
 	# Name

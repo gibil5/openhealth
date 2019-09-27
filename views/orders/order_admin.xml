@@ -12,27 +12,23 @@
 			<field name="inherit_id" ref="sale.view_order_form"/>
 			<field name="arch" type="xml">
 
-
 				<notebook position="inside">
 					
 
-
 <!--
-							<page string="Admin"    groups='openhealth.roots'    >
 							<page string="Admin">
 -->
 
 							<page string="Admin"        groups='openhealth.roots'	>
 
-
 								<group>
 
-	
+									<field name="x_procedure_created" />
+
 
 									<field name="vspace"/>
-
 									
-									<field name="x_product"     readonly="1"    />
+									<field name="x_product"     readonly="1"/>
 
 									<field name="vspace" />
 
@@ -41,8 +37,6 @@
 									<field name="x_type_code"/>
 
 									<field name="x_legacy"/>
-
-
 
 									<field name="x_pm_total"/>
 									
@@ -56,15 +50,9 @@
 								<group>
 	
 									<field name="partner_id"/>
-
-									<field name="x_procedure_created" />
-
-									<field name="x_doctor_uid"  invisible="1"               />
-
-									<field name="user_id"       string="Creado por"     groups='openhealth.roots'   />
-
+									<field name="x_doctor_uid"  invisible="0"/>
+									<field name="user_id"       string="Creado por"/>
 									<field name="x_checksum"/>
-
 								</group>
 							</page>
 				</notebook>

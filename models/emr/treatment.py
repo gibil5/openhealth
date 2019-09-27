@@ -10,12 +10,10 @@ import datetime
 from openerp import models, fields, api
 from . import time_funcs
 from . import treatment_vars
+from openerp.addons.openhealth.models.libs import lib, user, eval_vars
 
 #from openerp.addons.openhealth.models.libs import creates as cre  	# Dep !
 from openerp.addons.price_list.models.treatment import pl_creates
-
-from openerp.addons.openhealth.models.libs import lib, user, eval_vars
-#from openerp.addons.openhealth.models.libs import eval_vars
 
 class Treatment(models.Model):
 	#_inherit = 'openhealth.process'  	# Dep !!!
@@ -378,33 +376,6 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Create Controls  --------------------
-	# Create Controls
-	@api.multi
-	def create_controls(self):
-		#print
-		#print 'Create Controls'
-		control_date = self.start_date
-		patient_id = self.patient.id
-		doctor_id = self.physician.id
-		treatment_id = self.id
-		chief_complaint = self.chief_complaint
-
-		# Create Control
-		control = self.control_ids.create({
-											'evaluation_start_date':control_date,
-											'first_date':control_date,
-											'patient':patient_id,
-											'doctor':doctor_id,
-											'chief_complaint':chief_complaint,
-											'treatment': treatment_id,
-
-											#'appointment': appointment_id,
-											#'product':product_id,
-											#'procedure':procedure_id,
-									})
-	# create_controls
-
 
 
 # ----------------------------------------------------------- Testing Booleans --------------------
@@ -493,50 +464,6 @@ class Treatment(models.Model):
 
 
 
-
-
-
-
-# ----------------------------------------------------------- Create Procedure Manual  ------------
-	@api.multi
-	def create_procedure_man(self):
-		#print
-		#print 'Create Procedure - Manual'
-
-
-		# Loop - Create Procedures
-		ret = 0
-		for order in self.order_pro_ids:
-
-			if order.state == 'sale':
-
-				# Update
-				order.x_procedure_created = True
-
-				# Loop
-				for line in order.order_line:
-
-
-					# Init
-					date_app = order.date_order
-					product_id = line.product_id
-
-					# Search
-					product_template = self.env['product.template'].search([
-																				('x_name_short', '=', product_id.x_name_short),
-												])
-
-					subtype = product_template.x_treatment
-
-					ret = cre.create_procedure_go(self, date_app, subtype, product_id.id)
-
-
-
-
-
-
-
-
 # ----------------------------------------------------------- Manual ------------------------------
 
 	# Manual
@@ -557,19 +484,7 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Alta --------------------------------
-
-	# Closed
-	treatment_closed = fields.Boolean(
-			string="De Alta",
-			default=False,
-		)
-
-
-
 # ----------------------------------------------------------- Canonical ---------------------------
-
-
 
 	# Space
 	vspace = fields.Char(
@@ -577,13 +492,16 @@ class Treatment(models.Model):
 			readonly=True
 		)
 
-
 	# Active
 	active = fields.Boolean(
 			default=True,
 		)
 
-
+	# Closed
+	treatment_closed = fields.Boolean(
+			string="De Alta",
+			default=False,
+		)
 
 
 # ----------------------------------------------------------- Macro -------------------------------
@@ -641,8 +559,6 @@ class Treatment(models.Model):
 
 
 
-
-
 # ----------------------------------------------------------- Vip in prog -------------------------
 
 	# Vip in progress
@@ -663,10 +579,6 @@ class Treatment(models.Model):
 				])
 			if nr_vip > 0:
 				record.x_vip_inprog = True
-
-
-
-
 
 
 
@@ -713,7 +625,6 @@ class Treatment(models.Model):
 			'treatment',
 			string="Presupuestos",
 			domain=[
-						#('x_family', '=', 'procedure'),
 						#('x_family', 'in', ['procedure', 'cosmetology']),
 						('pl_family', 'in', ['LASER CO2']),
 					],
@@ -721,19 +632,14 @@ class Treatment(models.Model):
 
 
 
-
-
-# ----------------------------------------------------------- Services ----------------------------
+# ----------------------------------------------------------- Services - Dep ? ----------------------------
 
 	# Product
 	service_product_ids = fields.One2many(
-
 			'openhealth.service.product',
-
 			'treatment',
 			string="Servicios Producto"
 		)
-
 
 	# Vip
 	service_vip_ids = fields.One2many(
@@ -741,10 +647,6 @@ class Treatment(models.Model):
 			'treatment',
 			string="Servicios vip"
 		)
-
-
-
-
 
 	# Service
 	service_ids = fields.One2many(
@@ -801,14 +703,6 @@ class Treatment(models.Model):
 			'treatment',
 			string="Servicios cosmeatria"
 		)
-
-
-
-
-
-
-
-
 
 
 
@@ -1194,6 +1088,9 @@ class Treatment(models.Model):
 	# Create Consultation
 	@api.multi
 	def create_consultation(self):
+		print()
+		print('OH - Create Consultation')
+
 
 		# Init vars
 		patient_id = self.patient.id
@@ -1227,8 +1124,6 @@ class Treatment(models.Model):
 		#	appointment_id = appointment.id
 		
 		#appointment_id = False
-
-
 
 
 
@@ -1306,7 +1201,66 @@ class Treatment(models.Model):
 							#'default_appointment': appointment_id,
 			}
 		}
-	# create_consultation_man
+	# create_consultation
 
 
+# ----------------------------------------------------------- Create Controls  --------------------
+	# Create Controls
+	@api.multi
+	def create_controls(self):
+		#print
+		#print 'Create Controls'
+		control_date = self.start_date
+		patient_id = self.patient.id
+		doctor_id = self.physician.id
+		treatment_id = self.id
+		chief_complaint = self.chief_complaint
+
+		# Create Control
+		control = self.control_ids.create({
+											'evaluation_start_date':control_date,
+											'first_date':control_date,
+											'patient':patient_id,
+											'doctor':doctor_id,
+											'chief_complaint':chief_complaint,
+											'treatment': treatment_id,
+
+											#'appointment': appointment_id,
+											#'product':product_id,
+											#'procedure':procedure_id,
+									})
+	# create_controls
+
+
+
+# ----------------------------------------------------------- Create Procedure Manual  ------------
+	@api.multi
+	def create_procedure_man(self):
+		#print
+		#print 'Create Procedure - Manual'
+
+		# Loop - Create Procedures
+		ret = 0
+		for order in self.order_pro_ids:
+
+			if order.state == 'sale':
+
+				# Update
+				order.x_procedure_created = True
+
+				# Loop
+				for line in order.order_line:
+
+					# Init
+					date_app = order.date_order
+					product_id = line.product_id
+
+					# Search
+					product_template = self.env['product.template'].search([
+																				('x_name_short', '=', product_id.x_name_short),
+												])
+
+					subtype = product_template.x_treatment
+
+					ret = cre.create_procedure_go(self, date_app, subtype, product_id.id)
 

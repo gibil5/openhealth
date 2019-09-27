@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-	*** Creates - Dep ?
+	*** Creates - Dep !!!
+
+	This is now in the PL Module.
 
 	Encapsulates actual Creation on Database.
  	Can not be Unit-tested (depends on a third-party library: Odoo).

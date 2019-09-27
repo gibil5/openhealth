@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-		user.py
+		user.py - Dep ?
+
+		Who is using this ?
 
  		Bussiness oriented. Can not be Unit-tested (depends on a third-party library: Odoo).
 

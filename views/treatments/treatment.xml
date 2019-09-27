@@ -20,8 +20,11 @@
 						<button 
 							type="object" 
 							class="oe_highlight"
+
 							name="create_order_con"
+
 							string="Crear PRESUPUESTO - Consulta"
+
 							groups="openhealth.roots,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
 
 							states="empty,appointment"
@@ -594,6 +597,18 @@
 -->
 						<group  col="5" >
 
+							<!-- PRESU --> 
+							<group>
+								<button 
+									type="object" 
+									class="oe_highlight"
+
+									name="create_order_con"
+
+									string="PRESU CON" 
+								/>
+							</group>
+
 							<!-- CONS --> 
 							<group>
 								<button 
@@ -640,8 +655,8 @@
 
 
 							<!-- Manual -->
-							<group>
 <!--								
+							<group>
 								<button 
 									type="object" 
 									name="toggle_add_procedures" 
@@ -658,8 +673,8 @@
 								/>
 
 								<field name="add_procedures"    invisible="1"/>
--->
 							</group>
+-->
 
 						</group>
 

@@ -1,3 +1,199 @@
+# 26 sep 2019
+
+
+# ----------------------------------------------------------- Partner - Create Order - Fields - Dep ? ---------------------------
+
+	# Partner
+	partner_id = fields.Many2one(
+			'res.partner',
+			string="Cliente",
+
+			compute='_compute_partner_id',
+		)
+
+	#@api.multi
+	@api.depends('patient')
+	def _compute_partner_id(self):
+		for record in self:
+			partner = record.env['res.partner'].search([
+															('name', 'like', record.patient.name),
+														],
+														#order='appointment_date desc',
+														limit=1,)
+			record.partner_id = partner
+
+
+
+# ----------------------------------------------------------- Create Service (Recommendation) -----
+
+	# Create Service
+	@api.multi
+	def create_service(self):
+		#print
+		#print 'Create Service'
+
+		# Init
+		res_id = self.id
+		res_model = 'openhealth.treatment'
+		view_id = self.env.ref('openhealth.treatment_2_form_view').id
+		#print view_id
+
+		# Open
+		return {
+			# Mandatory
+			'type': 'ir.actions.act_window',
+			'name': 'Open Treatment Current',
+			# Window action
+			'priority': 1,
+			'res_id': res_id,
+			'res_model': res_model,
+			#'view_id': view_id,
+			# Views
+			#"views": [[False, "form"]],
+
+
+			"views": [[view_id, "form"]],
+
+
+			'view_mode': 'form',
+			'target': 'current',
+			#"domain": [["patient", "=", self.patient.name]],
+			#'auto_search': False,
+			'flags': {
+					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+					#'form': {'action_buttons': True, }
+					'form': {'action_buttons': False, }
+					},
+			'context': {
+						#'default_treatment': treatment_id,
+					}
+		}
+	# create_service
+
+
+
+
+
+# Create Services - Dep
+
+# ----------------------------------------------------------- All Services - Dep ! ------------------------
+	# Product
+	@api.multi
+	def create_service_product(self):
+		#ret = reco_funcs.create_service_product(self)
+		return 0
+
+	# Co2
+	@api.multi
+	def create_service_co2(self):
+		#ret = reco_funcs.create_service_co2(self)
+		return 0
+
+	# Quick
+	@api.multi
+	def create_service_quick(self):
+		#ret = reco_funcs.create_service_quick(self)
+		return 0
+
+	# Excilite
+	@api.multi
+	def create_service_excilite(self):
+		#ret = reco_funcs.create_service_excilite(self)
+		return 0
+
+	# Ipl
+	@api.multi
+	def create_service_ipl(self):
+		#ret = reco_funcs.create_service_ipl(self)
+		return 0
+
+	# Ndyag
+	@api.multi
+	def create_service_ndyag(self):
+		#ret = reco_funcs.create_service_ndyag(self)
+		return 0
+
+	# Medical
+	@api.multi
+	def create_service_medical(self):
+		#ret = reco_funcs.create_service_medical(self)
+		return 0
+
+	# Cosmetology
+	@api.multi
+	def create_service_cosmetology(self):
+		#ret = reco_funcs.create_service_cosmetology(self)
+		return 0
+
+
+
+
+# ----------------------------------------------------------- Optimization - Dep ! ------------------------
+	delta_1 = fields.Float(
+			'Delta 1',
+		)
+
+	delta_2 = fields.Float(
+			'Delta 2',
+		)
+
+
+
+
+# ----------------------------------------------------------- Test - Dep ? --------------------------------
+
+	# Electronic
+	#electronic_order = fields.One2many(
+	#		'openhealth.electronic.order',
+	#		'treatment_id',
+	#	)
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Dep !!! ------------------------
+	# Appointments
+	#appointment_ids = fields.One2many(
+	#		'oeh.medical.appointment',
+	#		'treatment',
+	#		string="Citas",
+	#	)
+
+	# Reservations
+	#reservation_ids = fields.One2many(
+	#		'oeh.medical.appointment',
+	#		'treatment',
+	#		string="Reserva de sala",
+	#		domain=[
+						#('x_machine', '!=', 'false'),
+	#				],
+	#		)
+
+
+	# Appointments
+	#nr_appointments = fields.Integer(
+	#		string="Citas",
+	#		compute="_compute_nr_appointments",
+	#)
+	#@api.multi
+	#def _compute_nr_appointments(self):
+	#	for record in self:
+	#		record.nr_appointments = self.env['oeh.medical.appointment'].search_count([
+	#																					('treatment', '=', record.id),
+	#																					#('x_target', '=', 'doctor'),
+	#																])
+
+
+
+
+
+
+
+
 # 17 Sep 2019
 #
 # All Testing is now done by Pricelist

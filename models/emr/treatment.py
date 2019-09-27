@@ -28,7 +28,6 @@ class Treatment(models.Model):
 # ----------------------------------------------------------- Create Procedure  -------------------
 	# Create Procedure
 	#@api.multi
-	#def create_procedure(self, date_app, subtype, product_id):
 	def create_procedure(self, product):
 		"""
 		Used by: Order
@@ -36,21 +35,10 @@ class Treatment(models.Model):
 		"""
 		print()
 		print('Create Procedure')
-
-		#subtype = product.x_treatment
-
 		print(self)
-		#print(date_app)
-		#print(subtype)
 		print(product)
 
-		#ret = cre.create_procedure_go(self, date_app, subtype, product_id)
-		#ret = pl_creates.create_procedure_go(self, date_app, subtype, product_id.id)
-
-
 		pl_creates.create_procedure_go(self, product)
-
-
 
 	# create_procedure
 
@@ -339,118 +327,11 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Conversion ------------------------
+# ----------------------------------------------------------- Dummy ------------------------
 
 	appointment_ids = fields.Char()
 
 
-
-
-# ----------------------------------------------------------- Dep !!! ------------------------
-	# Appointments
-	#appointment_ids = fields.One2many(
-	#		'oeh.medical.appointment',
-	#		'treatment',
-	#		string="Citas",
-	#	)
-
-	# Reservations
-	#reservation_ids = fields.One2many(
-	#		'oeh.medical.appointment',
-	#		'treatment',
-	#		string="Reserva de sala",
-	#		domain=[
-						#('x_machine', '!=', 'false'),
-	#				],
-	#		)
-
-
-	# Appointments
-	#nr_appointments = fields.Integer(
-	#		string="Citas",
-	#		compute="_compute_nr_appointments",
-	#)
-	#@api.multi
-	#def _compute_nr_appointments(self):
-	#	for record in self:
-	#		record.nr_appointments = self.env['oeh.medical.appointment'].search_count([
-	#																					('treatment', '=', record.id),
-	#																					#('x_target', '=', 'doctor'),
-	#																])
-
-
-
-
-# ----------------------------------------------------------- All Services - Dep ? ------------------------
-	# Product
-	@api.multi
-	def create_service_product(self):
-		#ret = reco_funcs.create_service_product(self)
-		return 0
-
-	# Co2
-	@api.multi
-	def create_service_co2(self):
-		#ret = reco_funcs.create_service_co2(self)
-		return 0
-
-	# Quick
-	@api.multi
-	def create_service_quick(self):
-		#ret = reco_funcs.create_service_quick(self)
-		return 0
-
-	# Excilite
-	@api.multi
-	def create_service_excilite(self):
-		#ret = reco_funcs.create_service_excilite(self)
-		return 0
-
-	# Ipl
-	@api.multi
-	def create_service_ipl(self):
-		#ret = reco_funcs.create_service_ipl(self)
-		return 0
-
-	# Ndyag
-	@api.multi
-	def create_service_ndyag(self):
-		#ret = reco_funcs.create_service_ndyag(self)
-		return 0
-
-	# Medical
-	@api.multi
-	def create_service_medical(self):
-		#ret = reco_funcs.create_service_medical(self)
-		return 0
-
-	# Cosmetology
-	@api.multi
-	def create_service_cosmetology(self):
-		#ret = reco_funcs.create_service_cosmetology(self)
-		return 0
-
-
-
-
-# ----------------------------------------------------------- Test --------------------------------
-
-
-	# Electronic
-	electronic_order = fields.One2many(
-			'openhealth.electronic.order',
-			'treatment_id',
-		)
-
-
-# ----------------------------------------------------------- Optimization ------------------------
-	delta_1 = fields.Float(
-			'Delta 1',
-		)
-
-	delta_2 = fields.Float(
-			'Delta 2',
-		)
 
 
 # ----------------------------------------------------------- Vip  --------------------------------
@@ -1169,9 +1050,6 @@ class Treatment(models.Model):
 
 
 
-
-
-
 # ----------------------------------------------------------- Open Myself -------------------------
 	# Open Myself
 	@api.multi
@@ -1202,43 +1080,35 @@ class Treatment(models.Model):
 	# open_myself
 
 
+#----------------------------------------------------------- Quick Button - Used by Patient ---------
+	@api.multi
+	def open_line_current(self):
+		"""
+		# Quick access Button
+		"""
+
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' Edit Order Current',
+				'view_type': 'form',
+				'view_mode': 'form',
+
+				'res_model': self._name,
+				'res_id': self.id,
+				
+				'target': 'current',
+				'flags': {
+						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						'form': {'action_buttons': True, }
+						},
+				'context': {}
+		}
 
 
 
 
 
-# ----------------------------------------------------------- Creates - Manual, Process and Testing -----------
-
-
-
-# ----------------------------------------------------------- Create Order - Fields ---------------------------
-
-	# Partner
-	partner_id = fields.Many2one(
-			'res.partner',
-			string="Cliente",
-
-			compute='_compute_partner_id',
-		)
-
-	#@api.multi
-	@api.depends('patient')
-	def _compute_partner_id(self):
-		for record in self:
-			partner = record.env['res.partner'].search([
-															('name', 'like', record.patient.name),
-
-														],
-														#order='appointment_date desc',
-														limit=1,)
-
-			record.partner_id = partner
-	# _compute_partner_id
-
-
-
-
-
+# ----------------------------------------------------------- Creates - Manual, Process and Testing ---------------------------------
 
 # ----------------------------------------------------------- Create Order Consultation  ----------
 	@api.multi
@@ -1251,7 +1121,6 @@ class Treatment(models.Model):
 		order = cre.create_order(self, target)
 
 		return order
-
 
 
 # ----------------------------------------------------------- Create Order Consultation  ----------
@@ -1289,11 +1158,6 @@ class Treatment(models.Model):
 	# create_order_con
 
 
-
-
-
-
-
 # -----------------------------------------------------------  Create Order Pro  ------------------
 	@api.multi
 	def create_order_pro(self):
@@ -1324,8 +1188,6 @@ class Treatment(models.Model):
 				'context': {}
 			}
 	# create_order_pro
-
-
 
 
 # ----------------------------------------------------- Create Consultation -----------------------
@@ -1447,78 +1309,4 @@ class Treatment(models.Model):
 	# create_consultation_man
 
 
-
-
-
-# ----------------------------------------------------------- Create Service (Recommendation) -----
-
-	# Create Service
-	@api.multi
-	def create_service(self):
-		#print
-		#print 'Create Service'
-
-		# Init
-		res_id = self.id
-		res_model = 'openhealth.treatment'
-		view_id = self.env.ref('openhealth.treatment_2_form_view').id
-		#print view_id
-
-		# Open
-		return {
-			# Mandatory
-			'type': 'ir.actions.act_window',
-			'name': 'Open Treatment Current',
-			# Window action
-			'priority': 1,
-			'res_id': res_id,
-			'res_model': res_model,
-			#'view_id': view_id,
-			# Views
-			#"views": [[False, "form"]],
-
-
-			"views": [[view_id, "form"]],
-
-
-			'view_mode': 'form',
-			'target': 'current',
-			#"domain": [["patient", "=", self.patient.name]],
-			#'auto_search': False,
-			'flags': {
-					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-					#'form': {'action_buttons': True, }
-					'form': {'action_buttons': False, }
-					},
-			'context': {
-						#'default_treatment': treatment_id,
-					}
-		}
-	# create_service
-
-
-
-#----------------------------------------------------------- Quick Button - For Patient ---------
-	@api.multi
-	def open_line_current(self):
-		"""
-		# Quick access Button
-		"""
-
-		return {
-				'type': 'ir.actions.act_window',
-				'name': ' Edit Order Current',
-				'view_type': 'form',
-				'view_mode': 'form',
-
-				'res_model': self._name,
-				'res_id': self.id,
-				
-				'target': 'current',
-				'flags': {
-						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-						'form': {'action_buttons': True, }
-						},
-				'context': {}
-		}
 

@@ -6,9 +6,9 @@
 		Last up: 	 		26 Sep 2019
 """
 from __future__ import print_function
-import datetime
+#import datetime
 from openerp import models, fields, api
-from . import time_funcs
+#from . import time_funcs
 from . import treatment_vars
 from openerp.addons.openhealth.models.libs import lib, user, eval_vars
 
@@ -32,7 +32,7 @@ class Treatment(models.Model):
 		Uses: Price List PL-Creates Library
 		"""
 		print()
-		print('Create Procedure')
+		print('OH - Create Procedure')
 		print(self)
 		print(product)
 
@@ -57,11 +57,7 @@ class Treatment(models.Model):
 		se = '-'
 
 		for record in self:
-
 			#record.name = 'TR0000' + str(record.id)
-
-			#record.name = 'TR' + se + record.patient.get_name_code() + se + record.physician.get_name_code() 
-			#record.name = record.patient.get_name_code() + se + record.physician.get_name_code() 
 			record.name = 'TR' + se + record.patient.get_name_code() + se + record.physician.get_name_code() 
 
 
@@ -109,8 +105,6 @@ class Treatment(models.Model):
 		)
 
 
-
-
 # ----------------------------------------------------------- Number ofs --------------------------
 
 	# Budgets - Consultations 			# DEP ?
@@ -147,9 +141,6 @@ class Treatment(models.Model):
 																			#('pl_family', 'like', 'CONSULTA'),
 																			('pl_family', '=', 'CONSULTA,'),
 																	])
-
-
-
 
 	# Consultations
 	nr_consultations = fields.Integer(
@@ -244,9 +235,10 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Test ------------------------
+# ----------------------------------------------------------- Test ------------------------------------------------------------
 	x_test = fields.Boolean(
 			'Test',
+			default=False,
 		)
 
 
@@ -297,7 +289,7 @@ class Treatment(models.Model):
 		)
 
 
-# ----------------------------------------------------------- Price List Fields - Relational ----------------------------------------------
+# ----------------------------------------------------------- Test Reports - Relational ----------------------------------------------
 	# Management
 	report_management = fields.Many2one(
 			'openhealth.management',
@@ -354,112 +346,18 @@ class Treatment(models.Model):
 
 
 
-
 	# Pricelist
 	pricelist_id = fields.Many2one(
 			'product.pricelist',
 			string='Pricelist',
 			readonly=True,
-			#states={'draft': [('readonly', False)], 'sent': [('readonly', False)]},
-			#help="Pricelist for current sales order.",
 
 			compute='_compute_pricelist_id',
 	)
 	@api.multi
 	def _compute_pricelist_id(self):
 		for record in self:
-
 			record.pricelist_id = record.patient.property_product_pricelist
-
-
-
-
-
-
-
-
-# ----------------------------------------------------------- Testing Booleans --------------------
-
-	# Create Flags
-
-	# Sessions
-	ses_create = fields.Boolean(
-			string="Ses",
-			default=False,
-		)
-
-	# Controls
-	con_create = fields.Boolean(
-			string="Con",
-			default=False,
-		)
-
-
-
-	# Laser
-	co2_create = fields.Boolean(
-			string="Co2",
-			default=False,
-		)
-
-	exc_create = fields.Boolean(
-			string="Exc",
-			default=False,
-		)
-
-	ipl_create = fields.Boolean(
-			string="Ipl",
-			default=False,
-		)
-
-	ndy_create = fields.Boolean(
-			string="Ndyag",
-			default=False,
-		)
-
-	qui_create = fields.Boolean(
-			string="Quick",
-			default=False,
-		)
-
-	# Medical
-	med_create = fields.Boolean(
-			string="Med",
-			default=False,
-		)
-
-	# Cosmeto
-	cos_create = fields.Boolean(
-			string="Cos",
-			default=False,
-		)
-
-	# Vip
-	vip_create = fields.Boolean(
-			string="Vip",
-			default=False,
-		)
-
-	# Product
-	product_create = fields.Boolean(
-			string="Product",
-			default=False,
-		)
-
-
-
-
-# ----------------------------------------------------------- Reload ------------------------------
-
-	# Reload
-	@api.multi
-	def reload(self):
-		#print
-		#print 'Reload'
-		return {
-				'type': 'ir.actions.client',
-				'tag': 'reload',
-		}
 
 
 
@@ -728,9 +626,7 @@ class Treatment(models.Model):
 
 	# State
 	state = fields.Selection(
-
 			selection=treatment_vars._state_list,
-		
 			string='Estado',
 			default='empty',
 
@@ -777,10 +673,6 @@ class Treatment(models.Model):
 
 			elif record.nr_budgets_cons > 0:
 				state = 'budget_consultation'
-
-			#elif record.nr_appointments > 0:
-			#	state = 'appointment'
-
 
 			# Assign
 			record.state = state
@@ -865,10 +757,7 @@ class Treatment(models.Model):
 	@api.multi
 	def _compute_nr_services_co2(self):
 		for record in self:
-			#services = self.env['openhealth.service.co2'].search_count([('treatment', '=', record.id),])
-
 			services = self.env['price_list.service_co2'].search_count([('treatment', '=', record.id),])
-
 			record.nr_services_co2 = services
 
 
@@ -925,9 +814,6 @@ class Treatment(models.Model):
 		for record in self:
 			services = self.env['openhealth.service.medical'].search_count([('treatment', '=', record.id),])
 			record.nr_services_medical = services
-
-
-
 
 
 	# Cosmetology
@@ -997,270 +883,3 @@ class Treatment(models.Model):
 						},
 				'context': {}
 		}
-
-
-
-
-
-# ----------------------------------------------------------- Creates - Manual, Process and Testing ---------------------------------
-
-# ----------------------------------------------------------- Create Order Consultation  ----------
-	@api.multi
-	def create_order_con_tst(self):
-
-		# Init
-		target = 'consultation'
-
-		# Create
-		order = cre.create_order(self, target)
-
-		return order
-
-
-# ----------------------------------------------------------- Create Order Consultation  ----------
-	@api.multi
-	def create_order_con(self):
-
-		# Init
-		target = 'consultation'
-
-		# Create
-		order = cre.create_order(self, target)
-
-		# Open
-		return {
-				# Created
-				'res_id': order.id,
-				# Mandatory
-				'type': 'ir.actions.act_window',
-				'name': 'Open Order Current',
-				# Window action
-				'res_model': 'sale.order',
-				# Views
-				"views": [[False, "form"]],
-				'view_mode': 'form',
-				'target': 'current',
-				#'view_id': view_id,
-				#"domain": [["patient", "=", self.patient.name]],
-				#'auto_search': False,
-				'flags': {
-						'form': {'action_buttons': True, }
-						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-						},
-				'context': {}
-			}
-	# create_order_con
-
-
-# -----------------------------------------------------------  Create Order Pro  ------------------
-	@api.multi
-	def create_order_pro(self):
-
-		target = 'procedure'
-
-		order = cre.create_order(self, target)
-
-		return {
-				# Created
-				'res_id': order.id,
-				# Mandatory
-				'type': 'ir.actions.act_window',
-				'name': 'Open Order Current',
-				# Window action
-				'res_model': 'sale.order',
-				# Views
-				"views": [[False, "form"]],
-				'view_mode': 'form',
-				'target': 'current',
-				#'view_id': view_id,
-				#"domain": [["patient", "=", self.patient.name]],
-				#'auto_search': False,
-				'flags': {
-						'form': {'action_buttons': True, }
-						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-						},
-				'context': {}
-			}
-	# create_order_pro
-
-
-# ----------------------------------------------------- Create Consultation -----------------------
-	# Create Consultation
-	@api.multi
-	def create_consultation(self):
-		print()
-		print('OH - Create Consultation')
-
-
-		# Init vars
-		patient_id = self.patient.id
-		treatment_id = self.id
-		chief_complaint = self.chief_complaint
-
-
-		# Doctor
-		doctor = user.get_actual_doctor(self)
-		doctor_id = doctor.id
-
-		if doctor_id == False:
-			doctor_id = self.physician.id
-
-
-		# Date
-		GMT = time_funcs.Zone(0, False, 'GMT')
-		#evaluation_start_date = datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
-		evaluation_start_date = datetime.datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
-
-
-
-		# Apointment
-		#if False:
-		#	appointment = self.env['oeh.medical.appointment'].search([
-		#																('patient', '=', self.patient.name),
-		#																('doctor', '=', self.physician.name),
-		#																('x_type', '=', 'consultation'),
-		#														],
-		#														order='appointment_date desc', limit=1)
-		#	appointment_id = appointment.id
-		
-		#appointment_id = False
-
-
-
-		# Search
-		consultation = self.env['openhealth.consultation'].search([
-																		('treatment', '=', self.id),
-																],
-																#order='appointment_date desc',
-																limit=1,)
-		# Create if it does not exist
-		if consultation.name == False:
-
-			# Change App state
-			#if False:
-			#	if appointment.name != False:
-			#		appointment.state = 'Scheduled'
-
-
-			# Consultation
-			consultation = self.env['openhealth.consultation'].create({
-																		'patient': patient_id,
-																		'treatment': treatment_id,
-																		'evaluation_start_date': evaluation_start_date,
-																		'chief_complaint': chief_complaint,
-																		#'appointment': appointment_id,
-																		'doctor': doctor_id,
-													})
-			consultation_id = consultation.id
-
-
-			# Update
-			#if False:
-			#	rec_set = self.env['oeh.medical.appointment'].browse([
-			#															appointment_id
-			#														])
-			#	ret = rec_set.write({
-			#							'consultation': consultation_id,
-			#						})
-
-
-
-		consultation_id = consultation.id
-
-		# Update Patient
-		#consultation.update_patient()
-
-		return {
-
-			# Mandatory
-			'type': 'ir.actions.act_window',
-			'name': 'Open Consultation Current',
-			# Window action
-			'res_model': 'openhealth.consultation',
-			'res_id': consultation_id,
-			# Views
-			"views": [[False, "form"]],
-			'view_mode': 'form',
-			'target': 'current',
-			#'view_id': view_id,
-			#'view_id': 'oeh_medical_evaluation_view',
-			#'view_id': 'oehealth.oeh_medical_evaluation_view',
-			#"domain": [["patient", "=", self.patient.name]],
-			#'auto_search': False,
-			'flags': {
-						'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-						#'form': {'action_buttons': True, }
-					},
-			'context':   {
-							'search_default_treatment': treatment_id,
-							'default_patient': patient_id,
-							'default_doctor': doctor_id,
-							'default_treatment': treatment_id,
-							'default_evaluation_start_date': evaluation_start_date,
-							'default_chief_complaint': chief_complaint,
-							#'default_appointment': appointment_id,
-			}
-		}
-	# create_consultation
-
-
-# ----------------------------------------------------------- Create Controls  --------------------
-	# Create Controls
-	@api.multi
-	def create_controls(self):
-		#print
-		#print 'Create Controls'
-		control_date = self.start_date
-		patient_id = self.patient.id
-		doctor_id = self.physician.id
-		treatment_id = self.id
-		chief_complaint = self.chief_complaint
-
-		# Create Control
-		control = self.control_ids.create({
-											'evaluation_start_date':control_date,
-											'first_date':control_date,
-											'patient':patient_id,
-											'doctor':doctor_id,
-											'chief_complaint':chief_complaint,
-											'treatment': treatment_id,
-
-											#'appointment': appointment_id,
-											#'product':product_id,
-											#'procedure':procedure_id,
-									})
-	# create_controls
-
-
-
-# ----------------------------------------------------------- Create Procedure Manual  ------------
-	@api.multi
-	def create_procedure_man(self):
-		#print
-		#print 'Create Procedure - Manual'
-
-		# Loop - Create Procedures
-		ret = 0
-		for order in self.order_pro_ids:
-
-			if order.state == 'sale':
-
-				# Update
-				order.x_procedure_created = True
-
-				# Loop
-				for line in order.order_line:
-
-					# Init
-					date_app = order.date_order
-					product_id = line.product_id
-
-					# Search
-					product_template = self.env['product.template'].search([
-																				('x_name_short', '=', product_id.x_name_short),
-												])
-
-					subtype = product_template.x_treatment
-
-					ret = cre.create_procedure_go(self, date_app, subtype, product_id.id)
-

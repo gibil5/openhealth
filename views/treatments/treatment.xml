@@ -603,6 +603,8 @@
 									type="object" 
 									class="oe_highlight"
 
+									attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
+
 									name="create_order_con"
 
 									string="PRESU CON" 

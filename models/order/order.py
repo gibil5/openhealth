@@ -172,17 +172,21 @@ class sale_order(models.Model):
 			#ondelete='cascade',  		# Danger !!!
 		)
 
+
 	# Partner
 	# Already Created by OeHealth
 	partner_id = fields.Many2one(
 			'res.partner',
 			string="Cliente",
 			required=False,
-			states={
-					'draft': [('readonly', False)],
-					'sent': [('readonly', True)],
-					'sale': [('readonly', True)],
-				},
+
+			readonly=False,
+
+			#states={
+			#		'draft': [('readonly', False)],
+			#		'sent': [('readonly', True)],
+			#		'sale': [('readonly', True)],
+			#	},
 
 			#ondelete='cascade',  		# Danger !!!
 		)

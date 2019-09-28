@@ -25,6 +25,9 @@
 
 									<field name="x_procedure_created" />
 
+									<field name="partner_id"	readonly="0"/>
+
+
 
 									<field name="vspace"/>
 									
@@ -49,7 +52,6 @@
 								<!-- Only for Roots --> 
 								<group>
 	
-									<field name="partner_id"/>
 									<field name="x_doctor_uid"  invisible="0"/>
 									<field name="user_id"       string="Creado por"/>
 									<field name="x_checksum"/>

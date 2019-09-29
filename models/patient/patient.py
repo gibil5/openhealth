@@ -22,9 +22,134 @@ class Patient(models.Model):
 	"""
 	_inherit = 'oeh.medical.patient'
 
+	_description = 'Patient'
+
 	_order = 'x_id_code desc'
 
-	_description = 'Patient'
+
+
+# ----------------------------------------------- Nrs --------------------------------
+
+	# Nr Sales
+	nr_sales = fields.Integer(
+			string="Nr Ventas",
+
+			compute="_compute_nr_sales",
+	)
+
+	@api.multi
+	def _compute_nr_sales(self):
+
+		for record in self:
+
+			record.nr_sales = self.env['sale.order'].search_count([
+																			('state', '=', 'sale'),
+																			('patient', '=', record.name),
+																	])
+
+
+	# Nr Consultations
+	nr_consultations = fields.Integer(
+			string="Nr Consultas",
+
+			compute="_compute_nr_consultations",
+	)
+
+	@api.multi
+	def _compute_nr_consultations(self):
+
+		for record in self:
+
+			record.nr_consultations = self.env['openhealth.consultation'].search_count([
+																						('patient', '=', record.name),
+																	])
+
+
+
+	# Nr Procedures
+	nr_procedures = fields.Integer(
+			string="Nr Procedimientos",
+
+			compute="_compute_nr_procedures",
+	)
+
+	@api.multi
+	def _compute_nr_procedures(self):
+
+		for record in self:
+
+			record.nr_procedures = self.env['openhealth.procedure'].search_count([
+
+																					('patient', '=', record.name),
+																	])
+
+
+
+# ----------------------------------------------- State --------------------------------
+
+	# State
+	state = fields.Selection(
+			[
+				('empty', 			'Inicio'),
+
+				('treatment', 		'Tratamiento'),
+
+				('done', 			'Alta'),
+			],
+
+			string="Estado",
+
+			compute='_compute_state',
+	)
+
+	@api.multi
+	def _compute_state(self):
+
+		for record in self:
+
+			if record.x_treatment_count > 0:
+
+				record.state = 'treatment'
+
+			else:
+				record.state = 'empty'
+
+
+
+
+	# Data complete
+	x_data_complete = fields.Boolean(
+			string="Data Complete",
+
+			compute='_compute_x_data_complete',
+	)
+
+	@api.multi
+	def _compute_x_data_complete(self):
+		for record in self:
+			record.x_data_complete = (record.x_legacy or record.x_treatment_count > 0)
+
+
+
+
+	# Treatment count
+	x_treatment_count = fields.Integer(
+			string="Nr TRATAMIENTOS",
+			default=0,
+
+			compute='_compute_x_treatment_count',
+		)
+
+	@api.multi
+	def _compute_x_treatment_count(self):
+		for record in self:
+			count = 0
+
+			for _ in record.treatment_ids:
+				count = count + 1
+
+			record.x_treatment_count = count
+
 
 
 
@@ -267,27 +392,6 @@ class Patient(models.Model):
 		required=True,
 		default='',
 	)
-
-# ----------------------------------------------------------- Treatment Count ---------------------
-
-	# Treatment count
-	x_treatment_count = fields.Integer(
-			string="Nr TRATAMIENTOS",
-			default=0,
-
-			compute='_compute_x_treatment_count',
-		)
-
-	@api.multi
-	def _compute_x_treatment_count(self):
-		for record in self:
-			count = 0
-
-			#for tr in record.treatment_ids:
-			for _ in record.treatment_ids:
-				count = count + 1
-
-			record.x_treatment_count = count
 
 
 
@@ -747,18 +851,6 @@ class Patient(models.Model):
 
 
 # ----------------------------------------------------------- QC ----------------------------------
-	# Data complete
-	x_data_complete = fields.Boolean(
-			string="Data Complete",
-
-			compute='_compute_x_data_complete',
-	)
-
-	@api.multi
-	def _compute_x_data_complete(self):
-		for record in self:
-
-			record.x_data_complete = (record.x_legacy or record.x_treatment_count > 0)
 
 
 

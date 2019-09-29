@@ -1,3 +1,30 @@
+<!-- 28 sep 2019 -->
+        <!-- Inactive -->
+<!--
+        <record model="ir.actions.act_window" id="order_inactive_list_action">        
+            <field name="name">Ventas Inactivas</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,kanban</field>
+            <field name="context">{}</field>
+
+            <field name="domain">[
+                                    ('x_inactive', '=', True), 
+                ]</field>
+
+
+        </record>
+-->
+
+
+
+
+
+
+
+
+
+
 <!--
 16 Sep 2019
 -->

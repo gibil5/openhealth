@@ -204,18 +204,23 @@ Nr sessions and controls
 					<field name="patient"/>
 					<field name="doctor"/>
 					<field name="chief_complaint"/>
-					<field name="laser"/>
-					<field name="pl_laser"/>
+
+					<field name="pl_laser"	string="Tratamiento"/>
+
 					<field name="evaluation_start_date"/>
 				</tree>
 			</field>
 		</record>
 <!--
+					<field name="laser"/>
+
 					<field name="appointment"/>
 					<field name="product"/>
 					<field name="name"/>
 					<field name="treatment"/>
 -->
+
+
 
 
 <!-- FILTER --> 

@@ -127,21 +127,19 @@
 <!-- Sheet -->
 					<sheet>
 
+<!--
+								<label string="Apellidos" class="oe_edit_only"/>
+									<field name="name"  class="oe_read_only" />
+-->                         
+
+
 						<!-- Persona --> 
 						<div class="oe_left" style="width: 500px;">
 							<field name="image" widget="image" class="oe_left oe_avatar" options="{&quot;preview_image&quot;: &quot;image_medium&quot;, &quot;size&quot;: [90, 90]}"/>
 							<div class="oe_title">
-<!--
-								<label string="Apellidos" class="oe_edit_only"/>
--->
 								<label string="(Generado automaticamente, no tocar)" class="oe_edit_only"/>
-
 								<h1>
-<!--
-									<field name="name"  class="oe_read_only" />
--->                         
 									<field name="name"/>
-
 								</h1>
 								<field name="age"/>
 							</div>
@@ -150,7 +148,10 @@
 
 
 						<!-- Active Buttons -->
+<!--
 						<div class="oe_left" style="width: 100px;">
+-->					
+						<div class="oe_left" style="width: 250px;" name="buttons">
 
 
 							<!-- Nr Treatments --> 
@@ -161,12 +162,68 @@
 										}"                                          
 								icon="fa-list">
 
-
 								<field string="Tratamientos" name="x_treatment_count" widget="statinfo"/>
 
+							</button>                       
+
+
+
+
+
+							<!-- Nr Sales --> 
+							<button type="action" class="oe_stat_button" 
+
+								name="%(order_form_patient_action)d"    
+
+								context="{
+											'search_default_patient': active_id,    
+										}"                                          
+
+								icon="fa-list">
+
+								<field string="Ventas" name="nr_sales" widget="statinfo"/>
 
 							</button>                       
+
+
+
+							<!-- Nr consultations --> 
+							<button type="action" class="oe_stat_button" 
+
+								name="%(order_form_patient_action)d"    
+
+								context="{
+											'search_default_patient': active_id,    
+										}"                                          
+
+								icon="fa-list">
+
+								<field string="Consultas" name="nr_consultations" widget="statinfo"/>
+
+							</button>                       
+
+
+
+							<!-- Nr procedures --> 
+							<button type="action" class="oe_stat_button" 
+
+								name="%(order_form_patient_action)d"    
+
+								context="{
+											'search_default_patient': active_id,    
+										}"                                          
+
+								icon="fa-list">
+
+								<field string="Proc" name="nr_procedures" widget="statinfo"/>
+
+							</button>                       
+
 						</div>
+
+
+
+
 
 
 						<!-- Number Medical history -->
@@ -454,39 +511,64 @@ grey:state in ('cancel')
 
 
 
-
+<!--
+				<tree string="Patient Tree"  default_order='x_id_code desc'>
+-->
 <!-- TREE -->
 		<record model="ir.ui.view" id="oehealth.oeh_medical_patient_tree">
 			<field name="name">patient.tree</field>
 			<field name="model">oeh.medical.patient</field>
 			<field name="arch" type="xml">          
-				<tree string="Patient Tree"  default_order='x_id_code desc'>
+
+
+<tree string="Patient Tree"
+colors="
+red:state=='empty';
+blue:state in ('treatment');
+grey:state=='done';
+green:state=='controls'
+"
+>
+
 
 					<field name="name"/>
 
 					<field name="x_id_code"/>       
 					<field name="x_date_record"     string="Fecha de creación"/>
 
-					<field name="x_legacy"			groups="openhealth.roots"/>
 
-					<field name="city"/>
+					<field name="city"		string="Depto"/>
 					<field name="street2_sel"/>
 					<field name="street2_char"/>
 
 					<field name="x_id_doc_type" string="Tipo Doc"/>
 					<field name="x_id_doc"      string="Nr Doc"/>
-
+<!--
 					<field name="x_ruc"/>
 					<field name="x_firm"/>
+-->
+
+					<field name="configurator"	string="Config"/>
+
+					<field name="user_id"       string="Creado por"/>
+
+
+					<field name="x_data_complete"/>
 
 					<field name="treatment_ids"/>
 
-					<field name="configurator"/>
-					<field name="user_id"       string="Creado por"/>
+
+					<field name="nr_sales"/>
+					<field name="nr_consultations"/>
+					<field name="nr_procedures"/>
+
+					<field name="state"/>
 				</tree>
 			</field>
 		</record>
 <!--
+					<field name="x_legacy"			groups="openhealth.roots"/>
+
 					<field name="x_id_doc_type_code"    string="Cod"/>
 					<field name="x_dni"/>
 					<field name="x_data_complete"/>

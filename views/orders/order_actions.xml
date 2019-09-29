@@ -7,41 +7,41 @@
 <!-- ACTIONS -->
 
 
-
-        <!-- Inactive -->
-<!--
-        <record model="ir.actions.act_window" id="order_inactive_list_action">        
-            <field name="name">Ventas Inactivas</field>
+        <!-- Action - All - From Patient --> 
+        <record model="ir.actions.act_window" id="order_form_patient_action">
+            <field name="name">orders</field>
             <field name="res_model">sale.order</field>
             <field name="view_type">form</field>
-            <field name="view_mode">tree,form,kanban</field>
-            <field name="context">{}</field>
+            <field name="view_mode">tree,form</field>   
 
-            <field name="domain">[
-                                    ('x_inactive', '=', True), 
-                ]</field>
-
-
-        </record>
--->
-
-
-
-        <!-- Ventas - Legacy -->
-        <record model="ir.actions.act_window" id="sale_legacy_list_action">
-            <field name="name">Ventas - Confirmadas - Legacy</field>
-            <field name="res_model">sale.order</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form,graph,pivot</field>
-
-            <field name="domain">[
+            <field name="domain">[                              
+                                    ('patient', '=', default_patient),  
                                     ('state', '=', 'sale'),
-                                    ('x_legacy', '=', True),
                                 ]
             </field>
 
             <field name="context">{}</field>
         </record>
+
+
+
+
+        <!-- Action - All - From Treatment --> 
+        <record model="ir.actions.act_window" id="order_form_tre_action">
+            <field name="name">orders</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>   
+
+            <field name="domain">[                              
+                                    ('treatment', '=', default_treatment),  
+                                    ('x_family', '=', default_x_family),
+                                ]
+            </field>
+
+            <field name="context">{}</field>
+        </record>
+
 
 
 
@@ -65,10 +65,6 @@
         </record>
 
 
-
-
-
-
         <!-- QC - Delta -->
         <record model="ir.actions.act_window" id="order_list_delta_action">
             <field name="name">QC - Delta</field>
@@ -86,7 +82,6 @@
             <field name="context">{}</field>
             <field name="limit">500</field>
         </record>
-
 
 
 
@@ -299,23 +294,23 @@
 
 
 
-        <!-- Action - All - From Treatment --> 
-        <record model="ir.actions.act_window" id="order_form_tre_action">
-            <field name="name">orders</field>
+
+
+        <!-- Ventas - Legacy -->
+        <record model="ir.actions.act_window" id="sale_legacy_list_action">
+            <field name="name">Ventas - Confirmadas - Legacy</field>
             <field name="res_model">sale.order</field>
             <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>   
+            <field name="view_mode">tree,form,graph,pivot</field>
 
-            <field name="domain">[                              
-                                    ('treatment', '=', default_treatment),  
-                                    ('x_family', '=', default_x_family),
+            <field name="domain">[
+                                    ('state', '=', 'sale'),
+                                    ('x_legacy', '=', True),
                                 ]
             </field>
 
             <field name="context">{}</field>
         </record>
-
-
 
 
 

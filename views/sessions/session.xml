@@ -18,6 +18,17 @@
 
                     <header>
 
+                        <!-- Procedure --> 
+                        <button 
+                                type="object" 
+                                class="oe_highlight"
+
+                                name="open_procedure"
+
+                                string="Regresar PROCEDIMIENTO"
+                        />
+
+
                         <!-- State --> 
                         <field  name="state" 
                             widget="statusbar" 
@@ -146,24 +157,18 @@
                         name="open_line_current" 
                     />
 
-                    <field name="name"/>
-<!--
-                    <field name="appointment"/>
--->                
                     <field name="patient"  string="Paciente"/>
-                    <field name="doctor"   />
-                    <field name="chief_complaint"/>
 
+                    <field name="doctor"   />
+
+                    <field name="chief_complaint"/>
 
                     <field name="laser"/>
 
-
                     <field name="evaluation_start_date"/>
 
-
-                    <field name="nr_days"/>
-                    <field name="nr_images"/>
                     <field name="state"/>
+
                     <field name="x_done"/>
                 </tree>
             </field>
@@ -171,6 +176,12 @@
 
 
 <!--
+                    <field name="nr_days"/>
+                    <field name="nr_images"/>
+                    <field name="name"/>
+
+                    <field name="appointment"/>
+
                     <field name="evaluation_nr"/>
 
                     <field name="product"/>

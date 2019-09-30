@@ -1,3 +1,23 @@
+                        <!-- Dates -->
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+                            groups="openhealth.roots,openhealth.directors,openhealth.physicians"
+
+                            name="update_done"  
+
+                            string="Completo"
+
+                            states="app_confirmed"
+                        />
+
+
+
+
+
+
+
+
 <!--
 19 Sep 2019
 -->

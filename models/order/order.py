@@ -1659,8 +1659,10 @@ class sale_order(models.Model):
 				'name': ' Edit Order Current',
 				'view_type': 'form',
 				'view_mode': 'form',
+
 				'res_model': self._name,
 				'res_id': consultation_id,
+
 				'target': 'current',
 				'flags': {
 						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}

@@ -14,19 +14,16 @@
 <!-- Header --> 
                     <header>
 
-
-                        <!-- Dates -->
+                        <!-- Procedure --> 
                         <button 
-                            type="object" 
-                            class="oe_highlight"
-                            groups="openhealth.roots,openhealth.directors,openhealth.physicians"
+                                type="object" 
+                                class="oe_highlight"
 
-                            name="update_done"  
+                                name="open_procedure"
 
-                            string="Completo"
-
-                            states="app_confirmed"
+                                string="Regresar PROCEDIMIENTO"
                         />
+
 
                         <!-- State --> 
                         <field  name="state" 
@@ -192,34 +189,37 @@
                         name="open_line_current" 
                     />
 
-                    <field name="name"/>
-<!--
-                    <field name="appointment"/>
--->
 
+
+
+                    <field name="patient" />
+                    
+                    <field name="doctor"  />
+                    
+                    <field name="chief_complaint"/>
+                    
+                    <field name="laser"/>
+                    
                     <field name="evaluation_start_date"/>
 
+                    <field name="nr_images"/>
+
+                    <field name="state"/>
+
+                    <field name="x_done"/>
+                </tree>
+            </field>
+        </record>   
+
+<!--
                     <field name="real_date"/>
                     <field name="control_date"      widget="date"/>                    
                     <field name="nr_days"/>
 
 
+                    <field name="name"/>
+                    <field name="appointment"/>
 
-                    <field name="patient" />
-                    <field name="doctor"  />
-                    <field name="chief_complaint"/>
-                    
-
-                    <field name="laser"/>
-                    
-
-                    <field name="nr_images"/>
-                    <field name="state"/>
-                    <field name="x_done"/>
-                </tree>
-            </field>
-        </record>   
-<!--
                     <field name="evaluation_nr"/>
                     <field name="first_date"/>
                     <field name="state_app"/>

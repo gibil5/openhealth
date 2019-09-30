@@ -464,6 +464,24 @@ class Evaluation(models.Model):
 
 # ----------------------------------------------------------- Actions -----------------------------
 
+	# Open Procedure
+	@api.multi
+	def open_procedure(self):
+		"""
+		Goes Back to Procedure
+		Used by: Control and Session
+		"""
+		print()
+		print('Eval - Open Treatment')
+
+		ret = self.procedure.open_myself()
+
+		return ret
+	# open_procedure
+
+
+
+
 	# Open Treatment
 	@api.multi
 	def open_treatment(self):
@@ -478,6 +496,44 @@ class Evaluation(models.Model):
 		return ret
 	# open_treatment
 
+
+
+
+# ----------------------------------------------------------- Open Myself -------------------------
+	# Open Myself
+	@api.multi
+	def open_myself(self):
+		print()
+		print('Eval - Open Myself')
+
+		return {
+			# Mandatory
+			'type': 'ir.actions.act_window',
+			'name': 'Open Consultation Current',
+			# Window action
+
+
+			#'res_model': 'openhealth.treatment',
+			#'res_id': treatment_id,
+
+			'res_model': self._name,
+			'res_id': self.id,
+
+
+			# Views
+			"views": [[False, "form"]],
+			'view_mode': 'form',
+			'target': 'current',
+			#'view_id': view_id,
+			#"domain": [["patient", "=", self.patient.name]],
+			#'auto_search': False,
+			'flags': {
+					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+					'form': {'action_buttons': True, }
+			},
+			'context':   {}
+		}
+	# open_myself
 
 
 

@@ -571,9 +571,9 @@ green:state=='controls'
   
 					<field name="__last_update"/>
 
-					<field name="nr_sales"			sum="Ventas"/>
-					<field name="nr_consultations"	sum="Consultas"/>
-					<field name="nr_procedures"		sum="Procedimientos"/>
+					<field name="nr_sales"			sum="Nr Ventas"/>
+					<field name="nr_consultations"	sum="Nr Consultas"/>
+					<field name="nr_procedures"		sum="Nr Procedimientos"/>
 
 					<field name="state"/>
 				</tree>

@@ -53,10 +53,9 @@ class Control(models.Model):
 	
 	# State 
 	state = fields.Selection(
-
 			selection = control_vars._state_list, 
 			
-			#compute='_compute_state', 
+			compute='_compute_state', 
 		)
 
 
@@ -67,14 +66,14 @@ class Control(models.Model):
 
 			state = 'draft'
 
-			if record.appointment.state in ['Scheduled']: 
-				state = 'app_confirmed'
+			#if record.appointment.state in ['Scheduled']: 
+			#	state = 'app_confirmed'
 
 			if record.x_done: 
 				state = 'done'
 
-			elif record.maturity > 90: 
-				state = 'cancel'
+			#elif record.maturity > 90: 
+			#	state = 'cancel'
 
 			record.state = state
 

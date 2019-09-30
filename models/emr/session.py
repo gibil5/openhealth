@@ -139,23 +139,21 @@ class Session(models.Model):
 
 	@api.multi
 	def open_line_current(self):  
-		co2_power = self.co2_power
+
 		return {
 				'type': 'ir.actions.act_window',
 				'name': 'Edit Session Current', 
 				'view_type': 'form',
 				'view_mode': 'form',
+
 				'res_model': self._name,
 				'res_id': self.id,
+
 				'target': 'current',
 				'flags': {
-						'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-						#'form': {'action_buttons': True, }
+						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						'form': {'action_buttons': True, }
 						},
-				
-				'context': {
-
-							'default_co2_power': co2_power,	
-						}
+				'context': {}
 		}
 

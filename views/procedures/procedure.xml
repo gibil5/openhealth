@@ -48,7 +48,7 @@
 					
 
 
-					<!-- Sheet --> 
+<!-- Sheet -->
 					<sheet>
 
 						<!-- Id -->
@@ -69,9 +69,7 @@
 
 
 
-<!--
-Nr sessions and controls
--->
+
 							<!-- Buttons --> 
 
 							<div class="oe_left" style="width: 300px;" name="buttons">
@@ -106,11 +104,16 @@ Nr sessions and controls
 							</div>
 
 
-							<!-- Id Number --> 
-							<div class="oe_right" >
+
+							<!-- Treatment --> 
+<!--
+-->
+							<div class="oe_right" 	invisible="1">
 								<div class="oe_title" >
 									<label class="oe_edit_only" for="name" string="Procedimiento #"/>
+
 									<h1><field name="treatment" class="oe_inline"/></h1>
+
 								</div>
 							</div>
 						</div>
@@ -135,19 +138,23 @@ Nr sessions and controls
 <!-- Notebook -->
 						<notebook>
 
+
 							<!-- Sessions -->
 						   	<page string="Sesiones">
 
 								<field 	name="session_ids"   
 										context="{
 										'default_patient': patient,
+
 										'default_treatment': treatment,
+										
 										'default_doctor': doctor,
 										'default_chief_complaint': chief_complaint,
 										'default_state': 'draft',
 										}"
 								/>
 							</page>
+
 
 							<!-- Controls -->
 							<page string="Controles">
@@ -161,7 +168,6 @@ Nr sessions and controls
 										'default_treatment': treatment,
 										'default_evaluation_type': 'control',
 										'default_evaluation_nr': nr_controls + 1,
-										'default_control_date': evaluation_start_date,
 										}"
 								/>
 							</page>
@@ -172,6 +178,8 @@ Nr sessions and controls
 		</record>
 
 <!--
+										'default_control_date': evaluation_start_date,
+
 								<field name="pl_laser"/>
 								<field name="number_sessions"/>                             
 								<field name="number_controls"/>                             

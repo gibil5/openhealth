@@ -108,7 +108,6 @@ class patient_report(models.Model):
 
 				#'res_model': 'sale.order',
 				'res_model': res_model,
-
 				'res_id': res_id,
 				
 

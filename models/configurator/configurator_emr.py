@@ -26,13 +26,23 @@ class ConfiguratorEmr(models.Model):
 	_description = 'Configurator Emr'
 
 
+
+
+
+# ----------------------------------------------------------- Patients -------------------------------
+
+	# Patient Limit
+	patient_limit = fields.Integer(
+		)
+
+
+
+
 # ----------------------------------------------------------- Relational -------------------------------
 
 	# Doctor Line
-	doctor_line = fields.One2many(
-	
+	doctor_line = fields.One2many(	
 			'openhealth.doctor',
-
 			'configurator_id',
 		)
 

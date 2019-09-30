@@ -12,24 +12,21 @@
 				<form string="configurator EMR Form">
 
 
-					<!-- Header -->
+<!-- Header -->
 					<header>
 						
                         <!-- Config Doctors -->
                         <button 
                                 type="object"
                                 class="oe_highlight"
-
                                 name="config_doctors"
-
                                 string="Config Doctors"
                         />
-						
 					</header>
 
 
 
-					<!-- Sheet -->  
+<!-- Sheet -->  
 					<sheet>
 
 						<!-- Base -->
@@ -38,34 +35,23 @@
 								<field name="name"/>
 								<field name="x_type"/>
 							</group>
-							<group>
-							</group>
+							<group></group>
 						</group>
 
 
 <!--
-					<group string="Validacion de Errores"	group="openhealth.roots">
 -->
-
-
 						<group  string="">
 
-							<!-- Error Validation -->
-<!--
-							<group string="Validacion de Errores">
-									<field name="error_validation_electronic"/>
-									<field name="error_validation_patient"/>
-									<field name="error_validation_order"/>
-									<field name="error_validation_product"/>
-									<field name="error_validation_management"/>
-									<field name="error_validation_marketing"/>
-							</group>
--->
-							<!-- CSV Pricelist 2019 -->
-							<group string="CSV Pricelist 2019">
-									<field name="path_csv_pricelist"/>
+							<!-- Patients -->
+							<group string="Pacientes">
+								<field name="patient_limit"/>
 							</group>
 
+							<!-- CSV Pricelist 2019 -->
+							<group string="CSV Pricelist 2019">
+								<field name="path_csv_pricelist"/>
+							</group>
 						</group>
 
 

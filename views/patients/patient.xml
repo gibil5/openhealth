@@ -59,6 +59,18 @@
 							string="Actualizar" 
 						/>
 
+						<button 
+							type="object" 
+							class="oe_highlight"
+
+							name="update_all" 
+
+							string="Actualizar Todos" 
+
+							groups="openhealth.roots"
+						/>
+
+
 
 						<!-- Budget --> 
 <!--
@@ -550,13 +562,14 @@ green:state=='controls'
 
 					<field name="configurator"	string="Config"/>
 
-					<field name="user_id"       string="Creado por"/>
 
 
-					<field name="x_data_complete"/>
+					<field name="x_data_complete"  	invisible="1"/>
 
 					<field name="treatment_ids"/>
 
+  
+					<field name="__last_update"/>
 
 					<field name="nr_sales"/>
 					<field name="nr_consultations"/>
@@ -567,6 +580,8 @@ green:state=='controls'
 			</field>
 		</record>
 <!--
+					<field name="user_id"       string="Creado por"/>
+
 					<field name="x_legacy"			groups="openhealth.roots"/>
 
 					<field name="x_id_doc_type_code"    string="Cod"/>

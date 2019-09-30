@@ -34,14 +34,12 @@ class Patient(models.Model):
 	nr_sales = fields.Integer(
 			string="Nr Ventas",
 
-			compute="_compute_nr_sales",
+			#compute="_compute_nr_sales",
 	)
 
 	@api.multi
 	def _compute_nr_sales(self):
-
 		for record in self:
-
 			record.nr_sales = self.env['sale.order'].search_count([
 																			('state', '=', 'sale'),
 																			('patient', '=', record.name),
@@ -52,14 +50,12 @@ class Patient(models.Model):
 	nr_consultations = fields.Integer(
 			string="Nr Consultas",
 
-			compute="_compute_nr_consultations",
+			#compute="_compute_nr_consultations",
 	)
 
 	@api.multi
 	def _compute_nr_consultations(self):
-
 		for record in self:
-
 			record.nr_consultations = self.env['openhealth.consultation'].search_count([
 																						('patient', '=', record.name),
 																	])
@@ -68,16 +64,14 @@ class Patient(models.Model):
 
 	# Nr Procedures
 	nr_procedures = fields.Integer(
-			string="Nr Procedimientos",
+			string="Nr Procs",
 
-			compute="_compute_nr_procedures",
+			#compute="_compute_nr_procedures",
 	)
 
 	@api.multi
 	def _compute_nr_procedures(self):
-
 		for record in self:
-
 			record.nr_procedures = self.env['openhealth.procedure'].search_count([
 
 																					('patient', '=', record.name),
@@ -168,6 +162,72 @@ class Patient(models.Model):
 
 		self.update_procedures('openhealth.procedure')
 
+		self.update_nr_ofs()
+
+
+
+
+	@api.multi
+	def update_all(self):
+		print()
+		print('Update All')
+
+
+		# Init
+		model = 'oeh.medical.patient'
+
+
+		# Search
+		patients = self.env[model].search([
+												#('patient', 'in', [self.name]),
+												#('state', 'in', ['sale']),
+											],
+											order='x_date_record desc',
+											limit=self.configurator.patient_limit,
+										)
+		print(patients)
+
+
+		count = 0
+
+		for patient in patients:
+
+			print(patient.name)
+
+			patient.update()
+
+			count = count + 1
+
+		print(count)
+
+
+
+# ----------------------------------------------- Update Nr --------------------------------
+	@api.multi
+	def update_nr_ofs(self):
+		"""
+		Update Nr ofs
+		"""
+		print()
+		print('Update Nr Ofs')
+
+		# Nr Sales
+		self.nr_sales = self.env['sale.order'].search_count([
+																('state', '=', 'sale'),
+																('patient', '=', self.name),
+															])
+
+
+		# Nr Consultations
+		self.nr_consultations = self.env['openhealth.consultation'].search_count([
+																					('patient', '=', self.name),
+																				])
+
+
+		# Nr Procs
+		self.nr_procedures = self.env['openhealth.procedure'].search_count([
+																				('patient', '=', self.name),
+																			])
 
 
 
@@ -240,8 +300,7 @@ class Patient(models.Model):
 		#print(apps)
 
 		for obj in objs:
-
-			print(obj.patient.name)
+			#print(obj.patient.name)
 
 			# Create
 			consultation = self.consultation_ids.create({
@@ -278,14 +337,13 @@ class Patient(models.Model):
 															('patient', 'in', [self.name]),
 															#('state', 'in', ['sale']),
 											],
-												#order='x_serial_nr asc',
-												#limit=1,
+												#order='x_date_record desc',
+												#limit=self.configurator.patient_limit,
 											)
 		#print(apps)
 
 		for obj in objs:
-
-			print(obj.patient.name)
+			#print(obj.patient.name)
 
 			# Create
 			procedure = self.procedure_ids.create({

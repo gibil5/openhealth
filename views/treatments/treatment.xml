@@ -818,7 +818,6 @@ blue:state=='controls'
 
 					<field name="patient"/>
 
-					<field name="x_test"/>
 					<field name="physician"/>
 					<field name="chief_complaint"   string="Motivo"/>
 
@@ -847,6 +846,8 @@ limit = 40
 
 
 <!--
+					<field name="x_test"/>
+
 					<field name="name"/>
 					<field name="patient_sex"/>
 					<field name="patient_age"/>

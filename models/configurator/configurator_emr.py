@@ -3,7 +3,7 @@
 	Configurator - EMR
 
 	Created: 			25 Jan 2019
-	Last updated: 		29 Aug 2019
+	Last updated: 		 4 Oct 2019
 """
 from __future__ import print_function
 from openerp import models, fields, api
@@ -26,6 +26,20 @@ class ConfiguratorEmr(models.Model):
 	_description = 'Configurator Emr'
 
 
+
+
+# ----------------------------------------------------------- PL - Paths -------------------------------
+
+	path_account_txt = fields.Char(
+			required=True,
+			default='/Users/gibil/mssoft/ventas/'
+		)
+
+
+	path_csv_pricelist = fields.Char(
+			required=True,
+			default='/Users/gibil/cellar/github/price_list/csv/',
+		)
 
 
 
@@ -120,12 +134,6 @@ class ConfiguratorEmr(models.Model):
 			readonly=True,
 		)
 
-# ----------------------------------------------------------- PL - CSV -------------------------------
-
-	path_csv_pricelist = fields.Char(
-			required=True,
-			default='/Users/gibil/cellar/github/price_list/csv/',
-		)
 
 # ----------------------------------------------------------- PL - Account Contasis ---------------
 	cuentab_services = fields.Char(

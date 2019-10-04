@@ -6,12 +6,18 @@
     <data noupdate='0'>
 
  
+<!--
+Watch out: huge bug !
+With Inactive  Doctors
+-->
 
-<!-- Physicians  INACTIVE -->
+
+<!-- There should be NO Inactive Physicians -->
 
 
-
-
+<!--
+            <field name="active" eval="False" />
+-->
 <!-- Pereira -->
         <record id="dra_pereira" model="oeh.medical.physician">
             <field name="name">Dra. Pereira jx</field>
@@ -19,12 +25,15 @@
             <field name="x_user_name" search="[('name','=','Adriana Pereira')]"/>
             <field name="idx">8</field>
             
-            <field name="active" eval="False" />
+            <field name="active" eval="True" />
         </record>
 
 
 
 
+<!--
+            <field name="active" eval="False" />
+-->
 <!-- Monteverde -->
         <record id="dr_monteverde" model="oeh.medical.physician">
             <field name="name">Dr. Monteverde</field>
@@ -32,15 +41,16 @@
             <field name="x_user_name" search="[('name','=','Piero Monteverde')]"/>
             <field name="idx">3</field>
 
-            <field name="active" eval="False" />
+            <field name="active" eval="True" />
         </record>
 
 
 
 
 
-
-
+<!--
+            <field name="active" eval="False" />
+-->
 <!-- Clinica Chavarri -->
         <record id="dr_clinica_chavarri" model="oeh.medical.physician">
             <field name="name">Clinica Chavarri</field>
@@ -48,10 +58,14 @@
 <!--
             <field name="active" eval="True" />
 -->
-            <field name="active" eval="False" />
+            <field name="active" eval="True" />
         </record>
 
 
+
+<!--
+            <field name="active" eval="False" />
+-->
 <!-- Escudero -->
         <record id="dr_escudero" model="oeh.medical.physician">
             <field name="name">Dr. Escudero - jx</field>
@@ -59,10 +73,14 @@
             <field name="x_user_name" search="[('name','=','Carlos Escudero')]"/>
             <field name="idx">8</field>
 
-            <field name="active" eval="False" />
+            <field name="active" eval="True" />
         </record>
 
 
+
+<!--
+            <field name="active" eval="False" />
+-->
 <!-- Luis Castillo -->
         <record id="dr_castillo" model="oeh.medical.physician">
             <field name="name">Dr. Castillo</field>
@@ -70,73 +88,100 @@
             <field name="x_user_name" search="[('name','=','Luis Castillo')]"/>
             <field name="idx">5</field>
 
-            <field name="active" eval="False" />
+            <field name="active" eval="True" />
         </record>
 
 
+
+<!--
+            <field name="active" eval="False" />
+-->
 <!-- Rodrigo Loaiza -->
         <record id="dr_loayza" model="oeh.medical.physician">
             <field name="name">Dr. Loaiza</field>
             <field name="consultancy_type">Residential</field>
             <field name="x_user_name" search="[('name','=','Rodrigo Loaiza')]"/>
-
             <field name="idx">4</field>
-            <field name="active" eval="False" />
+
+            <field name="active" eval="True" />
         </record>
  
 
+
+<!--
+            <field name="active" eval="False" />
+-->
 <!-- Acosta -->
         <record id="dr_acosta" model="oeh.medical.physician">
             <field name="name">Dra. Acosta</field>
             <field name="consultancy_type">Residential</field>
 
-            <field name="active" eval="False" />
+            <field name="active" eval="True" />
         </record>
 
 
+
+<!--
+            <field name="active" eval="False" />
+-->
 <!-- Vasquez -->
         <record id="dr_vasquez" model="oeh.medical.physician">
             <field name="name">Dr. Vasquez</field>
             <field name="consultancy_type">Residential</field>
 
-            <field name="active" eval="False" />
+            <field name="active" eval="True" />
         </record>
 
 
+<!--
+            <field name="active" eval="False" />
+-->
 <!-- Alarcon -->
         <record id="dr_alarcon" model="oeh.medical.physician">
             <field name="name">Dr. Alarcón</field>
             <field name="consultancy_type">Residential</field>
 
-            <field name="active" eval="False" />
+            <field name="active" eval="True" />
         </record>
 
 
+
+<!--
+            <field name="active" eval="False" />
+-->
 <!-- Mendez -->
         <record id="dr_mendez" model="oeh.medical.physician">
             <field name="name">Dr. Mendez</field>
             <field name="consultancy_type">Residential</field>
 
-            <field name="active" eval="False" />
+            <field name="active" eval="True" />
         </record>
 
 
+<!--
+            <field name="active" eval="False" />
+-->
 <!-- Pedemonte -->
         <record id="dr_pedemonte" model="oeh.medical.physician">
             <field name="name">Dra. Pedemonte</field>
             <field name="consultancy_type">Residential</field>
 
-            <field name="active" eval="False" />
+            <field name="active" eval="True" />
         </record>
 
 
+
+<!--
+            <field name="active" eval="False" />
+-->
 <!-- Medico -->
         <record id="dr_medico" model="oeh.medical.physician">
             <field name="name">Dr. Medico</field>
             <field name="consultancy_type">Residential</field>
 
-            <field name="active" eval="False" />
+            <field name="active" eval="True" />
         </record>
+
 
     </data>
 </openerp>

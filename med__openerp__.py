@@ -8,7 +8,7 @@
 
 	'description': """
 
-		30 Sep 2019
+		4 Oct 2019
 
 		Contains:
 			- All External Dependencies,
@@ -41,6 +41,8 @@
 
 		Created:        11 Sep 2016
 		Last up:        18 Sep 2019
+
+        (From 17 Mar 2018 - 13 963)
 
 		---
 
@@ -83,23 +85,21 @@
 
 # ----------------------------------------------------------- Legacy - Products - Only for Lima ------------------------------------------------------
 		# Products
+		# Suppliers - Very Important - Account Invoice Dependance
 
-		#'data/categs/base_data_categs_prods.xml',
-		#'data/allergies/allergy.xml',
+		'data/categs/base_data_categs_prods.xml',
+		'data/allergies/allergy.xml',
+		'data/prods/odoo_data_products.xml',
+		'data/prods/odoo_data_products_new.xml',
+		'data/prods/odoo_data_services_consult.xml',
+		'data/prods/odoo_data_services_co2.xml',
+		'data/prods/odoo_data_services_exc.xml',
+		'data/prods/odoo_data_services_m22.xml',
+		'data/prods/odoo_data_services_med.xml',
+		'data/prods/odoo_data_services_cos.xml',
+		'data/prods/odoo_data_services_med_dep.xml',
 
-		#'data/prods/odoo_data_products.xml',
-		#'data/prods/odoo_data_products_new.xml',
-		#'data/prods/odoo_data_services_consult.xml',
-		#'data/prods/odoo_data_services_co2.xml',
-		#'data/prods/odoo_data_services_exc.xml',
-		#'data/prods/odoo_data_services_m22.xml',
-		#'data/prods/odoo_data_services_med.xml',
-		#'data/prods/odoo_data_services_cos.xml',
-		#'data/prods/odoo_data_services_med_dep.xml',
-
-		# Suppliers
-		#'data/suppliers.xml',                          
-		# Very Important - Account Invoice Dependance
+		'data/suppliers.xml',                          
 
 
 

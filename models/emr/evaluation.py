@@ -15,7 +15,9 @@ from . import prodvars
 
 class Evaluation(models.Model):
 	"""
-	high level support for doing this and that.
+	Evaluation Class
+	Inherited from: OeHealth
+	Used by: Consultation, Procedure, Session and Control
 	"""
 
 	_inherit = 'oeh.medical.evaluation'
@@ -23,17 +25,15 @@ class Evaluation(models.Model):
 
 
 
-# ----------------------------------------------------------- Defined on PL -------------------------
-	# Appointment
-	#appointment = fields.Char()
+# ----------------------------------------------------------- Inactive Bug -------------------------
+	# Doctor
+	doctor = fields.Many2one(
+			'oeh.medical.physician',
+			string="Médico",
 
-	#appointment = fields.Many2one(
-	#		'oeh.medical.appointment',
-	#		string='Cita #',
-	#		required=False,
-	#		readonly=True,
-			#ondelete='cascade',
-	#	)
+			required=True,
+			#required=False,
+		)
 
 
 
@@ -142,12 +142,6 @@ class Evaluation(models.Model):
 			readonly=True,
 		)
 
-	# Doctor
-	doctor = fields.Many2one(
-			'oeh.medical.physician',
-			string="Médico",
-			required=True,
-		)
 
 
 	# Product
@@ -486,7 +480,8 @@ class Evaluation(models.Model):
 	@api.multi
 	def open_treatment(self):
 		"""
-		high level support for doing this and that.
+		Goes Back to Treatment
+		Used by: Procedure
 		"""
 		#print
 		#print 'Open Treatment'

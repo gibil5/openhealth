@@ -21,7 +21,9 @@ from . import allergy
 #from . import process
 from . import treatment
 
-from . import evaluation  
+
+from . import evaluation
+
 from . import consultation
 from . import procedure
 from . import control

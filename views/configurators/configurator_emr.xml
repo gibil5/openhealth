@@ -48,11 +48,24 @@
 								<field name="patient_limit"/>
 							</group>
 
+							<group>
+							</group>
+						</group>
+
+
+						<group  string="">
+
+							<!-- Account Txt -->
+							<group string="TXT">
+								<field name="path_account_txt"/>
+							</group>
+
 							<!-- CSV Pricelist 2019 -->
-							<group string="CSV Pricelist 2019">
+							<group string="Pricelist 2019 CSV">
 								<field name="path_csv_pricelist"/>
 							</group>
 						</group>
+
 
 
 

@@ -3,54 +3,18 @@
  		Consultation 
 
 		Created: 			 1 Nov 2016
-		Last updated: 	 	23 Jan 2019
+		Last updated: 	 	 2 Oct 2019
 """
 from datetime import datetime,tzinfo,timedelta
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.libs import eval_vars
 
-#from . import app_vars
-
-
 class Consultation(models.Model):
 
 	_name = 'openhealth.consultation'
 
-	#_inherit = ['openhealth.base', 'oeh.medical.evaluation']
 	_inherit = 'oeh.medical.evaluation'
 	
-
-
-
-
-	#----------------------------------------------------------- Deprecated ------------------------------------------------------------
-
-	# Appointments 
-	#appointment_ids = fields.One2many(
-	#		'oeh.medical.appointment', 
-
-	#		'consultation', 
-	#		string = "Citas", 
-	#		required=True, 
-	#	)
-
-	# Number of appointments
-	#nr_apps = fields.Integer(
-	#			string="Citas",
-	#			compute="_compute_nr_apps",
-	#)
-
-	#@api.multi
-	#def _compute_nr_apps(self):
-	#	for record in self:
-	#		ctr = 0 
-	#		for a in record.appointment_ids:
-	#			ctr = ctr + 1		
-	#		record.nr_apps = ctr
-
-
-
-
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------
 
@@ -62,9 +26,7 @@ class Consultation(models.Model):
 
 	# Profile 
 	x_profile = fields.Selection(
-
 			#selection=app_vars._profile_list, 
-
 			[
 				('normal','Normal'), 
 				('anxious','Ansioso'), 
@@ -74,7 +36,6 @@ class Consultation(models.Model):
 				('histroinic','Histriónico'), 
 				('other','Otro'), 		
 			],
-
 			string="Perfil psicológico", 
 		)
 
@@ -84,25 +45,20 @@ class Consultation(models.Model):
 			string = 'Motivo de consulta', 
 			selection = eval_vars._chief_complaint_list, 
 			required=False, 
-			)
+		)
 
 
 
 	# State 
 	state = fields.Selection(
-
 			selection = eval_vars._state_list, 
-		
-			#string='Estado',	
-			#default='draft',
 
 			compute='_compute_state', 
-			)
+		)
 
 	@api.multi
 	def _compute_state(self):
 		for record in self:
-
 
 			pro = 0
 
@@ -118,7 +74,6 @@ class Consultation(models.Model):
 			if record.x_antecedents != False:
 				pro = pro + 1
 
-
 			if record.x_allergies_medication != False:
 				pro = pro + 1
 
@@ -127,7 +82,6 @@ class Consultation(models.Model):
 
 			if record.x_indications != False:
 				pro = pro + 1
-
 
 			if pro == 0:
 				record.state = 'draft'
@@ -151,18 +105,13 @@ class Consultation(models.Model):
 	@api.multi
 	def _compute_progress(self):
 		for record in self:
-			#print 
-			#print 'jx'
-			#print 'Compute progress'
+
 			record.progress = eval_vars._hash_progress[record.state]
-			#print 
 
 
 
 
-
-
-	# ----------------------------------------------------------- Relational ------------------------------------------------------
+# ----------------------------------------------------------- Relational ------------------------------------------------------
 
 	treatment = fields.Many2one(
 			'openhealth.treatment',
@@ -175,7 +124,7 @@ class Consultation(models.Model):
 
 
 
-	# --------------------------------------------------------- Consultation Fundamentals ------------------------------------------------------
+# --------------------------------------------------------- Consultation Fundamentals ------------------------------------------------------
 	
 	x_reason_consultation = fields.Text(
 			string = 'Motivo de consulta (detalle)', 

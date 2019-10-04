@@ -111,7 +111,12 @@
         </record>
 
 
+
 <!-- Rosa Mendoza -->
+<!--
+rmendoza@clinicachavarri.com
+yc5tgc
+-->
         <record id="rmendoza_partner" model="res.partner">
             <field name="name">Rosa Mendoza</field>
             <field name="email">rmendoza@clinicachavarri.com</field>

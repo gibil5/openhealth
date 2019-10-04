@@ -20,11 +20,15 @@ class Physician(models.Model):
 	#@api.multi
 	def get_name_code(self):
 
-		words = self.name.upper().split()
-		
-		code = words[0] + '_' + words[1][0:3]
+		code = 'x'
 
-		code = code.replace('.', '')
+		if self.name not in [False]:
+
+			words = self.name.upper().split()
+			
+			code = words[0] + '_' + words[1][0:3]
+
+			code = code.replace('.', '')
 		
 		return code
 

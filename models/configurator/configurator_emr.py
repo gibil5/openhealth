@@ -87,15 +87,14 @@ class ConfiguratorEmr(models.Model):
 		count = 0
 
 		for doctor in self.doctor_line:
-			print()
-			print(doctor.physician.name)
-			print(doctor.physician.active)
+			#print()
+			#print(doctor.physician.name)
+			#print(doctor.physician.active)
 
 			doctor.physician.active = doctor.x_active
-
 			count = count + 1
 
-			print(count)
+			#print(count)
 
 
 		print('Finished !')

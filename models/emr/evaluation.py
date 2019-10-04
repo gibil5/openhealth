@@ -31,7 +31,7 @@ class Evaluation(models.Model):
 			'oeh.medical.physician',
 			string="Médico",
 
-			required=True,
+			required=True, 		# Important - To avoid losing data with invalid doctors
 			#required=False,
 		)
 

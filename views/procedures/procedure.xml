@@ -221,28 +221,11 @@
 		</record>
 <!--
 					<field name="laser"/>
-
 					<field name="appointment"/>
 					<field name="product"/>
 					<field name="name"/>
 					<field name="treatment"/>
 -->
-
-
-
-
-<!-- FILTER --> 
-		<record id="view_medical_procedure_filter" model="ir.ui.view">
-		   <field name="name">Procedure Search</field>
-		   <field name="model">openhealth.procedure</field>        
-		   <field name="arch" type="xml">
-			   <search string="Procedures">
-				   <field name="treatment" />
-			   </search>
-		   </field>
-	   </record>
-
-		
 		
 	</data>
 </openerp>

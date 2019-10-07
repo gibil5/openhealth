@@ -8,7 +8,7 @@
 
 	'description': """
 
-		4 Oct 2019
+		7 Oct 2019
 
 		Contains:
 			- All External Dependencies,
@@ -279,12 +279,18 @@
 		#'views/services/service.xml',
 
 
+
 		# Procedures
+		'views/procedures/procedure_search.xml',
 		'views/procedures/procedure_actions.xml',
 		'views/procedures/procedure.xml',
 
+
 		# Consultation
+		'views/consultations/consultation_search.xml',
+		'views/consultations/consultation_actions.xml',
 		'views/consultations/consultation.xml',
+
 
 
 		# Treatments 

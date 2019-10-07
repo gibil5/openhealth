@@ -7,6 +7,25 @@
 <!-- ACTIONS --> 
 
 
+        <!-- Form Action - By Patient -->
+        <record model="ir.actions.act_window" id="treatment_form_action">
+            <field name="name">Tratamientos</field>
+            <field name="res_model">openhealth.treatment</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+<!--
+            <field name="context">{
+                                        'default_x_target': 'doctor',
+                                        'default_x_type': 'consultation',
+                                        'default_appointment_date': time.strftime('%Y-%m-%d 14:00:00'),
+                                    }
+            </field>
+-->
+
+
+
+
 
         <!-- Treatment List -->
         <record model="ir.actions.act_window" id="treatment_list_action">
@@ -85,23 +104,6 @@
 
 
 
-        <!-- Form Action - By Patient -->
-<!--
--->     
-        <record model="ir.actions.act_window" id="treatment_form_action">
-            <field name="name">Tratamientos</field>
-            <field name="res_model">openhealth.treatment</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-        </record>
-<!--
-            <field name="context">{
-                                        'default_x_target': 'doctor',
-                                        'default_x_type': 'consultation',
-                                        'default_appointment_date': time.strftime('%Y-%m-%d 14:00:00'),
-                                    }
-            </field>
--->
 
 
 

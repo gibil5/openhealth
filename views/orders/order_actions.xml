@@ -14,8 +14,11 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>   
 
-            <field name="domain">[                              
+<!--
                                     ('patient', '=', default_patient),  
+-->
+
+            <field name="domain">[                              
                                     ('state', '=', 'sale'),
                                 ]
             </field>
@@ -34,7 +37,8 @@
             <field name="view_mode">tree,form</field>   
 
             <field name="domain">[                              
-                                    ('treatment', '=', default_treatment),  
+                                    ('treatment', '=', default_treatment),
+
                                     ('x_family', '=', default_x_family),
                                 ]
             </field>

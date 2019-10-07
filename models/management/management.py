@@ -12,7 +12,9 @@ import collections
 import datetime
 from timeit import default_timer as timer
 from openerp import models, fields, api
+
 from openerp.addons.openhealth.models.order import ord_vars
+
 from . import mgt_funcs
 from . import mgt_vars
 
@@ -593,7 +595,9 @@ class Management(models.Model):
 # ----------------------------------------------------------- QC ----------------------------------
 
 	year = fields.Selection(
+
 			selection=ord_vars._year_order_list,
+
 			string='Año',
 			default='2019',
 			required=True,

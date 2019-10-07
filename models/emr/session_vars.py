@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-#
-# 		Session Vars 
-# 
-# Created: 			2016
-# Last up: 	 		20 Aug 2018
-#
+"""
+	*** Session Vars 
+
+	Created: 					2016
+	Last up: 	 		 07 Oct 2019
+"""
 
 
 
@@ -15,8 +15,11 @@ _co2_mode_emission_list = [
 		('continuous','Continua'), 
 		('fractional','Fraccionado'), 
 		
+		('deep','Deep'), 
+
 		#('',''), 
 ]
+
 
 
 _co2_mode_exposure_list = [

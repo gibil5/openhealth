@@ -184,11 +184,15 @@ class SessionMed(models.Model):
 			default='', 
 		)
 
+
+
 	co2_mode_emission=fields.Selection(
 			string="Modo de EMISION",
 			selection=session_vars._co2_mode_emission_list, 
 		)
 	
+
+
 	co2_mode_exposure=fields.Selection(
 			string="Modo de EXPOSICION",
 			selection=session_vars._co2_mode_exposure_list, 

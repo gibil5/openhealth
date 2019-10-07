@@ -53,9 +53,11 @@
 
 
 													(4, ref('openhealth.eruiz_clinicachavarri')),
-													(4, ref('openhealth.mostos_clinicachavarri')),
 													(4, ref('openhealth.mmattos_clinicachavarri')),
 													(4, ref('openhealth.afuentes_clinicachavarri')),
+
+													(4, ref('openhealth.mostos_clinicachavarri')),
+													(4, ref('openhealth.rmendoza_clinicachavarri')),
 									]"/>
 		</record>
 

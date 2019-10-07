@@ -2,6 +2,17 @@
 
 
 
+_year_order_list = [
+					('2019', 		'2019'),
+					('2018', 		'2018'),
+
+					('2017', 		'2017'),
+					('2016', 		'2016'),
+]
+
+
+
+
 # Order State
 _state_list = [
 
@@ -61,11 +72,6 @@ _dic_weekday = {
 					6: 	'sunday',
 }
 
-
-_year_order_list = [
-					('2019', 		'2019'),
-					('2018', 		'2018'),
-]
 
 
 _month_order_list = [

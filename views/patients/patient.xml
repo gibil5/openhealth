@@ -166,9 +166,14 @@
 						<div class="oe_left" style="width: 250px;" name="buttons">
 
 
+
 							<!-- Nr Treatments --> 
 							<button type="action" class="oe_stat_button" 
-								name="%(treatment_form_action)d"    
+
+								attrs="{ 'invisible':[  ('x_treatment_count','=',0),]}"
+
+								name="%(treatment_form_action)d"
+
 								context="{
 											'search_default_patient': active_id,    
 										}"                                          
@@ -181,9 +186,10 @@
 
 
 
-
 							<!-- Nr Sales --> 
 							<button type="action" class="oe_stat_button" 
+
+								attrs="{ 'invisible':[  ('nr_sales','=',0),]}"
 
 								name="%(order_form_patient_action)d"    
 
@@ -199,10 +205,12 @@
 
 
 
-							<!-- Nr consultations --> 
+							<!-- Nr Consultations --> 
 							<button type="action" class="oe_stat_button" 
 
-								name="%(order_form_patient_action)d"    
+								attrs="{ 'invisible':[  ('nr_consultations','=',0),]}"
+
+								name="%(consultation_form_patient_action)d"    
 
 								context="{
 											'search_default_patient': active_id,    
@@ -216,10 +224,12 @@
 
 
 
-							<!-- Nr procedures --> 
+							<!-- Nr Procedures --> 
 							<button type="action" class="oe_stat_button" 
 
-								name="%(order_form_patient_action)d"    
+								attrs="{ 'invisible':[  ('nr_procedures','=',0),]}"
+
+								name="%(procedure_form_patient_action)d"    
 
 								context="{
 											'search_default_patient': active_id,    

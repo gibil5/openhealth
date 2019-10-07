@@ -7,6 +7,29 @@
 
 <!-- ACTIONS -->
 
+
+        <!-- Action - From Patient --> 
+        <record model="ir.actions.act_window" id="procedure_form_patient_action">
+
+            <field name="name">Procedimientos</field>
+
+            <field name="res_model">openhealth.procedure</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>   
+            
+            <field name="domain">[]</field>
+            
+            <field name="context">{}</field>
+        </record>
+
+
+
+
+
+
+
+
+
         <!-- Contasis -->
         <record model="ir.actions.act_window" id="session_med_form_action">
             <field name="name">Session Med Form Action</field>

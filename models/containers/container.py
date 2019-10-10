@@ -80,14 +80,17 @@ class Container(models.Model):
 		)
 
 
+
 	# Download
 	txt_pack = fields.Binary(
-			'Paquete TXT',
+			'Descargar TXT',
 		)
 
 	txt_pack_name = fields.Char(
-			'Paquete TXT - Name',
+			#'Paquete TXT - Name',
+			'Nombre Archivo TXT',
 		)
+
 
 
 # ----------------------------------------------------------- Clean -----------------------------

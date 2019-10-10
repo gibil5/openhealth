@@ -8,10 +8,9 @@
 from __future__ import print_function
 import datetime
 from openerp import models, fields, api
+
 from openerp import _
 from openerp.exceptions import Warning as UserError
-
-#from openerp.addons.openhealth.models.libs import creates, user  	# Dep !
 
 from openerp.addons.openhealth.models.libs import lib
 from openerp.addons.openhealth.models.patient import pat_vars, chk_patient
@@ -34,6 +33,18 @@ class sale_order(models.Model):
 	_inherit = 'sale.order'
 
 	_description = 'Order'
+
+
+
+# ----------------------------------------------------------- Gettter ----------------------------
+	def get_date_corrected(self):
+		"""
+		Used by Print Ticket.
+		"""
+		print()
+		print('Get Date Corrected')
+
+		return tick_funcs.get_date_corrected(self)
 
 
 # ----------------------------------------------------------- Autofill ----------------------------
@@ -586,13 +597,6 @@ class sale_order(models.Model):
 		return tick_funcs.get_cents(self)
 
 
-	def get_date_corrected(self):
-		"""
-		Used by Print Ticket.
-		"""
-		print()
-		print('Get Date Corrected')
-		return tick_funcs.get_date_corrected(self)
 
 
 

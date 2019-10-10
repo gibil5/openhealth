@@ -820,9 +820,9 @@ blue:state=='controls'
 
 					<field name="physician"/>
 					<field name="chief_complaint"   string="Motivo"/>
-
+<!--
 					<field name="name"			groups="openhealth.roots"/>
-
+-->
 					<field name="start_date"/>
 					<field name="write_date"    string="Fecha actualizacion"/>
 					<field name="state"/>

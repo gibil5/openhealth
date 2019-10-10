@@ -52,7 +52,9 @@
 
 <!-- Eulalia -->
         <record id="eulalia" model="oeh.medical.physician">
-            <field name="name">Eulalia</field>
+
+            <field name="name">Eulalia Ruiz</field>
+
             <field name="consultancy_type">Residential</field>
             <field name="x_user_name" search="[('name','=','Eulalia Ruiz')]"/>
             <field name="x_therapist">True</field>

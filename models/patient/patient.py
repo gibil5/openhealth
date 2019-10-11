@@ -191,11 +191,8 @@ class Patient(models.Model):
 		count = 0
 
 		for patient in patients:
-
-			print(patient.name)
-
+			#print(patient.name)
 			patient.update()
-
 			count = count + 1
 
 		print(count)

@@ -3,12 +3,12 @@
 	'name': "Open Health - SERVICE ORIENTED - MED",
 
 	'summary': """
-		ERP system, for a Clinic. Inherits OeHealth. Contains ALL the Data Model. Encapsulates the Business logic in classes and libraries.
+		ERP system for a Clinic. Inherits OeHealth. Contains ALL the Data Model. Business logic is in classes and libraries.
 	""",
 
 	'description': """
 
-		11 Oct 2019
+		15 Oct 2019
 
 		Contains:
 			- All External Dependencies,

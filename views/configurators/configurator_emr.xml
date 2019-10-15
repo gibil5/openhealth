@@ -69,25 +69,6 @@
 
 
 
-<!-- Notebook --> 
-						<notebook>
-							<!-- Doctors --> 
-<!--                            
--->
-							<page   string="Médicos">
-	
-								<field name="doctor_line">
-	
-									<tree string="Doctors">
-								
-										<field name="physician"/>
-								
-										<field name="x_active"/>
-									</tree>
-								</field>
-							</page>
-
-						</notebook>
 
 
 
@@ -149,8 +130,26 @@
 						</group>
 -->
 
+
+						<!-- Notebook --> 
+<!--
+						<notebook></notebook>
+-->
+
+
 						<!-- Notebook --> 
 						<notebook>
+
+							<!-- Doctors --> 
+							<page   string="Médicos">
+								<field name="doctor_line">
+									<tree string="Doctors">
+										<field name="physician"/>
+										<field name="x_active"/>
+									</tree>
+								</field>
+							</page>
+
 
 							<!-- Holidays --> 
 							<page   string="Feriados">

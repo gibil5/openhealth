@@ -4,7 +4,7 @@
  	Electronic Order - Sunat compatible
 
  	Created: 			13 Sep 2018
- 	Last updated: 		15 Apr 2019
+ 	Last updated: 		15 Oct 2019
 
 """
 from openerp import models, fields, api
@@ -15,7 +15,7 @@ from . import lib_coeffs
 
 class electronic_order(models.Model):
 	"""
-	high level support for doing this and that.
+	Electronic Order used by Accounting TXT generator
 	"""
 	_inherit = 'openhealth.line'
 
@@ -24,6 +24,81 @@ class electronic_order(models.Model):
 	_description = "Sunat Electronic Order"
 
 	_order = 'serial_nr asc'
+
+
+
+
+# ----------------------------------------------------------- Configurator ------------------------
+
+	def _get_default_configurator(self):
+		#print()
+		#print('Default Configurator')
+
+		# Search
+		configurator = self.env['openhealth.configurator.emr'].search([
+																		#('active', 'in', [True]),
+											],
+												#order='x_serial_nr asc',
+												limit=1,
+											)
+		print(configurator)
+		print(configurator.name)
+		return configurator
+
+	# Configurator
+	configurator = fields.Many2one(
+			'openhealth.configurator.emr',
+			string="Configuracion",
+
+			default=_get_default_configurator,
+		)
+
+
+
+
+
+
+# ----------------------------------------------------------- Emitter -----------------------------
+
+	# Firm
+	firm = fields.Char(
+			'Firm',
+			#default='SERVICIOS MÉDICOS ESTÉTICOS S.A.C',
+			#required=True,
+		)
+
+	# Ruc
+	ruc = fields.Char(
+			'Ruc',
+			#default='20523424221',
+			#required=True,
+		)
+
+
+	# Ubigeo
+	ubigeo = fields.Char(
+			'Ubigeo',
+			#default='150101',	# Verify
+			#required=True,
+		)
+
+	# Address
+	address = fields.Char(
+			'Address',
+			#default='Av. La Merced 161',
+			#required=True,
+		)
+
+
+	# Country
+	country = fields.Char(
+			'Country',
+			#default='PE',
+			#required=True,
+		)
+
+
+
 
 
 
@@ -180,40 +255,6 @@ class electronic_order(models.Model):
 		)
 
 
-
-# ----------------------------------------------------------- Emitter -----------------------------
-
-	# Firm
-	firm = fields.Char(
-			'Firm',
-			default='SERVICIOS MÉDICOS ESTÉTICOS S.A.C',
-		)
-
-	# Ruc
-	ruc = fields.Char(
-			'Ruc',
-			default='20523424221',
-		)
-
-
-	# Ubigeo
-	ubigeo = fields.Char(
-			'Ubigeo',
-			default='150101',	# Verify
-		)
-
-	# Address
-	address = fields.Char(
-			'Address',
-			default='Av. La Merced 161',
-		)
-
-
-	# Country
-	country = fields.Char(
-			'Country',
-			default='PE',
-		)
 
 
 

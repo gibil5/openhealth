@@ -183,14 +183,16 @@ def get_orders_filter_fast(self, date_bx, date_ex):
 # States: In State Array
 def get_orders_filter(self, date_bx, date_ex, state_arr, type_arr):
 	"""
-	high level support for doing this and that.
+	Get and filter array of Order records.
+	Used by:
+		- Electronic container (TXT)
 	"""
 	print('')
-	print('Get Orders - Filter')
-	print(date_bx)
-	print(date_ex)
-	print(state_arr)
-	print(type_arr)
+	print('MGT - Get Orders - Filter')
+	#print(date_bx)
+	#print(date_ex)
+	#print(state_arr)
+	#print(type_arr)
 
 
 	# Init
@@ -259,7 +261,6 @@ def get_orders_filter(self, date_bx, date_ex, state_arr, type_arr):
 												)
 		# Count
 		count = 0
-
 
 
 	return orders, count

@@ -345,6 +345,12 @@ class Treatment(models.Model):
 
 # ----------------------------------------------------------- Manual ------------------------------
 
+	# Override config
+	override = fields.Boolean(
+			default=False,
+		)
+
+
 	# Manual
 	add_procedures = fields.Boolean(
 			string="Control Manual",

@@ -343,6 +343,8 @@
 								<field name="vspace" />
 
 
+
+
 								<button 
 									type="object" 
 									name="toggle_add_procedures" 
@@ -357,6 +359,8 @@
 									attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
 									string="Manual"                                     
 								/>
+
+								<field name="override"	groups='openhealth.roots'/>
 
 								<field name="add_procedures"    invisible="1"/>
 							</group>

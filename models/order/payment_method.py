@@ -46,7 +46,7 @@ class PaymentMethod(models.Model):
 	total = fields.Float(
 			string='Total a pagar',
 			required=True,
-			states=pm_vars.READONLY_STATES,
+			#states=pm_vars.READONLY_STATES, 	# Bug: 15 Oct 2019
 		)
 
 

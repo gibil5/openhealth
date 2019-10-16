@@ -3,7 +3,7 @@
 		ReportSaleProduct
 
  		Created: 			    Nov 2016
-		Last up: 	 		 06 Mar 2019
+		Last up: 	 		 16 Oct 2019
 """
 
 from __future__ import print_function
@@ -11,9 +11,18 @@ from openerp import models, fields, api
 from openerp.addons.openhealth.models.management import mgt_funcs
 
 class ReportSaleProduct(models.Model):
+	"""
+	Used as: Venta de Productos por Fecha
+	"""
 	
 	_name = 'openhealth.report.sale.product'
 	
+
+# ----------------------------------------------------------- Dep - Test ------------------------------------------------------
+	#test_target = fields.Boolean(
+	#		string="Test Target", 
+	#	)
+
 
 
 # ----------------------------------------------------------- Relational ------------------------------------------------------	
@@ -24,7 +33,6 @@ class ReportSaleProduct(models.Model):
 			#string="Estado de cuenta",
 		)
 
-
 	# Item Counter
 	item_counter_ids = fields.One2many(
 			'openhealth.item.counter', 
@@ -33,18 +41,24 @@ class ReportSaleProduct(models.Model):
 		)
 
 
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
 
+	# Dates
+	date_begin = fields.Date(
+			string="Fecha Inicio", 
+		)
 
+	date_end = fields.Date(
+			string="Fecha Fin", 
+		)
 
-# ----------------------------------------------------------- Test ------------------------------------------------------
-
-	test_target = fields.Boolean(
-			string="Test Target", 
+	several_dates = fields.Boolean(
+			'Varias Fechas',
+			default=False,
 		)
 
 
 
-# ----------------------------------------------------------- Primitives ------------------------------------------------------
 	# Name 
 	name = fields.Date(
 			string="Fecha", 
@@ -111,16 +125,27 @@ class ReportSaleProduct(models.Model):
 		print()
 		print('Report Sale Product - Update')
 
-
 		# Clean 
 		self.order_line_ids.unlink()
 		self.item_counter_ids.unlink()
 
 
+		# Init
+		self.date_begin = self.name
+
 
 		# Orders 
 		#orders,count = acc_funcs.get_orders_filter(self, self.name, self.name)				# Sales and Cancelled
-		orders,count = mgt_funcs.get_orders_filter_fast(self, self.name, self.name)			# Only Sales
+		#orders,count = mgt_funcs.get_orders_filter_fast(self, self.name, self.name)			# Only Sales
+
+
+		if not self.several_dates:
+			orders, count = mgt_funcs.get_orders_filter_fast(self, self.date_begin, self.date_begin)
+
+		else:
+			orders, count = mgt_funcs.get_orders_filter_fast(self, self.date_begin, self.date_end)
+
+
 
 		print(orders)
 		print(count)

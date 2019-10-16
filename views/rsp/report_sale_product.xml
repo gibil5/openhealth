@@ -31,16 +31,25 @@
 						<group  string="Venta de Productos" >
 							<group>
 								<field name="name"/>
+
+								<field name="date_begin"  groups='openhealth.roots'/>
+
+								<field name="date_end"    attrs="{'invisible':[('several_dates', 'in', [False, ''])]}"/>
+
+								<field name="vspace"/>
 								<field name="write_date"/>
-								<field name="test_target"/>
 							</group>
 							<group>
 								<field name="total_qty"/>
 								<field name="total"/>
+
+								<field name="vspace"/>
+								<field name="several_dates"/>
 							</group>
 						</group>
 <!--                            
 							<field name="date"/>
+								<field name="test_target"/>
 -->
 
 
@@ -110,13 +119,15 @@
 			<field name="arch" type="xml">
 				<tree default_order='name desc'>
 					<field name="name"/>
-					<field name="test_target"/>
+
+
 					<field name="total_qty"/>
 					<field name="total"/>
 				</tree>
 			</field>
 		</record>
 <!--
+					<field name="test_target"/>
 				<tree string="Closing Tree">
 					<field name="date"/>
 -->

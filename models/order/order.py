@@ -553,30 +553,57 @@ class sale_order(models.Model):
 	def get_amount_total(self):
 		"""
 		Used by Print Ticket.
+		Is zero if Transfer Free.
 		"""
 		print()
 		print('Get Amount Total')
-		return tick_funcs.get_total(self)
+
+		if self.pl_transfer_free:
+			total = 0
+	
+		else:
+			total = tick_funcs.get_total(self)
+
+		#return tick_funcs.get_total(self)
+		return total
+
+
 
 
 	def get_total_net(self):
 		"""
 		Used by Print Ticket.
+		Is zero if Transfer Free.
 		"""
 		print()
 		print('Get Total Net')
-		self.x_total_net =  tick_funcs.get_net(self)
+
+		if self.pl_transfer_free:
+			self.x_total_net = 0
+	
+		else:
+			self.x_total_net =  tick_funcs.get_net(self)
+
 		return self.x_total_net
+
 
 
 	def get_total_tax(self):
 		"""
 		Used by Print Ticket.
+		Is zero if Transfer Free.
 		"""
 		print()
 		print('Get Total Tax')
-		self.x_total_tax = tick_funcs.get_tax(self)
+
+		if self.pl_transfer_free:
+			self.x_total_tax = 0
+
+		else:
+			self.x_total_tax = tick_funcs.get_tax(self)
+
 		return self.x_total_tax
+
 
 
 	def get_total_in_words(self):
@@ -585,7 +612,16 @@ class sale_order(models.Model):
 		"""
 		print()
 		print('Get Total Words')
-		return tick_funcs.get_words(self)
+
+		if self.pl_transfer_free:
+			words = 'Cero'
+
+		else:
+			words = tick_funcs.get_words(self)
+
+		#return tick_funcs.get_words(self)
+		return words
+
 
 
 	def get_total_cents(self):
@@ -594,7 +630,15 @@ class sale_order(models.Model):
 		"""
 		print()
 		print('Get Total Cents')
-		return tick_funcs.get_cents(self)
+
+		if self.pl_transfer_free:
+			cents = '0.0'
+
+		else:
+			cents = tick_funcs.get_cents(self)
+
+		#return tick_funcs.get_cents(self)
+		return cents
 
 
 

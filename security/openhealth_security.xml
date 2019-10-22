@@ -122,6 +122,9 @@ Groups and Categories
 			<field name="users" eval="[ 
 													(4, ref('openhealth.manager_clinicachavarri')),
 
+
+													(4, ref('openhealth.eruiz_clinicachavarri')),
+
 													(4, ref('openhealth.mmattos_clinicachavarri')),
 													(4, ref('openhealth.svargas_clinicachavarri')),
 

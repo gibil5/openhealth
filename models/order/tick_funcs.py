@@ -116,3 +116,5 @@ def compute_cents(self):
 	frac, whole = math.modf(self.amount_total)
 	total_cents = frac * 100
 	return total_cents
+
+

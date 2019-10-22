@@ -41,7 +41,10 @@
 							</group>
 							<group>
 								<field name="total_qty"/>
+
 								<field name="total"/>
+
+								<field name="management_id"/>
 
 								<field name="vspace"/>
 								<field name="several_dates"/>
@@ -113,24 +116,45 @@
 
 		
 <!-- TREE --> 
+<!--
 		<record model="ir.ui.view" id="rsp_tree">
 			<field name="name">openhealth.report.sale.product.tree</field>
 			<field name="model">openhealth.report.sale.product</field>
 			<field name="arch" type="xml">
 				<tree default_order='name desc'>
+
+					<field name="name"/>
+					<field name="total_qty"/>
+					<field name="total"/>
+				</tree>
+			</field>
+		</record>
+-->
+<!--
+					<field name="test_target"/>
+				<tree string="Closing Tree">
+					<field name="date"/>
+-->
+<!-- TREE --> 
+		<record model="ir.ui.view" id="openhealth.rsp_tree">
+			<field name="name">openhealth.report.sale.product.tree</field>
+			<field name="model">openhealth.report.sale.product</field>
+			<field name="arch" type="xml">
+				<tree default_order='name desc'>
+
 					<field name="name"/>
 
+					<field name="date_begin"  groups='openhealth.roots'/>
+					<field name="date_end"    attrs="{'invisible':[('several_dates', 'in', [False, ''])]}"/>
+					<field name="several_dates"		groups='openhealth.roots'/>
+
+					<field name="management_id" groups='openhealth.roots'/>
 
 					<field name="total_qty"/>
 					<field name="total"/>
 				</tree>
 			</field>
 		</record>
-<!--
-					<field name="test_target"/>
-				<tree string="Closing Tree">
-					<field name="date"/>
--->
 
 
 

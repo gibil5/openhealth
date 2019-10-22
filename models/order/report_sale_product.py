@@ -26,12 +26,20 @@ class ReportSaleProduct(models.Model):
 
 
 # ----------------------------------------------------------- Relational ------------------------------------------------------	
+
+	# Mangement - For Testing
+	management_id = fields.Many2one(
+			'openhealth.management',
+		)
+
+
 	# Order Lines
 	order_line_ids = fields.One2many(
 			'openhealth.report.order_line', 
 			'report_sale_product_id', 
 			#string="Estado de cuenta",
 		)
+
 
 	# Item Counter
 	item_counter_ids = fields.One2many(
@@ -49,7 +57,7 @@ class ReportSaleProduct(models.Model):
 		)
 
 	date_end = fields.Date(
-			string="Fecha Fin", 
+			string="Fecha Final", 
 		)
 
 	several_dates = fields.Boolean(
@@ -67,11 +75,6 @@ class ReportSaleProduct(models.Model):
 			required=True, 
 		)
 
-	vspace = fields.Char(
-			' ', 
-			readonly=True
-		)
-
 	total_qty = fields.Integer(
 			string="Cantidad", 
 		)
@@ -80,40 +83,10 @@ class ReportSaleProduct(models.Model):
 			string="Total", 
 		)
 
-
-
-
-
-
-# ----------------------------------------------------------- Create Lines ------------------------------------------------------
-
-	# Create Lines 
-	def create_lines(self, orders):  
-		#print()
-		#print('Create Lines')
-
-		# Loop
-		for order in orders: 
-
-			for line in order.order_line: 
-
-				if line.product_id.categ_id.name == 'Cremas':
-					
-					#print('Create !')
-
-					# Create Order Line 
-					ret = self.order_line_ids.create({
-															'name': line.name,
-															'product_id': line.product_id.id,
-															'patient': order.patient.id,
-															'price_unit': line.price_unit,
-															'product_uom_qty': line.product_uom_qty, 
-															'x_date_created': line.create_date,															
-
-															'state': order.state,
-
-															'report_sale_product_id': self.id,
-													})
+	vspace = fields.Char(
+			' ', 
+			readonly=True
+		)
 
 
 
@@ -134,10 +107,8 @@ class ReportSaleProduct(models.Model):
 		self.date_begin = self.name
 
 
-		# Orders 
-		#orders,count = acc_funcs.get_orders_filter(self, self.name, self.name)				# Sales and Cancelled
+		# Get Orders 
 		#orders,count = mgt_funcs.get_orders_filter_fast(self, self.name, self.name)			# Only Sales
-
 
 		if not self.several_dates:
 			orders, count = mgt_funcs.get_orders_filter_fast(self, self.date_begin, self.date_begin)
@@ -145,10 +116,9 @@ class ReportSaleProduct(models.Model):
 		else:
 			orders, count = mgt_funcs.get_orders_filter_fast(self, self.date_begin, self.date_end)
 
-
-
 		print(orders)
 		print(count)
+
 
 
 		# Order lines

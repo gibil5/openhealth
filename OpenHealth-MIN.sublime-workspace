@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"gro",
+				"groups"
+			],
+			[
+				"gr",
+				"groups"
+			],
+			[
 				"ser",
 				"several_dates"
 			],
@@ -18,10 +26,6 @@
 			[
 				"in",
 				"invisible"
-			],
-			[
-				"gro",
-				"group"
 			],
 			[
 				"pa",
@@ -510,10 +514,6 @@
 			[
 				"x_paym",
 				"x_payment_method"
-			],
-			[
-				"Inte",
-				"Interface"
 			]
 		]
 	},
@@ -529,19 +529,19 @@
 			}
 		},
 		{
-			"file": "models/order/report_sale_product.py",
+			"file": "reports/print_ticket_receipt_electronic.xml",
 			"settings":
 			{
-				"buffer_size": 4421,
+				"buffer_size": 8685,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "views/rsp/report_sale_product.xml",
+			"file": "models/order/order.py",
 			"settings":
 			{
-				"buffer_size": 3517,
+				"buffer_size": 36774,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -699,6 +699,15 @@
 	},
 	"file_history":
 	[
+		"/Users/gibil/cellar/github/openhealth/models/order/report_sale_product.TRASH.py",
+		"/Users/gibil/cellar/github/openhealth/views/rsp/report_sale_product.xml",
+		"/Users/gibil/cellar/github/openhealth/models/order/report_sale_product.py",
+		"/Users/gibil/cellar/github/openhealth/readme.txt",
+		"/Users/gibil/cellar/github/openhealth/security/openhealth_security_readers.xml",
+		"/Users/gibil/cellar/github/openhealth/security/openhealth_security_managers.xml",
+		"/Users/gibil/cellar/github/openhealth/security/openhealth_security.xml",
+		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_assistants.xml",
+		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_managers.xml",
 		"/Users/gibil/cellar/github/openhealth/models/electronic/electronic_order.py",
 		"/Users/gibil/cellar/github/openhealth/models/containers/container.py",
 		"/Users/gibil/cellar/github/openhealth/models/management/mgt_funcs.py",
@@ -707,12 +716,10 @@
 		"/Users/gibil/cellar/github/openhealth/views/configurators/configurator_emr.xml",
 		"/Users/gibil/cellar/github/openhealth/models/configurator/configurator_emr.py",
 		"/Users/gibil/cellar/github/openhealth/views/containers/container.xml",
-		"/Users/gibil/cellar/github/openhealth/readme.txt",
 		"/Users/gibil/cellar/github/openhealth/models/order/order.py",
 		"/Users/gibil/cellar/github/openhealth/models/account/account_contasis.py",
 		"/Users/gibil/cellar/github/openhealth/models/order/tick_funcs.py",
 		"/Users/gibil/cellar/github/openhealth/views/treatments/treatment.xml",
-		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_assistants.xml",
 		"/Users/gibil/cellar/github/openhealth/data/physicians/base_data_physicians.xml",
 		"/Users/gibil/cellar/github/openhealth/views/menus/menus_management.xml",
 		"/Users/gibil/cellar/github/openhealth/models/emr/session_vars.py",
@@ -749,8 +756,6 @@
 		"/Users/gibil/cellar/github/openhealth/models/management/mgt_vars.py",
 		"/Users/gibil/cellar/github/openhealth/models/order/ord_vars.py",
 		"/Users/gibil/cellar/github/openhealth/models/management/management.py",
-		"/Users/gibil/cellar/github/openhealth/security/openhealth_security_readers.xml",
-		"/Users/gibil/cellar/github/openhealth/security/openhealth_security_managers.xml",
 		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_tacna.xml",
 		"/Users/gibil/cellar/github/openhealth/views/menus/menus.xml",
 		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_directors.xml",
@@ -789,7 +794,6 @@
 		"/Users/gibil/cellar/github/openhealth/views/procedures/procedure_controls.xml",
 		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_account.xml",
 		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_platform.xml",
-		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_managers.xml",
 		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_inactive.xml",
 		"/Users/gibil/cellar/github/openhealth/models/patient/patient_session.py",
 		"/Users/gibil/cellar/github/openhealth/models/patient/patient.TRASH.py",
@@ -822,11 +826,7 @@
 		"/Users/gibil/cellar/github/openhealth/views/patients/patient_legacy.xml",
 		"/Users/gibil/cellar/github/openhealth/views/patients/partners/partner_actions.xml",
 		"/Users/gibil/cellar/github/openhealth/views/patients/partners/partner_actions.DEP.xml",
-		"/Users/gibil/cellar/github/openhealth/views/patients/patient_actions.xml",
-		"/Users/gibil/cellar/github/openhealth/models/patient/counter.py",
-		"/Users/gibil/cellar/github/openhealth/views/orders/order_tree.xml",
-		"/Users/gibil/cellar/github/openhealth/views/counters/counter_actions.xml",
-		"/Users/gibil/cellar/github/openhealth/views/counters/counter.xml"
+		"/Users/gibil/cellar/github/openhealth/views/patients/patient_actions.xml"
 	],
 	"find":
 	{
@@ -845,6 +845,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"get_total_tax",
+			"tax",
+			"igv",
+			"management_id",
 			"test_targ",
 			"sever",
 			"test_target",
@@ -968,11 +972,7 @@
 			"x_foreign",
 			"x_ruc_a",
 			"x_firm_address",
-			"x_care",
-			"x_ruc",
-			"update_appointments",
-			"def update_",
-			"def update"
+			"x_care"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -1134,37 +1134,8 @@
 						"selection":
 						[
 							[
-								243,
-								243
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 7.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "models/order/report_sale_product.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4421,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1017,
-								1017
+								262,
+								262
 							]
 						],
 						"settings":
@@ -1173,27 +1144,27 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 525.0,
+						"translation.y": 1706.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "views/rsp/report_sale_product.xml",
+					"buffer": 1,
+					"file": "reports/print_ticket_receipt_electronic.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3517,
+						"buffer_size": 8685,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								688,
-								688
+								6193,
+								6196
 							]
 						],
 						"settings":
@@ -1202,7 +1173,36 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 457.0,
+						"translation.y": 4920.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "models/order/order.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 36774,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								11208,
+								11221
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 9386.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1231,10 +1231,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 18310.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -1263,7 +1263,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -1292,7 +1292,7 @@
 						"translation.y": 27.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -1379,7 +1379,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{

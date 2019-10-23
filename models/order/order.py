@@ -1020,7 +1020,7 @@ class sale_order(models.Model):
 
 	x_block_flow = fields.Boolean(
 			'Flujo Bloqueado',
-			readonly=True,
+			#readonly=True,
 		)
 
 	x_credit_note_type = fields.Selection(

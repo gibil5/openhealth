@@ -452,6 +452,16 @@
 																}"  
 
 							/>
+<!--					
+					<field name="x_counter_value"       groups="openhealth.roots,openhealth.managers"   
+-->
+					<field name="x_counter_value" 
+														attrs="{     
+																		'readonly': [
+																						('x_admin_mode', '!=', True), 
+																					], 
+																}"  
+								/>
 				</xpath>
 
 

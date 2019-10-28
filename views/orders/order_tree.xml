@@ -20,7 +20,12 @@
 
 					<field name="pl_price_list"	string="Lista de Precios"  	groups="openhealth.roots"/>
 					<field name="name"          string="Referencia"/>
+
+
 					<field name="date_order"            string="Fecha y hora"/>
+					<field name="x_serial_nr"/>
+					<field name="x_counter_value"/>
+
 
 					<field name="patient"/>
 					<field name="x_doctor"/>
@@ -36,7 +41,6 @@
 
 
 
-					<field name="x_serial_nr"/>
 					<field name="x_type" />
 					<field name="state"/>
 

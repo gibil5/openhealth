@@ -61,14 +61,6 @@
 
 							<field name="vspace"/>
 
-							<field name="x_counter_value"       groups="openhealth.roots,openhealth.managers"   
-
-														attrs="{     
-																		'readonly': [
-																						('x_admin_mode', '!=', True), 
-																					], 
-																}"  
-								/>
 
 
 

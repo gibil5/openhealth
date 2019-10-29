@@ -1,5 +1,6 @@
 Open Health - SERVICE ORIENTED - ODOO 9 MODULE
 
+Description:
 ERP system for a Clinic. Inherits OeHealth. Contains ALL the Data Model. Business logic is in classes and libraries.
 
 Created:        11 Sep 2016
@@ -8,61 +9,61 @@ Last up:        29 Oct 2019
 Database
 
 Postgres
+
 From 17 Mar 2018 - 13 963)
 
-Description:
 
-	Contains:
-		- All External Dependencies,
-		- All Models,
-		- All Users,
-		- All Views,
-		- All Security,
-		- All Data.
-
-
-	External modules:
-		- Spanish translation,
-		- Oehealth,
-		- Base multi image,
-		- Web Export View, 
-		- Accounting and Finance. Adjust tax to zero.
+Contains:
+	- All External Dependencies,
+	- All Models,
+	- All Users,
+	- All Views,
+	- All Security,
+	- All Data.
 
 
-	Python Libs:
-		- Unidecode - dep
-		- pysftp - dep
-		- Numpy, Num2words, Pandas, QrCode, 
+External modules:
+	- Spanish translation,
+	- Oehealth,
+	- Base multi image,
+	- Web Export View, 
+	- Accounting and Finance. Adjust tax to zero.
 
 
-	For PDF Reporting (tickets):
-		- Install wkhtmltopdf (0.12.2 v). Other versions will not work.
+Python Libs:
+	- Unidecode - dep
+	- pysftp - dep
+	- Numpy, Num2words, Pandas, QrCode, 
 
 
-	For Tickets (right button printing):
-		- On Chrome, install extension: PDF Viewer. Link it to Adobe Reader. 
+For PDF Reporting (tickets):
+	- Install wkhtmltopdf (0.12.2 v). Other versions will not work.
 
 
-	Deprecated services: 
-		- Ooor, 
-		- Testcafe, 
-		- Auto-backup, 
-		- Inventory. 
+For Tickets (right button printing):
+	- On Chrome, install extension: PDF Viewer. Link it to Adobe Reader. 
 
 
-	Remember Robert C. Martin:
-		- Respect the Law of Demeter: avoid Train Wreckages. When you see more than two dots, this needs fixing.
-		- Do not mix the Data Model and Business Rules. Encapsulate Business Rules in a separate module. 
-		- Use Three layered model: Odoo Active Data - Customized Class with BR - General purpose Library.
-		- Handle Exceptions.
-		- The Database should not contain Business rules. Remove computes.
+Deprecated services: 
+	- Ooor, 
+	- Testcafe, 
+	- Auto-backup, 
+	- Inventory. 
 
 
-	Always clean your System: 
-		- Remove Procurement Orders, 
-		- Remove Stock Moves,
-		- Remove Products Consumables,
-		- Remove Computes.
+Remember Robert C. Martin:
+	- Respect the Law of Demeter: avoid Train Wreckages. When you see more than two dots, this needs fixing.
+	- Do not mix the Data Model and Business Rules. Encapsulate Business Rules in a separate module. 
+	- Use Three layered model: Odoo Active Data - Customized Class with BR - General purpose Library.
+	- Handle Exceptions.
+	- The Database should not contain Business rules. Remove computes.
+
+
+Always clean your System: 
+	- Remove Procurement Orders, 
+	- Remove Stock Moves,
+	- Remove Products Consumables,
+	- Remove Computes.
 
 
 
@@ -85,9 +86,7 @@ Description:
 'data': [
 
 
-# ---------------------------------------------------------- Products
-	# Products
-	# Suppliers - Very Important - Account Invoice Dependance
+# Products --------------------------------------------------------------------
 
 	#'data/categs/base_data_categs_prods.xml',
 	#'data/allergies/allergy.xml',
@@ -101,17 +100,15 @@ Description:
 	#'data/prods/odoo_data_services_cos.xml',
 	#'data/prods/odoo_data_services_med_dep.xml',
 
-	#'data/suppliers.xml',                          
 
 
-
-# ----------------------------------------------------------- Users ------------------------------------------------------
+# Users -----------------------------------------------------------------------
 
 	# Categs
 	'data/categs/base_data_categs_partners.xml',
 
 	# Users
-	'data/users/base_data_users_generics.xml',                 # Important 
+	'data/users/base_data_users_generics.xml',                 
 	'data/physicians/base_data_physicians.xml',                
 	'data/physicians/base_data_physicians_inactive.xml',        
 	'data/users/base_data_users_platform.xml',  
@@ -130,21 +127,24 @@ Description:
 
 
 
-# ----------------------------------------------------------- Security - Users - First ------------------------------------------------------
-	'security/openhealth_security.xml',             # Groups
-	'security/openhealth_security_readers.xml',   	# Important
+# Security --------------------------------------------------------------------
+	
+	'security/openhealth_security.xml',             
+	'security/openhealth_security_readers.xml',   	
 	'security/openhealth_security_managers.xml',
+	'security/ir.model.access.csv',	
+	'security/ir.rule.xml',              
 
 
 
 
-# ----------------------------------------------------------- Configurator ------------------------------------------------------
-
+# Configurator ------------------------------------------------------
+	
 	'views/configurators/configurator_emr.xml',         # Includes Menu
 
 
 
-# ----------------------------------------------------------- Actions ------------------------------------------------------
+# Actions ------------------------------------------------------
 
 	'views/patients/patient_actions.xml',
 
@@ -153,12 +153,16 @@ Description:
 
 # ----------------------------------------------------------- Recent ------------------------------------------------------
 
+# Produc ------------------------------------------------------
+
 	# Product Selector  - RSP
 	#'views/report_sale/report_sale_product.xml',
 	#'views/report_sale/item_counter.xml',
 	'views/rsp/report_sale_product.xml',
 	'views/rsp/item_counter.xml',
 
+
+# Accounting ------------------------------------------------------
 
 	# Account - Payments
 	#'views/payment_method/payment_method_line.xml',
@@ -170,6 +174,13 @@ Description:
 	'views/account/account_line_actions.xml',
 	'views/account/account_contasis_actions.xml',
 	'views/account/account_contasis.xml',
+
+	# Electronic
+	'views/electronic/electronic_order.xml',
+	'views/electronic/electronic_line.xml',
+
+
+# Marketing ------------------------------------------------------
 
 	# Marketing 
 	'views/marketing/patient_line_search.xml',
@@ -186,9 +197,8 @@ Description:
 	'views/marketing/marketing.xml',
 	'views/marketing/marketing_pivot.xml',
 
-	# Electronic
-	'views/electronic/electronic_order.xml',
-	'views/electronic/electronic_line.xml',
+
+# Management ------------------------------------------------------
 
 	# Management 
 	'views/management/management_day_line.xml',
@@ -415,17 +425,7 @@ Description:
 	'views/menus/menus_oeh.xml',
 
 
-# ----------------------------------------------------------- Security - Models - Last ------------------------------------------------------
-	'security/ir.model.access.csv',
-	
-	'security/ir.rule.xml',                # Dep ?
-
-],
-
-'demo': [],
 
 # Static - Style Css 
-'css': ['static/src/css/jx.css'],   
+'static/src/css/jx.css'
 
-'js': [],
-}

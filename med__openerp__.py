@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-	'name': "Open Health - SERVICE ORIENTED - MED",
+	'name': "Open Health - SERVICE ORIENTED - ODOO 9 MODULE",
 
 	'summary': """
 		ERP system for a Clinic. Inherits OeHealth. Contains ALL the Data Model. Business logic is in classes and libraries.
@@ -16,7 +16,36 @@
 			- All Users,
 			- All Views,
 			- All Security,
-			- No Data.
+			- All Data.
+
+
+		External modules:
+			- Spanish translation,
+			- Oehealth,
+			- Base multi image,
+			- Web Export View, 
+			- Accounting and Finance. Adjust tax to zero.
+
+
+		Python Libs:
+			- Unidecode - dep
+			- pysftp - dep
+			- Numpy, Num2words, Pandas, QrCode, 
+
+
+		For PDF Reporting (tickets):
+			- Install wkhtmltopdf (0.12.2 v). Other versions will not work.
+
+
+		For Tickets (right button printing):
+			- On Chrome, install extension: PDF Viewer. Link it to Adobe Reader. 
+
+
+		Deprecated services: 
+			- Ooor, 
+			- Testcafe, 
+			- Auto-backup, 
+			- Inventory. 
 
 
 		Remember Robert C. Martin:
@@ -26,46 +55,21 @@
 			- Handle Exceptions.
 			- The Database should not contain Business rules. Remove computes.
 
+
 		Always clean your System: 
 			- Remove Procurement Orders, 
 			- Remove Stock Moves,
 			- Remove Products Consumables,
 			- Remove Computes.
 
-		Deprecated services: 
-			- Ooor, 
-			- Testcafe, 
-			- Auto-backup, 
-			- Inventory. 
 
 
 		Created:        11 Sep 2016
-		Last up:        18 Sep 2019
+		Last up:        29 Oct 2019
 
         (From 17 Mar 2018 - 13 963)
 
 		---
-
-		Odoo config:
-			- Spanish translation,
-
-		External modules:
-			- Spanish translation,
-			- Oehealth,
-			- Base multi image,
-			- Web Export View, 
-			- Accounting and Finance. Adjust tax to zero.
-
-		Python Libs:
-			- Unidecode - dep
-			- pysftp - dep
-			- Numpy, Num2words, Pandas, QrCode, 
-
-		For PDF Reporting (tickets):
-			- Install wkhtmltopdf (0.12.2 v). Other versions will not work.
-
-		For Tickets (right button printing):
-			- On Chrome, install extension: PDF Viewer. Link it to Adobe Reader. 
 
 	""",
 

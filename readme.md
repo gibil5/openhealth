@@ -10,23 +10,26 @@ Contains ALL the Data Model.
 Business logic is in classes and libraries.
 
 
-## Author: Javier Revilla
+## Author
+Javier Revilla
 
-## Website: http://jrevilla.com
+## Website
+http://jrevilla.com
 
-## Category: Object Oriented, Service Oriented, Medical Services
+## Category
+Object Oriented, Service Oriented, Medical Services
 
 
-## Created: 
+## Created
 11 Sep 2016
 
-## Last updated: 
+## Last updated
 29 Oct 2019
 
-## Database: 
+## Database
 Postgres
 
-## Contains:
+## Contains
 - All External Dependencies,
 - All Models,
 - All Users,
@@ -35,7 +38,7 @@ Postgres
 - All Data.
 
 
-## External modules:
+## External modules
 - Spanish translation,
 - Oehealth,
 - Base multi image,
@@ -43,28 +46,28 @@ Postgres
 - Accounting and Finance. Adjust tax to zero.
 
 
-## Python Libs:
+## Python Libs
 - Numpy, Num2words, Pandas, QrCode, 
 - Unidecode - dep
 - pysftp - dep
 
 
-## For PDF Reporting (tickets):
+## For PDF Reporting (tickets)
 - Install wkhtmltopdf (0.12.2 v). Other versions will not work.
 
 
-## For Tickets (right button printing):
+## For Tickets (right button printing)
 - On Chrome, install extension: PDF Viewer. Link it to Adobe Reader. 
 
 
-## Deprecated services: 
+## Deprecated services
 - Ooor, 
 - Testcafe, 
 - Auto-backup, 
 - Inventory. 
 
 
-## Remember Robert C. Martin:
+## Remember Robert C. Martin
 - Respect the Law of Demeter: avoid Train Wreckages. When you see more than two dots, this needs fixing.
 - Do not mix the Data Model and Business Rules. Encapsulate Business Rules in a separate module. 
 - Use Three layered model: Odoo Active Data - Customized Class with BR - General purpose Library.
@@ -72,7 +75,7 @@ Postgres
 - The Database should not contain Business rules. Remove computes.
 
 
-## Always clean your System: 
+## Always clean your System
 - Remove Procurement Orders, 
 - Remove Stock Moves,
 - Remove Products Consumables,
@@ -83,7 +86,8 @@ Postgres
 
 
 
-## Depends': ['base', 'oehealth', 'base_multi_image'],
+## Depends': 
+'base', 'oehealth', 'base_multi_image'
 
 
 

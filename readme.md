@@ -1,11 +1,20 @@
 # Open Health - ODOO 9 MODULE - PYTHON
 
-## Description:
+## Version: 7.0
+
+## Description
 Service Oriented Module for Odoo. 
 Odoo is an ERP system for a Clinic. 
 Inherits OeHealth. 
 Contains ALL the Data Model. 
 Business logic is in classes and libraries.
+
+
+## Author: Javier Revilla
+
+## Website: http://jrevilla.com
+
+## Category: Object Oriented, Service Oriented, Medical Services
 
 
 ## Created: 
@@ -73,36 +82,29 @@ Postgres
 
 
 
-## Author': Javier Revilla
-
-## Website: http://jrevilla.com
-
-## Category: Object Oriented, Service Oriented, Medical Services
-
-## Version: 7.0
 
 ## Depends': ['base', 'oehealth', 'base_multi_image'],
 
 
 
 
-### Products ----------------------------------------------------------
+### Products 
 
-	#'data/categs/base_data_categs_prods.xml',
-	#'data/allergies/allergy.xml',
-	#'data/prods/odoo_data_products.xml',
-	#'data/prods/odoo_data_products_new.xml',
-	#'data/prods/odoo_data_services_consult.xml',
-	#'data/prods/odoo_data_services_co2.xml',
-	#'data/prods/odoo_data_services_exc.xml',
-	#'data/prods/odoo_data_services_m22.xml',
-	#'data/prods/odoo_data_services_med.xml',
-	#'data/prods/odoo_data_services_cos.xml',
-	#'data/prods/odoo_data_services_med_dep.xml',
+	'data/categs/base_data_categs_prods.xml',
+	'data/allergies/allergy.xml',
+	'data/prods/odoo_data_products.xml',
+	'data/prods/odoo_data_products_new.xml',
+	'data/prods/odoo_data_services_consult.xml',
+	'data/prods/odoo_data_services_co2.xml',
+	'data/prods/odoo_data_services_exc.xml',
+	'data/prods/odoo_data_services_m22.xml',
+	'data/prods/odoo_data_services_med.xml',
+	'data/prods/odoo_data_services_cos.xml',
+	'data/prods/odoo_data_services_med_dep.xml',
 
 
 
-# Users -----------------------------------------------------------------------
+# Users 
 
 	# Categs
 	'data/categs/base_data_categs_partners.xml',
@@ -127,8 +129,8 @@ Postgres
 
 
 
-# Security --------------------------------------------------------------------
-	
+# Security 
+
 	'security/openhealth_security.xml',             
 	'security/openhealth_security_readers.xml',   	
 	'security/openhealth_security_managers.xml',
@@ -138,13 +140,13 @@ Postgres
 
 
 
-# Configurator ------------------------------------------------------
-	
-	'views/configurators/configurator_emr.xml',         # Includes Menu
+# Configurator 
+
+	'views/configurators/configurator_emr.xml', 
 
 
 
-# Actions ------------------------------------------------------
+# Actions 
 
 	'views/patients/patient_actions.xml',
 

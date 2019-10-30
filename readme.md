@@ -11,7 +11,7 @@ Business logic is in classes and libraries.
 
 
 ## Author
-Javier Revilla
+Javier Revilla (jrevilla55@gmail.com)
 
 ## Website
 http://jrevilla.com

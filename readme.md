@@ -1,7 +1,12 @@
-# Open Health - SERVICE ORIENTED - ODOO 9 MODULE
+# Open Health - ODOO 9 MODULE - PYTHON
 
 ## Description:
-ERP system for a Clinic. Inherits OeHealth. Contains ALL the Data Model. Business logic is in classes and libraries.
+Service Oriented Module for Odoo. 
+Odoo is an ERP system for a Clinic. 
+Inherits OeHealth. 
+Contains ALL the Data Model. 
+Business logic is in classes and libraries.
+
 
 ## Created: 
 11 Sep 2016
@@ -81,7 +86,7 @@ Postgres
 
 
 
-# Products ----------------------------------------------------------
+### Products ----------------------------------------------------------
 
 	#'data/categs/base_data_categs_prods.xml',
 	#'data/allergies/allergy.xml',

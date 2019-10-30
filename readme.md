@@ -3,8 +3,8 @@
 ## Version 7.0
 
 ## Description
-Service Oriented Module for Odoo. 
-Odoo is an ERP system for a Clinic. 
+Object Oriented Module for Odoo. 
+Odoo is an ERP system for small companies. 
 Inherits OeHealth. 
 Contains ALL the Data Model. 
 Business logic is in classes and libraries.
@@ -17,14 +17,14 @@ Javier Revilla
 http://jrevilla.com
 
 ## Category
-Object Oriented, Service Oriented, Medical Services
+- Object Oriented,
+- Service Oriented, 
+- Medical Services
 
 
-## Created
-11 Sep 2016
-
-## Last updated
-29 Oct 2019
+## History
+- Created: 11 Sep 2016
+- Last updated: 29 Oct 2019
 
 ## Database
 Postgres
@@ -81,8 +81,11 @@ Postgres
 - Remove Products Consumables,
 - Remove Computes.
 
+
 ## Depends': 
-'base', 'oehealth', 'base_multi_image'
+- base
+- oehealth
+- base_multi_image
 
 
 
@@ -94,6 +97,8 @@ Postgres
 
 ### Users and Groups
 
+### Sales
+
 ### Security 
 
 ### Configurators
@@ -101,7 +106,6 @@ Postgres
 ### Actions 
 
 ### Product Selector
-
 
 ### Accounting 
 
@@ -111,15 +115,11 @@ Postgres
 
 ### Reports
 
-
-### Orders
-
 ### Counters 
 
 ### Companies 
 
 ### EMR
-
 
 ### Physicians 
 
@@ -127,12 +127,8 @@ Postgres
 
 ### Containers 
 
-
 ### Partners
-
-
 
 ### Menus 
 
 ### Static - Style Css 
-

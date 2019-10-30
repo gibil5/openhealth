@@ -17,8 +17,8 @@ Javier Revilla
 http://jrevilla.com
 
 ## Category
-- Object Oriented,
-- Service Oriented, 
+- Object Oriented
+- Service Oriented
 - Medical Services
 
 
@@ -30,19 +30,19 @@ http://jrevilla.com
 Postgres
 
 ## Contains
-- All External Dependencies,
-- All Models,
-- All Users,
-- All Views,
-- All Security,
-- All Data.
+- All External Dependencies
+- All Models
+- All Users
+- All Views
+- All Security
+- All Data
 
 
 ## External modules
-- Spanish translation,
-- Oehealth,
-- Base multi image,
-- Web Export View, 
+- Spanish translation
+- Oehealth
+- Base multi image
+- Web Export View 
 - Accounting and Finance. Adjust tax to zero.
 
 
@@ -61,10 +61,10 @@ Postgres
 
 
 ## Deprecated services
-- Ooor, 
-- Testcafe, 
-- Auto-backup, 
-- Inventory. 
+- Ooor
+- Testcafe
+- Auto-backup
+- Inventory
 
 
 ## Remember Robert C. Martin
@@ -76,13 +76,13 @@ Postgres
 
 
 ## Always clean your System
-- Remove Procurement Orders, 
-- Remove Stock Moves,
-- Remove Products Consumables,
-- Remove Computes.
+- Remove Procurement Orders
+- Remove Stock Moves
+- Remove Products Consumables
+- Remove Computes
 
 
-## Depends': 
+## Depends
 - base
 - oehealth
 - base_multi_image

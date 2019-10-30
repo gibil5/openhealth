@@ -16,7 +16,7 @@ Javier Revilla
 ## Website
 http://jrevilla.com
 
-## Category
+## Categories
 - Object Oriented
 - Service Oriented
 - Medical Services

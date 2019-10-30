@@ -1,92 +1,82 @@
 Open Health - SERVICE ORIENTED - ODOO 9 MODULE
 
-Description:
+# Description:
 ERP system for a Clinic. Inherits OeHealth. Contains ALL the Data Model. Business logic is in classes and libraries.
 
-Created:        11 Sep 2016
-Last up:        29 Oct 2019
+# Created: 11 Sep 2016
 
-Database
+# Last updated: 29 Oct 2019
 
-Postgres
+# Database: Postgres
 
-From 17 Mar 2018 - 13 963)
-
-
-Contains:
-	- All External Dependencies,
-	- All Models,
-	- All Users,
-	- All Views,
-	- All Security,
-	- All Data.
+# Contains:
+- All External Dependencies,
+- All Models,
+- All Users,
+- All Views,
+- All Security,
+- All Data.
 
 
-External modules:
-	- Spanish translation,
-	- Oehealth,
-	- Base multi image,
-	- Web Export View, 
-	- Accounting and Finance. Adjust tax to zero.
+# External modules:
+- Spanish translation,
+- Oehealth,
+- Base multi image,
+- Web Export View, 
+- Accounting and Finance. Adjust tax to zero.
 
 
-Python Libs:
-	- Unidecode - dep
-	- pysftp - dep
-	- Numpy, Num2words, Pandas, QrCode, 
+# Python Libs:
+- Numpy, Num2words, Pandas, QrCode, 
+- Unidecode - dep
+- pysftp - dep
 
 
-For PDF Reporting (tickets):
-	- Install wkhtmltopdf (0.12.2 v). Other versions will not work.
+# For PDF Reporting (tickets):
+- Install wkhtmltopdf (0.12.2 v). Other versions will not work.
 
 
-For Tickets (right button printing):
-	- On Chrome, install extension: PDF Viewer. Link it to Adobe Reader. 
+# For Tickets (right button printing):
+- On Chrome, install extension: PDF Viewer. Link it to Adobe Reader. 
 
 
-Deprecated services: 
-	- Ooor, 
-	- Testcafe, 
-	- Auto-backup, 
-	- Inventory. 
+# Deprecated services: 
+- Ooor, 
+- Testcafe, 
+- Auto-backup, 
+- Inventory. 
 
 
-Remember Robert C. Martin:
-	- Respect the Law of Demeter: avoid Train Wreckages. When you see more than two dots, this needs fixing.
-	- Do not mix the Data Model and Business Rules. Encapsulate Business Rules in a separate module. 
-	- Use Three layered model: Odoo Active Data - Customized Class with BR - General purpose Library.
-	- Handle Exceptions.
-	- The Database should not contain Business rules. Remove computes.
+# Remember Robert C. Martin:
+- Respect the Law of Demeter: avoid Train Wreckages. When you see more than two dots, this needs fixing.
+- Do not mix the Data Model and Business Rules. Encapsulate Business Rules in a separate module. 
+- Use Three layered model: Odoo Active Data - Customized Class with BR - General purpose Library.
+- Handle Exceptions.
+- The Database should not contain Business rules. Remove computes.
 
 
-Always clean your System: 
-	- Remove Procurement Orders, 
-	- Remove Stock Moves,
-	- Remove Products Consumables,
-	- Remove Computes.
+# Always clean your System: 
+- Remove Procurement Orders, 
+- Remove Stock Moves,
+- Remove Products Consumables,
+- Remove Computes.
 
 
 
 
-	---
 
-""",
+# Author': Javier Revilla
 
-'author': "DataMetrics",
+# Website: http://jrevilla.com
 
-'website': "http://jrevilla.com/",
+# Category: Object Oriented, Service Oriented, Medical Services
 
-'category': 'Object Oriented',
+# Version: 7.0
 
-'version': '4.0',
-
-#'depends': ['base', 'oehealth', 'base_multi_image', 'account'],
-'depends': ['base', 'oehealth', 'base_multi_image'],
-
-'data': [
+# Depends': ['base', 'oehealth', 'base_multi_image'],
 
 
-# Products --------------------------------------------------------------------
+# Products ----------------------------------------------------------
 
 	#'data/categs/base_data_categs_prods.xml',
 	#'data/allergies/allergy.xml',

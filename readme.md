@@ -8,6 +8,7 @@ Odoo is an ERP system for small companies.
 Inherits OeHealth. 
 Contains ALL the Data Model. 
 Business logic is in classes and libraries.
+Reporting is in PDF.
 
 
 ## Author

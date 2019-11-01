@@ -8,7 +8,7 @@ Odoo is an open-source ERP (Enterprise Ressource Planning) system for small comp
 Odoo is designed to be easily extended by the addition of custom modules that replicate the Business Logic of a company. 
 It also provides a high level of configuration. 
 
-Back-end software is written in Python. Front-end software is written using XML and Javascript. We use a Postgres Database on Linux. 
+Back-end software is written in Python. Front-end software is written using XML and Javascript. We use a Postgres Database on Linux Centos7. 
 
 Odoo's data is available from the outside for external analysis or integration with expert tools. 
 The model API is available over XML-RPC. JSON is used for data encapsulation. 
@@ -36,6 +36,9 @@ jrevilla55@gmail.com
 - JSON
 - Javascript
 - XML
+- Postgres
+- Linux Centos7
+
 
 ## History
 - Created: 11 Sep 2016

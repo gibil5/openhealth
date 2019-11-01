@@ -99,43 +99,40 @@ Postgres
 
 
 ## Services provided
+- Products 
+- Users and Groups
+- Sales
 
-### Products 
+- Security 
 
-### Users and Groups
+- Configurators
 
-### Sales
+- Actions 
 
-### Security 
+- Product Selector
 
-### Configurators
+- Accounting 
 
-### Actions 
+- Marketing 
 
-### Product Selector
+- Management 
 
-### Accounting 
+- Reports
 
-### Marketing 
+- Counters 
 
-### Management 
+- Companies 
 
-### Reports
+- EMR
 
-### Counters 
+- Physicians 
 
-### Companies 
+- Patients 
 
-### EMR
+- Containers 
 
-### Physicians 
+- Partners
 
-### Patients 
+- Menus 
 
-### Containers 
-
-### Partners
-
-### Menus 
-
-### Static - Style Css 
+- Static - Style Css 

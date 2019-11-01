@@ -124,6 +124,8 @@ Postgres
 
 ## Classes that have been developed from scratch
 
+- Appointments
+
 - Containers 
 
 - Configurators

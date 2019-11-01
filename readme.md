@@ -37,7 +37,8 @@ jrevilla55@gmail.com
 - Javascript
 - XML
 - Postgres
-- Linux Centos7
+- Linux 
+- Centos7
 
 
 ## History

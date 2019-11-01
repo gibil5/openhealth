@@ -43,7 +43,7 @@ jrevilla55@gmail.com
 
 ## History
 - Created: 11 Sep 2016
-- Last updated: 29 Oct 2019
+- Last updated: 1 Nov 2019
 
 ## Database
 Postgres
@@ -57,7 +57,9 @@ Postgres
 - All Data
 
 
-## External modules
+## Dependencies 
+
+### External Odoo modules
 - Spanish translation
 - Oehealth
 - Base multi image
@@ -65,7 +67,7 @@ Postgres
 - Accounting and Finance. Adjust tax to zero.
 
 
-## Python Libs
+### Python Libs
 - Numpy, Num2words, Pandas, QrCode, 
 - Unidecode - dep
 - pysftp - dep

@@ -8,8 +8,10 @@ Odoo is an open-source ERP (Enterprise Ressource Planning) system for small comp
 Odoo is designed to be easily extended by the addition of custom modules that replicate the Business Logic of a company. 
 It also provides a high level of configuration. 
 
+Back-end software is written in Python. Front-end software is written in XML and Javascript. 
+
 Odoo's data is available from the outside for external analysis or integration with expert tools. 
-The model Api is available over XML-RPC. JSON is used for data encapsulation. 
+The model API is available over XML-RPC. JSON is used for data encapsulation. 
 
 All data can be exported to the Excel format. 
 Reporting is generated in the PDF format.
@@ -25,12 +27,15 @@ jrevilla55@gmail.com
 
 
 ## Categories
+- Medical Services
 - Open source
 - ERP
 - Object Oriented
 - Service Oriented
-- Medical Services
-- JSON services
+- XML-RPC
+- JSON
+- Javascript
+- XML
 
 ## History
 - Created: 11 Sep 2016

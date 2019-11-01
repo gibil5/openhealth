@@ -12,7 +12,7 @@ All data can be exported to Excel.
 Reporting is generated in the PDF format.
 
 I have developed this module for a highly specialized Medical Clinic in Lima. 
-It inherits a commercial third-party Medical module.
+It inherits a high-end third-party Medical module.
 
 
 ## Author

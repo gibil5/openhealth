@@ -139,7 +139,7 @@ Postgres
 - Counters 
 
 
-## Static 
+## Static files
 - Style in CSS 
 
 

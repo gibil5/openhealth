@@ -1,4 +1,4 @@
-# Open Health - ODOO 9 MODULE - PYTHON
+# Open Health - Odoo 9 Module - Python 
 
 ## Version 7.0
 

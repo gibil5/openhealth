@@ -98,41 +98,52 @@ Postgres
 
 
 
-## Services provided
+## Classes that have been extended
+
 - Products 
+
 - Users and Groups
+
 - Sales
 
 - Security 
 
-- Configurators
-
-- Actions 
-
-- Product Selector
-
-- Accounting 
-
-- Marketing 
-
-- Management 
-
 - Reports
 
-- Counters 
-
 - Companies 
-
-- EMR
 
 - Physicians 
 
 - Patients 
 
-- Containers 
-
 - Partners
 
 - Menus 
 
-- Static - Style Css 
+
+
+## Classes that have been developed from scratch
+
+- Containers 
+
+- Configurators
+
+- Product Selector
+
+- Electronic Accounting 
+
+- Marketing 
+
+- Management 
+
+- Counters 
+
+
+## Static 
+- Style in CSS 
+
+
+
+
+
+

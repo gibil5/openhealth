@@ -10,7 +10,7 @@ It also provides a high level of configuration.
 
 Back-end software is written in Python. Front-end software is written using XML and Javascript. We use a Postgres Database on Linux Centos7. 
 
-Odoo's data is available from the outside for external analysis or integration with expert tools. 
+Odoo's data is available from the outside for external analysis or integration with other tools. 
 The model API is available over XML-RPC. JSON is used for data encapsulation. 
 
 All data can be exported to the Excel format. 

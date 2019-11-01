@@ -3,12 +3,12 @@
 ## Version 7.0
 
 ## Description
-Object Oriented Module for Odoo. 
-Odoo is an ERP system for small companies. 
-Inherits OeHealth. 
-Contains ALL the Data Model. 
-Business logic is in classes and libraries.
-Reporting is in PDF.
+Object Oriented Module for the Odoo9 Python Platform. 
+Odoo is an open-source ERP (Enterprise Ressource Planning) system for small companies. 
+Odoo is designed to be easily extended by the addition of custom modules. That replicate the Business Logic of the company. 
+
+All data can be exported to Excel. 
+Reporting is generated in the PDF format.
 
 
 ## Author

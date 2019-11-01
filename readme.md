@@ -8,8 +8,12 @@ Odoo is an open-source ERP (Enterprise Ressource Planning) system for small comp
 Odoo is designed to be easily extended by the addition of custom modules that replicate the Business Logic of a company. 
 It also provides a high level of configuration. 
 
-All data can be exported to Excel. 
+Odoo's data is available from the outside for external analysis or integration with expert tools. 
+The model Api is available over XML-RPC. JSON is used for data encapsulation. 
+
+All data can be exported to the Excel format. 
 Reporting is generated in the PDF format.
+
 
 I have developed this module for a highly specialized Medical Clinic in Lima. 
 It inherits a high-end third-party Medical module.
@@ -26,7 +30,7 @@ jrevilla55@gmail.com
 - Object Oriented
 - Service Oriented
 - Medical Services
-
+- JSON services
 
 ## History
 - Created: 11 Sep 2016

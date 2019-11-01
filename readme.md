@@ -5,7 +5,8 @@
 ## Description
 Object Oriented Module for the Odoo9 Python Platform. 
 Odoo is an open-source ERP (Enterprise Ressource Planning) system for small companies. 
-Odoo is designed to be easily extended by the addition of custom modules. That replicate the Business Logic of the company. 
+Odoo is designed to be easily extended by the addition of custom modules that replicate the Business Logic of a company. 
+It also provides a high level of configuration. 
 
 All data can be exported to Excel. 
 Reporting is generated in the PDF format.

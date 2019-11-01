@@ -60,17 +60,17 @@ Postgres
 ## Dependencies 
 
 ### External Odoo modules
-- Spanish translation
 - Oehealth
 - Base multi image
 - Web Export View 
-- Accounting and Finance. Adjust tax to zero.
+- Accounting and Finance
 
 
 ### Python Libs
-- Numpy, Num2words, Pandas, QrCode, 
-- Unidecode - dep
-- pysftp - dep
+- Numpy
+- Num2words
+- Pandas
+- QrCode
 
 
 ## For PDF Reporting (tickets)
@@ -94,20 +94,6 @@ Postgres
 - Use Three layered model: Odoo Active Data - Customized Class with BR - General purpose Library.
 - Handle Exceptions.
 - The Database should not contain Business rules. Remove computes.
-
-
-## Always clean your System
-- Remove Procurement Orders
-- Remove Stock Moves
-- Remove Products Consumables
-- Remove Computes
-
-
-## Depends
-- base
-- oehealth
-- base_multi_image
-
 
 
 

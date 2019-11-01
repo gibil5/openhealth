@@ -19,10 +19,10 @@ It inherits a high-end third-party Medical module.
 Javier Revilla 
 jrevilla55@gmail.com
 
-## Website
-http://jrevilla.com
 
 ## Categories
+- Open source
+- ERP
 - Object Oriented
 - Service Oriented
 - Medical Services

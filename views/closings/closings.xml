@@ -13,11 +13,23 @@
                     
                     <!-- Header -->
                     <header>
+
                         <button 
                                 type="object" 
                                 class="oe_highlight"
                                 name="update"
                                 string="Actualizar"
+                        />
+
+
+                        <button 
+                                type="object" 
+
+                                class="oe_highlight"
+
+                                name="print_closing"
+
+                                string="Imprimir"
                         />
 
 

@@ -24,6 +24,25 @@ class Closing(models.Model):
 
 
 
+# ----------------------------------------------------------- Print -------------------------------
+	@api.multi
+	def print_closing(self):
+		"""
+		Print Closing
+		"""
+		print('')
+		print('Print Closing')
+
+		#name = 'openhealth.report_ticket_receipt_electronic'
+		name = "openhealth.report_closing_view"            
+
+		action = self.env['report'].get_action(self, name)
+
+		return action
+
+
+
+
 # ----------------------------------------------------------- Macros ------------------------------
 # Proof of payment
 

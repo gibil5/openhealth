@@ -5,11 +5,14 @@
 
 <!-- Report -->
 <report
-    string="Cierre de Caja"
+
+    string="Cierre de Caja - Nov 2019"
+
+    name="openhealth.report_closing_view"            
+
     id="report_closing"
     model="openhealth.closing"
     report_type="qweb-pdf"
-    name="openhealth.report_closing_view"            
     file="openhealth_closing.report_patient"
 
     paperformat="appointment_receipt"

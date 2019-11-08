@@ -82,6 +82,7 @@
 -->
 
 					<!-- Quick Sale --> 
+<!--
 					<button 
 							type="object" 
 							class="oe_highlight"
@@ -92,6 +93,7 @@
 
 							groups="openhealth.roots"
 					/>
+-->
 				</xpath>
 
 
@@ -471,9 +473,9 @@
 <!-- REDEFINE -->
 				<!-- Price list --> 
 				<xpath expr="//field[@name='pricelist_id']" position="replace">
-
+<!--
 					<field name="x_autofill"			groups="openhealth.roots"/>
-
+-->
 					<field name="x_admin_mode"/>
 
 					<field name="configurator"			required="1"/>
@@ -664,6 +666,39 @@
 
 				<!-- Dni --> 
 				<field name="patient" position="before">
+
+							<field name="x_credit_note"         attrs="{'invisible':[('state', 'in', ['cancel', 'credit_note'])]}"/>
+
+
+							<field name="x_credit_note_type"    attrs="{    
+																			'invisible':    [('state', 'not in', ['credit_note'])],
+																			'required':     [('state', 'in', ['credit_note'])],
+																		}"/>
+
+
+							<field name="x_credit_note_amount"    attrs="{    
+																			'invisible':    [('state', 'not in', ['credit_note'])],
+
+																			'required':     [('state', 'in', ['credit_note'])],
+																		}"/>
+							
+
+							<field name="x_credit_note_owner"   attrs="{'invisible':[('state', 'not in', ['credit_note'])]}"/>
+							
+
+							<field name="x_credit_note_owner_amount"/>
+
+
+							<field name="pl_transfer_free"/>
+
+
+							<field name="x_block_flow"/>
+
+
+							<field name="vspace"/>
+
+
+
 
 					<field name="x_partner_dni"
 															attrs="{

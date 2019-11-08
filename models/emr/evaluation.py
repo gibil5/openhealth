@@ -31,8 +31,8 @@ class Evaluation(models.Model):
 			'oeh.medical.physician',
 			string="Médico",
 
-			#required=True, 		# Important - To avoid losing data with invalid doctors
-			required=False,			# To avoid DB inconsistencies in Lima !
+			required=True, 		# Important - To avoid losing data with invalid doctors
+			#required=False,			# To avoid DB inconsistencies in Lima !
 		)
 
 

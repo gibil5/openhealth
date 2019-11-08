@@ -756,8 +756,12 @@
 
 					<field name="vspace"/>
 
+<!--
 
 					<field name="treatment"		required="1"/>
+-->
+					<field name="treatment"		required="0"/>
+
 
 
 					<field name="pl_family"      readonly="1"/>

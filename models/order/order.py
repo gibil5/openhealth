@@ -1541,6 +1541,7 @@ class sale_order(models.Model):
 	@api.onchange('x_doctor')
 	def _onchange_x_doctor(self):
 		if self.x_doctor.name != False:
+
 			treatment = self.env['openhealth.treatment'].search([
 																	('patient', '=', self.patient.name),
 																	('physician', '=', self.x_doctor.name),

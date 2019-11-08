@@ -114,8 +114,10 @@
 
 		# Users
 		'data/users/base_data_users_generics.xml',                 # Important 
+		
 		'data/physicians/base_data_physicians.xml',                
 		'data/physicians/base_data_physicians_inactive.xml',        
+		
 		'data/users/base_data_users_platform.xml',  
 		'data/users/base_data_users_cash.xml',
 		'data/users/base_data_users_account.xml',       

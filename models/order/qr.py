@@ -23,9 +23,7 @@ class QR(object):
 
 		self.total_tax = total_tax
 
-
 		self.date = date
-
 
 		self.receptor_id_doc_type = receptor_id_doc_type
 
@@ -36,11 +34,9 @@ class QR(object):
 
 
 		# Create Data
-		#self.x_qr_data = lib_qr.get_qr_data(self)
 		self.qr_data = lib_qr.get_qr_data(self)
 
 		# Create Img
-		#img_str, name = lib_qr.get_qr_img(self.x_qr_data)
 		self.img_str, self.name = lib_qr.get_qr_img(self.qr_data)
 
 
@@ -70,11 +66,8 @@ class QR(object):
 		return self.img_str
 
 
+
 	def get_name(self):
 
 		return self.name
-
-
-
-
 

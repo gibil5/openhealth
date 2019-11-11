@@ -980,7 +980,9 @@ class sale_order(models.Model):
 
 		# Init vars
 		ruc_company = self.configurator.company_ruc
+
 		x_type = self.x_type
+
 		serial_nr = self.x_serial_nr
 		amount_total = self.amount_total
 		total_tax = self.x_total_tax

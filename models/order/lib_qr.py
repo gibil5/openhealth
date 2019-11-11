@@ -3,7 +3,7 @@
 		lib_qr.py
 
 		Created: 			02 Nov 2018
-		Last up: 	 		02 Nov 2018
+		Last up: 	 		11 Nov 2019
 """
 import datetime
 import base64
@@ -14,7 +14,11 @@ import qrcode
 # Get QR Data
 def get_qr_data(self):
 	"""
-	high level support for doing this and that.
+	Encapsulates the Business Logic for:
+	QR creation for:
+		- Ticket Receipts, 
+		- Ticket Invoices, 
+		- Credit Notes.
 	"""
 	#print
 	#print 'Get QR Data'
@@ -62,15 +66,25 @@ def get_qr_data(self):
 	type_doc = ''
 	doc = ''
 
+
+	# Receipt
 	if self.x_type in ['ticket_receipt', 'credit_note']:
 		if self.receptor_id_doc_type not in [False] and self.receptor_id_doc not in [False, '']:
 			type_doc = _dic_type_doc[self.receptor_id_doc_type]
 			doc = self.receptor_id_doc
 
-	elif self.receptor_type in ['ticket_invoice']:
+
+	# Invoice
+	elif self.x_type in ['ticket_invoice',]:
 		if self.receptor_ruc not in [False, '']:
 			type_doc = '6'
 			doc = self.receptor_ruc
+
+	# Other
+	else:
+		print('This should not happen !')
+
+
 
 
 	se = '|'

@@ -9,13 +9,18 @@
             <field name="name">treatment.appointment.form</field>
             <field name="model">openhealth.treatment</field>
 
-            <field name="priority" eval="0"/>
+            <field name="priority" eval="100"/>
             
             <field name="inherit_id" ref="treatment_form_view"/>
             <field name="arch" type="xml">  
                 <notebook position="inside">
                     
                     <page string="Citas">
+
+
+                        <field name="vspace"/>
+
+
 
                         <!--
                         <field name="appointment_ids"/>

@@ -445,8 +445,14 @@
 									</group>
 -->
 
+
 									<!-- Test Cycle -->
+<!--			
 									<group col="3">
+-->		
+
+									<group 	 attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}">
+
 
 										<!-- Create Budget Consultation -->
 										<button 

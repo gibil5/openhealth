@@ -28,6 +28,19 @@ class Patient(models.Model):
 
 
 
+# ----------------------------------------------------------- Dummny ------------------------------
+	#appointment_ids = fields.Char()
+
+
+	#appointment_ids = fields.One2many(
+	#		'oeh.medical.appointment',
+	#		'patient',
+			#string="Citas",
+	#	)
+
+
+
+
 # ----------------------------------------------- Nrs --------------------------------
 
 	# Nr Sales
@@ -156,6 +169,10 @@ class Patient(models.Model):
 
 		#self.update_appointments()
 
+		self.update_controls('openhealth.control')
+
+
+
 		self.update_sales('sale.order')
 
 		self.update_consultations('openhealth.consultation')
@@ -196,6 +213,56 @@ class Patient(models.Model):
 			count = count + 1
 
 		print(count)
+
+
+
+
+# ----------------------------------------------- Update Controls --------------------------------
+	@api.multi
+	def update_controls(self, model):
+		"""
+		Update Controls
+		"""
+		print()
+		print('Update Controls')
+
+
+		# Clean
+		self.control_ids.unlink()
+
+
+		# Search
+		objs = self.env[model].search([
+											('patient', 'in', [self.name]),
+											#('state', 'in', ['sale']),
+										],
+											#order='x_serial_nr asc',
+											#limit=1,
+									)
+		#print(apps)
+
+		for obj in objs:
+			#print(obj.patient.name)
+
+			# Create
+			control = self.control_ids.create({
+												'date': 		obj.evaluation_start_date,
+
+												'patient': 		obj.patient.id,												
+												'doctor': 		obj.doctor.id,
+												'state': 		obj.state,
+
+												'product': 		obj.product.name,
+												'family': 		obj.laser,
+
+												'res_id': 		obj.id,
+												'res_model': 	obj._name,
+
+												'patient_id':	self.id,
+							})
+
+
+
 
 
 
@@ -259,6 +326,7 @@ class Patient(models.Model):
 												'doctor': 	order.x_doctor.id,
 												'date': 	order.date_order,
 												'state': 		order.state,
+
 												'product': 		order.pl_product,
 												'family': 		order.pl_family,
 
@@ -348,6 +416,7 @@ class Patient(models.Model):
 												'doctor': 		obj.doctor.id,
 												'date': 		obj.evaluation_start_date,
 												'state': 		obj.state,
+
 												'product': 		obj.product.name,
 												'family': 		obj.pl_laser,
 
@@ -794,9 +863,6 @@ class Patient(models.Model):
 
 
 
-
-# ----------------------------------------------------------- Dummny ------------------------------
-	appointment_ids = fields.Char()
 
 
 

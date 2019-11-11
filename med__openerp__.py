@@ -8,7 +8,7 @@
 
 	'description': """
 
-		9 Nov 2019
+		11 Nov 2019
 
 		Contains:
 			- All External Dependencies,
@@ -315,8 +315,14 @@
 
 
 		# Patients 
+
 		'views/patients/patient.xml',
+
+		#'views/patients/patient_appointments.xml',
+
+		'views/patients/patient_tree.xml',
 		'views/patients/patient_search.xml',
+
 
 		# Containers 
 		'views/containers/texto.xml',
@@ -374,8 +380,10 @@
 		'views/treatments/treatment_consultations.xml',
 		'views/treatments/treatment_procedures.xml',
 		#'views/treatments/treatment_sessions.xml',  	# Sab
-		#'views/treatments/treatment_controls.xml', 	# Sab
-		
+		'views/treatments/treatment_controls.xml', 	# Sab
+
+
+
 
 		# Patients - 2 
 		'views/patients/patient_personal.xml',

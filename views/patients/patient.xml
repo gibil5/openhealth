@@ -6,6 +6,7 @@
 
 <!-- FORM --> 
 		<record model="ir.ui.view" id="oeh_medical_patient_view">
+
 			<field name="name">Patient</field>
 			<field name="model">oeh.medical.patient</field>         
 			<field name="type">form</field>
@@ -499,27 +500,46 @@ grey:state in ('cancel')
 	</page>
 
 
-	<!-- controls -->
-<!--	
+<!-- Controls -->
 	<page string="Controles">
+
         <field name="control_ids">
+
             <tree string="controls" create="false">
+
                 <button 
                     name="open_line_current" 
                     type="object" 
                     class="oe_highlight"    
                     string="ENT"
                 />
+
                 <field name="date"/>
+
                 <field name="patient"/>
+
                 <field  name="doctor"/>
+
                 <field name="state"/>
+
                 <field name="product"    string="Producto"/>
+
                 <field name="family"/>
             </tree>
         </field>
 	</page>
+
+<!--
+<page string="Citas-Oeh">
+	<field name="appointment_ids">
+		<tree string="apps">
+			<field name="name"/>
+			<field name="patient"/>
+		</tree>
+	</field>
+</page>
 -->
+
 
 </notebook>
 
@@ -533,73 +553,6 @@ grey:state in ('cancel')
 
 
 
-<!--
-				<tree string="Patient Tree"  default_order='x_id_code desc'>
--->
-<!-- TREE -->
-		<record model="ir.ui.view" id="oehealth.oeh_medical_patient_tree">
-			<field name="name">patient.tree</field>
-			<field name="model">oeh.medical.patient</field>
-			<field name="arch" type="xml">          
-
-
-<tree string="Patient Tree"
-colors="
-red:state=='empty';
-blue:state in ('treatment');
-grey:state=='done';
-green:state=='controls'
-"
->
-
-
-					<field name="name"/>
-
-					<field name="x_id_code"/>       
-					<field name="x_date_record"     string="Fecha de creación"/>
-
-
-					<field name="city"		string="Depto"/>
-					<field name="street2_sel"/>
-					<field name="street2_char"/>
-
-					<field name="x_id_doc_type" string="Tipo Doc"/>
-					<field name="x_id_doc"      string="Nr Doc"/>
-<!--
-					<field name="x_ruc"/>
-					<field name="x_firm"/>
--->
-
-					<field name="configurator"	string="Config"/>
-
-
-
-					<field name="x_data_complete"  	invisible="1"/>
-
-					<field name="treatment_ids"/>
-
-  
-					<field name="__last_update"/>
-
-					<field name="nr_sales"			sum="Nr Ventas"/>
-					<field name="nr_consultations"	sum="Nr Consultas"/>
-					<field name="nr_procedures"		sum="Nr Procedimientos"/>
-
-					<field name="state"/>
-				</tree>
-			</field>
-		</record>
-<!--
-					<field name="user_id"       string="Creado por"/>
-
-					<field name="x_legacy"			groups="openhealth.roots"/>
-
-					<field name="x_id_doc_type_code"    string="Cod"/>
-					<field name="x_dni"/>
-					<field name="x_data_complete"/>
-					<field name="x_test"            groups='openhealth.roots'   />      
-					<field name="x_test_case"       groups='openhealth.roots'   />      
--->
 
 	</data>
 </openerp>

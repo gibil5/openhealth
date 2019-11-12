@@ -25,11 +25,15 @@ class Physician(models.Model):
 		if self.name not in [False]:
 
 			words = self.name.upper().split()
-			
-			code = words[0] + '_' + words[1][0:3]
+	
 
-			code = code.replace('.', '')
+			if len(words) > 1:
+	
+				code = words[0] + '_' + words[1][0:3]
+
+				code = code.replace('.', '')
 		
+	
 		return code
 
 

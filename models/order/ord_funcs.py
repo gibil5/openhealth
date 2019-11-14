@@ -4,7 +4,7 @@
 	Encapsulate Order Business Rules
 
 	Created: 			29 Aug 2019
-	Last up: 	 		29 Aug 2019
+	Last up: 	 		14 Nov 2019
 """
 from openerp.addons.openhealth.models.libs import lib
 
@@ -161,7 +161,7 @@ def search_patient_by_id_document(self):
 													order='write_date desc',
 													limit=1,
 												)
-		print(patient.name)
+		#print(patient.name)  	# Dep !
 
 		# Update Patient
 		#self.patient = patient.id

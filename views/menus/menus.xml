@@ -172,10 +172,7 @@
 
 
 
-<!--
-                    groups="openhealth.roots,openhealth.reception,openhealth.directors"
--->
-<!-- Config HC --> 
+<!-- Config Patient --> 
         <menuitem   id="emr_config_menu" 
                     parent="main_emr_menu"
 
@@ -186,10 +183,26 @@
                     groups="openhealth.roots,openhealth.reception,openhealth.directors,openhealth.managers"
                     />
 
+
+        <!-- Patient Origin -->
+        <menuitem   id="patient_origin_menu" 
+
+                    name="Paciente Primer Contacto" 
+
+                    parent="emr_config_menu"
+
+                    sequence="1"
+                    
+                    action="patient_origin_list_action"
+                />
+
+
+
+        <!-- EMR Counter -->
         <menuitem   id="emr_counters_menu" 
                     name="Contador Historias" 
                     parent="emr_config_menu"
-                    sequence="4"
+                    sequence="5"
                     
                     action="counter_medical_list_action"
                 />

@@ -8,7 +8,7 @@
 
 	'description': """
 
-		14 Nov 2019
+		21 Nov 2019
 
 		Contains:
 			- All External Dependencies,
@@ -316,6 +316,7 @@
 
 		# Patients 
 
+		'views/patients/patient_origin.xml',
 		'views/patients/patient.xml',
 
 		#'views/patients/patient_appointments.xml',

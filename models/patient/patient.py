@@ -3,7 +3,7 @@
 		*** Patient
 
 		Created: 			26 Aug 2016
-		Last updated: 	 	23 Sep 2019
+		Last updated: 	 	21 Nov 2019
 """
 from __future__ import print_function
 from openerp import models, fields, api
@@ -28,15 +28,27 @@ class Patient(models.Model):
 
 
 
-# ----------------------------------------------------------- Dummny ------------------------------
-	#appointment_ids = fields.Char()
+# ----------------------------------------------- Marketing --------------------------------
+
+	origin = fields.Many2one(
+			'openhealth.patient.origin',
+			string='Primer Contacto',
+		)
 
 
-	#appointment_ids = fields.One2many(
-	#		'oeh.medical.appointment',
-	#		'patient',
-			#string="Citas",
-	#	)
+
+
+	x_first_contact = fields.Selection(
+
+			#selection=pat_vars.get_first_contact_list(),
+			selection=pat_vars._first_contact_list,
+
+			string='¿ Cómo se enteró ?',
+			#required=True,
+		)
+
+
+
 
 
 
@@ -1239,14 +1251,6 @@ class Patient(models.Model):
 			required=True,
 			)
 
-	x_first_contact = fields.Selection(
-
-			#selection=pat_vars._first_contact_list,
-			selection=pat_vars.get_first_contact_list(),
-
-			string='¿ Cómo se enteró ?',
-			#required=True,
-		)
 
 	x_country_residence = fields.Many2one(
 			'res.country',

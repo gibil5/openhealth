@@ -20,6 +20,8 @@ from . import patient_session
 from . import patient_procedure
 from . import patient_consultation
 
+from . import patient_origin
+
 from . import patient
 
 

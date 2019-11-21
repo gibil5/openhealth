@@ -1,6 +1,30 @@
 # -*- coding: utf-8 -*-
 
 
+
+# First Contact
+_first_contact_list = [
+						('facebook','Facebook'), 					# New
+						('instagram','Instagram'), 					# New
+						('callcenter','Call Center'), 				# New 
+						('old_patient','Paciente Antiguo'), 		# New 		
+
+						('mail_campaign','Mailing'), 
+						('recommendation','Recomendación'), 
+						('tv','Tv'), 
+						('radio','Radio'), 		
+						('website','Web'), 
+
+						# Deprecated
+						('internet','Internet'), 
+						('none','Ninguno'), 
+]
+
+
+
+
+
+
 # Id Doc Type
 _id_doc_type_list = [
 					('dni', 			'DNI'),
@@ -32,22 +56,6 @@ _dic_id_doc_code = {
 
 
 
-_first_contact_list = [
-						('facebook','Facebook'), 					# New
-						('instagram','Instagram'), 					# New
-						('callcenter','Call Center'), 				# New 
-						('old_patient','Paciente Antiguo'), 		# New 		
-
-						('mail_campaign','Mailing'), 
-						('recommendation','Recomendación'), 
-						('tv','Tv'), 
-						('radio','Radio'), 		
-						('website','Web'), 
-
-						# Deprecated
-						('internet','Internet'), 
-						('none','Ninguno'), 
-]
 
 
 

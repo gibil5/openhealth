@@ -1,3 +1,23 @@
+# 21 Nov 2019
+
+# ----------------------------------------------------------- Dummny ------------------------------
+	#appointment_ids = fields.Char()
+
+
+	#appointment_ids = fields.One2many(
+	#		'oeh.medical.appointment',
+	#		'patient',
+			#string="Citas",
+	#	)
+
+
+
+
+
+
+
+
+
 # 26 sep 2019
 	@api.multi
 	def update_appointments(self):

@@ -247,6 +247,8 @@
 
 
 		# Orders
+		'views/orders/order_administrator.xml',
+
 		'views/orders/order.xml',
 		'views/orders/order_tree.xml',
 		'views/orders/order_actions.xml',

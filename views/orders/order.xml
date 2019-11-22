@@ -51,7 +51,9 @@
 							string="Agregar SERVICIO - 2019"
 						/>
 
+
 					<!-- Clean Lines -->
+<!--
 					<button 
 							type="object"
 							class="oe_highlight"
@@ -59,15 +61,30 @@
 													('x_admin_mode','not in',[True]),
 													('state','not in',['sale', 'credit_note']), 
 											]}"
-
 							name="clean_order_lines"
-
 							string="Eliminar Lineas de Venta"
-
 							help="Esta operación va a eliminar TODAS las Líneas de Venta !!!"
-
 							confirm="Esta operación va a eliminar TODAS las Líneas de Venta !!!"
 						/>
+-->
+
+
+					<!-- Admin Mode -->
+					<button 
+							type="object"
+							
+							class="oe_highlight"
+							
+							attrs="{'invisible':[   '|',
+													('x_admin_mode','not in',[True]),
+													('state','not in',['sale', 'credit_note']), 
+											]}"
+
+							name="admin_mode"
+
+							string="Modo Admin"
+						/>
+
 
 
 					<!-- Reset --> 
@@ -447,23 +464,33 @@
 																}"  
 										/>
 
+<!--
 					<field name="x_serial_nr"       attrs="{     
 																		'readonly': [
 																						('x_admin_mode', '!=', True), 
 																					], 
-																}"  
-
+																}"
 							/>
+-->
+
+
+
 <!--					
 					<field name="x_counter_value"       groups="openhealth.roots,openhealth.managers"   
--->
 					<field name="x_counter_value" 
 														attrs="{     
 																		'readonly': [
 																						('x_admin_mode', '!=', True), 
-																					], 
-																}"  
+																					],
+																}"
 								/>
+-->
+
+
+
+					<field name="x_serial_nr"	readonly="1"/>
+
+					<field name="x_counter_value"	readonly="1"/>
 				</xpath>
 
 

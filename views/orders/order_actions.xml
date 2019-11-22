@@ -7,6 +7,32 @@
 <!-- ACTIONS -->
 
 
+        <!-- Order Admin --> 
+
+        <record model="ir.actions.act_window" id="order_admin_list_action">
+            
+            <field name="name">Order Admins</field>
+            
+            <field name="res_model">openhealth.order.admin</field>
+            
+            <field name="view_type">form</field>
+            
+            <field name="view_mode">tree,form</field>   
+
+
+            <field name="domain">[]
+            </field>
+
+            <field name="context">{}</field>
+        </record>
+
+
+
+
+
+
+
+
         <!-- Action - All - From Patient --> 
         <record model="ir.actions.act_window" id="order_form_patient_action">
             <field name="name">orders</field>

@@ -28,6 +28,16 @@ class ConfiguratorEmr(models.Model):
 
 
 
+# ----------------------------------------------------------- Order Admin -------------------------------
+
+	order_admin = fields.Many2one(
+			'openhealth.order.admin',
+			#string='Venta',
+		)
+
+
+
+
 # ----------------------------------------------------------- PL - Paths -------------------------------
 
 	path_account_txt = fields.Char(

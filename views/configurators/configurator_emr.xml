@@ -35,12 +35,13 @@
 								<field name="name"/>
 								<field name="x_type"/>
 							</group>
-							<group></group>
+							<group>
+								<field name="order_admin"/>
+							</group>
 						</group>
 
 
-<!--
--->
+
 						<group  string="">
 
 							<!-- Patients -->

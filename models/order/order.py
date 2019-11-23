@@ -946,8 +946,31 @@ class sale_order(models.Model):
 		print()
 		print('Make Serial Number')
 
+
+
+
 		#self.x_counter_value = ord_funcs.get_next_counter_value(self.x_type, self.state)
-		self.x_counter_value = ord_funcs.get_next_counter_value(self, self.x_type, self.state)
+		#self.x_counter_value = ord_funcs.get_next_counter_value(self, self.x_type, self.state)
+
+
+		order = self.env['sale.order'].search([
+													#('x_electronic', '=', True),
+													#('x_type', '=', x_type),
+													#('state', 'in', ['sale', 'cancel']),
+												],
+											
+											order='x_counter_value desc',
+											
+											limit=1,
+										)
+		print(order)
+		print(order.x_counter_value)
+
+
+		self.x_counter_value = order.x_counter_value + 1
+		print(self.x_counter_value)
+
+
 
 
 		#self.x_serial_nr = ord_funcs.get_serial_nr(self.x_type, self.counter, self.state)

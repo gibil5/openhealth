@@ -541,7 +541,7 @@
 			"file": "views/orders/order.xml",
 			"settings":
 			{
-				"buffer_size": 18786,
+				"buffer_size": 18766,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -846,6 +846,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"counter",
 			"correct",
 			"snr",
 			"make_qr",
@@ -972,8 +973,7 @@
 			"state = fiel",
 			"state",
 			"partner_id",
-			"confi",
-			"create"
+			"confi"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -1119,7 +1119,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -1164,8 +1164,8 @@
 						"selection":
 						[
 							[
-								460,
-								460
+								312,
+								312
 							]
 						],
 						"settings":
@@ -1174,10 +1174,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 486.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -1186,15 +1186,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 18786,
+						"buffer_size": 18766,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1702,
-								1702
+								9176,
+								9176
 							]
 						],
 						"settings":
@@ -1203,10 +1203,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1108.0,
+						"translation.y": 7967.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{

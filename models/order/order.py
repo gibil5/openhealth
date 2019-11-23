@@ -949,8 +949,10 @@ class sale_order(models.Model):
 		#self.x_counter_value = ord_funcs.get_next_counter_value(self.x_type, self.state)
 		self.x_counter_value = ord_funcs.get_next_counter_value(self, self.x_type, self.state)
 
+
 		#self.x_serial_nr = ord_funcs.get_serial_nr(self.x_type, self.counter, self.state)
 		self.x_serial_nr = ord_funcs.get_serial_nr(self.x_type, self.x_counter_value, self.state)
+
 
 
 

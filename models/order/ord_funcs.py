@@ -45,7 +45,7 @@ def get_next_counter_value(self, x_type, state):
 
 		order = self.env['sale.order'].search([
 													#('x_electronic', '=', True),
-													('x_type', '=', x_type),
+													#('x_type', '=', x_type),
 													('state', 'in', ['sale', 'cancel']),
 												],
 											order='x_counter_value desc',

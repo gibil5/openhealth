@@ -26,8 +26,8 @@ def get_next_counter_value(self, x_type, state):
 
 
 	# Sale, Cancel
-	#if state in ['validated']:
-	if state in ['validated', 'sale']:
+	#if state in ['validated', 'sale']:
+	if state in ['validated']:
 
 		order = self.env['sale.order'].search([
 													('x_electronic', '=', True),

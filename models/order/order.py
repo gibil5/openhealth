@@ -775,9 +775,9 @@ class sale_order(models.Model):
 
 		# Make Serial Number
 		#if self.x_serial_nr != '' and not self.x_admin_mode:			
-		if self.state in ['validated']  and  self.x_serial_nr != '' and not self.x_admin_mode:			
+		#if self.state in ['validated']  and  self.x_serial_nr != '' and not self.x_admin_mode:			
 
-			self.make_serial_number()
+		self.make_serial_number()
 
 
 

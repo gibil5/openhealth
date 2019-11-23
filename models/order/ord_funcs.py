@@ -33,7 +33,10 @@ def get_next_counter_value(self, x_type, state):
 													('x_type', '=', x_type),
 													('state', 'in', ['credit_note']),
 												],
-											order='x_counter_value desc',
+											
+											#order='x_counter_value desc',		# Dep !
+											order='date_order desc',
+											
 											limit=1,
 										)
 
@@ -44,11 +47,14 @@ def get_next_counter_value(self, x_type, state):
 	else:
 
 		order = self.env['sale.order'].search([
-													#('x_electronic', '=', True),
-													#('x_type', '=', x_type),
+													('x_electronic', '=', True),
+													('x_type', '=', x_type),
 													('state', 'in', ['sale', 'cancel']),
 												],
-											order='x_counter_value desc',
+
+											#order='x_counter_value desc',  	# Highly deprecated ! Unstable in Tacna
+											order='date_order desc',
+
 											limit=1,
 										)
 

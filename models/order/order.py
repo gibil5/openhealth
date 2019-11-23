@@ -947,31 +947,32 @@ class sale_order(models.Model):
 		print('Make Serial Number')
 
 
-
-
-		#self.x_counter_value = ord_funcs.get_next_counter_value(self.x_type, self.state)
+		# Dep ?
 		#self.x_counter_value = ord_funcs.get_next_counter_value(self, self.x_type, self.state)
 
 
+		# Get Order
 		order = self.env['sale.order'].search([
-													#('x_electronic', '=', True),
+													('x_electronic', '=', True),
 													('x_type', '=', self.x_type),
 													('state', 'in', ['sale', 'cancel']),
 												],
 											
-											#order='x_counter_value desc',
+											#order='x_counter_value desc',		# Deprecated. Too unstable for Tacna !
 											order='date_order desc',
 											
 											limit=1,
 										)
-		print(order)
-		print(order.x_counter_value)
+		#print(order)
+		#print(order.x_counter_value)
 
+
+		# Update Counter
 		self.x_counter_value = order.x_counter_value + 1
-		print(self.x_counter_value)
+		#print(self.x_counter_value)
 
 
-		#self.x_serial_nr = ord_funcs.get_serial_nr(self.x_type, self.counter, self.state)
+		# Update Serial Number
 		self.x_serial_nr = ord_funcs.get_serial_nr(self.x_type, self.x_counter_value, self.state)
 
 

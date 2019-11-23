@@ -25,10 +25,23 @@ def get_next_counter_value(self, x_type, state):
 	print(state)
 
 
+	# Credit Note
+	if state in ['credit_note']:
+
+		order = self.env['sale.order'].search([
+													('x_electronic', '=', True),
+													('x_type', '=', x_type),
+													('state', 'in', ['credit_note']),
+												],
+											order='x_counter_value desc',
+											limit=1,
+										)
+
 	# Sale, Cancel
 	#if state in ['validated', 'sale']:
 	#if state in ['validated']:
-	if state in ['sale']:
+	#if state in ['sale']:
+	else:
 
 		order = self.env['sale.order'].search([
 													('x_electronic', '=', True),
@@ -38,16 +51,7 @@ def get_next_counter_value(self, x_type, state):
 											order='x_counter_value desc',
 											limit=1,
 										)
-	# Credit Note
-	elif state in ['credit_note']:
-		order = self.env['sale.order'].search([
-													('x_electronic', '=', True),
-													('x_type', '=', x_type),
-													('state', 'in', ['credit_note']),
-												],
-											order='x_counter_value desc',
-											limit=1,
-										)
+
 	return order.x_counter_value + 1
 
 

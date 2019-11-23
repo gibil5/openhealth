@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-snr.py
+snr.py  	- Dep !
 
 Created: 			 2 Sep 2019
 Last up: 	 		 2 Sep 2019

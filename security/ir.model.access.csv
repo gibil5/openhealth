@@ -2,6 +2,14 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+access_openhealth_order_admin,openhealth.order.admin,model_openhealth_order_admin,,1,1,1,0
+
+
+
+access_openhealth_patient_origin,openhealth.patient.origin,model_openhealth_patient_origin,,1,1,1,0
+
+
+
 access_openhealth_patient_consultation,openhealth.patient.consultation,model_openhealth_patient_consultation,,1,1,1,1
 
 access_openhealth_patient_procedure,openhealth.patient.procedure,model_openhealth_patient_procedure,,1,1,1,1

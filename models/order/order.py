@@ -14,15 +14,17 @@ from openerp.exceptions import Warning as UserError
 
 from openerp.addons.openhealth.models.libs import lib
 from openerp.addons.openhealth.models.patient import pat_vars, chk_patient
-from . import ord_vars
 from . import test_order
 from . import chk_order
 from . import exc_ord
 from . import tick_funcs
+
+from . import ord_vars
 from . import ord_funcs
 
 from . import qr
-from . import snr
+#from . import snr  	# Dep
+
 
 class sale_order(models.Model):
 	"""
@@ -918,17 +920,16 @@ class sale_order(models.Model):
 	#	print()
 	#	print('Action confirm - Nex')
 
-
 		# Generate Serial Number
 	#	if self.x_serial_nr != '' and not self.x_admin_mode:			
 
 	#		self.make_serial_number()
 
-
 		# State
 	#	self.state = 'sale'
 
 	# action_confirm_nex
+
 
 
 
@@ -939,30 +940,17 @@ class sale_order(models.Model):
 	def make_serial_number(self):
 		"""
 		Make Serial Number
-		This is an example of how you can apply the Three Layered Model. To encapsulte Business Rules.
+		This is an example of how you can encapsulte Business Rules.
+		In the Libraries.
 		"""
 		print()
 		print('Make Serial Number')
 
+		#self.x_counter_value = ord_funcs.get_next_counter_value(self.x_type, self.state)
+		self.x_counter_value = ord_funcs.get_next_counter_value(self, self.x_type, self.state)
 
-		# Init
-		x_type = self.x_type
-		state = self.state
-
-		# Create Object
-		snr_obj = snr.SerialNumber(self, x_type, state)
-
-		# Get data
-		serial_nr = snr_obj.get_serial_number()
-		counter_value = snr_obj.get_counter()
-		#print(serial_nr)
-
-
-		# Update the Database
-		self.write({
-						'x_serial_nr': serial_nr,
-						'x_counter_value': counter_value,
-				})
+		#self.x_serial_nr = ord_funcs.get_serial_nr(self.x_type, self.counter, self.state)
+		self.x_serial_nr = ord_funcs.get_serial_nr(self.x_type, self.x_counter_value, self.state)
 
 
 
@@ -1135,29 +1123,11 @@ class sale_order(models.Model):
 		print('Create CN')
 
 
-		# State
-		#state = 'credit_note'
 
-		# Counter
-		#counter_value = user.get_counter_value(self, self.x_type, state)
+		# New - Ord Funcs
+		counter_value = ord_funcs.get_next_counter_value(self.x_type, self.state)
 
-		# Serial Nr
-		#serial_nr = user.get_serial_nr(self.x_type, counter_value, state)
-
-
-
-		# Init
-		x_type = self.x_type
-		state = 'credit_note'
-
-		# Create Object
-		snr_obj = snr.SerialNumber(self, x_type, state)
-
-		# Get data
-		serial_nr = snr_obj.get_serial_number()
-		counter_value = snr_obj.get_counter()
-		#print(serial_nr)
-
+		serial_nr = ord_funcs.get_serial_nr(self.x_type, self.counter, self.state)
 
 
 

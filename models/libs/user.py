@@ -13,7 +13,7 @@ import datetime
 from openerp.addons.openhealth.models.order import ord_vars
 
 
-#------------------------------------------------ Get Counter -------------------------------------
+#------------------------------------------------ Get Counter - Dep -------------------------------------
 
 #def get_counter_value(self, x_type, state):
 def get_next_counter_value(self, x_type, state):
@@ -56,7 +56,7 @@ def get_next_counter_value(self, x_type, state):
 
 
 
-#------------------------------------------------ Get Serial Nr -----------------------------------
+#------------------------------------------------ Get Serial Nr - Dep -----------------------------------
 def get_serial_nr(x_type, counter_value, state):
 	"""
 	Get the Serial Nr, given the type, counter and state.

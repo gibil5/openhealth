@@ -1,3 +1,57 @@
+# 23 Nov 2019
+
+# Serial nr
+
+
+# Credit note
+
+		# State
+		#state = 'credit_note'
+
+		# Counter
+		#counter_value = user.get_counter_value(self, self.x_type, state)
+
+		# Serial Nr
+		#serial_nr = user.get_serial_nr(self.x_type, counter_value, state)
+
+
+
+		# Init
+		x_type = self.x_type
+		#state = 'credit_note'
+
+		# Create Object
+		snr_obj = snr.SerialNumber(self, x_type, state)
+
+		# Get data
+		serial_nr = snr_obj.get_serial_number()
+		counter_value = snr_obj.get_counter()
+		#print(serial_nr)
+
+
+
+# Sale 
+		# Init
+		#x_type = self.x_type
+		#state = self.state
+
+		# Create Object
+		#snr_obj = snr.SerialNumber(self, x_type, state)
+
+		# Get data
+		#serial_nr = snr_obj.get_serial_number()
+		#counter_value = snr_obj.get_counter()
+		#print(serial_nr)
+
+		# Update the Database
+		#self.write({
+		#				'x_serial_nr': serial_nr,
+		#				'x_counter_value': counter_value,
+		#		})
+
+
+
+
 # 29 Aug 2019 - Update Counter
 # Deprecated ?
 

@@ -8,6 +8,79 @@
 """
 from openerp.addons.openhealth.models.libs import lib
 
+from . import ord_vars
+
+
+#------------------------------------------------ Get Counter -------------------------------------
+
+#def get_next_counter_value(x_type, state):
+def get_next_counter_value(self, x_type, state):
+	"""
+	Get Next Counter value. Given type and state.
+	If State in Validated or Sale.
+	"""
+	print()
+	print('Get Counter Value')
+	print(x_type)
+	print(state)
+
+
+	# Sale, Cancel
+	#if state in ['validated']:
+	if state in ['validated', 'sale']:
+
+		order = self.env['sale.order'].search([
+													('x_electronic', '=', True),
+													('x_type', '=', x_type),
+													('state', 'in', ['sale', 'cancel']),
+												],
+											order='x_counter_value desc',
+											limit=1,
+										)
+	# Credit Note
+	elif state in ['credit_note']:
+		order = self.env['sale.order'].search([
+													('x_electronic', '=', True),
+													('x_type', '=', x_type),
+													('state', 'in', ['credit_note']),
+												],
+											order='x_counter_value desc',
+											limit=1,
+										)
+	return order.x_counter_value + 1
+
+
+
+
+
+
+#------------------------------------------------ Get Serial Nr -----------------------------------
+def get_serial_nr(x_type, counter_value, state):
+	"""
+	Get the Serial Nr, given the type, counter and state.
+	"""
+	print()
+	print('Get Serial Nr')
+
+	# Separator
+	separator = '-'
+
+	# Prefix
+	if state in ['credit_note']:
+		prefix = ord_vars.get_prefix_cn(x_type)
+	else:
+		prefix = ord_vars.get_prefix(x_type)
+
+	# Padding
+	padding = ord_vars.get_padding(x_type)
+
+	# Serial Nr
+	serial_nr = prefix  +  separator  +  str(counter_value).zfill(padding)
+
+	return serial_nr
+
+
+
 
 
 # ----------------------------------------------------------- Descriptors -------------------------

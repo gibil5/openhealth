@@ -1149,10 +1149,17 @@ class sale_order(models.Model):
 
 
 		# New - Ord Funcs
-		counter_value = ord_funcs.get_next_counter_value(self.x_type, self.state)
 
-		serial_nr = ord_funcs.get_serial_nr(self.x_type, self.counter, self.state)
+		# Get counter
+		#counter_value = ord_funcs.get_next_counter_value(self.x_type, self.state)
+		counter_value = ord_funcs.get_next_counter_value(self, self.x_type, self.state)
 
+
+		# Get serial nr
+		#serial_nr = ord_funcs.get_serial_nr(self.x_type, self.counter, self.state)
+		serial_nr = ord_funcs.get_serial_nr(self.x_type, counter_value, self.state)
+
+		state = 'credit_note'
 
 
 		# Duplicate with different fields
@@ -1163,7 +1170,9 @@ class sale_order(models.Model):
 											'x_credit_note_owner': self.id,											
 											'x_title': 'Nota de Crédito Electrónica',
 											'x_payment_method': False,
+
 											'state': state,
+
 											'amount_total': self.amount_total,
 											'amount_untaxed': self.amount_untaxed,
 								})

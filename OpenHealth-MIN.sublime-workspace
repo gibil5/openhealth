@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"date",
+				"date_order"
+			],
+			[
 				"Corr",
 				"Corregir"
 			],
@@ -214,10 +218,6 @@
 			[
 				"ap",
 				"append"
-			],
-			[
-				"date",
-				"date_array"
 			],
 			[
 				"x",
@@ -523,7 +523,7 @@
 			"file": "med__openerp__.py",
 			"settings":
 			{
-				"buffer_size": 11808,
+				"buffer_size": 11801,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -532,7 +532,7 @@
 			"file": "readme.txt",
 			"settings":
 			{
-				"buffer_size": 31,
+				"buffer_size": 27,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -541,7 +541,7 @@
 			"file": "models/order/order.py",
 			"settings":
 			{
-				"buffer_size": 37468,
+				"buffer_size": 37445,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -550,7 +550,7 @@
 			"file": "models/order/ord_funcs.py",
 			"settings":
 			{
-				"buffer_size": 5499,
+				"buffer_size": 5648,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -1128,7 +1128,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -1137,7 +1137,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11808,
+						"buffer_size": 11801,
 						"regions":
 						{
 						},
@@ -1157,7 +1157,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -1166,15 +1166,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 31,
+						"buffer_size": 27,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								30,
-								30
+								27,
+								27
 							]
 						],
 						"settings":
@@ -1185,7 +1185,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -1194,15 +1194,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 37468,
+						"buffer_size": 37445,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								18746,
-								18746
+								18786,
+								18786
 							]
 						],
 						"settings":
@@ -1211,10 +1211,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 13117.0,
+						"translation.y": 15902.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -1223,15 +1223,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5499,
+						"buffer_size": 5648,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1251,
-								1276
+								1358,
+								1358
 							]
 						],
 						"settings":
@@ -1240,10 +1240,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 316.0,
+						"translation.y": 363.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{

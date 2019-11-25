@@ -1146,20 +1146,22 @@ class sale_order(models.Model):
 		print()
 		print('Create CN')
 
+		# Init
+		state = 'credit_note'
 
 
 		# New - Ord Funcs
 
 		# Get counter
 		#counter_value = ord_funcs.get_next_counter_value(self.x_type, self.state)
-		counter_value = ord_funcs.get_next_counter_value(self, self.x_type, self.state)
+		counter_value = ord_funcs.get_next_counter_value(self, self.x_type, state)
+
 
 
 		# Get serial nr
 		#serial_nr = ord_funcs.get_serial_nr(self.x_type, self.counter, self.state)
 		serial_nr = ord_funcs.get_serial_nr(self.x_type, counter_value, self.state)
 
-		state = 'credit_note'
 
 
 		# Duplicate with different fields

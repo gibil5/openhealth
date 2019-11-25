@@ -1160,7 +1160,7 @@ class sale_order(models.Model):
 
 		# Get serial nr
 		#serial_nr = ord_funcs.get_serial_nr(self.x_type, self.counter, self.state)
-		serial_nr = ord_funcs.get_serial_nr(self.x_type, counter_value, self.state)
+		serial_nr = ord_funcs.get_serial_nr(self.x_type, counter_value, state)
 
 
 

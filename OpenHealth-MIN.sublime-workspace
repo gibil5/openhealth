@@ -523,16 +523,25 @@
 			"file": "med__openerp__.py",
 			"settings":
 			{
-				"buffer_size": 11801,
+				"buffer_size": 11809,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "readme.txt",
+			"file": "models/order/closing.py",
 			"settings":
 			{
-				"buffer_size": 27,
+				"buffer_size": 7251,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/order/clos_funcs.py",
+			"settings":
+			{
+				"buffer_size": 8224,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -541,7 +550,7 @@
 			"file": "models/order/order.py",
 			"settings":
 			{
-				"buffer_size": 37445,
+				"buffer_size": 37669,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -709,11 +718,12 @@
 	},
 	"file_history":
 	[
+		"/Users/gibil/cellar/github/openhealth/readme.txt",
+		"/Users/gibil/cellar/github/openhealth/models/order/ord_vars.py",
 		"/Users/gibil/cellar/github/openhealth/models/order/snr.py",
 		"/Users/gibil/cellar/github/openhealth/models/patient/patient_origin.py",
 		"/Users/gibil/cellar/github/openhealth/models/order/order_admin.py",
 		"/Users/gibil/cellar/github/openhealth/security/ir.model.access.csv",
-		"/Users/gibil/cellar/github/openhealth/readme.txt",
 		"/Users/gibil/cellar/github/openhealth/views/menus/menus.xml",
 		"/Users/gibil/cellar/github/openhealth/views/menus/menus_caja.xml",
 		"/Users/gibil/cellar/github/openhealth/views/orders/order_admin.xml",
@@ -812,7 +822,6 @@
 		"/Users/gibil/cellar/github/openhealth/models/emr/consultation.TRASH.py",
 		"/Users/gibil/cellar/github/openhealth/models/emr/evaluation.DEP.py",
 		"/Users/gibil/cellar/github/openhealth/models/management/mgt_vars.py",
-		"/Users/gibil/cellar/github/openhealth/models/order/ord_vars.py",
 		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_tacna.xml",
 		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_directors.xml",
 		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_doctors.xml",
@@ -840,7 +849,7 @@
 	],
 	"find":
 	{
-		"height": 37.0
+		"height": 25.0
 	},
 	"find_in_files":
 	{
@@ -855,6 +864,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"create_cre",
+			"make_cre",
+			"create_credit",
 			"x_counter_value",
 			"counter",
 			"x_counter_value",
@@ -979,9 +991,6 @@
 			"nr_",
 			"tre",
 			"nr_tre",
-			"state",
-			"sele",
-			"compute",
 			"state"
 		],
 		"highlight": false,
@@ -1128,7 +1137,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -1137,15 +1146,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11801,
+						"buffer_size": 11809,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								262,
-								262
+								248,
+								248
 							]
 						],
 						"settings":
@@ -1157,29 +1166,30 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "readme.txt",
+					"file": "models/order/closing.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 27,
+						"buffer_size": 7251,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								27,
-								27
+								593,
+								593
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1190,19 +1200,19 @@
 				},
 				{
 					"buffer": 2,
-					"file": "models/order/order.py",
+					"file": "models/order/clos_funcs.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 37445,
+						"buffer_size": 8224,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								18786,
-								18786
+								2272,
+								2272
 							]
 						],
 						"settings":
@@ -1211,14 +1221,43 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 15902.0,
+						"translation.y": 1379.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "models/order/order.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 37669,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								22637,
+								22637
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 4,
 					"file": "models/order/ord_funcs.py",
 					"semi_transient": false,
 					"settings":
@@ -1230,8 +1269,8 @@
 						"selection":
 						[
 							[
-								1358,
-								1358
+								1710,
+								1710
 							]
 						],
 						"settings":
@@ -1240,14 +1279,14 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 363.0,
+						"translation.y": 964.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "views/orders/order.xml",
 					"semi_transient": false,
 					"settings":
@@ -1272,11 +1311,11 @@
 						"translation.y": 7967.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "models/order/order.TRASH.py",
 					"semi_transient": false,
 					"settings":
@@ -1301,11 +1340,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 7,
 					"file": "models/libs/user.py",
 					"semi_transient": false,
 					"settings":
@@ -1330,11 +1369,11 @@
 						"translation.y": 609.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 8,
 					"file": "models/order/exc_ord.py",
 					"semi_transient": false,
 					"settings":
@@ -1359,11 +1398,11 @@
 						"translation.y": 798.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 9,
 					"file": "views/orders/order_administrator.xml",
 					"semi_transient": false,
 					"settings":
@@ -1388,11 +1427,11 @@
 						"translation.y": 425.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 10,
 					"file": "views/orders/order_tree.xml",
 					"semi_transient": false,
 					"settings":
@@ -1417,11 +1456,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 11,
 					"file": "views/orders/order_actions.xml",
 					"semi_transient": false,
 					"settings":
@@ -1447,11 +1486,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 12,
 					"file": "views/configurators/configurator_emr.xml",
 					"semi_transient": false,
 					"settings":
@@ -1476,11 +1515,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 13,
 					"file": "models/configurator/configurator_emr.py",
 					"semi_transient": false,
 					"settings":
@@ -1505,7 +1544,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 13,
 					"type": "text"
 				}
 			]
@@ -1562,7 +1601,7 @@
 	"project": "OpenHealth-MIN.sublime-project",
 	"replace":
 	{
-		"height": 66.0
+		"height": 46.0
 	},
 	"save_all_on_build": true,
 	"select_file":

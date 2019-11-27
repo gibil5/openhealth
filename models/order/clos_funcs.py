@@ -3,10 +3,160 @@
  		clos_funcs.py
 
  		Created: 			       2016
-		Last up: 	 		 4 Sep 2018
+		Last up: 	 		26 Nov 2019
 """
 from __future__ import print_function
 import datetime
+
+
+
+# ----------------------------------------------------------- Get Orders --------------------------
+
+def get_orders(self, date, x_type):
+	"""
+	Abstract, General purpose.
+	Gives service to other methods.
+	15 Feb 2019: Added Filter Block
+	"""
+	print()
+	print('Get Orders')
+	print(date)
+	print(x_type)
+
+
+	# Init
+	count = 0
+	DATETIME_FORMAT = "%Y-%m-%d"
+	date_begin = date + ' 05:00:00'
+	date_end_dt = datetime.datetime.strptime(date, DATETIME_FORMAT) + datetime.timedelta(hours=24) + datetime.timedelta(hours=5, minutes=0)
+	date_end = date_end_dt.strftime('%Y-%m-%d %H:%M')
+
+
+	# Search If All
+	if x_type == 'all':
+		orders = self.env['sale.order'].search([
+													('state', '=', 'sale'),
+
+													('x_block_flow', 'not in', [True]),
+													('date_order', '>=', date_begin),
+													('date_order', '<', date_end),
+											])
+		count = self.env['sale.order'].search_count([
+													('state', '=', 'sale'),
+
+													('x_block_flow', 'not in', [True]),
+													('date_order', '>=', date_begin),
+													('date_order', '<', date_end),
+											])
+
+
+	# Search If Other
+	else:
+		orders = self.env['sale.order'].search([
+													('x_block_flow', 'not in', [True]),
+
+													('state', '=', 'sale'),
+													('date_order', '>=', date_begin),
+													('date_order', '<', date_end),
+													('x_type', '=', x_type),
+											],
+												order='x_serial_nr asc',
+												#limit=1,
+											)
+		count = self.env['sale.order'].search_count([
+													('x_block_flow', 'not in', [True]),
+
+													('state', '=', 'sale'),
+													('date_order', '>=', date_begin),
+													('date_order', '<', date_end),
+													('x_type', '=', x_type),
+											],
+												#order='x_serial_nr asc',
+												#limit=1,
+											)
+
+
+	return orders, count
+
+# get_orders
+
+
+
+
+
+# ----------------------------------------------------------- Get Orders By State -----------------
+def get_orders_by_state_all(self, date):
+	"""
+	Abstract, General purpose.
+	Provider of services.
+	"""
+	print()
+	print('Get Orders State')
+
+
+	# Init
+	count = 0
+	DATETIME_FORMAT = "%Y-%m-%d"
+	date_begin = date + ' 05:00:00'
+	date_end_dt = datetime.datetime.strptime(date, DATETIME_FORMAT) + datetime.timedelta(hours=24) + datetime.timedelta(hours=5, minutes=0)
+	date_end = date_end_dt.strftime('%Y-%m-%d %H:%M')
+
+	# Search
+	orders = self.env['sale.order'].search([
+												#('state', '=', state),
+												('state', 'in', ['sale', 'credit_note']),
+
+												('date_order', '>=', date_begin),
+												('date_order', '<', date_end),
+										])
+	count = self.env['sale.order'].search_count([
+												#('state', '=', state),
+												('state', 'in', ['sale', 'credit_note']),
+
+												('date_order', '>=', date_begin),
+												('date_order', '<', date_end),
+										])
+	return orders, count
+# get_orders_by_state
+
+
+
+
+
+# ----------------------------------------------------------- Get Orders By State -----------------
+def get_orders_by_state(self, date, state):
+	"""
+	Abstract, General purpose.
+	Provider of services.
+	"""
+	print()
+	print('Get Orders State')
+
+
+	# Init
+	count = 0
+	DATETIME_FORMAT = "%Y-%m-%d"
+	date_begin = date + ' 05:00:00'
+	date_end_dt = datetime.datetime.strptime(date, DATETIME_FORMAT) + datetime.timedelta(hours=24) + datetime.timedelta(hours=5, minutes=0)
+	date_end = date_end_dt.strftime('%Y-%m-%d %H:%M')
+
+	# Search
+	orders = self.env['sale.order'].search([
+												('state', '=', state),
+
+												('date_order', '>=', date_begin),
+												('date_order', '<', date_end),
+										])
+	count = self.env['sale.order'].search_count([
+												('state', '=', state),
+
+												('date_order', '>=', date_begin),
+												('date_order', '<', date_end),
+										])
+	return orders, count
+# get_orders_by_state
+
+
 
 
 
@@ -225,107 +375,3 @@ def set_totals(self):
 
 
 
-# ----------------------------------------------------------- Get Orders --------------------------
-
-def get_orders(self, date, x_type):
-	"""
-	Abstract, General purpose.
-	Gives service to other methods.
-	15 Feb 2019: Added Filter Block
-	"""
-	#print()
-	#print('Get Orders')
-	#print(date)
-	#print(x_type)
-
-	# Init
-	count = 0
-	DATETIME_FORMAT = "%Y-%m-%d"
-	date_begin = date + ' 05:00:00'
-	date_end_dt = datetime.datetime.strptime(date, DATETIME_FORMAT) + datetime.timedelta(hours=24) + datetime.timedelta(hours=5, minutes=0)
-	date_end = date_end_dt.strftime('%Y-%m-%d %H:%M')
-
-
-	# Search If All
-	if x_type == 'all':
-		orders = self.env['sale.order'].search([
-													('x_block_flow', 'not in', [True]),
-
-													('state', '=', 'sale'),
-													('date_order', '>=', date_begin),
-													('date_order', '<', date_end),
-											])
-		count = self.env['sale.order'].search_count([
-													('x_block_flow', 'not in', [True]),
-
-													('state', '=', 'sale'),
-													('date_order', '>=', date_begin),
-													('date_order', '<', date_end),
-											])
-
-
-	# Search If Other
-	else:
-		orders = self.env['sale.order'].search([
-													('x_block_flow', 'not in', [True]),
-
-													('state', '=', 'sale'),
-													('date_order', '>=', date_begin),
-													('date_order', '<', date_end),
-													('x_type', '=', x_type),
-											],
-												order='x_serial_nr asc',
-												#limit=1,
-											)
-		count = self.env['sale.order'].search_count([
-													('x_block_flow', 'not in', [True]),
-
-													('state', '=', 'sale'),
-													('date_order', '>=', date_begin),
-													('date_order', '<', date_end),
-													('x_type', '=', x_type),
-											],
-												#order='x_serial_nr asc',
-												#limit=1,
-											)
-
-
-	return orders, count
-
-# get_orders
-
-
-
-
-
-# ----------------------------------------------------------- Get Orders By State -----------------
-def get_orders_by_state(self, date, state):
-	"""
-	Abstract, General purpose.
-	Provider of services.
-	"""
-	print()
-	print('Get Orders State')
-
-	# Init
-	count = 0
-	DATETIME_FORMAT = "%Y-%m-%d"
-	date_begin = date + ' 05:00:00'
-	date_end_dt = datetime.datetime.strptime(date, DATETIME_FORMAT) + datetime.timedelta(hours=24) + datetime.timedelta(hours=5, minutes=0)
-	date_end = date_end_dt.strftime('%Y-%m-%d %H:%M')
-
-	# Search
-	orders = self.env['sale.order'].search([
-												('state', '=', state),
-
-												('date_order', '>=', date_begin),
-												('date_order', '<', date_end),
-										])
-	count = self.env['sale.order'].search_count([
-												('state', '=', state),
-
-												('date_order', '>=', date_begin),
-												('date_order', '<', date_end),
-										])
-	return orders, count
-# get_orders_by_state

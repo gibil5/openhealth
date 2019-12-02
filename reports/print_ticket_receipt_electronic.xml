@@ -82,7 +82,8 @@ Last up:   	2 Dec 2019
 <!-- ROW - Receptor - Begin -->
 <div class="row">
 
-<div class="text-left" style="margin-top:10px;">
+<div>
+
 	<table style="width:100%">
 
 
@@ -95,19 +96,48 @@ Last up:   	2 Dec 2019
 </t>
 
 
+
 <!-- Conditional - Receipt -->
+
 <t t-if="doc.x_type == 'ticket_receipt'">
+
 		<tr>
-			<td><b>Cliente:</b></td>
-			<td><t t-esc="doc.patient.name"/></td> 
+			<td>
+				<font size="2">
+					<b>Cliente:</b>
+				</font>
+			</td>
+			
+			<td>
+				<font size="2">
+					<t t-esc="doc.patient.name"/>
+				</font>
+			</td> 
+		</tr>
+
+		<tr>
+			<td>
+				<font size="2">
+					<b>DNI:</b>
+				</font>
+			</td>
+			<td>
+				<font size="2">
+					<t t-esc="doc.x_id_doc"/>
+				</font>
+			</td> 
 		</tr>
 		<tr>
-			<td><b>DNI:</b></td>
-			<td><t t-esc="doc.x_id_doc"/></td> 
-		</tr>
-		<tr>
-			<td><b>Dirección:</b></td>
-			<td><t t-esc="doc.get_patient_address()"/></td> 
+			<td>
+				<font size="2">
+					<b>Dirección:</b>
+				</font>
+			</td>
+			<td>
+				<font size="2">
+					<t t-esc="doc.get_patient_address()"/>
+				</font>
+			</td> 
 		</tr>
 </t>
 

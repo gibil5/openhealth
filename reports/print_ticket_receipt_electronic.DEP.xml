@@ -151,6 +151,18 @@
 
 
 
+<!-- Date and Ticket -->
+		<tr>
+			<td><b>Fecha:</b></td>
+			<td><t t-esc="doc.get_date_corrected()"/></td> 
+		</tr>
+
+
+		<tr>
+			<td><b>Ticket:</b></td>
+			<td><t t-esc="doc.x_serial_nr"/></td> 
+		</tr>
+
 
 
 
@@ -162,6 +174,26 @@
 
 <div class="text-left" style="margin-top:10px;">
 
+
+
+
+<!--
+		<div class="col-xs-12 text-center" style="margin-top:7px;" t-field="doc.x_my_company.x_warning"/>
+		<div class="col-xs-12 text-center" style="margin-top:7px;" t-field="doc.x_my_company.website"/>
+		<div class="col-xs-12 text-center" style="margin-top:7px;" t-field="doc.x_my_company.email"/>
+
+		<div class="col-xs-12 text-center" style="margin-top:7px;" t-field="doc.get_warning()"/>
+		<div class="col-xs-12 text-center" style="margin-top:7px;" t-field="doc.get_website()"/>
+		<div class="col-xs-12 text-center" style="margin-top:7px;" t-field="doc.get_email()"/>
+-->
+<!--
+doc.get_patient_address()
+			<td><t t-esc="doc.get_patient_address()"/></td> 
+-->
+
+<!--
+		<div class="col-xs-12 text-center" style="margin-top:7px;" t-field="doc.x_my_company.sale_note"/>
+-->
 
 
 

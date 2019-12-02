@@ -746,12 +746,49 @@ class sale_order(models.Model):
 
 # ----------------------------------------------------------- Ticket - Get Table Lines - Receipt ----------------
 
+	# Ticket Date
+	def get_ticket_date_line(self):
+		print()
+		print('Get Ticket Date Line')
+
+		tag = 'Fecha:'
+		value = self.get_date_corrected()
+
+		line = self.format_line(tag, value )
+
+		#print(line)
+		return line
+
+
+	# Ticket Number
+	def get_ticket_number_line(self):
+		print()
+		print('Get Ticket Number Line')
+
+		tag = 'Ticket:'
+		value = self.x_serial_nr
+
+		line = self.format_line(tag, value )
+
+		#print(line)
+		return line
+
+
+
+
+
+
+
 	# Patient Name 
 	def get_patient_name_line(self):
 		print()
 		print('Get Patient Name Line')
 
-		line = self.format_line('Cliente:', self.patient.name )
+		tag = 'Cliente:'
+		value = self.patient.name
+
+		#line = self.format_line('Cliente:', self.patient.name )
+		line = self.format_line(tag, value )
 
 		#print(line)
 		return line

@@ -89,10 +89,9 @@ Last up:   	2 Dec 2019
 
 <!-- Conditional - Credit Note -->
 <t t-if="doc.state == 'credit_note'">
-		<tr>
-			<td><b>Fecha:</b></td>
-			<td><t t-esc="doc.get_date_corrected()"/></td> 
-		</tr>
+
+	<t t-raw="doc.get_ticket_raw_line('date_credit_note')"/>
+
 </t>
 
 
@@ -144,6 +143,15 @@ Last up:   	2 Dec 2019
 		</div>
 	</b>
 	<table style="width:100%">
+
+		<t t-raw="doc.get_ticket_raw_line('denomination_credit_note_owner')"/>
+
+		<t t-raw="doc.get_ticket_raw_line('date_credit_note_owner')"/>
+
+		<t t-raw="doc.get_ticket_raw_line('reason_credit_note')"/>
+
+
+<!--
 		<tr>
 			<td><b>Denominación:</b></td>
 			<td><t t-esc="doc.x_credit_note_owner.x_serial_nr"/></td> 
@@ -156,6 +164,7 @@ Last up:   	2 Dec 2019
 			<td><b>Motivo:</b></td>
 			<td><t t-esc="doc.get_credit_note_type()"/></td> 
 		</tr>
+-->
 	</table>
 </t>
 

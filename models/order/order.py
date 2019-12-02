@@ -508,6 +508,59 @@ class sale_order(models.Model):
 
 
 
+# ----------------------------------------------------------- Ticket - Get Raw Line ----------------
+
+	# Raw Line
+	def get_ticket_raw_line(self, argument):
+		print()
+		print('Get Ticket Raw Line')
+
+		print(argument)
+
+		line = 'empty'
+
+
+		# Credit note
+
+		if argument in ['date_credit_note']:
+
+			tag = 'Fecha:'
+			value = self.get_date_corrected()
+
+
+
+		elif argument in ['denomination_credit_note_owner']:
+			tag = 'Denominacion:'
+			value = self.x_credit_note_owner.x_serial_nr
+
+
+		elif argument in ['date_credit_note_owner']:
+			tag = 'Fecha de emision'
+			value = self.x_credit_note_owner.get_date_corrected()
+
+
+		elif argument in ['reason_credit_note']:
+			tag = 'Motivo:'
+			value = self.get_credit_note_type()
+
+
+
+
+		else:
+			print('This should not happen !')
+
+
+		line = self.format_line(tag, value)
+
+
+		#print(line)
+		return line
+
+
+
+
+
+
 
 # ----------------------------------------------------------- Ticket - Get Items Lines  ----------------
 

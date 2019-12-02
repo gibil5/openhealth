@@ -166,6 +166,12 @@
 
 
 
+<!-- Credit note -->
+		<tr>
+			<td><b>Fecha:</b></td>
+			<td><t t-esc="doc.get_date_corrected()"/></td> 
+		</tr>
+
 
 
 

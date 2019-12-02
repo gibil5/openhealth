@@ -101,20 +101,45 @@ Last up:   	2 Dec 2019
 
 <t t-if="doc.x_type == 'ticket_receipt'">
 
+
+<!--
+<tr>
+<td>
+	<t-esc="doc.get_patient_name_line()"/>
+</td>
+</tr>
+
+
+<t-esc="doc.get_patient_name_dni()"/>
+
+<t-esc="doc.get_patient_name_address()"/>
+-->
+
+<!--
 		<tr>
 			<td>
-				<font size="2">
-					<b>Cliente:</b>
-				</font>
+				x
 			</td>
-			
 			<td>
-				<font size="2">
-					<t t-esc="doc.patient.name"/>
-				</font>
-			</td> 
-		</tr>
+				y
+			</td>
+			<t t-esc="doc.get_patient_address()"/>
+			<t t-esc="doc.get_patient_name_line()"/>
 
+			<td>
+				x
+			</td>
+
+			<td>
+
+
+			</td>
+
+		</tr>
+-->
+				<t t-raw="doc.get_patient_name_line()"/>
+
+		
 		<tr>
 			<td>
 				<font size="2">
@@ -127,6 +152,7 @@ Last up:   	2 Dec 2019
 				</font>
 			</td> 
 		</tr>
+
 		<tr>
 			<td>
 				<font size="2">

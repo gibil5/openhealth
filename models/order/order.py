@@ -474,6 +474,45 @@ class sale_order(models.Model):
 
 
 
+
+# ----------------------------------------------------------- Ticket - Get Table Lines ----------------
+
+	@api.multi
+	def test_line(self):
+		
+		line = self.get_patient_name_line()
+
+		return line
+
+
+
+	def format_line(self, tag, value):
+
+		line = "<tr>\
+					<td>\
+						<font size='2'>\
+							<b>" + tag + "</b>\
+						</font>\
+					</td>\
+					<td>\
+						<font size='2'>" + value + "</font>\
+					</td>\
+				</tr>"
+
+		return line 
+
+
+
+	def get_patient_name_line(self):
+		print()
+		print('Get Patient Name Line')
+
+		line = self.format_line('Cliente:', self.patient.name )
+
+		print(line)
+		return line
+
+
 # ----------------------------------------------------------- Ticket - Header - Getters ----------------
 
 	# Company Address

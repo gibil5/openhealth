@@ -87,6 +87,21 @@
 
 
 
+
+					<!-- Test Line -->
+					<button 
+							type="object"
+							
+							class="oe_highlight"
+							
+							name="test_line"
+
+							string="Test Line"
+						/>
+
+
+
+
 					<!-- Reset --> 
 <!--
 					<button 

@@ -27,65 +27,26 @@
 
 
 
-<!-- Legal --> 
-<div class="header">
-<!--
-	<div class="text-center" style="margin-top:1px;margin-bottom:1px;width:100%;font-size: xx-small;">
--->
-	<div class="text-center" style="margin-top:1px;margin-bottom:1px;width:100%;font-size: x-small;">
-<br/>
-		<div class="col-xs-12 text-center" style="margin-top:7px;" t-esc="doc.get_company_name()"/>
-		
-		<div class="col-xs-12 text-center" style="margin-top:7px;" t-esc="doc.get_company_ruc()"/>
-
-		<div class="col-xs-12 text-center" style="margin-top:7px;" t-esc="doc.get_company_address()"/>
-
-		<div class="col-xs-12 text-center" style="margin-top:7px;" t-esc="doc.get_company_phone()"/>
-
-
-<!--
-doc.get_patient_address()
-			<td><t t-esc="doc.get_patient_address()"/></td> 
--->
-	</div>
-</div>      
-
 
 			<t t-call="openhealth.external_layout">
 				<div class="page" style="margin-top:100px;font-size: small;">
 
 
 
-<!-- ROW - Title - Begin -->
+<!--Title -->
 <div class="row">
 <b>
 	<div class="col-xs-12" style="border-top: 1px solid black;"/>
-
 	<!-- Title -->
-<!--
-	<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-field="doc.x_title"/>
--->
 	<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_title()"/>
 
-
-	
 	<!-- Conditional - Credit Note -->
 	<t t-if="doc.state == 'credit_note'">
-<!--
-		<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-field="doc.x_serial_nr"/>
--->
 		<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_serial_nr()"/>
 	</t>
-
 	<div class="col-xs-12" style="border-top: 1px solid black;"/>
 </b>
 </div>
-<!-- ROW - Title - End -->
-
-<!--
-		<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-field="doc.x_date_order_corr"/>
--->
-
 
 
 

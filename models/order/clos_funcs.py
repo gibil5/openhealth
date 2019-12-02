@@ -4,6 +4,8 @@
 
  		Created: 			       2016
 		Last up: 	 		26 Nov 2019
+
+		Abstract, General purpose. Provider of services.
 """
 from __future__ import print_function
 import datetime
@@ -14,8 +16,6 @@ import datetime
 
 def get_orders(self, date, x_type):
 	"""
-	Abstract, General purpose.
-	Gives service to other methods.
 	15 Feb 2019: Added Filter Block
 	"""
 	print()
@@ -87,8 +87,8 @@ def get_orders(self, date, x_type):
 # ----------------------------------------------------------- Get Orders By State -----------------
 def get_orders_by_state_all(self, date):
 	"""
-	Abstract, General purpose.
-	Provider of services.
+	26 Nov 2019: Only used by Closings
+	To include Credit notes in Closing generation.
 	"""
 	print()
 	print('Get Orders State')
@@ -126,8 +126,6 @@ def get_orders_by_state_all(self, date):
 # ----------------------------------------------------------- Get Orders By State -----------------
 def get_orders_by_state(self, date, state):
 	"""
-	Abstract, General purpose.
-	Provider of services.
 	"""
 	print()
 	print('Get Orders State')

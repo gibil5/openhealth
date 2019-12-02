@@ -49,11 +49,11 @@
             <field name="active">True</field>
         </record>
 
+
 <!--
 fcatpo@clinicachavarri.com
 Capd6qDN
 -->
-
 <!-- Fatima Catpo -->
         <record id="fcatpo" model="res.partner">
             <field name="name">Fatima Catpo</field>

@@ -1,0 +1,17 @@
+<!-- Header - Dep ! --> 
+<div class="header">
+<!--
+	<div class="text-center" style="margin-top:1px;margin-bottom:1px;width:100%;font-size: xx-small;">
+-->
+	<div class="text-center" style="margin-top:1px;margin-bottom:1px;width:100%;font-size: x-small;">
+<br/>
+		<div class="col-xs-12 text-center" style="margin-top:7px;" t-esc="doc.get_company_name()"/>
+		
+		<div class="col-xs-12 text-center" style="margin-top:7px;" t-esc="doc.get_company_ruc()"/>
+
+		<div class="col-xs-12 text-center" style="margin-top:7px;" t-esc="doc.get_company_address()"/>
+
+		<div class="col-xs-12 text-center" style="margin-top:7px;" t-esc="doc.get_company_phone()"/>
+	</div>
+</div>      
+

@@ -529,6 +529,15 @@
 			}
 		},
 		{
+			"file": "models/order/order.py",
+			"settings":
+			{
+				"buffer_size": 37669,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "models/order/closing.py",
 			"settings":
 			{
@@ -541,16 +550,7 @@
 			"file": "models/order/clos_funcs.py",
 			"settings":
 			{
-				"buffer_size": 8224,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/order/order.py",
-			"settings":
-			{
-				"buffer_size": 37669,
+				"buffer_size": 8197,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -718,6 +718,9 @@
 	},
 	"file_history":
 	[
+		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_generics.xml",
+		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_account.xml",
+		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_managers.xml",
 		"/Users/gibil/cellar/github/openhealth/readme.txt",
 		"/Users/gibil/cellar/github/openhealth/models/order/ord_vars.py",
 		"/Users/gibil/cellar/github/openhealth/models/order/snr.py",
@@ -755,7 +758,6 @@
 		"/Users/gibil/cellar/github/openhealth/views/orders/order.xml",
 		"/Users/gibil/cellar/github/openhealth/views/patients/patient_personal.xml",
 		"/Users/gibil/cellar/github/openhealth/models/emr/appointment.py",
-		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_managers.xml",
 		"/Users/gibil/cellar/github/openhealth/models/emr/__init__.py",
 		"/Users/gibil/cellar/github/openhealth/models/emr/appointment_dep.py",
 		"/Users/gibil/cellar/github/openhealth/views/patients/patient_admin.xml",
@@ -843,13 +845,11 @@
 		"/Users/gibil/cellar/github/openhealth/models/emr/treatment.TRASH.py",
 		"/Users/gibil/cellar/github/openhealth/views/products/product_template.TRASH.xml",
 		"/Users/gibil/cellar/github/openhealth/views/products/product_template.xml",
-		"/Users/gibil/cellar/github/openhealth/models/service/__init__.py",
-		"/Users/gibil/cellar/github/openhealth/models/__init__.py",
-		"/Users/gibil/cellar/github/openhealth/models/service/service_product.py"
+		"/Users/gibil/cellar/github/openhealth/models/service/__init__.py"
 	],
 	"find":
 	{
-		"height": 25.0
+		"height": 37.0
 	},
 	"find_in_files":
 	{
@@ -864,6 +864,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"get_company_name",
 			"create_cre",
 			"make_cre",
 			"create_credit",
@@ -990,8 +991,7 @@
 			"nr_in",
 			"nr_",
 			"tre",
-			"nr_tre",
-			"state"
+			"nr_tre"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -1137,7 +1137,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -1171,6 +1171,35 @@
 				},
 				{
 					"buffer": 1,
+					"file": "models/order/order.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 37669,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9523,
+								9539
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 7810.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
 					"file": "models/order/closing.py",
 					"semi_transient": false,
 					"settings":
@@ -1195,53 +1224,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "models/order/clos_funcs.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 8224,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2272,
-								2272
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 522.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "models/order/order.py",
+					"file": "models/order/clos_funcs.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 37669,
+						"buffer_size": 8197,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								22637,
-								22637
+								1948,
+								1948
 							]
 						],
 						"settings":
@@ -1250,10 +1250,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1128.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -1601,7 +1601,7 @@
 	"project": "OpenHealth-MIN.sublime-project",
 	"replace":
 	{
-		"height": 46.0
+		"height": 66.0
 	},
 	"save_all_on_build": true,
 	"select_file":

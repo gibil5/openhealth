@@ -31,25 +31,46 @@ Last up:   	2 Dec 2019
 	<t t-call="report.html_container">
 		<t t-foreach="docs" t-as="doc"> 
 
-
-
+<!-- Header Dep ! -->
 
 			<t t-call="openhealth.external_layout">
 				<div class="page" style="margin-top:100px;font-size: small;">
 
 
+<!--New Header -->
+<div class="row">
 
-<!--Title -->
+	<!-- Company name -->
+	<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_name()"/>
+
+	<!-- Company Ruc -->
+	<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_ruc()"/>
+
+	<!-- Company Address -->
+	<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_address()"/>
+
+	<!-- Company Phone -->
+	<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_phone()"/>
+</div>
+
+
+
+<!--Title - Ok -->
 <div class="row">
 <b>
+	<!-- Border -->
 	<div class="col-xs-12" style="border-top: 1px solid black;"/>
+	
 	<!-- Title -->
 	<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_title()"/>
 
-	<!-- Conditional - Credit Note -->
+	
+	<!-- Credit Note - Conditional -->
 	<t t-if="doc.state == 'credit_note'">
 		<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_serial_nr()"/>
 	</t>
+
+	<!-- Border -->
 	<div class="col-xs-12" style="border-top: 1px solid black;"/>
 </b>
 </div>
@@ -57,8 +78,10 @@ Last up:   	2 Dec 2019
 
 
 
+
 <!-- ROW - Receptor - Begin -->
 <div class="row">
+
 <div class="text-left" style="margin-top:10px;">
 	<table style="width:100%">
 
@@ -67,9 +90,6 @@ Last up:   	2 Dec 2019
 <t t-if="doc.state == 'credit_note'">
 		<tr>
 			<td><b>Fecha:</b></td>
-<!--
-			<td><t t-esc="doc.x_date_order_corr"/></td> 
--->
 			<td><t t-esc="doc.get_date_corrected()"/></td> 
 		</tr>
 </t>
@@ -87,13 +107,9 @@ Last up:   	2 Dec 2019
 		</tr>
 		<tr>
 			<td><b>Dirección:</b></td>
-			<!--
-			<td><t t-esc="doc.partner_id.x_address"/></td> 
-			-->
 			<td><t t-esc="doc.get_patient_address()"/></td> 
 		</tr>
 </t>
-
 
 <!-- Conditional - Invoice -->
 <t t-if="doc.x_type == 'ticket_invoice'">
@@ -107,18 +123,16 @@ Last up:   	2 Dec 2019
 		</tr>
 		<tr>
 			<td><b>Dirección:</b></td>
-			<!--
-			<td><t t-esc="doc.partner_id.x_address"/></td> 
-			-->
 			<td><t t-esc="doc.get_firm_address()"/></td> 
 		</tr>
 </t>
-
 	</table>
 	<br/>
 </div>
+
 </div>
 <!-- ROW - Receptor - End -->
+
 
 
 
@@ -129,72 +143,49 @@ Last up:   	2 Dec 2019
 
 
 <!-- Conditional - Credit Note -->
-<!-- Modified Document -->
 <t t-if="doc.state == 'credit_note'">
-
 	<div class="col-xs-12" style="border-top: 1px solid black;"/>
-
-<b>
-	<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;">
-		Documento que Modifica
-	</div>
-</b>
-
-<table style="width:100%">
-
-	<tr>
-		<td><b>Denominación:</b></td>
-		<td><t t-esc="doc.x_credit_note_owner.x_serial_nr"/></td> 
-	</tr>
-
-	<tr>
-		<td><b>Fecha de emisión:</b></td>
-<!--
-		<td><t t-esc="doc.x_credit_note_owner.x_date_order_corr"/></td> 
--->
-		<td><t t-esc="doc.x_credit_note_owner.get_date_corrected()"/></td>
-	</tr>
-
-	<tr>
-		<td><b>Motivo:</b></td>
-		<td><t t-esc="doc.get_credit_note_type()"/></td> 
-	</tr>
-
-<!--
-	<tr>
-		<td><b>Importe:</b></td>
-		<td><t t-esc="doc.get_credit_note_owner_amount()"/></td> 
-	</tr>
--->
-</table>
+	<b>
+		<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;">
+			Documento que Modifica
+		</div>
+	</b>
+	<table style="width:100%">
+		<tr>
+			<td><b>Denominación:</b></td>
+			<td><t t-esc="doc.x_credit_note_owner.x_serial_nr"/></td> 
+		</tr>
+		<tr>
+			<td><b>Fecha de emisión:</b></td>
+			<td><t t-esc="doc.x_credit_note_owner.get_date_corrected()"/></td>
+		</tr>
+		<tr>
+			<td><b>Motivo:</b></td>
+			<td><t t-esc="doc.get_credit_note_type()"/></td> 
+		</tr>
+	</table>
 </t>
-
-
-
 
 
 <!-- Conditional - Sale -->
-<!-- Date and Serial Nr -->
 <t t-if="doc.state in ['sale', 'cancel']">
-<table style="width:100%">
-	<tr>
-		<td><b>Fecha:</b></td>
-<!--
-		<td><t t-esc="doc.x_date_order_corr"/></td> 
--->
-		<td><t t-esc="doc.get_date_corrected()"/></td> 
-	</tr>
-	<tr>
-		<td><b>Ticket:</b></td>
-		<td><t t-esc="doc.x_serial_nr"/></td> 
-	</tr>
-</table>
+	<table style="width:100%">
+		<tr>
+			<td><b>Fecha:</b></td>
+			<td><t t-esc="doc.get_date_corrected()"/></td> 
+		</tr>
+		<tr>
+			<td><b>Ticket:</b></td>
+			<td><t t-esc="doc.x_serial_nr"/></td> 
+		</tr>
+	</table>
 </t>
-
 
 <br/>
 </div>
 <!-- ROW - Date and Serial Nr - End -->
+
+
 
 
 

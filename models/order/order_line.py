@@ -18,6 +18,57 @@ class SaleOrderLine(models.Model):
 
 
 
+
+
+# ----------------------------------------------------------- Ticket - Get Item Lines  ----------------
+
+	def format_line(self, value):
+
+		value = str(value)
+
+		line = "<td>\
+					<font size='2'>" + value + "</font>\
+				</td>"
+
+		return line 
+
+
+
+
+	# Patient Name 
+	def get_item_line(self):
+		print()
+		print('Get Item Line')
+
+		#print(self.product_id.get_name_ticket())
+		#print(self.get_quantity())
+		#print(self.get_price_unit())
+		#print(self.get_price_subtotal())
+
+
+		# Init
+		line_0 = self.format_line(self.product_id.get_name_ticket())
+
+		line_1 = self.format_line(self.get_quantity())
+
+		line_2 = self.format_line(self.get_price_unit())
+
+		line_3 = self.format_line(self.get_price_subtotal())
+
+
+		line = "<tr>" + line_0 + line_1 + line_2 + line_3 + "</tr>"
+
+		#print(line)
+		return line
+
+
+
+
+
+
+
+
+
 # ----------------------------------------------------------- Get Product Price List -------------------------------
 	def get_price_list(self):
 		#print()

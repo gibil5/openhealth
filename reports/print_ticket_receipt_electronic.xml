@@ -98,90 +98,27 @@ Last up:   	2 Dec 2019
 
 
 <!-- Conditional - Receipt -->
-
 <t t-if="doc.x_type == 'ticket_receipt'">
 
+	<t t-raw="doc.get_patient_name_line()"/>
 
-<!--
-<tr>
-<td>
-	<t-esc="doc.get_patient_name_line()"/>
-</td>
-</tr>
+	<t t-raw="doc.get_patient_dni_line()"/>
 
-
-<t-esc="doc.get_patient_name_dni()"/>
-
-<t-esc="doc.get_patient_name_address()"/>
--->
-
-<!--
-		<tr>
-			<td>
-				x
-			</td>
-			<td>
-				y
-			</td>
-			<t t-esc="doc.get_patient_address()"/>
-			<t t-esc="doc.get_patient_name_line()"/>
-
-			<td>
-				x
-			</td>
-
-			<td>
-
-
-			</td>
-
-		</tr>
--->
-				<t t-raw="doc.get_patient_name_line()"/>
-
-		
-		<tr>
-			<td>
-				<font size="2">
-					<b>DNI:</b>
-				</font>
-			</td>
-			<td>
-				<font size="2">
-					<t t-esc="doc.x_id_doc"/>
-				</font>
-			</td> 
-		</tr>
-
-		<tr>
-			<td>
-				<font size="2">
-					<b>Dirección:</b>
-				</font>
-			</td>
-			<td>
-				<font size="2">
-					<t t-esc="doc.get_patient_address()"/>
-				</font>
-			</td> 
-		</tr>
+	<t t-raw="doc.get_patient_address_line()"/>
 </t>
+
+
 
 <!-- Conditional - Invoice -->
 <t t-if="doc.x_type == 'ticket_invoice'">
-		<tr>
-			<td><b>Razón social:</b></td>
-			<td><t t-esc="doc.patient.x_firm"/></td> 
-		</tr>
-		<tr>
-			<td><b>RUC:</b></td>
-			<td><t t-esc="doc.x_ruc"/></td> 
-		</tr>
-		<tr>
-			<td><b>Dirección:</b></td>
-			<td><t t-esc="doc.get_firm_address()"/></td> 
-		</tr>
+
+	<t t-raw="doc.get_patient_firm_line()"/>
+
+	<t t-raw="doc.get_patient_ruc_line()"/>
+
+	<t t-raw="doc.get_patient_firm_address_line()"/>
 </t>
+
 	</table>
 	<br/>
 </div>
@@ -252,52 +189,26 @@ Last up:   	2 Dec 2019
 <div class="col-xs-12" style="border-top: 1px solid black;"/>
 
 <table style="width:100%">
-	<tr>
-		<td><b>Desc</b></td>
-		<td><b>Cnt</b></td>
-		<td><b>PUnit</b></td>
-		<td><b>Total</b></td>
-	</tr>
+
+	<t t-raw="doc.get_order_lines_header()"/>
+
 
 
 
 
 <!-- LOOP - Items --> 
 <t t-foreach="doc.order_line" t-as="line">
-<tr>
 
-<td>
-<!--
-	<t t-esc="line.product_id.x_name_ticket"/>
--->
-	<t t-esc="line.product_id.get_name_ticket()"/>
-</td>
+	<t t-raw="line.get_item_line()"/>
 
-
-<td>
-<!--
-	<t t-esc="line.x_qty"/>
--->
-	<t t-esc="line.get_quantity()"/>    
-</td>
-
-<td>
-<!--
-	<t t-esc="line.price_unit"/>
--->
-	<t t-esc="line.get_price_unit()"/>    
-</td>
-
-<td>
-<!--
-	<t t-esc="line.price_subtotal"/>
--->
-	<t t-esc="line.get_price_subtotal()"/>    
-</td>
-
-</tr>
 </t>
+
+
+
+
 </table>
+
+
 <!-- Line --> 
 <div class="col-xs-12" style="border-top: 1px solid black;"/>
 
@@ -308,46 +219,19 @@ Last up:   	2 Dec 2019
 
 <!-- Total --> 
 <table style="width:100%">
-	<tr>
-		<td>OP. GRAVADAS S/.</td>
-		<td align="right" >
-<!--
-			<t t-esc="doc.x_total_net"/>
--->
-			<t t-esc="doc.get_total_net()"/>
-		</td> 
-	</tr>
-	<tr>
-		<td>OP. GRATUITAS S/.</td>
-		<td align="right" >0.00</td> 
-	</tr>
-	<tr>
-		<td>OP. EXONERADAS S/.</td>
-		<td align="right" >0.00</td> 
-	</tr>
-	<tr>
-		<td>OP. INAFECTAS S/.</td>
-		<td align="right" >0.00</td> 
-	</tr>
-	<tr>
-		<td>I.G.V. 18% S/.</td>
-		<td align="right" >
-<!--
-			<t t-esc="doc.x_total_tax"/>
--->
-			<t t-esc="doc.get_total_tax()"/>
 
-		</td> 
-	</tr>
-	<tr>
-		<td>TOTAL S/.</td>
-		<td align="right" >
-<!--
-			<t t-esc="doc.amount_total"/>
--->        
-			<t t-esc="doc.get_amount_total()"/>
-		</td> 
-	</tr>
+	<t t-raw="doc.get_ticket_total_net_line()"/>
+
+	<t t-raw="doc.get_ticket_total_free_line()"/>
+
+	<t t-raw="doc.get_ticket_total_exonerated_line()"/>
+
+	<t t-raw="doc.get_ticket_total_unaffected_line()"/>
+
+	<t t-raw="doc.get_ticket_total_tax_line()"/>
+
+	<t t-raw="doc.get_ticket_total_line()"/>
+
 </table>
 <br/>
 
@@ -356,32 +240,17 @@ Last up:   	2 Dec 2019
 
 <!-- Total In Words --> 
 <table style="width:100%">
-	<tr>
-		<td><b>Son:</b></td>
-	</tr>
-	<tr>
-		<td align="right" >
-<!--
-			<t t-esc="doc.x_total_in_words"/>
--->
-			<t t-esc="doc.get_total_in_words()"/>
-		</td> 
-	</tr>
-	<tr>
-		<td align="right" >Y 
-<!--
-			<t t-esc="doc.x_total_cents"/>
--->
-			<t t-esc="doc.get_total_cents()"/>
 
-			
-			/100</td> 
-	</tr>
-	<tr>
-		<td align="right" >Soles</td> 
-	</tr>
+	<t t-raw="doc.get_ticket_total_words_header()"/>
+
+	<t t-raw="doc.get_ticket_total_words_soles()"/>
+
+	<t t-raw="doc.get_ticket_total_words_cents()"/>
+
+	<t t-raw="doc.get_ticket_total_words_footer()"/>
 </table>
 <br/>
+
 
 
 

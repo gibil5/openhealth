@@ -475,18 +475,22 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Ticket - Get Table Lines ----------------
+# ----------------------------------------------------------- Ticket - Get Table Lines - Aux ----------------
 
+	# Test Line
 	@api.multi
 	def test_line(self):
-		
 		line = self.get_patient_name_line()
-
 		return line
 
 
 
+
+# ----------------------------------------------------------- Ticket - Get Table Lines - Format ----------------
+	# Format Line
 	def format_line(self, tag, value):
+
+		#value = str(value)
 
 		line = "<tr>\
 					<td>\
@@ -503,14 +507,281 @@ class sale_order(models.Model):
 
 
 
+
+
+# ----------------------------------------------------------- Ticket - Get Items Lines  ----------------
+
+	# Patient Name 
+	def get_order_lines_header(self):
+		print()
+		print('Get Order Lines Header')
+
+
+		line = 	"<tr>\
+					<td>\
+						<font size='2'>\
+							<b>Desc</b>\
+						</font>\
+					</td>\
+					<td>\
+						<font size='2'>\
+							<b>Cnt</b>\
+						</font>\
+					</td>\
+					<td>\
+						<font size='2'>\
+							<b>PUnit</b>\
+						</font>\
+					</td>\
+					<td>\
+						<font size='2'>\
+							<b>Total</b>\
+						</font>\
+					</td>\
+				</tr>"
+
+		#print(line)
+		return line
+
+
+
+
+# ----------------------------------------------------------- Ticket - Get Table Lines - Totals ----------------
+
+	# Ticket Total Net 
+	def get_ticket_total_net_line(self):
+		print()
+		print('Get Ticket Total Net Line')
+
+		tag = 'OP. GRAVADAS S/.'
+		value = str(self.get_total_net())
+
+		line = self.format_line(tag, value)
+
+		#print(line)
+		return line
+
+
+
+	# Ticket Total Free
+	def get_ticket_total_free_line(self):
+		print()
+		print('Get Ticket Total Net Line')
+
+		tag = 'OP. GRATUITAS S/.'
+		value = '0'
+
+		line = self.format_line(tag, value)
+
+		#print(line)
+		return line
+
+
+
+
+	# Ticket Total Exonerated 
+	def get_ticket_total_exonerated_line(self):
+		print()
+		print('Get Ticket Total Net Line')
+
+		tag = 'OP. EXONERADAS S/.'
+		value = '0'
+
+		line = self.format_line(tag, value)
+
+		#print(line)
+		return line
+
+
+
+	# Ticket Total Unaffected 
+	def get_ticket_total_unaffected_line(self):
+		print()
+		print('Get Ticket Total Net Line')
+
+		tag = 'OP. INAFECTAS S/.'
+		value = '0'
+
+		line = self.format_line(tag, value)
+
+		#print(line)
+		return line
+
+
+
+	# Ticket Total Tax 
+	def get_ticket_total_tax_line(self):
+		print()
+		print('Get Ticket Total Net Line')
+
+		tag = 'I.G.V. 18% S/.'
+		value = str(self.get_total_tax())
+
+		line = self.format_line(tag, value)
+
+		#print(line)
+		return line
+
+
+
+	# Ticket Total
+	def get_ticket_total_line(self):
+		print()
+		print('Get Ticket Total Net Line')
+
+		tag = 'TOTAL S/.'
+		value = str(self.get_amount_total())
+
+		line = self.format_line(tag, value)
+
+		#print(line)
+		return line
+
+
+
+
+# ----------------------------------------------------------- Ticket - Get Table Lines - Words ----------------
+
+	# Ticket Total Words Header
+	def get_ticket_total_words_header(self):
+		print()
+		print('Get Ticket Total Net Line')
+
+		tag = 'Son:'
+		value = ''
+
+		line = self.format_line(tag, value)
+
+		#print(line)
+		return line
+
+
+
+	# Ticket Total Words Soles
+	def get_ticket_total_words_soles(self):
+		print()
+		print('Get Ticket Total Net Line')
+
+		tag = ''
+		value = str(self.get_total_in_words())
+
+		line = self.format_line(tag, value)
+
+		#print(line)
+		return line
+
+
+
+	# Ticket Total Words Cents
+	def get_ticket_total_words_cents(self):
+		print()
+		print('Get Ticket Total Net Line')
+
+		tag = ''
+		value = str(self.get_total_cents())
+
+		line = self.format_line(tag, value)
+
+		#print(line)
+		return line
+
+
+
+	# Ticket Total Words Footer
+	def get_ticket_total_words_footer(self):
+		print()
+		print('Get Ticket Total Net Line')
+
+		tag = ''
+		value = 'Soles'
+
+		line = self.format_line(tag, value)
+
+		#print(line)
+		return line
+
+
+
+
+# ----------------------------------------------------------- Ticket - Get Table Lines - Invoice ----------------
+
+	# Patient Name 
+	def get_patient_firm_line(self):
+		print()
+		print('Get Patient Firm Line')
+
+		line = self.format_line('Razon social::', self.patient.x_firm )
+
+		#print(line)
+		return line
+
+
+
+	# Patient Ruc
+	def get_patient_ruc_line(self):
+		print()
+		print('Get Patient Firm Line')
+
+		line = self.format_line('RUC::', self.x_ruc )
+
+		#print(line)
+		return line
+
+
+
+	# Patient Firm Address
+	def get_patient_firm_address_line(self):
+		print()
+		print('Get Patient Firm Address Line')
+
+		line = self.format_line('Direccion::', self.get_firm_address() )
+
+		#print(line)
+		return line
+
+
+
+
+
+
+# ----------------------------------------------------------- Ticket - Get Table Lines - Receipt ----------------
+
+	# Patient Name 
 	def get_patient_name_line(self):
 		print()
 		print('Get Patient Name Line')
 
 		line = self.format_line('Cliente:', self.patient.name )
 
-		print(line)
+		#print(line)
 		return line
+
+
+
+	# Patient Dni
+	def get_patient_dni_line(self):
+		#print()
+		#print('Get Patient Dni Line')
+
+		line = self.format_line('DNI:', self.x_id_doc )
+
+		#print(line)
+		return line
+
+
+
+	# Patient Address
+	def get_patient_address_line(self):
+		print()
+		print('Get Patient Address Line')
+
+		line = self.format_line('Direccion:', self.get_patient_address() )
+
+		#print(line)
+		return line
+
+
+
 
 
 # ----------------------------------------------------------- Ticket - Header - Getters ----------------

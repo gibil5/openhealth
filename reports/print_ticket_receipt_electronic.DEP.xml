@@ -1,3 +1,157 @@
+<!-- 2 Dec 2019 -->
+
+
+<!-- Conditional - Receipt -->
+
+		<tr>
+			<td>
+				<font size="2">
+					<b>Cliente:</b>
+				</font>
+			</td>
+			<td>
+				<font size="2">
+					<t t-esc="doc.patient.name"/>
+				</font>
+			</td> 
+		</tr>
+
+
+		<tr>
+			<td>
+				<font size="2">
+					<b>DNI:</b>
+				</font>
+			</td>
+			<td>
+				<font size="2">
+					<t t-esc="doc.x_id_doc"/>
+				</font>
+			</td> 
+		</tr>
+
+		<tr>
+			<td>
+				<font size="2">
+					<b>Dirección:</b>
+				</font>
+			</td>
+			<td>
+				<font size="2">
+					<t t-esc="doc.get_patient_address()"/>
+				</font>
+			</td> 
+		</tr>
+
+
+
+<!-- Conditional - Invoice -->
+
+		<tr>
+			<td><b>Razón social:</b></td>
+			<td><t t-esc="doc.patient.x_firm"/></td> 
+		</tr>
+		<tr>
+			<td><b>RUC:</b></td>
+			<td><t t-esc="doc.x_ruc"/></td> 
+		</tr>
+		<tr>
+			<td><b>Dirección:</b></td>
+			<td><t t-esc="doc.get_firm_address()"/></td> 
+		</tr>
+
+
+
+
+<!-- ROW - Sale - Begin -->
+	<tr>
+		<td><b>Desc</b></td>
+		<td><b>Cnt</b></td>
+		<td><b>PUnit</b></td>
+		<td><b>Total</b></td>
+	</tr>
+
+
+
+<!-- LOOP - Items --> 
+<tr>
+
+<td>
+	<t t-esc="line.product_id.get_name_ticket()"/>
+</td>
+
+<td>
+	<t t-esc="line.get_quantity()"/>    
+</td>
+
+<td>
+	<t t-esc="line.get_price_unit()"/>    
+</td>
+
+<td>
+	<t t-esc="line.get_price_subtotal()"/>    
+</td>
+
+</tr>
+
+
+
+	<tr>
+		<td>OP. GRAVADAS S/.</td>
+		<td align="right" >
+			<t t-esc="doc.get_total_net()"/>
+		</td> 
+	</tr>
+	<tr>
+		<td>OP. GRATUITAS S/.</td>
+		<td align="right" >0.00</td> 
+	</tr>
+	<tr>
+		<td>OP. EXONERADAS S/.</td>
+		<td align="right" >0.00</td> 
+	</tr>
+	<tr>
+		<td>OP. INAFECTAS S/.</td>
+		<td align="right" >0.00</td> 
+	</tr>
+	<tr>
+		<td>I.G.V. 18% S/.</td>
+		<td align="right" >
+			<t t-esc="doc.get_total_tax()"/>
+		</td> 
+	</tr>
+	<tr>
+		<td>TOTAL S/.</td>
+		<td align="right" >
+			<t t-esc="doc.get_amount_total()"/>
+		</td> 
+	</tr>
+
+
+
+	<tr>
+		<td><b>Son:</b></td>
+	</tr>
+
+	<tr>
+		<td align="right" >
+			<t t-esc="doc.get_total_in_words()"/>
+		</td> 
+	</tr>
+
+	<tr>
+		<td align="right" >Y 
+			<t t-esc="doc.get_total_cents()"/>			
+			/100</td> 
+	</tr>
+
+	<tr>
+		<td align="right" >Soles</td> 
+	</tr>
+
+
+
+
 
 
 

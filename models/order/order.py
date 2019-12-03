@@ -487,16 +487,48 @@ class sale_order(models.Model):
 
 
 # ----------------------------------------------------------- Ticket - Get Table Lines - Format ----------------
+
 	# Format Line
 	def format_line(self, tag, value):
+		"""
+		Abstraction. 
+		Used by tickets.
+		Contains the formatting rules. For all entries. 
+		Does not use Bootstrap classed. Is much more robust than the previous approach. 
+		Allows for easy font size config. 
+		"""
+
+		#value = str(value)
+
+		_size_font = '2'
+
+		line = "<tr>\
+					<td>\
+						<font size='" + _size_font +"'>\
+							<b>" + tag + "</b>\
+						</font>\
+					</td>\
+					<td>\
+						<font size='" + _size_font + " '>"\
+							+ value + "</font></td></tr>"
+
+		return line 
+
+
+
+	# Format Line
+	def format_line_lean(self, tag, value):
+		"""
+		Abstraction. 
+		Contains the formatting rules. For all entries. 
+		Lean version (not bold)
+		"""
 
 		#value = str(value)
 
 		line = "<tr>\
 					<td>\
-						<font size='2'>\
-							<b>" + tag + "</b>\
-						</font>\
+						<font size='2'>" + tag + "</font>\
 					</td>\
 					<td>\
 						<font size='2'>" + value + "</font>\
@@ -512,6 +544,16 @@ class sale_order(models.Model):
 
 	# Raw Line
 	def get_ticket_raw_line(self, argument):
+		"""
+		Abstraction. 
+		Used by tickets.
+		Can be used by all entries. 
+		Types:
+			- Receipt, 
+			- Invoice, 
+			- Credit note. 
+		"""
+
 		print()
 		print('Get Ticket Raw Line')
 
@@ -521,28 +563,28 @@ class sale_order(models.Model):
 
 
 		# Credit note
-
 		if argument in ['date_credit_note']:
-
 			tag = 'Fecha:'
 			value = self.get_date_corrected()
-
-
 
 		elif argument in ['denomination_credit_note_owner']:
 			tag = 'Denominacion:'
 			value = self.x_credit_note_owner.x_serial_nr
 
-
 		elif argument in ['date_credit_note_owner']:
-			tag = 'Fecha de emision'
+			tag = 'Fecha de emision:'
 			value = self.x_credit_note_owner.get_date_corrected()
-
 
 		elif argument in ['reason_credit_note']:
 			tag = 'Motivo:'
 			value = self.get_credit_note_type()
 
+
+
+		# Receipt
+
+
+		# Invoice
 
 
 
@@ -609,7 +651,7 @@ class sale_order(models.Model):
 		tag = 'OP. GRAVADAS S/.'
 		value = str(self.get_total_net())
 
-		line = self.format_line(tag, value)
+		line = self.format_line_lean(tag, value)
 
 		#print(line)
 		return line
@@ -624,7 +666,7 @@ class sale_order(models.Model):
 		tag = 'OP. GRATUITAS S/.'
 		value = '0'
 
-		line = self.format_line(tag, value)
+		line = self.format_line_lean(tag, value)
 
 		#print(line)
 		return line
@@ -640,7 +682,7 @@ class sale_order(models.Model):
 		tag = 'OP. EXONERADAS S/.'
 		value = '0'
 
-		line = self.format_line(tag, value)
+		line = self.format_line_lean(tag, value)
 
 		#print(line)
 		return line
@@ -655,7 +697,7 @@ class sale_order(models.Model):
 		tag = 'OP. INAFECTAS S/.'
 		value = '0'
 
-		line = self.format_line(tag, value)
+		line = self.format_line_lean(tag, value)
 
 		#print(line)
 		return line
@@ -670,7 +712,7 @@ class sale_order(models.Model):
 		tag = 'I.G.V. 18% S/.'
 		value = str(self.get_total_tax())
 
-		line = self.format_line(tag, value)
+		line = self.format_line_lean(tag, value)
 
 		#print(line)
 		return line
@@ -685,7 +727,7 @@ class sale_order(models.Model):
 		tag = 'TOTAL S/.'
 		value = str(self.get_amount_total())
 
-		line = self.format_line(tag, value)
+		line = self.format_line_lean(tag, value)
 
 		#print(line)
 		return line

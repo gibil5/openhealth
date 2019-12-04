@@ -22,6 +22,8 @@ from . import tick_funcs
 from . import ord_vars
 from . import ord_funcs
 
+from . import raw_funcs
+
 from . import qr
 #from . import snr  	# Dep
 
@@ -443,36 +445,6 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Credit Notes - Getters ----------------
-
-	def get_credit_note_type(self):
-		"""
-		Used by Print Ticket.
-		"""
-		_dic_cn = {
-					'cancel': 					'Anulación de la operación.',
-					'cancel_error_ruc': 		'Anulación por error en el RUC.',
-					'correct_error_desc': 		'Corrección por error en la descripción.',
-					'discount': 				'Descuento global.',
-					'discount_item': 			'Descuento por item.',
-					'return': 					'Devolución total.',
-					'return_item': 				'Devolución por item.',
-					'bonus': 					'Bonificación.',
-					'value_drop': 				'Disminución en el valor.',
-					'other': 					'Otros.',
-					False: 						'',
-		}
-		return _dic_cn[self.x_credit_note_type]
-
-
-	def get_credit_note_owner_amount(self):
-		"""
-		Used by Print Ticket.
-		"""
-		return self.x_credit_note_owner_amount
-
-
-
 
 
 # ----------------------------------------------------------- Ticket - Get Table Lines - Aux ----------------
@@ -500,17 +472,50 @@ class sale_order(models.Model):
 
 		#value = str(value)
 
+		# Init
 		_size_font = '2'
 
-		line = "<tr>\
-					<td>\
-						<font size='" + _size_font +"'>\
-							<b>" + tag + "</b>\
-						</font>\
-					</td>\
-					<td>\
-						<font size='" + _size_font + " '>"\
-							+ value + "</font></td></tr>"
+
+		# Items header
+		if tag in ['items'] and value in ['header']:
+
+			line = 	"<tr>\
+						<td>\
+							<font size='2'>\
+								<b>Desc</b>\
+							</font>\
+						</td>\
+						<td>\
+							<font size='2'>\
+								<b>Cnt</b>\
+							</font>\
+						</td>\
+						<td>\
+							<font size='2'>\
+								<b>PUnit</b>\
+							</font>\
+						</td>\
+						<td>\
+							<font size='2'>\
+								<b>Total</b>\
+							</font>\
+						</td>\
+					</tr>"
+
+
+		# Formatted line
+		else:
+
+			line = "<tr>\
+						<td>\
+							<font size='" + _size_font +"'>\
+								<b>" + tag + "</b>\
+							</font>\
+						</td>\
+						<td>\
+							<font size='" + _size_font + " '>"\
+								+ value + "</font></td></tr>"
+
 
 		return line 
 
@@ -540,7 +545,7 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Ticket - Get Raw Line ----------------
+# ----------------------------------------------------------- Ticket - Get Raw Line - Stub ----------------
 #jx
 
 	# Raw Line
@@ -548,47 +553,13 @@ class sale_order(models.Model):
 		"""
 		Just a stub. 
 		"""
-		line = ord_funcs.get_ticket_raw_line(self, argument)
+		#line = ord_funcs.get_ticket_raw_line(self, argument)
+		line = raw_funcs.get_ticket_raw_line(self, argument)
 
 		return line 
 
 
 
-
-
-
-# ----------------------------------------------------------- Ticket - Get Items Lines  ----------------
-
-	# Patient Name 
-	def get_order_lines_header(self):
-		print()
-		print('Get Order Lines Header')
-
-		line = 	"<tr>\
-					<td>\
-						<font size='2'>\
-							<b>Desc</b>\
-						</font>\
-					</td>\
-					<td>\
-						<font size='2'>\
-							<b>Cnt</b>\
-						</font>\
-					</td>\
-					<td>\
-						<font size='2'>\
-							<b>PUnit</b>\
-						</font>\
-					</td>\
-					<td>\
-						<font size='2'>\
-							<b>Total</b>\
-						</font>\
-					</td>\
-				</tr>"
-
-		#print(line)
-		return line
 
 
 
@@ -629,6 +600,7 @@ class sale_order(models.Model):
 		"""
 		company_ruc = self.configurator.ticket_company_ruc
 		return company_ruc
+
 
 
 # ----------------------------------------------------------- Ticket - Footer - Getters ----------------

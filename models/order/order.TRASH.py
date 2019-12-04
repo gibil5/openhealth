@@ -2,6 +2,74 @@
 
 
 
+# ----------------------------------------------------------- Credit Notes - Getters ----------------
+
+	def get_credit_note_type(self):
+		"""
+		Used by Print Ticket.
+		"""
+		_dic_cn = {
+					'cancel': 					'Anulación de la operación.',
+					'cancel_error_ruc': 		'Anulación por error en el RUC.',
+					'correct_error_desc': 		'Corrección por error en la descripción.',
+					'discount': 				'Descuento global.',
+					'discount_item': 			'Descuento por item.',
+					'return': 					'Devolución total.',
+					'return_item': 				'Devolución por item.',
+					'bonus': 					'Bonificación.',
+					'value_drop': 				'Disminución en el valor.',
+					'other': 					'Otros.',
+					False: 						'',
+		}
+		return _dic_cn[self.x_credit_note_type]
+
+
+	def get_credit_note_owner_amount(self):
+		"""
+		Used by Print Ticket.
+		"""
+		return self.x_credit_note_owner_amount
+
+
+
+
+
+# ----------------------------------------------------------- Ticket - Get Items Lines  ----------------
+
+	# Patient Name 
+	def get_order_lines_header(self):
+		print()
+		print('Get Order Lines Header')
+
+		line = 	"<tr>\
+					<td>\
+						<font size='2'>\
+							<b>Desc</b>\
+						</font>\
+					</td>\
+					<td>\
+						<font size='2'>\
+							<b>Cnt</b>\
+						</font>\
+					</td>\
+					<td>\
+						<font size='2'>\
+							<b>PUnit</b>\
+						</font>\
+					</td>\
+					<td>\
+						<font size='2'>\
+							<b>Total</b>\
+						</font>\
+					</td>\
+				</tr>"
+
+		#print(line)
+		return line
+
+
+
+
 
 # ----------------------------------------------------------- Ticket - Get Table Lines - Words ----------------
 

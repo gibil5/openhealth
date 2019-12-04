@@ -153,13 +153,6 @@ Last up:   	3 Dec 2019
 	</b>
 	<table style="width:100%">
 
-		<t t-raw="doc.get_raw_line('denomination_credit_note_owner')"/>
-
-		<t t-raw="doc.get_raw_line('date_credit_note_owner')"/>
-
-		<t t-raw="doc.get_raw_line('reason_credit_note')"/>
-
-
 <!--
 		<tr>
 			<td><b>Denominación:</b></td>
@@ -174,6 +167,13 @@ Last up:   	3 Dec 2019
 			<td><t t-esc="doc.get_credit_note_type()"/></td> 
 		</tr>
 -->
+
+
+		<t t-raw="doc.get_raw_line('denomination_credit_note_owner')"/>
+
+		<t t-raw="doc.get_raw_line('date_credit_note_owner')"/>
+
+		<t t-raw="doc.get_raw_line('reason_credit_note')"/>
 	</table>
 </t>
 
@@ -209,9 +209,11 @@ Last up:   	3 Dec 2019
 <div class="col-xs-12" style="border-top: 1px solid black;"/>
 
 <table style="width:100%">
-
+<!--
 	<t t-raw="doc.get_order_lines_header()"/>
+-->
 
+	<t t-raw="doc.get_raw_line('items_header')"/>
 
 
 

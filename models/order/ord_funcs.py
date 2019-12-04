@@ -29,7 +29,6 @@ def check_ticket(self, family, state):
 	print('Check Ticket')
 
 
-
 	# Credit Note
 	if state in ['credit_note', ]:
 		print()
@@ -37,12 +36,10 @@ def check_ticket(self, family, state):
 
 
 
-
 	# Invoice
 	if family in ['ticket_invoice', 'invoice']:
 
 		print('Check - Invoice')
-
 
 		# Address
 		address = self.get_firm_address()
@@ -52,14 +49,12 @@ def check_ticket(self, family, state):
 			raise OrderError(_(msg))
 			#return OrderError(_(msg))
 
-
 		# Ruc
 		ruc = self.x_ruc
 
 		if ruc in [False, '']:
 			msg = "Error: Factura - Paciente no tiene RUC."
 			raise OrderError(_(msg))
-
 
 		# Firm
 		firm = self.patient.x_firm
@@ -69,7 +64,6 @@ def check_ticket(self, family, state):
 
 
 		print('ok')
-
 
 
 	# Receipt
@@ -82,169 +76,6 @@ def check_ticket(self, family, state):
 	else:
 		print('This should not happen !')
 
-
-
-
-# ----------------------------------------------------------- Ticket - Get Raw Line ----------------
-# Raw Line
-def get_ticket_raw_line(self, argument):
-	"""
-	Abstraction. 
-	Used by tickets.
-	Can be used by all entries. 
-	Types:
-		- Receipt, 
-		- Invoice, 
-		- Credit note. 
-	"""
-
-	print()
-	print('OFuncs - Get Ticket Raw Line')
-
-	print(argument)
-
-	line = 'empty'
-
-	bold = True
-
-
-
-	# Credit note
-	if argument in ['date_credit_note']:
-		tag = 'Fecha:'
-		value = self.get_date_corrected()
-
-	elif argument in ['denomination_credit_note_owner']:
-		tag = 'Denominacion:'
-		value = self.x_credit_note_owner.x_serial_nr
-
-	elif argument in ['date_credit_note_owner']:
-		tag = 'Fecha de emision:'
-		value = self.x_credit_note_owner.get_date_corrected()
-
-	elif argument in ['reason_credit_note']:
-		tag = 'Motivo:'
-		value = self.get_credit_note_type()
-
-
-
-
-	# Receipt
-	elif argument in ['receipt_patient_name']:
-		tag = 'Cliente:'
-		value = self.patient.name
-
-	elif argument in ['receipt_patient_dni']:
-		tag = 'DNI:'
-		value = self.x_id_doc
-
-	elif argument in ['receipt_patient_address']:
-		tag = 'Direccion:'
-		value = self.get_patient_address()
-
-
-
-
-	# Invoice
-	elif argument in ['invoice_firm_name']:
-		tag = 'Razon social:'
-		value = self.patient.x_firm
-
-	elif argument in ['invoice_patient_ruc']:
-		tag = 'RUC:'
-		value = self.x_ruc
-
-	elif argument in ['invoice_firm_address']:
-		tag = 'Direccion:'
-		value = self.get_firm_address()
-
-
-
-
-	# Sale - Not Credit Note
-	elif argument in ['sale_date']:
-		tag = 'Fecha:'
-		value = self.get_date_corrected()
-
-	elif argument in ['sale_serial_number']:
-		tag = 'Ticket:'
-		value = self.x_serial_nr
-
-
-
-
-	# Totals
-	elif argument in ['totals_net']:
-		tag = 'OP. GRAVADAS S/.'
-		value = str(self.get_total_net())
-		bold = False
-
-	elif argument in ['totals_free']:
-		tag = 'OP. GRATUITAS S/.'
-		value = '0'
-		bold = False
-
-	elif argument in ['totals_exonerated']:
-		tag = 'OP. EXONERADAS S/.'
-		value = '0'
-		bold = False
-
-
-
-	elif argument in ['totals_unaffected']:
-		tag = 'OP. INAFECTAS S/.'
-		value = '0'
-		bold = False
-
-	elif argument in ['totals_tax']:
-		tag = 'I.G.V. 18% S/.'
-		value = str(self.get_total_tax())
-		bold = False
-
-	elif argument in ['totals_total']:
-		tag = 'TOTAL S/.'
-		value = str(self.get_amount_total())
-		bold = False
-
-
-
-
-	# Words
-	elif argument in ['words_header']:
-		tag = 'Son:'
-		value = ''
-
-	elif argument in ['words_soles']:
-		tag = ''
-		value = str(self.get_total_in_words())
-
-	elif argument in ['words_cents']:
-		tag = ''
-		value = str(self.get_total_cents())
-
-	elif argument in ['words_footer']:
-		tag = ''
-		value = 'Soles'
-
-
-
-
-	# Else
-	else:
-		print('This should not happen !')
-
-
-	# Go
-	if bold:
-		line = self.format_line(tag, value)
-
-	else:
-		line = self.format_line_lean(tag, value)
-
-
-
-	#print(line)
-	return line
 
 
 

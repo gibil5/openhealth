@@ -3,7 +3,7 @@
 	Order
 
 	Created: 			26 Aug 2016
-	Last mod: 			29 Aug 2019
+	Last mod: 			 3 Dec 2019
 """
 from __future__ import print_function
 import datetime
@@ -541,9 +541,19 @@ class sale_order(models.Model):
 
 
 # ----------------------------------------------------------- Ticket - Get Raw Line ----------------
+#jx
 
 	# Raw Line
 	def get_ticket_raw_line(self, argument):
+
+		line = ord_funcs.get_ticket_raw_line(self, argument)
+
+		return line 
+
+
+
+	# Raw Line
+	def get_ticket_raw_line_dep(self, argument):
 		"""
 		Abstraction. 
 		Used by tickets.
@@ -1280,7 +1290,6 @@ class sale_order(models.Model):
 			self.x_type = self.x_payment_method.saledoc
 
 
-#jx
 		# Create Procedure 
 		print('Create Procedure')
 

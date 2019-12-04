@@ -8,7 +8,7 @@
 
 	'description': """
 
-		2 Dec 2019, v. 2
+		4 Dec 2019, v. 1.0
 
 		Contains:
 			- All External Dependencies,

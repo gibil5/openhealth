@@ -7,33 +7,93 @@
 	Last up: 	 		Id.
 """
 from __future__ import print_function
-#from openerp.addons.openhealth.models.libs import lib
-#from . import ord_vars
-#from openerp import _
-#from openerp.exceptions import Warning as OrderError
 
 
 
-# ----------------------------------------------------------- Ticket - Get Raw Line - Aux ----------------
-def get_credit_note_type(self):
+# ----------------------------------------------------------- Ticket - Get Table Lines - Format ----------------
+
+# Format Line
+def format_line(tag, value):
 	"""
-	Used by Print Ticket.
+	Abstraction. 
+	Used by tickets.
+	Contains the formatting rules. For all entries. 
+	Does not use Bootstrap classed. Is much more robust than the previous approach. 
+	Allows for easy font size config. 
 	"""
-	_dic_cn = {
-				'cancel': 					'Anulación de la operación.',
-				'cancel_error_ruc': 		'Anulación por error en el RUC.',
-				'correct_error_desc': 		'Corrección por error en la descripción.',
-				'discount': 				'Descuento global.',
-				'discount_item': 			'Descuento por item.',
-				'return': 					'Devolución total.',
-				'return_item': 				'Devolución por item.',
-				'bonus': 					'Bonificación.',
-				'value_drop': 				'Disminución en el valor.',
-				'other': 					'Otros.',
-				False: 						'',
-	}
 
-	return _dic_cn[self.x_credit_note_type]
+	#value = str(value)
+
+	# Init
+	_size_font = '2'
+
+
+	# Items header
+	if tag in ['items'] and value in ['header']:
+
+		line = 	"<tr>\
+					<td>\
+						<font size='2'>\
+							<b>Desc</b>\
+						</font>\
+					</td>\
+					<td>\
+						<font size='2'>\
+							<b>Cnt</b>\
+						</font>\
+					</td>\
+					<td>\
+						<font size='2'>\
+							<b>PUnit</b>\
+						</font>\
+					</td>\
+					<td>\
+						<font size='2'>\
+							<b>Total</b>\
+						</font>\
+					</td>\
+				</tr>"
+
+
+	# Formatted line
+	else:
+
+		line = "<tr>\
+					<td>\
+						<font size='" + _size_font +"'>\
+							<b>" + tag + "</b>\
+						</font>\
+					</td>\
+					<td>\
+						<font size='" + _size_font + " '>"\
+							+ value + "</font></td></tr>"
+
+
+	return line 
+
+
+
+# Format Line
+def format_line_lean(tag, value):
+	"""
+	Abstraction. 
+	Lean version (not bold)
+	"""
+
+	#value = str(value)
+
+	line = "<tr>\
+				<td>\
+					<font size='2'>" + tag + "</font>\
+				</td>\
+				<td>\
+					<font size='2'>" + value + "</font>\
+				</td>\
+			</tr>"
+
+	return line 
+
+
 
 
 # ----------------------------------------------------------- Ticket - Get Raw Line ----------------
@@ -195,12 +255,15 @@ def get_ticket_raw_line(self, argument):
 		print('This should not happen !')
 
 
+
 	# Go
 	if bold:
-		line = self.format_line(tag, value)
+		#line = self.format_line(tag, value)
+		line = format_line(tag, value)
 
 	else:
-		line = self.format_line_lean(tag, value)
+		#line = self.format_line_lean(tag, value)
+		line = format_line_lean(tag, value)
 
 
 
@@ -208,5 +271,28 @@ def get_ticket_raw_line(self, argument):
 	return line
 
 
+
+
+
+# ----------------------------------------------------------- Ticket - Get Raw Line - Aux ----------------
+def get_credit_note_type(self):
+	"""
+	Used by Print Ticket.
+	"""
+	_dic_cn = {
+				'cancel': 					'Anulación de la operación.',
+				'cancel_error_ruc': 		'Anulación por error en el RUC.',
+				'correct_error_desc': 		'Corrección por error en la descripción.',
+				'discount': 				'Descuento global.',
+				'discount_item': 			'Descuento por item.',
+				'return': 					'Devolución total.',
+				'return_item': 				'Devolución por item.',
+				'bonus': 					'Bonificación.',
+				'value_drop': 				'Disminución en el valor.',
+				'other': 					'Otros.',
+				False: 						'',
+	}
+
+	return _dic_cn[self.x_credit_note_type]
 
 

@@ -1,6 +1,93 @@
 # 4 Dec 2019
 
 
+# ----------------------------------------------------------- Ticket - Get Table Lines - Format ----------------
+
+	# Format Line
+	def format_line(self, tag, value):
+		"""
+		Abstraction. 
+		Used by tickets.
+		Contains the formatting rules. For all entries. 
+		Does not use Bootstrap classed. Is much more robust than the previous approach. 
+		Allows for easy font size config. 
+		"""
+
+		#value = str(value)
+
+		# Init
+		_size_font = '2'
+
+
+		# Items header
+		if tag in ['items'] and value in ['header']:
+
+			line = 	"<tr>\
+						<td>\
+							<font size='2'>\
+								<b>Desc</b>\
+							</font>\
+						</td>\
+						<td>\
+							<font size='2'>\
+								<b>Cnt</b>\
+							</font>\
+						</td>\
+						<td>\
+							<font size='2'>\
+								<b>PUnit</b>\
+							</font>\
+						</td>\
+						<td>\
+							<font size='2'>\
+								<b>Total</b>\
+							</font>\
+						</td>\
+					</tr>"
+
+
+		# Formatted line
+		else:
+
+			line = "<tr>\
+						<td>\
+							<font size='" + _size_font +"'>\
+								<b>" + tag + "</b>\
+							</font>\
+						</td>\
+						<td>\
+							<font size='" + _size_font + " '>"\
+								+ value + "</font></td></tr>"
+
+
+		return line 
+
+
+
+	# Format Line
+	def format_line_lean(self, tag, value):
+		"""
+		Abstraction. 
+		Contains the formatting rules. For all entries. 
+		Lean version (not bold)
+		"""
+
+		#value = str(value)
+
+		line = "<tr>\
+					<td>\
+						<font size='2'>" + tag + "</font>\
+					</td>\
+					<td>\
+						<font size='2'>" + value + "</font>\
+					</td>\
+				</tr>"
+
+		return line 
+
+
+
+
 
 # ----------------------------------------------------------- Credit Notes - Getters ----------------
 

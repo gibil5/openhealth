@@ -37,42 +37,72 @@ Last up:   	3 Dec 2019
 				<div class="page" style="margin-top:100px;font-size: small;">
 
 
+
 <!--New Header -->
+<br/>
 <div class="row">
 
-	<!-- Company name -->
-	<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_name()"/>
+		<!-- Company name -->
+		<!-- Company Ruc -->
+		<!-- Company Address -->
+		<!-- Company Phone -->
 
-	<!-- Company Ruc -->
-	<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_ruc()"/>
+<!--
+		<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_name()"/>
 
-	<!-- Company Address -->
-	<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_address()"/>
+		<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_ruc()"/>
 
-	<!-- Company Phone -->
-	<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_phone()"/>
+		<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_address()"/>
+
+		<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_phone()"/>
+-->
+
+	<center>
+
+		<!-- Company name -->
+		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_name()"/>
+
+		<!-- Company Ruc -->
+		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_ruc()"/>
+
+		<!-- Company Address -->
+		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_address()"/>
+
+		<!-- Company Phone -->
+		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_phone()"/>
+
+	</center>
 </div>
 
 
 
 <!--Title - Ok -->
 <div class="row">
-<b>
-	<!-- Border -->
-	<div class="col-xs-12" style="border-top: 1px solid black;"/>
-	
-	<!-- Title -->
-	<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_title()"/>
+<!--
+		<div class="col-xs-12" style="border-top: 1px solid black;"/>
+		<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_title()"/>
+			<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_serial_nr()"/>
+		<div class="col-xs-12" style="border-top: 1px solid black;"/>
+-->
 
-	
-	<!-- Credit Note - Conditional -->
-	<t t-if="doc.state == 'credit_note'">
-		<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_serial_nr()"/>
-	</t>
+	<center>
+	<b>
+		<!-- Border -->
+		<div style="border-top: 1px solid black;"/>
+		
+		<!-- Title -->
+		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_title()"/>
 
-	<!-- Border -->
-	<div class="col-xs-12" style="border-top: 1px solid black;"/>
-</b>
+		
+		<!-- Credit Note - Conditional -->
+		<t t-if="doc.state == 'credit_note'">
+			<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_serial_nr()"/>
+		</t>
+
+		<!-- Border -->
+		<div style="border-top: 1px solid black;"/>
+	</b>
+	</center>
 </div>
 
 
@@ -310,29 +340,42 @@ Last up:   	3 Dec 2019
 
 <!-- ROW - Footer - Begin --> 
 <div class="row">
+	<center>
 
-<!-- QR --> 
-<div class="text-center col-xs-12" style="border-top: 1px solid black; margin-top: 5px;">
-	<img t-att-src="'data:image/png;base64,%s' % doc.x_qr_img"  style="max-height: 100px;"/>
-</div>
+<!--
+	<div class="text-center col-xs-12" style="border-top: 1px solid black; margin-top: 5px;">
+	<div class="footer_">
+		<div class="text-center" style="margin-top:1px;margin-bottom:1px;width:100%;font-size: xx-small;">
+			<div class="col-xs-12 text-center" style="margin-top:7px;" t-esc="doc.get_description()"/>
+			<div class="col-xs-12 text-center" style="margin-top:7px;" t-esc="doc.get_warning()"/>
+			<div class="col-xs-12 text-center" style="margin-top:7px;" t-esc="doc.get_website()"/>
+			<div class="col-xs-12 text-center" style="margin-top:7px;" t-esc="doc.get_email()"/>
+-->
 
-<!-- Legal Warning --> 
-<div class="footer_">
-	<div class="text-center" style="margin-top:1px;margin-bottom:1px;width:100%;font-size: xx-small;">
-		<br/>
-		
-		<div class="col-xs-12 text-center" style="margin-top:7px;" t-esc="doc.get_description()"/>
 
-		<div class="col-xs-12 text-center" style="margin-top:7px;" t-esc="doc.get_warning()"/>
-		
-		<div class="col-xs-12 text-center" style="margin-top:7px;" t-esc="doc.get_website()"/>
-
-		<div class="col-xs-12 text-center" style="margin-top:7px;" t-esc="doc.get_email()"/>
+	<!-- QR --> 
+	<div style="border-top: 1px solid black; margin-top: 5px;">
+		<img t-att-src="'data:image/png;base64,%s' % doc.x_qr_img"  style="max-height: 100px;"/>
 	</div>
-</div>      
 
 
+	<!-- Legal Warning --> 
+	<div>
+		<div style="margin-top:1px;margin-bottom:1px;width:100%;font-size: xx-small;">
+			<br/>
+			
+			<div style="margin-top:7px;" t-esc="doc.get_description()"/>
 
+			<div style="margin-top:7px;" t-esc="doc.get_warning()"/>
+			
+			<div style="margin-top:7px;" t-esc="doc.get_website()"/>
+
+			<div style="margin-top:7px;" t-esc="doc.get_email()"/>
+		</div>
+	</div>      
+
+
+	</center>
 </div>
 <!-- ROW - Footer - End --> 
 

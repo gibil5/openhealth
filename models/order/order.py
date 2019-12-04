@@ -447,100 +447,83 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Ticket - Get Table Lines - Aux ----------------
 
-	# Test Line
+
+# ----------------------------------------------------------- Ticket - Test Raw Lines ----------------
+
+	# Test Raw Receipt
 	@api.multi
-	def test_line(self):
-		line = self.get_patient_name_line()
-		return line
+	def test_raw_receipt(self):
+		print()
+		print('Test Raw Receipt')
+
+		x_type = 'ticket_receipt'
+		state = 'sale'
+
+		action = self.test_raw_lines(x_type, state)
+
+		return action 
+
+
+
+	# Test Raw Invoice
+	@api.multi
+	def test_raw_invoice(self):
+		print()
+		print('Test Raw Invoice')
+
+		x_type = 'ticket_invoice'
+		state = 'sale'
+
+		action = self.test_raw_lines(x_type, state)
+
+		return action 
+
+
+
+	# Test Raw Receipt - Credit Note
+	@api.multi
+	def test_raw_credit_note(self):
+		print()
+		print('Test Raw Credit Note')
+
+		x_type = 'ticket_receipt'
+		state = 'credit_note'
+
+		action = self.test_raw_lines(x_type, state)
+
+		return action 
 
 
 
 
-# ----------------------------------------------------------- Ticket - Get Table Lines - Format ----------------
-
-	# Format Line
-	def format_line(self, tag, value):
-		"""
-		Abstraction. 
-		Used by tickets.
-		Contains the formatting rules. For all entries. 
-		Does not use Bootstrap classed. Is much more robust than the previous approach. 
-		Allows for easy font size config. 
-		"""
-
-		#value = str(value)
-
-		# Init
-		_size_font = '2'
 
 
-		# Items header
-		if tag in ['items'] and value in ['header']:
-
-			line = 	"<tr>\
-						<td>\
-							<font size='2'>\
-								<b>Desc</b>\
-							</font>\
-						</td>\
-						<td>\
-							<font size='2'>\
-								<b>Cnt</b>\
-							</font>\
-						</td>\
-						<td>\
-							<font size='2'>\
-								<b>PUnit</b>\
-							</font>\
-						</td>\
-						<td>\
-							<font size='2'>\
-								<b>Total</b>\
-							</font>\
-						</td>\
-					</tr>"
+	# Test Raw Line
+	@api.multi
+	def test_raw_lines(self, x_type, state):
+		print()
+		print('Test Raw Lines')
 
 
-		# Formatted line
-		else:
+		# Receipts
+		orders = self.env['sale.order'].search([
+													('patient', '=', self.patient.id),
+													('x_type', 'in', [x_type]),
 
-			line = "<tr>\
-						<td>\
-							<font size='" + _size_font +"'>\
-								<b>" + tag + "</b>\
-							</font>\
-						</td>\
-						<td>\
-							<font size='" + _size_font + " '>"\
-								+ value + "</font></td></tr>"
-
-
-		return line 
+													('state', 'in', [state]),
+											],
+												order='date_order desc',
+												limit=1,
+											)
+		print(orders)
 
 
 
-	# Format Line
-	def format_line_lean(self, tag, value):
-		"""
-		Abstraction. 
-		Contains the formatting rules. For all entries. 
-		Lean version (not bold)
-		"""
-
-		#value = str(value)
-
-		line = "<tr>\
-					<td>\
-						<font size='2'>" + tag + "</font>\
-					</td>\
-					<td>\
-						<font size='2'>" + value + "</font>\
-					</td>\
-				</tr>"
-
-		return line 
+		# Orders
+		for order in orders:
+			action = order.print_ticket_electronic()
+			return action 
 
 
 
@@ -553,7 +536,6 @@ class sale_order(models.Model):
 		"""
 		Just a stub. 
 		"""
-		#line = ord_funcs.get_ticket_raw_line(self, argument)
 		line = raw_funcs.get_ticket_raw_line(self, argument)
 
 		return line 

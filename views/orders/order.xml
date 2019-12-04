@@ -88,15 +88,63 @@
 
 
 
-					<!-- Test Line -->
+
+
+					<!-- Test Raw -->
+<!--
 					<button 
 							type="object"
 							
 							class="oe_highlight"
 							
-							name="test_line"
+							name="test_raw_lines"
 
-							string="Test Line"
+							string="Test Raw Lines"
+
+							groups='openhealth.roots'
+						/>
+-->
+
+
+					<!-- Test Raw Receipt -->
+					<button 
+							type="object"
+							
+							class="oe_highlight"
+							
+							name="test_raw_receipt"
+
+							string="Test Raw Receipt"
+
+							groups='openhealth.roots'
+						/>
+
+
+					<!-- Test Raw Invoice -->
+					<button 
+							type="object"
+							
+							class="oe_highlight"
+							
+							name="test_raw_invoice"
+
+							string="Test Raw Invoice"
+
+							groups='openhealth.roots'
+						/>
+
+
+					<!-- Test Raw CN -->
+					<button 
+							type="object"
+							
+							class="oe_highlight"
+							
+							name="test_raw_credit_note"
+
+							string="Test Raw Credit Note"
+
+							groups='openhealth.roots'
 						/>
 
 

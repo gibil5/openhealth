@@ -6,14 +6,86 @@
 	Created: 			29 Aug 2019
 	Last up: 	 		14 Nov 2019
 """
+from __future__ import print_function
+
 from openerp.addons.openhealth.models.libs import lib
+
+from openerp import _
+from openerp.exceptions import Warning as OrderError
 
 from . import ord_vars
 
 
 
 # ----------------------------------------------------------- Ticket - Get Raw Line ----------------
-#jx
+# Raw Line
+def check_ticket(self, family, state):
+	"""
+	Check Patient for Ticket
+	Raise Errors 
+	"""
+
+	print()
+	print('Check Ticket')
+
+
+
+	# Credit Note
+	if state in ['credit_note', ]:
+		print()
+		print('Check - Credit Note - ok')
+
+
+
+
+	# Invoice
+	if family in ['ticket_invoice', 'invoice']:
+
+		print('Check - Invoice')
+
+
+		# Address
+		address = self.get_firm_address()
+
+		if address in [False, '']:
+			msg = "Error: Factura - Empresa no tiene Direccion."
+			raise OrderError(_(msg))
+			#return OrderError(_(msg))
+
+
+		# Ruc
+		ruc = self.x_ruc
+
+		if ruc in [False, '']:
+			msg = "Error: Factura - Paciente no tiene RUC."
+			raise OrderError(_(msg))
+
+
+		# Firm
+		firm = self.patient.x_firm
+		if firm in [False, '']:
+			msg = "Error: Factura - Paciente no tiene Razon social."
+			raise OrderError(_(msg))
+
+
+		print('ok')
+
+
+
+	# Receipt
+	elif family in ['ticket_receipt', 'receipt']:
+		print()
+		print('Check - Receipt - ok')
+
+
+	# Other
+	else:
+		print('This should not happen !')
+
+
+
+
+# ----------------------------------------------------------- Ticket - Get Raw Line ----------------
 # Raw Line
 def get_ticket_raw_line(self, argument):
 	"""
@@ -27,11 +99,14 @@ def get_ticket_raw_line(self, argument):
 	"""
 
 	print()
-	print('Ord Funcs - Get Ticket Raw Line')
+	print('OFuncs - Get Ticket Raw Line')
 
 	print(argument)
 
 	line = 'empty'
+
+	bold = True
+
 
 
 	# Credit note
@@ -53,18 +128,119 @@ def get_ticket_raw_line(self, argument):
 
 
 
+
 	# Receipt
+	elif argument in ['receipt_patient_name']:
+		tag = 'Cliente:'
+		value = self.patient.name
+
+	elif argument in ['receipt_patient_dni']:
+		tag = 'DNI:'
+		value = self.x_id_doc
+
+	elif argument in ['receipt_patient_address']:
+		tag = 'Direccion:'
+		value = self.get_patient_address()
+
+
 
 
 	# Invoice
+	elif argument in ['invoice_firm_name']:
+		tag = 'Razon social:'
+		value = self.patient.x_firm
+
+	elif argument in ['invoice_patient_ruc']:
+		tag = 'RUC:'
+		value = self.x_ruc
+
+	elif argument in ['invoice_firm_address']:
+		tag = 'Direccion:'
+		value = self.get_firm_address()
 
 
 
+
+	# Sale - Not Credit Note
+	elif argument in ['sale_date']:
+		tag = 'Fecha:'
+		value = self.get_date_corrected()
+
+	elif argument in ['sale_serial_number']:
+		tag = 'Ticket:'
+		value = self.x_serial_nr
+
+
+
+
+	# Totals
+	elif argument in ['totals_net']:
+		tag = 'OP. GRAVADAS S/.'
+		value = str(self.get_total_net())
+		bold = False
+
+	elif argument in ['totals_free']:
+		tag = 'OP. GRATUITAS S/.'
+		value = '0'
+		bold = False
+
+	elif argument in ['totals_exonerated']:
+		tag = 'OP. EXONERADAS S/.'
+		value = '0'
+		bold = False
+
+
+
+	elif argument in ['totals_unaffected']:
+		tag = 'OP. INAFECTAS S/.'
+		value = '0'
+		bold = False
+
+	elif argument in ['totals_tax']:
+		tag = 'I.G.V. 18% S/.'
+		value = str(self.get_total_tax())
+		bold = False
+
+	elif argument in ['totals_total']:
+		tag = 'TOTAL S/.'
+		value = str(self.get_amount_total())
+		bold = False
+
+
+
+
+	# Words
+	elif argument in ['words_header']:
+		tag = 'Son:'
+		value = ''
+
+	elif argument in ['words_soles']:
+		tag = ''
+		value = str(self.get_total_in_words())
+
+	elif argument in ['words_cents']:
+		tag = ''
+		value = str(self.get_total_cents())
+
+	elif argument in ['words_footer']:
+		tag = ''
+		value = 'Soles'
+
+
+
+
+	# Else
 	else:
 		print('This should not happen !')
 
 
-	line = self.format_line(tag, value)
+	# Go
+	if bold:
+		line = self.format_line(tag, value)
+
+	else:
+		line = self.format_line_lean(tag, value)
+
 
 
 	#print(line)

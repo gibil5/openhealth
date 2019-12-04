@@ -90,7 +90,7 @@ Last up:   	3 Dec 2019
 <!-- Conditional - Credit Note -->
 <t t-if="doc.state == 'credit_note'">
 
-	<t t-raw="doc.get_ticket_raw_line('date_credit_note')"/>
+	<t t-raw="doc.get_raw_line('date_credit_note')"/>
 
 </t>
 
@@ -99,23 +99,32 @@ Last up:   	3 Dec 2019
 <!-- Conditional - Receipt -->
 <t t-if="doc.x_type == 'ticket_receipt'">
 
+<!--
 	<t t-raw="doc.get_patient_name_line()"/>
-
 	<t t-raw="doc.get_patient_dni_line()"/>
-
 	<t t-raw="doc.get_patient_address_line()"/>
+-->
+	<t t-raw="doc.get_raw_line('receipt_patient_name')"/>
+
+	<t t-raw="doc.get_raw_line('receipt_patient_dni')"/>
+
+	<t t-raw="doc.get_raw_line('receipt_patient_address')"/>
 </t>
 
 
 
 <!-- Conditional - Invoice -->
 <t t-if="doc.x_type == 'ticket_invoice'">
-
+<!--
 	<t t-raw="doc.get_patient_firm_line()"/>
-
 	<t t-raw="doc.get_patient_ruc_line()"/>
-
 	<t t-raw="doc.get_patient_firm_address_line()"/>
+-->
+	<t t-raw="doc.get_raw_line('invoice_firm_name')"/>
+
+	<t t-raw="doc.get_raw_line('invoice_patient_ruc')"/>
+
+	<t t-raw="doc.get_raw_line('invoice_firm_address')"/>
 </t>
 
 	</table>
@@ -144,11 +153,11 @@ Last up:   	3 Dec 2019
 	</b>
 	<table style="width:100%">
 
-		<t t-raw="doc.get_ticket_raw_line('denomination_credit_note_owner')"/>
+		<t t-raw="doc.get_raw_line('denomination_credit_note_owner')"/>
 
-		<t t-raw="doc.get_ticket_raw_line('date_credit_note_owner')"/>
+		<t t-raw="doc.get_raw_line('date_credit_note_owner')"/>
 
-		<t t-raw="doc.get_ticket_raw_line('reason_credit_note')"/>
+		<t t-raw="doc.get_raw_line('reason_credit_note')"/>
 
 
 <!--
@@ -173,10 +182,14 @@ Last up:   	3 Dec 2019
 <!-- Conditional - Sale -->
 <t t-if="doc.state in ['sale', 'cancel']">
 	<table style="width:100%">
-
+<!--
 		<t t-raw="doc.get_ticket_date_line()"/>
-
 		<t t-raw="doc.get_ticket_number_line()"/>
+-->
+
+	<t t-raw="doc.get_raw_line('sale_date')"/>
+
+	<t t-raw="doc.get_raw_line('sale_serial_number')"/>
 
 	</table>
 </t>
@@ -224,21 +237,29 @@ Last up:   	3 Dec 2019
 
 
 
-<!-- Total --> 
+<!-- Totals --> 
 <table style="width:100%">
-
+<!--
 	<t t-raw="doc.get_ticket_total_net_line()"/>
-
 	<t t-raw="doc.get_ticket_total_free_line()"/>
-
 	<t t-raw="doc.get_ticket_total_exonerated_line()"/>
 
 	<t t-raw="doc.get_ticket_total_unaffected_line()"/>
-
 	<t t-raw="doc.get_ticket_total_tax_line()"/>
-
 	<t t-raw="doc.get_ticket_total_line()"/>
+-->
 
+	<t t-raw="doc.get_raw_line('totals_net')"/>
+
+	<t t-raw="doc.get_raw_line('totals_free')"/>
+
+	<t t-raw="doc.get_raw_line('totals_exonerated')"/>
+
+	<t t-raw="doc.get_raw_line('totals_unaffected')"/>
+
+	<t t-raw="doc.get_raw_line('totals_tax')"/>
+
+	<t t-raw="doc.get_raw_line('totals_total')"/>
 </table>
 <br/>
 
@@ -247,14 +268,21 @@ Last up:   	3 Dec 2019
 
 <!-- Total In Words --> 
 <table style="width:100%">
-
+<!--
 	<t t-raw="doc.get_ticket_total_words_header()"/>
-
 	<t t-raw="doc.get_ticket_total_words_soles()"/>
-
 	<t t-raw="doc.get_ticket_total_words_cents()"/>
-
 	<t t-raw="doc.get_ticket_total_words_footer()"/>
+-->
+
+	<t t-raw="doc.get_raw_line('words_header')"/>
+
+	<t t-raw="doc.get_raw_line('words_soles')"/>
+
+	<t t-raw="doc.get_raw_line('words_cents')"/>
+
+	<t t-raw="doc.get_raw_line('words_footer')"/>
+
 </table>
 <br/>
 

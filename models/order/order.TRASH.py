@@ -1,3 +1,333 @@
+# 4 Dec 2019
+
+
+
+
+# ----------------------------------------------------------- Ticket - Get Table Lines - Words ----------------
+
+	# Ticket Total Words Header
+	def get_ticket_total_words_header(self):
+
+		tag = 'Son:'
+		value = ''
+
+		line = self.format_line(tag, value)
+
+		#print(line)
+		return line
+
+
+
+	# Ticket Total Words Soles
+	def get_ticket_total_words_soles(self):
+
+		tag = ''
+		value = str(self.get_total_in_words())
+
+		line = self.format_line(tag, value)
+
+		#print(line)
+		return line
+
+
+
+	# Ticket Total Words Cents
+	def get_ticket_total_words_cents(self):
+
+		tag = ''
+		value = str(self.get_total_cents())
+
+		line = self.format_line(tag, value)
+
+		#print(line)
+		return line
+
+
+
+	# Ticket Total Words Footer
+	def get_ticket_total_words_footer(self):
+
+		tag = ''
+		value = 'Soles'
+
+		line = self.format_line(tag, value)
+
+		#print(line)
+		return line
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Ticket - Get Table Lines - Totals ----------------
+
+	# Ticket Total Net 
+	def get_ticket_total_net_line(self):
+
+		tag = 'OP. GRAVADAS S/.'
+		value = str(self.get_total_net())
+
+		line = self.format_line_lean(tag, value)
+
+		#print(line)
+		return line
+
+
+
+	# Ticket Total Free
+	def get_ticket_total_free_line(self):
+
+		tag = 'OP. GRATUITAS S/.'
+		value = '0'
+
+		line = self.format_line_lean(tag, value)
+
+		#print(line)
+		return line
+
+
+
+
+	# Ticket Total Exonerated 
+	def get_ticket_total_exonerated_line(self):
+
+		tag = 'OP. EXONERADAS S/.'
+		value = '0'
+
+		line = self.format_line_lean(tag, value)
+
+		#print(line)
+		return line
+
+
+
+	# Ticket Total Unaffected 
+	def get_ticket_total_unaffected_line(self):
+
+		tag = 'OP. INAFECTAS S/.'
+		value = '0'
+
+		line = self.format_line_lean(tag, value)
+
+		#print(line)
+		return line
+
+
+
+	# Ticket Total Tax 
+	def get_ticket_total_tax_line(self):
+
+		tag = 'I.G.V. 18% S/.'
+		value = str(self.get_total_tax())
+
+		line = self.format_line_lean(tag, value)
+
+		#print(line)
+		return line
+
+
+
+	# Ticket Total
+	def get_ticket_total_line(self):
+
+		tag = 'TOTAL S/.'
+		value = str(self.get_amount_total())
+
+		line = self.format_line_lean(tag, value)
+
+		#print(line)
+		return line
+
+
+
+
+# ----------------------------------------------------------- Ticket - Sale  ----------------
+
+	# Ticket Date
+	def get_ticket_date_line(self):
+		print()
+		print('Get Ticket Date Line')
+
+		tag = 'Fecha:'
+		value = self.get_date_corrected()
+
+		line = self.format_line(tag, value )
+
+		#print(line)
+		return line
+
+
+	# Ticket Number
+	def get_ticket_number_line(self):
+		print()
+		print('Get Ticket Number Line')
+
+		tag = 'Ticket:'
+		value = self.x_serial_nr
+
+		line = self.format_line(tag, value )
+
+		#print(line)
+		return line
+
+
+
+
+
+
+# ----------------------------------------------------------- Ticket - Receipt ----------------
+
+	# Patient Name 
+	def get_patient_name_line(self):
+		print()
+		print('Get Patient Name Line')
+
+		tag = 'Cliente:'
+		value = self.patient.name
+
+		#line = self.format_line('Cliente:', self.patient.name )
+		line = self.format_line(tag, value )
+
+		#print(line)
+		return line
+
+
+
+	# Patient Dni
+	def get_patient_dni_line(self):
+		#print()
+		#print('Get Patient Dni Line')
+
+		line = self.format_line('DNI:', self.x_id_doc )
+
+		#print(line)
+		return line
+
+
+
+	# Patient Address
+	def get_patient_address_line(self):
+		print()
+		print('Get Patient Address Line')
+
+		line = self.format_line('Direccion:', self.get_patient_address() )
+
+		#print(line)
+		return line
+
+
+
+# ----------------------------------------------------------- Ticket - Invoice ----------------
+
+	# Patient Name 
+	def get_patient_firm_line(self):
+		print()
+		print('Get Patient Firm Line')
+
+		line = self.format_line('Razon social::', self.patient.x_firm )
+
+		#print(line)
+		return line
+
+
+
+	# Patient Ruc
+	def get_patient_ruc_line(self):
+		print()
+		print('Get Patient Firm Line')
+
+		line = self.format_line('RUC::', self.x_ruc )
+
+		#print(line)
+		return line
+
+
+
+	# Patient Firm Address
+	def get_patient_firm_address_line(self):
+		print()
+		print('Get Patient Firm Address Line')
+
+		line = self.format_line('Direccion::', self.get_firm_address() )
+
+		#print(line)
+		return line
+
+
+
+
+
+# ----------------------------------------------------------- Ticket Get Raw Line ----------------
+	# Raw Line
+	def get_ticket_raw_line_dep(self, argument):
+		"""
+		Abstraction. 
+		Used by tickets.
+		Can be used by all entries. 
+		Types:
+			- Receipt, 
+			- Invoice, 
+			- Credit note. 
+		"""
+
+		print()
+		print('Get Ticket Raw Line')
+
+		print(argument)
+
+		line = 'empty'
+
+
+		# Credit note
+		if argument in ['date_credit_note']:
+			tag = 'Fecha:'
+			value = self.get_date_corrected()
+
+		elif argument in ['denomination_credit_note_owner']:
+			tag = 'Denominacion:'
+			value = self.x_credit_note_owner.x_serial_nr
+
+		elif argument in ['date_credit_note_owner']:
+			tag = 'Fecha de emision:'
+			value = self.x_credit_note_owner.get_date_corrected()
+
+		elif argument in ['reason_credit_note']:
+			tag = 'Motivo:'
+			value = self.get_credit_note_type()
+
+
+
+		# Receipt
+
+
+		# Invoice
+
+
+
+		else:
+			print('This should not happen !')
+
+
+		line = self.format_line(tag, value)
+
+
+		#print(line)
+		return line
+
+
+
+
+
+
+
+
+
+
+
+
 # 23 Nov 2019
 
 # Serial nr

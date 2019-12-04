@@ -3,7 +3,7 @@
 	Order
 
 	Created: 			26 Aug 2016
-	Last mod: 			 3 Dec 2019
+	Last mod: 			 4 Dec 2019
 """
 from __future__ import print_function
 import datetime
@@ -544,70 +544,13 @@ class sale_order(models.Model):
 #jx
 
 	# Raw Line
-	def get_ticket_raw_line(self, argument):
-
+	def get_raw_line(self, argument):
+		"""
+		Just a stub. 
+		"""
 		line = ord_funcs.get_ticket_raw_line(self, argument)
 
 		return line 
-
-
-
-	# Raw Line
-	def get_ticket_raw_line_dep(self, argument):
-		"""
-		Abstraction. 
-		Used by tickets.
-		Can be used by all entries. 
-		Types:
-			- Receipt, 
-			- Invoice, 
-			- Credit note. 
-		"""
-
-		print()
-		print('Get Ticket Raw Line')
-
-		print(argument)
-
-		line = 'empty'
-
-
-		# Credit note
-		if argument in ['date_credit_note']:
-			tag = 'Fecha:'
-			value = self.get_date_corrected()
-
-		elif argument in ['denomination_credit_note_owner']:
-			tag = 'Denominacion:'
-			value = self.x_credit_note_owner.x_serial_nr
-
-		elif argument in ['date_credit_note_owner']:
-			tag = 'Fecha de emision:'
-			value = self.x_credit_note_owner.get_date_corrected()
-
-		elif argument in ['reason_credit_note']:
-			tag = 'Motivo:'
-			value = self.get_credit_note_type()
-
-
-
-		# Receipt
-
-
-		# Invoice
-
-
-
-		else:
-			print('This should not happen !')
-
-
-		line = self.format_line(tag, value)
-
-
-		#print(line)
-		return line
-
 
 
 
@@ -620,7 +563,6 @@ class sale_order(models.Model):
 	def get_order_lines_header(self):
 		print()
 		print('Get Order Lines Header')
-
 
 		line = 	"<tr>\
 					<td>\
@@ -647,281 +589,6 @@ class sale_order(models.Model):
 
 		#print(line)
 		return line
-
-
-
-
-# ----------------------------------------------------------- Ticket - Get Table Lines - Totals ----------------
-
-	# Ticket Total Net 
-	def get_ticket_total_net_line(self):
-		print()
-		print('Get Ticket Total Net Line')
-
-		tag = 'OP. GRAVADAS S/.'
-		value = str(self.get_total_net())
-
-		line = self.format_line_lean(tag, value)
-
-		#print(line)
-		return line
-
-
-
-	# Ticket Total Free
-	def get_ticket_total_free_line(self):
-		print()
-		print('Get Ticket Total Net Line')
-
-		tag = 'OP. GRATUITAS S/.'
-		value = '0'
-
-		line = self.format_line_lean(tag, value)
-
-		#print(line)
-		return line
-
-
-
-
-	# Ticket Total Exonerated 
-	def get_ticket_total_exonerated_line(self):
-		print()
-		print('Get Ticket Total Net Line')
-
-		tag = 'OP. EXONERADAS S/.'
-		value = '0'
-
-		line = self.format_line_lean(tag, value)
-
-		#print(line)
-		return line
-
-
-
-	# Ticket Total Unaffected 
-	def get_ticket_total_unaffected_line(self):
-		print()
-		print('Get Ticket Total Net Line')
-
-		tag = 'OP. INAFECTAS S/.'
-		value = '0'
-
-		line = self.format_line_lean(tag, value)
-
-		#print(line)
-		return line
-
-
-
-	# Ticket Total Tax 
-	def get_ticket_total_tax_line(self):
-		print()
-		print('Get Ticket Total Net Line')
-
-		tag = 'I.G.V. 18% S/.'
-		value = str(self.get_total_tax())
-
-		line = self.format_line_lean(tag, value)
-
-		#print(line)
-		return line
-
-
-
-	# Ticket Total
-	def get_ticket_total_line(self):
-		print()
-		print('Get Ticket Total Net Line')
-
-		tag = 'TOTAL S/.'
-		value = str(self.get_amount_total())
-
-		line = self.format_line_lean(tag, value)
-
-		#print(line)
-		return line
-
-
-
-
-# ----------------------------------------------------------- Ticket - Get Table Lines - Words ----------------
-
-	# Ticket Total Words Header
-	def get_ticket_total_words_header(self):
-		print()
-		print('Get Ticket Total Net Line')
-
-		tag = 'Son:'
-		value = ''
-
-		line = self.format_line(tag, value)
-
-		#print(line)
-		return line
-
-
-
-	# Ticket Total Words Soles
-	def get_ticket_total_words_soles(self):
-		print()
-		print('Get Ticket Total Net Line')
-
-		tag = ''
-		value = str(self.get_total_in_words())
-
-		line = self.format_line(tag, value)
-
-		#print(line)
-		return line
-
-
-
-	# Ticket Total Words Cents
-	def get_ticket_total_words_cents(self):
-		print()
-		print('Get Ticket Total Net Line')
-
-		tag = ''
-		value = str(self.get_total_cents())
-
-		line = self.format_line(tag, value)
-
-		#print(line)
-		return line
-
-
-
-	# Ticket Total Words Footer
-	def get_ticket_total_words_footer(self):
-		print()
-		print('Get Ticket Total Net Line')
-
-		tag = ''
-		value = 'Soles'
-
-		line = self.format_line(tag, value)
-
-		#print(line)
-		return line
-
-
-
-
-# ----------------------------------------------------------- Ticket - Get Table Lines - Invoice ----------------
-
-	# Patient Name 
-	def get_patient_firm_line(self):
-		print()
-		print('Get Patient Firm Line')
-
-		line = self.format_line('Razon social::', self.patient.x_firm )
-
-		#print(line)
-		return line
-
-
-
-	# Patient Ruc
-	def get_patient_ruc_line(self):
-		print()
-		print('Get Patient Firm Line')
-
-		line = self.format_line('RUC::', self.x_ruc )
-
-		#print(line)
-		return line
-
-
-
-	# Patient Firm Address
-	def get_patient_firm_address_line(self):
-		print()
-		print('Get Patient Firm Address Line')
-
-		line = self.format_line('Direccion::', self.get_firm_address() )
-
-		#print(line)
-		return line
-
-
-
-
-
-
-# ----------------------------------------------------------- Ticket - Get Table Lines - Receipt ----------------
-
-	# Ticket Date
-	def get_ticket_date_line(self):
-		print()
-		print('Get Ticket Date Line')
-
-		tag = 'Fecha:'
-		value = self.get_date_corrected()
-
-		line = self.format_line(tag, value )
-
-		#print(line)
-		return line
-
-
-	# Ticket Number
-	def get_ticket_number_line(self):
-		print()
-		print('Get Ticket Number Line')
-
-		tag = 'Ticket:'
-		value = self.x_serial_nr
-
-		line = self.format_line(tag, value )
-
-		#print(line)
-		return line
-
-
-
-
-
-
-
-	# Patient Name 
-	def get_patient_name_line(self):
-		print()
-		print('Get Patient Name Line')
-
-		tag = 'Cliente:'
-		value = self.patient.name
-
-		#line = self.format_line('Cliente:', self.patient.name )
-		line = self.format_line(tag, value )
-
-		#print(line)
-		return line
-
-
-
-	# Patient Dni
-	def get_patient_dni_line(self):
-		#print()
-		#print('Get Patient Dni Line')
-
-		line = self.format_line('DNI:', self.x_id_doc )
-
-		#print(line)
-		return line
-
-
-
-	# Patient Address
-	def get_patient_address_line(self):
-		print()
-		print('Get Patient Address Line')
-
-		line = self.format_line('Direccion:', self.get_patient_address() )
-
-		#print(line)
-		return line
-
 
 
 
@@ -1002,6 +669,8 @@ class sale_order(models.Model):
 		return email
 
 
+
+
 # ----------------------------------------------------------- Print Ticket - Amounts -------------------------------
 
 	def get_amount_total(self):
@@ -1009,8 +678,8 @@ class sale_order(models.Model):
 		Used by Print Ticket.
 		Is zero if Transfer Free.
 		"""
-		print()
-		print('Get Amount Total')
+		#print()
+		#print('Get Amount Total')
 
 		if self.pl_transfer_free:
 			total = 0
@@ -1029,8 +698,8 @@ class sale_order(models.Model):
 		Used by Print Ticket.
 		Is zero if Transfer Free.
 		"""
-		print()
-		print('Get Total Net')
+		#print()
+		#print('Get Total Net')
 
 		if self.pl_transfer_free:
 			self.x_total_net = 0
@@ -1047,8 +716,8 @@ class sale_order(models.Model):
 		Used by Print Ticket.
 		Is zero if Transfer Free.
 		"""
-		print()
-		print('Get Total Tax')
+		#print()
+		#print('Get Total Tax')
 
 		if self.pl_transfer_free:
 			self.x_total_tax = 0
@@ -1064,8 +733,8 @@ class sale_order(models.Model):
 		"""
 		Used by Print Ticket.
 		"""
-		print()
-		print('Get Total Words')
+		#print()
+		#print('Get Total Words')
 
 		if self.pl_transfer_free:
 			words = 'Cero'
@@ -1082,8 +751,8 @@ class sale_order(models.Model):
 		"""
 		Used by Print Ticket.
 		"""
-		print()
-		print('Get Total Cents')
+		#print()
+		#print('Get Total Cents')
 
 		if self.pl_transfer_free:
 			cents = '0.0'
@@ -2149,9 +1818,16 @@ class sale_order(models.Model):
 		"""
 		print('')
 		print('Print Electronic')
+
+
+		# Check Patient for Ticket
+		ord_funcs.check_ticket(self, self.x_type, self.state)
+
+
 		name = 'openhealth.report_ticket_receipt_electronic'
 		action = self.env['report'].get_action(self, name)
 		return action
+
 
 
 #----------------------------------------------------------- Quick Button - For Treatment ---------

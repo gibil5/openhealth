@@ -13,8 +13,8 @@ import datetime
 # ----------------------------------------------------------- Ticket - Get Raw Line - Aux ----------------
 def get_date_corrected(date_order):
 	"""
-	Used by Print Ticket.
-	Get Ticket Raw
+	Used by:
+		- Get Ticket Raw
 	"""
 	print()
 	print('Get Date Corrected')
@@ -32,6 +32,7 @@ def get_date_corrected(date_order):
 	return date_corrected
 
 
+
 # ----------------------------------------------------------- Ticket - Get Table Lines - Format ----------------
 
 # Format Line
@@ -42,6 +43,9 @@ def format_line(tag, value):
 	Contains the formatting rules. For all entries. 
 	Does not use Bootstrap classed. Is much more robust than the previous approach. 
 	Allows for easy font size config. 
+
+	Used by:
+		- Print ticket
 	"""
 
 	#value = str(value)
@@ -90,7 +94,6 @@ def format_line(tag, value):
 						<font size='" + _size_font + " '>"\
 							+ value + "</font></td></tr>"
 
-
 	return line 
 
 
@@ -132,7 +135,7 @@ def get_ticket_raw_line(self, argument):
 	"""
 
 	print()
-	print('OFuncs - Get Ticket Raw Line')
+	print('Get Ticket Raw Line')
 
 	print(argument)
 
@@ -280,30 +283,24 @@ def get_ticket_raw_line(self, argument):
 
 	# Go
 	if bold:
-		#line = self.format_line(tag, value)
 		line = format_line(tag, value)
 
 	else:
-		#line = self.format_line_lean(tag, value)
 		line = format_line_lean(tag, value)
 
 
-
 	#print(line)
+
 	return line
-
-
-
-
-
-
+	# get_ticket_raw_line
 
 
 
 # ----------------------------------------------------------- Ticket - Get Raw Line - Aux ----------------
 def get_credit_note_type(self):
 	"""
-	Used by Print Ticket.
+	Used by:  
+		- Get Ticket Raw
 	"""
 	_dic_cn = {
 				'cancel': 					'Anulación de la operación.',

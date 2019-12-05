@@ -114,7 +114,7 @@
 							
 							name="test_raw_receipt"
 
-							string="Test Raw Receipt"
+							string="Test Raw Rec"
 
 							groups='openhealth.roots'
 						/>
@@ -128,7 +128,7 @@
 							
 							name="test_raw_invoice"
 
-							string="Test Raw Invoice"
+							string="Test Raw Inv"
 
 							groups='openhealth.roots'
 						/>
@@ -142,7 +142,7 @@
 							
 							name="test_raw_credit_note"
 
-							string="Test Raw Credit Note"
+							string="Test Raw CN"
 
 							groups='openhealth.roots'
 						/>

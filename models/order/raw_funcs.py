@@ -19,11 +19,8 @@ def get_date_corrected(date_order):
 	print()
 	print('Get Date Corrected')
 
-	#return tick_funcs.get_date_corrected(self)
-
 	DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
 
-	#date_field1 = datetime.datetime.strptime(self.date_order, DATETIME_FORMAT)
 	date_field1 = datetime.datetime.strptime(date_order, DATETIME_FORMAT)
 
 	date_field2 = date_field1 + datetime.timedelta(hours=-5, minutes=0)
@@ -148,7 +145,6 @@ def get_ticket_raw_line(self, argument):
 	# Credit note
 	if argument in ['date_credit_note']:
 		tag = 'Fecha:'
-		#value = self.get_date_corrected()
 		value = get_date_corrected(self.date_order)
 
 	elif argument in ['denomination_credit_note_owner']:
@@ -157,7 +153,6 @@ def get_ticket_raw_line(self, argument):
 
 	elif argument in ['date_credit_note_owner']:
 		tag = 'Fecha de emision:'
-		#value = self.x_credit_note_owner.get_date_corrected()
 		value = get_date_corrected(self.x_credit_note_owner.date_order)
 
 	elif argument in ['reason_credit_note']:
@@ -203,7 +198,6 @@ def get_ticket_raw_line(self, argument):
 	# Sale - Not Credit Note
 	elif argument in ['sale_date']:
 		tag = 'Fecha:'
-		#value = self.get_date_corrected()
 		value = get_date_corrected(self.date_order)
 
 	elif argument in ['sale_serial_number']:

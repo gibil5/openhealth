@@ -4,7 +4,7 @@
 <!--
 Ticket Electronic
 Created: 	2019
-Last up:   	3 Dec 2019
+Last up:   	4 Dec 2019
 -->
 
 
@@ -41,19 +41,10 @@ Last up:   	3 Dec 2019
 <!--New Header -->
 <br/>
 <div class="row">
-
-		<!-- Company name -->
-		<!-- Company Ruc -->
-		<!-- Company Address -->
-		<!-- Company Phone -->
-
 <!--
 		<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_name()"/>
-
 		<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_ruc()"/>
-
 		<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_address()"/>
-
 		<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_phone()"/>
 -->
 
@@ -70,7 +61,6 @@ Last up:   	3 Dec 2019
 
 		<!-- Company Phone -->
 		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_phone()"/>
-
 	</center>
 </div>
 
@@ -128,7 +118,6 @@ Last up:   	3 Dec 2019
 
 <!-- Conditional - Receipt -->
 <t t-if="doc.x_type == 'ticket_receipt'">
-
 <!--
 	<t t-raw="doc.get_patient_name_line()"/>
 	<t t-raw="doc.get_patient_dni_line()"/>
@@ -198,7 +187,6 @@ Last up:   	3 Dec 2019
 		</tr>
 -->
 
-
 		<t t-raw="doc.get_raw_line('denomination_credit_note_owner')"/>
 
 		<t t-raw="doc.get_raw_line('date_credit_note_owner')"/>
@@ -217,9 +205,9 @@ Last up:   	3 Dec 2019
 		<t t-raw="doc.get_ticket_number_line()"/>
 -->
 
-	<t t-raw="doc.get_raw_line('sale_date')"/>
+		<t t-raw="doc.get_raw_line('sale_date')"/>
 
-	<t t-raw="doc.get_raw_line('sale_serial_number')"/>
+		<t t-raw="doc.get_raw_line('sale_serial_number')"/>
 
 	</table>
 </t>
@@ -246,26 +234,19 @@ Last up:   	3 Dec 2019
 	<t t-raw="doc.get_raw_line('items_header')"/>
 
 
-
-
 <!-- LOOP - Items --> 
 <t t-foreach="doc.order_line" t-as="line">
 
 	<t t-raw="line.get_item_line()"/>
-
 </t>
-
-
 
 
 </table>
 
 
+
 <!-- Line --> 
 <div class="col-xs-12" style="border-top: 1px solid black;"/>
-
-
-
 
 
 
@@ -275,7 +256,6 @@ Last up:   	3 Dec 2019
 	<t t-raw="doc.get_ticket_total_net_line()"/>
 	<t t-raw="doc.get_ticket_total_free_line()"/>
 	<t t-raw="doc.get_ticket_total_exonerated_line()"/>
-
 	<t t-raw="doc.get_ticket_total_unaffected_line()"/>
 	<t t-raw="doc.get_ticket_total_tax_line()"/>
 	<t t-raw="doc.get_ticket_total_line()"/>
@@ -314,7 +294,6 @@ Last up:   	3 Dec 2019
 	<t t-raw="doc.get_raw_line('words_cents')"/>
 
 	<t t-raw="doc.get_raw_line('words_footer')"/>
-
 </table>
 <br/>
 

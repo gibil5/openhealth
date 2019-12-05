@@ -80,18 +80,21 @@ def check_ticket(self, family, state):
 
 
 
-#------------------------------------------------ Get Counter -------------------------------------
+#------------------------------------------------ Get Next Counter -------------------------------------
 
-#def get_next_counter_value(x_type, state):
 def get_next_counter_value(self, x_type, state):
 	"""
 	Get Next Counter value. Given type and state.
 	If State in Validated or Sale.
+
+	Used by:
+		- Create Credit Note
+		- Make Serial Number
 	"""
-	print()
-	print('Get Counter Value')
-	print(x_type)
-	print(state)
+	#print()
+	#print('Get Next Counter Value')
+	#print(x_type)
+	#print(state)
 
 
 	# Credit Note
@@ -103,16 +106,13 @@ def get_next_counter_value(self, x_type, state):
 													('state', 'in', ['credit_note']),
 												],
 											
-											#order='x_counter_value desc',		# Dep !
+											#order='x_counter_value desc',		# Highly deprecated ! Unstable in Tacna
 											order='date_order desc',
 											
 											limit=1,
 										)
 
 	# Sale, Cancel
-	#if state in ['validated', 'sale']:
-	#if state in ['validated']:
-	#if state in ['sale']:
 	else:
 
 		order = self.env['sale.order'].search([
@@ -139,8 +139,9 @@ def get_serial_nr(x_type, counter_value, state):
 	"""
 	Get the Serial Nr, given the type, counter and state.
 	"""
-	print()
-	print('Get Serial Nr')
+	#print()
+	#print('Get Serial Nr')
+
 
 	# Separator
 	separator = '-'

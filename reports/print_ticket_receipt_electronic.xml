@@ -111,7 +111,6 @@ Last up:   	4 Dec 2019
 <t t-if="doc.state == 'credit_note'">
 
 	<t t-raw="doc.get_raw_line('date_credit_note')"/>
-
 </t>
 
 
@@ -208,7 +207,6 @@ Last up:   	4 Dec 2019
 		<t t-raw="doc.get_raw_line('sale_date')"/>
 
 		<t t-raw="doc.get_raw_line('sale_serial_number')"/>
-
 	</table>
 </t>
 

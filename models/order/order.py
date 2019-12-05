@@ -276,11 +276,11 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Print Ticket - Header and Footer -------------------------------
+# ----------------------------------------------------------- Print Ticket Receipt Electronic.XML - Header and Footer -------------------------------
 
 	def get_title(self):
 		"""
-		Used by Print Ticket.
+		Used by Print Ticket XML
 		"""
 		return self.x_title
 
@@ -317,9 +317,68 @@ class sale_order(models.Model):
 
 
 
+# ----------------------------------------------------------- Test - Serial Number ----------------
+#jx
+	# Test Raw Receipt
+	@api.multi
+	def test_serial_number(self):
+		"""
+		Unit Testing
+		Cover all possible Test Cases !
+		"""
+
+		print()
+		print('Test Serial Number')
 
 
-# ----------------------------------------------------------- Ticket - Test Raw Lines ----------------
+		tc_arr = [
+				('ticket_receipt', 'sale'),
+				('ticket_receipt', 'cancel'),
+				('ticket_receipt', 'credit_note'),
+
+				('ticket_invoice', 'sale'),
+				('ticket_invoice', 'cancel'),
+				('ticket_invoice', 'credit_note'),
+
+
+				# Not electronic
+				('receipt', 'sale'),
+				('invoice', 'sale'),
+				('advertisement', 'sale'),
+				('sale_note', 'sale'),
+		]
+
+
+		for tc in tc_arr:
+
+			print()
+			print(tc)
+
+
+			x_type = tc[0]
+			state = tc[1]
+
+			#print(x_type, state)
+
+
+			# Get Next Counter
+			counter = ord_funcs.get_next_counter_value(self, x_type, state)
+
+
+			# Make Serial Number
+			serial_number = ord_funcs.get_serial_nr(x_type, counter, state)
+
+
+			print(counter)
+
+			print(serial_number)
+
+			print()
+
+
+
+
+# ----------------------------------------------------------- Test - Ticket Raw Lines ----------------
 
 	# Test Raw Receipt
 	@api.multi
@@ -891,32 +950,11 @@ class sale_order(models.Model):
 		print('Make Serial Number')
 
 
-		# Dep ?
-		#self.x_counter_value = ord_funcs.get_next_counter_value(self, self.x_type, self.state)
+		# Get Next Counter
+		self.x_counter_value = ord_funcs.get_next_counter_value(self, self.x_type, self.state)
 
 
-		# Get Order
-		order = self.env['sale.order'].search([
-													('x_electronic', '=', True),
-													('x_type', '=', self.x_type),
-													('state', 'in', ['sale', 'cancel']),
-												],
-											
-											#order='x_counter_value desc',		# Deprecated. Too unstable for Tacna !
-											order='date_order desc',
-											
-											limit=1,
-										)
-		#print(order)
-		#print(order.x_counter_value)
-
-
-		# Update Counter
-		self.x_counter_value = order.x_counter_value + 1
-		#print(self.x_counter_value)
-
-
-		# Update Serial Number
+		# Make Serial Number
 		self.x_serial_nr = ord_funcs.get_serial_nr(self.x_type, self.x_counter_value, self.state)
 
 
@@ -1096,16 +1134,13 @@ class sale_order(models.Model):
 
 		# New - Ord Funcs
 
+
 		# Get counter
-		#counter_value = ord_funcs.get_next_counter_value(self.x_type, self.state)
 		counter_value = ord_funcs.get_next_counter_value(self, self.x_type, state)
 
 
-
 		# Get serial nr
-		#serial_nr = ord_funcs.get_serial_nr(self.x_type, self.counter, self.state)
 		serial_nr = ord_funcs.get_serial_nr(self.x_type, counter_value, state)
-
 
 
 		# Duplicate with different fields

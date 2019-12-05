@@ -1,5 +1,35 @@
 # 4 Dec 2019
 
+# ----------------------------------------------------------- Make SN - BUtton ----------------------
+	# Make Serial Number
+	@api.multi
+	def make_serial_number(self):
+
+
+		# Get Order
+		order = self.env['sale.order'].search([
+													('x_electronic', '=', True),
+													('x_type', '=', self.x_type),
+													('state', 'in', ['sale', 'cancel']),
+												],
+											
+											#order='x_counter_value desc',		# Deprecated. Too unstable for Tacna !
+											order='date_order desc',
+											
+											limit=1,
+										)
+		#print(order)
+		#print(order.x_counter_value)
+
+
+		# Update Counter
+		self.x_counter_value = order.x_counter_value + 1
+		#print(self.x_counter_value)
+
+
+
+
+
 # ----------------------------------------------------------- Autofill - Dep ----------------------------
 	# Autofill
 	x_autofill = fields.Boolean(

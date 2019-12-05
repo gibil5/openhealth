@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"ti",
+				"ticket_invoice"
+			],
+			[
+				"tes",
+				"test_raw_lines"
+			],
+			[
+				"in",
+				"invoices"
+			],
+			[
+				"re",
+				"receipts"
+			],
+			[
+				"rec",
+				"receipts"
+			],
+			[
 				"prin",
 				"print_ticket_electronic"
 			],
@@ -52,20 +72,12 @@
 				"other"
 			],
 			[
-				"re",
-				"recommendation"
-			],
-			[
 				"T",
 				"Twitter"
 			],
 			[
 				"tw",
 				"twitter"
-			],
-			[
-				"in",
-				"instagram"
 			],
 			[
 				"Fa",
@@ -472,10 +484,6 @@
 				"ticket_invoice_create"
 			],
 			[
-				"ti",
-				"ticket_receipt"
-			],
-			[
 				"ac",
 				"activate_order"
 			],
@@ -486,10 +494,6 @@
 			[
 				"corr",
 				"correct_pm"
-			],
-			[
-				"tes",
-				"test_computes"
 			],
 			[
 				"te",
@@ -510,10 +514,6 @@
 			[
 				"patien",
 				"patient"
-			],
-			[
-				"treat",
-				"treatment"
 			]
 		]
 	},
@@ -532,19 +532,61 @@
 			"file": "reports/print_ticket_receipt_electronic.xml",
 			"settings":
 			{
-				"buffer_size": 6873,
+				"buffer_size": 8074,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "# -*- coding: utf-8 -*-\n\"\"\"\n\tOrder\n\n\tCreated: \t\t\t26 Aug 2016\n\tLast mod: \t\t\t 4 Dec 2019\n\"\"\"\nfrom __future__ import print_function\nimport datetime\nfrom openerp import models, fields, api\n\nfrom openerp import _\nfrom openerp.exceptions import Warning as UserError\n\nfrom openerp.addons.openhealth.models.libs import lib\nfrom openerp.addons.openhealth.models.patient import pat_vars, chk_patient\nfrom . import test_order\nfrom . import chk_order\nfrom . import exc_ord\nfrom . import tick_funcs\n\nfrom . import ord_vars\nfrom . import ord_funcs\n\nfrom . import raw_funcs\n\nfrom . import qr\n#from . import snr  \t# Dep\n\n\nclass sale_order(models.Model):\n\t\"\"\"\n\tSale Class - Inherited from the medical Module OeHealth. Has the Business Logic of the Clinic.\n\tThis is only a Data Model. Must NOT contain Business Rules. \n\tAll BRs should be in Classes and Libraries. \n\t\"\"\"\n\t_inherit = 'sale.order'\n\n\t_description = 'Order'\n\n\n\n# ----------------------------------------------------------- Gettter ----------------------------\n\tdef get_date_corrected(self):\n\t\t\"\"\"\n\t\tUsed by Print Ticket.\n\t\t\"\"\"\n\t\tprint()\n\t\tprint('Get Date Corrected')\n\n\t\treturn tick_funcs.get_date_corrected(self)\n\n\n# ----------------------------------------------------------- Autofill ----------------------------\n\n\t# Autofill\n\tx_autofill = fields.Boolean(\n\t\t\tstring=\"Autofill\",\n\t\t\tdefault=False,\n\t\t)\n\n\t# Autofill\n\t@api.onchange('x_autofill')\n\tdef _onchange_x_autofill(self):\n\t\tif self.x_autofill:\n\t\t\tself.autofill()\n\n\n\tdef autofill(self):\n\t\t\"\"\"\n\t\tAutofill Order\n\t\t\"\"\"\n\n\t\t#self.sex = 'Male'\n\n\t\t# Patient\n\t\tpatient = self.env['oeh.medical.patient'].search([\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t('name', 'in', [\"REVILLA RONDON JOSE JAVIER\"]),\n\t\t\t\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t\t\t\t\t\t#order='x_serial_nr asc',\n\t\t\t\t\t\t\t\t\t\t\t\tlimit=1,\n\t\t\t\t\t\t\t\t\t\t\t)\n\t\tprint(patient.name)\n\n\n\n\t\t# Doctor\n\t\tdoctor = self.env['oeh.medical.physician'].search([\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t('name', 'in', [\"Dr. Chavarri\"]),\n\t\t\t\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t\t\t\t\t\t#order='x_serial_nr asc',\n\t\t\t\t\t\t\t\t\t\t\t\tlimit=1,\n\t\t\t\t\t\t\t\t\t\t\t)\n\t\tprint(doctor.name)\n\n\n\n\t\t# Treatment\n\t\ttreatment = self.env['openhealth.treatment'].search([\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t('patient', 'in', [\"REVILLA RONDON JOSE JAVIER\"]),\n\t\t\t\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t\t\t\t\t\t#order='x_serial_nr asc',\n\t\t\t\t\t\t\t\t\t\t\t\tlimit=1,\n\t\t\t\t\t\t\t\t\t\t\t)\n\t\tprint(treatment.name)\n\n\n\n\t\t# Fill\n\t\tself.patient = patient\n\t\tself.x_doctor = doctor\n\t\tself.treatment = treatment\n\n\n\n# ----------------------------------------------------------- Quick Sale -------------------------------\n\n\t@api.multi\n\tdef quick_sale_service(self):\n\t\t\"\"\"\n\t\tQuick Sale Service\n\t\t\"\"\"\n\t\tprint()\n\t\tprint('Quick Sale Service')\n\n\t\t#self.order_line.create\n\n\n\t\t# Product\n\n\t\tname = \"LASER CO2 FRACCIONAL - Todo Rostro - Rejuvenecimiento - Grado 1 - 1 sesion\"\n\n\t\tproduct = self.env['product.product'].search([\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t('name', 'in', [name]),\n\t\t\t\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t\t\t\t\t\t#order='x_serial_nr asc',\n\t\t\t\t\t\t\t\t\t\t\t\tlimit=1,\n\t\t\t\t\t\t\t\t\t\t\t)\n\t\tprint(product.name)\n\n\n\n\t\tline = self.order_line.create({\n\t\t\t\t\t\t\t\t\t\t\t'product_id': product.id,\n\n\t\t\t\t\t\t\t\t\t\t\t'product_uom_qty': 1,\n\n\t\t\t\t\t\t\t\t\t\t\t'order_id': self.id,\n\n\t\t\t\t\t\t\t\t\t\t\t#'price_unit': self.x_credit_note_amount,\n\t\t\t\t\t\t\t\t\t\t})\n\t\tprint(line.product_id.name)\n\n\n\t\t# Pay\n\t\tif self.state in ['draft']:\n\t\t\tself.pay_myself()\n\n\n\n\n# ----------------------------------------------------------- Relational -------------------------------\n\n\t# Patient\n\tpatient_id = fields.Many2one(\n\t\t\t\n\t\t\t'oeh.medical.patient',\n\t\t\t\n\t\t\tstring=\"Paciente\",\n\t\t\t\n\t\t\trequired=False,\n\t\t\t\n\t\t\t#ondelete='cascade',  \t\t# Danger !!!\n\t\t)\n\n\n\n\n\n\t# Treatment\n\ttreatment = fields.Many2one(\n\t\t\t'openhealth.treatment',\n\t\t\tstring=\"Tratamiento\",\n\t\t\t#states=READONLY_STATES,\n\t\t\treadonly=False,\n\n\t\t\t#ondelete='cascade',  \t\t# Danger !!!\n\t\t)\n\n\n\t# Partner\n\t# Already Created by OeHealth\n\tpartner_id = fields.Many2one(\n\t\t\t'res.partner',\n\t\t\tstring=\"Cliente\",\n\t\t\trequired=False,\n\n\t\t\treadonly=False,\n\n\t\t\t#states={\n\t\t\t#\t\t'draft': [('readonly', False)],\n\t\t\t#\t\t'sent': [('readonly', True)],\n\t\t\t#\t\t'sale': [('readonly', True)],\n\t\t\t#\t},\n\n\t\t\t#ondelete='cascade',  \t\t# Danger !!!\n\t\t)\n\n\n\n# ----------------------------------------------------------- Descriptors -------------------------------\n\n\t# Family\n\tx_family = fields.Selection(\n\t\t\tstring=\"Familia\",\n\t\t\tselection=[\n\t\t\t\t\t\t\t('product', 'Producto'),\n\t\t\t\t\t\t\t('consultation', 'Consulta'),\n\t\t\t\t\t\t\t('procedure', 'Procedimiento'),\n\t\t\t\t\t\t\t('cosmetology', 'Cosmiatría'),\n\t\t\t],\n\t\t)\n\n\n\t# Product\n\tx_product = fields.Char(\n\t\t\tstring=\"Producto\",\n\t\t)\n\n# ----------------------------------------------------------- Price List - Computes ----------------------\n\n\t# Price List\n\tpl_price_list = fields.Char(\n\t\t\tstring=\"Pl - Price List\",\n\n\t\t\tcompute='_compute_pl_price_list',\n\t\t)\n\n\t@api.multi\n\tdef _compute_pl_price_list(self):\n\t\tfor record in self:\n\t\t\tprice_list = ''\n\t\t\tfor line in record.order_line:\n\n\t\t\t\tprice_list =line.get_price_list()\n\n\t\t\trecord.pl_price_list = price_list\n\n\n\n\tx_amount_flow = fields.Float(\n\t\t\t'Pl - Total F',\n\n\t\t\tcompute='_compute_x_amount_flow',\n\t\t)\n\n\t@api.multi\n\tdef _compute_x_amount_flow(self):\n\t\tfor record in self:\n\t\t\tif record.x_block_flow:\n\t\t\t\trecord.x_amount_flow = 0\n\t\t\telif record.state in ['credit_note']  and  record.x_credit_note_amount not in [0, False]:\n\t\t\t\trecord.x_amount_flow = - record.x_credit_note_amount\n\t\t\telse:\n\t\t\t\trecord.x_amount_flow = record.amount_total\n\n\n\n\n\t# Descriptor - Family\n\tpl_family = fields.Char(\n\t\t\tstring=\"Pl - Familia\",\n\n\t\t\tcompute='_compute_pl_family',\n\t\t)\n\n\t@api.multi\n\tdef _compute_pl_family(self):\n\t\tfor record in self:\n\n\t\t\tfamilies = ''\n\n\t\t\tfor line in record.order_line:\n\t\t\t\tfamilies = families + line.get_family() + ', '\n\n\t\t\t#record.pl_family = families\n\t\t\trecord.pl_family = families[0:-2]\n\n\n\n\n\t# Descriptor - Product\n\tpl_product = fields.Char(\n\t\t\tstring=\"Pl - Producto\",\n\n\t\t\tcompute='_compute_pl_product',\n\t\t)\n\n\t@api.multi\n\tdef _compute_pl_product(self):\n\t\tfor record in self:\n\t\t\tproducts = ''\n\t\t\tfor line in record.order_line:\n\t\t\t\tproducts = products + line.get_product() + ', '\n\t\t\trecord.pl_product = products\n\n\n\n\n\n# ---------------------------------------------- Price List - Fields ------------------------------------------\n\n\t# States\n\tREADONLY_STATES = {\n\t\t'draft': \t\t[('readonly', False)],\n\t\t'sent': \t\t[('readonly', False)],\n\t\t'sale': \t\t[('readonly', True)],\n\t\t'cancel': \t\t[('readonly', True)],\n\t}\n\n\t# Doctor\n\tx_doctor = fields.Many2one(\n\t\t\t'oeh.medical.physician',\n\t\t\tstring=\"Médico\",\n\t\t\tstates=READONLY_STATES,\n\t\t)\n\n\t# Receptor\n\tpl_receptor = fields.Char(\n\t\t\tstring='Receptor',\n\t\t)\n\n\t# Transfer Free\n\tpl_transfer_free = fields.Boolean(\n\t\t\t'TRANSFERENCIA GRATUITA',\n\t\t\n\t\t\tdefault=False,\n\t\t)\n\n\n\n\n\n# ----------------------------------------------------------- Configurator -------------------------\n\n\tdef _get_default_configurator(self):\n\t\tprint()\n\t\tprint('Default Configurator')\n\n\t\t# Search\n\t\tconfigurator = self.env['openhealth.configurator.emr'].search([\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t#('active', 'in', [True]),\n\t\t\t\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t\t\t\t\t\t#order='x_serial_nr asc',\n\t\t\t\t\t\t\t\t\t\t\t\tlimit=1,\n\t\t\t\t\t\t\t\t\t\t\t)\n\t\t#print(configurator)\n\t\t#print(configurator.name)\n\t\treturn configurator\n\n\tconfigurator = fields.Many2one(\n\t\t\t'openhealth.configurator.emr',\n\t\t\tstring=\"Config\",\n\n\t\t\trequired=True,\n\n\t\t\treadonly=True,\n\t\t\t\n\t\t\tdefault=_get_default_configurator,\n\t\t)\n\n\n\n# ----------------------------------------------------------- Partner - Not Dep -------------------------\n\n\t# On Change Partner\n\t@api.onchange('partner_id')\n\tdef _onchange_partner_id(self):\n\t\tif self.partner_id.name != False:\n\t\t\tself.x_partner_dni = self.partner_id.x_dni\n\n\n\n\t# DNI\n\t# Used by Budget\n\t# Allows research of Patient by DNI - Important\n\tx_partner_dni = fields.Char(\n\t\t\tstring='DNI',\n\t\t\tstates={\n\t\t\t\t\t\t'draft': \t[('readonly', False)],\n\t\t\t\t\t\t'sent': \t[('readonly', True)],\n\t\t\t\t\t\t'sale': \t[('readonly', True)],\n\t\t\t\t\t\t'cancel': \t[('readonly', True)],\n\t\t\t\t\t\t'done': \t[('readonly', True)],\n\t\t\t\t\t},\n\t\t)\n\n\n\t# On Change Partner Dni\n\t@api.onchange('x_partner_dni')\n\tdef _onchange_x_partner_dni(self):\n\n\t\tself.patient = ord_funcs.search_patient_by_id_document(self)\n\n\t# _onchange_x_partner_dni\n\n\n\n# ----------------------------------------------------------- Print Ticket - Header and Footer -------------------------------\n\n\tdef get_title(self):\n\t\t\"\"\"\n\t\tUsed by Print Ticket.\n\t\t\"\"\"\n\t\treturn self.x_title\n\n\n\tdef get_serial_nr(self):\n\t\t\"\"\"\n\t\tUsed by Print Ticket.\n\t\t\"\"\"\n\t\treturn self.x_serial_nr\n\n\n\t# Patient Firm Address\n\tdef get_firm_address(self):\n\t\t\"\"\"\n\t\tUsed by Print Ticket\n\t\t\"\"\"\n\t\treturn self.patient.x_firm_address\n\n\n\tdef get_patient_address(self):\n\t\t\"\"\"\n\t\tUsed by Print Ticket\n\t\t\"\"\"\n\t\treturn self.patient.x_address\n\n\n\tdef get_note(self):\n\t\t\"\"\"\n\t\tUsed by Print Ticket.\n\t\t\"\"\"\n\t\treturn self.note\n\n\n\n\n\n# ----------------------------------------------------------- Ticket - Test Raw Lines ----------------\n\t# Test Raw Line\n\t@api.multi\n\tdef test_raw_lines(self):\n\t\tprint()\n\t\tprint('Test Raw Lines')\n\n\t\torders = \n\n\t\tret = self.print_ticket_electronic()\n\t\tprint(ret)\n\n\n\n# ----------------------------------------------------------- Ticket - Get Raw Line - Stub ----------------\n#jx\n\n\t# Raw Line\n\tdef get_raw_line(self, argument):\n\t\t\"\"\"\n\t\tJust a stub. \n\t\t\"\"\"\n\t\tline = raw_funcs.get_ticket_raw_line(self, argument)\n\n\t\treturn line \n\n\n\n\n\n\n\n# ----------------------------------------------------------- Ticket - Header - Getters ----------------\n\n\t# Company Address\n\tdef get_company_name(self):\n\t\t\"\"\"\n\t\tUsed by Print Ticket\n\t\t\"\"\"\n\t\tcompany_name = self.configurator.company_name\n\t\treturn company_name\n\n\n\t# Company Address\n\tdef get_company_address(self):\n\t\t\"\"\"\n\t\tUsed by Print Ticket\n\t\t\"\"\"\n\t\tcompany_address = self.configurator.ticket_company_address\n\t\treturn company_address\n\n\n\t# Company Address\n\tdef get_company_phone(self):\n\t\t\"\"\"\n\t\tUsed by Print Ticket\n\t\t\"\"\"\n\t\tcompany_phone = self.configurator.company_phone\n\t\treturn company_phone\n\n\n\t# Company Address\n\tdef get_company_ruc(self):\n\t\t\"\"\"\n\t\tUsed by Print Ticket\n\t\t\"\"\"\n\t\tcompany_ruc = self.configurator.ticket_company_ruc\n\t\treturn company_ruc\n\n\n\n# ----------------------------------------------------------- Ticket - Footer - Getters ----------------\n\n\t# Description\n\tdef get_description(self):\n\t\t\"\"\"\n\t\tUsed by Print Ticket\n\t\t\"\"\"\n\t\tdescription = self.configurator.ticket_description\n\t\treturn description\n\n\n\t# Warning\n\tdef get_warning(self):\n\t\t\"\"\"\n\t\tUsed by Print Ticket\n\t\t\"\"\"\n\t\twarning = self.configurator.ticket_warning\n\t\treturn warning\n\n\n\t# Website\n\tdef get_website(self):\n\t\t\"\"\"\n\t\tUsed by Print Ticket\n\t\t\"\"\"\n\t\twebsite = self.configurator.website\n\t\treturn website\n\n\n\t# Email\n\tdef get_email(self):\n\t\t\"\"\"\n\t\tUsed by Print Ticket\n\t\t\"\"\"\n\t\temail = self.configurator.email\n\t\treturn email\n\n\n\n\n# ----------------------------------------------------------- Print Ticket - Amounts -------------------------------\n\n\tdef get_amount_total(self):\n\t\t\"\"\"\n\t\tUsed by Print Ticket.\n\t\tIs zero if Transfer Free.\n\t\t\"\"\"\n\t\t#print()\n\t\t#print('Get Amount Total')\n\n\t\tif self.pl_transfer_free:\n\t\t\ttotal = 0\n\t\n\t\telse:\n\t\t\ttotal = tick_funcs.get_total(self)\n\n\t\t#return tick_funcs.get_total(self)\n\t\treturn total\n\n\n\n\n\tdef get_total_net(self):\n\t\t\"\"\"\n\t\tUsed by Print Ticket.\n\t\tIs zero if Transfer Free.\n\t\t\"\"\"\n\t\t#print()\n\t\t#print('Get Total Net')\n\n\t\tif self.pl_transfer_free:\n\t\t\tself.x_total_net = 0\n\t\n\t\telse:\n\t\t\tself.x_total_net =  tick_funcs.get_net(self)\n\n\t\treturn self.x_total_net\n\n\n\n\tdef get_total_tax(self):\n\t\t\"\"\"\n\t\tUsed by Print Ticket.\n\t\tIs zero if Transfer Free.\n\t\t\"\"\"\n\t\t#print()\n\t\t#print('Get Total Tax')\n\n\t\tif self.pl_transfer_free:\n\t\t\tself.x_total_tax = 0\n\n\t\telse:\n\t\t\tself.x_total_tax = tick_funcs.get_tax(self)\n\n\t\treturn self.x_total_tax\n\n\n\n\tdef get_total_in_words(self):\n\t\t\"\"\"\n\t\tUsed by Print Ticket.\n\t\t\"\"\"\n\t\t#print()\n\t\t#print('Get Total Words')\n\n\t\tif self.pl_transfer_free:\n\t\t\twords = 'Cero'\n\n\t\telse:\n\t\t\twords = tick_funcs.get_words(self)\n\n\t\t#return tick_funcs.get_words(self)\n\t\treturn words\n\n\n\n\tdef get_total_cents(self):\n\t\t\"\"\"\n\t\tUsed by Print Ticket.\n\t\t\"\"\"\n\t\t#print()\n\t\t#print('Get Total Cents')\n\n\t\tif self.pl_transfer_free:\n\t\t\tcents = '0.0'\n\n\t\telse:\n\t\t\tcents = tick_funcs.get_cents(self)\n\n\t\t#return tick_funcs.get_cents(self)\n\t\treturn cents\n\n\n\n\n\n# ----------------------------------------------------------- Natives  - Computes OK -------------------------\n\n\t# Type Code - OK\n\tx_type_code = fields.Char(\n\t\t\tstring='Tipo Codigo',\n\n\t\t\tcompute='_compute_x_type_code',\n\t\t)\n\n\t@api.multi\n\tdef _compute_x_type_code(self):\n\t\tfor record in self:\n\t\t\tif record.x_type in ['ticket_receipt', 'ticket_invoice', 'receipt', 'invoice', 'advertisement', 'sale_note']:\n\t\t\t\trecord.x_type_code = ord_vars._dic_type_code[record.x_type]\n\n\n\n\t# Nr lines - OK\n\tnr_lines = fields.Integer(\n\t\t\tdefault=0,\n\t\t\tstring='Nr líneas',\n\t\t\trequired=False,\n\n\t\t\tcompute='_compute_nr_lines',\n\t\t)\n\n\t@api.multi\n\t#@api.depends('order_line')\n\tdef _compute_nr_lines(self):\n\t\tfor record in self:\n\t\t\tctr = 0\n\t\t\tfor _ in record.order_line:\n\t\t\t\tctr = ctr + 1\n\t\t\trecord.nr_lines = ctr\n\n\n\t# Partner Vip - OK\n\tx_partner_vip = fields.Boolean(\n\t\t\t'Vip',\n\t\t\tdefault=False,\n\n\t\t\tcompute=\"_compute_partner_vip\",\n\t\t)\n\n\t@api.multi\n\tdef _compute_partner_vip(self):\n\t\tfor record in self:\n\t\t\tcount = self.env['openhealth.card'].search_count([\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t('patient_name', '=', record.partner_id.name),\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t])\n\t\t\tif count == 0:\n\t\t\t\trecord.x_partner_vip = False\n\t\t\telse:\n\t\t\t\trecord.x_partner_vip = True\n\n\n\n\n\n\t# Amount total - OK\n\tx_amount_total = fields.Float(\n\t\t\tstring=\"x Total\",\n\n\t\t\tcompute=\"_compute_x_amount_total\",\n\t\t)\n\n\t@api.multi\n\tdef _compute_x_amount_total(self):\n\t\tfor record in self:\n\t\t\tsub = 0.0\n\t\t\tfor line in record.order_line:\n\t\t\t\tsub = sub + line.price_subtotal\n\t\t\trecord.x_amount_total = sub\n\n\n\n\n\t# Amount Flow - Verify !\n\tx_amount_flow = fields.Float(\n\t\t\t'Total F',\n\n\t\t\tcompute='_compute_x_amount_flow',\n\t\t)\n\n\t@api.multi\n\tdef _compute_x_amount_flow(self):\n\t\tfor record in self:\n\t\t\tif record.x_block_flow:\n\t\t\t\trecord.x_amount_flow = 0\n\t\t\telif record.x_credit_note_amount not in [0, False]:\n\t\t\t\trecord.x_amount_flow = - record.x_credit_note_amount\n\t\t\telse:\n\t\t\t\trecord.x_amount_flow = record.amount_total\n\n\n# ----------------------------------------------------------- Natives  - Killed Computes -------------------------\n\t# Net\n\tx_total_net = fields.Float(\n\t\t\t\"Neto\",\n\t\t)\n\n\t# Tax\n\tx_total_tax = fields.Float(\n\t\t\t\"Impuesto\",\n\t\t)\n\n# ----------------------------------------------------------- Validate Button ----------------------------\n\n\t@api.multi\n\t#def validate(self):\n\tdef validate_and_confirm(self):\n\t\t\"\"\"\n\t\tValidate the order. Before Confirmation.\n\t\t\"\"\"\n\t\tprint()\n\t\tprint('Validate')\n\n\n\t\t# Handle Exceptions\n\t\texc_ord.handle_exceptions(self)\n\n\n\t\t# If Everything is OK\n\t\tself.check_and_generate()\n\n\n\n\t\t# Make Serial Number\n\t\t#if self.x_serial_nr != '' and not self.x_admin_mode:\t\t\t\n\t\t#if self.state in ['validated']  and  self.x_serial_nr != '' and not self.x_admin_mode:\t\t\t\n\n\t\tself.make_serial_number()\n\n\n\n\t\t# Make QR\n\t\tif self.x_type in ['ticket_receipt', 'ticket_invoice']:\n\t\t\tself.make_qr()\n\n\n\n\t\t# State\n\t\tself.state = 'sale'\n\n\t# validate\n\n\n\n# ----------------------------------------------------------- Check and Generate ----------------------------\n\tdef check_and_generate(self):\n\t\t\"\"\"\n\t\tCheck if everything is OK\n\t\tAnd Generate several variables.\n\t\t\"\"\"\n\t\tprint()\n\t\tprint('Check and Generate')\n\n\n\t\t# Payment method validation\n\t\tself.check_payment_method()\n\n\n\t\t# Doctor User Name\n\t\tif self.x_doctor.name != False:\n\t\t\tuid = self.x_doctor.x_user_name.id\n\t\t\tself.x_doctor_uid = uid\n\n\n\n\t\t# Date - Must be that of the Sale, not the Budget.\n\t\tself.date_order = datetime.datetime.now()\n\n\n\n\t\t# Date - Update Day and Month\n\t\tord_funcs.update_day_and_month(self)\n\n\n\t\t# Update Descriptors (family and product)\n\t\tord_funcs.update_descriptors(self)\n\n\n\t\t# Vip Card - Detect and Create\n\t\tord_funcs.detect_vip_card_and_create(self)\n\n\n\n\t\t# Type\n\t\tif self.x_payment_method.saledoc != False:\n\t\t\tself.x_type = self.x_payment_method.saledoc\n\n\n\t\t# Create Procedure \n\t\tprint('Create Procedure')\n\n\t\tif self.treatment.name != False:\n\t\t\tfor line in self.order_line:\n\n\t\t\t\t# Init\n\t\t\t\tproduct = line.product_id\n\n\t\t\t\t# Conditional\n\t\t\t\tif product.is_procedure():\n\t\t\t\t\tself.treatment.create_procedure_auto(product)\n\n\n\t\t\t\tline.update_recos()\n\n\n\t\t\t# Update Order\n\t\t\t#self.x_procedure_created = True\n\t\t\tself.set_procedure_created(True)\n\n\n\n\t\t# Id Doc and Ruc\n\t\t# Invoice\n\t\tif self.x_type in ['ticket_invoice', 'invoice']:\n\t\t\tif self.x_ruc in [False, '']:\n\t\t\t\tmsg = \"Error: RUC Ausente.\"\n\t\t\t\traise UserError(_(msg))\n\n\t\t# Receipt\n\t\telif self.x_type in ['ticket_receipt', 'receipt']:\n\t\t\tif self.x_id_doc_type in [False, '']  or self.x_id_doc in [False, '']:\n\t\t\t\tmsg = \"Error: Documento de Identidad Ausente.\"\n\t\t\t\traise UserError(_(msg))\n\n\n\t\t# Update Patient\n\t\tif self.patient.x_id_doc in [False, '']:\n\t\t\tself.patient.x_id_doc_type = self.x_id_doc_type\n\t\t\tself.patient.x_id_doc = self.x_id_doc\n\n\n\t\t# Change Electronic\n\t\tself.x_electronic = True\n\n\n\t\t# Title\n\t\tif self.x_type in ['ticket_receipt', 'receipt']:\n\t\t\tself.x_title = 'Boleta de Venta Electrónica'\n\t\telif self.x_type in ['ticket_invoice', 'invoice']:\n\t\t\tself.x_title = 'Factura de Venta Electrónica'\n\t\telse:\n\t\t\tself.x_title = 'Venta Electrónica'\n\n\n\n\t\t# QR\n\t\t#if self.x_type in ['ticket_receipt', 'ticket_invoice']:\n\t\t#\tself.make_qr()\n\n\n\t\t# Change State\n\t\tself.state = 'validated'\n\n\t# check_and_generate\n\n\n\n# ----------------------------------------------------------- Confirm - Button - Dep ----------------------\n\n\t#@api.multi\n\t#def action_confirm_nex(self):\n\t#\t\"\"\"\n\t#\tButton\n\t#\tConfirms the Sale. After Validation.\n\t#\tDeprecated\n\t#\t\"\"\"\n\t#\tprint()\n\t#\tprint('Action confirm - Nex')\n\n\t\t# Generate Serial Number\n\t#\tif self.x_serial_nr != '' and not self.x_admin_mode:\t\t\t\n\n\t#\t\tself.make_serial_number()\n\n\t\t# State\n\t#\tself.state = 'sale'\n\n\t# action_confirm_nex\n\n\n\n\n\n# ----------------------------------------------------------- Make SN - BUtton ----------------------\n\t# Make Serial Number\n\t@api.multi\n\tdef make_serial_number(self):\n\t\t\"\"\"\n\t\tMake Serial Number\n\t\tThis is an example of how you can encapsulte Business Rules.\n\t\tIn the Libraries.\n\t\t\"\"\"\n\t\tprint()\n\t\tprint('Make Serial Number')\n\n\n\t\t# Dep ?\n\t\t#self.x_counter_value = ord_funcs.get_next_counter_value(self, self.x_type, self.state)\n\n\n\t\t# Get Order\n\t\torder = self.env['sale.order'].search([\n\t\t\t\t\t\t\t\t\t\t\t\t\t('x_electronic', '=', True),\n\t\t\t\t\t\t\t\t\t\t\t\t\t('x_type', '=', self.x_type),\n\t\t\t\t\t\t\t\t\t\t\t\t\t('state', 'in', ['sale', 'cancel']),\n\t\t\t\t\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t#order='x_counter_value desc',\t\t# Deprecated. Too unstable for Tacna !\n\t\t\t\t\t\t\t\t\t\t\torder='date_order desc',\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\tlimit=1,\n\t\t\t\t\t\t\t\t\t\t)\n\t\t#print(order)\n\t\t#print(order.x_counter_value)\n\n\n\t\t# Update Counter\n\t\tself.x_counter_value = order.x_counter_value + 1\n\t\t#print(self.x_counter_value)\n\n\n\t\t# Update Serial Number\n\t\tself.x_serial_nr = ord_funcs.get_serial_nr(self.x_type, self.x_counter_value, self.state)\n\n\n\n\n\n# ----------------------------------------------------------- Make QR - BUtton ----------------------\n\t# Make QR\n\t@api.multi\n\tdef make_qr(self):\n\t\t\"\"\"\n\t\tMake QR Image for Electronic Billing\n\t\tThis is an example of how you can apply the Three Layered Model. To encapsulte Business Rules.\n\t\t\"\"\"\n\t\tprint()\n\t\tprint('Make QR')\n\n\t\t# Init vars\n\t\truc_company = self.configurator.company_ruc\n\n\t\tx_type = self.x_type\n\n\t\tserial_nr = self.x_serial_nr\n\t\tamount_total = self.amount_total\n\t\ttotal_tax = self.x_total_tax\n\t\tdate = self.date_order\n\t\treceptor_id_doc_type = self.x_id_doc_type\n\t\treceptor_id_doc = self.x_id_doc\n\t\treceptor_ruc = self.x_ruc\n\n\t\t# Create Object\n\t\tqr_obj = qr.QR(date, ruc_company, receptor_id_doc_type, receptor_id_doc, receptor_ruc, x_type, serial_nr, amount_total, total_tax)\n\n\t\t# Get data\n\t\timg_str = qr_obj.get_img_str()\n\t\tname = qr_obj.get_name()\n\n\n\t\t# Print\n\t\tqr_obj.print_obj()\n\n\n\t\t# Update the Database\n\t\tself.write({\n\t\t\t\t\t\t'x_qr_img': img_str,\n\t\t\t\t\t\t'qr_product_name':name,\n\t\t\t\t})\n\n\n\n\n\t# make_qr\n\n\n\n\n\n# ----------------------------------------------------------- Credit Note -------------------------\n\n\tx_block_flow = fields.Boolean(\n\t\t\t'Flujo Bloqueado',\n\t\t\t#readonly=True,\n\t\t)\n\n\tx_credit_note_type = fields.Selection(\n\t\t\tselection=ord_vars._credit_note_type_list,\n\t\t\tstring='Motivo',\n\t\t)\n\n\tx_credit_note_amount = fields.Float(\n\t\t\t#'Monto Devolución',\n\t\t\t'La Devolución es por S/',\n\t\t\tdefault=0,\n\t\t)\n\n\tx_credit_note_owner_amount = fields.Float(\n\t\t\t'Importe',\n\t\t\tdefault=0,\n\t\t)\n\n\tx_credit_note_owner = fields.Many2one(\n\t\t\t'sale.order',\n\t\t\t'Documento que modifica',\n\t\t)\n\n\tx_credit_note = fields.Many2one(\n\t\t\t'sale.order',\n\t\t\t'Nota de Crédito',\n\t\t)\n\n\n# ---------------------------------------------- Credit Note - Block Flow -------------------------\n\t# Block Flow\n\t@api.multi\n\tdef block_flow(self):\n\t\t\"\"\"\n\t\tUsed by Credit Notes\n\t\t\"\"\"\n\t\tprint()\n\t\tprint('Block Flow')\n\n\t\tif self.state in ['credit_note']:\n\t\t\tself.x_block_flow = True\n\t\t\tself.x_credit_note_owner.x_block_flow = True\n\n\t\telif self.state in ['sale']:\n\t\t\tself.x_block_flow = True\n\n\n\n\n\t# Unblock Flow\n\t@api.multi\n\tdef unblock_flow(self):\n\t\t\"\"\"\n\t\tUsed by Credit Notes\n\t\t\"\"\"\n\t\tprint()\n\t\tprint('Unblock Flow')\n\t\tif self.state in ['credit_note']:\n\t\t\tself.x_block_flow = False\n\t\t\tself.x_credit_note_owner.x_block_flow = False\n\n\n\n# ---------------------------------------------- Credit Note - Update -----------------------------\n\t# Update CN\n\t@api.multi\n\tdef update_credit_note(self):\n\t\t\"\"\"\n\t\thigh level support for doing this and that.\n\t\t\"\"\"\n\t\tprint()\n\t\tprint('Update CN')\n\t\tprint(self.x_credit_note_type)\n\n\t\tif self.state in ['credit_note']:\n\t\t\tself.x_credit_note_owner_amount = self.x_credit_note_owner.amount_total\n\t\t\tself.order_line.unlink()\n\n\t\t\tname = self.x_credit_note_type\n\n\t\t\t# Search\n\t\t\tproduct = self.env['product.product'].search([\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t('x_name_short', 'in', [name]),\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t#order='date_begin asc',\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\tlimit=1,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t)\n\t\t\tprint(product)\n\t\t\tproduct_id = product.id\n\t\t\tprint(product_id)\n\n\t\t\tline = self.order_line.create({\n\t\t\t\t\t\t\t\t\t\t\t'product_id': product_id,\n\t\t\t\t\t\t\t\t\t\t\t'price_unit': self.x_credit_note_amount,\n\t\t\t\t\t\t\t\t\t\t\t'product_uom_qty': 1,\n\t\t\t\t\t\t\t\t\t\t\t'order_id': self.id,\n\t\t\t\t\t\t\t\t\t\t})\n\t# update_credit_note\n\n\n\n# ---------------------------------------------- Credit Note - Create -----------------------------\n\t# Create CN\n\t@api.multi\n\tdef create_credit_note(self):\n\t\t\"\"\"\n\t\thigh level support for doing this and that.\n\t\t\"\"\"\n\t\tprint()\n\t\tprint('Create CN')\n\n\t\t# Init\n\t\tstate = 'credit_note'\n\n\n\t\t# New - Ord Funcs\n\n\t\t# Get counter\n\t\t#counter_value = ord_funcs.get_next_counter_value(self.x_type, self.state)\n\t\tcounter_value = ord_funcs.get_next_counter_value(self, self.x_type, state)\n\n\n\n\t\t# Get serial nr\n\t\t#serial_nr = ord_funcs.get_serial_nr(self.x_type, self.counter, self.state)\n\t\tserial_nr = ord_funcs.get_serial_nr(self.x_type, counter_value, state)\n\n\n\n\t\t# Duplicate with different fields\n\t\tcredit_note = self.copy(default={\n\t\t\t\t\t\t\t\t\t\t\t'x_serial_nr': serial_nr,\n\t\t\t\t\t\t\t\t\t\t\t'x_counter_value': counter_value,\n\n\t\t\t\t\t\t\t\t\t\t\t'x_credit_note_owner': self.id,\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t'x_title': 'Nota de Crédito Electrónica',\n\t\t\t\t\t\t\t\t\t\t\t'x_payment_method': False,\n\n\t\t\t\t\t\t\t\t\t\t\t'state': state,\n\n\t\t\t\t\t\t\t\t\t\t\t'amount_total': self.amount_total,\n\t\t\t\t\t\t\t\t\t\t\t'amount_untaxed': self.amount_untaxed,\n\t\t\t\t\t\t\t\t})\n\t\tprint(credit_note)\n\n\t\t# Update Self\n\t\tself.write({\n\t\t\t\t\t\t\t'x_credit_note': credit_note.id,\n\t\t\t\t\t})\n\n\t# create_credit_note\n\n\n\n# ----------------------------------------------------------- Dates -------------------------------\n\n\t# Date\n\tdate_order = fields.Datetime(\n\t\tstates={\n\t\t\t\t\t'draft': [('readonly', False)],\n\t\t\t\t\t'sent': [('readonly', False)],\n\t\t\t\t\t'sale': [('readonly', True)],\n\t\t\t\t},\n\t\tindex=True,\n\t)\n\n\t# Date Date\n\tx_date_order_date = fields.Date(\n\t\t'Fecha',\n\t)\n\n\t# Month\n\tx_month_order = fields.Selection(\n\t\t\tselection=ord_vars._month_order_list,\n\t\t\tstring='Mes',\n\t\t)\n\n\t# Day\n\tx_day_order = fields.Selection(\n\t\t\tselection=ord_vars._day_order_list,\n\t\t\tstring='Dia',\n\t\t)\n\n# ----------------------------------------------------------- Legacy ------------------------------\n\t# Legacy\n\tx_legacy = fields.Boolean(\n\t\t\t'Legacy',\n\t\t\tdefault=False,\n\t\t)\n\n# ----------------------------------------------------------- Payment ----------------------------\n\tx_pm_cash = fields.Float(\n\t\t\t'Cash',\n\t\t)\n\n\tx_pm_visa_credit = fields.Float(\n\t\t\t'Visa Credit',\n\t\t)\n\n\tx_pm_visa_debit = fields.Float(\n\t\t\t'Visa Debit',\n\t\t)\n\n\tx_pm_master_credit = fields.Float(\n\t\t\t'Master Credit',\n\t\t)\n\n\tx_pm_master_debit = fields.Float(\n\t\t\t'Master Debit',\n\t\t)\n\n\tx_pm_american = fields.Float(\n\t\t\t'American',\n\t\t)\n\n\tx_pm_diners = fields.Float(\n\t\t\t'Diners',\n\t\t)\n\n\n# ----------------------------------------------------------- Checksum ----------------------------\n\t# Checksum\n\tx_checksum = fields.Float(\n\t\t\t'Checksum',\n\t\t\treadonly=True,\n\t\t\tdefault=5,\n\t\t)\n\n\t# Checksum Func\n\t@api.multi\n\tdef checksum(self):\n\t\t\"\"\"\n\t\thigh level support for doing this and that.\n\t\t\"\"\"\n\t\t#print\n\t\t#print 'CheckSum'\n\t\tself.check_payment_method()\n\t\tdelta = int(self.amount_total) - int(self.x_pm_total)\n\t\tif delta != 0:\n\t\t\tself.x_checksum = 1\n\t\telse:\n\t\t\tself.x_checksum = 0\n\n\n\t# Pm Total\n\tx_pm_total = fields.Float(\n\t\t\t'Total MP',\n\t\t\treadonly=True,\n\t\t)\n\n\t# Check payment method\n\t@api.multi\n\tdef check_payment_method(self):\n\t\t\"\"\"\n\t\thigh level support for doing this and that.\n\t\t\"\"\"\n\t\t#print\n\t\t#print 'Check Payment Method'\n\t\tpm_total = 0\n\t\tfor pm in self.x_payment_method.pm_line_ids:\n\t\t\tpm_total = pm_total + pm.subtotal\n\t\tself.x_pm_total = pm_total\n\n\n\n# ----------------------------------------------------------- Serial Nr ---------------------------\n\n\t# Serial Number\n\tx_serial_nr = fields.Char(\n\t\t\t'Número de serie',\n\t\t)\n\n\t# Counter Value\n\tx_counter_value = fields.Integer(\n\t\t\tstring=\"Contador\",\n\t\t)\n\n\n# ----------------------------------------------------------- Constraints - Sql -------------------\n\t# Uniqueness constraints for:\n\t# Serial Number\n\t_sql_constraints = [\n\t\t\t\t#('x_serial_nr','unique(x_serial_nr)', 'SQL Warning: x_serial_nr must be unique !'),\n\t\t\t\t('x_serial_nr', 'Check(1=1)', 'SQL Warning: x_serial_nr must be unique !'),\n\t\t\t]\n\n\n\n# ----------------------------------------------------------- Constraints - From Chk Patient ------\n\n\t# Check Ruc\n\t@api.constrains('x_ruc')\n\tdef _check_x_ruc(self):\n\t\tif self.x_type in ['ticket_invoice', 'invoice']:\n\t\t\tchk_patient.check_x_ruc(self)\n\n\n\t# Check Id doc - Use Chk Patient\n\t@api.constrains('x_id_doc')\n\tdef _check_x_id_doc(self):\n\t\tif self.x_type in ['ticket_receipt', 'receipt']:\n\t\t\tchk_patient.check_x_id_doc(self)\n\n\n\t# Check Serial Nr\n\t@api.constrains('x_serial_nr')\n\tdef _check_x_serial_nr(self):\n\t\tchk_order.check_serial_nr(self)\n\n\n\n# ---------------------------------------------- Electronic ------------------------------------\n\n\tx_title = fields.Char(\n\t\t\t'Titulo',\n\t\t\tdefault='Venta Electrónica',\n\t\t)\n\n\tx_electronic = fields.Boolean(\n\t\t\t'Electronic',\n\t\t\tdefault=False,\n\t\t)\n\n\tx_qr_img = fields.Binary(\n\t\t\t'Código QR',\n\t\t)\n\n\tx_qr_data = fields.Char(\n\t\t\t'Data QR'\n\t\t)\n\n\n\n# ----------------------------------------------------------- Mode Admin --------------------------\n\tx_admin_mode = fields.Boolean(\n\t\t\t'Modo Admin',\n\t\t\thelp='Activa el Modo Administrador.',\n\t\t)\n\n\n# ----------------------------------------------------------- Id Doc ------------------------------\n\n\t# Id Document\n\tx_id_doc = fields.Char(\n\t\t\t'Nr. Doc.',\n\t\t\trequired=False,\n\t\t)\n\n\t# Id Document Type\n\tx_id_doc_type = fields.Selection(\n\t\t\tselection=pat_vars._id_doc_type_list,\n\t\t\tstring='Tipo de documento',\n\t\t\trequired=False,\n\t\t)\n\n\t# Type\n\tx_type = fields.Selection(\n\t\t\t[\n\t\t\t\t('receipt', 'Boleta'),\n\t\t\t\t('invoice', 'Factura'),\n\t\t\t\t('advertisement', 'Canje Publicidad'),\n\t\t\t\t('sale_note', 'Canje NV'),\n\t\t\t\t('ticket_receipt', 'Boleta Electronica'),\n\t\t\t\t('ticket_invoice', 'Factura Electronica'),\n\t\t\t],\n\t\t\tstring='Tipo',\n\t\t\trequired=False,\n\t\t\tstates={\n\t\t\t\t\t'draft': [('readonly', True)],\n\t\t\t\t\t'sent': [('readonly', True)],\n\t\t\t\t\t'sale': [('readonly', True)],\n\t\t\t\t},\n\t\t)\n\n\n# ----------------------------------------------------------- Correct -----------------------------\n\t# Correct payment method\n\t@api.multi\n\tdef correct_pm(self):\n\t\t#print\n\t\t#print 'Correct Payment Method'\n\n\n\t\tif self.x_payment_method.name == False:\n\t\t\tself.x_payment_method = self.env['openhealth.payment_method'].create({\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'order': \tself.id,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'partner':\tself.partner_id.id,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'total':\tself.amount_total,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t})\n\t\tres_id = self.x_payment_method.id\n\n\t\treturn {\n\t\t\t# Mandatory\n\t\t\t'type': 'ir.actions.act_window',\n\t\t\t'name': 'Open Payment Method Current',\n\t\t\t# Window action\n\t\t\t'res_id': res_id,\n\t\t\t'res_model': 'openhealth.payment_method',\n\t\t\t# Views\n\t\t\t\"views\": [[False, \"form\"]],\n\t\t\t'view_mode': 'form',\n\t\t\t'target': 'current',\n\t\t\t#'view_id': view_id,\n\t\t\t#\"domain\": [[\"patient\", \"=\", self.patient.name]],\n\t\t\t#'auto_search': False,\n\t\t\t'flags': {\n\t\t\t\t\t\t'form': {'action_buttons': True, 'options': {'mode': 'edit'}}\n\t\t\t\t\t\t#'form': {'action_buttons': True, }\n\t\t\t\t\t\t#'form': {'action_buttons': False, }\n\t\t\t\t\t},\n\t\t\t'context': {}\n\t\t}\n\t# correct_pm\n\n\n# ----------------------------------------------------------- Pay ---------------------------------\n\t# DNI\n\tx_dni = fields.Char(\n\t\t\tstring='DNI',\n\t\t\treadonly=True,\n\t\t)\n\n\t# RUC\n\tx_ruc = fields.Char(\n\t\t\tstring='RUC',\n\t\t\t#readonly=True,\n\t\t)\n\n# ----------------------------------------------------------- Locked - By State -------------------\n\n\t# States\n\tREADONLY_STATES = {\n\t\t'draft': \t\t[('readonly', False)],\n\t\t'sent': \t\t[('readonly', False)],\n\t\t'sale': \t\t[('readonly', True)],\n\t\t'cancel': \t\t[('readonly', True)],\n\t}\n\n\t# Patient\n\tpatient = fields.Many2one(\n\t\t\t'oeh.medical.patient',\n\t\t\tstring='Paciente',\n\t\t\t#default=lambda self: user._get_default_id(self, 'patient'),\n\n\t\t\t#states=READONLY_STATES,\n\t\t)\n\n\t# Doctor\n\tx_doctor = fields.Many2one(\n\t\t\t'oeh.medical.physician',\n\t\t\tstring=\"Médico\",\n\t\t\t#default=lambda self: user._get_default_id(self, 'doctor'),\n\t\t\tstates=READONLY_STATES,\n\t\t)\n\n\n\n\n\t# Order Line\n\torder_line = fields.One2many(\n\t\t\t'sale.order.line',\n\t\t\t'order_id',\n\t\t\tstring='Order Lines',\n\n\t\t\t#states=READONLY_STATES, \t\t\t# Done by the View\n\t\t)\n\n\n# ----------------------------------------------------------- On Changes --------------------------\n\n\t# Patient\n\t@api.onchange('patient')\n\tdef _onchange_patient(self):\n\t\t#print\n\t\t#print 'On Change Patient'\n\n\t\tif self.patient.name != False:\n\n\t\t\t# Init\n\t\t\tself.x_ruc = False\n\t\t\tself.partner_id = self.patient.partner_id.id\n\n\t\t\t#print self.patient.x_id_doc\n\t\t\t#print self.patient.x_id_doc_type\n\n\t\t\t# Id Doc\n\t\t\tif self.patient.x_id_doc != False:\n\t\t\t\tself.x_id_doc = self.patient.x_id_doc\n\t\t\t\tself.x_id_doc_type = self.patient.x_id_doc_type\n\n\n\t\t\t# Get x Dni\n\t\t\telif self.patient.x_dni not in [False, '']:\n\t\t\t\tself.x_id_doc = self.patient.x_dni\n\t\t\t\tself.x_id_doc_type = 'dni'\n\t\t\t\tself.x_dni = self.patient.x_dni\n\n\t\t\t\t# Update Patient - Dep\n\t\t\t\t#self.x_msg = '1'\n\t\t\t\t#self.patient.x_id_doc = self.patient.x_dni\n\t\t\t\t#self.patient.x_id_doc_type = 'dni'\n\n\n\t\t\t# Ruc\n\t\t\tif self.patient.x_ruc != False:\n\t\t\t\tself.x_ruc = self.patient.x_ruc\n\n\n\n\t# Doctor\n\t@api.onchange('x_doctor')\n\tdef _onchange_x_doctor(self):\n\t\tif self.x_doctor.name != False:\n\n\t\t\ttreatment = self.env['openhealth.treatment'].search([\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t('patient', '=', self.patient.name),\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t('physician', '=', self.x_doctor.name),\n\t\t\t\t\t\t\t\t\t\t\t\t\t],\n\t\t\t\t\t\t\t\t\t\t\t\t\t\torder='write_date desc',\n\t\t\t\t\t\t\t\t\t\t\t\t\t\tlimit=1,\n\t\t\t\t\t\t\t\t\t\t\t\t\t)\n\t\t\tself.treatment = treatment\n\n\n# ----------------------------------------------------------- Primitives --------------------------\n\n\t# Delta\n\tx_delta = fields.Integer(\n\t\t\t'Delta',\n\t\t)\n\n\t# State\n\tstate = fields.Selection(\n\t\t\t\n\t\t\tselection=ord_vars._state_list,\n\n\t\t\tstring='Estado',\n\t\t\treadonly=False,\n\t\t\tdefault='draft',\n\t\t\tindex=True,\n\t\t)\n\n\t# Pricelist\n\tpricelist_id = fields.Many2one(\n\t\t\t'product.pricelist',\n\t\t\tstring='Pricelist',\n\t\t\treadonly=True,\n\t\t\tstates={'draft': [('readonly', False)], 'sent': [('readonly', False)]},\n\t\t\thelp=\"Pricelist for current sales order.\",\n\t\t\trequired=True,\n\t\t)\n\n\t# Payment Method\n\tx_payment_method = fields.Many2one(\n\t\t\t'openhealth.payment_method',\n\t\t\tstring=\"Pago\",\n\t\t\tstates=READONLY_STATES,\n\t\t)\n\n\tx_doctor_uid = fields.Many2one(\n\t\t\t'res.users',\n\t\t\tstring=\"Médico Uid\",\n\t\t\treadonly=True,\n\t\t)\n\n\t# Blank line\n\tvspace = fields.Char(\n\t\t\t' ',\n\t\t\treadonly=True\n\t\t)\n\n\n# ----------------------------------------------------------- Primitives --------------------------\n\n\t# Proc Created - For Doctor budget creation\n\tx_procedure_created = fields.Boolean(\n\t\t\t'Procedimiento Creado',\n\t\t\tdefault=False,\n\t\t)\n\n\n# ---------------------------------------------- Create Payment Method - Button Pagar ----------------------------\n\t@api.multi\n\tdef create_payment_method(self):\n\t\t\"\"\"\n\t\tButton Pagar\n\t\t\"\"\"\n\n\t\t# Update Descriptors\n\t\t#self.update_descriptors()\n\t\tord_funcs.update_descriptors(self)\n\n\n\t\t# Init vars\n\t\tname = 'Pago'\n\t\tmethod = 'cash'\n\t\tbalance = self.x_amount_total\n\t\tfirm = self.patient.x_firm\n\t\truc = self.patient.x_ruc\n\n\t\t# Create\n\t\tself.x_payment_method = self.env['openhealth.payment_method'].create({\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'order': self.id,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'method': method,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'subtotal': balance,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'total': self.x_amount_total,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'partner': self.partner_id.id,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'date_created': self.date_order,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'firm': firm,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'ruc': ruc,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t})\n\t\tpayment_method_id = self.x_payment_method.id\n\n\n\t\t# Create Lines\n\t\tname = '1'\n\t\tmethod = 'cash'\n\t\tsubtotal = self.x_amount_total\n\t\tpayment_method = self.x_payment_method.id\n\n\t\tself.x_payment_method.pm_line_ids.create({\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'name': name,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'method': method,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'subtotal': subtotal,\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t'payment_method': payment_method,\n\t\t\t\t\t\t\t\t\t\t})\n\n\t\treturn {\n\t\t\t\t'type': 'ir.actions.act_window',\n\t\t\t\t'name': ' New PM Current',\n\t\t\t\t'view_type': 'form',\n\t\t\t\t'view_mode': 'form',\n\t\t\t\t'target': 'current',\n\t\t\t\t'res_model': 'openhealth.payment_method',\n\t\t\t\t'res_id': payment_method_id,\n\t\t\t\t'flags': \t{\n\t\t\t\t\t\t\t#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}\n\t\t\t\t\t\t\t#'form': {'action_buttons': False, }\n\t\t\t\t\t\t\t'form':{'action_buttons': False, 'options': {'mode': 'edit'}}\n\t\t\t\t\t\t\t},\n\t\t\t\t'context': {\n\t\t\t\t\t\t\t'default_order': self.id,\n\t\t\t\t\t\t\t'default_name': name,\n\t\t\t\t\t\t\t'default_method': method,\n\t\t\t\t\t\t\t'default_subtotal': balance,\n\t\t\t\t\t\t\t'default_total': self.x_amount_total,\n\t\t\t\t\t\t\t'default_partner': self.partner_id.id,\n\t\t\t\t\t\t\t'default_date_created': self.date_order,\n\t\t\t\t\t\t\t'default_firm': firm,\n\t\t\t\t\t\t\t'default_ruc': ruc,\n\t\t\t\t\t\t\t}\n\t\t\t\t}\n\t# create_payment_method\n\n\n# ----------------------------------------------------------- Print -------------------------------\n\t@api.multi\n\tdef print_ticket_electronic(self):\n\t\t\"\"\"\n\t\tPrint Ticket Electronic\n\t\t\"\"\"\n\t\tprint('')\n\t\tprint('Print Electronic')\n\n\n\t\t# Check Patient for Ticket\n\t\tord_funcs.check_ticket(self, self.x_type, self.state)\n\n\n\t\tname = 'openhealth.report_ticket_receipt_electronic'\n\t\taction = self.env['report'].get_action(self, name)\n\t\treturn action\n\n\n\n#----------------------------------------------------------- Quick Button - For Treatment ---------\n\t@api.multi\n\tdef open_line_current(self):\n\t\t\"\"\"\n\t\t# Quick access Button\n\t\t\"\"\"\n\t\tconsultation_id = self.id\n\t\treturn {\n\t\t\t\t'type': 'ir.actions.act_window',\n\t\t\t\t'name': ' Edit Order Current',\n\t\t\t\t'view_type': 'form',\n\t\t\t\t'view_mode': 'form',\n\n\t\t\t\t'res_model': self._name,\n\t\t\t\t'res_id': consultation_id,\n\n\t\t\t\t'target': 'current',\n\t\t\t\t'flags': {\n\t\t\t\t\t\t#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}\n\t\t\t\t\t\t'form': {'action_buttons': True, }\n\t\t\t\t\t\t},\n\t\t\t\t'context': {}\n\t\t}\n\n\n#----------------------------------------------------------- Qpen myself --------------------------\n\t@api.multi\n\tdef open_myself(self):\n\t\t\"\"\"\n\t\tFor Payment Method comeback\n\t\t\"\"\"\n\t\torder_id = self.id\n\t\treturn {\n\t\t\t# Mandatory\n\t\t\t'type': 'ir.actions.act_window',\n\t\t\t'name': 'Open Order Current',\n\t\t\t# Window action\n\t\t\t'res_model': 'sale.order',\n\t\t\t'res_id': order_id,\n\t\t\t# Views\n\t\t\t\"views\": [[False, \"form\"]],\n\t\t\t'view_mode': 'form',\n\t\t\t'target': 'current',\n\t\t\t#'view_id': view_id,\n\t\t\t#\"domain\": [[\"patient\", \"=\", self.patient.name]],\n\t\t\t#'auto_search': False,\n\t\t\t'flags': {\n\t\t\t\t\t'form': {'action_buttons': True, }\n\t\t\t\t\t#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}\n\t\t\t},\n\t\t\t'context':   {\n\n\t\t\t}\n\t\t}\n\t# open_myself\n\n\n# ----------------------------------------------------------- Remove and Reset ------------\n\t# Reset\n\t@api.multi\n\tdef reset(self):\n\t\t\"\"\"\n\t\thigh level support for doing this and that.\n\t\t\"\"\"\n\t\tself.x_payment_method.unlink()\n\t\tself.state = 'draft'\n\n\n\t# Remove - Protected for Sales\n\t@api.multi\n\tdef remove_myself(self):\n\t\t\"\"\"\n\t\thigh level support for doing this and that.\n\t\t\"\"\"\n\t\tif self.state in ['credit_note']:\n\t\t\t#raise UserError(\"Advertencia: La Nota de Crédito va a ser eliminada del sistema !\")\n\t\t\tself.reset()\n\t\t\tself.unlink()\n\t\telse:\n\t\t\t#raise UserError(\"Advertencia: La Venta va a ser convertida en Presupuesto !\")\n\t\t\tself.reset()\n\n\n\t# Remove Force\n\t@api.multi\n\tdef remove_myself_force(self):\n\t\t\"\"\"\n\t\thigh level support for doing this and that.\n\t\t\"\"\"\n\t\tself.reset()\n\t\tself.unlink()\n\n\n# ---------------------------------------------- Cancel -------------------------------------------\n\t# Cancel\n\tx_cancel = fields.Boolean(\n\t\t\tstring='',\n\t\t\tdefault=False\n\t\t)\n\n\t@api.multi\n\tdef cancel_order(self):\n\t\t\"\"\"\n\t\tCancel Order\n\t\t\"\"\"\n\t\tself.x_cancel = True\n\t\tself.state = 'cancel'\n\n\t@api.multi\n\tdef activate_order(self):\n\t\t\"\"\"\n\t\tActivate Order\n\t\t\"\"\"\n\t\tself.x_cancel = False\n\t\tself.state = 'sale'\n\n\n# ----------------------------------------------------------- Test --------------------------------\n\tdef pay_myself(self):\n\t\t\"\"\"\n\t\tPay Myself\n\t\tUsed by Treatment Test\n\t\t\"\"\"\n\t\tprint()\n\t\tprint('Order - Pay myself')\n\t\t\n\t\ttest_order.pay_myself(self)\n",
 			"file": "models/order/order.py",
-			"file_size": 37473,
-			"file_write_time": 132199598470000000,
 			"settings":
 			{
-				"buffer_size": 37469,
+				"buffer_size": 36175,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/order/raw_funcs.py",
+			"settings":
+			{
+				"buffer_size": 5768,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/order/tick_funcs.py",
+			"settings":
+			{
+				"buffer_size": 1591,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/order/tick_funcs.DEP.py",
+			"settings":
+			{
+				"buffer_size": 683,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/orders/order.xml",
+			"settings":
+			{
+				"buffer_size": 19634,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/order/order.TRASH.py",
+			"settings":
+			{
+				"buffer_size": 22697,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -558,15 +600,6 @@
 			}
 		},
 		{
-			"file": "models/order/raw_funcs.py",
-			"settings":
-			{
-				"buffer_size": 5249,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "models/order/ord_funcs.py",
 			"settings":
 			{
@@ -576,46 +609,10 @@
 			}
 		},
 		{
-			"file": "models/order/order.TRASH.py",
-			"settings":
-			{
-				"buffer_size": 20657,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "models/order/order_line.py",
 			"settings":
 			{
 				"buffer_size": 6415,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/order/tick_funcs.py",
-			"settings":
-			{
-				"buffer_size": 2275,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/order/ord_funcs.DEP.py",
-			"settings":
-			{
-				"buffer_size": 965,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "views/orders/order.xml",
-			"settings":
-			{
-				"buffer_size": 18978,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -712,6 +709,7 @@
 	},
 	"file_history":
 	[
+		"/Users/gibil/cellar/github/openhealth/models/order/ord_funcs.DEP.py",
 		"/Users/gibil/cellar/github/openhealth/reports/print_ticket_receipt_electronic.DEP.xml",
 		"/Users/gibil/cellar/github/openhealth/readme.txt",
 		"/Users/gibil/cellar/github/openhealth/models/order/clos_funcs.py",
@@ -838,8 +836,7 @@
 		"/Users/gibil/cellar/github/openhealth/models/patient/partner.py",
 		"/Users/gibil/cellar/github/openhealth/views/treatments/treatment_procedures.xml",
 		"/Users/gibil/cellar/github/openhealth/models/emr/treatment_vars.py",
-		"/Users/gibil/cellar/github/openhealth/data/prods/odoo_data_products.xml",
-		"/Users/gibil/cellar/github/openhealth/models/libs/zat/creates.py"
+		"/Users/gibil/cellar/github/openhealth/data/prods/odoo_data_products.xml"
 	],
 	"find":
 	{
@@ -855,9 +852,21 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": true,
+		"case_sensitive": false,
 		"find_history":
 		[
+			"print ticket",
+			"ticket",
+			"get_amount_total",
+			"tick_funcs",
+			"get_date_cor",
+			"compute_date_corr",
+			"get_date_corre",
+			"autofill",
+			"quick_sale_service",
+			"br",
+			"print_ticket_electronic",
+			"jx",
 			"print_ticket_elec",
 			"format_line",
 			"jx",
@@ -973,19 +982,7 @@
 			"x_date_order_corr",
 			"x_credit_note_owner",
 			"get_date_corr",
-			"corrected",
-			"consultation",
-			"treatment",
-			"consulta",
-			"consultation",
-			"order",
-			"treatment_form_action",
-			"patient = fi",
-			"patient",
-			"mode",
-			"agreg",
-			"2018",
-			"year = "
+			"corrected"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -1131,7 +1128,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -1160,7 +1157,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
@@ -1169,15 +1166,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6873,
+						"buffer_size": 8074,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								672,
-								672
+								5449,
+								5449
 							]
 						],
 						"settings":
@@ -1186,10 +1183,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 415.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -1198,15 +1195,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 37469,
+						"buffer_size": 36175,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8771,
-								8771
+								6125,
+								6137
 							]
 						],
 						"settings":
@@ -1215,14 +1212,159 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 7436.0,
+						"translation.y": 4606.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "models/order/raw_funcs.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5768,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1106,
+								1106
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "models/order/tick_funcs.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1591,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								261,
+								261
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 950.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 5,
+					"file": "models/order/tick_funcs.DEP.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 683,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								370,
+								683
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "views/orders/order.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 19634,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2802,
+								2802
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2155.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "models/order/order.TRASH.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 22697,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1220,
+								1220
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 334.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
 					"file": "models/order/order_admin.py",
 					"semi_transient": false,
 					"settings":
@@ -1247,39 +1389,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "models/order/raw_funcs.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5249,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1786,
-								1786
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 1499.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
+					"buffer": 9,
 					"file": "models/order/ord_funcs.py",
 					"semi_transient": false,
 					"settings":
@@ -1304,40 +1418,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "models/order/order.TRASH.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 20657,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1519,
-								1519
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 830.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
+					"buffer": 10,
 					"file": "models/order/order_line.py",
 					"semi_transient": false,
 					"settings":
@@ -1362,94 +1447,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "models/order/tick_funcs.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2275,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2100,
-								2100
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "models/order/ord_funcs.DEP.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 965,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1,
-								965
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 317.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "views/orders/order.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 18978,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2100,
-								2114
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1236.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{

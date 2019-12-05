@@ -149,6 +149,20 @@
 
 
 
+					<!-- Test Serial Number -->
+					<button 
+							type="object"
+							
+							class="oe_highlight"
+							
+							name="test_serial_number"
+
+							string="Test SN"
+
+							groups='openhealth.roots'
+						/>
+
+
 
 					<!-- Reset --> 
 <!--

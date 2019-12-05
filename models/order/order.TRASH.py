@@ -1,5 +1,107 @@
 # 4 Dec 2019
 
+# ----------------------------------------------------------- Autofill - Dep ----------------------------
+	# Autofill
+	x_autofill = fields.Boolean(
+			string="Autofill",
+			default=False,
+		)
+
+	# Autofill
+	@api.onchange('x_autofill')
+	def _onchange_x_autofill(self):
+		if self.x_autofill:
+			self.autofill()
+
+
+	def autofill(self):
+		"""
+		Autofill Order
+		For Testing
+		"""
+
+		#self.sex = 'Male'
+
+		# Patient
+		patient = self.env['oeh.medical.patient'].search([
+															('name', 'in', ["REVILLA RONDON JOSE JAVIER"]),
+											],
+												#order='x_serial_nr asc',
+												limit=1,
+											)
+		print(patient.name)
+
+
+		# Doctor
+		doctor = self.env['oeh.medical.physician'].search([
+															('name', 'in', ["Dr. Chavarri"]),
+											],
+												#order='x_serial_nr asc',
+												limit=1,
+											)
+		print(doctor.name)
+
+
+		# Treatment
+		treatment = self.env['openhealth.treatment'].search([
+															('patient', 'in', ["REVILLA RONDON JOSE JAVIER"]),
+											],
+												#order='x_serial_nr asc',
+												limit=1,
+											)
+		print(treatment.name)
+
+		# Fill
+		self.patient = patient
+		self.x_doctor = doctor
+		self.treatment = treatment
+
+	# autofill
+
+
+
+
+# ----------------------------------------------------------- Quick Sale - Dep -------------------------------
+
+	@api.multi
+	def quick_sale_service(self):
+		"""
+		Quick Sale Service
+		To accelerate Testing
+		"""
+		print()
+		print('Quick Sale Service')
+
+		#self.order_line.create
+
+		# Product
+		name = "LASER CO2 FRACCIONAL - Todo Rostro - Rejuvenecimiento - Grado 1 - 1 sesion"
+		product = self.env['product.product'].search([
+															('name', 'in', [name]),
+											],
+												#order='x_serial_nr asc',
+												limit=1,
+											)
+		print(product.name)
+
+
+		# Line
+		line = self.order_line.create({
+											'product_id': product.id,
+											'product_uom_qty': 1,
+											'order_id': self.id,
+										})
+		print(line.product_id.name)
+
+		# Pay
+		if self.state in ['draft']:
+			self.pay_myself()
+
+
+
+
+
+
 
 # ----------------------------------------------------------- Ticket - Get Table Lines - Format ----------------
 

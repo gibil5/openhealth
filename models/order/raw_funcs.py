@@ -7,7 +7,32 @@
 	Last up: 	 		Id.
 """
 from __future__ import print_function
+import datetime
 
+
+# ----------------------------------------------------------- Ticket - Get Raw Line - Aux ----------------
+def get_date_corrected(date_order):
+	"""
+	Used by Print Ticket.
+	Get Ticket Raw
+	"""
+	print()
+	print('Get Date Corrected')
+
+	#return tick_funcs.get_date_corrected(self)
+
+	DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
+
+	#date_field1 = datetime.datetime.strptime(self.date_order, DATETIME_FORMAT)
+	date_field1 = datetime.datetime.strptime(date_order, DATETIME_FORMAT)
+
+	date_field2 = date_field1 + datetime.timedelta(hours=-5, minutes=0)
+	
+	DATETIME_FORMAT_2 = "%d-%m-%Y %H:%M:%S"
+
+	date_corrected = date_field2.strftime(DATETIME_FORMAT_2)
+
+	return date_corrected
 
 
 # ----------------------------------------------------------- Ticket - Get Table Lines - Format ----------------
@@ -123,7 +148,8 @@ def get_ticket_raw_line(self, argument):
 	# Credit note
 	if argument in ['date_credit_note']:
 		tag = 'Fecha:'
-		value = self.get_date_corrected()
+		#value = self.get_date_corrected()
+		value = get_date_corrected(self.date_order)
 
 	elif argument in ['denomination_credit_note_owner']:
 		tag = 'Denominacion:'
@@ -131,7 +157,8 @@ def get_ticket_raw_line(self, argument):
 
 	elif argument in ['date_credit_note_owner']:
 		tag = 'Fecha de emision:'
-		value = self.x_credit_note_owner.get_date_corrected()
+		#value = self.x_credit_note_owner.get_date_corrected()
+		value = get_date_corrected(self.x_credit_note_owner.date_order)
 
 	elif argument in ['reason_credit_note']:
 		tag = 'Motivo:'
@@ -176,7 +203,8 @@ def get_ticket_raw_line(self, argument):
 	# Sale - Not Credit Note
 	elif argument in ['sale_date']:
 		tag = 'Fecha:'
-		value = self.get_date_corrected()
+		#value = self.get_date_corrected()
+		value = get_date_corrected(self.date_order)
 
 	elif argument in ['sale_serial_number']:
 		tag = 'Ticket:'
@@ -269,6 +297,10 @@ def get_ticket_raw_line(self, argument):
 
 	#print(line)
 	return line
+
+
+
+
 
 
 

@@ -40,141 +40,14 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Gettter ----------------------------
-	def get_date_corrected(self):
-		"""
-		Used by Print Ticket.
-		"""
-		print()
-		print('Get Date Corrected')
-
-		return tick_funcs.get_date_corrected(self)
-
-
-# ----------------------------------------------------------- Autofill ----------------------------
-
-	# Autofill
-	x_autofill = fields.Boolean(
-			string="Autofill",
-			default=False,
-		)
-
-	# Autofill
-	@api.onchange('x_autofill')
-	def _onchange_x_autofill(self):
-		if self.x_autofill:
-			self.autofill()
-
-
-	def autofill(self):
-		"""
-		Autofill Order
-		"""
-
-		#self.sex = 'Male'
-
-		# Patient
-		patient = self.env['oeh.medical.patient'].search([
-															('name', 'in', ["REVILLA RONDON JOSE JAVIER"]),
-											],
-												#order='x_serial_nr asc',
-												limit=1,
-											)
-		print(patient.name)
-
-
-
-		# Doctor
-		doctor = self.env['oeh.medical.physician'].search([
-															('name', 'in', ["Dr. Chavarri"]),
-											],
-												#order='x_serial_nr asc',
-												limit=1,
-											)
-		print(doctor.name)
-
-
-
-		# Treatment
-		treatment = self.env['openhealth.treatment'].search([
-															('patient', 'in', ["REVILLA RONDON JOSE JAVIER"]),
-											],
-												#order='x_serial_nr asc',
-												limit=1,
-											)
-		print(treatment.name)
-
-
-
-		# Fill
-		self.patient = patient
-		self.x_doctor = doctor
-		self.treatment = treatment
-
-
-
-# ----------------------------------------------------------- Quick Sale -------------------------------
-
-	@api.multi
-	def quick_sale_service(self):
-		"""
-		Quick Sale Service
-		"""
-		print()
-		print('Quick Sale Service')
-
-		#self.order_line.create
-
-
-		# Product
-
-		name = "LASER CO2 FRACCIONAL - Todo Rostro - Rejuvenecimiento - Grado 1 - 1 sesion"
-
-		product = self.env['product.product'].search([
-															('name', 'in', [name]),
-											],
-												#order='x_serial_nr asc',
-												limit=1,
-											)
-		print(product.name)
-
-
-
-		line = self.order_line.create({
-											'product_id': product.id,
-
-											'product_uom_qty': 1,
-
-											'order_id': self.id,
-
-											#'price_unit': self.x_credit_note_amount,
-										})
-		print(line.product_id.name)
-
-
-		# Pay
-		if self.state in ['draft']:
-			self.pay_myself()
-
-
-
-
 # ----------------------------------------------------------- Relational -------------------------------
-
 	# Patient
-	patient_id = fields.Many2one(
-			
+	patient_id = fields.Many2one(			
 			'oeh.medical.patient',
-			
 			string="Paciente",
-			
 			required=False,
-			
 			#ondelete='cascade',  		# Danger !!!
 		)
-
-
-
 
 
 	# Treatment
@@ -194,7 +67,6 @@ class sale_order(models.Model):
 			'res.partner',
 			string="Cliente",
 			required=False,
-
 			readonly=False,
 
 			#states={
@@ -221,11 +93,11 @@ class sale_order(models.Model):
 			],
 		)
 
-
 	# Product
 	x_product = fields.Char(
 			string="Producto",
 		)
+
 
 # ----------------------------------------------------------- Price List - Computes ----------------------
 
@@ -336,8 +208,6 @@ class sale_order(models.Model):
 		
 			default=False,
 		)
-
-
 
 
 

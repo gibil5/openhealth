@@ -48,7 +48,6 @@ def format_line(tag, value):
 		- Print ticket
 	"""
 
-	#value = str(value)
 
 	# Init
 	_size_font = '2'

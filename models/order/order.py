@@ -342,10 +342,10 @@ class sale_order(models.Model):
 
 
 				# Not electronic
-				('receipt', 'sale'),
-				('invoice', 'sale'),
-				('advertisement', 'sale'),
-				('sale_note', 'sale'),
+				#('receipt', 'sale'),
+				#('invoice', 'sale'),
+				#('advertisement', 'sale'),
+				#('sale_note', 'sale'),
 		]
 
 

@@ -214,8 +214,8 @@ class management_order_line(models.Model):
 	# Update Fields
 	@api.multi
 	def update_fields(self):
-		#print 
-		#print 'Update Fields - Order'
+		print()
+		print('2018 - Update Fields - Order')
 
 
 		# If Product 

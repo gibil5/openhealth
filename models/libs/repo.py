@@ -3,7 +3,7 @@
  	Repo - Inherited by Management and Marketing
 
  	Created: 				28 May 2018
- 	Last up: 				23 Nov 2018
+ 	Last up: 				 7 Dec 2019
 """
 from openerp import models, fields, api
 
@@ -11,6 +11,24 @@ class Repo(models.Model):
 	_name = 'openhealth.repo'
 	#_inherit=''
 	#_order = ''
+
+
+
+# ----------------------------------------------------------- Django ------------------------------------------------------
+	# State
+	state = fields.Selection(
+			
+			selection=[
+							('stable', 'Estable'),
+							('unstable', 'Inestable'),
+			],
+
+			string='Estado',
+			#readonly=False,
+			default='unverified',
+			#index=True,
+		)
+
 
 
 # ----------------------------------------------------------- Inherited ------------------------------------------------------
@@ -98,3 +116,4 @@ class Repo(models.Model):
 		#print
 		#print 'Update Repo'
 		pass
+

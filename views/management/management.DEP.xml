@@ -2,6 +2,207 @@
 7 DEc 2019
 -->
 
+
+
+<!-- 2019 - Families -->
+
+		<!-- Month 2019 - Fams -->
+		<record model="ir.actions.act_window" id="management_list_mgt_2019_families_action">
+			<field name="name">Por Familia</field>
+			<field name="res_model">openhealth.management</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form,graph</field>
+			<field name="context">{}</field>
+			<field name="domain">[
+									('owner', 'in', ['month']),
+									('year', 'in', ['2019']),
+								]
+			</field>
+
+			<field name="view_id" ref="management_view_families_tree"/> 
+			<!--
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>            
+			-->
+		</record>
+
+
+		<!-- Month 2019 - Sub Fams -->
+		<record model="ir.actions.act_window" id="management_list_mgt_2019_subfamilies_action">
+			<field name="name">Por subfamilia</field>
+			<field name="res_model">openhealth.management</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form,graph</field>
+			<field name="context">{}</field>
+			<field name="domain">[
+									('owner', 'in', ['month']),
+									('year', 'in', ['2019']),
+								]
+			</field>
+
+			<field name="view_id" ref="management_view_subfamilies_tree"/> 
+			<!--
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>            
+			-->
+		</record>
+
+
+
+
+
+
+<!-- 2018 - Families -->
+
+		<!-- Month 2018 - Fams -->
+		<record model="ir.actions.act_window" id="management_list_mgt_2018_families_action">
+			
+			<field name="name">Por Familia</field>
+			
+			<field name="res_model">openhealth.management</field>
+			
+			<field name="view_type">form</field>
+			
+			<field name="view_mode">tree,form,graph</field>
+			
+			<field name="context">{}</field>
+
+			<field name="domain">[
+									('owner', 'in', ['month']),
+									('year', 'in', ['2018']),
+								]
+			</field>
+
+			<field name="view_id" ref="management_view_families_tree"/> 
+
+			<!--
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>            
+			-->
+		</record>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- Not Export - Month -->
+		<record model="ir.actions.act_window" id="management_list_mgt_action">
+			<field name="name">Análisis de Ventas</field>
+			<field name="res_model">openhealth.management</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form,graph</field>
+			<field name="context">{}</field>
+
+			<field name="domain">[
+									('owner', 'not in', ['account', 'year']),
+								]
+			</field>
+
+			<!--
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>            
+			-->
+		</record>
+
+
+		<!-- Not Export - Year -->
+		<record model="ir.actions.act_window" id="management_list_mgt_year_action">
+			<field name="name">Análisis de Ventas</field>
+			<field name="res_model">openhealth.management</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>            
+			<field name="context">{}</field>
+
+			<field name="domain">[
+									('owner', 'not in', ['account']),
+									('owner', 'in', ['year']),
+								]
+			</field>
+
+			<!--
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>            
+			-->
+		</record>
+
+
+
+<!-- Filter -->
+		<record id="view_management_day_line_filter" model="ir.ui.view">
+			<field name="name">day Search</field>
+
+			<field name="model">openhealth.management.day.line</field>
+			
+			<field name="arch" type="xml">
+			   <search string="dayes">
+
+					<field  name="management_id"/>
+			   
+			   </search>
+		   </field>
+	   </record>
+
+
+
+
+<!-- Filter -->
+		<record id="view_management_day_doctor_line_filter" model="ir.ui.view">
+			<field name="name">day doctor Search</field>
+
+			<field name="model">openhealth.management.day.doctor.line</field>
+			
+			<field name="arch" type="xml">
+			   <search string="Diario">
+					
+					<field  name="management_id"/>
+			   
+			   </search>
+		   </field>
+	   </record>
+
+
+
+		<record model="ir.actions.act_window" id="management_list_action">
+			<field name="name">Análisis de Ventas</field>
+			<field name="res_model">openhealth.management</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form,graph</field>            
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">
+					This is my first Help !
+				</p>
+			</field>
+
+			<!--
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>            
+			-->
+		</record>
+
+
+
+
+
+
+
 		<!-- Export - Month -->
 		<record model="ir.actions.act_window" id="management_list_mgt_export_month_action">
 			<field name="name">Análisis de Ventas - Mensual - Export </field>
@@ -191,4 +392,68 @@
 			
 			</field>
 		</record>
+
+
+
+
+<!-- TREE --> 
+		<record model="ir.ui.view" id="management_view_tree">
+
+			<field name="name">openhealth.management.tree</field>
+
+			<field name="model">openhealth.management</field>
+
+			<field name="arch" type="xml">
+
+				<tree string="Management Tree">
+
+
+					<field name="name"/>
+
+					<field name="month"  groups="openhealth.roots"/>
+					<field name="year"   groups="openhealth.roots"/>
+					<field name="date_begin"    string="Fecha Inicio"   groups="openhealth.roots"/>
+					<field name="date_end"      string="Fecha Fin"      groups="openhealth.roots"/>
+
+
+<!--
+					<field name="total_amount"/>
+-->
+
+					<field name="total_amount" sum="Total" widget="monetary"/>
+					<field name="per_amo_total"     widget="percentage"  />
+
+
+					<field name="write_date"        string="Actualizado"/>
+					<field name="delta_fast"        groups="openhealth.roots"/>
+					<field name="delta_doctor"      groups="openhealth.roots"/>
+
+<!--
+					<field name="test_target"   groups="openhealth.roots"/>
+-->                
+					<field name="owner"         groups="openhealth.roots"/>
+					<field name="type_arr"      groups="openhealth.roots"/>
+
+
+
+<!--
+					<field name="date_begin"    string="Fecha Inicio"/>
+					<field name="date_end"      string="Fecha Fin"/>
+-->
+					<field name="nr_products"/>
+					<field name="nr_consultations"/>
+					<field name="nr_procedures"/>
+
+					<field name="ratio_pro_con"     string="Ratio"/>
+					
+					<field name="total_tickets"/>
+					<field name="total_count"/>
+
+				</tree>
+			</field>
+		</record>
+<!--
+					<field name="avg_total_amount"/>
+					<field name="write_date"    string="Actualizado"/>
+-->
 

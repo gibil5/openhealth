@@ -194,6 +194,7 @@
 		'views/electronic/electronic_order.xml',
 		'views/electronic/electronic_line.xml',
 
+
 		# Management 
 		'views/management/management_day_line.xml',
 		'views/management/management_day_doctor_line.xml',
@@ -201,6 +202,7 @@
 		'views/management/management_subfamily_line.xml',
 		'views/management/management_order_line.xml',
 		'views/management/management_doctor_line.xml',
+
 		'views/management/management_trees.xml',
 		'views/management/management_actions.xml',
 		'views/management/management.xml',

@@ -547,10 +547,45 @@
 			}
 		},
 		{
+			"file": "views/management/management_trees.xml",
+			"settings":
+			{
+				"buffer_size": 1700,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/management/management_actions.xml",
+			"settings":
+			{
+				"buffer_size": 3328,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/management/management.DEP.xml",
+			"settings":
+			{
+				"buffer_size": 10159,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "views/management/management.xml",
+			"settings":
+			{
+				"buffer_size": 12791,
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "models/libs/repo.py",
 			"settings":
 			{
-				"buffer_size": 1577,
+				"buffer_size": 1917,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -882,6 +917,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"configura",
+			"management_",
+			"management.xml",
+			"management_view_expo",
+			"selection",
+			"state = fi",
+			"state",
 			"#",
 			"date_corre",
 			"total_amou",
@@ -1002,17 +1044,10 @@
 			"get_total_tax",
 			"tax",
 			"igv",
-			"management_id",
-			"test_targ",
-			"sever",
-			"test_target",
-			"several_dates",
-			"sev",
-			"se",
-			"get_orders_"
+			"management_id"
 		],
 		"highlight": false,
-		"in_selection": true,
+		"in_selection": false,
 		"preserve_case": false,
 		"regex": false,
 		"replace_history":
@@ -1155,7 +1190,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -1171,8 +1206,8 @@
 						"selection":
 						[
 							[
-								2499,
-								2499
+								5480,
+								5491
 							]
 						],
 						"settings":
@@ -1181,7 +1216,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1286.0,
+						"translation.y": 3169.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 2,
@@ -1212,7 +1247,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
@@ -1228,8 +1263,8 @@
 						"selection":
 						[
 							[
-								22633,
-								22643
+								10870,
+								10875
 							]
 						],
 						"settings":
@@ -1241,24 +1276,139 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "models/libs/repo.py",
+					"file": "views/management/management_trees.xml",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1577,
+						"buffer_size": 1700,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								686,
+								686
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 136.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "views/management/management_actions.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3328,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3305,
+								3305
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1715.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "views/management/management.DEP.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 10159,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								416,
+								416
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "views/management/management.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12791,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								139,
+								139
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 230.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "models/libs/repo.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1917,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								508,
+								508
 							]
 						],
 						"settings":
@@ -1267,14 +1417,14 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 384.0,
+						"translation.y": 21.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
+					"buffer": 8,
 					"file": "models/order/order.py",
 					"semi_transient": false,
 					"settings":
@@ -1286,8 +1436,8 @@
 						"selection":
 						[
 							[
-								207,
-								207
+								1855,
+								2022
 							]
 						],
 						"settings":
@@ -1295,15 +1445,15 @@
 							"syntax": "Packages/Python/Python.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 1.0,
-						"translation.y": 0.0,
+						"translation.x": 0.0,
+						"translation.y": 1129.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 9,
 					"file": "models/order/ord_funcs.py",
 					"semi_transient": false,
 					"settings":
@@ -1328,11 +1478,11 @@
 						"translation.y": 1258.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 10,
 					"file": "models/order/ord_vars.py",
 					"semi_transient": false,
 					"settings":
@@ -1357,11 +1507,11 @@
 						"translation.y": 3195.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 11,
 					"file": "models/order/order.TRASH.py",
 					"semi_transient": false,
 					"settings":
@@ -1386,11 +1536,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 12,
 					"file": "views/orders/order.xml",
 					"semi_transient": false,
 					"settings":
@@ -1412,14 +1562,14 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2282.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 13,
 					"file": "models/order/raw_funcs.py",
 					"semi_transient": false,
 					"settings":
@@ -1444,11 +1594,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 14,
 					"file": "models/order/tick_funcs.py",
 					"semi_transient": false,
 					"settings":
@@ -1473,11 +1623,11 @@
 						"translation.y": 950.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 12,
+					"stack_index": 16,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 15,
 					"file": "models/order/tick_funcs.DEP.py",
 					"semi_transient": false,
 					"settings":
@@ -1502,11 +1652,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
-					"buffer": 12,
+					"buffer": 16,
 					"file": "models/order/order_admin.py",
 					"semi_transient": false,
 					"settings":
@@ -1531,11 +1681,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 17,
 					"file": "models/order/order_line.py",
 					"semi_transient": false,
 					"settings":
@@ -1560,11 +1710,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 17,
 					"type": "text"
 				},
 				{
-					"buffer": 14,
+					"buffer": 18,
 					"file": "reports/paper_format.xml",
 					"semi_transient": false,
 					"settings":
@@ -1590,11 +1740,11 @@
 						"translation.y": 137.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+					"stack_index": 19,
 					"type": "text"
 				},
 				{
-					"buffer": 15,
+					"buffer": 19,
 					"file": "models/order/closing.py",
 					"semi_transient": false,
 					"settings":
@@ -1619,7 +1769,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 14,
+					"stack_index": 18,
 					"type": "text"
 				}
 			]
@@ -1848,7 +1998,7 @@
 		[
 			[
 				"",
-				"~/Virtualenvs/odoo_tests/odoo_tests/OdooTests.sublime-project"
+				"~/cellar/github/price_list/PriceList.sublime-project"
 			],
 			[
 				"\t",

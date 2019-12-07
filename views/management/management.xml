@@ -4,7 +4,6 @@
 		
 
 
-
 <!-- ACTION - day line -->
 		<record model="ir.actions.act_window" id="management_day_line_form_action"> 
 			<field name="name">Ventas Promedio</field>
@@ -15,8 +14,6 @@
 			<field name="context">{}</field>
 			<field name="limit">1000</field>
 		</record>
-
-
 
 <!-- ACTION - day doctor line -->
 		<record model="ir.actions.act_window" id="management_day_doctor_line_form_action"> 
@@ -31,20 +28,19 @@
 
 
 
-
 <!-- FORM --> 
-		<record model="ir.ui.view" id="management_form_view">
-			<field name="name">management.form</field>          
+		<record model="ir.ui.view" id="openhealth.management_form_view">
+			<field name="name">management.form</field>
 			<field name="model">openhealth.management</field>
 			<field name="arch" type="xml">
 				<form string="Management Form">
 
-					<!-- Header -->
+
+<!-- Header -->  
 					<header>
 
-
-
-<!-- Left -->
+						<!-- Left -->
+						
 						<!-- Update -->
 						<button 
 								type="object"
@@ -53,12 +49,38 @@
 								string="Actualizar"
 						/>
 
-						<!-- Update Doctors -->
+						<!-- pl - Update patients -->
 						<button 
 								type="object" 
 								class="oe_highlight"
+								name="update_patients"
+								groups="openhealth.roots"
+								
+								string="Analisis Paciente"
+						/>
+
+
+						<!-- Update Doctors -->
+						<!--						
+						<button 
+								type="object" 
+								class="oe_highlight"
+								name="update_doctors"								
+								string="Analisis Doctor"
+						/>
+						-->
+
+<!--
+								name="pl_update_doctors"
+-->
+						<!-- pl - Update Doctors -->
+						<button 
+								type="object" 
+								class="oe_highlight"
+
 								name="update_doctors"
-								string="Analisis por Doctor"
+								
+								string="Analisis Doctor"
 						/>
 
 
@@ -69,11 +91,11 @@
 								type="action" 
 								context="{
 											'search_default_management_id': active_id,  
-										}"                                          
-								name="%(management_order_line_form_action)d"
-								string="Ver Ventas" 
+										}"
+								name="%(openhealth.management_order_line_form_action)d"
+								
+								string="Ventas" 
 						/>
-
 
 						<!-- See Doctors -->
 						<button
@@ -82,15 +104,15 @@
 								context="{
 											'search_default_management_id': active_id,
 										}"
-								name="%(management_doctor_line_form_action)d"
-								string="Ver Doctores"
+								name="%(openhealth.management_doctor_line_form_action)d"
+								
+								string=" Doctores"
 						/>
 
 
-
-
-
-
+<!--
+								name="pl_update_productivity"
+-->
 						<!-- Update Productivity -->
 						<button 
 								type="object" 
@@ -98,7 +120,7 @@
 
 								name="update_productivity"
 								
-								string="Actualizar Productividad"                             
+								string="Act Productividad"                             
 						/>
 
 						<!-- See Productivity -->
@@ -108,24 +130,21 @@
 								context="{
 											'search_default_management_id': active_id,  
 										}"                                          
+								name="%(openhealth.management_day_line_form_action)d" 
 
-								name="%(management_day_line_form_action)d" 
-
-								string="Ver Productividad"   
+								string="Productividad"   
 						/>
-
-
-
 
 
 						<!-- Update daily -->
 						<button 
 								type="object" 
 								class="oe_highlight"
-								name="update_daily"
-								string="Actualizar Diario"                             
-						/>
 
+								name="update_daily"
+								
+								string="Act Diario"                             
+						/>
 
 						<!-- See daily -->
 						<button
@@ -134,21 +153,62 @@
 								context="{
 											'search_default_management_id': active_id,  
 										}"
+								name="%(openhealth.management_day_doctor_line_form_action)d" 
 
-								name="%(management_day_doctor_line_form_action)d" 
-
-								string="Ver Diario"   
+								string="Diario"   
 						/>
 
 
 
-<!-- Right -->
+						<!-- Create Time Line -->
+<!--
+						<button 
+								type="object"
+								class="oe_highlight"								
+								groups="openhealth.roots"
+								name="create_timeline"
+
+								string="Create TL"
+						/>
+-->
+						<!-- Check Stats -->
+						<button 
+								type="object"
+								class="oe_highlight"								
+								groups="openhealth.roots"
+
+								name="check_stats"
+
+								string="Check Stats"
+						/>
+
+
+						<!-- Right -->
+						
 						<!-- Reset -->
 						<button 
-								type="object" 
+								type="object"
 								class="oe_highlight oe_right"
+								groups="openhealth.roots"
+
 								name="reset"
+
 								string="Reset"
+						/>
+
+
+<!--
+								name="pl_validate"								
+-->
+						<!-- Validate -->
+						<button 
+								type="object"
+								class="oe_highlight oe_right"
+								groups="openhealth.roots"
+
+								name="validate"								
+
+								string="Validate"
 						/>
 					</header>
 
@@ -156,73 +216,102 @@
 
 
 
-					<!-- Sheet -->  
+<!-- Sheet -->  
 					<sheet>
-
 
 						<!-- Totals --> 
 						<group  string="Totales"    col="3">
-
 							<group>
 								<field name="name"/>
 								<field name="date_begin"/>
 								<field name="date_end"/>
-								<field name="owner"   groups="openhealth.roots"  />
 
-								<field name="write_date"    string="Actualizado"/>
+								<field name="month"/>
 
-								<field name="month"  groups="openhealth.roots"/>
-								<field name="year"   groups="openhealth.roots"/>
-<!--
-								<field name="vspace"/>
--->
+								<field name="configurator"/>
+								<field name="admin_mode"		groups="openhealth.roots"/>
 							</group>
-
-
 							<group>
 								<field name="total_count"/>
 								<field name="total_tickets"/>
-								<field name="ratio_pro_con"/>
+								<field name="ratio_pro_con"		widget="percentage"/>
+<!--
+								<field name="delta_fast"		groups="openhealth.roots"/>
+								<field name="delta_doctor"		groups="openhealth.roots"/>
+-->
 							</group>
-
-
 							<group>
 								<field name="total_amount"/>
-
-								<field name="configurator"/>
-<!--
 								<field name="total_amount_year"/>
-								<field name="per_amo_total"   widget="percentage"  />
--->
-							</group>
+								<field name="per_amo_total"     widget="percentage"  />
 
+							</group>
+						</group>
+
+
+<!-- Notebook -->  
+							<!-- Validate --> 
+							<!-- Patients -->
 <!--
-							<group>
-								<field name="ratio_pro_con"/>
-								<field name="nr_delta"/>
-							</group>
+						<notebook groups="openhealth.roots"		invisible="1">  
 -->
-						</group>
+						<notebook groups="openhealth.roots"		attrs="{'invisible':[   
+																						('admin_mode','not in',[True]),
+																		]}">  
 
 
+							<page string="Validation">
+								<group>
+									<group>								
+										<field name="per_amo_families"      widget="percentage" />
+										<field name="per_amo_subfamilies"	widget="percentage" />
+									</group>					
+									<group>								
+										<field name="report_sale_product"/>
 
-						<!-- Type --> 
-<!--                        
-						<group  string="Tipo"   col="3">
-							<group>
-								<field name="nr_products"   string="Productos Nr"   />
-								<field name="nr_services"   string="Servicios Nr"/>
-							</group>                        
-							<group>
-								<field name="amo_products"  string="Monto"  />
-								<field name="amo_services"  string="Monto"  />
-							</group>
-							<group>
-								<field name="avg_products"  string="Precio Prom."   />
-								<field name="avg_services"  string="Precio Prom."   />
-							</group>
-						</group>
+										<field name="rsp_count"/>
+										<field name="rsp_total"/>
+
+										<field name="rsp_count_delta"/>
+										<field name="rsp_total_delta"/>
+									</group>					
+								</group>
+							</page>
+
+							<page string="Pacientes">
+								<field name="patient_line"/>
+							</page>
+
+
+							<!-- Admin -->
+							<page string="Admin">
+
+								<group col="3"	string="Admin" 	>
+
+									<group>
+										<field name="delta_fast"/>
+										<field name="delta_doctor"/>
+										<field name="write_date"    string="Actualizado"/>
+									</group>                        
+
+									<group>
+										<field name="owner"/>
+										<field name="year"/>
+									</group>
+
+									<group>
+										<field name="mode"/>
+										<field name="type_arr"/>
+									</group>
+								</group>
+							</page>
+						</notebook>
+<!--
+Dep !
+										<field name="state_arr"/>
+										<field name="base_dir"/>
 -->
+
 
 
 						<!-- Families --> 
@@ -233,8 +322,7 @@
 								<field name="nr_consultations"  string="Consultas"/>
 								<field name="nr_procedures"     string="Procedimientos"/>
 								<field name="nr_other"          string="Otros"/>
-
-								<field name="nr_credit_notes"          string="Notas de Credito"/>
+								<field name="nr_credit_notes"   string="Notas de Credito"/>
 							</group>
 
 							<group>
@@ -242,7 +330,6 @@
 								<field name="amo_consultations" string="Monto"  nolabel="0"/>
 								<field name="amo_procedures"    string="Monto"  nolabel="0" />
 								<field name="amo_other"         string="Monto"/>
-
 								<field name="amo_credit_notes"         string="Notas de Credito"/>
 							</group>
 
@@ -252,6 +339,10 @@
 								<field name="per_amo_procedures"       string="Porc Monto" widget="percentage" />
 								<field name="per_amo_other"            string="Porc Monto" widget="percentage" />
 
+								<field name="per_amo_credit_notes"     widget="percentage"/>
+
+<!--
+-->
 							</group>
 
 <!--
@@ -266,107 +357,114 @@
 
 
 
-
-						<group string="Precios Promedio"   col="3">
+						<!-- Sub-Families --> 
+						<group  string="Sub-Familias - Consultas"   col="3" >
 							<group>
-								<field name="avg_products"      string="Productos"/>
-								<field name="avg_consultations" string="Consultas"/>
-								<field name="avg_procedures"    string="Procedimientos"/>
-								<field name="avg_other"         string="Otros"/>
+								<field name="nr_sub_con_med"/>
+								<field name="nr_sub_con_gyn"/>
+								<field name="nr_sub_con_cha"/>
+							</group>
+
+							<group>
+								<field name="amo_sub_con_med"/>
+								<field name="amo_sub_con_gyn"/>
+								<field name="amo_sub_con_cha"/>
+							</group>
+
+							<group>
+								<field name="per_amo_sub_con_med"  	widget="percentage"/>
+								<field name="per_amo_sub_con_gyn"  	widget="percentage"/>
+								<field name="per_amo_sub_con_cha"  	widget="percentage"/>
 							</group>
 						</group>
-
-
-
-						<!-- Padding -->
-						<group>
-							<group>
-							</group>
-							<group>
-							</group>
-						</group>
-
-
 
 
 						<!-- Sub-Families --> 
-						<group  string="Sub-Familias"   col="3" >
+						<group  string="Sub-Familias - Procedimientos"   col="3" >
 							<group>
-								<field name="nr_topical"    string="Cremas"/>
-								<field name="nr_card"       string="Vip"/>
-								<field name="nr_kit"        string="Kits"/>
-
-								<field name="vspace"/>
-
 								<field name="nr_co2"    string="Co2"/>
 								<field name="nr_exc"    string="Exc"/>
 								<field name="nr_ipl"    string="Ipl"/>
 								<field name="nr_ndyag"  string="Ndyag"/>
 								<field name="nr_quick"  string="Quick"/>
+
+								<field name="vspace"/>
+
+								<field name="nr_echo"    	string="Eco"/>
+								<field name="nr_gyn"    	string="Gin"/>
+								<field name="nr_prom"    	string="Promo"/>
+
+								<field name="vspace"/>
+
 								<field name="nr_medical"        string="TM"/>
 								<field name="nr_cosmetology"    string="Cosmeatria"/>
 							</group>
 
-
 							<group>
-								<field name="amo_topical"   string="Monto"/>
-								<field name="amo_card"   string="Monto"/>
-								<field name="amo_kit"   string="Monto"/>
-
-								<field name="vspace"/>
-
 								<field name="amo_co2"   string="Monto"/>
 								<field name="amo_exc"   string="Monto"/>
 								<field name="amo_ipl"   string="Monto"/>
 								<field name="amo_ndyag" string="Monto"/>
 								<field name="amo_quick" string="Monto"/>
+
+								<field name="vspace"/>
+
+								<field name="amo_echo"    string="Monto"/>
+								<field name="amo_gyn"    	string="Monto"/>
+								<field name="amo_prom"    string="Monto"/>
+
+
+								<field name="vspace"/>
+
 								<field name="amo_medical"       string="Monto"/>
 								<field name="amo_cosmetology"   string="Monto"/>
 							</group>
 
-
 							<group>
-								<field name="per_amo_topical"   string="%"    widget="percentage"/>
-								<field name="per_amo_card"   string="%"       widget="percentage"/>
-								<field name="per_amo_kit"   string="%"        widget="percentage"/>
+								<field name="per_amo_co2"   	       widget="percentage"/>
+								<field name="per_amo_exc"  	 	       widget="percentage"/>
+								<field name="per_amo_ipl"   	       widget="percentage"/>
+								<field name="per_amo_ndyag" 	        widget="percentage"/>
+								<field name="per_amo_quick" 	        widget="percentage"/>
 
 								<field name="vspace"/>
 
-								<field name="per_amo_co2"   string="%"        widget="percentage"/>
-								<field name="per_amo_exc"   string="%"        widget="percentage"/>
-								<field name="per_amo_ipl"   string="%"        widget="percentage"/>
-								<field name="per_amo_ndyag" string="%"        widget="percentage"/>
-								<field name="per_amo_quick" string="%"        widget="percentage"/>
-								<field name="per_amo_medical"       string="%"    widget="percentage"/>
-								<field name="per_amo_cosmetology"   string="%"    widget="percentage"/>
+								<field name="per_amo_echo"    		widget="percentage"/>
+								<field name="per_amo_gyn"    		widget="percentage"/>
+								<field name="per_amo_prom"    		widget="percentage"/>
+
+								<field name="vspace"/>
+
+								<field name="per_amo_medical"           widget="percentage"/>
+								<field name="per_amo_cosmetology"       widget="percentage"/>
+
 							</group>
 						</group>
 
 
-
-						<group  string="Precios Promedio"   col="3" >
-
+						<group  string="Sub-Familias - Productos"  col="3" >
 							<group>
-								<field name="avg_topical"   string="Cremas"/>
-								<field name="avg_card"      string="Vip"/>
-								<field name="avg_kit"       string="Kits"/>
-
-								<field name="vspace"/>
-
-								<field name="avg_co2"   string="Co2"/>
-								<field name="avg_exc"   string="Exc"/>
-								<field name="avg_ipl"   string="Ipl"/>
-								<field name="avg_ndyag" string="Ndyag"/>
-								<field name="avg_quick"         string="Quick"/>
-								<field name="avg_medical"       string="TM"/>
-								<field name="avg_cosmetology"   string="Cosmeatria"/>
+								<field name="nr_topical"    string="Cremas"/>
+								<field name="nr_card"       string="Vip"/>
+								<field name="nr_kit"        string="Kits"/>
 							</group>
-
+							<group>
+								<field name="amo_topical"   string="Monto"/>
+								<field name="amo_card"   string="Monto"/>
+								<field name="amo_kit"   string="Monto"/>
+							</group>
+							<group>
+								<field name="per_amo_topical"      widget="percentage"/>
+								<field name="per_amo_card"        widget="percentage"/>
+								<field name="per_amo_kit"         widget="percentage"/>
+							</group>
 						</group>
-
 
 
 						<!-- Padding -->
+<!--
+								<field name="vspace"/>
+
 						<group>
 							<group>
 							</group>
@@ -374,11 +472,12 @@
 							</group>
 						</group>
 
+						<group><group></group><group></group></group>
+-->
 
 
-						<!-- Notebook --> 
+<!-- Notebook --> 
 						<notebook>  
-
 
 							<!-- Doctores --> 
 							<page   string="Por Doctor">
@@ -392,21 +491,25 @@
 											name="open_line_current" 
 											string="e"
 										/>
+
 										<field name="name"/>
+
 										<field name="x_count"    string="Nr Ventas"/>
 										<field name="per_nr"   widget="percentage"/>
+
 										<field name="nr_consultations"/>
 										<field name="nr_procedures"/>
 										<field name="nr_products"/>
+
 										<field name="ratio_pro_con"/>
 										<field name="ratio_pro_con_co2"/>
 										<field name="ratio_pro_con_quick"/>
+
 										<field name="amount"/>
 										<field name="per_amo"   widget="percentage"/>
 									</tree>
 								</field>
 							</page>
-
 
 							<!-- Day Prod --> 
 							<page   string="Productividad">
@@ -424,7 +527,6 @@
 									</tree>
 								</field>
 							</page>
-
 
 							<!-- Familias --> 
 							<page   string="Familias">
@@ -457,26 +559,57 @@
 							</page>
 
 
-							<!-- Admin --> 
-							<page   string="Admin"  groups='openhealth.roots'>
-								<group      col="2">
+
+							<!-- Stats --> 
+							<page string="Stats"    groups='openhealth.roots'>
+
+								<group string="Familias - Precios Promedio"   col="3">
 									<group>
-<!--
-										<field name="state_arr"/>
--->
-										<field name="type_arr"/>
+										<field name="avg_products"      string="Productos"/>
+										<field name="avg_consultations" string="Consultas"/>
+										<field name="avg_procedures"    string="Procedimientos"/>
+										<field name="avg_other"         string="Otros"/>
 									</group>
-									<group>
-										<field name="delta_fast"/>
-										<field name="delta_doctor"/>
-									</group>                        
 								</group>
+								<group  string="Sub Familias - Precios Promedio"   col="3" >
+
+									<group>
+										<field name="avg_topical"   string="Cremas"/>
+										<field name="avg_card"      string="Vip"/>
+										<field name="avg_kit"       string="Kits"/>
+
+										<field name="vspace"/>
+
+										<field name="avg_co2"   string="Co2"/>
+										<field name="avg_exc"   string="Exc"/>
+										<field name="avg_ipl"   string="Ipl"/>
+										<field name="avg_ndyag" string="Ndyag"/>
+										<field name="avg_quick"         string="Quick"/>
+										<field name="avg_medical"       string="TM"/>
+										<field name="avg_cosmetology"   string="Cosmeatria"/>
+
+										<field name="vspace"/>
+
+										<field name="avg_echo"   string="Eco"/>
+										<field name="avg_gyn"   string="Gin"/>
+										<field name="avg_prom"   string="Prom"/>
+									</group>
+								</group>
+
 							</page>
+
+
+
 						</notebook>
 					</sheet>
 				</form>
 			</field>
 		</record>
+<!-- FORM --> 
+
+
+
+
 
 	</data>
 </openerp>

@@ -59,6 +59,27 @@ class Management(models.Model):
 
 
 
+
+# ----------------------------------------------------------- PL - Natives - 2 ----------------------
+# ----------------------------------------------------------- Test -------------------------
+	mode = fields.Selection(
+
+			[
+				('normal', 'Normal'),
+				('test', 'Test'),
+				#('legacy', 'Legacy'),
+			],
+
+			default='normal',
+			required=True,
+		)
+
+
+
+
+
+
+
 # ----------------------------------------------------------- PL - Natives ----------------------
 	# All Year Max and Min
 	pl_max = fields.Boolean(

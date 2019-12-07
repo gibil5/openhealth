@@ -226,11 +226,12 @@
 								<field name="date_begin"/>
 								<field name="date_end"/>
 
-								<field name="month"/>
+								<field name="write_date"    string="Actualizado"/>
 
-								<field name="configurator"/>
-								<field name="admin_mode"		groups="openhealth.roots"/>
+								<field name="month"/>
+								<field name="year"/>
 							</group>
+
 							<group>
 								<field name="total_count"/>
 								<field name="total_tickets"/>
@@ -240,76 +241,26 @@
 								<field name="delta_doctor"		groups="openhealth.roots"/>
 -->
 							</group>
+
 							<group>
 								<field name="total_amount"/>
 								<field name="total_amount_year"/>
 								<field name="per_amo_total"     widget="percentage"  />
-
 							</group>
 						</group>
 
 
-<!-- Notebook -->  
+
+						<!-- Notebook - Dep -->  
 							<!-- Validate --> 
 							<!-- Patients -->
 <!--
+								<field name="admin_mode"		groups="openhealth.roots"/>
 						<notebook groups="openhealth.roots"		invisible="1">  
--->
 						<notebook groups="openhealth.roots"		attrs="{'invisible':[   
 																						('admin_mode','not in',[True]),
-																		]}">  
-
-
-							<page string="Validation">
-								<group>
-									<group>								
-										<field name="per_amo_families"      widget="percentage" />
-										<field name="per_amo_subfamilies"	widget="percentage" />
-									</group>					
-									<group>								
-										<field name="report_sale_product"/>
-
-										<field name="rsp_count"/>
-										<field name="rsp_total"/>
-
-										<field name="rsp_count_delta"/>
-										<field name="rsp_total_delta"/>
-									</group>					
-								</group>
-							</page>
-
-							<page string="Pacientes">
-								<field name="patient_line"/>
-							</page>
-
-
-							<!-- Admin -->
-							<page string="Admin">
-
-								<group col="3"	string="Admin" 	>
-
-									<group>
-										<field name="delta_fast"/>
-										<field name="delta_doctor"/>
-										<field name="write_date"    string="Actualizado"/>
-									</group>                        
-
-									<group>
-										<field name="owner"/>
-										<field name="year"/>
-									</group>
-
-									<group>
-										<field name="mode"/>
-										<field name="type_arr"/>
-									</group>
-								</group>
-							</page>
+																		]}">
 						</notebook>
-<!--
-Dep !
-										<field name="state_arr"/>
-										<field name="base_dir"/>
 -->
 
 
@@ -595,9 +546,59 @@ Dep !
 										<field name="avg_prom"   string="Prom"/>
 									</group>
 								</group>
-
 							</page>
 
+
+							<!-- Patients -->
+							<page string="Pacientes">
+								<field name="patient_line"/>
+							</page>
+
+
+
+							<!-- Validation -->
+							<page string="Validation">
+								<group>
+									<group>								
+										<field name="per_amo_families"      widget="percentage" />
+										<field name="per_amo_subfamilies"	widget="percentage" />
+									</group>					
+									<group>								
+										<field name="report_sale_product"/>
+
+										<field name="rsp_count"/>
+										<field name="rsp_total"/>
+
+										<field name="rsp_count_delta"/>
+										<field name="rsp_total_delta"/>
+									</group>					
+								</group>
+							</page>
+
+
+
+							<!-- Admin -->
+							<page string="Admin">
+
+								<group col="3"	string="Admin" 	>
+
+									<group>
+										<field name="delta_fast"/>
+										<field name="delta_doctor"/>
+									</group>                        
+
+									<group>
+										<field name="owner"/>
+										<field name="type_arr"/>
+									</group>
+
+									<group>
+										<field name="configurator"/>
+		
+										<field name="mode"/>
+									</group>
+								</group>
+							</page>
 
 
 						</notebook>
@@ -607,6 +608,12 @@ Dep !
 		</record>
 <!-- FORM --> 
 
+
+<!--
+Dep !
+										<field name="state_arr"/>
+										<field name="base_dir"/>
+-->
 
 
 

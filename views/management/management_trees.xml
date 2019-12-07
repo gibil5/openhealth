@@ -21,11 +21,11 @@
 
 
 					<field name="name"/>
-
 					<field name="configurator"  string="Config - 07-12-2019"/>
 
-					<field name="write_date"        string="Actualizado"	groups="openhealth.roots"/>
 
+					<field name="state"/>
+					<field name="write_date"        string="Actualizado"	groups="openhealth.roots"/>
 
 
 					<field name="rsp_count_delta"	groups="openhealth.roots"/>
@@ -42,17 +42,12 @@
 					<field name="owner"         	groups="openhealth.roots"/>
 
 
-
 					<field name="pl_max"/>
 					<field name="pl_min"/>
 
 
 					<field name="total_amount"      sum="Total" widget="monetary"/>
-<!--
-					<field name="total_amount_year"/>
--->
 					<field name="per_amo_total"     string="Porcentaje Anual"		widget="percentage"  />
-
 
 
 					<field name="type_arr"     	groups="openhealth.roots"/>
@@ -70,37 +65,27 @@
 					
 					<field name="total_tickets"/>
 					<field name="total_count"/>
-
-
 				</tree>
 			</field>
 		</record>
 
-<!--
-					<field name="type_arr"      groups="openhealth.roots"/>
 
+<!--
+					<field name="total_amount_year"/>
+
+					<field name="type_arr"      groups="openhealth.roots"/>
 					<field name="delta_fast"        groups="openhealth.roots"/>
 					<field name="delta_doctor"      groups="openhealth.roots"/>
-
 					<field name="write_date"        string="Actualizado"/>
-
 					<field name="date_begin"    string="Fecha Inicio"   groups="openhealth.roots"/>
 					<field name="date_end"      string="Fecha Fin"      groups="openhealth.roots"/>
-
-
 					<field name="avg_total_amount"/>
 					<field name="write_date"    string="Actualizado"/>
 					<field name="test_target"   groups="openhealth.roots"/>
--->
-<!--
 					<field name="date_begin"    string="Fecha Inicio"/>
 					<field name="date_end"      string="Fecha Fin"/>
--->
-<!--
 					<field name="total_amount"/>
 -->
-
-
 
 
 	</data>

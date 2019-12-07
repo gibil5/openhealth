@@ -1,3 +1,37 @@
+# 7 Dec 2019
+
+
+
+	# Doctor
+	#doctor_line = fields.One2many(
+	#		'openhealth.management.doctor.line',
+	#		'management_id',
+	#	)
+
+
+# ----------------------------------------------------------- DEP ----------------------
+
+	# State Array - Dep !
+	#state_arr = fields.Char()
+
+	#state_arr = fields.Selection(
+	#		selection=mgt_vars._state_arr_list,
+	#		string='State Array',
+	#		default='sale',
+	#		required=True,
+	#	)
+
+	# Time Line
+	#base_dir = fields.Char()
+
+
+
+
+
+
+
+
+
 # 4 May 2019
 
 

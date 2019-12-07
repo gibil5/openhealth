@@ -3,7 +3,7 @@
 	Management Report
 
 	Created: 			28 May 2018
-	Last updated: 		 4 May 2019
+	Last updated: 		 7 Dec 2019
 """
 from __future__ import print_function
 
@@ -12,9 +12,7 @@ import collections
 import datetime
 from timeit import default_timer as timer
 from openerp import models, fields, api
-
 from openerp.addons.openhealth.models.order import ord_vars
-
 from . import mgt_funcs
 from . import mgt_vars
 
@@ -34,34 +32,14 @@ class Management(models.Model):
 
 	_inherit = 'openhealth.repo'
 
-	#_order = 'date_begin asc'
 	_order = 'date_begin desc'
 
 
 
 
-# ----------------------------------------------------------- DEP ----------------------
 
-	# State Array - Dep !
-	#state_arr = fields.Char()
+# ----------------------------------------------------------- PL - Natives ----------------------
 
-	#state_arr = fields.Selection(
-	#		selection=mgt_vars._state_arr_list,
-	#		string='State Array',
-	#		default='sale',
-	#		required=True,
-	#	)
-
-	# Time Line
-	#base_dir = fields.Char()
-
-
-
-
-
-
-# ----------------------------------------------------------- PL - Natives - 2 ----------------------
-# ----------------------------------------------------------- Test -------------------------
 	mode = fields.Selection(
 
 			[
@@ -73,9 +51,6 @@ class Management(models.Model):
 			default='normal',
 			required=True,
 		)
-
-
-
 
 
 
@@ -97,11 +72,6 @@ class Management(models.Model):
 			'management_id',
 		)
 
-	# Doctor
-	#doctor_line = fields.One2many(
-	#		'openhealth.management.doctor.line',
-	#		'management_id',
-	#	)
 
 
 # ----------------------------------------------------------- PL - Natives ----------------------

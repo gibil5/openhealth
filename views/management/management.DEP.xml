@@ -3,6 +3,20 @@
 -->
 
 
+						<!-- Notebook - Dep -->  
+							<!-- Validate --> 
+							<!-- Patients -->
+<!--
+								<field name="admin_mode"		groups="openhealth.roots"/>
+						<notebook groups="openhealth.roots"		invisible="1">  
+						<notebook groups="openhealth.roots"		attrs="{'invisible':[   
+																						('admin_mode','not in',[True]),
+																		]}">
+						</notebook>
+-->
+
+
+
 
 <!-- FORM --> 
 		<record model="ir.ui.view" id="management_form_view">

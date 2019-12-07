@@ -59,20 +59,6 @@
 								string="Analisis Paciente"
 						/>
 
-
-						<!-- Update Doctors -->
-						<!--						
-						<button 
-								type="object" 
-								class="oe_highlight"
-								name="update_doctors"								
-								string="Analisis Doctor"
-						/>
-						-->
-
-<!--
-								name="pl_update_doctors"
--->
 						<!-- pl - Update Doctors -->
 						<button 
 								type="object" 
@@ -82,8 +68,6 @@
 								
 								string="Analisis Doctor"
 						/>
-
-
 
 						<!-- See Sales -->
 						<button 
@@ -110,9 +94,6 @@
 						/>
 
 
-<!--
-								name="pl_update_productivity"
--->
 						<!-- Update Productivity -->
 						<button 
 								type="object" 
@@ -160,17 +141,6 @@
 
 
 
-						<!-- Create Time Line -->
-<!--
-						<button 
-								type="object"
-								class="oe_highlight"								
-								groups="openhealth.roots"
-								name="create_timeline"
-
-								string="Create TL"
-						/>
--->
 						<!-- Check Stats -->
 						<button 
 								type="object"
@@ -197,9 +167,6 @@
 						/>
 
 
-<!--
-								name="pl_validate"								
--->
 						<!-- Validate -->
 						<button 
 								type="object"
@@ -236,10 +203,6 @@
 								<field name="total_count"/>
 								<field name="total_tickets"/>
 								<field name="ratio_pro_con"		widget="percentage"/>
-<!--
-								<field name="delta_fast"		groups="openhealth.roots"/>
-								<field name="delta_doctor"		groups="openhealth.roots"/>
--->
 							</group>
 
 							<group>
@@ -251,17 +214,6 @@
 
 
 
-						<!-- Notebook - Dep -->  
-							<!-- Validate --> 
-							<!-- Patients -->
-<!--
-								<field name="admin_mode"		groups="openhealth.roots"/>
-						<notebook groups="openhealth.roots"		invisible="1">  
-						<notebook groups="openhealth.roots"		attrs="{'invisible':[   
-																						('admin_mode','not in',[True]),
-																		]}">
-						</notebook>
--->
 
 
 
@@ -291,9 +243,6 @@
 								<field name="per_amo_other"            string="Porc Monto" widget="percentage" />
 
 								<field name="per_amo_credit_notes"     widget="percentage"/>
-
-<!--
--->
 							</group>
 
 <!--
@@ -412,19 +361,6 @@
 						</group>
 
 
-						<!-- Padding -->
-<!--
-								<field name="vspace"/>
-
-						<group>
-							<group>
-							</group>
-							<group>
-							</group>
-						</group>
-
-						<group><group></group><group></group></group>
--->
 
 
 <!-- Notebook --> 
@@ -493,6 +429,8 @@
 									</tree>
 								</field>
 							</page>
+
+
 
 							<!-- Sub Familias --> 
 							<page   string="Sub Familias">
@@ -576,7 +514,6 @@
 							</page>
 
 
-
 							<!-- Admin -->
 							<page string="Admin">
 
@@ -599,8 +536,6 @@
 									</group>
 								</group>
 							</page>
-
-
 						</notebook>
 					</sheet>
 				</form>
@@ -609,12 +544,51 @@
 <!-- FORM --> 
 
 
+
+
+
+						<!-- Create Time Line -->
 <!--
-Dep !
+						<button 
+								type="object"
+								class="oe_highlight"								
+								groups="openhealth.roots"
+								name="create_timeline"
+
+								string="Create TL"
+						/>
+
+								name="pl_update_productivity"
+						<button 
+								type="object" 
+								class="oe_highlight"
+								name="update_doctors"								
+								string="Analisis Doctor"
+						/>
+
+								name="pl_update_doctors"
 										<field name="state_arr"/>
 										<field name="base_dir"/>
+
+								name="pl_validate"								
+
+								<field name="delta_fast"		groups="openhealth.roots"/>
+								<field name="delta_doctor"		groups="openhealth.roots"/>
 -->
 
+						<!-- Padding -->
+<!--
+								<field name="vspace"/>
+
+						<group>
+							<group>
+							</group>
+							<group>
+							</group>
+						</group>
+
+						<group><group></group><group></group></group>
+-->
 
 
 

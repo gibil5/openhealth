@@ -4,10 +4,18 @@
 		
 
 
-<!-- ACTION - day line -->
+<!-- ACTION -->
+
+
+<!-- See Productivity -->
 		<record model="ir.actions.act_window" id="management_day_line_form_action"> 
 			<field name="name">Ventas Promedio</field>
+<!--
 			<field name="res_model">openhealth.management.day.line</field>
+-->
+			<field name="res_model">productivity.day</field>
+
+
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[]</field>
@@ -15,16 +23,27 @@
 			<field name="limit">1000</field>
 		</record>
 
-<!-- ACTION - day doctor line -->
+
+
+<!-- ACTION -->
+
+<!-- See Doctor Daily -->
 		<record model="ir.actions.act_window" id="management_day_doctor_line_form_action"> 
+			
 			<field name="name">Ventas Diario</field>
+<!--
 			<field name="res_model">openhealth.management.day.doctor.line</field>
+-->
+			<field name="res_model">doctor.daily</field>
+
+
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 			<field name="domain">[]</field>
 			<field name="context">{}</field>
 			<field name="limit">1000</field>
 		</record>
+
 
 
 
@@ -41,6 +60,7 @@
 
 						<!-- Left -->
 						
+
 						<!-- Update -->
 						<button 
 								type="object"
@@ -49,7 +69,8 @@
 								string="Actualizar"
 						/>
 
-						<!-- pl - Update patients -->
+
+						<!-- Update patients -->
 						<button 
 								type="object" 
 								class="oe_highlight"
@@ -59,7 +80,7 @@
 								string="Analisis Paciente"
 						/>
 
-						<!-- pl - Update Doctors -->
+						<!-- Update Doctors -->
 						<button 
 								type="object" 
 								class="oe_highlight"
@@ -69,29 +90,36 @@
 								string="Analisis Doctor"
 						/>
 
-						<!-- See Sales -->
+
+
+						<!-- List Sales -->
 						<button 
 								class="oe_highlight"
 								type="action" 
 								context="{
 											'search_default_management_id': active_id,  
 										}"
+
 								name="%(openhealth.management_order_line_form_action)d"
 								
 								string="Ventas" 
 						/>
 
-						<!-- See Doctors -->
+
+						<!-- List Doctors -->
 						<button
 								class="oe_highlight"
 								type="action"
 								context="{
 											'search_default_management_id': active_id,
 										}"
+
 								name="%(openhealth.management_doctor_line_form_action)d"
 								
 								string=" Doctores"
 						/>
+
+
 
 
 						<!-- Update Productivity -->
@@ -104,20 +132,25 @@
 								string="Act Productividad"                             
 						/>
 
+
+
 						<!-- See Productivity -->
 						<button
 								class="oe_highlight"
 								type="action" 
+
 								context="{
 											'search_default_management_id': active_id,  
 										}"                                          
+
 								name="%(openhealth.management_day_line_form_action)d" 
 
 								string="Productividad"   
 						/>
 
 
-						<!-- Update daily -->
+
+						<!-- Update Doctor Daily -->
 						<button 
 								type="object" 
 								class="oe_highlight"
@@ -127,13 +160,14 @@
 								string="Act Diario"                             
 						/>
 
-						<!-- See daily -->
+						<!-- See Doctor Daily -->
 						<button
 								class="oe_highlight"
 								type="action" 
 								context="{
 											'search_default_management_id': active_id,  
 										}"
+
 								name="%(openhealth.management_day_doctor_line_form_action)d" 
 
 								string="Diario"   
@@ -141,7 +175,9 @@
 
 
 
+
 						<!-- Check Stats -->
+<!--
 						<button 
 								type="object"
 								class="oe_highlight"								
@@ -151,9 +187,11 @@
 
 								string="Check Stats"
 						/>
+-->
 
 
-						<!-- Right -->
+
+<!-- Right -->
 						
 						<!-- Reset -->
 						<button 

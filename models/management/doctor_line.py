@@ -322,14 +322,15 @@ class DoctorLine(models.Model):
 
 
 
-# ----------------------------------------------------------- Update Daily ------------------------------
+# ----------------------------------------------------------- Update Daily - Dep ------------------------------
 	@api.multi
-	def update_daily(self):
+	#def update_daily(self):
+	def update_daily_dep(self):
 		"""
 		high level support for doing this and that.
 		"""
 		print()
-		print('Update Daily')
+		print('2018 - Update Daily')
 
 		print(self.day_line)
 		self.day_line.unlink()

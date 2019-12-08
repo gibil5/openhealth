@@ -13,6 +13,8 @@ class ManagementLine(models.Model):
 
 	_name = 'openhealth.management.line'
 
+
+
 	_order = 'idx asc'
 
 

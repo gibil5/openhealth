@@ -541,7 +541,7 @@
 			"file": "models/management/productivity_day.py",
 			"settings":
 			{
-				"buffer_size": 2340,
+				"buffer_size": 2342,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -1275,15 +1275,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2340,
+						"buffer_size": 2342,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1092,
-								1092
+								1937,
+								1937
 							]
 						],
 						"settings":
@@ -1292,7 +1292,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 395.0,
+						"translation.y": 1715.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,

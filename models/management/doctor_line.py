@@ -2,6 +2,8 @@
 """
 	Doctor Line
 
+	Only Data model. No functions.
+
 	Created: 			18 May 2018
 	Last up: 			13 Feb 2019
 """
@@ -15,9 +17,9 @@ class DoctorLine(models.Model):
 	"""
 	high level support for doing this and that.
 	"""
-	_name = 'openhealth.management.doctor.line'
-
 	_inherit = 'openhealth.management.line'
+
+	_name = 'openhealth.management.doctor.line'
 
 	_order = 'amount desc'
 

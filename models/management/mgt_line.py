@@ -1,54 +1,41 @@
 # -*- coding: utf-8 -*-
 """
-# 	Management Line
-#
-# Created: 				18 May 2018
+	Management Line
+
+	Only Data model. No functions.
+
+	Created: 		18 May 2018
+	Last up: 		 9 Dec 2019
 """
 from openerp import models, fields, api
 
 class ManagementLine(models.Model):
 	"""
-	high level support for doing this and that.
+	Used by:
+		Day Line
+		Doctor Line
+		Family Line
+		Sub Family Line
 	"""
-
 	_name = 'openhealth.management.line'
-
-
 
 	_order = 'idx asc'
 
 
 
-#----------------------------------------------------------- Dep - Update -------------------------
-	# Update Fields
-	#def update(self):
-		#print
-		#print 'Update fields - Mgt Line'
-	#	if self.name in mgt_vars._h_name:
-	#		self.name_sp = mgt_vars._h_name[self.name]
-	#	else:
-	#		self.name_sp = self.name
-	# update
-
-
-
 # ----------------------------------------------------------- Relational --------------------------
-
 	management_id = fields.Many2one(
 			'openhealth.management',
-
 			#ondelete='cascade',
 		)
 
 	doctor_id = fields.Many2one(
 			'openhealth.management.doctor.line',
-
 			ondelete='cascade',
 		)
 
 
 # ----------------------------------------------------------- Primitive ---------------------------
-
 	name = fields.Char(
 			'Name',
 		)
@@ -73,9 +60,6 @@ class ManagementLine(models.Model):
 			'Nr',
 		)
 
-
-
-
 	amount = fields.Float(
 			'Monto',
 			digits=(16, 1),
@@ -97,7 +81,7 @@ class ManagementLine(models.Model):
 	@api.multi
 	def open_line_current(self):
 		"""
-		high level support for doing this and that.
+		Open line current
 		"""
 		res_id = self.id
 		return {

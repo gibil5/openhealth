@@ -221,9 +221,8 @@
 
 
 
-                    <!-- Sheet -->  
+<!-- Sheet -->
                     <sheet>
-
 
                         <group  string="Total"  col="3" >
 
@@ -306,7 +305,6 @@ attrs="{'invisible':[('x_type', '!=', 'patient')]}"
                                 <field name="age_min"/>
                                 
                                 <field name="age_max"/>
-
                             </group>
 
                             <group>                             

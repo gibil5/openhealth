@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """
- 	Repo - Inherited by Management and Marketing
+ 	Repo. Inherited by Management and Marketing
+
+	Only Data model. No functions.
 
  	Created: 				28 May 2018
  	Last up: 				 7 Dec 2019
@@ -25,9 +27,10 @@ class Repo(models.Model):
 
 			string='Estado',
 			#readonly=False,
-			default='unverified',
+			default='unstable',
 			#index=True,
 		)
+
 
 
 

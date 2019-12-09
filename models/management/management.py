@@ -2,6 +2,8 @@
 """
 	Management Report
 
+	Only Data model. No functions.
+
 	Created: 			28 May 2018
 	Last updated: 		 8 Dec 2019
 """

@@ -565,12 +565,13 @@
 									<group>
 										<field name="owner"/>
 										<field name="type_arr"/>
+										<field name="mode"/>
 									</group>
 
 									<group>
 										<field name="configurator"/>
 		
-										<field name="mode"/>
+										<field name="state"/>
 									</group>
 								</group>
 							</page>

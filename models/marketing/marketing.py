@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 """
- 	Report Marketing
+ 	Marketing
  
- 	Created: 				19 May 2018
+ 	Only Data model. No functions.
+
+	Created: 				19 May 2018
  	Last up: 	 			27 Nov 2018
 """
 from __future__ import print_function

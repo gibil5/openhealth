@@ -17,9 +17,6 @@ class ProductivityDay(models.Model):
 	Productivity Day
 	All names must be extremely descriptive
 	"""
-
 	_name = 'productivity.day'
 
-	#_order = 'date asc'
 
-	#_inherit = 'openhealth.management.line'

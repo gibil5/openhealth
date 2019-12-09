@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-	Day Line
+	Day Line - Dep ?
+
+	Only Data model. No functions.
 
 	Created: 			15 Jan 2019
 	Last up: 			15 Jan 2019
@@ -16,13 +18,11 @@ from openerp.addons.openhealth.models.libs import lib
 
 class DayLine(models.Model):
 	"""
-	high level support for doing this and that.
+	Day Line
 	"""
-	_name = 'openhealth.management.day.line'
-
-
-
 	_inherit = 'openhealth.management.line'
+
+	_name = 'openhealth.management.day.line'
 
 	_order = 'date asc'
 

@@ -523,7 +523,7 @@
 			"file": "med__openerp__.py",
 			"settings":
 			{
-				"buffer_size": 11792,
+				"buffer_size": 11805,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -1217,7 +1217,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -1226,15 +1226,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11792,
+						"buffer_size": 11805,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								252,
-								252
+								267,
+								267
 							]
 						],
 						"settings":
@@ -1246,7 +1246,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -1274,7 +1274,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -2113,7 +2113,7 @@
 		[
 			[
 				"",
-				"~/cellar/github/price_list/PriceList.sublime-project"
+				"~/Virtualenvs/Odoo9-min/odoo/addons/clean/Clean.sublime-project"
 			],
 			[
 				"\t",

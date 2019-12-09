@@ -132,7 +132,7 @@ class management_order_line(models.Model):
 	# Family 
 	family = fields.Selection(
 
-			string = "Familia - 9 Dec", 	
+			string = "Familia", 	
 
 			selection = [
 							('gynecology',	'Ginecologia'),
@@ -164,7 +164,7 @@ class management_order_line(models.Model):
 
 	# Sub Family
 	sub_family = fields.Char(
-			string = "Sub-familia - 9 Dec",
+			string = "Sub-familia",
 			selection=prodvars._treatment_list,
 
 			#required=False,

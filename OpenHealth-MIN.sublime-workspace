@@ -540,7 +540,7 @@
 			"file": "models/marketing/marketing.py",
 			"settings":
 			{
-				"buffer_size": 5934,
+				"buffer_size": 5930,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -864,6 +864,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"def ",
 			"family_line",
 			"state",
 			"management_day_doctor_line_form_action",
@@ -990,8 +991,7 @@
 			"treatment",
 			"treatment.",
 			"patient.xml",
-			"patient",
-			"test_create_bud"
+			"patient"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -1203,15 +1203,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5934,
+						"buffer_size": 5930,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5934,
-								5934
+								312,
+								312
 							]
 						],
 						"settings":
@@ -1245,13 +1245,14 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/Python/Python.sublime-syntax"
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 11744.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -1267,8 +1268,8 @@
 						"selection":
 						[
 							[
-								11378,
-								11378
+								5077,
+								5081
 							]
 						],
 						"settings":
@@ -1277,10 +1278,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1.0,
+						"translation.y": 4365.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{

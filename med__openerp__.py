@@ -8,7 +8,7 @@
 
 	'description': """
 
-		9 Dec 2019, v. 1.0
+		9 Dec 2019, v. 2.0
 
 		Contains:
 			- All External Dependencies,
@@ -104,6 +104,7 @@
 		#'data/prods/odoo_data_services_med_dep.xml',
 
 		#'data/suppliers.xml',                          
+
 
 
 

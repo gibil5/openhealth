@@ -10,7 +10,7 @@
 		<!-- Month 2019 -->
 		<record model="ir.actions.act_window" id="management_list_mgt_2019_action">
 
-			<field name="name">Análisis de Ventas - Mensual 2019 - jx</field>
+			<field name="name">Análisis de Ventas - Mensual 2019</field>
 
 			<field name="res_model">openhealth.management</field>
 			<field name="view_type">form</field>

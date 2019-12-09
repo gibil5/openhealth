@@ -15,7 +15,7 @@ class ManagementLine(models.Model):
 		Day Line
 		Doctor Line
 		Family Line
-		Sub Family Line
+		Sub Family Line  	# not any more
 	"""
 	_name = 'openhealth.management.line'
 

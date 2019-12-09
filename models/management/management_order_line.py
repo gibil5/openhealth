@@ -3,24 +3,173 @@
 # 	Management Order Line - Clean This !
 # 
 # 	Created: 			28 May 2018
-# 	Last updated: 		 4 Nov 2018
+# 	Last updated: 		 9 Dec 2019
 #
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.order import ord_vars
 from openerp.addons.openhealth.models.emr import prodvars
 
+import openerp.addons.decimal_precision as dp
+
 class management_order_line(models.Model):
-	
+	"""
+	Used by 
+		Management 
+			For Doctor Sales Report
+		Account
+			For Txt generation
+	"""
+	#_inherit='openhealth.line'
+
 	_name = 'openhealth.management.order.line'
-	
-	_inherit='openhealth.line'
 
 	_description = "Openhealth Management Order Line"
 
 
 
+# ----------------------------------------------------------- Inherited from line.py ------------------------------------------------------
+	# Name 
+	name = fields.Char(
+			string="Nombre", 		
+			#required=True, 
+		)
 
 
+	# Date Created 
+	x_date_created = fields.Datetime(
+			#string='Fecha', 
+			string='Fecha y Hora', 
+		)
+
+
+	# Date Order
+	date_order_date = fields.Datetime(
+		'Fecha',
+	)
+
+
+
+	# Qty
+	product_uom_qty = fields.Float(
+			string='Cantidad', 
+			digits=dp.get_precision('Product Unit of Measure'), 
+			default=1.0,
+			required=True, 
+		)
+
+
+	# Product Product 
+	product_id = fields.Many2one(
+			
+			'product.product', 
+			
+			string='Producto', 
+			domain=[('sale_ok', '=', True)], 
+			change_default=True, 
+			ondelete='restrict', 			
+			#required=True, 
+		)
+
+
+	# Total 
+	price_total = fields.Float(
+			string='Total', 
+			readonly=True, 
+			store=True, 
+
+			compute='_compute_amount', 
+		)
+
+
+	# Compute - Total and Subtotal 
+	@api.multi
+	#@api.depends('product_uom_qty', 'price_unit')
+	def _compute_amount(self):
+		for line in self:
+
+			price_unit = line.price_unit
+
+			unit_net, unit_tax = lib.get_net_tax(price_unit)
+			
+			total = price_unit * line.product_uom_qty
+			net, tax = lib.get_net_tax(total)
+
+			line.update({
+				'price_total': total,
+				'price_subtotal': total,
+
+				'price_net': net,
+				'price_tax': tax,
+
+				'price_unit_net': unit_net,
+				#'price_unit_tax': unit_tax,
+			})
+
+
+	# Subtotal 
+	price_subtotal = fields.Float(
+			string='Subtotal', 
+			readonly=True, 
+			store=True, 
+
+			compute='_compute_amount', 
+		)
+	
+
+	# Unit 
+	price_unit = fields.Float(
+			'Precio Unit.', 
+			digits=dp.get_precision('Product Price'), 
+			default=0.0, 
+			required=True, 
+		)
+
+
+# ----------------------------------------------------------- Families ------------------------------------------------------
+
+
+# ----------------------------------------------------------- 2019 !!! -------------------------------------
+	# Family 
+	family = fields.Selection(
+
+			string = "Familia - 9 Dec", 	
+
+			selection = [
+							('gynecology',	'Ginecologia'),
+							('echography',	'Ecografia'), 
+							('promotion',	'Promocion'), 
+
+							('credit_note',	'Notas de Credito'),
+
+							('other',	'Otros'), 
+							('topical',	'Cremas'), 
+							('card',	'Tarjeta'), 
+							('kit',		'Kit'), 
+							('product',	'Producto'), 
+							('consultation',		'Consulta'), 
+							('consultation_gyn',	'Consulta Ginecológica'), 
+							('consultation_100',	'Consulta 100'), 
+							('consultation_0',		'Consulta Gratuita'), 
+							('procedure',	'Procedimiento'), 
+							('laser',		'Laser'), 							
+							('cosmetology',	'Cosmiatría'), 
+							('medical',		'Tratamiento Médico'), 
+			], 
+
+			#required=False, 
+			required=True, 
+		)
+
+
+
+	# Sub Family
+	sub_family = fields.Char(
+			string = "Sub-familia - 9 Dec",
+			selection=prodvars._treatment_list,
+
+			#required=False,
+			required=True, 
+		)	
 
 
 
@@ -55,50 +204,48 @@ class management_order_line(models.Model):
 
 
 
-
-# ----------------------------------------------------------- Dep ? -----------------------------
-
-	# Container  
+	# Account - Txt
 	container_id = fields.Many2one(
 			'openhealth.container', 
 			ondelete='cascade',
 		)
 
 
-# ----------------------------------------------------------- Emitter - Dep ? ---------------------
 
-	# Firm 
-	firm = fields.Char(
-			'Firm',
-			default='SERVICIOS MÉDICOS ESTÉTICOS S.A.C',
+
+
+# ----------------------------------------------------------- Fields ------------------------------------------------------
+
+	# Patient 
+	patient = fields.Many2one(
+			'oeh.medical.patient', 
+			string="Paciente", 
 		)
 
-	# Ruc 
-	ruc = fields.Char(
-			'Ruc', 
-			default='20523424221', 
+	# Doctor 
+	doctor = fields.Many2one(
+			'oeh.medical.physician',
+			string = "Médico", 	
 		)
 
-
-	# Ubigeo
-	ubigeo = fields.Char(
-			'Ubigeo',
-			default='150101', 
+	# Serial Number 
+	serial_nr = fields.Char(
+			'Serial Nr',
 		)
 
-	# Address
-	address = fields.Char(
-			'Address', 
-			#default='Jr. Lima 150', 
-			default='Av. La Merced 161', 
+	# Delta 
+	delta = fields.Integer(
+			'Delta',
 		)
 
-
-	# Country
-	country = fields.Char(
-			'Country', 
-			default='PE', 
+	# State 
+	state = fields.Selection(
+			selection = ord_vars._state_list, 
+			string='Estado',	
+			readonly=False,
+			default='draft',
 		)
+
 
 
 # ----------------------------------------------------------- Electronic - Dep ? ------------------------------------------------------
@@ -145,114 +292,44 @@ class management_order_line(models.Model):
 
 
 
+# ----------------------------------------------------------- Account Txt ---------------------
 
-# ----------------------------------------------------------- Fields ------------------------------------------------------
-
-	# Patient 
-	patient = fields.Many2one(
-			'oeh.medical.patient', 
-			string="Paciente", 
+	# Firm 
+	firm = fields.Char(
+			'Firm',
+			default='SERVICIOS MÉDICOS ESTÉTICOS S.A.C',
 		)
 
-	# Doctor 
-	doctor = fields.Many2one(
-			'oeh.medical.physician',
-			string = "Médico", 	
-		)
-
-	# Serial Number 
-	serial_nr = fields.Char(
-			'Serial Nr',
-		)
-
-	# Delta 
-	delta = fields.Integer(
-			'Delta',
+	# Ruc 
+	ruc = fields.Char(
+			'Ruc', 
+			default='20523424221', 
 		)
 
 
-	# Family 
-	family = fields.Selection(
-			string = "Familia", 	
-			selection = [
-							('credit_note',	'Notas de Credito'),
-
-							('other',	'Otros'), 
-							('topical',	'Cremas'), 
-							('card',	'Tarjeta'), 
-							('kit',		'Kit'), 
-							('product',	'Producto'), 
-							('consultation',		'Consulta'), 
-							('consultation_gyn',	'Consulta Ginecológica'), 
-							('consultation_100',	'Consulta 100'), 
-							('consultation_0',		'Consulta Gratuita'), 
-							('procedure',	'Procedimiento'), 
-							('laser',		'Laser'), 							
-							('cosmetology',	'Cosmiatría'), 
-							('medical',		'Tratamiento Médico'), 
-			], 
-			required=False, 
+	# Address
+	address = fields.Char(
+			'Address', 
+			#default='Jr. Lima 150', 
+			default='Av. La Merced 161', 
 		)
 
 
-	# Sub Family
-	sub_family = fields.Char(
-			string = "Sub-familia",
-			selection=prodvars._treatment_list,
-			required=False,
-		)	
+	# Ubigeo
+	ubigeo = fields.Char(
+			'Ubigeo',
+			default='150101', 
+		)
 
-	# State 
-	state = fields.Selection(
-			selection = ord_vars._state_list, 
-			string='Estado',	
-			readonly=False,
-			default='draft',
+
+
+	# Country
+	country = fields.Char(
+			'Country', 
+			default='PE', 
 		)
 
 
 
 
 
-# ----------------------------------------------------------- Actions ------------------------------------------------------
-	
-	# Update Fields
-	@api.multi
-	def update_fields(self):
-		print()
-		print('2018 - Update Fields - Order')
-
-
-		# If Product 
-		if self.product_id.type in ['product','consu']: 	# Products and Consumables 
-			# Family 
-			if self.product_id.x_family in ['kit']: 	# Kits 
-				self.family = 'topical'
-			else: 										# Vip and Topical 
-				self.family = self.product_id.x_family
-			# Sub family
-			self.sub_family = 'product'
-
-
-		# If Service 
-		else: 
-			# Family 
-			self.family = self.product_id.x_family
-
-			# Correct 
-			if (self.product_id.x_family  == 'consultation'): 
-				if self.price_unit  == 100: 
-					self.family = 'consultation_100'			
-				elif self.price_unit  == 0: 
-					self.family = 'consultation_0'
-
-			# Sub family 
-			# Cosmetology 
-			if self.product_id.x_family == 'cosmetology': 
-				self.sub_family = 'cosmetology'
-
-			# Medical, Other 
-			else: 
-				self.sub_family = self.product_id.x_treatment 
-
-	# update_fields

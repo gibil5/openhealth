@@ -2,8 +2,11 @@
 """
 	Mgt Funcs
 
+	Used by:
+		Acccount: Txt gen
+
 	Created: 			28 May 2018
-	Last mod: 			20 Nov 2018
+	Last mod: 			 9 Dec 2019
 """
 from __future__ import print_function
 
@@ -14,7 +17,8 @@ import datetime
 # ----------------------------------------------------------- Line Analysis -----------------------
 def line_analysis(self, line):
 	"""
-	high level support for doing this and that.
+	Line Analysis
+	Used by
 	"""
 	#print()
 	#print('Line Analysis')
@@ -132,7 +136,9 @@ def line_analysis(self, line):
 # States: In State Array
 def get_orders_filter_fast(self, date_bx, date_ex):
 	"""
-	high level support for doing this and that.
+	Get and filter array of Order records. 
+	Fast version. 
+	Used by:
 	"""
 	#print('')
 	#print('Get Orders - Fast')
@@ -188,11 +194,12 @@ def get_orders_filter(self, date_bx, date_ex, state_arr, type_arr):
 		- Electronic container (TXT)
 	"""
 	print('')
-	print('MGT - Get Orders - Filter')
+	print('2018 - Mgt - Get Orders - Filter')
 	#print(date_bx)
 	#print(date_ex)
 	#print(state_arr)
 	#print(type_arr)
+	#print()
 
 
 	# Init
@@ -225,24 +232,37 @@ def get_orders_filter(self, date_bx, date_ex, state_arr, type_arr):
 	}
 
 
+	# Search Arrays
+	se_state_array = _dic_states[state_arr]
+	se_type_array = _dic_types[type_arr]
+	#print(state_arrax)
+	#print(type_arrax)
 
 	if state_arr in _dic_states and type_arr in _dic_types:
 
+		print('mark')
+
 		# Orders
 		orders = self.env['sale.order'].search([
-													('state', 'in', _dic_states[state_arr]),
-													('x_type', 'in', _dic_types[type_arr]),
-													('date_order', '>=', date_begin),
-													('date_order', '<', date_end),
-													('x_legacy', '=', False),
+														#('state', 'in', _dic_states[state_arr]),
+														#('x_type', 'in', _dic_types[type_arr]),
+														('state', 'in', se_state_array),
+														('x_type', 'in', se_type_array),
+
+														('date_order', '>=', date_begin),
+														('date_order', '<', date_end),
+														('x_legacy', '=', False),
 												],
 													#order='x_serial_nr asc',
 													#limit=1,
 												)
 		# Count
 		count = self.env['sale.order'].search_count([
-														('state', 'in', _dic_states[state_arr]),
-														('x_type', 'in', _dic_types[type_arr]),
+														#('state', 'in', _dic_states[state_arr]),
+														#('x_type', 'in', _dic_types[type_arr]),
+														('state', 'in', se_state_array),
+														('x_type', 'in', se_type_array),
+
 														('date_order', '>=', date_begin),
 														('date_order', '<', date_end),
 														('x_legacy', '=', False),
@@ -251,10 +271,11 @@ def get_orders_filter(self, date_bx, date_ex, state_arr, type_arr):
 													#limit=1,
 												)
 	else:
+		print('Error: This should not happen !')
 
 		# Orders
 		orders = self.env['sale.order'].search([
-													('name', '=', 'This does note exist !'),
+													('name', '=', 'This does not exist !'),
 												],
 													#order='x_serial_nr asc',
 													#limit=1,
@@ -274,7 +295,9 @@ def get_orders_filter(self, date_bx, date_ex, state_arr, type_arr):
 
 def get_orders_filter_type(self, date_bx, date_ex, x_type):
 	"""
-	high level support for doing this and that.
+	Get and filter array of Order records. 
+	Type version. 
+	Used by:
 	"""
 
 	# Dates
@@ -323,8 +346,10 @@ def get_orders_filter_type(self, date_bx, date_ex, x_type):
 # Provides sales between begin date and end date. Filters: by Doctor.
 def get_orders_filter_by_doctor(self, date_bx, date_ex, doctor):
 	"""
-	Sales.
+	Get and filter array of Order records. 
+	By Doctor version. 
 	Must include Credit Notes.
+	Used by:
 	"""
 	#print()
 	#print('Get Orders Filter - By Doctor')

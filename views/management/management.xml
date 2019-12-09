@@ -215,6 +215,31 @@
 
 								string="Validate"
 						/>
+
+
+						<!-- Validate Ext -->
+						<button 
+								type="object"
+								class="oe_highlight oe_right"
+								groups="openhealth.roots"
+
+								name="pl_validate_external"								
+
+								string="Val Ext"
+						/>
+
+
+						<!-- Validate Int -->
+						<button 
+								type="object"
+								class="oe_highlight oe_right"
+								groups="openhealth.roots"
+
+								name="pl_validate_internal"								
+
+								string="Val Int"
+						/>
+
 					</header>
 
 
@@ -246,6 +271,7 @@
 							<group>
 								<field name="total_amount"/>
 								<field name="total_amount_year"/>
+
 								<field name="per_amo_total"     widget="percentage"  />
 							</group>
 						</group>
@@ -281,6 +307,8 @@
 								<field name="per_amo_other"            string="Porc Monto" widget="percentage" />
 
 								<field name="per_amo_credit_notes"     widget="percentage"/>
+
+										<field name="per_amo_families"      widget="percentage" />
 							</group>
 
 <!--
@@ -395,6 +423,8 @@
 								<field name="per_amo_topical"      widget="percentage"/>
 								<field name="per_amo_card"        widget="percentage"/>
 								<field name="per_amo_kit"         widget="percentage"/>
+
+								<field name="per_amo_subfamilies"	widget="percentage" />
 							</group>
 						</group>
 
@@ -436,9 +466,15 @@
 								</field>
 							</page>
 
+
+
 							<!-- Day Prod --> 
 							<page   string="Productividad">
+<!--
 								<field name="day_line">
+-->
+								<field name="productivity_day">
+
 									<tree string="Day Prod">
 										<field name="date"/>
 										<field name="weekday"/>
@@ -452,6 +488,7 @@
 									</tree>
 								</field>
 							</page>
+
 
 							<!-- Familias --> 
 							<page   string="Familias">
@@ -470,14 +507,20 @@
 
 
 
+
 							<!-- Sub Familias --> 
 							<page   string="Sub Familias">
 								<field name="sub_family_line">
 									<tree string="Subfamilia">  
 										<field name="idx"/>
+
+										<field name="name"/>
 										<field name="name_sp"/>
 										<field name="meta_sp"/>
+
+
 										<field name="x_count"/>
+
 										<field name="per_nr"   widget="percentage"/>
 										<field name="amount"/>
 										<field name="per_amo"   widget="percentage"/>
@@ -525,6 +568,7 @@
 							</page>
 
 
+
 							<!-- Patients -->
 							<page string="Pacientes">
 								<field name="patient_line"/>
@@ -536,8 +580,6 @@
 							<page string="Validation">
 								<group>
 									<group>								
-										<field name="per_amo_families"      widget="percentage" />
-										<field name="per_amo_subfamilies"	widget="percentage" />
 									</group>					
 									<group>								
 										<field name="report_sale_product"/>

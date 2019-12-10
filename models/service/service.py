@@ -10,6 +10,7 @@
 	24 Apr 2019:		Cleanup after 2019 PL. Must disappear:
 						- Onchanges. 
 """
+
 from __future__ import print_function
 from openerp import models, fields, api
 

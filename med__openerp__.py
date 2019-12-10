@@ -177,20 +177,26 @@
 		'views/account/account_contasis_actions.xml',
 		'views/account/account_contasis.xml',
 
-		# Marketing 
-		'views/marketing/patient_line_search.xml',
-		'views/marketing/patient_line.xml',
-		'views/marketing/patient_line_actions.xml',
-		'views/marketing/patient_line_pivot.xml',
-		'views/marketing/marketing_order_line.xml',
-		'views/marketing/marketing_reco_line.xml',
-		'views/marketing/media_line.xml',
-		'views/marketing/histogram.xml',
-		'views/marketing/place_actions.xml',
-		'views/marketing/place_pivot.xml',
-		'views/marketing/place.xml',
-		'views/marketing/marketing.xml',
-		'views/marketing/marketing_pivot.xml',
+
+
+		# Marketing - Dep
+		#'views/marketing/patient_line_search.xml',
+		#'views/marketing/patient_line.xml',
+		#'views/marketing/patient_line_actions.xml',
+		#'views/marketing/patient_line_pivot.xml',
+		#'views/marketing/marketing_order_line.xml',
+		#'views/marketing/marketing_reco_line.xml',
+		#'views/marketing/media_line.xml',
+		#'views/marketing/histogram.xml',
+		#'views/marketing/place_actions.xml',
+		#'views/marketing/place_pivot.xml',
+		#'views/marketing/place.xml',
+		#'views/marketing/marketing.xml',  # Dep
+		#'views/marketing/marketing_pivot.xml',
+
+
+
+
 
 		# Electronic
 		'views/electronic/electronic_order.xml',
@@ -425,9 +431,10 @@
 		'views/menus/menus_dev.xml',
 
 		'views/menus/menus_caja.xml',
-		#'views/menus/menus_rsp.xml',		# Dep ?
 
-		'views/menus/menus_marketing.xml',
+		#'views/menus/menus_rsp.xml',		# Dep ?
+		#'views/menus/menus_marketing.xml', # Dep ?
+
 		'views/menus/menus_management.xml',
 		'views/menus/menus_account.xml',
 		'views/menus/menus_products.xml',

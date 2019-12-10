@@ -158,6 +158,11 @@
 -->
 					<field name="name"/>
 
+					<field name="state"/>
+					<field name="date_test"/>
+
+
+
 					<field name="date_begin"  groups='openhealth.roots'/>
 
 					<field name="several_dates"		groups='openhealth.roots'/>
@@ -183,6 +188,11 @@
 				<tree default_order='name desc'>
 
 					<field name="title"/>
+
+					<field name="state"/>
+					<field name="date_test"/>
+
+
 
 					<field name="name"/>
 

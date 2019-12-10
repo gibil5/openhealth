@@ -17,6 +17,7 @@ class ReportSaleProduct(models.Model):
 	"""
 	Uses:
 		Product Item Counter
+		Report Order Lines
 	Used by:
 		Caja
 	As: 
@@ -25,6 +26,28 @@ class ReportSaleProduct(models.Model):
 	
 	_name = 'openhealth.report.sale.product'
 	
+
+
+# ----------------------------------------------------------- Django ------------------------------------------------------
+	# State
+	state = fields.Selection(
+			
+			selection=[
+							('stable', 'Estable'),
+							('unstable', 'Inestable'),
+			],
+
+			string='Estado',
+			default='unstable',
+		)
+
+
+	# Date Test
+	date_test = fields.Datetime(
+			string="Fecha Test", 
+		)
+
+
 
 
 # ----------------------------------------------------------- Relational ------------------------------------------------------	

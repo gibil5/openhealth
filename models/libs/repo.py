@@ -32,6 +32,11 @@ class Repo(models.Model):
 		)
 
 
+	# Date Test
+	date_test = fields.Datetime(
+			string="Fecha Test", 
+		)
+
 
 
 # ----------------------------------------------------------- Inherited ------------------------------------------------------

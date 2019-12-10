@@ -21,7 +21,8 @@ class Marketing(models.Model):
 
 	_name = 'openhealth.marketing'
 
-	_order = 'date_begin asc,name asc'
+	#_order = 'date_begin asc,name asc'
+	_order = 'date_begin desc,name asc'
 
 
 

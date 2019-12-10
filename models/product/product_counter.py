@@ -1,16 +1,14 @@
 # -*- coding: utf-8 -*-
-#
-# 	ItemCounter
-# 
-#
+"""
+	ItemCounter - Dep ?
 
+	Created: 	2018
+	Last up:	10 Dec 2019
+"""
 from openerp import models, fields, api
 
 class ItemCounter(models.Model):
 	
-	#_inherit='sale.closing'
-
-	#_name = 'openhealth.product.counter'
 	_name = 'openhealth.item.counter'
 	
 

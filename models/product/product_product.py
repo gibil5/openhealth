@@ -3,8 +3,9 @@
 		*** Product Product
  
  		Created: 			 3 Nov 2018
- 		Last up: 	 		15 Apr 2019
+ 		Last up: 	 		10 Dec 2019
 """
+
 from openerp import models, fields, api
 
 class ProductProduct(models.Model):

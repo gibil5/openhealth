@@ -3,8 +3,9 @@
 		*** Product Template
 
 		Created: 			 01 Nov 2016
-		Last up: 	 		 19 Sep 2019
+		Last up: 	 		 10 Dec 2019
 """
+
 from __future__ import print_function
 from openerp import models, fields, api
 from openerp.exceptions import ValidationError

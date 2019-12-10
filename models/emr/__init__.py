@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
 # Reporting
-from . import product_counter 
+#from . import product_counter 
 
 # For Order Lines
-from . import product_product
+#from . import product_product
 
 
 
@@ -14,7 +14,7 @@ from . import appointment 			# Highly Deprecated
 #from . import appointment_dep		# Min
 
 
-from . import product
+#from . import product
 from . import image		
 from . import allergy				
 

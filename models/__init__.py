@@ -95,6 +95,10 @@ from patient import *
 
 
 
+# Product - New
+from product import *
+
+
 
 
 # EMR

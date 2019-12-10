@@ -11,7 +11,7 @@
 from openerp import models, fields, api
 from datetime import datetime
 
-from . import service_co2_vars
+#from . import vars_co2
 
 from openerp.addons.openhealth.models.product import prodvars
 

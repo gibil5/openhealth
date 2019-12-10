@@ -11,7 +11,7 @@
 from openerp import models, fields, api
 from datetime import datetime
 
-from . import vars_ndyag
+#from . import vars_ndyag
 
 from openerp.addons.openhealth.models.product import prodvars
 

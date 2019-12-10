@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
- 	Service Co2 
+ 	Service Co2 - Legacy 2018
  
  	Created: 			2016
  	Last up: 	 		24 April 2019
@@ -11,13 +11,12 @@
 
 from openerp import models, fields, api
 from datetime import datetime
-
-#from . import vars_co2
-
 from openerp.addons.openhealth.models.product import prodvars
 
 class ServiceCo2(models.Model):
-
+	"""
+	Service Co2
+	"""
 	_name = 'openhealth.service.co2'
 
 	_inherit = 'openhealth.service'

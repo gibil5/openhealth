@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-	Service Ipl 
+	Service Ipl - Legacy 2018
 
  	Created: 			2016
  	Last up: 	 		24 April 2019
@@ -10,13 +10,12 @@
 """
 from datetime import datetime
 from openerp import models, fields, api
-
-#from . import vars_ipl
-
 from openerp.addons.openhealth.models.product import prodvars
 
 class ServiceIpl(models.Model):
-	
+	"""
+	Service 
+	"""
 	_name = 'openhealth.service.ipl'
 	
 	_inherit = 'openhealth.service'

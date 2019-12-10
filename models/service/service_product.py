@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
- 	Service Product 
+ 	Service Product - Legacy 2018
  
  	Created: 			2016
  	Last up: 	 		24 April 2019
@@ -11,7 +11,9 @@
 from openerp import models, fields, api
 
 class ServiceProduct(models.Model):
-
+	"""
+	Service Product
+	"""
 	_inherit = 'openhealth.service'
 
 	_name = 'openhealth.service.product'

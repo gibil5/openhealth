@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-		Service Cosmetology
+		Service Cosmetology - Legacy 2018
 
 		Created: 				 1 Nov 2016
 		Last: 				 	29 Nov 2018
@@ -9,15 +9,11 @@
 """
 
 from openerp import models, fields, api
-
-#from . import vars_cos
-
 from openerp.addons.openhealth.models.product import prodvars
-
 
 class ServiceCosmetology(models.Model):
 	"""
-	high level support for doing this and that.
+	Service Cosmetology
 	"""
 	_name = 'openhealth.service.cosmetology'
 

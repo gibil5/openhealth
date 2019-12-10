@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-	Service Ndyag 
+	Service Ndyag - Legacy 2018
 
  	Created: 			2016
  	Last up: 	 		24 April 2019
@@ -11,13 +11,12 @@
 
 from openerp import models, fields, api
 from datetime import datetime
-
-#from . import vars_ndyag
-
 from openerp.addons.openhealth.models.product import prodvars
 
 class ServiceNdyag(models.Model):
-	
+	"""
+	Service Ndyag
+	"""
 	_name = 'openhealth.service.ndyag'
 	
 	_inherit = 'openhealth.service'

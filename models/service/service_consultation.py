@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
- 	Service Consultation 
+ 	Service Consultation - Legacy 2018
  
  	Created: 			2016
  	Last up: 	 		24 April 2019
@@ -12,7 +12,9 @@
 from openerp import models, fields, api
 
 class ServiceConsultation(models.Model):
-
+	"""
+	Service Consultation
+	"""
 	_inherit = 'openhealth.service'
 
 	_name = 'openhealth.service.consultation'

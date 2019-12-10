@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-	Service
+	Service - Legacy 2018
 
 	Created: 			20 Sep 2016
  	Last up: 	 		24 April 2019
@@ -21,24 +21,11 @@ from . import vars_ipl
 
 class Service(models.Model):
 	"""
-	high level support for doing this and that.
+	Service
+	Cannot be destroyed. 
+	Old data still using this. 
 	"""
 	_name = 'openhealth.service'
-
-
-# ----------------------------------------------------------- Relational - Dep ------------------------------
-	# Nex zone
-	#nex_zone = fields.Many2one(
-	#		'openhealth.zone',
-	#		string="Nex Zone",
-	#	)
-
-	# Nex Pathology
-	#nex_pathology = fields.Many2one(
-	#		'openhealth.pathology',	
-	#		string="Nex Pathology",
-	#	)
-
 
 
 

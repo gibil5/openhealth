@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-	Service Quick 
+	Service Quick - Legacy 2018
 
 	Last up:	27 Aug 2019
 
@@ -12,13 +12,13 @@
 
 from openerp import models, fields, api
 from datetime import datetime
-
+from openerp.addons.openhealth.models.product import prodvars
 from . import vars_quick
 
-from openerp.addons.openhealth.models.product import prodvars
-
 class ServiceQuick(models.Model):
-
+	"""
+	Service Quick
+	"""
 	_inherit = 'openhealth.service'
 
 	_name = 'openhealth.service.quick'

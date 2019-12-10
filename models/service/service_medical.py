@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-	Service Medical treatment 
+	Service Medical - Legacy 2018
 
 	Created: 			1 Nov 2016
 	Last: 				29 Nov 2018
@@ -10,14 +10,13 @@
 
 from datetime import datetime
 from openerp import models, fields, api
-
-#from . import vars_medical
-
 from openerp.addons.openhealth.models.product import prodvars
 
 
 class ServiceMedical(models.Model):
-
+	"""
+	Service Medical
+	"""
 	_name = 'openhealth.service.medical'
 	
 	_inherit = 'openhealth.service'

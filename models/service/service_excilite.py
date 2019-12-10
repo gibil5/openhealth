@@ -1,23 +1,22 @@
 # -*- coding: utf-8 -*-
 """
-	Service Excilite 
+	Service Excilite - Legacy 2018
 
  	Created: 			2016
  	Last up: 	 		24 April 2019
 
-	24 Apr 2019:	Cleanup after 2019 PL. Must disappear:
-					- Onchanges. 
+	24 Apr 2019:		Cleanup after 2019 PL. Must disappear:
+						- Onchanges. 
 """
 
 from openerp import models, fields, api
 from datetime import datetime
-
-#from . import vars_exc
-
 from openerp.addons.openhealth.models.product import prodvars
 
 class ServiceExcilite(models.Model):
-
+	"""
+	Service Excilite
+	"""
 	_name = 'openhealth.service.excilite'
 
 	_inherit = 'openhealth.service'

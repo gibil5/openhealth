@@ -14,7 +14,7 @@ from __future__ import print_function
 from openerp import models, fields, api
 
 #from . import prodvars
-from openerp.addons.openhealth.models.emr import prodvars
+from openerp.addons.openhealth.models.product import prodvars
 
 from . import ipl
 

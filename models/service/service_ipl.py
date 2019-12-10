@@ -13,7 +13,7 @@ from openerp import models, fields, api
 from . import ipl
 
 #from . import prodvars
-from openerp.addons.openhealth.models.emr import prodvars
+from openerp.addons.openhealth.models.product import prodvars
 
 class ServiceIpl(models.Model):
 	

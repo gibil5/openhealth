@@ -13,7 +13,7 @@ from datetime import datetime
 from . import ndyag
 
 #from . import prodvars
-from openerp.addons.openhealth.models.emr import prodvars
+from openerp.addons.openhealth.models.product import prodvars
 
 class ServiceNdyag(models.Model):
 	

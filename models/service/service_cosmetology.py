@@ -10,8 +10,7 @@
 from openerp import models, fields, api
 from . import cosvars
 
-#from . import prodvars
-from openerp.addons.openhealth.models.emr import prodvars
+from openerp.addons.openhealth.models.product import prodvars
 
 
 class ServiceCosmetology(models.Model):

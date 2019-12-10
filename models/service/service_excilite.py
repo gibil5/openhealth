@@ -13,8 +13,7 @@ from datetime import datetime
 
 from . import exc
 
-#from . import prodvars
-from openerp.addons.openhealth.models.emr import prodvars
+from openerp.addons.openhealth.models.product import prodvars
 
 class ServiceExcilite(models.Model):
 

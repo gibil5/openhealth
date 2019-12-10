@@ -415,7 +415,8 @@
 		'views/reports/report_sale_search.xml',
 		'views/reports/report_sale.xml',
 
-		#'views/reports/report_sale_actions.xml',            # Dep
+		'views/rsp/report_sale_actions.xml',
+
 		#'views/rsp/report_sale_actions.xml',            	# Dep
 
 

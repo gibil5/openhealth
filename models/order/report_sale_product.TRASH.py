@@ -1,3 +1,135 @@
+# 10 Dec
+
+	# Management - For Testing - Dep ?
+	management_id = fields.Many2one(
+			'openhealth.management',
+		)
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Update ------------------------------------------------------
+	# Update 
+	@api.multi
+	def update(self):  
+		"""
+		Update RSP
+		"""
+		print()
+		print('2018 - Report Sale Product - Update')
+
+		# Clean 
+		self.order_line_ids.unlink()
+		self.item_counter_ids.unlink()
+
+
+		# Init
+		self.date_begin = self.name
+
+
+		# Get Orders 
+		#orders,count = mgt_funcs.get_orders_filter_fast(self, self.name, self.name)			# Only Sales
+
+		if not self.several_dates:
+			orders, count = mgt_funcs.get_orders_filter_fast(self, self.date_begin, self.date_begin)
+
+		else:
+			orders, count = mgt_funcs.get_orders_filter_fast(self, self.date_begin, self.date_end)
+
+		print(orders)
+		print(count)
+
+
+
+		# Order lines
+		self.create_lines(orders)
+
+
+
+
+		# Item Counter 
+		total_qty = 0
+		total = 0 
+		for order_line in self.order_line_ids: 
+
+			# Init 
+			name = order_line.product_id.name
+			qty = order_line.product_uom_qty
+			subtotal = order_line.price_total 
+			total_qty = total_qty + qty
+			total = total + subtotal
+
+			#print(name)
+			#print(qty)
+			#print(subtotal)
+			#print()
+
+
+			# Search 
+			prod_ctr = self.env['openhealth.item.counter'].search([
+																		('name', '=', name),
+																		('report_sale_product_id', '=', self.id),
+																	],
+																	#order='x_serial_nr asc',
+																	limit=1,
+																)
+			#print prod_ctr
+
+
+			# Create or update 
+			if prod_ctr.name != False: 				
+				prod_ctr.increase_qty(qty)
+				prod_ctr.increase_total(subtotal)
+			else:		# Create 
+				ret = self.item_counter_ids.create({
+															'name': name,
+															'qty': qty, 
+															'total': subtotal, 
+															'report_sale_product_id': self.id,
+													})
+				#print ret 
+
+
+		# Update Descriptors 
+		self.total_qty = total_qty
+		self.total = total
+		#print 
+
+	# update
+
+
+
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Dep - Test ------------------------------------------------------
+	#test_target = fields.Boolean(
+	#		string="Test Target", 
+	#	)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 16 Oct 2019
 # Done by PL
 

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-	ItemCounter - Dep ?
+	Item Counter
 
 	Created: 	2018
 	Last up:	10 Dec 2019
@@ -8,110 +8,35 @@
 from openerp import models, fields, api
 
 class ItemCounter(models.Model):
-	
+	"""
+	Used by:
+		Report Sale Product
+	"""
+
 	_name = 'openhealth.item.counter'
 	
 
-
-
-# ----------------------------------------------------------- Deprecated ? ------------------------------------------------------
-	# Report Sale 
-	#report_sale_a_id = fields.Many2one(
-	#	'openhealth.report.sale', 
-	#	string='Report Reference', 		
-	#	ondelete='cascade', 
-	#)
-
-	#report_sale_b_id = fields.Many2one(
-	#	'openhealth.report.sale', 
-	#	string='Report Reference', 		
-	#	ondelete='cascade', 
-	#)
-
-	#report_sale_c_id = fields.Many2one(
-	#	'openhealth.report.sale', 
-	#	string='Report Reference', 		
-	#	ondelete='cascade', 
-	#)
-
-
-
-
-
-	categ = fields.Selection(
-
-			[	
-				('a', 		'A'),
-				('b', 		'B'),
-				('c', 		'C'),
-			], 
-
-		)
-
-
-
 # ----------------------------------------------------------- Relational ------------------------------------------------------
-
-
-
 
 	# Report Sale Product 
 	report_sale_product_id = fields.Many2one(
-
 		'openhealth.report.sale.product', 
-		
 		string='Report Reference', 		
 		ondelete='cascade', 
 	)
 
 
 
-
-
-
-
-
-
-# ----------------------------------------------------------- Actions ------------------------------------------------------
-	# Increase 
-	@api.multi
-	def increase_qty(self, qty):  
-
-		#print
-		#print 'Increase Qty'
-
-		self.qty = self.qty + qty 
-
-
-
-
-	# Increase 
-	@api.multi
-	def increase_total(self, total):  
-
-		#print
-		#print 'Increase Total'
-
-		self.total = self.total + total 
-
-
-
-
-
-
 # ----------------------------------------------------------- Vars ------------------------------------------------------
-	name = fields.Char()
-
+	name = fields.Char(
+		)
 
 	qty = fields.Integer(
 			string="Cantidad", 
 		)
 
-
 	total = fields.Float(
 			string="Total", 
 		)
-
-
 
 

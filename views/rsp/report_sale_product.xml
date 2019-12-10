@@ -36,6 +36,9 @@
 
 								<field name="date_end"    attrs="{'invisible':[('several_dates', 'in', [False, ''])]}"/>
 
+								<field name="title"    attrs="{'invisible':[('several_dates', 'in', [False, ''])]}"/>
+
+
 								<field name="vspace"/>
 								<field name="write_date"/>
 							</group>
@@ -44,13 +47,13 @@
 
 								<field name="total"/>
 
-								<field name="management_id"/>
 
 								<field name="vspace"/>
 								<field name="several_dates"/>
 							</group>
 						</group>
 <!--                            
+								<field name="management_id"/>
 							<field name="date"/>
 								<field name="test_target"/>
 -->
@@ -135,20 +138,59 @@
 				<tree string="Closing Tree">
 					<field name="date"/>
 -->
+
+
 <!-- TREE --> 
-		<record model="ir.ui.view" id="openhealth.rsp_tree">
+		<record model="ir.ui.view" id="openhealth.view_rsp_day_tree">
+
 			<field name="name">openhealth.report.sale.product.tree</field>
+
 			<field name="model">openhealth.report.sale.product</field>
+
 			<field name="arch" type="xml">
+
 				<tree default_order='name desc'>
+
+<!--
+					<field name="title"    attrs="{'invisible':[('several_dates', 'not in', [True, ''])]}"/>
+					<field name="date_end"    attrs="{'invisible':[('several_dates', 'in', [False, ''])]}"/>
+					<field name="management_id" groups='openhealth.roots'/>
+-->
+					<field name="name"/>
+
+					<field name="date_begin"  groups='openhealth.roots'/>
+
+					<field name="several_dates"		groups='openhealth.roots'/>
+
+
+					<field name="total_qty"/>
+					<field name="total"/>
+				</tree>
+			</field>
+		</record>
+
+
+
+<!-- TREE 2 --> 
+		<record model="ir.ui.view" id="openhealth.view_rsp_month_tree">
+
+			<field name="name">openhealth.report.sale.product.tree</field>
+
+			<field name="model">openhealth.report.sale.product</field>
+
+			<field name="arch" type="xml">
+
+				<tree default_order='name desc'>
+
+					<field name="title"/>
 
 					<field name="name"/>
 
 					<field name="date_begin"  groups='openhealth.roots'/>
-					<field name="date_end"    attrs="{'invisible':[('several_dates', 'in', [False, ''])]}"/>
-					<field name="several_dates"		groups='openhealth.roots'/>
 
-					<field name="management_id" groups='openhealth.roots'/>
+					<field name="date_end"/>
+
+					<field name="several_dates"		groups='openhealth.roots'/>
 
 					<field name="total_qty"/>
 					<field name="total"/>
@@ -160,25 +202,6 @@
 
 
 
-
-<!-- ACTION -->
-		<record model="ir.actions.act_window" id="rsp_list_action">
-			
-			<field name="name">Venta de Productos - Por Fecha</field>
-			<field name="res_model">openhealth.report.sale.product</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form</field>
-			<!--
-			<field name="domain">[]</field>
-			<field name="context">{}</field>
-			<field name="view_id" eval="False"/>
-			<field name="help" type="html">
-				<p class="oe_view_nocontent_create">Create the first order
-				</p>
-			</field>
-			-->
-		</record>
-		
 
 	</data>
 </openerp>

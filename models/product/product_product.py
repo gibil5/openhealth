@@ -1,9 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-		*** Product Product
+	*** Product Product
  
- 		Created: 			 3 Nov 2018
- 		Last up: 	 		10 Dec 2019
+	Only Data model. No functions.
+
+ 	Created: 			 3 Nov 2018
+ 	Last up: 	 		10 Dec 2019
 """
 
 from openerp import models, fields, api

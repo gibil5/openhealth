@@ -8,7 +8,8 @@
 								- Onchanges. 
 """
 from openerp import models, fields, api
-from . import cosvars
+
+#from . import vars_cos
 
 from openerp.addons.openhealth.models.product import prodvars
 
@@ -55,7 +56,6 @@ class ServiceCosmetology(models.Model):
 # ---------------------------------------------- Default --------------------------------------------------------
 	# Laser
 	laser = fields.Selection(
-			#selection=prodvars._laser_type_list,
 			selection=prodvars.get_laser_type_list(),
 			string="Láser",
 			default='cosmetology',

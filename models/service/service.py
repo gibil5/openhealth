@@ -13,10 +13,9 @@
 from __future__ import print_function
 from openerp import models, fields, api
 
-#from . import prodvars
 from openerp.addons.openhealth.models.product import prodvars
 
-from . import ipl
+from . import vars_ipl
 
 
 class Service(models.Model):
@@ -217,7 +216,7 @@ class Service(models.Model):
 
 
 	nr_sessions_1 = fields.Selection(
-			selection = ipl._nr_sessions_list,
+			selection = vars_ipl._nr_sessions_list,
 			string="Número de sesiones",
 			default='none',
 	)

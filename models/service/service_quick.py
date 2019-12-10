@@ -11,8 +11,10 @@
 """
 from openerp import models, fields, api
 from datetime import datetime
-from . import quick
-from openerp.addons.openhealth.models.emr import prodvars
+
+from . import vars_quick
+
+from openerp.addons.openhealth.models.product import prodvars
 
 class ServiceQuick(models.Model):
 
@@ -64,14 +66,14 @@ class ServiceQuick(models.Model):
 
 	# Neck  
 	quick_neck_rejuvenation = fields.Selection(
-			selection = quick._rejuvenation_4_list, 
+			selection = vars_quick._rejuvenation_4_list, 
 			string="Rejuvenecimiento", 
 			default='none',	
 		)
 
 	# Neck Hands 
 	quick_neck_hands_rejuvenation = fields.Selection(
-			selection = quick._rejuvenation_2_list, 
+			selection = vars_quick._rejuvenation_2_list, 
 			string="Rejuvenecimiento", 
 			default='none',	
 		)

@@ -10,9 +10,9 @@
 """
 from datetime import datetime
 from openerp import models, fields, api
-from . import ipl
 
-#from . import prodvars
+#from . import vars_ipl
+
 from openerp.addons.openhealth.models.product import prodvars
 
 class ServiceIpl(models.Model):
@@ -34,7 +34,9 @@ class ServiceIpl(models.Model):
 # ---------------------------------------------- Default --------------------------------------------------------
 	# Laser 
 	laser = fields.Selection(
+
 			selection = prodvars._laser_type_list, 
+
 			string="Láser",
 			default='laser_ipl',
 			index=True,

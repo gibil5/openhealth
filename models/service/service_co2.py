@@ -10,6 +10,7 @@
 """
 from openerp import models, fields, api
 from datetime import datetime
+
 from . import service_co2_vars
 
 from openerp.addons.openhealth.models.product import prodvars

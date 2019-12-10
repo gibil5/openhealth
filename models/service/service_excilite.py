@@ -11,7 +11,7 @@
 from openerp import models, fields, api
 from datetime import datetime
 
-from . import exc
+#from . import vars_exc
 
 from openerp.addons.openhealth.models.product import prodvars
 

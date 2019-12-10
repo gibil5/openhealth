@@ -10,9 +10,9 @@
 """
 from openerp import models, fields, api
 from datetime import datetime
-from . import ndyag
 
-#from . import prodvars
+from . import vars_ndyag
+
 from openerp.addons.openhealth.models.product import prodvars
 
 class ServiceNdyag(models.Model):

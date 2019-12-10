@@ -9,10 +9,10 @@
 """
 from datetime import datetime
 from openerp import models, fields, api
-from . import service_medical_vars
 
-#from . import prodvars
-from openerp.addons.openhealth.models.emr import prodvars
+#from . import vars_medical
+
+from openerp.addons.openhealth.models.product import prodvars
 
 
 class ServiceMedical(models.Model):

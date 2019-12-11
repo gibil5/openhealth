@@ -11,8 +11,6 @@
 from __future__ import print_function
 from openerp import models, fields, api
 
-#from openerp.addons.openhealth.models.management import mgt_funcs
-
 class ReportSaleProduct(models.Model):
 	"""
 	Uses:
@@ -26,27 +24,7 @@ class ReportSaleProduct(models.Model):
 	
 	_name = 'openhealth.report.sale.product'
 	
-
-
-# ----------------------------------------------------------- Django ------------------------------------------------------
-	# State
-	state = fields.Selection(
-			
-			selection=[
-							('stable', 'Estable'),
-							('unstable', 'Inestable'),
-			],
-
-			string='Estado',
-			default='unstable',
-		)
-
-
-	# Date Test
-	date_test = fields.Datetime(
-			string="Fecha Test", 
-		)
-
+	_inherit='openhealth.django.interface'
 
 
 
@@ -67,16 +45,7 @@ class ReportSaleProduct(models.Model):
 
 
 
-# ----------------------------------------------------------- Primitives ------------------------------------------------------
-
-	# Title 
-	title = fields.Char(
-			string="Nombre",
-		)
-
-
-
-
+# ----------------------------------------------------------- Redefined ------------------------------------------------------
 	# Name 
 	name = fields.Date(
 			string="Fecha", 
@@ -86,21 +55,20 @@ class ReportSaleProduct(models.Model):
 		)
 
 
+# ----------------------------------------------------------- Primitives ------------------------------------------------------
 
-
-	# Dates
-	date_begin = fields.Date(
-			string="Fecha Inicio", 
+	# Title 
+	title = fields.Char(
+			string="Nombre",
 		)
 
-	date_end = fields.Date(
-			string="Fecha Final", 
-		)
+
 
 	several_dates = fields.Boolean(
 			'Varias Fechas',
 			default=False,
 		)
+
 
 	# Totals
 	total_qty = fields.Integer(

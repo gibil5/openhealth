@@ -6,8 +6,9 @@
 #from . import line
 #from . import repo
 
-from libs import *
+from django import *
 
+from libs import *
 
 
 

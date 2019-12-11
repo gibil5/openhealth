@@ -1,5 +1,54 @@
 # 10 Dec
 
+# ----------------------------------------------------------- Django ------------------------------------------------------
+	# State
+	state = fields.Selection(
+			
+			selection=[
+							('stable', 'Estable'),
+							('unstable', 'Inestable'),
+			],
+
+			string='Estado',
+			default='unstable',
+		)
+
+
+	# Date Test
+	date_test = fields.Datetime(
+			string="Fecha Test", 
+		)
+
+
+	# Name 
+	name = fields.Date(
+			string="Fecha", 
+			default = fields.Date.today, 
+			#readonly=True,
+			required=True, 
+		)
+
+
+
+
+	# Dates
+	date_begin = fields.Date(
+			string="Fecha Inicio", 
+		)
+
+	date_end = fields.Date(
+			string="Fecha Final", 
+		)
+
+
+
+
+
+
+
+
+
+
 	# Management - For Testing - Dep ?
 	management_id = fields.Many2one(
 			'openhealth.management',

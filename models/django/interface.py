@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 """
 	Django - Interface
-
+	Should be inherited by all Reports
+	
 	Data model. And functions.
 
  	Created: 				10 Dec 2019
- 	Last up: 				10 Dec 2019
+ 	Last up: 				11 Dec 2019
 """
 from openerp import models, fields, api
 
@@ -19,6 +20,14 @@ class DjangoInterface(models.Model):
 
 
 # ----------------------------------------------------------- Django ------------------------------------------------------
+
+	# Date Test
+	date_test = fields.Datetime(
+			string="Fecha Test", 
+		)
+
+
+
 	# State
 	state = fields.Selection(
 			
@@ -34,12 +43,27 @@ class DjangoInterface(models.Model):
 		)
 
 
-	# Date Test
-	date_test = fields.Datetime(
-			string="Fecha Test", 
+
+
+# ----------------------------------------------------------- Configurator ------------------------
+
+	# Default Configurator
+	def _get_default_configurator(self):
+		configurator = self.env['openhealth.configurator.emr'].search([
+																			('x_type', 'in', ['emr']),
+																		],
+																			#order='date_begin,name asc',
+																			limit=1,
+			)
+		return configurator
+
+	# Configurator
+	configurator = fields.Many2one(
+			'openhealth.configurator.emr',
+			string="Configuracion",
+			
+			default=_get_default_configurator,
 		)
-
-
 
 
 # ----------------------------------------------------------- Repo ------------------------------------------------------
@@ -91,6 +115,18 @@ class DjangoInterface(models.Model):
 # ----------------------------------------------------- Django Interface --------------------------
 
 	@api.multi
+	def get_configurator(self):
+		"""
+		Django interface
+		"""
+		print()
+		print('Get state')
+		return self.configurator.name
+
+
+
+
+	@api.multi
 	def set_state(self, state):
 		"""
 		Django interface
@@ -113,13 +149,25 @@ class DjangoInterface(models.Model):
 
 
 
+
+	# Dates
+	#@api.multi
+	#def get_date(self):
+	#	"""
+	#	Django interface
+	#	"""
+	#	print()
+	#	print('Get date')
+	#	return self.date
+
+
 	@api.multi
 	def get_date_begin(self):
 		"""
 		Django interface
 		"""
 		print()
-		print('Get date')
+		print('Get date begin')
 		return self.date_begin
 
 
@@ -129,7 +177,7 @@ class DjangoInterface(models.Model):
 		Django interface
 		"""
 		print()
-		print('Get date')
+		print('Get date end')
 		return self.date_end
 
 
@@ -140,7 +188,7 @@ class DjangoInterface(models.Model):
 		Django interface
 		"""
 		print()
-		print('Get date')
+		print('Get date test')
 		return self.date_test
 
 

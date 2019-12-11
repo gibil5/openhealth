@@ -5,7 +5,7 @@
 	Only Data model. No functions.
 
  	Created: 				28 May 2018
- 	Last up: 				 7 Dec 2019
+ 	Last up: 				11 Dec 2019
 """
 from openerp import models, fields, api
 

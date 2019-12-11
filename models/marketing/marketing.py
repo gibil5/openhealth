@@ -62,7 +62,7 @@ class Marketing(models.Model):
 
 
 
-# ----------------------------------------------------------- Relational ------------------------------------------------------
+# ----------------------------------------------------------- Relational - Lines ------------------------------------------------------
 	# Patient Lines 
 	patient_line = fields.One2many(
 			'openhealth.patient.line', 
@@ -127,7 +127,6 @@ class Marketing(models.Model):
 
 # ----------------------------------------------------------- Fields - Stats ----------------------
 	# Percentages - Float 
-
 
 	# Age 
 	age_undefined_per = fields.Float(

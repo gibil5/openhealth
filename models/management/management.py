@@ -35,6 +35,9 @@ class Management(models.Model):
 
 
 
+
+
+
 # ----------------------------------------------------------- Prod ----------------------
 	# For Update Productivity
 	productivity_day = fields.One2many(
@@ -289,25 +292,6 @@ class Management(models.Model):
 
 
 
-# ----------------------------------------------------------- Configurator ------------------------
-
-	# Default Configurator
-	def _get_default_configurator(self):
-		configurator = self.env['openhealth.configurator.emr'].search([
-																			('x_type', 'in', ['emr']),
-																		],
-																			#order='date_begin,name asc',
-																			limit=1,
-			)
-		return configurator
-
-	# Configurator
-	configurator = fields.Many2one(
-			'openhealth.configurator.emr',
-			string="Configuracion",
-			
-			default=_get_default_configurator,
-		)
 
 
 # ----------------------------------------------------------- QC ----------------------------------

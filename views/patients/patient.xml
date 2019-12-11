@@ -312,7 +312,7 @@
 
 								<field name="property_product_pricelist"    required="1"/>
 
-								<field name="x_vip"			invisible="1"/>
+								<field name="x_vip"			invisible="0"/>
 
 								<field name="x_card"/>
 							</group>

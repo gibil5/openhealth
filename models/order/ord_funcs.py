@@ -248,9 +248,15 @@ def detect_vip_card_and_create(self):
 	# Init
 	sale_card = False
 
+
 	# The Vip card is in the present order
 	for line in self.order_line:
-		if line.product_id.x_name_short == 'vip_card':
+
+
+		#if line.product_id.x_name_short == 'vip_card':
+		if line.product_id.is_vip_card():					# LOD compliant !!!
+
+
 			print('Vip Card Detected')
 			sale_card = True
 
@@ -259,16 +265,20 @@ def detect_vip_card_and_create(self):
 	# If Card in Sale
 	if sale_card:
 
+
 		# Search Card in the Db
 		card = self.env['openhealth.card'].search([('patient_name', '=', self.partner_id.name),], order='date_created desc', limit=1)
 
 
+
 		# If it does not exist - Create
 		if card.name == False:
+
 			card = self.env['openhealth.card'].create({
 															'patient_name': self.partner_id.name,
 														})
 			print('Vip Card Created')
+
 
 
 		# Update Partner - Vip Price List

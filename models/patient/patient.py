@@ -29,6 +29,56 @@ class Patient(models.Model):
 
 
 # ----------------------------------------------- Marketing --------------------------------
+	# Vip
+	x_vip = fields.Boolean(
+		string="VIP",
+		default=False,
+
+		compute='_compute_x_vip',
+	)
+
+	#@api.multi
+	@api.depends('x_card')
+	def _compute_x_vip(self):
+		"""
+		The patient is Vip if there is a Vip card, with his name
+		"""
+		for record in self:
+			x_card = record.env['openhealth.card'].search([
+															('patient_name', '=', record.name),
+														],
+														#order='appointment_date desc',
+														limit=1,)
+
+			if x_card.name != False:
+				record.x_vip = True
+
+
+
+
+	# Vip Card
+	x_card = fields.Many2one(
+			'openhealth.card',
+			string="Tarjeta VIP",
+
+			compute='_compute_x_card',
+		)
+
+	#@api.multi
+	@api.depends('name')
+	def _compute_x_card(self):
+		for record in self:
+			x_card = record.env['openhealth.card'].search([
+															('patient_name', '=', record.name),
+														],
+														#order='appointment_date desc',
+														limit=1,)
+			record.x_card = x_card
+
+
+
+
+# ----------------------------------------------- Marketing --------------------------------
 
 	origin = fields.Many2one(
 			'openhealth.patient.origin',
@@ -1098,49 +1148,6 @@ class Patient(models.Model):
 			default='normal',
 			required=True,
 		)
-
-
-	# Vip
-	x_vip = fields.Boolean(
-		string="VIP",
-		default=False,
-
-		compute='_compute_x_vip',
-	)
-
-	#@api.multi
-	@api.depends('x_card')
-	def _compute_x_vip(self):
-		for record in self:
-			x_card = record.env['openhealth.card'].search([
-															('patient_name', '=', record.name),
-														],
-														#order='appointment_date desc',
-														limit=1,)
-
-			if x_card.name != False:
-				record.x_vip = True
-
-
-
-	# Vip Card
-	x_card = fields.Many2one(
-			'openhealth.card',
-			string="Tarjeta VIP",
-
-			compute='_compute_x_card',
-		)
-
-	#@api.multi
-	@api.depends('name')
-	def _compute_x_card(self):
-		for record in self:
-			x_card = record.env['openhealth.card'].search([
-															('patient_name', '=', record.name),
-														],
-														#order='appointment_date desc',
-														limit=1,)
-			record.x_card = x_card
 
 
 

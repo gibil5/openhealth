@@ -1,37 +1,23 @@
 # -*- coding: utf-8 -*-
-#
-#
-# 		*** OPEN HEALTH - Card 
-# 
-# Created: 				25 Aug 2017
-# Last mod: 			16 Jun 2018
-#
+"""
+	*** OPEN HEALTH - Card 
+
+
+	Created: 			25 Aug 2017
+	Last mod: 			11 Dec 2019
+"""
 from datetime import datetime
 from openerp import models, fields, api
 
-#from . import count_funcs
-#from libs import count_funcs
 from openerp.addons.openhealth.models.libs import count_funcs
 
-
 class Card(models.Model):
-
+	"""
+	Vip Card
+	"""
 	_name = 'openhealth.card'		
 
 	_order = 'name desc'
-
-
-
-
-
-# ----------------------------------------------------------- Primitives ------------------------------------------------------
-
-
-	active = fields.Boolean(
-			string="Activa", 
-			default=True, 
-		)
-	
 
 
 
@@ -41,12 +27,14 @@ class Card(models.Model):
 	def _get_default_name(self):
 
 		name_ctr = 'vip'
+
  		counter = self.env['openhealth.counter'].search([
 																('name', '=', name_ctr), 
 															],
 																#order='write_date desc',
 																limit=1,
 															)
+
 
 		name = count_funcs.get_name(self, counter.prefix, counter.separator, counter.padding, counter.value)
 
@@ -71,6 +59,10 @@ class Card(models.Model):
 		)
 
 
+	active = fields.Boolean(
+			string="Activa", 
+			default=True, 
+		)
 
 
 

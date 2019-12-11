@@ -832,8 +832,12 @@ class sale_order(models.Model):
 		ord_funcs.update_descriptors(self)
 
 
+
+
 		# Vip Card - Detect and Create
 		ord_funcs.detect_vip_card_and_create(self)
+
+
 
 
 

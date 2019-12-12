@@ -20,6 +20,51 @@ class PatientLine(models.Model):
 	_order = 'date_create asc'
 
 
+# ----------------------------------------------------------- First Contact ------------------------------------------------------
+	
+	# First Contact 
+	first_contact = fields.Selection(
+
+			selection = pat_vars._first_contact_list, 
+		
+			string = 'Primer contacto',
+		)
+	
+	mea_recommendation = fields.Integer(
+			'Pri Recomendación', 
+		)
+
+	mea_tv = fields.Integer(
+			'Pri Tv', 
+		)
+
+	mea_radio = fields.Integer(
+			'Pri Radio', 
+		)
+
+	mea_internet = fields.Integer(
+			'Pri Internet', 
+		)
+
+	mea_website = fields.Integer(
+			'Pri Website', 
+		)
+
+	mea_mail_campaign = fields.Integer(
+			'Pri Mail', 
+		)
+
+	mea_how_none = fields.Integer(
+			'Pri Ninguno', 
+		)
+
+	mea_how_u = fields.Integer(
+			'Pri Ind', 
+		)
+
+
+
+
 # ----------------------------------------------------------- Stats - Required ------------------------------------------------------
 
 	# Address
@@ -323,46 +368,6 @@ class PatientLine(models.Model):
 
 
 
-
-	# First Contact 
-	first_contact = fields.Selection(
-
-			selection = pat_vars._first_contact_list, 
-		
-			string = 'Primer contacto',
-		)
-	
-	mea_recommendation = fields.Integer(
-			'Pri Recomendación', 
-		)
-
-	mea_tv = fields.Integer(
-			'Pri Tv', 
-		)
-
-	mea_radio = fields.Integer(
-			'Pri Radio', 
-		)
-
-	mea_internet = fields.Integer(
-			'Pri Internet', 
-		)
-
-	mea_website = fields.Integer(
-			'Pri Website', 
-		)
-
-	mea_mail_campaign = fields.Integer(
-			'Pri Mail', 
-		)
-
-	mea_how_none = fields.Integer(
-			'Pri Ninguno', 
-		)
-
-	mea_how_u = fields.Integer(
-			'Pri Ind', 
-		)
 
 
 

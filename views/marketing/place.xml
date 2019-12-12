@@ -4,6 +4,8 @@
 
 
 
+<!-- TREES -->
+
         <!-- Tree - Place --> 
         <record model="ir.ui.view" id="place_line_view_order_tree">
             <field name="name">openhealth.place.line.tree</field>

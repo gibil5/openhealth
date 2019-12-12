@@ -23,6 +23,32 @@ class PatientOrigin(models.Model):
 # ----------------------------------------------- Fields --------------------------------
 
 	# Name
+	#short_name = fields.Char(
+	short_name = fields.Selection(
+
+			[
+				('tv_two', 			'tv_two'),
+				('tv_four', 		'tv_four'),
+				('tv_nine', 		'tv_nine'),
+
+				('sn_facebook', 	'sn_facebook'),
+				('sn_instagram', 	'sn_instagram'),
+				('sn_youtube', 		'sn_youtube'),
+				('sn_twitter', 		'sn_twitter'),
+
+				('web_page', 		'web_page'),
+				
+				('recommendation', 	'recommendation'),
+				
+				('other', 			'other'),
+			],
+			#string='Nombre',
+		)
+
+
+
+
+	# Name
 	name = fields.Char(
 			string='Nombre',
 			
@@ -36,8 +62,13 @@ class PatientOrigin(models.Model):
 		_dic_fam = {
 					'tv': 	'TV',
 					'social_networks': 	'Redes Sociales',
-					'web': 				'Página web/Buscador',
-					'recommendation': 	'Recomendación',
+					
+					#'web': 			'Página web/Buscador',
+					'web': 				'Pagina web/Buscador',
+
+					#'recommendation': 	'Recomendación',
+					'recommendation': 	'Recomendacion',
+
 					'other': 			'Otros',
 		}
 
@@ -52,14 +83,15 @@ class PatientOrigin(models.Model):
 					'youtube': 		'Youtube',
 					'twitter': 		'Twitter',
 
-					'recommendation': 	'Recomendación',
+					#'recommendation': 	'Recomendación',
+					'recommendation': 	'Recomendacion',
+
 					'other': 			'Otros',
 		}
 
 
 		se = '-'
 		for record in self:
-
 
 			if record.subfamily in _dic_sub:
 				record.name = _dic_fam[record.family] + se + _dic_sub[record.subfamily]
@@ -69,13 +101,18 @@ class PatientOrigin(models.Model):
 
 
 
+
+
+
 	# Family
 	family = fields.Selection(
 			[
 				('tv', 				'TV'),
 				('social_networks', 'Redes Sociales'),
 				('web', 			'Página web/Buscador'),
+				
 				('recommendation', 	'Recomendación'),
+				
 				('other', 			'Otros'),
 			],
 

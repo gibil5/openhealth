@@ -5,7 +5,7 @@
  	Only Data model. No functions.
 
 	Created: 				19 May 2018
- 	Last up: 	 			 9 Dec 2019
+ 	Last up: 	 			12 Dec 2019
 """
 from __future__ import print_function
 import datetime
@@ -21,48 +21,20 @@ class Marketing(models.Model):
 
 	_name = 'openhealth.marketing'
 
-	#_order = 'date_begin asc,name asc'
 	_order = 'date_begin desc,name asc'
 
 
 
-# ----------------------------------------------------------- QC ----------------------------------
-
-	delta_patients = fields.Float(
-			'Delta Pacientes',
-		)
-
-	delta_sales = fields.Float(
-			'Delta Ventas',
-		)
-
-	delta_recos = fields.Float(
-			'Delta Recos',
-		)
-
-
-	owner = fields.Selection(
-			[
-				('year', 'Year'),
-				('month', 'Month'),
-			],
-		)
-
-
-
-
-# ----------------------------------------------------------- Inheritable ------------------------------------------------------
-	# Count
-	total_count = fields.Integer(
-			#'Total Ventas',
-			#'Nr Ventas',
-			'Nr Pacientes',
-			readonly=True, 
-		)
-
-
-
 # ----------------------------------------------------------- Relational - Lines ------------------------------------------------------
+
+	# District 
+	district_line = fields.One2many(
+			'openhealth.district.line', 
+			'marketing_id', 
+		)
+
+
+
 	# Patient Lines 
 	patient_line = fields.One2many(
 			'openhealth.patient.line', 
@@ -93,13 +65,18 @@ class Marketing(models.Model):
 			'marketing_id', 
 		)
 
-	# District 
-	district_line = fields.One2many(
-			'openhealth.district.line', 
-			'marketing_id', 
+
+
+
+
+# ----------------------------------------------------------- Redefined ------------------------------------------------------
+	# Count
+	total_count = fields.Integer(
+			#'Total Ventas',
+			#'Nr Ventas',
+			'Nr Pacientes',
+			readonly=True, 
 		)
-
-
 
 
 # ----------------------------------------------------------- Counts ------------------------------
@@ -389,4 +366,27 @@ class Marketing(models.Model):
 			'Vip No',
 			readonly=True, 
 		)
+
+
+
+# ----------------------------------------------------------- QC ----------------------------------
+	delta_patients = fields.Float(
+			'Delta Pacientes',
+		)
+
+	delta_sales = fields.Float(
+			'Delta Ventas',
+		)
+
+	delta_recos = fields.Float(
+			'Delta Recos',
+		)
+
+	owner = fields.Selection(
+			[
+				('year', 'Year'),
+				('month', 'Month'),
+			],
+		)
+
 

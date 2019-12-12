@@ -18,6 +18,8 @@
 
 					<field name="name"/>
 
+					<field name="short_name"/>
+
 					<field name="family"/>
 
 					<field name="subfamily"/>

@@ -27,6 +27,15 @@ class Marketing(models.Model):
 
 # ----------------------------------------------------------- Relational - Lines ------------------------------------------------------
 
+	# Media Lines 
+	media_line = fields.One2many(
+			'openhealth.media.line', 
+			'marketing_id', 
+		)
+
+
+
+
 	# District 
 	district_line = fields.One2many(
 			'openhealth.district.line', 
@@ -44,12 +53,6 @@ class Marketing(models.Model):
 	# Histo Lines 
 	histo_line = fields.One2many(
 			'openhealth.histo.line', 
-			'marketing_id', 
-		)
-
-	# Media Lines 
-	media_line = fields.One2many(
-			'openhealth.media.line', 
 			'marketing_id', 
 		)
 

@@ -27,7 +27,11 @@ green:state=='controls'
 					<field name="x_date_record"     string="Fecha de creación"/>
 
 
-					<field name="origin"/>
+
+					<field name="origin"		string='Origen'/>
+					<field name="x_vip"			string='Vip'/>
+
+
 
 
 					<field name="city"		string="Depto"/>

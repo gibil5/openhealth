@@ -10,11 +10,8 @@
 <!-- See Productivity -->
 		<record model="ir.actions.act_window" id="management_day_line_form_action"> 
 			<field name="name">Ventas Promedio</field>
-<!--
-			<field name="res_model">openhealth.management.day.line</field>
--->
-			<field name="res_model">productivity.day</field>
 
+			<field name="res_model">productivity.day</field>
 
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
@@ -31,11 +28,8 @@
 		<record model="ir.actions.act_window" id="management_day_doctor_line_form_action"> 
 			
 			<field name="name">Ventas Diario</field>
-<!--
-			<field name="res_model">openhealth.management.day.doctor.line</field>
--->
-			<field name="res_model">doctor.daily</field>
 
+			<field name="res_model">doctor.daily</field>
 
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>

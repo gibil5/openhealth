@@ -330,17 +330,19 @@
 
 		'views/patients/patient_origin.xml',
 		'views/patients/patient.xml',
-
-		#'views/patients/patient_appointments.xml',
-
+		#'views/patients/patient_appointments.xml',	 # Dep
 		'views/patients/patient_tree.xml',
 		'views/patients/patient_search.xml',
 
 
-		# Containers 
-		'views/containers/texto.xml',
-		'views/containers/container.xml',
-		'views/containers/corrector.xml',
+
+
+		# Containers - Dep - In PL
+		#'views/containers/texto.xml',
+		#'views/containers/container.xml',
+		#'views/containers/corrector.xml',
+
+
 
 
 		# Partners
@@ -420,26 +422,24 @@
 		'views/reports/report_sale_favorites.xml',
 		'views/reports/report_sale_search.xml',
 		'views/reports/report_sale.xml',
-
 		'views/rsp/report_sale_actions.xml',
 
-		#'views/rsp/report_sale_actions.xml',            	# Dep
 
 
 # ----------------------------------------------------------- Menus ------------------------------------------------------
 		'views/menus/menus.xml',
 		'views/menus/menus_dev.xml',
-
 		'views/menus/menus_caja.xml',
-
-		#'views/menus/menus_rsp.xml',		# Dep ?
-		#'views/menus/menus_marketing.xml', # Dep ?
-
 		'views/menus/menus_management.xml',
-		'views/menus/menus_account.xml',
 		'views/menus/menus_products.xml',
-
 		'views/menus/menus_oeh.xml',
+
+
+		# In PL
+		#'views/menus/menus_rsp.xml',		# Dep PL
+		#'views/menus/menus_marketing.xml', # Dep PL
+		#'views/menus/menus_account.xml',  # DEP PL
+
 
 
 # ----------------------------------------------------------- Security - Models - Last ------------------------------------------------------

@@ -139,7 +139,9 @@
 <!-- ACTION -->
 		<record model="ir.actions.act_window" id="container_list_action">
 			<field name="name">Containers</field>
+			
 			<field name="res_model">openhealth.container</field>
+			
 			<field name="view_type">form</field>
 			<field name="view_mode">tree,form</field>
 			<field name="context">{}</field>            
@@ -151,5 +153,6 @@
 				</p>
 			</field>
 		</record>
+
 	</data>
 </openerp>

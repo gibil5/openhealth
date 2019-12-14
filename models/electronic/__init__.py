@@ -6,5 +6,5 @@ from . import electronic_line
 
 from . import coder 
 
-from . import texto
+#from . import texto
 

@@ -1,4 +1,28 @@
 # -*- coding: utf-8 -*-
+"""
+	Pat Vars
+
+	Should migrate to Patient. As Class Vars
+
+"""
+
+
+_sex_type_list = [
+					('Male', 'Masculino'),
+					('Female', 'Femenino'),
+]
+
+
+_education_level_type = [
+			('first', 'Primaria'),
+			('second', 'Secundaria'),
+			('technical', 'Instituto'),
+			('university', 'Universidad'),
+			('masterphd', 'Posgrado'),
+]
+
+
+
 
 
 
@@ -109,14 +133,6 @@ _dic_id_doc_code = {
 
 
 
-_education_level_type = [
-			('first', 'Primaria'),
-			('second', 'Secundaria'),
-			('technical', 'Instituto'),
-			('university', 'Universidad'),
-			('masterphd', 'Posgrado'),
-]
-
 
 
 
@@ -145,10 +161,6 @@ _FAMILY_RELATION = [
 
 
 
-_sex_type_list = [
-					('Male', 'Masculino'),
-					('Female', 'Femenino'),
-]
 
 
 

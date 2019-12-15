@@ -8,7 +8,7 @@
 
 	'description': """
 
-		14 Dec 2019,
+		15 Dec 2019,
 		v. 1.0
 
 		Contains:

@@ -44,8 +44,8 @@ class PatientOrigin(models.Model):
 
 
 				# Tacna
-				#('press', 			'press'),
-				#('radio', 			'radio'),
+				('press', 			'press'),
+				('radio', 			'radio'),
 			],
 			#string='Nombre',
 		)
@@ -75,6 +75,11 @@ class PatientOrigin(models.Model):
 					'recommendation': 	'Recomendacion',
 
 					'other': 			'Otros',
+
+
+					# Tacna
+					'press': 			'Prensa',
+					'radio': 			'Radio',
 		}
 
 
@@ -92,6 +97,11 @@ class PatientOrigin(models.Model):
 					'recommendation': 	'Recomendacion',
 
 					'other': 			'Otros',
+
+
+					# Tacna
+					#'press': 			'Prensa',
+					#'radio': 			'Radio',
 		}
 
 
@@ -122,8 +132,8 @@ class PatientOrigin(models.Model):
 
 
 				# Tacna
-				#('press', 			'Prensa'),
-				#('radio', 			'Radio'),
+				('press', 			'Prensa'),
+				('radio', 			'Radio'),
 			],
 
 			string='Familia',

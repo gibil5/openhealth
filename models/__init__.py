@@ -187,10 +187,11 @@ from account import *
 
 
 
-# Containers
+# Containers - Dep
 #from . import container
 #from . import corrector
-from containers import *
+
+#from containers import *   	# Dep
 
 
 

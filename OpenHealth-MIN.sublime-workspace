@@ -523,52 +523,16 @@
 			"file": "med__openerp__.py",
 			"settings":
 			{
-				"buffer_size": 12008,
+				"buffer_size": 12020,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "x_readme.txt",
+			"file": "models/electronic/container.py",
 			"settings":
 			{
-				"buffer_size": 21,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/patient/patient.py",
-			"settings":
-			{
-				"buffer_size": 32698,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/patient/patient_origin.py",
-			"settings":
-			{
-				"buffer_size": 2756,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/patient/pat_vars.py",
-			"settings":
-			{
-				"buffer_size": 4576,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/management/management.py",
-			"settings":
-			{
-				"buffer_size": 11027,
+				"buffer_size": 317,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -578,6 +542,15 @@
 			"settings":
 			{
 				"buffer_size": 3526,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/libs/repo.py",
+			"settings":
+			{
+				"buffer_size": 791,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		}
@@ -655,6 +628,23 @@
 	},
 	"file_history":
 	[
+		"/Users/gibil/cellar/github/openhealth/models/__init__.py",
+		"/Users/gibil/cellar/github/openhealth/models/containers/test_cases_pat.py",
+		"/Users/gibil/cellar/github/openhealth/models/containers/lib_exp.py",
+		"/Users/gibil/cellar/github/openhealth/models/containers/lib_account_codes.py",
+		"/Users/gibil/cellar/github/openhealth/models/containers/export.py",
+		"/Users/gibil/cellar/github/openhealth/models/containers/test.py",
+		"/Users/gibil/cellar/github/openhealth/models/electronic/container.py",
+		"/Users/gibil/cellar/github/openhealth/models/patient/patient.py",
+		"/Users/gibil/cellar/github/openhealth/models/patient/patient_origin.py",
+		"/Users/gibil/cellar/github/openhealth/models/patient/pat_vars.py",
+		"/Users/gibil/cellar/github/openhealth/models/management/management.py",
+		"/Users/gibil/cellar/github/openhealth/models/django/interface.py",
+		"/Users/gibil/cellar/github/openhealth/models/containers/corrector.py",
+		"/Users/gibil/cellar/github/openhealth/models/containers/__init__.py",
+		"/Users/gibil/cellar/github/openhealth/x_readme.txt",
+		"/Users/gibil/cellar/github/openhealth/models/electronic/__init__.py",
+		"/Users/gibil/cellar/github/openhealth/models/containers/container.py",
 		"/Users/gibil/cellar/github/openhealth/models/libs/repo.py",
 		"/Users/gibil/cellar/github/openhealth/meread.txt",
 		"/Users/gibil/cellar/github/openhealth/views/management/management_trees.xml",
@@ -671,9 +661,6 @@
 		"/Users/gibil/cellar/github/openhealth/views/electronic/electronic_line.xml",
 		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_platform.xml",
 		"/Users/gibil/cellar/github/openhealth/models/marketing/place_line.py",
-		"/Users/gibil/cellar/github/openhealth/models/patient/pat_vars.py",
-		"/Users/gibil/cellar/github/openhealth/models/patient/patient_origin.py",
-		"/Users/gibil/cellar/github/openhealth/models/patient/patient.py",
 		"/Users/gibil/cellar/github/openhealth/models/marketing/marketing.py",
 		"/Users/gibil/cellar/github/openhealth/models/product/product.TRASH.py",
 		"/Users/gibil/cellar/github/openhealth/readme.txt",
@@ -687,15 +674,10 @@
 		"/Users/gibil/cellar/github/openhealth/readme.md",
 		"/Users/gibil/cellar/github/openhealth/models/electronic/texto.py",
 		"/Users/gibil/cellar/github/openhealth/models/electronic/texto.DEP.py",
-		"/Users/gibil/cellar/github/openhealth/models/management/management.py",
 		"/Users/gibil/cellar/github/openhealth/views/containers/container.xml",
 		"/Users/gibil/cellar/github/openhealth/views/menus/menus_account.xml",
 		"/Users/gibil/cellar/github/openhealth/models/containers/container.DEP.py",
-		"/Users/gibil/cellar/github/openhealth/models/containers/corrector.py",
 		"/Users/gibil/cellar/github/openhealth/views/rsp/report_sale_product.xml",
-		"/Users/gibil/cellar/github/openhealth/models/electronic/__init__.py",
-		"/Users/gibil/cellar/github/openhealth/models/containers/container.py",
-		"/Users/gibil/cellar/github/openhealth/models/containers/__init__.py",
 		"/Users/gibil/cellar/github/openhealth/data/users/base_data_users_generics.xml",
 		"/Users/gibil/cellar/github/openhealth/views/marketing/histogram.xml",
 		"/Users/gibil/cellar/github/openhealth/views/marketing/marketing.xml",
@@ -711,7 +693,6 @@
 		"/Users/gibil/cellar/github/openhealth/views/marketing/place_actions.xml",
 		"/Users/gibil/cellar/github/openhealth/views/patients/patient_origin.xml",
 		"/Users/gibil/cellar/github/openhealth/views/menus/menus_caja.xml",
-		"/Users/gibil/cellar/github/openhealth/models/__init__.py",
 		"/Users/gibil/cellar/github/openhealth/models/libs/repo.DEP.py",
 		"/Users/gibil/cellar/github/openhealth/models/order/report_sale_product.py",
 		"/Users/gibil/cellar/github/openhealth/models/order/card.py",
@@ -722,7 +703,6 @@
 		"/Users/gibil/cellar/github/openhealth/models/order/order.py",
 		"/Users/gibil/cellar/github/openhealth/models/emr/treatment.py",
 		"/Users/gibil/cellar/github/openhealth/models/management/management.TRASH.py",
-		"/Users/gibil/cellar/github/openhealth/models/django/interface.py",
 		"/Users/gibil/cellar/github/openhealth/models/marketing/patient_line.DEP.py",
 		"/Users/gibil/cellar/github/openhealth/models/order/ord_funcs.py",
 		"/Users/gibil/cellar/github/openhealth/models/libs/count_funcs.py",
@@ -775,14 +755,7 @@
 		"/Users/gibil/cellar/github/openhealth/models/management/line.py",
 		"/Users/gibil/cellar/github/openhealth/models/marketing/marketing.TRASH.py",
 		"/Users/gibil/cellar/github/openhealth/models/management/day_doctor_line.py",
-		"/Users/gibil/cellar/github/openhealth/models/order/order_line.py",
-		"/Users/gibil/cellar/github/openhealth/models/order/closing.py",
-		"/Users/gibil/cellar/github/openhealth/reports/paper_format.xml",
-		"/Users/gibil/cellar/github/openhealth/models/order/order_admin.py",
-		"/Users/gibil/cellar/github/openhealth/models/order/tick_funcs.DEP.py",
-		"/Users/gibil/cellar/github/openhealth/models/order/tick_funcs.py",
-		"/Users/gibil/cellar/github/openhealth/models/order/raw_funcs.py",
-		"/Users/gibil/cellar/github/openhealth/views/orders/order.xml"
+		"/Users/gibil/cellar/github/openhealth/models/order/order_line.py"
 	],
 	"find":
 	{
@@ -1083,15 +1056,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12008,
+						"buffer_size": 12020,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								271,
-								271
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1108,150 +1081,34 @@
 				},
 				{
 					"buffer": 1,
-					"file": "x_readme.txt",
+					"file": "models/electronic/container.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 21,
+						"buffer_size": 317,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								21,
-								21
+								314,
+								314
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/Python/Python.sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "models/patient/patient.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 32698,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1804,
-								1804
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1253.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "models/patient/patient_origin.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2756,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1746,
-								1746
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 2151.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "models/patient/pat_vars.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4576,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1180.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "models/management/management.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 11027,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								861,
-								861
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1180.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
+					"buffer": 2,
 					"file": "models/django/interface.py",
 					"semi_transient": false,
 					"settings":
@@ -1263,8 +1120,8 @@
 						"selection":
 						[
 							[
-								0,
-								0
+								2644,
+								2905
 							]
 						],
 						"settings":
@@ -1273,10 +1130,39 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 212.0,
+						"translation.y": 2604.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "models/libs/repo.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 791,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								264,
+								304
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				}
 			]

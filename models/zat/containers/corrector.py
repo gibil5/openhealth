@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-	Corrector
+	Corrector - Dep
 
 	Created: 				 6 Nov 2018
 	Last mod: 				 8 Nov 2018

@@ -179,6 +179,9 @@
 
 
 
+
+		# Dep - Done In PL
+
 		# Marketing - Dep
 		#'views/marketing/patient_line_search.xml',
 		#'views/marketing/patient_line.xml',
@@ -203,18 +206,30 @@
 		'views/electronic/electronic_line.xml',
 
 
-		# Management 
-		'views/management/management_day_line.xml',
-		'views/management/management_day_doctor_line.xml',
-		'views/management/management_family_line.xml',
-		'views/management/management_subfamily_line.xml',
-		'views/management/management_order_line.xml',
-		'views/management/management_doctor_line.xml',
 
-		'views/management/management_trees.xml',
-		'views/management/management_actions.xml',
-		'views/management/management.xml',
+
+
+		# Management - Dep
+		# Done in PL
+
+		#'views/management/management_day_line.xml',  		# Dep
+		#'views/management/management_day_doctor_line.xml',	# Dep
+
+		#'views/management/management_productivity_day.xml',
+		#'views/management/management_doctor_daily.xml',	
+
+		#'views/management/management_family_line.xml',
+		#'views/management/management_subfamily_line.xml',
+
+		#'views/management/management_order_line.xml',
+		#'views/management/management_doctor_line.xml',
+
+		#'views/management/management_trees.xml',
+		#'views/management/management_actions.xml',
+		#'views/management/management.xml',
 		
+
+
 
 
 
@@ -430,15 +445,17 @@
 		'views/menus/menus.xml',
 		'views/menus/menus_dev.xml',
 		'views/menus/menus_caja.xml',
-		'views/menus/menus_management.xml',
+		
+		
 		'views/menus/menus_products.xml',
 		'views/menus/menus_oeh.xml',
 
 
-		# In PL
-		#'views/menus/menus_rsp.xml',		# Dep PL
-		#'views/menus/menus_marketing.xml', # Dep PL
-		#'views/menus/menus_account.xml',  # DEP PL
+		# Dep - Done In PL
+		#'views/menus/menus_management.xml',	
+		#'views/menus/menus_rsp.xml',			# Dep PL
+		#'views/menus/menus_marketing.xml', 	# Dep PL
+		#'views/menus/menus_account.xml',  		# DEP PL
 
 
 

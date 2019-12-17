@@ -35,9 +35,6 @@ class Management(models.Model):
 
 
 
-
-
-
 # ----------------------------------------------------------- Prod ----------------------
 	# For Update Productivity
 	productivity_day = fields.One2many(

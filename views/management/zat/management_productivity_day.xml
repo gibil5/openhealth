@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		
+
+
+<!-- ACTION --> 
+        <!-- Productivity Day --> 
+        <record model="ir.actions.act_window" id="productivity_day_list_action">
+
+            <field name="name">Productivity Day</field>
+
+            <field name="res_model">productivity.day</field>
+
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first receipt
+                </p>
+            </field>
+        </record>
+
+
+
+
+<!-- TREE --> 
+        <record model="ir.ui.view" id="productivity_day_view_tree">
+
+            <field name="name">.productivy.day.tree</field>
+
+            <field name="model">productivity.day</field>
+            
+            <field name="arch" type="xml">
+
+                <tree string="Productivity Tree">
+
+                    <field name="name"/>
+
+                    <field name="date"/>
+
+                    <field name="weekday"/>
+
+                    <field name="duration"/>
+
+                    <field name="management_id"/>
+
+
+
+                    <!-- Cumulative -->
+                    <field name="cumulative"/>
+                    <field name="nr_days"/>
+                    <field name="nr_days_total"/>
+     
+
+     
+                    <!-- Average -->
+                    <field name="avg_amount"/>
+                    <field name="projection"/>
+
+
+                </tree>
+            </field>
+        </record>
+
+
+
+        <!-- Filter --> 
+        <record id="view_management_prod_day_filter" model="ir.ui.view">
+            
+            <field name="name">Prod Day Search</field>
+            
+            <field name="model">productivity.day</field>
+            
+            <field name="arch" type="xml">
+            
+               <search string="Prod Day">
+            
+                    <field  name="management_id"/>
+            
+               </search>
+           </field>
+       </record>
+
+
+	</data>
+</openerp>

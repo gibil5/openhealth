@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		
+
+
+<!-- ACTION --> 
+        <!-- Doctor Daily --> 
+        <record model="ir.actions.act_window" id="doctor_daily_list_action">
+
+            <field name="name">Productivity Day</field>
+
+            <field name="res_model">doctor.daily</field>
+
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first receipt
+                </p>
+            </field>
+        </record>
+
+
+
+<!-- TREE --> 
+<!--
+        <record model="ir.ui.view" id="doctor_daily_view_tree">
+
+            <field name="name">price_list.doctor.daily</field>
+
+            <field name="model">doctor.daily</field>
+            
+            <field name="arch" type="xml">
+
+                <tree string="Productivity Tree">
+
+                    <field name="date"/>
+
+                    <field name="management_id"/>
+
+                    <field name="doctor_id"/>
+
+                    <field name="order_line"/>
+
+
+                    <field name="weekday"/>
+                    <field name="duration"/>
+                </tree>
+            </field>
+        </record>
+-->
+
+
+
+        <!-- Filter --> 
+        <record id="view_management_doctor_daily_filter" model="ir.ui.view">
+            
+            <field name="name">Doctor Daily Search</field>
+            
+            <field name="model">doctor.daily</field>
+            
+            <field name="arch" type="xml">
+            
+               <search string="Doctor Daily">
+            
+                    <field  name="management_id"/>
+            
+               </search>
+           </field>
+       </record>
+
+
+	</data>
+</openerp>

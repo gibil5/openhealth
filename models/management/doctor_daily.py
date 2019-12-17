@@ -16,3 +16,12 @@ class DoctorDaily(models.Model):
 	_name = 'doctor.daily'
 
 	#_inherit = 'openhealth.management.doctor.line'
+
+
+# ----------------------------------------------------------- Relational --------------------------
+
+	management_id = fields.Many2one(
+			'openhealth.management',
+			#ondelete='cascade',
+			required=True,
+		)

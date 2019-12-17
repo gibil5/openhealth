@@ -7,6 +7,33 @@
 <!-- ACTION -->
 
 
+	   <!-- Month All -->
+		<record model="ir.actions.act_window" id="management_list_mgt_all_action">
+
+			<field name="name">Análisis de Ventas - Todo</field>
+
+			<field name="res_model">openhealth.management</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form,graph</field>
+			<field name="context">{}</field>
+
+			<field name="domain">[
+									('owner', 'in', ['month', 'aggregate']),
+								]
+			</field>
+			<!--
+									('year', 'in', ['2019']),
+			<field name="domain">[]</field>
+			<field name="context">{}</field>
+			<field name="view_id" eval="False"/>            
+			-->
+			<field name="view_id" ref="management_view_tree"/> 
+		</record>
+
+
+
+
+
 		<!-- Month 2019 -->
 		<record model="ir.actions.act_window" id="management_list_mgt_2019_action">
 
@@ -109,29 +136,6 @@
 
 
 
-
-	   <!-- Month All -->
-		<record model="ir.actions.act_window" id="management_list_mgt_all_action">
-
-			<field name="name">Análisis de Ventas - Todo</field>
-
-			<field name="res_model">openhealth.management</field>
-			<field name="view_type">form</field>
-			<field name="view_mode">tree,form,graph</field>
-			<field name="context">{}</field>
-
-			<field name="domain">[
-									('owner', 'in', ['month', 'aggregate']),
-								]
-			</field>
-			<!--
-									('year', 'in', ['2019']),
-			<field name="domain">[]</field>
-			<field name="context">{}</field>
-			<field name="view_id" eval="False"/>            
-			-->
-			<field name="view_id" ref="management_view_tree"/> 
-		</record>
 
 		
 	</data>

@@ -94,13 +94,9 @@
 <!--
 					<button 
 							type="object"
-							
 							class="oe_highlight"
-							
 							name="test_raw_lines"
-
 							string="Test Raw Lines"
-
 							groups='openhealth.roots'
 						/>
 -->
@@ -109,12 +105,10 @@
 					<!-- Test Raw Receipt -->
 					<button 
 							type="object"
-							
 							class="oe_highlight"
-							
 							name="test_raw_receipt"
 
-							string="Test Raw Rec"
+							string="T Raw Rec"
 
 							groups='openhealth.roots'
 						/>
@@ -123,12 +117,10 @@
 					<!-- Test Raw Invoice -->
 					<button 
 							type="object"
-							
 							class="oe_highlight"
-							
 							name="test_raw_invoice"
 
-							string="Test Raw Inv"
+							string="T Raw Inv"
 
 							groups='openhealth.roots'
 						/>
@@ -137,12 +129,10 @@
 					<!-- Test Raw CN -->
 					<button 
 							type="object"
-							
 							class="oe_highlight"
-							
 							name="test_raw_credit_note"
 
-							string="Test Raw CN"
+							string="T Raw CN"
 
 							groups='openhealth.roots'
 						/>
@@ -152,12 +142,22 @@
 					<!-- Test Serial Number -->
 					<button 
 							type="object"
-							
 							class="oe_highlight"
-							
 							name="test_serial_number"
 
-							string="Test SN"
+							string="T SN"
+
+							groups='openhealth.roots'
+						/>
+
+
+					<!-- Test -->
+					<button 
+							type="object"
+							class="oe_highlight"
+							name="test"
+
+							string="Test"
 
 							groups='openhealth.roots'
 						/>

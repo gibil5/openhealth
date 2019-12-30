@@ -8,7 +8,7 @@
 
 	'description': """
 
-		17 Dec 2019,
+		30 Dec 2019,
 		v. 
 		
 		Contains:

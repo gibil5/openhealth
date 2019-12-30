@@ -32,7 +32,7 @@
                                 string="Imprimir"
                         />
 
-
+<!--
                         <button 
                                 type="object" 
                                 class="oe_highlight oe_right"
@@ -53,9 +53,25 @@
 
                                 groups="openhealth.roots"
                         />
+-->
+
+                        <!-- Reset -->
+                        <button 
+                                type="object" 
+                                class="oe_highlight oe_right"
+
+                                name="reset"
+
+                                string="Reset"
+
+                                groups="openhealth.roots"
+                        />
+
                     </header>
 
-                    <!-- Sheet -->  
+
+
+<!-- Sheet -->  
                     <sheet>
 
 

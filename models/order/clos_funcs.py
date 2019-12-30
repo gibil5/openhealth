@@ -1,14 +1,53 @@
 # -*- coding: utf-8 -*-
 """
- 		clos_funcs.py
+ 		clos_funcs.py - Dep
+ 		Migrated to PriceList.
 
  		Created: 			       2016
-		Last up: 	 		26 Nov 2019
+		Last up: 	 		30 Dec 2019
 
 		Abstract, General purpose. Provider of services.
 """
 from __future__ import print_function
 import datetime
+
+
+
+
+# ----------------------------------------------------------- Get Orders By State -----------------
+def get_orders_by_state_all(self, date):
+	"""
+	26 Nov 2019: Only used by Closings
+	To include Credit notes in Closing generation.
+	"""
+	print()
+	print('2018 - Get Orders State All')
+
+
+	# Init
+	count = 0
+	DATETIME_FORMAT = "%Y-%m-%d"
+	date_begin = date + ' 05:00:00'
+	date_end_dt = datetime.datetime.strptime(date, DATETIME_FORMAT) + datetime.timedelta(hours=24) + datetime.timedelta(hours=5, minutes=0)
+	date_end = date_end_dt.strftime('%Y-%m-%d %H:%M')
+
+	# Search
+	orders = self.env['sale.order'].search([
+												#('state', '=', state),
+												('state', 'in', ['sale', 'credit_note']),
+
+												('date_order', '>=', date_begin),
+												('date_order', '<', date_end),
+										])
+	count = self.env['sale.order'].search_count([
+												#('state', '=', state),
+												('state', 'in', ['sale', 'credit_note']),
+
+												('date_order', '>=', date_begin),
+												('date_order', '<', date_end),
+										])
+	return orders, count
+# get_orders_by_state
 
 
 
@@ -19,7 +58,7 @@ def get_orders(self, date, x_type):
 	15 Feb 2019: Added Filter Block
 	"""
 	print()
-	print('Get Orders')
+	print('2018 - Get Orders')
 	print(date)
 	print(x_type)
 
@@ -84,40 +123,6 @@ def get_orders(self, date, x_type):
 
 
 
-# ----------------------------------------------------------- Get Orders By State -----------------
-def get_orders_by_state_all(self, date):
-	"""
-	26 Nov 2019: Only used by Closings
-	To include Credit notes in Closing generation.
-	"""
-	print()
-	print('Get Orders State')
-
-
-	# Init
-	count = 0
-	DATETIME_FORMAT = "%Y-%m-%d"
-	date_begin = date + ' 05:00:00'
-	date_end_dt = datetime.datetime.strptime(date, DATETIME_FORMAT) + datetime.timedelta(hours=24) + datetime.timedelta(hours=5, minutes=0)
-	date_end = date_end_dt.strftime('%Y-%m-%d %H:%M')
-
-	# Search
-	orders = self.env['sale.order'].search([
-												#('state', '=', state),
-												('state', 'in', ['sale', 'credit_note']),
-
-												('date_order', '>=', date_begin),
-												('date_order', '<', date_end),
-										])
-	count = self.env['sale.order'].search_count([
-												#('state', '=', state),
-												('state', 'in', ['sale', 'credit_note']),
-
-												('date_order', '>=', date_begin),
-												('date_order', '<', date_end),
-										])
-	return orders, count
-# get_orders_by_state
 
 
 
@@ -128,7 +133,7 @@ def get_orders_by_state(self, date, state):
 	"""
 	"""
 	print()
-	print('Get Orders State')
+	print('2018 - Get Orders State')
 
 
 	# Init
@@ -166,7 +171,7 @@ def get_gen_totals(self):
 	Provider of services.
 	"""
 	print()
-	print('Get Generic Totals')
+	print('2018 - Get Generic Totals')
 
 	# Get
 	orders, count = get_orders(self, self.date, self.x_type)
@@ -207,7 +212,7 @@ def set_proof_totals(self):
 	User of services.
 	"""
 	print()
-	print('Set By Proof')
+	print('2018 - Set By Proof')
 
 
 	# Receipt
@@ -281,7 +286,7 @@ def set_form_totals(self):
 	User of services.
 	"""
 	print()
-	print('Set By Form')
+	print('2018 - Set By Form')
 
 	# Get Orders
 	x_type = 'all'
@@ -347,7 +352,7 @@ def set_totals(self):
 	User of services.
 	"""
 	print()
-	print('Set All')
+	print('2018 - Set All')
 
 
 	# Get Orders

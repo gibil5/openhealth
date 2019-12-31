@@ -55,6 +55,19 @@
                         />
 -->
 
+                        <!-- Test -->
+                        <button 
+                                type="object" 
+                                class="oe_highlight oe_right"
+
+                                name="test"
+
+                                string="Test"
+
+                                groups="openhealth.roots"
+                        />
+
+
                         <!-- Reset -->
                         <button 
                                 type="object" 
@@ -63,6 +76,19 @@
                                 name="reset"
 
                                 string="Reset"
+
+                                groups="openhealth.roots"
+                        />
+
+
+                        <!-- Clean -->
+                        <button 
+                                type="object" 
+                                class="oe_highlight oe_right"
+
+                                name="clean"
+
+                                string="Clean"
 
                                 groups="openhealth.roots"
                         />

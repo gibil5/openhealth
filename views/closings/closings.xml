@@ -106,8 +106,9 @@
                             <group>
                                 <field name="name"/>
                                 <field name="date"/>
-                                <field name="month"/>
-                                <field name="year"/>
+
+                                <field name="month" groups='openhealth.roots'/>
+                                <field name="year"  groups='openhealth.roots'/>
                             </group>
                             <group>
                                 <field name="total"/>

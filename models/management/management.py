@@ -298,7 +298,7 @@ class Management(models.Model):
 			selection=ord_vars._year_order_list,
 
 			string='Año',
-			default='2019',
+			default='2020',
 			required=True,
 		)
 

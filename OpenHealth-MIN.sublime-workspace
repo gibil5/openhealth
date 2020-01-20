@@ -529,6 +529,24 @@
 			}
 		},
 		{
+			"file": "rutter.txt",
+			"settings":
+			{
+				"buffer_size": 359,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "models/patient/pat_vars.py",
+			"settings":
+			{
+				"buffer_size": 5007,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
 			"file": "x_readme.txt",
 			"settings":
 			{
@@ -542,15 +560,6 @@
 			"settings":
 			{
 				"buffer_size": 32838,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "models/patient/pat_vars.py",
-			"settings":
-			{
-				"buffer_size": 5007,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -587,15 +596,6 @@
 			"settings":
 			{
 				"buffer_size": 34523,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "rutter.txt",
-			"settings":
-			{
-				"buffer_size": 321,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -1120,7 +1120,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -1149,11 +1149,68 @@
 						"translation.y": 1301.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
+					"file": "rutter.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 359,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								307,
+								343
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "models/patient/pat_vars.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5007,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								23,
+								23
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
 					"file": "x_readme.txt",
 					"semi_transient": false,
 					"settings":
@@ -1177,11 +1234,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 4,
 					"file": "models/patient/patient.py",
 					"semi_transient": false,
 					"settings":
@@ -1206,40 +1263,11 @@
 						"translation.y": 170.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "models/patient/pat_vars.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5007,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								413,
-								413
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
+					"buffer": 5,
 					"file": "models/patient/partner.py",
 					"semi_transient": false,
 					"settings":
@@ -1264,11 +1292,11 @@
 						"translation.y": 1157.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "models/patient/partner_vars.py",
 					"semi_transient": false,
 					"settings":
@@ -1293,11 +1321,11 @@
 						"translation.y": 1262.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 7,
 					"file": "reports/print_ticket_receipt_electronic.xml",
 					"semi_transient": false,
 					"settings":
@@ -1322,11 +1350,11 @@
 						"translation.y": 4846.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 8,
 					"file": "models/order/order.py",
 					"semi_transient": false,
 					"settings":
@@ -1351,35 +1379,7 @@
 						"translation.y": 4982.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "rutter.txt",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 321,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								280,
-								306
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -1409,7 +1409,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
@@ -1439,7 +1439,7 @@
 						"translation.y": 58.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
@@ -1696,7 +1696,7 @@
 		[
 			[
 				"",
-				"~/rails/gob.pe/municipio_al_dia/issue_1/municipio_al_dia/Mad_issue_01.sublime-project"
+				"~/cellar/github/price_list/PriceList.sublime-project"
 			],
 			[
 				"\t",

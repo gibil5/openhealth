@@ -1,10 +1,29 @@
 # -*- coding: utf-8 -*-
 """
-	Pat Vars
+		Pat Vars - Should migrate to Patient. As Class Vars
 
-	Should migrate to Patient. As Class Vars
-
+		Created: 			26 Aug 2016
+		Last updated: 	 	21 Nov 2019
 """
+
+
+
+_function_list = [
+			('student', 		'Estudiante'),
+			('employee', 		'Trabajador Dependiente'),
+			('employee_independent', 	'Trabajador Independiente'),
+			('entrepreneur', 	'Empresario'),
+			('housekeeper', 	'Ama/o de casa'),
+			('unemployed', 		'Desempleado'),
+]
+
+#Estudiante
+#Trabajador Dependiente
+#Trabajador Independiente
+#Empresario
+#Ama/o de casa
+#Desempleado
+
 
 
 _sex_type_list = [

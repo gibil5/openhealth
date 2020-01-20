@@ -1239,8 +1239,13 @@ class Patient(models.Model):
 			default="2000-01-01"
 		)
 
+
 	# Function
-	function = fields.Char(
+	#function = fields.Char(
+	function = fields.Selection(
+
+			selection=pat_vars._function_list,
+
 			string='Ocupación',
 			placeholder='',
 			#required=True,

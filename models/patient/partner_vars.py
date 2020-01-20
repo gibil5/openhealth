@@ -101,7 +101,7 @@ _city_list = [
 			('trujillo','Trujillo'),
 			('tumbes','Tumbes'),
 
-			('other','Otros'),
+			#('other','Otros'),
 
 
 			# Legacy

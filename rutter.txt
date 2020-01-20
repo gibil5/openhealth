@@ -29,6 +29,9 @@ git commit -a -m 'Clean'
 
 git commit -a -m 'Alta'  
 
+git commit -a -m 'Patient, Sale'   
+
+
 
 
 git push 

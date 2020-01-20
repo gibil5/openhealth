@@ -314,7 +314,16 @@ class sale_order(models.Model):
 		"""
 		Used by Print Ticket.
 		"""
-		return self.note
+		#return self.note
+
+		if self.x_type in ['ticket_receipt']:
+			note = 'Representación impresa de la BOLETA DE VENTA ELECTRONICA.'
+		elif self.x_type in ['ticket_invoice']:
+			note = 'Representación impresa de la FACTURA DE VENTA ELECTRONICA.'
+		else:
+			note = ''
+
+		return note
 
 
 

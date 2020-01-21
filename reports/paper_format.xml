@@ -3,11 +3,53 @@
 
 
 
+<!-- Pos --> 
+<!--
+        <record id="appointment_receipt" model="report.paperformat">
+-->
+
+        <record id="closing_electronic" model="report.paperformat">
+
+            <field name="name">Closing - Electronic - 20 Jan 2020</field>
+
+            <field name="format">custom</field>
+
+            <field name="orientation">Portrait</field>
+
+            <field name="page_width">75</field>
+
+            <field name="margin_top">0</field>
+
+            <field name="margin_bottom">3</field>           
+
+            <field name="margin_left">5</field>         
+
+            <field name="margin_right">3</field>
+
+            <field name="header_spacing">0</field>
+
+            <field name="dpi">130</field>
+
+
+            <field name="page_height">380</field>
+        </record>
+<!--
+            <field name="page_height">300</field>
+
+            <field name="margin_top">3</field>
+            <field name="header_spacing">3</field>
+            <field name="margin_left">10</field>            
+            <field name="margin_right">0</field>
+            <field name="page_width">100</field>
+-->
+
+
+
 
 <!-- Electronic --> 
         <record id="appointment_receipt_electronic" model="report.paperformat">
 
-            <field name="name">Appointment Receipt - ELECTRONIC - 26 Jul 2019</field>
+            <field name="name">Receipt - Electronic - 20 Jan 2020</field>
 
             <field name="format">custom</field>
 
@@ -65,7 +107,6 @@
             
             <field name="orientation">Portrait</field>
             
-            
             <field name="margin_top">10</field>
 
             <field name="margin_bottom">13</field>
@@ -74,8 +115,6 @@
             
             <field name="margin_right">7</field>
             
-
-
             <field name="header_line" eval="False" />
             
             <field name="header_spacing">35</field>
@@ -86,46 +125,6 @@
             <field name="margin_top">40</field>
             <field name="margin_bottom">23</field>
 -->     
-
-
-
-
-
-
-<!-- Pos --> 
-        <record id="appointment_receipt" model="report.paperformat">
-
-            <field name="name">Appointment Receipt - Nex</field>
-
-            <field name="format">custom</field>
-
-            <field name="orientation">Portrait</field>
-
-            <field name="page_width">75</field>
-
-            <field name="margin_top">0</field>
-
-            <field name="margin_bottom">3</field>           
-
-            <field name="margin_left">5</field>         
-
-            <field name="margin_right">3</field>
-
-            <field name="header_spacing">0</field>
-
-            <field name="dpi">130</field>
-
-
-            <field name="page_height">300</field>
-        </record>
-<!--
-            <field name="margin_top">3</field>
-            <field name="header_spacing">3</field>
-            <field name="margin_left">10</field>            
-            <field name="margin_right">0</field>
-            <field name="page_width">100</field>
--->
-
 
     </data>
 </openerp>

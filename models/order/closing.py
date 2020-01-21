@@ -303,6 +303,8 @@ class Closing(models.Model):
 		"""
 		print('')
 		print('Print Closing')
+
 		name = "openhealth.report_closing_view"            
+
 		action = self.env['report'].get_action(self, name)
 		return action

@@ -20,9 +20,10 @@ Last up:   	4 Dec 2019
 	
 	name="openhealth.report_ticket_receipt_electronic"
 	
-	paperformat="appointment_receipt_electronic"
 	
 	file="openhealth.report_ticket_receipt_electronic"
+
+	paperformat="appointment_receipt_electronic"
 />
 
 

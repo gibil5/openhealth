@@ -1557,16 +1557,15 @@ class sale_order(models.Model):
 	@api.multi
 	def print_ticket_electronic(self):
 		"""
-		Print Ticket Electronic
+		Check and Print Ticket Electronic
 		"""
 		print('')
 		print('Print Electronic')
 
-
 		# Check Patient for Ticket
 		ord_funcs.check_ticket(self, self.x_type, self.state)
 
-
+		# Print
 		name = 'openhealth.report_ticket_receipt_electronic'
 		action = self.env['report'].get_action(self, name)
 		return action

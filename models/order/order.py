@@ -32,6 +32,16 @@ class sale_order(models.Model):
 	_description = 'Order'
 
 
+
+# ----------------------------------------------------------- Fields -------------------------------
+	# Transfer Free
+	pl_transfer_free = fields.Boolean(
+			'TRANSFERENCIA GRATUITA',
+		
+			default=False,
+		)
+
+
 # ----------------------------------------------------------- Relational -------------------------------
 	# Patient
 	patient_id = fields.Many2one(			
@@ -173,12 +183,6 @@ class sale_order(models.Model):
 			string='Receptor',
 		)
 
-	# Transfer Free
-	pl_transfer_free = fields.Boolean(
-			'TRANSFERENCIA GRATUITA',
-		
-			default=False,
-		)
 
 
 
@@ -259,12 +263,16 @@ class sale_order(models.Model):
 	def get_note(self):
 		#return self.note
 
-		if self.x_type in ['ticket_receipt']:
-			note = 'Representación impresa de la BOLETA DE VENTA ELECTRONICA.'
-		elif self.x_type in ['ticket_invoice']:
-			note = 'Representación impresa de la FACTURA DE VENTA ELECTRONICA.'
+		if self.pl_transfer_free:
+			note = 'TRANSFERENCIA A TITULO GRATUITO'
+
 		else:
-			note = ''
+			if self.x_type in ['ticket_receipt']:
+				note = 'Representación impresa de la BOLETA DE VENTA ELECTRONICA.'
+			elif self.x_type in ['ticket_invoice']:
+				note = 'Representación impresa de la FACTURA DE VENTA ELECTRONICA.'
+			else:
+				note = ''
 
 		return note
 
@@ -307,36 +315,24 @@ class sale_order(models.Model):
 
 	# Description
 	def get_description(self):
-		"""
-		Used by Print Ticket
-		"""
 		description = self.configurator.ticket_description
 		return description
 
 
 	# Warning
 	def get_warning(self):
-		"""
-		Used by Print Ticket
-		"""
 		warning = self.configurator.ticket_warning
 		return warning
 
 
 	# Website
 	def get_website(self):
-		"""
-		Used by Print Ticket
-		"""
 		website = self.configurator.website
 		return website
 
 
 	# Email
 	def get_email(self):
-		"""
-		Used by Print Ticket
-		"""
 		email = self.configurator.email
 		return email
 
@@ -704,32 +700,6 @@ class sale_order(models.Model):
 
 
 
-# ----------------------------------------------------------- Confirm - Button - Dep ----------------------
-
-	#@api.multi
-	#def action_confirm_nex(self):
-	#	"""
-	#	Button
-	#	Confirms the Sale. After Validation.
-	#	Deprecated
-	#	"""
-	#	print()
-	#	print('Action confirm - Nex')
-
-		# Generate Serial Number
-	#	if self.x_serial_nr != '' and not self.x_admin_mode:			
-
-	#		self.make_serial_number()
-
-		# State
-	#	self.state = 'sale'
-
-	# action_confirm_nex
-
-
-
-
-
 # ----------------------------------------------------------- Make SN - BUtton ----------------------
 	# Make Serial Number
 	@api.multi
@@ -741,16 +711,10 @@ class sale_order(models.Model):
 		"""
 		print()
 		print('Make Serial Number')
-
-
 		# Get Next Counter
 		self.x_counter_value = ord_funcs.get_next_counter_value(self, self.x_type, self.state)
-
-
 		# Make Serial Number
 		self.x_serial_nr = ord_funcs.get_serial_nr(self.x_type, self.x_counter_value, self.state)
-
-
 
 
 
@@ -785,20 +749,14 @@ class sale_order(models.Model):
 		img_str = qr_obj.get_img_str()
 		name = qr_obj.get_name()
 
-
 		# Print
 		qr_obj.print_obj()
-
 
 		# Update the Database
 		self.write({
 						'x_qr_img': img_str,
 						'qr_product_name':name,
 				})
-
-
-
-
 	# make_qr
 
 
@@ -848,16 +806,11 @@ class sale_order(models.Model):
 		"""
 		print()
 		print('Block Flow')
-
 		if self.state in ['credit_note']:
 			self.x_block_flow = True
 			self.x_credit_note_owner.x_block_flow = True
-
 		elif self.state in ['sale']:
 			self.x_block_flow = True
-
-
-
 
 	# Unblock Flow
 	@api.multi
@@ -887,9 +840,7 @@ class sale_order(models.Model):
 		if self.state in ['credit_note']:
 			self.x_credit_note_owner_amount = self.x_credit_note_owner.amount_total
 			self.order_line.unlink()
-
 			name = self.x_credit_note_type
-
 			# Search
 			product = self.env['product.product'].search([
 															('x_name_short', 'in', [name]),
@@ -900,7 +851,6 @@ class sale_order(models.Model):
 			print(product)
 			product_id = product.id
 			print(product_id)
-
 			line = self.order_line.create({
 											'product_id': product_id,
 											'price_unit': self.x_credit_note_amount,
@@ -924,29 +874,21 @@ class sale_order(models.Model):
 		# Init
 		state = 'credit_note'
 
-
-		# New - Ord Funcs
-
-
+# New - Ord Funcs
 		# Get counter
 		counter_value = ord_funcs.get_next_counter_value(self, self.x_type, state)
 
-
 		# Get serial nr
 		serial_nr = ord_funcs.get_serial_nr(self.x_type, counter_value, state)
-
 
 		# Duplicate with different fields
 		credit_note = self.copy(default={
 											'x_serial_nr': serial_nr,
 											'x_counter_value': counter_value,
-
 											'x_credit_note_owner': self.id,											
 											'x_title': 'Nota de Crédito Electrónica',
 											'x_payment_method': False,
-
 											'state': state,
-
 											'amount_total': self.amount_total,
 											'amount_untaxed': self.amount_untaxed,
 								})
@@ -956,7 +898,6 @@ class sale_order(models.Model):
 		self.write({
 							'x_credit_note': credit_note.id,
 					})
-
 	# create_credit_note
 
 
@@ -1093,8 +1034,6 @@ class sale_order(models.Model):
 				('x_serial_nr', 'Check(1=1)', 'SQL Warning: x_serial_nr must be unique !'),
 			]
 
-
-
 # ----------------------------------------------------------- Constraints - From Chk Patient ------
 
 	# Check Ruc
@@ -1103,13 +1042,11 @@ class sale_order(models.Model):
 		if self.x_type in ['ticket_invoice', 'invoice']:
 			chk_patient.check_x_ruc(self)
 
-
 	# Check Id doc - Use Chk Patient
 	@api.constrains('x_id_doc')
 	def _check_x_id_doc(self):
 		if self.x_type in ['ticket_receipt', 'receipt']:
 			chk_patient.check_x_id_doc(self)
-
 
 	# Check Serial Nr
 	@api.constrains('x_serial_nr')
@@ -1249,8 +1186,6 @@ class sale_order(models.Model):
 	patient = fields.Many2one(
 			'oeh.medical.patient',
 			string='Paciente',
-			#default=lambda self: user._get_default_id(self, 'patient'),
-
 			#states=READONLY_STATES,
 		)
 
@@ -1258,19 +1193,14 @@ class sale_order(models.Model):
 	x_doctor = fields.Many2one(
 			'oeh.medical.physician',
 			string="Médico",
-			#default=lambda self: user._get_default_id(self, 'doctor'),
 			states=READONLY_STATES,
 		)
-
-
-
 
 	# Order Line
 	order_line = fields.One2many(
 			'sale.order.line',
 			'order_id',
 			string='Order Lines',
-
 			#states=READONLY_STATES, 			# Done by the View
 		)
 
@@ -1289,26 +1219,16 @@ class sale_order(models.Model):
 			self.x_ruc = False
 			self.partner_id = self.patient.partner_id.id
 
-			#print self.patient.x_id_doc
-			#print self.patient.x_id_doc_type
-
 			# Id Doc
 			if self.patient.x_id_doc != False:
 				self.x_id_doc = self.patient.x_id_doc
 				self.x_id_doc_type = self.patient.x_id_doc_type
-
 
 			# Get x Dni
 			elif self.patient.x_dni not in [False, '']:
 				self.x_id_doc = self.patient.x_dni
 				self.x_id_doc_type = 'dni'
 				self.x_dni = self.patient.x_dni
-
-				# Update Patient - Dep
-				#self.x_msg = '1'
-				#self.patient.x_id_doc = self.patient.x_dni
-				#self.patient.x_id_doc_type = 'dni'
-
 
 			# Ruc
 			if self.patient.x_ruc != False:
@@ -1320,7 +1240,6 @@ class sale_order(models.Model):
 	@api.onchange('x_doctor')
 	def _onchange_x_doctor(self):
 		if self.x_doctor.name != False:
-
 			treatment = self.env['openhealth.treatment'].search([
 																	('patient', '=', self.patient.name),
 																	('physician', '=', self.x_doctor.name),
@@ -1340,9 +1259,7 @@ class sale_order(models.Model):
 
 	# State
 	state = fields.Selection(
-			
 			selection=ord_vars._state_list,
-
 			string='Estado',
 			readonly=False,
 			default='draft',
@@ -1394,11 +1311,8 @@ class sale_order(models.Model):
 		"""
 		Button Pagar
 		"""
-
 		# Update Descriptors
-		#self.update_descriptors()
 		ord_funcs.update_descriptors(self)
-
 
 		# Init vars
 		name = 'Pago'
@@ -1419,7 +1333,6 @@ class sale_order(models.Model):
 																				'ruc': ruc,
 																			})
 		payment_method_id = self.x_payment_method.id
-
 
 		# Create Lines
 		name = '1'

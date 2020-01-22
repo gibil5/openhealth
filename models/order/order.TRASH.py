@@ -1,3 +1,33 @@
+# 21 Jan 2020
+# ----------------------------------------------------------- Confirm - Button - Dep ----------------------
+
+	#@api.multi
+	#def action_confirm_nex(self):
+	#	"""
+	#	Button
+	#	Confirms the Sale. After Validation.
+	#	Deprecated
+	#	"""
+	#	print()
+	#	print('Action confirm - Nex')
+
+		# Generate Serial Number
+	#	if self.x_serial_nr != '' and not self.x_admin_mode:			
+
+	#		self.make_serial_number()
+
+		# State
+	#	self.state = 'sale'
+
+	# action_confirm_nex
+
+
+
+
+
+
+
+
 # 4 Dec 2019
 
 # ----------------------------------------------------------- Make SN - BUtton ----------------------

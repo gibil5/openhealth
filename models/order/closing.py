@@ -119,6 +119,7 @@ class Closing(models.Model):
 			#required=True,
 			#readonly=True,
 			readonly=False,
+			default='2020',
 		)
 
 

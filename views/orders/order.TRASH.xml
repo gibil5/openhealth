@@ -1,3 +1,428 @@
+<!-- 21 Jan 2020 -->
+
+
+				<!-- Short name --> 
+<!--				
+				<xpath expr="//tree/field[@name='name']" position="after">
+					<field name="x_description"/>
+				</xpath>
+-->
+
+
+
+<!--
+<xpath expr="//page[2]" position="attributes">
+	<attribute name='string'>Líneas</attribute> 
+-->
+<!-- Order Lines  -->
+<!-- Must be ReadOnly for: Sale and Cancel -->
+<!--
+	<attribute name='attrs'>{'readonly': [('state', 'in', ('sale','cancel','sent','validated'))]}</attribute>
+-->
+<!--
+-->
+
+<!--
+	<attribute name='attrs'>{'readonly': [('state', 'in', ('cancel'))]}</attribute>
+	<attribute name='attrs'>{'readonly': [('state', 'not in', ('sale', 'draft', 'cancel', 'sent'))]}</attribute>
+-->
+
+<!--
+Angelo - 4 Jun 2019
+<xpath expr="//field[@name='order_line']" position="attributes">
+	<attribute name='attrs'>{'readonly': [('state', 'in', ('sent'))]}</attribute>
+</xpath>
+-->
+
+
+
+								<!-- Cancel Boolean -->
+								<!--
+								<group>
+									<field 
+											name="x_cancel" 
+											nolabel="1" 
+											readonly="1"
+
+											groups="openhealth.roots,openhealth.caja,openhealth.managers,openhealth.directors" />
+								</group>
+								-->
+
+
+<!--
+										groups="openhealth.roots"
+										groups="openhealth.roots,openhealth.caja"
+-->
+
+<!--
+											help="Importante: Esta operación es IRREVERSIBLE !"
+-->
+
+
+
+
+<!--
+					<field name="x_doctor"      required="0"/>
+
+-->
+<!--
+
+					<field name="treatment"		required="1"/>
+-->
+
+
+
+<!--
+					<field name="x_id_doc_type"     required="0"/>
+					<field name="x_id_doc"          required="0"/>
+-->
+
+<!--
+					<field name="patient"       required="1"            options="{'no_create': False, 'no_create_edit':True}"       />
+-->
+
+<!--
+					<group>
+						<group class="">
+							<h5>
+								<field name="treatment"     readonly="1"/>
+								<field name="cosmetology"   readonly="1"/>
+							</h5>
+						</group>
+					</group>
+-->
+<!--                            
+							<field name="name"      readonly="1"/>
+-->
+
+
+
+<!--
+					<field name="x_autofill"			groups="openhealth.roots"/>
+-->
+
+<!--
+					<field name="x_serial_nr"       attrs="{     
+																		'readonly': [
+																						('x_admin_mode', '!=', True), 
+																					], 
+																}"
+							/>
+-->
+
+<!--					
+					<field name="x_counter_value"       groups="openhealth.roots,openhealth.managers"   
+					<field name="x_counter_value"	readonly="1"/>
+-->
+
+
+					<!-- Add Prod -->
+					<!-- Add Serv -->
+<!--
+
+
+					<button 
+							type="object" 
+							class="oe_highlight"
+							name="open_product_selector_product"                            
+
+							string="Agregar PRODUCTO"
+
+							states="draft"                      
+						/>
+
+					<button 
+							type="object" 
+							class="oe_highlight"
+							name="open_product_selector_service"
+
+							string="Agregar SERVICIO"
+
+							states="draft"
+						/>
+--> 
+
+
+
+
+
+<!-- Active -->
+					<!-- Correct -->
+					<button 
+							type="object" 
+							class="oe_highlight"
+							name="correct_pm"
+							string="Corregir"
+							states="sale"
+					/>
+
+
+					<!-- Test Raw Receipt -->
+					<button 
+							type="object"
+							class="oe_highlight"
+							name="test_raw_receipt"
+							string="T Raw Rec"
+							groups='openhealth.roots'
+						/>
+
+
+					<!-- Test Raw Invoice -->
+					<button 
+							type="object"
+							class="oe_highlight"
+							name="test_raw_invoice"
+							string="T Raw Inv"
+							groups='openhealth.roots'
+						/>
+
+
+					<!-- Test Raw CN -->
+					<button 
+							type="object"
+							class="oe_highlight"
+							name="test_raw_credit_note"
+							string="T Raw CN"
+							groups='openhealth.roots'
+						/>
+
+					<!-- Test Serial Number -->
+					<button 
+							type="object"
+							class="oe_highlight"
+							name="test_serial_number"
+							string="T SN"
+							groups='openhealth.roots'
+						/>
+
+
+<!-- Inactive -->
+
+
+
+					<!-- Clean Lines -->
+<!--
+					<button 
+							type="object"
+							class="oe_highlight"
+							attrs="{'invisible':[   '|',
+													('x_admin_mode','not in',[True]),
+													('state','not in',['sale', 'credit_note']), 
+											]}"
+							name="clean_order_lines"
+							string="Eliminar Lineas de Venta"
+							help="Esta operación va a eliminar TODAS las Líneas de Venta !!!"
+							confirm="Esta operación va a eliminar TODAS las Líneas de Venta !!!"
+						/>
+-->
+
+					<!-- Update CN -->
+<!--
+					<button
+							type="object"
+							class="oe_highlight"
+
+							name="update_credit_note"
+
+							states="credit_note"
+
+							string="Actualizar NC"
+					/>
+-->
+
+
+					<!-- Update Counter -->
+<!--
+					<button
+							type="object"
+							class="oe_highlight"
+							name="update_counter"
+							states="sale,credit_note"
+							string="Update Counter"
+							groups="openhealth.roots"
+					/>
+-->
+
+
+					<!-- Test -->
+<!--                    
+					<button
+							type="object"
+							class="oe_highlight"
+							states="sale"
+							name="test"
+							string="TEST"
+							groups="openhealth.roots"
+					/>
+-->
+
+
+					<!-- Update -->
+<!--
+					<button
+							type="object"
+							class="oe_highlight"
+							states="sale"
+							name="update_day_month"
+							string="Update Day Month"
+							groups="openhealth.roots"
+					/>
+
+					<button
+							type="object"
+							class="oe_highlight"
+							states="sale"
+							name="update_day_month_all"
+							string="Update Day Month ALL"
+							groups="openhealth.roots"
+					/>
+-->
+
+
+
+
+					<!-- Checksum -->
+					<!--
+					<button
+							type="object"
+							class="oe_highlight"
+							groups="openhealth.roots"
+							name="checksum"
+							string="CHECKSUM"
+							states="sale,cancel"
+					/>
+					-->
+
+					<!-- Payment -->
+					<!--
+					<button
+							type="object"
+							class="oe_highlight"
+							groups="openhealth.roots"
+							name="update_payment"
+							string="PAYMENT"
+							states="sale"
+					/>
+					-->
+
+
+					<!-- Legacy -->
+<!--
+					<button
+							type="object"
+							class="oe_highlight"
+							states="sale"
+							name="update_legacy"
+							string="Legacy"
+							groups="openhealth.roots"
+					/>
+
+					<button
+							type="object"
+							class="oe_highlight"
+							states="sale"
+							name="update_legacy_jan"
+							string="Legacy Jan"
+							groups="openhealth.roots"
+					/>
+
+					<button
+							type="object"
+							class="oe_highlight"
+							states="sale"
+							name="update_legacy_fev"
+							string="Legacy Fev"
+							groups="openhealth.roots"
+					/>
+
+					<button
+							type="object"
+							class="oe_highlight"
+							states="sale"
+							name="update_legacy_mar"
+							string="Legacy Mar"
+							groups="openhealth.roots"
+					/>
+-->
+
+
+
+
+					<!-- Make QR -->
+<!--
+					<button 
+							type="object" 
+							class="oe_highlight"
+							name="make_qr"
+							string="Make QR"
+							states="validated"
+					/>
+-->
+
+
+					<!-- Make Serial Nr -->
+<!--
+					<button 
+							type="object" 
+							class="oe_highlight"
+							name="make_serial_number"
+							string="Make Serial Nr"
+							states="sale"
+					/>
+-->
+
+
+
+
+
+
+
+					<!-- Test Raw -->
+<!--
+					<button 
+							type="object"
+							class="oe_highlight"
+							name="test_raw_lines"
+							string="Test Raw Lines"
+							groups='openhealth.roots'
+						/>
+-->
+
+
+
+
+
+					<!-- Reset --> 
+<!--
+					<button 
+							type="object" 
+							class="oe_highlight"
+							name="reset"
+							string="Reset"
+							groups="openhealth.roots"
+					/>
+-->
+
+					<!-- Quick Sale --> 
+<!--
+					<button 
+							type="object" 
+							class="oe_highlight"
+							name="quick_sale_service"
+							string="Quick Sale Service"
+							groups="openhealth.roots"
+					/>
+-->
+
+
+
+
+
+
+
+
+
+
 <!-- 28 sep 2019 -->
         <!-- Inactive -->
 <!--

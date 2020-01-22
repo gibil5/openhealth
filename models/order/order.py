@@ -3,30 +3,23 @@
 	Order
 
 	Created: 			26 Aug 2016
-	Last mod: 			 4 Dec 2019
+	Last mod: 			21 Jan 2020
 """
 from __future__ import print_function
 import datetime
 from openerp import models, fields, api
-
 from openerp import _
 from openerp.exceptions import Warning as UserError
-
 from openerp.addons.openhealth.models.libs import lib
 from openerp.addons.openhealth.models.patient import pat_vars, chk_patient
 from . import test_order
 from . import chk_order
 from . import exc_ord
 from . import tick_funcs
-
 from . import ord_vars
 from . import ord_funcs
-
 from . import raw_funcs
-
 from . import qr
-#from . import snr  	# Dep
-
 
 class sale_order(models.Model):
 	"""
@@ -37,10 +30,6 @@ class sale_order(models.Model):
 	_inherit = 'sale.order'
 
 	_description = 'Order'
-
-
-
-
 
 
 # ----------------------------------------------------------- Relational -------------------------------
@@ -57,9 +46,8 @@ class sale_order(models.Model):
 	treatment = fields.Many2one(
 			'openhealth.treatment',
 			string="Tratamiento",
-			#states=READONLY_STATES,
 			readonly=False,
-
+			#states=READONLY_STATES,
 			#ondelete='cascade',  		# Danger !!!
 		)
 
@@ -71,13 +59,6 @@ class sale_order(models.Model):
 			string="Cliente",
 			required=False,
 			readonly=False,
-
-			#states={
-			#		'draft': [('readonly', False)],
-			#		'sent': [('readonly', True)],
-			#		'sale': [('readonly', True)],
-			#	},
-
 			#ondelete='cascade',  		# Danger !!!
 		)
 
@@ -116,9 +97,7 @@ class sale_order(models.Model):
 		for record in self:
 			price_list = ''
 			for line in record.order_line:
-
 				price_list =line.get_price_list()
-
 			record.pl_price_list = price_list
 
 
@@ -140,8 +119,6 @@ class sale_order(models.Model):
 				record.x_amount_flow = record.amount_total
 
 
-
-
 	# Descriptor - Family
 	pl_family = fields.Char(
 			string="Pl - Familia",
@@ -152,16 +129,10 @@ class sale_order(models.Model):
 	@api.multi
 	def _compute_pl_family(self):
 		for record in self:
-
 			families = ''
-
 			for line in record.order_line:
 				families = families + line.get_family() + ', '
-
-			#record.pl_family = families
 			record.pl_family = families[0:-2]
-
-
 
 
 	# Descriptor - Product
@@ -181,10 +152,7 @@ class sale_order(models.Model):
 
 
 
-
-
 # ---------------------------------------------- Price List - Fields ------------------------------------------
-
 	# States
 	READONLY_STATES = {
 		'draft': 		[('readonly', False)],
@@ -215,7 +183,6 @@ class sale_order(models.Model):
 
 
 # ----------------------------------------------------------- Configurator -------------------------
-
 	def _get_default_configurator(self):
 		print()
 		print('Default Configurator')
@@ -234,11 +201,8 @@ class sale_order(models.Model):
 	configurator = fields.Many2one(
 			'openhealth.configurator.emr',
 			string="Config",
-
 			required=True,
-
 			readonly=True,
-			
 			default=_get_default_configurator,
 		)
 
@@ -251,7 +215,6 @@ class sale_order(models.Model):
 	def _onchange_partner_id(self):
 		if self.partner_id.name != False:
 			self.x_partner_dni = self.partner_id.x_dni
-
 
 
 	# DNI
@@ -272,48 +235,28 @@ class sale_order(models.Model):
 	# On Change Partner Dni
 	@api.onchange('x_partner_dni')
 	def _onchange_x_partner_dni(self):
-
 		self.patient = ord_funcs.search_patient_by_id_document(self)
 
 	# _onchange_x_partner_dni
 
 
 
-# ----------------------------------------------------------- Print Ticket Receipt Electronic.XML - Header and Footer -------------------------------
+# ----------------------------------------------------------- Used by - Print Ticket - Header and Footer -------------------------------
 
 	def get_title(self):
-		"""
-		Used by Print Ticket XML
-		"""
 		return self.x_title
 
-
 	def get_serial_nr(self):
-		"""
-		Used by Print Ticket.
-		"""
 		return self.x_serial_nr
 
-
-	# Patient Firm Address
 	def get_firm_address(self):
-		"""
-		Used by Print Ticket
-		"""
 		return self.patient.x_firm_address
 
-
 	def get_patient_address(self):
-		"""
-		Used by Print Ticket
-		"""
 		return self.patient.x_address
 
 
 	def get_note(self):
-		"""
-		Used by Print Ticket.
-		"""
 		#return self.note
 
 		if self.x_type in ['ticket_receipt']:
@@ -327,68 +270,34 @@ class sale_order(models.Model):
 
 
 
-
-
-
-
-
-
-
-
-
-
 # ----------------------------------------------------------- Ticket - Get Raw Line - Stub ----------------
-#jx
-
-	# Raw Line
 	def get_raw_line(self, argument):
 		"""
 		Just a stub. 
 		"""
 		line = raw_funcs.get_ticket_raw_line(self, argument)
-
 		return line 
-
-
-
-
-
 
 
 # ----------------------------------------------------------- Ticket - Header - Getters ----------------
 
 	# Company Address
 	def get_company_name(self):
-		"""
-		Used by Print Ticket
-		"""
 		company_name = self.configurator.company_name
 		return company_name
 
-
 	# Company Address
 	def get_company_address(self):
-		"""
-		Used by Print Ticket
-		"""
 		company_address = self.configurator.ticket_company_address
 		return company_address
 
-
 	# Company Address
 	def get_company_phone(self):
-		"""
-		Used by Print Ticket
-		"""
 		company_phone = self.configurator.company_phone
 		return company_phone
 
-
 	# Company Address
 	def get_company_ruc(self):
-		"""
-		Used by Print Ticket
-		"""
 		company_ruc = self.configurator.ticket_company_ruc
 		return company_ruc
 

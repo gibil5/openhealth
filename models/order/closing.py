@@ -104,17 +104,21 @@ class Closing(models.Model):
 
 	# Month
 	month = fields.Selection(
+
 			selection=ord_vars._month_order_list,
+
 			string='Mes',
 			#required=True,
-			readonly=True,
+			#readonly=True,
+			readonly=False,
 		)
 
 	# Year
 	year = fields.Char(
 			string='Año',
 			#required=True,
-			readonly=True,
+			#readonly=True,
+			readonly=False,
 		)
 
 

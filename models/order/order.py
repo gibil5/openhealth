@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 	Order
-
-	Created: 			26 Aug 2016
-	Last mod: 			21 Jan 2020
+		Created: 			26 Aug 2016
+		Last mod: 			20 Jul 2020
 """
 from __future__ import print_function
 import datetime
@@ -24,33 +23,27 @@ from . import qr
 class sale_order(models.Model):
 	"""
 	Sale Class - Inherited from the medical Module OeHealth. Has the Business Logic of the Clinic.
-	This is only a Data Model. Must NOT contain Business Rules. 
-	All BRs should be in Classes and Libraries. 
+	This is only a Data Model. Must NOT contain Business Rules.
+	All BRs should be in Classes and Libraries.
 	"""
 	_inherit = 'sale.order'
-
 	_description = 'Order'
-
-
 
 # ----------------------------------------------------------- Fields -------------------------------
 	# Transfer Free
 	pl_transfer_free = fields.Boolean(
 			'TRANSFERENCIA GRATUITA',
-		
+
 			default=False,
 		)
 
-
 # ----------------------------------------------------------- Relational -------------------------------
 	# Patient
-	patient_id = fields.Many2one(			
+	patient_id = fields.Many2one(
 			'oeh.medical.patient',
 			string="Paciente",
 			required=False,
-			#ondelete='cascade',  		# Danger !!!
 		)
-
 
 	# Treatment
 	treatment = fields.Many2one(
@@ -58,24 +51,17 @@ class sale_order(models.Model):
 			string="Tratamiento",
 			readonly=False,
 			#states=READONLY_STATES,
-			#ondelete='cascade',  		# Danger !!!
 		)
 
-
-	# Partner
-	# Already Created by OeHealth
+	# Partner - already Created by OeHealth
 	partner_id = fields.Many2one(
 			'res.partner',
 			string="Cliente",
 			required=False,
 			readonly=False,
-			#ondelete='cascade',  		# Danger !!!
 		)
 
-
-
-# ----------------------------------------------------------- Descriptors -------------------------------
-
+# ----------------------------------------------------------- Descriptors ------
 	# Family
 	x_family = fields.Selection(
 			string="Familia",
@@ -93,12 +79,10 @@ class sale_order(models.Model):
 		)
 
 
-# ----------------------------------------------------------- Price List - Computes ----------------------
-
+# --------------------------------- Price List - Computes ----------------------
 	# Price List
 	pl_price_list = fields.Char(
 			string="Pl - Price List",
-
 			compute='_compute_pl_price_list',
 		)
 
@@ -110,11 +94,8 @@ class sale_order(models.Model):
 				price_list =line.get_price_list()
 			record.pl_price_list = price_list
 
-
-
 	x_amount_flow = fields.Float(
 			'Pl - Total F',
-
 			compute='_compute_x_amount_flow',
 		)
 
@@ -128,11 +109,9 @@ class sale_order(models.Model):
 			else:
 				record.x_amount_flow = record.amount_total
 
-
 	# Descriptor - Family
 	pl_family = fields.Char(
 			string="Pl - Familia",
-
 			compute='_compute_pl_family',
 		)
 
@@ -144,11 +123,9 @@ class sale_order(models.Model):
 				families = families + line.get_family() + ', '
 			record.pl_family = families[0:-2]
 
-
 	# Descriptor - Product
 	pl_product = fields.Char(
 			string="Pl - Producto",
-
 			compute='_compute_pl_product',
 		)
 
@@ -159,7 +136,6 @@ class sale_order(models.Model):
 			for line in record.order_line:
 				products = products + line.get_product() + ', '
 			record.pl_product = products
-
 
 
 # ---------------------------------------------- Price List - Fields ------------------------------------------
@@ -184,22 +160,17 @@ class sale_order(models.Model):
 		)
 
 
-
-
 # ----------------------------------------------------------- Configurator -------------------------
 	def _get_default_configurator(self):
 		print()
 		print('Default Configurator')
-
 		# Search
 		configurator = self.env['openhealth.configurator.emr'].search([
-																		#('active', 'in', [True]),
-											],
+												#('active', 'in', [True]),
+												],
 												#order='x_serial_nr asc',
 												limit=1,
 											)
-		#print(configurator)
-		#print(configurator.name)
 		return configurator
 
 	configurator = fields.Many2one(
@@ -211,23 +182,17 @@ class sale_order(models.Model):
 		)
 
 
-
-# ----------------------------------------------------------- Partner - Not Dep -------------------------
-
+# ---------------------------------- Partner - Not Dep -------------------------
 	# On Change Partner
 	@api.onchange('partner_id')
 	def _onchange_partner_id(self):
 		if self.partner_id.name != False:
 			self.x_partner_dni = self.partner_id.x_dni
 
-
-	# DNI
-	# Used by Budget
-	# Allows research of Patient by DNI - Important
+	# DNI - Used by Budget - Allows research of Patient by DNI - Important
 	x_partner_dni = fields.Char(
 			string='DNI',
-			states={
-						'draft': 	[('readonly', False)],
+			states={	'draft': 	[('readonly', False)],
 						'sent': 	[('readonly', True)],
 						'sale': 	[('readonly', True)],
 						'cancel': 	[('readonly', True)],
@@ -235,18 +200,13 @@ class sale_order(models.Model):
 					},
 		)
 
-
 	# On Change Partner Dni
 	@api.onchange('x_partner_dni')
 	def _onchange_x_partner_dni(self):
 		self.patient = ord_funcs.search_patient_by_id_document(self)
-
 	# _onchange_x_partner_dni
 
-
-
-# ----------------------------------------------------------- Used by - Print Ticket - Header and Footer -------------------------------
-
+# ------------------------------- Used by - Print Ticket - Header and Footer ---
 	def get_title(self):
 		return self.x_title
 
@@ -259,13 +219,9 @@ class sale_order(models.Model):
 	def get_patient_address(self):
 		return self.patient.x_address
 
-
 	def get_note(self):
-		#return self.note
-
 		if self.pl_transfer_free:
 			note = 'TRANSFERENCIA A TITULO GRATUITO'
-
 		else:
 			if self.x_type in ['ticket_receipt']:
 				note = 'Representación impresa de la BOLETA DE VENTA ELECTRONICA.'
@@ -273,18 +229,15 @@ class sale_order(models.Model):
 				note = 'Representación impresa de la FACTURA DE VENTA ELECTRONICA.'
 			else:
 				note = ''
-
 		return note
-
-
 
 # ----------------------------------------------------------- Ticket - Get Raw Line - Stub ----------------
 	def get_raw_line(self, argument):
 		"""
-		Just a stub. 
+		Just a stub.
 		"""
 		line = raw_funcs.get_ticket_raw_line(self, argument)
-		return line 
+		return line
 
 
 # ----------------------------------------------------------- Ticket - Header - Getters ----------------
@@ -351,7 +304,7 @@ class sale_order(models.Model):
 
 		if self.pl_transfer_free:
 			total = 0
-	
+
 		else:
 			total = tick_funcs.get_total(self)
 
@@ -371,7 +324,7 @@ class sale_order(models.Model):
 
 		if self.pl_transfer_free:
 			self.x_total_net = 0
-	
+
 		else:
 			self.x_total_net =  tick_funcs.get_net(self)
 
@@ -563,8 +516,8 @@ class sale_order(models.Model):
 
 
 		# Make Serial Number
-		#if self.x_serial_nr != '' and not self.x_admin_mode:			
-		#if self.state in ['validated']  and  self.x_serial_nr != '' and not self.x_admin_mode:			
+		#if self.x_serial_nr != '' and not self.x_admin_mode:
+		#if self.state in ['validated']  and  self.x_serial_nr != '' and not self.x_admin_mode:
 
 		self.make_serial_number()
 
@@ -631,7 +584,7 @@ class sale_order(models.Model):
 			self.x_type = self.x_payment_method.saledoc
 
 
-		# Create Procedure 
+		# Create Procedure
 		print('Create Procedure')
 
 		if self.treatment.name != False:
@@ -885,7 +838,7 @@ class sale_order(models.Model):
 		credit_note = self.copy(default={
 											'x_serial_nr': serial_nr,
 											'x_counter_value': counter_value,
-											'x_credit_note_owner': self.id,											
+											'x_credit_note_owner': self.id,
 											'x_title': 'Nota de Crédito Electrónica',
 											'x_payment_method': False,
 											'state': state,
@@ -1519,5 +1472,5 @@ class sale_order(models.Model):
 		"""
 		print()
 		print('Order - Pay myself')
-		
+
 		test_order.pay_myself(self)

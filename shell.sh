@@ -2,28 +2,17 @@ Learn
 ------
 
 Created: 	15 sep 2016
-Last mod:	id. 
+Last mod:	id.
 
 
-
-Shell 
+Shell
 ./odoo.py shell -d chavarri-oehealth
-
 
 self
 
 self.name
 
 self.env
-
-
-
-
-
-
-
-
-
 
 self.env['stock.picking'].search([('name', 'like', 'J')])
 
@@ -34,16 +23,10 @@ self.env['stock.picking'].search([('name', 'like', ' AL/OUT/03779 ')])
 AL/OUT/03779
 
 
-
-
-
 self.env['stock.picking'].search([('name', 'like', 'AL/OUT/03823')])
 AL/OUT/03823
 
 sp = self.env['stock.picking'].search([('name', 'like', 'AL/OUT/03823')])
-
-
-
 
 
 self.env['stock.picking.type'].search([('name', '=', 'Customer Sale')])
@@ -435,7 +418,7 @@ self.env['openhealth.learn'].do_msg()
 
 
 
-# Treatment 
+# Treatment
 
 self.env.ref('base.group_public')
 
@@ -650,6 +633,3 @@ a = self.env['oeh.medical.appointment'].search([ ('appointment_date', 'like', '2
 
 
 ret = a.write({'consultation': 65,})
-
-
-

@@ -68,6 +68,15 @@
 							string="Test"
 							groups='openhealth.roots'
 						/>
+
+					<!-- Test Serial Number -->
+					<button 
+							type="object"
+							class="oe_highlight"
+							name="test_serial_number"
+							string="T SN"
+							groups='openhealth.roots'
+						/>
 				</xpath>
 
 

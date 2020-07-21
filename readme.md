@@ -2,7 +2,7 @@
 
 ## Version 7.0
 
-## Description
+### Description
 Object Oriented Module for the Odoo9 Python Platform. 
 Odoo is an open-source ERP (Enterprise Ressource Planning) system for small companies. 
 Odoo is designed to be easily extended by the addition of custom modules that replicate the Business Logic of a company. 
@@ -21,12 +21,12 @@ I have developed this module for a highly specialized Medical Clinic in Lima.
 It inherits a high-end third-party Medical module.
 
 
-## Author
+### Author
 Javier Revilla 
 jrevilla55@gmail.com
 
 
-## Categories
+### Categories
 - Medical Services
 - Open source
 - ERP

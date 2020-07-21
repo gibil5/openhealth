@@ -1,7 +1,10 @@
 # J Revilla : Begin
 
+# 20 jul 2020
 z_TRASH/
+travis/
 
+# Before
 openerp.TRASH.py
 /OpenHealth-MIN.sublime-workspace
 # J Revilla : End

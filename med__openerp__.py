@@ -8,8 +8,8 @@
 
 	'description': """
 
-	21 Jan 2020
-		
+ 	20 Jul 2020
+
 		Contains:
 			- All External Dependencies,
 			- All Models,
@@ -23,14 +23,14 @@
 			- Spanish translation,
 			- Oehealth,
 			- Base multi image,
-			- Web Export View, 
+			- Web Export View,
 			- Accounting and Finance. Adjust tax to zero.
 
 
 		Python Libs:
 			- Unidecode - dep
 			- pysftp - dep
-			- Numpy, Num2words, Pandas, QrCode, 
+			- Numpy, Num2words, Pandas, QrCode,
 
 
 		For PDF Reporting (tickets):
@@ -38,26 +38,26 @@
 
 
 		For Tickets (right button printing):
-			- On Chrome, install extension: PDF Viewer. Link it to Adobe Reader. 
+			- On Chrome, install extension: PDF Viewer. Link it to Adobe Reader.
 
 
-		Deprecated services: 
-			- Ooor, 
-			- Testcafe, 
-			- Auto-backup, 
-			- Inventory. 
+		Deprecated services:
+			- Ooor,
+			- Testcafe,
+			- Auto-backup,
+			- Inventory.
 
 
 		Remember Robert C. Martin:
 			- Respect the Law of Demeter: avoid Train Wreckages. When you see more than two dots, this needs fixing.
-			- Do not mix the Data Model and Business Rules. Encapsulate Business Rules in a separate module. 
+			- Do not mix the Data Model and Business Rules. Encapsulate Business Rules in a separate module.
 			- Use Three layered model: Odoo Active Data - Customized Class with BR - General purpose Library.
 			- Handle Exceptions.
 			- The Database should not contain Business rules. Remove computes.
 
 
-		Always clean your System: 
-			- Remove Procurement Orders, 
+		Always clean your System:
+			- Remove Procurement Orders,
 			- Remove Stock Moves,
 			- Remove Products Consumables,
 			- Remove Computes.
@@ -76,9 +76,9 @@
 	'author': "DataMetrics",
 
 	'website': "http://jrevilla.com/",
-	
+
 	'category': 'Object Oriented',
-	
+
 	'version': '4.0',
 
 	#'depends': ['base', 'oehealth', 'base_multi_image', 'account'],
@@ -102,7 +102,7 @@
 		#'data/prods/odoo_data_services_med.xml',
 		#'data/prods/odoo_data_services_cos.xml',
 		#'data/prods/odoo_data_services_med_dep.xml',
-		#'data/suppliers.xml',                          
+		#'data/suppliers.xml',
 
 
 
@@ -113,21 +113,21 @@
 		'data/categs/base_data_categs_partners.xml',
 
 		# Users
-		'data/users/base_data_users_generics.xml',                 # Important 
-		
-		'data/physicians/base_data_physicians.xml',                
-		'data/physicians/base_data_physicians_inactive.xml',        
-		
-		'data/users/base_data_users_platform.xml',  
+		'data/users/base_data_users_generics.xml',                 # Important
+
+		'data/physicians/base_data_physicians.xml',
+		'data/physicians/base_data_physicians_inactive.xml',
+
+		'data/users/base_data_users_platform.xml',
 		'data/users/base_data_users_cash.xml',
-		'data/users/base_data_users_account.xml',       
-		'data/users/base_data_users_managers.xml',  
+		'data/users/base_data_users_account.xml',
+		'data/users/base_data_users_managers.xml',
 		'data/users/base_data_users_doctors.xml',
-		'data/users/base_data_users_assistants.xml',    
-		'data/users/base_data_users_directors.xml',  
+		'data/users/base_data_users_assistants.xml',
+		'data/users/base_data_users_directors.xml',
 
 		# Inactive
-		'data/users/base_data_users_inactive.xml', 
+		'data/users/base_data_users_inactive.xml',
 
 		# Users Tacna
 		'data/users/base_data_users_tacna.xml',
@@ -214,7 +214,7 @@
 		#'views/management/management_day_doctor_line.xml',	# Dep
 
 		#'views/management/management_productivity_day.xml',
-		#'views/management/management_doctor_daily.xml',	
+		#'views/management/management_doctor_daily.xml',
 
 		#'views/management/management_family_line.xml',
 		#'views/management/management_subfamily_line.xml',
@@ -225,7 +225,7 @@
 		#'views/management/management_trees.xml',
 		#'views/management/management_actions.xml',
 		#'views/management/management.xml',
-		
+
 
 
 
@@ -235,7 +235,7 @@
 
 		# Base - Form and List Actions - Must be the first
 		'views/base_actions.xml',                                       # Very important - All Actions should go here - Dependencies
-		
+
 
 
 
@@ -247,7 +247,7 @@
 		# Formats
 		'reports/paper_format.xml',
 
-		# Ticket - Electronic 
+		# Ticket - Electronic
 		'reports/report_layouts.xml',
 		'reports/print_ticket_receipt_electronic.xml',
 
@@ -283,17 +283,17 @@
 		'views/orders/order_report_nex.xml',                # Estado de Cuenta New
 
 
-		# Payment methods 
+		# Payment methods
 		#'views/payment_method/payment_methods.xml',
 		'views/orders/payment_method/payment_methods.xml',
 
 
-		# Counters 
+		# Counters
 		'views/counters/counter_actions.xml',
 		'views/counters/counter.xml',
 
 
-		# Companies 
+		# Companies
 		'views/companies/company.xml',
 
 
@@ -302,11 +302,11 @@
 		'views/controls/control_admin.xml',
 
 
-		# Images 
+		# Images
 		'views/images/image_view.xml',
 
 
-		# Services - Dep ? 
+		# Services - Dep ?
 		#'views/services/service.xml',
 
 
@@ -324,7 +324,7 @@
 
 
 
-		# Treatments 
+		# Treatments
 		#'views/services/service_actions.xml',  	# Just a dummy
 		'views/treatments/service_actions.xml',  	# Just a dummy
 
@@ -334,12 +334,12 @@
 
 
 
-		# Physicians 
+		# Physicians
 		'views/physicians/physician.xml',
 
 
 
-		# Patients 
+		# Patients
 
 		'views/patients/patient_origin.xml',
 		'views/patients/patient.xml',
@@ -370,7 +370,7 @@
 		'views/products/product_product.xml',
 		'views/products/product_template.xml',
 
-		# Cards 
+		# Cards
 		'views/cards/card.xml',
 
 
@@ -394,16 +394,16 @@
 		#'views/services/service_excilite.xml',
 		#'views/services/service_ipl.xml',
 		#'views/services/service_ndyag.xml',
-		#'views/services/service_quick.xml',     
+		#'views/services/service_quick.xml',
 		#'views/services/service_medical.xml',
 		#'views/services/service_cosmetology.xml',
 
 
 		# Consultation - 2
 		'views/consultations/consultation_diagnosis.xml',
-		
 
-		# Treatments - 2 
+
+		# Treatments - 2
 		'views/treatments/treatment_orders.xml',
 		'views/treatments/treatment_consultations.xml',
 		'views/treatments/treatment_procedures.xml',
@@ -413,7 +413,7 @@
 
 
 
-		# Patients - 2 
+		# Patients - 2
 		'views/patients/patient_personal.xml',
 		'views/patients/patient_control_docs.xml',
 		'views/patients/patient_admin.xml',
@@ -423,7 +423,7 @@
 
 # ----------------------------------------------------------- Closings ------------------------------------------------------
 
-		# Closing 
+		# Closing
 		'views/closings/closings.xml',
 		'views/closings/closings_search.xml',
 		'reports/closing/closing.xml',
@@ -443,14 +443,14 @@
 		'views/menus/menus.xml',
 		'views/menus/menus_dev.xml',
 		'views/menus/menus_caja.xml',
-		
-		
+
+
 		'views/menus/menus_products.xml',
 		'views/menus/menus_oeh.xml',
 
 
 		# Dep - Done In PL
-		#'views/menus/menus_management.xml',	
+		#'views/menus/menus_management.xml',
 		#'views/menus/menus_rsp.xml',			# Dep PL
 		#'views/menus/menus_marketing.xml', 	# Dep PL
 		#'views/menus/menus_account.xml',  		# DEP PL
@@ -459,15 +459,15 @@
 
 # ----------------------------------------------------------- Security - Models - Last ------------------------------------------------------
 		'security/ir.model.access.csv',
-		
+
 		'security/ir.rule.xml',                # Dep ?
 
 	],
 
 	'demo': [],
 
-	# Static - Style Css 
-	'css': ['static/src/css/jx.css'],   
+	# Static - Style Css
+	'css': ['static/src/css/jx.css'],
 
 	'js': [],
 }

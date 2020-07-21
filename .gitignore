@@ -4,6 +4,10 @@
 z_TRASH/
 a_TRASH/
 travis/
+controllers/
+demo/
+depend/
+doc/
 
 # Before
 openerp.TRASH.py

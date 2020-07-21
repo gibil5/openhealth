@@ -11,7 +11,7 @@
 #### Run:
 - source ../bin/activate
 - ./odoo.py --log-level=error
-
+- http://localhost:8069/
 
 
 ### Description

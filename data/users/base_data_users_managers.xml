@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate='1'>
+    
+<!--
+d8hkqa35fn
+pzutx2t2bf
+jphbej7qa4
+3ae4fwnnsj
+uq3ut6rbsg
+
+
+jf3nq7v9mb
+3g8a9ddh5b
+xg2rfjgtjq
+
+
+
+-->
+
+<!-- Sabina Vargas -->
+        <record id="svargas" model="res.partner">
+
+            <field name="name">Sabina Vargas</field>
+            
+            <field name="email">svargas@clinicachavarri.com</field>
+            
+            <field name="function">marketing</field>
+            
+            <field name="active" eval="True" />
+        </record>
+
+        <record id="svargas_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
+            
+            <field name="name">Sabina Vargas</field>
+            
+            <field name="login">svargas@clinicachavarri.com</field>
+            
+            <field name="password">ra7bxcj64n</field>
+
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+
+            <field name="tz">America/Lima</field>
+
+            <field name="lang">es_ES</field>
+
+            <field name="partner_id" ref="svargas"/>            
+
+            <field name="active" eval="True" />
+        </record>
+
+
+
+
+
+<!-- Luis Loli -->
+        <record id="lloli" model="res.partner">
+            <field name="name">Luis Loli</field>
+            <field name="email">lloli@clinicachavarri.com</field>
+            <field name="function">marketing</field>
+            <field name="active" eval="True" />
+        </record>
+
+        <record id="lloli_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
+            <field name="name">Luis Loli</field>
+            <field name="login">lloli@clinicachavarri.com</field>
+            
+            <field name="password">6apLZLpS</field>
+
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="tz">America/Lima</field>
+            <field name="lang">es_ES</field>
+            <field name="partner_id" ref="lloli"/>            
+
+            <field name="active" eval="True" />
+        </record>
+
+
+
+
+    </data>
+</openerp> 

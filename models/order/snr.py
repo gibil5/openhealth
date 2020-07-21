@@ -1,0 +1,44 @@
+# -*- coding: utf-8 -*-
+"""
+snr.py  	- Dep !
+
+Created: 			 2 Sep 2019
+Last up: 	 		 2 Sep 2019
+"""
+from openerp.addons.openhealth.models.libs import user
+
+
+class SerialNumber(object):
+
+	def __init__(self, order_obj, x_type, state):
+		#print()
+		#print('SerialNumber')
+		#print(order_obj)
+		#print(x_type)
+		#print(state)
+
+		# Init
+		self.x_type = x_type
+		self.state = state
+
+		# Counter
+		self.counter = user.get_next_counter_value(order_obj, self.x_type, self.state)
+		#print(self.counter)
+
+		# Serial Number
+		self.serial_number = user.get_serial_nr(self.x_type, self.counter, self.state)
+		#print(self.serial_number)
+
+
+	def get_serial_number(self):
+
+		return self.serial_number
+
+
+	def get_counter(self):
+		
+		return self.counter
+
+
+
+

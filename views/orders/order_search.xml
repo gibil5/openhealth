@@ -1,0 +1,200 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+
+
+<!-- FILTER --> 
+<!-- Correct for Local Time (+ 05:00) --> 
+        <record id="sale.view_sales_order_filter" model="ir.ui.view">
+           <field name="name">sale.order.search.modified</field>
+           <field name="model">sale.order</field>          
+           <field name="arch" type="xml">
+
+               <search string="orders">
+
+
+<!-- Active --> 
+
+
+                    <!-- This -->
+                    <filter string="10 Junio 2019" domain="[
+                                                            ('date_order','&gt;=','2019-06-10 05:00:00'),
+                                                            ('date_order','&lt;','2019-06-11 05:00:00'),
+                                            ]"/>
+
+
+
+                    <!-- This -->
+                    <filter string="Hoy" domain="[
+                                                        ('date_order', '&gt;=', datetime.datetime.now().strftime('%Y-%m-%d 05:00:00')),
+                                            ]"/>
+
+
+                    <filter string="Este Mes" domain="[
+                                                        ('date_order','&gt;=',time.strftime('%Y-%m-01 05:00:00')),
+                                            ]"/>
+
+
+                    <filter string="Este Año" domain="[
+                                                        ('date_order','&gt;=',time.strftime('%%Y-01-01 05:00:00')), 
+                                            ]"/>
+
+                    <separator/>
+
+
+
+
+<!-- Custo --> 
+
+
+                    <!-- Jan --> 
+                    <filter string="Enero" domain="[
+                                                            ('date_order','&gt;=','2019-01-01 05:00:00'),
+                                                            ('date_order','&lt;','2019-02-01 05:00:00'),
+                                            ]"/>
+
+
+
+
+                    <!-- Feb --> 
+                    <filter string="Febrero" domain="[
+                                                            ('date_order','&gt;=','2019-02-01 05:00:00'),
+                                                            ('date_order','&lt;','2019-03-01 05:00:00'),
+                                            ]"/>
+
+
+
+
+
+
+                    <!-- Mar --> 
+                    <filter string="Marzo" domain="[
+                                                            ('date_order','&gt;=','2019-03-01 05:00:00'),
+                                                            ('date_order','&lt;','2019-04-01 05:00:00'),
+                                            ]"/>
+
+
+
+                    <filter string="Abril" domain="[
+                                                            ('date_order','&gt;=','2019-04-01 05:00:00'),
+                                                            ('date_order','&lt;','2019-05-01 05:00:00'),
+                                            ]"/>
+
+
+
+                    <filter string="Mayo" domain="[
+                                                            ('date_order','&gt;=','2019-05-01 05:00:00'),
+                                                            ('date_order','&lt;','2019-06-01 05:00:00'),
+                                            ]"/>
+
+
+
+                    <filter string="Junio" domain="[
+                                                            ('date_order','&gt;=','2019-06-01 05:00:00'),
+                                                            ('date_order','&lt;=','2019-07-01 05:00:00'),
+                                            ]"/>
+
+
+
+                    <filter string="Julio"          domain="[
+                                                                ('date_order','&gt;=','2019-07-01 05:00:00'),
+                                                                ('date_order','&lt;=','2019-08-01 05:00:00'),
+                                                    ]"/>
+
+
+                    <filter string="Agosto"         domain="[
+                                                                ('date_order','&gt;=','2019-08-01 05:00:00'),
+                                                                ('date_order','&lt;=','2019-09-01 05:00:00'),
+                                                    ]"/>
+
+
+
+                    <filter string="Setiembre"      domain="[
+                                                                ('date_order','&gt;=','2019-09-01 05:00:00'),
+                                                                ('date_order','&lt;=','2019-10-01 05:00:00'),
+                                                            ]"
+                                                    />
+
+
+
+
+                    <filter string="Octubre"        domain="[
+                                                                ('date_order','&gt;=','2019-10-01 05:00:00'),
+                                                                ('date_order','&lt;=','2019-11-01 05:00:00'),
+                                                            ]"
+                                            />
+
+
+                    <filter string="Noviembre"      domain="[
+                                                                ('date_order','&gt;=','2019-11-01 05:00:00'),
+                                                                ('date_order','&lt;=','2019-12-01 05:00:00'),
+                                                            ]"
+                                            />
+
+
+                    <filter string="Diciembre"      domain="[
+                                                                ('date_order','&gt;=','2019-12-01 05:00:00'),
+                                                                ('date_order','&lt;=','2020-01-01 05:00:00'),
+                                                            ]"
+                                            />
+
+
+
+
+
+                    <!--
+                    <field name="partner_id" />
+                    <field name="treatment" />
+                    <field name="x_doctor" />               
+                    <field name="x_family" /> 
+                    -->
+
+                    <field name="patient" />
+
+
+
+                    <!-- Group By --> 
+                    <group expand="1" string="Group By">
+<!--
+                        <filter name="Creado por" context="{'group_by':'user_id'}"/>
+-->
+
+                        <filter name="Mes" context="{'group_by':'x_month_order'}"/>
+                        <filter name="Dia" context="{'group_by':'x_day_order'}"/>
+
+                        <filter name="Tipo" context="{'group_by':'x_type'}"/>
+                        <separator/>
+                        <filter name="Familia" context="{'group_by':'x_family'}"/>
+                        <filter name="Producto" context="{'group_by':'x_product'}"/>
+                        <filter name="Médico" context="{'group_by':'x_doctor'}"/>
+                        <filter name="Paciente" context="{'group_by':'patient'}"/>
+                        <filter name="Delta" context="{'group_by':'x_delta'}"/>
+                    </group>
+
+
+               </search>           
+           </field>
+       </record>
+
+
+
+
+        <!-- Graph --> 
+        <record id="sale.view_sale_order_graph" model="ir.ui.view"> 
+             <field name="name">sale.order.graph</field>
+             <field name="model">sale.order</field>
+             <field name="arch" type="xml">
+                 <graph string="Análisis de Ventas">
+                    <field name="x_doctor"/>
+                    <field name="amount_total" type="measure"/>              
+                 </graph>
+             </field>
+        </record>
+<!--
+                    <field name="date_order" interval="day" type="row"  />
+                    <field name="amount_total" type="measure"/>
+-->                
+
+    </data>
+</openerp>

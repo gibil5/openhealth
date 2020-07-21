@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+
+
+<!-- ACTION -->
+
+        <!-- Monthly -->
+        <record model="ir.actions.act_window" id="rsp_month_list_action">
+            
+            <field name="name">Venta de Productos - Mensual</field>
+
+            <field name="res_model">openhealth.report.sale.product</field>
+
+            <field name="view_type">form</field>
+
+            <field name="view_mode">tree,form</field>
+
+            <field name="domain">
+                                    [
+                                        ('several_dates','in',[True]),
+                                    ]
+            </field>
+
+            <field name="view_id" ref="view_rsp_month_tree"/> 
+
+
+            <!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first order
+                </p>
+            </field>
+            -->
+        </record>
+        
+
+        <!-- Daily -->
+        <record model="ir.actions.act_window" id="rsp_list_action">
+            
+            <field name="name">Venta de Productos - Diario</field>
+            <field name="res_model">openhealth.report.sale.product</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+
+            <field name="domain">
+                                    [
+                                        ('several_dates','not in',[True]),
+                                    ]
+            </field>
+
+            <field name="view_id" ref="view_rsp_day_tree"/> 
+
+
+            <!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first order
+                </p>
+            </field>
+            -->
+        </record>
+
+
+    </data>
+</openerp>

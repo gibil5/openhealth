@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate='1'>
+
+
+
+<!-- Maria Luisa Pedemonte --> 
+        <record id="mpedemonte" model="res.partner">
+            <field name="name">Maria Luisa Pedemonte</field>
+            <field name="email">mpedemonte@clinicachavarri.com</field>
+            <field eval="[(6, 0, [ref('cash')])]" name="category_id"/>
+
+            <field name="function">caja</field>
+        </record>
+
+
+        <record id="mpedemonte_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
+            <field name="name">Maria Luisa Pedemonte</field>            
+            <field name="login">mpedemonte@clinicachavarri.com</field>
+
+            <field name="password">R8redpKE</field>
+
+            <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
+            <field name="tz">America/Lima</field>
+            <field name="partner_id" ref="mpedemonte"/>
+            <field name="lang">es_ES</field>
+            <field name="active">True</field>
+        </record>
+
+    </data>
+</openerp>

@@ -1,0 +1,283 @@
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate='0'>
+
+
+
+<!-- Main - Caja -->
+<menuitem   id="main_sales_menu" 
+
+            sequence="-29"
+
+            name="Caja"
+
+        />
+
+
+
+
+
+<!-- Caja -->           
+<menuitem   id="sales_menu" 
+            parent="main_sales_menu"
+
+            sequence="1"
+
+            groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
+
+            name="Caja"
+        />
+
+
+
+
+
+            <!-- Ventas -->             
+<!--
+            <menuitem   id="sales_invoice_root_menu" 
+                        name="Ventas" 
+                        parent="sales_menu"
+                        sequence="0"
+
+                        groups="openhealth.roots"
+                        
+                        action="sale_list_action"
+                    />
+-->
+
+
+
+
+            <!-- Presupuestos -->           
+            <menuitem   id="sales_budget_menu"
+                        parent="sales_menu"
+                        sequence="1"
+
+                        name="Presupuestos"
+                
+                        action="budget_list_action"
+                    />
+
+
+            <!-- Ventas -->             
+            <menuitem   id="sales_invoice_menu" 
+                        parent="sales_menu"
+                        sequence="3"
+                        
+                        name="Ventas" 
+
+                        action="sale_list_action"
+                    />
+
+<!--
+                        groups="openhealth.roots"
+-->
+            <!-- Notas de Credito y Ventas -->           
+            <menuitem   id="sales_credit_note_sale_menu"
+                        parent="sales_menu"
+                        sequence="4"
+                        
+                        name="Ventas y Notas de Credito"
+
+                        action="credit_note_sale_list_action"
+                    />
+
+
+
+
+
+
+            <!-- Anulados -->           
+            <menuitem   id="sales_cancelled_menu"  
+                        parent="sales_menu"
+                        sequence="5"
+                        
+                        name="Anulados" 
+
+                        action="cancelled_list_action"
+                        />
+
+
+
+            <!-- Todo -->           
+            <menuitem   id="sales_all_menu" 
+                        name="Todo" 
+                        parent="sales_menu"
+                        sequence="7"
+
+                        action="order_list_action"
+                        />
+
+
+
+
+            <!-- Notas de Credito -->
+            <menuitem   id="sales_credit_note_menu"
+
+                        parent="sales_menu"
+            
+                        sequence="9"
+                        
+                        name="Notas de Credito"
+
+                        action="credit_note_list_action"
+                    />
+
+
+
+
+
+
+
+
+
+
+            <!-- Blocked -->
+            <menuitem   id="sales_flow_block_menu"
+
+                        parent="sales_menu"
+            
+                        sequence="13"
+                        
+                        name="Flujos Bloqueados"
+
+                        action="flow_block_list_action"
+                    />
+
+
+
+
+
+
+
+<!-- Closings -->
+        <menuitem   id="sales_closings_menu" 
+                    name="Cierres de caja"
+                    parent="main_sales_menu"
+
+                    sequence="3"
+
+            groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
+                />
+
+<!--
+                        id="sales_closings_sub_menu"
+-->
+            <menuitem   
+                        id="sales_closings_sub_menu_jx"
+
+                        name="Diarios"
+            
+                        parent="sales_closings_menu"
+            
+                        sequence="1"
+
+                        action="closings_list_action"
+            />
+
+
+
+
+<!-- RSP --> 
+        <menuitem   id="sales_rsp_menu" 
+
+                    parent="main_sales_menu"
+
+                    sequence="5"
+                    
+                    name="Venta de Productos"           
+                />
+
+
+
+                <!-- Daily -->
+                <menuitem   id="sales_rsp_submenu" 
+
+                            parent="sales_rsp_menu"
+
+                            sequence="5"
+
+                            name="Por Fecha" 
+                    
+                            action="rsp_list_action"
+                        />
+
+
+
+                <!-- Monthly -->
+                <menuitem   id="sales_rsp_month_submenu" 
+
+                            parent="sales_rsp_menu"
+
+                            sequence="7"
+
+                            name="Por Mes" 
+                    
+                            action="rsp_month_list_action"
+                        />
+
+
+
+
+
+
+
+
+<!-- Legacy --> 
+        <menuitem   id="sales_legacy_menu" 
+                    name="Legacy"
+                    parent="main_sales_menu"
+
+                    sequence="7"
+
+                    groups="openhealth.roots"
+                />
+
+            <!-- Legacy -->             
+            <menuitem   id="sales_legacy_sales_menu" 
+                        name="Legacy" 
+                        parent="sales_legacy_menu"
+                        sequence="1"
+                        action="sale_legacy_list_action"
+                        groups="openhealth.roots"
+                    />
+
+
+
+
+<!-- Config --> 
+        <menuitem   id="sales_config_menu" 
+                    parent="main_sales_menu"
+                    sequence="11"
+                    name="Configuración"
+
+                    groups="openhealth.roots,openhealth.caja"
+                />
+
+
+        <menuitem   id="sales_counters_menu" 
+                    parent="sales_config_menu"
+                    
+                    sequence="5"
+                    
+                    name="Contadores Caja" 
+
+                    action="counter_sale_list_action"
+                />
+
+
+        <menuitem   id="all_counters_menu" 
+                    parent="sales_config_menu"
+
+                    sequence="7"
+                    
+                    name="Contadores Todos" 
+
+                    action="counter_list_action"
+                />
+
+
+
+
+    </data>
+</openerp>

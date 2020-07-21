@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+
+
+<!-- FORM --> 
+        <record model="ir.ui.view" id="corrector_form_view">
+            <field name="name">corrector.form</field>
+            <field name="model">openhealth.corrector</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <form string="corrector Form">
+
+                    <header>
+
+
+<!--
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+                            
+                            name="import_pl_items"
+                            
+                            string="Import Pricelist"
+                        />
+-->
+
+
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+                            
+                            name="create_pl_items"
+                            
+                            string="Create Pricelist"
+                        />
+
+
+
+
+                        <button 
+                            type="object" 
+                            class="oe_highlight"
+                            
+                            name="clear_pl_items"
+                            
+                            string="Clear"
+                        />
+
+
+
+
+                        <button 
+                            type="object" 
+                            class="oe_highlight oe_right"
+
+                            name="create_codes"
+                            
+                            string="Correct Codes"
+
+                            groups="openhealth.roots"
+                        />
+
+
+
+                        <button 
+                            type="object" 
+                            class="oe_highlight oe_right"
+                            name="unfix_names"
+                            
+                            string="Unfix"
+
+                            groups="openhealth.roots"
+                        />
+
+
+                        <button 
+                            type="object" 
+                            class="oe_highlight oe_right"
+                            name="fix_names"
+                            
+                            string="Fix Names"
+
+                            groups="openhealth.roots"
+                        />
+                    </header>
+
+
+
+
+                    <!-- Sheet -->  
+                    <sheet>
+
+                        <group>
+                            <group>                             
+                                <field name="name"/>
+<!--
+                                <field name="delta"/>
+-->                         
+                                <field name="fix_count"/>
+
+                                <field name="go_flag"/>
+                            </group>
+                            <group>                             
+
+                                <field name="product_flag"/>
+                                <field name="con_flag"/>
+
+                                <field name="vspace"/>
+
+                                <field name="co2_flag"/>
+                                <field name="exc_flag"/>
+                                <field name="ipl_flag"/>
+                                <field name="ndy_flag"/>
+                                <field name="qui_flag"/>
+
+                                <field name="vspace"/>
+
+                                <field name="cos_flag"/>
+                                <field name="med_flag"/>
+                                
+                            </group>
+                        </group>
+
+
+                        <!-- Padding -->
+                        <group>
+                            <group></group>
+                            <group></group>
+                        </group>
+
+
+                        <!-- Notebook --> 
+                        <notebook>
+                            
+
+                            <page string="Pricelist">
+<!--
+                                <field name="pl_item_ids"/>
+-->                        
+                            </page>
+
+
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- FORM --> 
+
+
+
+
+
+<!-- TREE --> 
+        <record model="ir.ui.view" id="corrector_tree_view">
+            <field name="name">corrector.tree</field>
+            <field name="model">openhealth.corrector</field>
+            <field name="arch" type="xml">
+
+                <tree string="corrector Tree">
+
+                    <field name="name"/>
+
+                    <field name="product_flag"/>
+
+                    <field name="co2_flag"/>
+
+                </tree>
+
+            </field>
+        </record>
+
+
+
+<!-- ACTION -->
+        <record model="ir.actions.act_window" id="corrector_list_action">
+            <field name="name">correctors</field>
+            <field name="res_model">openhealth.corrector</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>            
+            <field name="domain">[]</field>
+            <field name="limit">20</field>
+            <field name="view_id" eval="False"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first corrector
+                </p>
+            </field>
+        </record>
+
+
+    </data>
+</openerp>

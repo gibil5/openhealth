@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+
+
+
+
+        <!-- Services --> 
+<!--
+                                    'group_by': ['date:month', 'categ_id', 'product_id']
+
+-->
+        <record id="action_order_report_services" model="ir.actions.act_window">
+            <field name="name">Análisis de Ventas - Servicios</field>
+            <field name="res_model">sale.report</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">pivot,graph</field>
+            <field name="view_id"></field>  <!-- force empty -->
+            <field name="search_view_id" ref="sale.view_order_product_search"/>
+            
+
+           <field name="domain">
+                                    [
+                                        '|', 
+                                        ('categ_id','=','Consultas'), 
+                                        '|', 
+                                        ('categ_id','=','Cosmeatria'), 
+                                        '|', 
+                                        ('categ_id','=','Laser M22'), 
+                                        '|', 
+                                        ('categ_id','=','Medical'), 
+                                        '|', 
+                                        ('categ_id','=','Laser Co2'),                                       
+                                        '|', 
+                                        ('categ_id','=','Laser Excilite'),
+
+                                    ('date','&lt;=',time.strftime('%%Y-04-30')),
+                                    ('date','&gt;=',time.strftime('%%Y-04-01'))
+                                    ]
+            </field>
+
+
+            <field name="context">{
+                                    'search_default_Sales':1, 
+                                    'group_by_no_leaf':1,
+                                    'group_by': ['categ_id']
+                                }
+            </field>
+
+            <field name="help">This report performs analysis on your quotations and sales orders. Analysis check your sales revenues and sort it by different group criteria (salesman, partner, product, etc.) Use this report to perform analysis on sales not having invoiced yet. If you want to analyse your turnover, you should use the Invoice Analysis report in the Accounting application.</field>
+        </record>
+
+
+
+
+
+
+        <!-- Products --> 
+<!--
+          <field name="domain">[
+                                    ('x_cancel_reason', '=', 'consultation'),
+                                ]
+            </field>
+
+           <field name="domain">[
+                                    ('note', '=', 'legacy'),
+                                ]
+            </field>            
+
+
+
+
+                                    ('categ_id', '=', 'Consultas'),
+                                    ('categ_id', 'in', ['Consultas']),
+                                    ('categ_id', 'in', ['Consultas','Cremas','Tarjetas']),
+
+[
+'|', ('field1','=',5),('field2','=',10)
+'|', ('categ_id','=','Consultas'),('categ_id','=','Tarjetas')
+]
+
+
+
+                                        'group_by': ['date:month', 'categ_id', 'product_id']
+-->     
+        <record id="action_order_report_products" model="ir.actions.act_window">
+            <field name="name">Análisis de Ventas - Productos</field>
+            <field name="res_model">sale.report</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">pivot,graph</field>
+            <field name="view_id"></field>  <!-- force empty -->
+            <field name="search_view_id" ref="sale.view_order_product_search"/>
+
+
+           <field name="domain">[
+                                    '|', 
+                                    ('categ_id','=','Cremas - Dep'), 
+                                    '|', ('categ_id','=','Tarjetas'),('categ_id','=','Cremas'),
+
+
+                                    ('date','&lt;=',time.strftime('%%Y-04-30')),
+                                    ('date','&gt;=',time.strftime('%%Y-04-01'))
+                                ]
+            </field>     
+
+
+            <field name="context">{
+                                        'search_default_Sales':1, 
+                                        'group_by_no_leaf':1,
+                                        'group_by': ['categ_id']
+                                    }</field>
+
+            <field name="help">This report performs analysis on your quotations and sales orders. Analysis check your sales revenues and sort it by different group criteria (salesman, partner, product, etc.) Use this report to perform analysis on sales not having invoiced yet. If you want to analyse your turnover, you should use the Invoice Analysis report in the Accounting application.</field>
+        </record>
+
+
+
+
+
+<!--
+                                    ('state', '=', 'sale'),
+                                    '|', ('categ_id','=','Consultas'),('categ_id','=','Cosmeatria'),('categ_id','=','Laser Co2')
+
+
+                                    '|', ('categ_id','=','Consultas'),('categ_id','=','Cosmeatria'), 
+
+
+                                [
+                                    '|', 
+                                    ('categ_id','=','Laser Co2'),('categ_id','=','Laser Excilite'), 
+                                    ('categ_id','=','Consultas'),('categ_id','=','Cosmeatria'), 
+                                ]
+
+                                        ('state','in', ('draft', 'sent', 'sale'))
+
+                                        ('comment','in', ('legacy', 'services'))
+                                        ('comment','in', ('product', 'service'))
+
+
+                                    'group_by':[]}
+-->
+    </data>
+</openerp>
+
+
+

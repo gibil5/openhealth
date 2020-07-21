@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!--
+    *** OPEN HEALTH
+
+    Created:            26 Aug 2016
+    Last updated:       12 Sep 2016
+-->
+
+<openerp>
+    <data>
+
+
+        <!--
+        Control docs 
+        -->
+        <record model="ir.ui.view" id="patient_controldocs_form_view">
+            <field name="name">Patient controldocs</field>
+            <field name="model">oeh.medical.patient</field>
+
+            <field name="priority" eval="11"/>
+
+            <field name="inherit_id" ref="oeh_medical_patient_view"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="/form/sheet/notebook[@name='N2']" position="inside">
+
+                    <page string="Control de documentos">
+                        <group>
+                            <group>
+                                <field name="x_control_physician"/>
+                            </group>
+                        </group>
+                        <hr></hr>
+                        <group string="Control de documentos">
+                            <!--
+                            <field string="Copia de DNI" name="x_tre_laser_co2"/>
+                            <field string="Consentimiento informado" name="x_tre_laser_co2"/>
+                            <field string="Registro VISIA pre-operatorio" name="x_tre_laser_co2"/>
+                            <field string="Registro fotográfico pre-operatorio" name="x_tre_laser_co2"/>
+                            <field string="Copia de información de tratamiento Láser firmada por el paciente" name="x_tre_laser_co2"/>
+                            <field string="Copia de indicaciones post-Láser firmado por el paciente" name="x_tre_laser_co2"/>
+                            <field string="Informe de tratamiento Láser firmado por el doctor" name="x_tre_laser_co2"/>
+                            <field string="Análisis clínicos" name="x_tre_laser_co2"/>
+                            <field string="Fotos de controles" name="x_tre_laser_co2"/>
+                            <field string="Fotos de controles con VISIA" name="x_tre_laser_co2"/>
+                            -->
+                            <field name="x_control_dni_copy"/>
+                            <field name="x_control_informed_consent"/>
+                            <field string="Registro VISIA pre-Procedimiento"  name="x_control_visia_record"/>
+                            <field string="Registro fotográfico pre-Procedimiento"  name="x_control_photo_record"/>
+                            <field name="x_control_treatment_signed_patient"/>
+                            <field name="x_control_postlaser_instructions_signed"/>
+                            <field name="x_control_treatment_signed_doctor"/>
+                            <field name="x_control_clinical_analsis"/>
+                            <field name="x_control_control_pictures"/>
+                            <field name="x_control_control_pictures_visia"/>
+                        </group>
+                        <hr></hr>
+                        <group>
+                            <field string="Fecha de consentimiento informado" name="x_date_consent"/>
+                        </group>
+                    </page>
+
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</openerp>

@@ -1,0 +1,224 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		
+
+
+<!-- TREE --> 
+		<record model="ir.ui.view" id="sale.view_order_tree">
+			<field name="name">sale.order.tree</field>
+			<field name="model">sale.order</field>
+			<field name="arch" type="xml">
+
+				<tree string="Order Tree"
+						colors="
+						red:state=='draft';
+						green:state=='credit_note';
+						blue:state=='sale';
+						grey:state in ('cancel')
+						">
+
+					<field name="pl_price_list"	string="Lista de Precios"  	groups="openhealth.roots"/>
+					<field name="name"          string="Referencia"/>
+
+
+					<field name="date_order"            string="Fecha y hora"/>
+					<field name="x_serial_nr"/>
+					<field name="x_counter_value"/>
+
+
+					<field name="patient"/>
+					<field name="x_doctor"/>
+					<field name="treatment"/>
+
+
+<!--
+-->
+					<field name="nr_lines"/>
+					<field name="pl_product"	string="Producto"/>
+					<field name="pl_family"/>
+					<field name="x_family"		string="X Familia"		groups="openhealth.roots"/>
+
+
+
+					<field name="x_type" />
+					<field name="state"/>
+
+
+					<field name="amount_total"     	sum="Total Montos"/>
+					<field name="x_total_net"/>
+					<field name="x_total_tax"/>
+
+					<field name="x_id_doc_type"/>
+					<field name="x_id_doc"/>
+					<field name="x_ruc"/>
+
+					<field name="user_id"       string="Creado por"/>
+				</tree>
+			</field>
+		</record>
+
+
+
+
+
+<!-- TREE 2  - DELTA --> 
+		<record model="ir.ui.view" id="view_order_delta_tree">
+			<field name="name">sale.order.tree</field>
+			<field name="model">sale.order</field>
+			<field name="arch" type="xml">
+
+<!--
+						blue:state=='sale';
+						green:state=='credit_note';
+						grey:state in ('cancel')
+-->
+				<tree string="Order Tree"
+
+						colors="
+						red:x_delta!=1
+						"
+					>
+
+					<field name="name"          string="Referencia"/>
+					
+					<field name="x_type"/>
+					<field name="state"/>
+					
+					<field name="x_serial_nr"/>
+
+					<field name="x_counter_value"/>
+
+					<field name="x_delta"/>
+
+<!--                    
+					<field name="x_checksum"    />
+					<field name="x_pm_total"    groups="openhealth.roots"   />
+					<field name="user_id"       string="Creado por" />
+					<field name="x_family" />
+					<field name="x_product"/>
+					<field name="x_doctor" />
+					<field name="treatment" />
+					<field name="state"/>
+-->
+					<field name="date_order"    string="Fecha"  />
+					<field name="patient"/>
+					<field name="nr_lines"/>
+					<field name="amount_untaxed"    sum="Total Untaxed"         widget="monetary"       string="Total"  />
+				</tree>
+			</field>
+		</record>
+<!--
+					<field name="user_id"       string="Generado por"   />
+					<field name="comment"/>
+					<field name="note"/>
+					<field name="partner_id"/>
+					<field name="product"/>
+					<field name="x_date_order_corr" string="Fec"    />
+					<field name="x_note"/>
+-->
+
+
+
+
+
+<!-- TREE 3 - CHECKSUM -->
+		<record model="ir.ui.view" id="view_order_checksum_tree">
+			<field name="name">sale.order.tree</field>
+			<field name="model">sale.order</field>
+			<field name="arch" type="xml">
+
+				<tree string="Order Tree"
+						colors="
+
+						red:x_checksum!=0;
+						
+						grey:x_checksum==-1
+						
+						"
+					>
+
+					<field name="name"          string="Referencia"     />
+					
+					<field name="x_type" />
+					<field name="state"/>
+					
+					<field name="x_serial_nr" />
+					<field name="x_checksum"    />
+
+					<field name="x_payment_method"/>
+					<field name="x_pm_total"/>
+
+					<field name="date_order"    string="Fecha"  />
+					<field name="patient"/>
+
+					<field name="x_doctor" />
+					<field name="treatment" />
+
+					<field name="nr_lines"/>
+					<field name="x_family" />
+					<field name="x_product"/>
+					<field name="amount_untaxed"    sum="Total Untaxed"         widget="monetary"       string="Total"  />
+<!--
+					<field name="state"/>
+					<field name="user_id"       string="Creado por" />
+-->            
+				</tree>
+			</field>
+		</record>
+<!--
+					<field name="user_id"       string="Generado por"   />
+					<field name="comment"/>
+					<field name="note"/>
+					<field name="partner_id"/>
+					<field name="product"/>
+					<field name="x_date_order_corr" string="Fec"    />
+					<field name="x_note"/>
+-->
+
+
+
+
+<!-- TREE 4 - PAYMENT -->
+		<record model="ir.ui.view" id="view_order_payment_tree">
+			<field name="name">sale.order.tree</field>
+			<field name="model">sale.order</field>
+			<field name="arch" type="xml">
+
+				<tree string="Order Tree">
+
+					<field name="name"          string="Referencia"/>
+					
+					<field name="x_type"/>
+					
+					<field name="state"/>
+					
+					<field name="x_serial_nr" />
+					
+					<field name="x_checksum"    />
+
+					<field name="x_payment_method"/>
+					
+					<field name="x_pm_total"/>
+
+					<field name="x_pm_cash"/>
+					
+					<field name="x_pm_visa_credit"/>
+
+					<field name="x_pm_visa_debit"/>
+					
+					<field name="x_pm_master_credit"/>
+
+					<field name="x_pm_master_debit"/>
+					
+					<field name="x_pm_american"/>
+
+					<field name="x_pm_diners"/>
+				</tree>
+			</field>
+		</record>
+
+
+
+	</data>
+</openerp>

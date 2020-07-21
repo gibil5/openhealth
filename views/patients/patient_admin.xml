@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+<!-- FORM -->
+
+		<!-- admin -->
+		<record model="ir.ui.view" id="openhealth.patient_admin_form_view">
+			<field name="name">Patient Admin Form</field>
+			<field name="model">oeh.medical.patient</field>
+
+			<field name="priority" eval="21"/>
+
+			<field name="inherit_id" ref="openhealth.oeh_medical_patient_view"/>
+			<field name="arch" type="xml">
+
+
+                <xpath expr="/form/sheet/notebook[@name='N2']" position="inside">
+
+					<!-- Admin -->
+					<page string="Admin"  groups="openhealth.roots">
+						<group>
+
+							<field name="user_id"/>
+
+
+							<field name="x_dni"/>
+
+						</group>
+					</page>
+
+                </xpath>
+
+			</field>
+		</record>
+	</data>
+</openerp>

@@ -1,0 +1,466 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		
+
+
+<!-- FORM -->
+		<record model="ir.ui.view" id="view_order_form">
+			<field name="name">sale.order.form</field>
+			<field name="model">sale.order</field>          
+			<field name="inherit_id" ref="sale.view_order_form"/>   
+			<field name="mode">primary</field>
+			<field name="priority">1</field>
+			<field name="arch" type="xml">
+
+<!-- Status --> 
+				<xpath expr="//field[@name='state']" position="replace">
+					<field  name="state" 
+							widget="statusbar"                            
+							statusbar_visible="draft, verified, sent, sale"
+					/>
+				</xpath>
+
+
+
+
+
+<!-- PRICELIST BUTTONS --> 				
+				<xpath expr="//field[@name='state']" position="before">
+
+					<!-- Add Prod -->
+					<button 
+							type="object"
+							class="oe_highlight"
+							name="pl_open_product_selector_product"
+							states="draft"
+							string="Agregar PRODUCTO - 2019"
+						/>
+
+					<!-- Add Serv -->
+					<button 
+							type="object"
+							class="oe_highlight"
+							name="pl_open_product_selector_service"
+							states="draft"
+							string="Agregar SERVICIO - 2019"
+						/>
+
+
+					<!-- Correct Serial Nr -->
+					<button 
+							type="object"
+							class="oe_highlight"
+							attrs="{'invisible':[   '|',
+													('x_admin_mode','not in',[True]),
+													('state','not in',['sale', 'credit_note']), 
+											]}"
+							name="correct_serial_number"
+							string="Corregir Num de Serie"
+						/>
+
+
+					<!-- Test -->
+					<button 
+							type="object"
+							class="oe_highlight"
+							name="test"
+							string="Test"
+							groups='openhealth.roots'
+						/>
+
+					<!-- Test Serial Number -->
+					<button 
+							type="object"
+							class="oe_highlight"
+							name="test_serial_number"
+							string="T SN"
+							groups='openhealth.roots'
+						/>
+				</xpath>
+
+
+
+
+<!-- REPLACE Buttons -->
+<!-- OLD Buttons - Take them out - NOT DEPRECATED --> 
+
+				<!-- Two times important --> 
+
+				<!-- Quotation Send --> 
+				<xpath expr="//button[@name='action_quotation_send']" position="replace">
+				</xpath>
+				<xpath expr="//button[@name='action_quotation_send']" position="replace">
+				</xpath>
+
+				<!-- Print Quotation -->
+				<xpath expr="//button[@name='print_quotation']" position="replace">
+				</xpath>
+				<xpath expr="//button[@name='print_quotation']" position="replace">
+				</xpath>
+
+				<!-- Action Done --> 
+				<xpath expr="//button[@name='action_done']" position="replace">
+				</xpath>
+
+				<!-- Confirm Sale --> 
+				<xpath expr="//button[@name='action_confirm']" position="replace">
+				</xpath>
+
+				<!-- OLD Buttons - DEPRECATED --> 
+				<xpath expr="//button[@type='action']" position="replace">
+				</xpath>
+				<xpath expr="//button[@type='action']" position="replace">
+				</xpath>
+
+
+
+
+
+
+
+<!-- Redefine BUTTONS -->
+
+				<!-- Redefine -->
+				<xpath expr="//button[@name='action_confirm']" position="replace">
+
+
+					<!-- Validate -->
+					<button 
+							type="object" 
+							class="oe_highlight"
+							name="validate_and_confirm"
+							string="Validar y Confirmar"                            
+							states="sent"
+					/>
+
+
+					<!-- Confirm -->
+					<button 
+							type="object" 
+							class="oe_highlight"
+							name="action_confirm_nex"
+							string="CONFIRMAR"
+							states="validated"
+					/>
+
+
+					<!-- Cancel --> 
+					<button 
+							name="cancel_order"     
+							type="object" 
+							class="oe_highlight"
+							groups="openhealth.roots,openhealth.caja,openhealth.managers,openhealth.directors"
+							string="Anular"
+							states="sale"
+					/>
+
+
+
+					<!-- Activate --> 
+					<button 
+							type="object" 
+							class="oe_highlight"    
+							name="activate_order"
+							groups="openhealth.roots,openhealth.caja,openhealth.managers,openhealth.directors"
+							string="Activar"
+							states="cancel"
+					/>
+
+
+					<!-- Create CN -->
+					<button
+							type="object"
+							class="oe_highlight"
+							name="create_credit_note"
+							states="sale,cancel"                     
+							string="Crear NC"
+					/>
+
+
+
+					<!-- Block Flow -->
+					<button
+							type="object"
+							class="oe_highlight"
+							name="block_flow"
+							string="Bloquear Flujo"
+							states="credit_note"                     
+					/>
+
+					<!-- Block Flow -->
+					<button
+							type="object"
+							class="oe_highlight"
+							name="unblock_flow"
+							string="Des-bloquear Flujo"
+							states="credit_note"                     
+					/>
+				</xpath>
+
+
+
+
+
+
+
+<!-- Natives -->
+				<xpath expr="//field[@name='validity_date']" position="before">					
+
+					<field name="x_partner_vip"/>
+
+					<field name="vspace"/>
+
+					<field name="date_order"            string="Fecha"
+
+														attrs="{     
+																		'readonly': [
+																						('x_admin_mode', '!=', True), 
+																					], 
+															}"
+												/>
+
+					<field name="x_payment_method"      attrs="{'readonly': [('x_admin_mode', '!=', True),],}"/>
+
+					<field name="x_type"
+														attrs="{     
+																		'readonly': [
+																						('x_admin_mode', '!=', True), 
+																					], 
+																}"  
+										/>
+
+					<field name="x_serial_nr"		readonly="1"/>
+
+					<field name="x_counter_value" 	attrs="{     
+																'readonly': [
+																				('x_admin_mode', '!=', True), 
+																			],
+															}"
+								/>
+				</xpath>
+
+
+
+<!-- REDEFINE -->
+				<!-- Price list --> 
+				<xpath expr="//field[@name='pricelist_id']" position="replace">
+					<field name="x_admin_mode"/>
+					<field name="configurator"			required="1"/>
+					<field name="pricelist_id"          readonly="1"/>
+				</xpath>
+
+<!-- REPLACES -->
+				<xpath expr="//field[@name='validity_date']" position="replace">
+				</xpath>
+
+				<xpath expr="//field[@name='payment_term_id']" position="replace">
+				</xpath>
+
+
+<!-- NEW BUTTONS --> 
+				<xpath expr="//button[@name='action_confirm_nex']" position="before">
+
+					<!-- Print Electronic --> 
+					<button 
+							type="object"
+							class="oe_highlight"
+							attrs="{'invisible':[   '|',
+													('x_type','not in',['ticket_invoice','ticket_receipt']),
+													('state','not in',['sale', 'credit_note']), 
+											]}"
+							name="print_ticket_electronic"
+							groups="openhealth.roots, openhealth.caja, openhealth.managers, openhealth.directors"
+							string="Imprimir - Electrónico"
+						/>
+
+
+					<!-- Pay -->
+					<button 
+							name="create_payment_method"
+							type="object" 
+							class="oe_highlight"
+							groups="openhealth.roots,openhealth.caja,openhealth.directors,openhealth.managers"
+							string="PAGAR"
+							states="draft"                      
+						/>
+				</xpath>
+
+
+
+<!-- REPLACE --> 
+				<!-- Buttons --> 
+				<xpath expr="//button[@name='action_cancel']" position="replace">
+				</xpath>
+
+				<!-- Buttons --> 
+				<xpath expr="//button[@name='action_draft']" position="replace">
+				</xpath>
+
+
+<!-- REDEFINE --> 
+				<xpath expr="//field[@name='name']" position="replace">
+					<group>
+						<h3>
+							<field name="x_title"       readonly="0"/>
+							<field name="pl_price_list"/>
+						</h3>
+					</group>
+					<group></group>
+					<group></group>
+					<group></group>
+				</xpath>
+
+
+
+
+
+
+
+<!-- REPLACE --> 
+				<!-- User --> 
+				<field name="user_id" position="replace">
+				</field>
+
+				<!-- Partner --> 
+				<field name="partner_id" position="replace">
+					<field name="patient"       required="1"            options="{'no_create': False, 'no_create_edit':True}"/>
+				</field>
+
+				<!-- Dni --> 
+				<field name="patient" position="before">
+					<field name="x_credit_note"         attrs="{'invisible':[('state', 'in', ['cancel', 'credit_note'])]}"/>
+					<field name="x_credit_note_type"    attrs="{    
+																	'invisible':    [('state', 'not in', ['credit_note'])],
+																	'required':     [('state', 'in', ['credit_note'])],
+																}"/>
+					<field name="x_credit_note_amount"    attrs="{    
+																	'invisible':    [('state', 'not in', ['credit_note'])],
+																	'required':     [('state', 'in', ['credit_note'])],
+																}"/>
+					<field name="x_credit_note_owner"   attrs="{'invisible':[('state', 'not in', ['credit_note'])]}"/>
+					<field name="x_credit_note_owner_amount"/>
+
+					<field name="pl_transfer_free"/>
+
+					<field name="x_block_flow"/>
+					<field name="vspace"/>
+					<field name="x_partner_dni"		attrs="{'readonly':[('patient', '!=', False)], }"/>
+					<field name="vspace"/>
+				</field>
+
+
+				<!-- Id Docs -->
+				<field name="patient" position="after"  >
+					<field name="x_id_doc_type"	attrs="{'required':[('x_type', 'not in', ['ticket_invoice', 'invoice'])],}"/>
+					<field name="x_id_doc"   	attrs="{'required':[('x_type', 'not in', ['ticket_invoice', 'invoice'])],}"/>
+					<field name="vspace"/>
+					<field name="x_ruc"			attrs="{'required':[('x_type', 'in', ['ticket_invoice', 'invoice'])],}"/>
+				</field>
+
+
+				<!-- New Natives --> 
+				<field name="x_ruc" position="after">
+					<field name="vspace"/>
+					<field name="x_doctor"      required="1"        options="{'no_create': True, 'no_create_edit':True}"            
+
+																	attrs="{ 'readonly': [	('x_admin_mode', '!=', True),
+																							('state', 'not in', ['draft']), ],}"/>
+					<field name="vspace"/>
+					<field name="treatment"		required="0"/>
+					<field name="pl_family"      readonly="1"/>
+					<field name="x_family"      readonly="1"/>
+				</field>    
+
+
+
+
+				<!-- Buttons - Post Mortem --> 
+				<field name="amount_total" position="after">                        
+
+						<field name="x_amount_flow"		string="Total Flujo"/>
+
+						<group class="oe_left"  style="width: 600px;">
+							<group col='5'      groups="openhealth.roots,openhealth.caja,openhealth.directors,openhealth.managers">
+								<group>
+
+									<!-- Remove --> 
+									<button
+											name="remove_myself"    
+											type="object" 
+											class="oe_highlight"
+											states="sale"
+											string="ELIMINAR"
+											help="Importante: Esta operación es REVERSIBLE !"
+											confirm="Importante: La Venta va a ser convertida en Presupuesto. Desea continuar ?"
+											groups="openhealth.roots,openhealth.managers"
+									/>
+
+									<!-- Remove NC --> 
+									<button 
+											name="remove_myself"    
+											type="object" 
+											class="oe_highlight"
+											states="credit_note"
+											string="ELIMINAR NC"
+											help="Importante: Esta operación es IRREVERSIBLE !"
+											confirm="Importante: La Nota de Crédito va a ser eliminada del sistema. Desea continuar ?"
+											groups="openhealth.roots,openhealth.managers"
+									/>
+								</group>
+							</group>
+						</group>
+				</field>
+
+
+<!-- Translate for Order Lines  -->
+<xpath expr="//page[1]" position="attributes">
+	<attribute name='string'>Líneas</attribute> 
+</xpath>
+
+<!-- Hide Other Information - Not Used -->
+<xpath expr="//page[2]" position="replace">
+</xpath>
+
+<!-- Order Lines  -->
+<xpath expr="//field[@name='order_line']" position="attributes">
+	<attribute name='attrs'>{'readonly': [('state', 'not in', ('sale', 'draft', 'cancel', 'sent', 'credit_note'))]}</attribute>
+</xpath>
+
+<!-- Hide --> 
+<xpath expr="//tree/field[@name='tax_id']" position="replace">
+	<field name="tax_id"    readonly="1"        invisible="1"       />
+</xpath>
+<xpath expr="//tree/field[@name='name']" position="replace">
+	<field name="name"  readonly="0"    invisible="0"       />
+</xpath>
+
+
+<!-- Change --> 
+<xpath expr="//tree/field[@name='product_id']" position="replace">
+	<field name="product_id"    options="{'no_create': True, 'no_create_edit':True}"/>
+</xpath>
+
+<!-- Chatter - Deprecated !!! -->
+<field name="message_follower_ids" position="replace">
+</field>
+
+
+				<!-- Add - QR -->
+				<field name="message_ids" position="replace">
+					<group col="1">
+						<group>
+							<field name="x_qr_data"/>
+						</group>
+					</group>
+					<group col="1">
+						<group>
+							<field name="x_qr_img" widget="image"/>
+						</group>
+					</group>
+				</field>
+			</field>
+		</record>
+		<!-- Form - END -->
+	</data>
+</openerp>

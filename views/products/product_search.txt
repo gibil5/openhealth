@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+
+
+<!-- FILTER --> 
+        <record id="oehealth.view_oeh_medical_patient_filter" model="ir.ui.view">
+            <field name="name">Patient Search Modified</field>
+
+            <field name="model">oeh.medical.patient</field>
+            
+            <field name="arch" type="xml">
+
+                <search string="patients">
+
+
+<!--
+                    <field  name="name"                 filter_domain="['|',('name','ilike',self),('x_dni','ilike',self)]"/>
+
+                    <filter string="Enero" domain="[
+                                                            ('x_date_record','&gt;=','2018-01-01 05:00:00'),
+                                                            ('x_date_record','&lt;','2018-02-01 05:00:00'),
+                                            ]"/>
+-->
+
+
+
+
+
+                    <!-- Group By --> 
+                    <group expand="1" string="Group By">
+
+                        <filter name="Fecha de Creación" context="{'group_by':'create_date'}"/>
+
+                        <filter name="Fecha de Registro" context="{'group_by':'x_date_record'}"/>
+
+                        <filter name="Vip" context="{'group_by':'x_vip'}"/>
+
+                        <filter name="Sexo" context="{'group_by':'sex'}"/>
+
+                        <filter name="Nr TRATAMIENTOS" context="{'group_by':'x_treatment_count'}"/>
+
+
+
+
+                        <filter name="Tipo de Documento" context="{'group_by':'x_id_doc_type'}"/>
+
+                        
+<!--
+                        <filter name="Legacy" context="{'group_by':'x_legacy'}"/>
+
+                        <filter name="Tipo" context="{'group_by':'x_type'}"/>
+                        <filter name="Familia" context="{'group_by':'x_family'}"/>
+                        <filter name="Producto" context="{'group_by':'x_product'}"/>
+                        <filter name="Médico" context="{'group_by':'x_doctor'}"/>
+                        <filter name="Paciente" context="{'group_by':'patient'}"/>
+                        <filter name="Creado por" context="{'group_by':'user_id'}"/>
+-->
+                    </group>
+               </search>
+
+           </field>
+       </record>
+
+    </data>
+</openerp>

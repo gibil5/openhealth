@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+<!-- FORM -->
+		<!-- treatment -->
+		<record model="ir.ui.view" id="openhealth.patient_treatment_form_view">
+			<field name="name">Patient Treatments Form</field>
+			<field name="model">oeh.medical.patient</field>
+
+			<field name="priority" eval="3"/>
+
+			<field name="inherit_id" ref="openhealth.oeh_medical_patient_view"/>
+			<field name="arch" type="xml">
+
+				<notebook position="inside">
+<!--
+					<page string="Tratamientos"  groups="openhealth.roots">
+-->
+					<!-- treatment -->
+					<page string="Tratamientos">
+						<group>
+
+							<field name="treatment_ids"/>
+
+						</group>
+					</page>
+				</notebook>
+			</field>
+		</record>
+	</data>
+</openerp>

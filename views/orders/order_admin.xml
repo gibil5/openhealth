@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+<!-- FORM -->
+		<record model="ir.ui.view" id="order_admin_form_view">
+			<field name="name">order.admin.form</field>
+			<field name="model">sale.order</field>
+			<field name="priority" eval="2"/>
+			<field name="inherit_id" ref="sale.view_order_form"/>
+			<field name="arch" type="xml">
+
+				<notebook position="inside">
+					
+
+							<page string="FIX">
+
+								<group>
+			                        <button 
+			                                type="object" 
+			                                class="oe_highlight"
+
+			                                name="fix_treatment"
+
+			                                string="Fix Tratamiento"
+			                        />
+			                    </group>
+								<group>
+
+
+			                        <button 
+			                                type="object" 
+			                                class="oe_highlight"
+
+			                                name="fix_treatment_month"
+
+			                                string="Fix TR Mes"
+
+			                                groups='openhealth.roots'
+			                        />
+
+			                    </group>
+								<group>
+
+			                        <button 
+			                                type="object" 
+			                                class="oe_highlight"
+
+			                                name="fix_treatment_all"
+
+			                                string="Fix TR Todo"
+
+			                                groups='openhealth.roots'
+			                        />
+			                    </group>
+							</page>
+
+
+
+<!--
+							<page string="Admin">
+-->
+
+							<page string="Admin"        groups='openhealth.roots'	>
+
+								<group>
+
+									<field name="x_procedure_created" />
+
+									<field name="partner_id"	readonly="0"/>
+
+
+
+									<field name="vspace"/>
+									
+									<field name="x_product"     readonly="1"/>
+
+									<field name="vspace" />
+
+									<field name="x_dni"		string="Obsoleto"/>
+
+									<field name="x_type_code"/>
+
+									<field name="x_legacy"/>
+
+									<field name="x_pm_total"/>
+									
+									<field name="x_day_order"/>
+
+									<field name="x_month_order"/>
+								</group>
+
+
+								<!-- Only for Roots --> 
+								<group>
+	
+									<field name="x_doctor_uid"  invisible="0"/>
+									<field name="user_id"       string="Creado por"/>
+									<field name="x_checksum"/>
+								</group>
+							</page>
+				</notebook>
+<!--
+					<field name="vspace"/>
+
+					<field name="x_pm_total"/>
+
+									<field name="vspace" />
+									<field name="user_id"       string="Generado por"       readonly="1"/>
+									<field name="user_id"       string="Creado por"     readonly="1"/>
+
+									<field name="x_my_company"  - Dep />
+
+									<field name="vspace" />
+									<field name="x_legacy" />
+									<field name="x_machine"     />
+									<field name="x_machine_req"                 />
+--> 
+
+
+			</field>
+		</record>
+	</data>
+</openerp>

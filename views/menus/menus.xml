@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<openerp>
+    <data noupdate='0'>
+
+
+
+<!-- Main - EMR -->
+<menuitem   id="main_emr_menu" 
+            sequence="-30"
+            name="Historias"        
+            />
+
+
+
+<!-- Historias --> 
+<menuitem   id="emr_menu" 
+            name="Historias Médicas"
+            parent="main_emr_menu"
+
+            sequence="1"
+            />
+
+
+        <!-- Patients --> 
+        <menuitem   id="emr_patients_menu" 
+                    name="Pacientes" 
+                    parent="emr_menu"
+                    sequence="1"
+
+                    action="patient_list_action"
+                    />
+
+
+        <!-- Treatments -->
+        <menuitem   id="emr_treatments_menu" 
+                    name="Tratamientos" 
+                    parent="emr_menu"
+                    sequence="5"
+
+                    action="treatment_list_action"
+                    />
+
+
+        <!-- Alta --> 
+        <menuitem   id="emr_patients_discharged_menu" 
+                    name="Alta" 
+                    parent="emr_menu"
+                    sequence="7"
+
+                    action="patient_discharged_list_action"
+                    />
+
+
+
+
+
+
+<!-- Physicians -->
+<menuitem   id="physician_menu" 
+            name="Médicos"
+            parent="main_emr_menu"
+
+            sequence="5"
+            />
+
+
+        <menuitem   id="oeh_medical_physician_list"  
+                    parent="physician_menu" 
+                    sequence="7"
+                    name="Médicos"
+                    action="physician_list_action" 
+                    />
+
+        <menuitem   id="oeh_medical_therapeut_list"
+                    parent="physician_menu"
+                    sequence="8"
+                    name="Cosmeatras"
+                    action="therapeut_list_action"
+                    />
+
+
+<!-- Inactives --> 
+<menuitem   id="emr_inactive_menu" 
+            name="Inactivos"
+            parent="main_emr_menu"
+            sequence="7"
+            groups="openhealth.roots,openhealth.managers,openhealth.directors"
+            />
+
+
+        <!-- Patients --> 
+        <menuitem   id="emr_patients_inactive_menu" 
+                    name="Pacientes" 
+                    parent="emr_inactive_menu"
+                    sequence="1"
+                    action="patient_inactive_list_action"
+                    />
+
+
+        <!-- Partners --> 
+        <menuitem   id="emr_partners_inactive_menu" 
+                    name="Partners" 
+                    parent="emr_inactive_menu"
+                    sequence="2"
+                    action="partner_patient_inactive_list_action"
+                    />
+
+
+        <!-- Physicians -->
+        <menuitem   id="oeh_medical_physician_inactive_list"  
+                    name="Médicos"
+                    parent="emr_inactive_menu"
+                    sequence="3"
+                    action="physician_inactive_list_action" 
+                    groups="openhealth.roots,openhealth.directors"
+                    />
+
+
+        <!-- users --> 
+        <menuitem   id="emr_users_inactive_menu" 
+                    name="Users" 
+                    parent="emr_inactive_menu"
+                    sequence="5"
+                    action="base.action_res_users_inactive"
+                    />
+
+
+
+<!-- Config --> 
+<menuitem   id="emr_config_menu" 
+            parent="main_emr_menu"
+            sequence="9"
+            name="Configuración"
+            groups="openhealth.roots,openhealth.reception,openhealth.directors,openhealth.managers"
+            />
+
+        <!-- Patient Origin -->
+        <menuitem   id="patient_origin_menu" 
+                    name="Paciente Primer Contacto" 
+                    parent="emr_config_menu"
+                    sequence="1"
+                    action="patient_origin_list_action"
+                />
+
+        <!-- EMR Counter -->
+        <menuitem   id="emr_counters_menu" 
+                    name="Contador Historias" 
+                    parent="emr_config_menu"
+                    sequence="5"
+                    action="counter_medical_list_action"
+                />
+    </data>
+</openerp>

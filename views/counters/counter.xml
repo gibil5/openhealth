@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+
+
+<!-- FORM -->
+        <record model="ir.ui.view" id="counter_form_view">
+            <field name="name">counter.form</field>
+            <field name="model">openhealth.counter</field>
+            <field name="arch" type="xml">
+
+                <form string="counter - Form">
+
+
+<!-- Header -->
+                    <header>
+
+                        <!-- Decrease --> 
+                        <button 
+                                type="object" 
+                                class="oe_highlight"
+
+                                name="decrease"
+
+                                string="Disminuir"
+                        />  
+
+                        <!-- Increase --> 
+                        <button 
+                                type="object" 
+                                class="oe_highlight"
+
+                                name="increase"
+
+                                string="Aumentar"
+                        />
+                    </header>
+
+
+
+<!-- Sheet -->
+                    <sheet>
+                        
+                        <group string="Contadores">
+
+                            <group>
+                                <field name="name"/>
+                                <field name="value"/>
+                            </group>
+                            <group>
+                                <field name="x_type"/>
+                            </group>
+                        </group>
+
+
+                        <group   groups="openhealth.roots">
+                            <group>
+                                <field name="prefix"/>
+                                <field name="separator"/>
+                                <field name="padding"/>
+                            </group>
+                            <group>
+                                <field name="date_created"      readonly="1"    invisible="0"/>
+                                <field name="date_modified"     readonly="1"    invisible="0"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>             
+            </field>
+        </record>
+<!--
+                                <field name="vspace" />
+
+                                <field name="delta"     />      
+-->
+
+
+
+<!-- TREE -->
+        <record model="ir.ui.view" id="counter_tree_view">
+            <field name="name">openhealth.counter.tree</field>
+            <field name="model">openhealth.counter</field>
+            <field name="arch" type="xml">
+                <tree string="counter Tree">
+                    <field name="name"/>
+                    <field name="value"/>
+                </tree>
+            </field>
+        </record>
+<!--
+                    <field name="delta"     />      
+                    <field name="x_type"/>
+                    <field name="padding"       groups="openhealth.roots"   />
+                    <field name="prefix"        groups="openhealth.roots"   />
+                    <field name="total"/>
+-->             
+
+
+    </data>
+</openerp>

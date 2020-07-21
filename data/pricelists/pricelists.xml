@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<openerp>
+    <data noupdate='0'>
+
+        <!-- VIP -->
+        <record id='pricelist_vip' model='product.pricelist'>
+            <field name='name'>VIP</field>
+        </record>
+
+    </data>
+</openerp>
+

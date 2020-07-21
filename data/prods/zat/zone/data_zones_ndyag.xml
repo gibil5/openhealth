@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<openerp>
+    <data noupdate='1'>
+
+
+
+<!-- ndyag --> 
+
+
+        <!-- Body local -->
+        <record id='ndyag_body_local' model='openhealth.zone'>
+            <field name='name'>Localizado Cuerpo</field>
+            <field name='name_short'>body_local</field>
+            <field name='treatment'>laser_ndyag</field>         
+        </record>
+
+
+        <!-- Face local -->
+        <record id='ndyag_face_local' model='openhealth.zone'>
+            <field name='name'>Localizado Rostro</field>            
+            <field name='name_short'>face_local</field>
+            <field name='treatment'>laser_ndyag</field>
+        </record>
+
+
+
+    </data>
+</openerp>

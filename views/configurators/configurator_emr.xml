@@ -1,0 +1,268 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+		
+
+
+<!-- FORM --> 
+		<record model="ir.ui.view" id="configurator_emr_form_view">
+			<field name="name">configurator.emr.form</field>
+			<field name="model">openhealth.configurator.emr</field>
+			<field name="arch" type="xml">
+				<form string="configurator EMR Form">
+
+
+<!-- Header -->
+					<header>
+						
+                        <!-- Config Doctors -->
+                        <button 
+                                type="object"
+                                class="oe_highlight"
+                                name="config_doctors"
+                                string="Config Doctors"
+                        />
+					</header>
+
+
+
+<!-- Sheet -->  
+					<sheet>
+
+						<!-- Base -->
+						<group>
+							<group>
+								<field name="name"/>
+								<field name="x_type"/>
+							</group>
+							<group>
+								<field name="order_admin"/>
+							</group>
+						</group>
+
+
+
+						<group  string="">
+
+							<!-- Patients -->
+							<group string="Pacientes">
+								<field name="patient_limit"/>
+							</group>
+
+							<group>
+							</group>
+						</group>
+
+
+						<group  string="">
+
+							<!-- Account Txt -->
+							<group string="TXT">
+								<field name="path_account_txt"/>
+							</group>
+
+							<!-- CSV Pricelist 2019 -->
+							<group string="Pricelist 2019 CSV">
+								<field name="path_csv_pricelist"/>
+							</group>
+						</group>
+
+
+
+
+
+
+
+						<group  string="">
+
+							<!-- Ticket -->
+							<group string="Ticket">
+									<field name="website"/>
+									<field name="email"/>
+									<field name="vspace"/>
+									<field name="ticket_company_address"/>
+									<field name="ticket_company_ruc"/>
+									<field name="ticket_description"/>
+									<field name="ticket_warning"/>
+		<!--
+									<field name="warning"	string="warning - Deprecated"/>
+		-->
+							</group>
+							
+								<!-- Electronic -->
+								<group string="Facturacion Electronica">
+										<field name="company_name"/>
+										<field name="company_address"/>
+										<field name="company_phone"/>
+										<field name="company_ruc"/>
+										<field name="vspace"/>
+										<field name="company_ubigeo"/>
+										<field name="company_country"/>
+										<field name="company_account"/>
+								</group>
+
+						</group>
+
+
+						<group  string="">
+							<group  	string="Horarios">
+								<field name="date_open"     widget="time"/>
+								<field name="date_close"    widget="time"/>
+							</group>
+
+							<group  	string="Cuentas Contables">
+
+								<field name="cuentab_services"/>
+								<field name="cuentab_products"/>
+								<field name="cuentab_consu"/>
+								
+							</group>
+						</group>
+
+
+
+						<!--  -->
+<!--						
+						<group string="">
+							<group>
+							</group>
+							<group>
+							</group>
+						</group>
+-->
+
+
+						<!-- Notebook --> 
+<!--
+						<notebook></notebook>
+-->
+
+
+						<!-- Notebook --> 
+						<notebook>
+
+							<!-- Doctors --> 
+							<page   string="Médicos">
+								<field name="doctor_line">
+									<tree string="Doctors">
+										<field name="physician"/>
+										<field name="x_active"/>
+									</tree>
+								</field>
+							</page>
+
+
+							<!-- Holidays --> 
+							<page   string="Feriados">
+								<field name="day_line">
+									<tree string="Holidays">
+										<field name="date"/>
+										<field name="holiday"/>
+									</tree>
+								</field>
+							</page>
+
+							<!-- Medical --> 
+							<page   string="Laser">
+
+								<group>
+									<group  string="Nr Sesiones">
+										<field name="nr_sessions_co2"/>
+										<field name="nr_sessions_quick"/>
+										<field name="nr_sessions_exc"/>
+										<field name="nr_sessions_ipl"/>
+										<field name="nr_sessions_ndyag"/>
+									</group>
+
+									<group  string="Nr Controles">
+										<field name="nr_controls_co2"/>
+										<field name="nr_controls_quick"/>
+										<field name="nr_controls_exc"/>
+										<field name="nr_controls_ipl"/>
+										<field name="nr_controls_ndyag"/>
+									</group>
+								</group>
+							</page>
+
+							<!-- Doctors --> 
+<!--                            
+							<page   string="Medicos Activos">
+								<field name="doctor_line">
+									<tree string="Drs.">
+										<field name="name"/>
+										<field name="active"/>
+									</tree>
+								</field>
+							</page>
+-->
+
+						</notebook>
+
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+
+<!-- TREE -->
+		<record model="ir.ui.view" id="configurator_emr_view_tree">
+			<field name="name">openhealth.configurator.emr.tree</field>
+			<field name="model">openhealth.configurator.emr</field>
+			<field name="arch" type="xml">
+				<tree string="Configurator EMR Tree">
+<!--
+					<field name="id"/>
+-->
+					<field name="name"/>
+					<field name="x_type"/>
+					<field name="company_ruc"/>
+				</tree>
+			</field>
+		</record>
+
+
+
+
+
+
+<!-- ACTION - EMR -->
+		<record model="ir.actions.act_window" id="configurator_emr_list_action">
+			<field name="name">Configuracion - Clinica Chavarri</field>
+			<field name="res_model">openhealth.configurator.emr</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+
+
+<!-- Config -->
+		<menuitem   id="main_config_menu" 
+					sequence="-16"
+
+					name="Config"
+
+					groups="openhealth.roots,openhealth.directors,openhealth.managers"
+			/>
+
+		<!-- Config -->
+		<menuitem   id="openhealth_config_menu"
+					parent="main_config_menu"
+					sequence="1"
+					name="Config"
+				/>
+
+		<!-- EMR --> 
+		<menuitem   id="config_emr_menu" 
+					name="Clinicas" 
+					parent="openhealth_config_menu"
+					sequence="1"
+
+					action="configurator_emr_list_action"
+			/>
+
+
+
+
+	</data>
+</openerp>

@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+
+
+<!-- Open Health -->
+        <menuitem   id="main_openhealth_menu" 
+                    sequence="1"
+                    name="Open Health"
+                    groups="openhealth.roots"
+            />
+
+        <!-- Open Health -->
+        <menuitem   id="openhealth_openhealth_menu"
+                    parent="main_openhealth_menu"
+                    sequence="1"
+                    name="Open Health"
+                />
+
+        <!-- Schedulers --> 
+        <menuitem   id="oh_scheduler_menu" 
+                    name="Schedulers" 
+                    parent="openhealth_openhealth_menu"
+                    sequence="2"
+                    action="scheduler_list_action"
+            />
+
+        <!-- Companies --> 
+        <menuitem   id="oh_content_menu" 
+                    name="Companies" 
+                    parent="openhealth_openhealth_menu"
+                    sequence="3"
+                    action="company_list_action"
+            />
+
+        <!-- Electronic --> 
+        <menuitem id="oh_electronic_menu"
+                    name="Electronic Orders"
+                    parent="openhealth_openhealth_menu"
+                    sequence="3"
+                    action="electronic_order_form_action"
+            />
+
+        <!-- Corrector --> 
+        <menuitem id="oh_corrector_menu"
+                    name="Correctors"
+                    parent="openhealth_openhealth_menu"
+                    sequence="3"
+                    action="corrector_list_action"
+            />
+
+        <!-- Product Product --> 
+        <menuitem   id="oh_product_product_menu" 
+                    name="Products Product"
+                    parent="openhealth_openhealth_menu"
+                    sequence="4"
+                    action="product_product_list_action"
+            />
+
+
+<!-- Electronic -->
+        <menuitem   id="main_electronic_menu"
+                    sequence="1"
+                    name="Electronic"
+                    groups="openhealth.roots"
+            />
+
+<!-- Container -->
+        <menuitem   id="openhealth_container_menu"
+                    parent="main_electronic_menu"
+                    sequence="0"
+                    name="Container"
+                />
+
+        <!-- Container --> 
+        <menuitem id="content_menu" name="Container" parent="openhealth_container_menu"
+                action="container_list_action"
+            />
+
+    </data>
+</openerp>

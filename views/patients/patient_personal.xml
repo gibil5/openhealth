@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+<!-- FORM -->
+		<!-- Personal -->
+		<record model="ir.ui.view" id="openhealth.patient_personal_form_view">
+
+			<field name="name">Patient personal information</field>
+			<field name="model">oeh.medical.patient</field>
+			<field name="priority" eval="1"/>
+			<field name="inherit_id" ref="openhealth.oeh_medical_patient_view"/>
+			<field name="arch" type="xml">
+
+				<xpath expr="/form/sheet/notebook[@name='N2']" position="inside">
+
+					<!-- Personal -->
+					<page string="Personal - 2019">
+						<group>
+
+							<!-- First Group - Address Peru --> 
+
+<!-- Address Personal -->
+							<group  attrs="{ 'required': [   
+															('x_foreign', '=', False), 
+														],
+											}">
+
+<!--
+															attrs="{ 'required':[
+																					('x_legacy', '!=', True), 
+																				],
+																	}"
+
+																					attrs="{ 'required':[
+																											('x_foreign', '=', False), 
+																											('x_legacy', '!=', True), 
+																											],
+																							}"
+-->
+
+								<field  name="x_foreign"	invisible="1"/>
+
+
+								<!-- Country --> 
+								<field name="country_id"    class="oe_no_button" 
+															options="{&quot;no_open&quot;: True, &quot;no_create&quot;: True}"
+															readonly="0"/>                                
+
+								<!-- Only Peru --> 
+								<field name="city" style="width: 40%"               string="Departamento"
+									
+																					attrs="{ 'required':[
+																											('x_foreign', '=', False), 
+																								],}"/>
+
+								<!-- Only Lima --> 
+								<field name="street2_sel"       required="0"        attrs="{    'invisible':[('city', '!=', 'lima')],
+
+																								'required':[
+																												('city', '=', 'lima'), 
+																												('x_foreign', '=', False), 
+																											],
+																							}"/>
+
+
+
+								<!-- Not Lima --> 
+								<field name="street2_char"      required="0"        attrs="{    'invisible':[('city', '==', 'lima')], 
+
+																								'required':[
+																												('city', '!=', 'lima'),
+																												('x_foreign', '=', False), 
+																											],
+																							}"
+									/>
+
+
+							
+								<field name="street2"           invisible="1"/>
+
+
+								<!-- Zip --> 
+								<field name="zip" required="0" class="oe_no_button" style="width: 37%" options="{&quot;no_open&quot;: True}" on_change="onchange_state(state_id)"      
+
+																					attrs="{    'invisible':[('city', '!=', 'lima')],
+																								
+																								'required':[
+																												('city', '=', 'lima'), 
+																												('x_foreign', '=', False),
+																											],
+																							}" 
+
+									/>
+
+
+								<!-- Address --> 
+								<field name="street"    required="0"
+																					attrs="{    'required':[
+																											('x_foreign', '=', False), 
+																											],
+																							}" 
+
+									/> 
+							</group>
+
+							<!-- Second Group - Contact --> 
+							<group>
+
+								<field name="email"     string="Email"      widget="email" />
+								<field name="phone"/>
+								<field name="mobile"/>
+								<field name="function"  required="0"/>
+								<field name="x_education_level" required="0"/>
+<!--
+								<field name="vspace"/>
+-->
+							</group>
+						</group>
+
+<!--
+<hr></hr>
+-->
+<!-- Hidden -->
+						<group>
+							<!-- Ruc --> 
+							<group 	string="RUC"		attrs="{    'invisible':[('x_ruc_available', '!=', True)],
+									}">
+								<field name="x_ruc"/>
+								<field name="x_firm"/>
+								<field name="x_firm_address"/>
+							</group>
+
+							<!-- Caregiver --> 
+							<group 	string="Acompañante"	attrs="{    'invisible':[('x_caregiver', '!=', True)],
+									}">
+								<field name="x_caregiver_last_name"/>
+								<field name="x_caregiver_first_name"/>
+								<field name="phone_3" />
+								<field string="DNI"  name="x_caregiver_dni"/>
+								<field string="Parentesco"  name="x_caregiver_relation"/>
+							</group>
+						</group>
+
+
+
+
+
+
+					</page>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</openerp>

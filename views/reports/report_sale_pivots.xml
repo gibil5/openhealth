@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+
+
+
+        <!-- Pivot - Day --> 
+<!--
+        <record id="sale.view_order_product_pivot_day" model="ir.ui.view">
+
+             <field name="name">sale.report.pivot.day</field>
+
+             <field name="model">sale.report.day</field>
+             
+             <field name="arch" type="xml">
+
+
+                 <pivot string="Sales Analysis" disable_linking="True"  display_quantity="True" >
+
+                    <field name="date" interval="day" type="col"    />
+
+                    <field name="price_subtotal" type="measure"     string="Subtotal"   />
+
+
+                 </pivot>
+             </field>
+        </record>
+-->
+<!--                    
+                 <pivot string="Sales Analysis" disable_linking="True"  display_quantity="True" >
+                    <field name="team_id" type="col"/>
+                    <field name="nbr" type="measure"    />
+                    <field name="date" interval="month" type="col"  />
+                    <field name="date" interval="month" type="row"  />
+                    <field name="date" interval="day" type="col"    />
+                    <field name="price_subtotal" type="measure" />
+                    <field name="price_subtotal" type="measure"     groups="openhealth.physicians,openhealth.managers,openhealth.directors" />
+                    <field name="nbr" type="measure"    groups="openhealth.roots"   />
+-->
+
+
+
+
+        <!-- Pivot - Month --> 
+        <record id="sale.view_order_product_pivot" model="ir.ui.view">
+            
+             <field name="name">sale.report.pivot</field>
+
+             <field name="model">sale.report</field>
+             
+             <field name="arch" type="xml">
+
+                 <pivot string="Sales Analysis" disable_linking="True"  display_quantity="True" >
+
+<!--                    
+                    <field name="team_id" type="col"/>
+                    <field name="price_subtotal" type="measure" />
+                    <field name="date" interval="month" type="row"  />
+
+                    <field name="date" interval="day" type="col"    />
+                    <field name="nbr" type="measure"    />
+
+                    <field name="date" interval="month" type="col"  />
+
+                    <field name="price_subtotal" type="measure"     groups="openhealth.physicians,openhealth.managers,openhealth.directors" />
+                    <field name="price_subtotal" type="measure"     groups="openhealth.roots,openhealth.directors"  />
+-->
+
+
+                    <field name="date" interval="month" type="col"  />
+
+                    <field name="price_subtotal" type="measure"     string="Subtotal"   />
+
+                 </pivot>
+             </field>
+        </record>
+
+
+
+
+
+<!-- Pivot --> 
+<!--
+       <record id="sale.view_order_product_pivot" model="ir.ui.view">
+             <field name="name">sale.report.pivot</field>
+             <field name="model">sale.report</field>
+             <field name="arch" type="xml">
+                 <pivot string="Sales Analysis" disable_linking="True"  display_quantity="True" >
+                    <field name="date" interval="month" type="col"  />
+                    <field name="price_subtotal" type="measure" />
+                 </pivot>
+             </field>
+
+        </record>
+-->
+
+    
+
+    </data>
+</openerp>

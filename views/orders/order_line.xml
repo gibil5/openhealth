@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        
+
+
+<!-- FORM -->
+        <record model="ir.ui.view" id="sale.view_order_line_form">
+            <field name="name">sale.order.line.form</field>
+            <field name="model">sale.order.line</field>                     
+            <field name="arch" type="xml">
+
+
+                <form string="Service - Form">
+
+
+                    <header>
+<!--
+                        <button 
+                                type="object" 
+                                class="oe_highlight"
+
+                                name="create_myself"                                
+
+                                string="Agregar"
+                            />
+-->             
+                    </header>
+                    
+
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="product_id" />
+<!--
+                                <field name="name" />
+                                
+                                <field name="product_uom_qty" />
+                                
+                                <field name="price_unit" />
+                                
+                                <field name="price_subtotal" />
+-->
+                            </group>
+
+                            <group>
+                                <field name="order_id" />                           
+                            </group>
+                        </group>
+
+
+                        <group>
+                            <group>
+<!--
+                                <field name="name" />
+-->
+                            </group>
+
+                            <group>
+                                <field name="service_product_id" />
+                                <field name="service_vip_id" />
+
+
+                                <field name="service_consultation_id" />
+
+                                <field name="service_co2_id" />
+                                <field name="service_quick_id" />
+                                <field name="service_excilite_id" />
+                                <field name="service_ipl_id" />
+                                <field name="service_ndyag_id" />
+
+                                <field name="service_medical_id" />
+                                <field name="service_cosmetology_id" />
+                            </group>
+                        </group>
+
+
+                        <group>
+                            <group>                             
+                                <field name="product_uom_qty" />
+                                
+                                <field name="price_unit" />
+                                
+                                <field name="price_subtotal" />
+                            </group>
+
+                            <group>
+                            </group>
+                        </group>
+
+
+                    </sheet>
+                
+
+
+                    <notebook>
+                    </notebook>             
+                </form>
+            </field>
+        </record>
+    </data>
+</openerp>

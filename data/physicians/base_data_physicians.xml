@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate='0'>
+
+ 
+
+<!-- Physicians Active -->
+
+
+
+<!-- Chavarri -->
+        <record id="dr_chavarri" model="oeh.medical.physician">
+            <field name="name">Dr. Chavarri</field>
+            <field name="consultancy_type">Residential</field>
+            <field name="x_user_name" search="[('name','=','Fernando Chavarri')]"/>
+
+            <field name="idx">0</field>
+        </record>
+
+
+<!-- Canales -->
+        <record id="dr_canales" model="oeh.medical.physician">
+            <field name="name">Dr. Canales</field>
+            <field name="consultancy_type">Residential</field>
+            <field name="x_user_name" search="[('name','=','Paul Canales')]"/>
+
+            <field name="idx">1</field>
+        </record>
+
+
+<!-- Gonzales -->
+        <record id="dr_gonzales" model="oeh.medical.physician">
+            <field name="name">Dr. Gonzales</field>
+            <field name="consultancy_type">Residential</field>
+            <field name="x_user_name" search="[('name','=','Leo Gonzales')]"/>
+
+            <field name="idx">2</field>
+        </record>
+
+
+<!-- Carlos Abriojo -->
+        <record id="dr_abriojo" model="oeh.medical.physician">
+            <field name="name">Dr. Abriojo</field>
+            <field name="consultancy_type">Residential</field>
+            <field name="x_user_name" search="[('name','=','Carlos Abriojo')]"/>
+
+            <field name="idx">6</field>
+        </record>
+
+
+
+
+<!-- Eulalia -->
+        <record id="eulalia" model="oeh.medical.physician">
+
+            <field name="name">Eulalia Ruiz</field>
+
+            <field name="consultancy_type">Residential</field>
+            <field name="x_user_name" search="[('name','=','Eulalia Ruiz')]"/>
+            <field name="x_therapist">True</field>
+
+            <field name="idx">9</field>
+
+        </record>
+
+    </data>
+</openerp>

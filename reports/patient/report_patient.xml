@@ -1,0 +1,246 @@
+<openerp>
+    <data>
+
+
+
+
+<!-- Report - HC --> 
+<report
+    string="HC - Hoja de Filiacion"
+    id="report_patient"
+    model="oeh.medical.patient"
+    report_type="qweb-pdf"
+    
+    name="openhealth.report_patient_view"            
+    
+    file="oeh_medical_patient.report_patient"
+    />
+
+<template id="openhealth.report_patient_view">
+    <t t-call="report.html_container">                 
+    <t t-foreach="docs" t-as="doc">
+    <t>          
+
+
+
+<!-- Header --> 
+<div class="header">    
+    <img src='/openhealth/static/src/img/logo_chavarri.png' style="max-height: 100px;"/>
+</div>
+
+
+
+<!--                                Page 1 - Begin                                          -->
+<div class="page">    
+
+<center>
+<h1>
+    Hoja de Filiación
+</h1>
+</center>
+<br/>
+<br/>
+
+
+
+
+
+
+<!-- Date --> 
+<div class='row'>
+<div class='col-xs-9'></div>
+<div class='col-xs-3'>
+<b>Fecha:</b>
+<t t-esc="doc.x_date_created"/>
+</div>
+</div>
+
+
+
+
+
+<h2>                            
+    Datos Generales
+</h2>
+<br/>
+
+
+<table style="line-height: 300%;">
+                         
+<!--
+<tr>
+<th>Estado Civil:</th>
+<th><t t-esc="doc."/></th>
+</tr>
+
+<tr>
+<th>Lugar de Nacimiento:</th>
+<th><t t-esc="doc."/></th>
+</tr>
+-->
+
+<!--
+<tr>
+<th>Fecha:</th>
+<th><t t-esc="doc.x_date_created"/></th>
+</tr>
+-->
+
+<tr>
+<th>Apellidos y Nombres:</th>
+<th><t t-esc="doc.name"/>   </th>
+</tr>
+
+<tr>
+<th>País de Residencia:</th>
+<!--
+<th><t t-esc="doc.x_country_name"/></th>
+-->
+<th><t t-esc="doc.country_id.name"/></th>
+</tr>
+
+<tr>
+<th>Dirección:</th>
+<th><t t-esc="doc.street"/></th>
+</tr>
+
+<tr>
+<th>Fecha de Nacimiento:</th>
+<th><t t-esc="doc.dob"/></th>
+</tr>
+
+
+<!--
+Dep !!!
+<tr>
+<th>DNI:</th>
+<th><t t-esc="doc.x_dni"/></th>
+</tr>
+-->
+
+
+<!--
+New
+-->
+<tr>
+<th>Tipo de Documento:</th>
+<th><t t-esc="doc.x_id_doc_type"/></th>
+</tr>
+
+<tr>
+<th>Número de Documento:</th>
+<th><t t-esc="doc.x_id_doc"/></th>
+</tr>
+
+
+
+
+
+
+
+<tr>
+<th>Sexo:</th>
+<!--
+<th><t t-esc="doc.x_sex_name"/></th>
+<th><t t-esc="doc.sex"/></th>
+-->
+<th><t t-esc="doc._dic[doc.sex]"/></th>
+</tr>
+
+
+<tr>
+<th>Grado de Instrucción:</th>
+<th><t t-esc="doc._dic[doc.x_education_level]"/></th>
+</tr>
+
+<tr>
+<th>Edad:</th>
+<th><t t-esc="doc.age"/></th>
+</tr>
+
+<tr>
+<th>Correo Electrónico:</th>
+<th><t t-esc="doc.email"/></th>
+</tr>
+
+<tr>
+<th>Ocupación:</th>
+<th><t t-esc="doc.function"/></th>
+</tr>
+
+<tr>
+<th>Teléfono Celular:</th>
+<th><t t-esc="doc.mobile"/></th>
+</tr>
+
+<tr>
+<th>Teléfono Fijo:</th>
+<th><t t-esc="doc.phone"/></th>
+</tr>
+
+<tr>
+<th>Nombre del acompañante:</th>
+<th><t t-esc="doc.x_caregiver_last_name"/></th>
+</tr>
+
+<tr>
+<th>DNI del Acompañante:</th>
+<th><t t-esc="doc.x_caregiver_dni"/></th>
+</tr>
+
+<tr>
+<th>Parentesco:</th>
+<!--
+<th><t t-esc="doc.x_caregiver_relation"/></th>
+-->
+<th><t t-esc="doc._dic[doc.x_caregiver_relation]"/></th>
+</tr>
+
+
+<!--
+<tr>
+<th>:</th>
+<th><t t-esc="doc."/></th>
+</tr>
+-->
+    </table>    
+</div> <!-- page --> 
+
+
+
+
+
+<!-- Footer --> 
+<div class="footer">    
+
+<div class='row'>
+<div class='col-xs-4'>
+<b>
+Apellidos y Nombres:
+</b>
+<t t-esc="doc.name"/>
+</div>
+
+<div class='col-xs-5'>
+</div>
+
+<div class='col-xs-3'>
+<b>
+Historia #:
+</b>
+<t t-esc="doc.identification_code"/>
+</div>
+</div>
+
+</div>
+<!-- Footer --> 
+
+
+
+
+    </t>
+    </t>
+    </t>
+</template>
+    </data>
+</openerp>

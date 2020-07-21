@@ -1,0 +1,243 @@
+
+
+
+# ----------------------------------------------------------- CRUD --------------------------------
+	# Create
+	@api.model
+	def create(self, vals):
+
+
+
+
+		# Name - Dep
+		#res.name = lib.strip_accents(res.x_last_name.upper() + ' ' + res.x_first_name.upper())
+
+		# Check - Dep
+		#chk._check_name(res)
+		#chk_patient.check_name(res)
+
+		return res
+	# CRUD - Create
+
+
+
+# ----------------------------------------------------------- Deactivate --------------------------
+	# Deactivate
+	@api.multi
+	def deactivate_patient(self):
+		"""
+		high level support for doing this and that.
+		"""
+
+		# Init
+		self.active = False
+		self.partner_id.active = False
+
+		# Treatments
+ 		#treatments = self.env['openhealth.treatment'].search([
+		#														('patient', '=', self.name),
+		#												],
+															#order='write_date desc',
+															#limit=1,
+		#												)
+
+ 		#for treatment in treatments:
+ 		#	treatment.active = False
+
+
+		# Conter Decrease - DEP !
+ 		#counter = self.env['openhealth.counter'].search([
+		#														('name', '=', 'emr'),
+		#												],
+															#order='write_date desc',
+		#													limit=1,
+		#												)
+ 		#counter.decrease()
+
+ 	# deactivate_patient
+
+
+
+# ----------------------------------------------------------- Activate ----------------------------
+	# Activate Patient
+	@api.multi
+	def activate_patient(self):
+		"""
+		high level support for doing this and that.
+		"""
+
+		# Init
+		self.active = True
+		self.partner_id.active = True
+
+		# Treatments
+ 		#treatments = self.env['openhealth.treatment'].search([
+		#														('patient', '=', self.name),
+		#												],
+															#order='write_date desc',
+															#limit=1,
+		#												)
+ 		#for treatment in treatments:
+ 		#	treatment.active = True
+
+
+		# Conter Increase - DEP !
+ 		#counter = self.env['openhealth.counter'].search([
+		#														('name', '=', 'emr'),
+		#												],
+															#order='write_date desc',
+		#													limit=1,
+		#												)
+ 		#counter.increase()
+ 	# activate_patient
+
+
+
+
+
+
+# ----------------------------------------------------------- HC Number ---------------------------
+		#name = count_funcs.get_name(self, counter.prefix, counter.separator, counter.padding, counter.value)
+
+
+
+
+
+# ----------------------------------------------------------- Test - Init -------------------------
+
+	# Test - Init
+	#@api.multi
+	#def test_init(self, patient_id=False, partner_id=False, doctor_id=False, treatment_id=False, pl_id=False):
+		#print
+		#print 'Patient - Test Init'
+	#	pat_array = tst_pat.test_init(self, patient_id, partner_id, doctor_id, treatment_id, pl_id)
+	#	return pat_array
+
+
+
+
+# ----------------------------------------------------------- Constraints - Sql -------------------
+	_sql_constraints = [
+	#						('name_unique','unique(name)', 'SQL Warning: name must be unique !'),
+	#						('x_id_code_unique', 'unique(x_id_code)', 'SQL Warning: x_id_code must be unique !'),
+	#						('x_id_doc_unique', 'unique(x_id_doc)', 'SQL Warning: x_id_doc must be unique !'),
+	]
+
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Test - Cycle ------------------------------------------------------
+	# Test - Cycle 
+	# Test the whole Patient Cycle. 
+
+	@api.multi 
+	def test_cycle(self):
+		#print 
+		#print 'Test Cycle'
+
+		# Init 
+		patient_id = self.id
+		partner_id = self.partner_id.id
+		id_doc = self.x_id_doc
+		id_doc_type = self.x_id_doc_type
+		short_name = self.x_test_case.split(',')[2]
+		qty = int(self.x_test_case.split(',')[3])
+
+
+		# Loop 
+		for treatment in self.treatment_ids: 
+
+			# Init 
+			treatment_id = treatment.id 
+			doctor_id = False 
+
+			# Create 
+			order = creates.create_order_fast(self, patient_id, partner_id, doctor_id, treatment_id, id_doc, id_doc_type, short_name, qty)
+
+			# Pay 
+			order.test(self.x_test_case)
+
+			# Update 
+			#creates.update_order(date_order)
+
+
+
+
+
+
+
+
+
+
+# ----------------------------------------------------------- Constraints Python - Dep ------------------
+	# Check Phone 3
+	#@api.constrains('phone_3')
+	#def _check_phone_3(self):
+		#print
+		#print 'Check Phone 3'
+		#chk_patient._check_phone_3(self)
+
+	# Check Phone
+	#@api.constrains('phone')
+	#def _check_phone(self):
+		#print
+		#print 'Check Phone'
+		#chk_patient._check_phone(self)
+
+	# Check Mobile
+	#@api.constrains('mobile')
+	#def _check_mobile(self):
+		#print
+		#print 'Check Mobile'
+		#chk_patient._check_mobile(self)
+
+
+
+
+
+# ----------------------------------------------------------- Update - Id Docs ------------------------------------------------------
+
+	# Update Id Docs 
+	@api.multi
+	def update_id_docs(self):
+		#print
+		#print 'Update Id Docs'
+
+		# Search 
+ 		#patients = self.env['oeh.medical.patient'].search([
+		#														('x_legacy', '!=', True), 
+		#												],
+															#order='write_date desc',
+		#													#limit=1,
+		#												)
+
+ 		count_1 = self.env['oeh.medical.patient'].search_count([
+																('x_legacy', '!=', True), 
+														],
+															#order='write_date desc',
+															#limit=1,
+														)
+ 		count_2 = self.env['oeh.medical.patient'].search_count([
+																('x_legacy', '=', True), 
+														],
+															#order='write_date desc',
+															#limit=1,
+														)
+ 		print count_1 
+ 		print count_2
+
+
+
+# ----------------------------------------------------------- On Change - Id Docs ------------------------------------------------------
+	# Id Doc  
+	#@api.onchange('x_id_doc')
+	#def _onchange_x_id_doc(self):
+		#self.autofill() if self.x_autofill == True else 'don'
+		
+		#if self.x_id_doc_type in ['dni']: 
+		#	self.x_dni = self.x_id_doc

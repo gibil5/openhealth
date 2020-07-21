@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        
+
+
+<!-- Tree 1 - Contasis --> 
+        <!--
+        <record model="ir.ui.view" id="account_line_view_order_tree">
+        -->
+        <record model="ir.ui.view" id="account_line_view_contasis_tree">
+            <field name="name">openhealth.account.line.tree</field>
+            <field name="model">openhealth.account.line</field>
+            <field name="arch" type="xml">
+
+                <tree string="Account Line Tree">
+                    
+                    <field name="fecha"/>
+                    <field name="fechavencimiento"/>
+
+                    <field name="tipodocumento"/>
+                    <field name="numeroserie"/>
+                    <field name="numerofactura"/>
+
+                    <field name="tipodoc"/>
+                    <field name="numdoc"/>
+                    <field name="nombre"/>
+
+                    <field name="EXPortacion"/>
+
+                    <field name="neto"/>
+                    <field name="exonerado"/>
+                    <field name="inafecto"/>
+                    <field name="isc"/>
+                    <field name="igv"/>
+                    <field name="otros"/>
+                    <field name="total"/>
+                    
+                    <field name="product"/>
+                    <field name="product_type"/>
+
+                    <field name="tipocambio"/>
+
+                    <field name="fechar"/>
+                    <field name="tipor"/>
+                    <field name="serier"/>
+                    <field name="numr"/>
+
+                    <field name="moneda"/>
+                    <field name="dolares"/>
+                    <field name="fechavencimiento2"/>
+                    <field name="condicion"/>
+                    <field name="ccosto"/>
+                    <field name="ccosto2"/>
+
+                    <field name="cuentab"/>
+                    <field name="cuentao"/>
+                    <field name="cuentacontable"/>
+
+                    <field name="regimen"/>
+                    <field name="porcen"/>
+                    <field name="importer"/>
+
+                    <field name="seried"/>
+                    <field name="numdocr"/>
+                    <field name="fechad"/>
+                    <field name="codigop"/>
+
+                    <field name="porigv"/>
+                    <field name="glosa"/>
+
+                    <field name="mediop"/>
+                    <field name="comd"/>
+                    <field name="importec"/>
+                </tree>
+            </field>
+        </record>
+<!--
+                    <field name="cuo_mes"/>
+                    <field name="cuo_sd"/>
+                    <field name="cuo_asi"/>
+                    <field name="account_id"/>
+                    <field name="serial_nr"/>
+                    <field name="x_type"/>
+                    <field name="date_time"/>
+                    <field name="document"/>
+                    <field name="patient"/>
+                    
+                    <field name="amount_net"/>
+                    <field name="amount_tax"/>
+                    <field name="amount"/>
+-->
+
+
+
+
+
+
+
+<!-- Tree 2 - Registro --> 
+        <!--
+        <record model="ir.ui.view" id="account_line_rv_view_tree">
+        -->
+        <record model="ir.ui.view" id="account_line_view_registro_tree">
+            <field name="name">openhealth.account.line.tree</field>
+            <field name="model">openhealth.account.line</field>
+            <field name="arch" type="xml">
+                <tree string="Account Line Tree">
+                    <field name="serial_nr"/>
+                    <field name="x_type"/>
+                    <field name="date_time"/>
+                    <field name="date_char"/>
+                    <field name="time_char"/>
+                    <field name="patient"/>
+                    <field name="document"/>
+                    <field name="document_type"/>
+                    <field name="qty"/>
+                    <field name="product"/>
+                    <field name="product_type"/>
+                    <field name="state"/>
+                    <field name="amount_net"/>
+                    <field name="amount_tax"/>
+                    <field name="amount"/>
+                </tree>
+            </field>
+        </record>
+
+
+    </data>
+</openerp>

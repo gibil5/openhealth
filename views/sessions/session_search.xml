@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+
+
+
+<!-- Filter --> 
+        <record id="view_medical_session_filter" model="ir.ui.view">
+           <field name="name">session Search</field>
+           <field name="model">openhealth.session</field>          
+           <field name="arch" type="xml">
+               <search string="sessions">
+
+                   <field name="treatment" />
+                   <field name="procedure" />
+               
+               </search>
+           </field>
+       </record>
+
+
+
+
+
+<!-- Filter --> 
+        <record id="view_medical_session_med_filter" model="ir.ui.view">
+           <field name="name">session Med Search</field>
+           <field name="model">openhealth.session.med</field>          
+           <field name="arch" type="xml">
+               <search string="sessions.med">
+
+                   <field name="treatment" />
+                   <field name="procedure" />
+               
+               </search>
+           </field>
+       </record>
+
+       
+
+               
+    </data>
+</openerp>

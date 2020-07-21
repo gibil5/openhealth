@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+
+
+<!-- FORM --> 
+		<record model="ir.ui.view" id="container_form_view">
+			<field name="name">container.form</field>
+			<field name="model">openhealth.container</field>
+			<field name="priority" eval="1"/>
+			<field name="arch" type="xml">
+				<form string="container Form">
+					<header>
+
+
+<!--
+							string="Crear Electrónico"                              
+-->
+						<!-- Export Txt --> 
+						<!-- Create Electronic --> 
+<!--
+						<button 
+							type="object" 
+							class="oe_highlight"
+							name="create_electronic"  
+							string="Facturación"                                
+						/>
+						<button 
+							type="object" 
+							class="oe_highlight"
+							name="export_txt"                         
+							string="Crear TXT"                              
+						/>
+-->
+
+						<!-- Clear --> 
+						<button 
+							type="object" 
+							class="oe_highlight oe_right"
+							name="clear"
+
+							string="Clear"
+
+							groups="openhealth.roots"
+						/>
+
+					</header>
+
+
+
+
+					<!-- Sheet -->  
+					<sheet>
+
+						<group>
+							<group>                             
+								<field name="name"/>
+								<field name="export_date_begin"/>
+
+								<field name="txt_pack"      filename="txt_pack_name"/>
+								<field name="txt_pack_name"/>
+							</group>
+							<group>
+								<field name="amount_total"/>
+								<field name="receipt_count"/>
+								<field name="invoice_count"/>
+							</group>
+						</group>
+
+
+
+						<group groups="openhealth.roots">
+							<group>                             
+							</group>                             
+
+							<group>
+<!--
+								<field name="mgt"   groups="openhealth.roots"/>
+-->
+							</group>
+						</group>
+
+
+
+						<!-- Padding -->
+						<group>
+							<group></group>
+							<group></group>
+						</group>
+
+
+						<!-- Notebook --> 
+						<notebook>
+							
+							<page string="Facturacion">
+								<field name="electronic_order_ids"/>
+							</page>
+
+							<page string="TXT">
+								<field name="txt_ids"/> 
+							</page>
+
+
+<!--
+							<page string="MSSOFT">
+								<field name="txt_ref_ids"/>
+							</page>
+-->
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+<!-- FORM --> 
+
+
+
+
+
+
+<!-- TREE --> 
+		<record model="ir.ui.view" id="container_tree_view">
+			<field name="name">container.tree</field>
+			<field name="model">openhealth.container</field>
+			<field name="arch" type="xml">
+				<tree string="Container Tree">
+					<field name="name"/>
+					<field name="txt_pack"/>
+				</tree>
+			</field>
+		</record>
+
+
+
+
+
+
+<!-- ACTION -->
+		<record model="ir.actions.act_window" id="container_list_action">
+			<field name="name">Containers</field>
+			
+			<field name="res_model">openhealth.container</field>
+			
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<field name="context">{}</field>            
+			<field name="domain">[]</field>
+			<field name="limit">20</field>
+			<field name="view_id" eval="False"/>
+			<field name="help" type="html">
+				<p class="oe_view_nocontent_create">Create the first container
+				</p>
+			</field>
+		</record>
+
+	</data>
+</openerp>

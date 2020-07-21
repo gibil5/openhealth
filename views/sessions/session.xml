@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+
+
+<!-- FORM -->
+
+        <!-- Session MED -->
+        <record model="ir.ui.view" id="session_med_form_view">
+            <field name="name">session.med.form</field>
+            <field name="model">openhealth.session.med</field>
+            <field name="arch" type="xml">
+                <form string="Evaluation">
+
+
+<!-- Header --> 
+
+                    <header>
+
+                        <!-- Procedure --> 
+                        <button 
+                                type="object" 
+                                class="oe_highlight"
+
+                                name="open_procedure"
+
+                                string="Regresar PROCEDIMIENTO"
+                        />
+
+
+                        <!-- State --> 
+                        <field  name="state" 
+                            widget="statusbar" 
+                            statusbar_visible="draft, inprogress, done"
+                        />
+                    </header>
+
+                    
+
+                            
+<!-- Sheet --> 
+                    <sheet>
+
+                        <!-- Header -->
+                        <div>                       
+
+                            <!-- Persona --> 
+                            <div class="oe_left"  style="width: 300px;">
+                                <div class="oe_title" >
+                                    <h1 class="jx_title">Sesión</h1>
+                                </div>                              
+                                <group></group>
+                                <h2>
+                                    <field name="patient"/>
+                                </h2>
+                            </div>
+
+                            <!-- Buttons --> 
+                            <div class="oe_left" style="width: 300px;" name="buttons">      
+                            </div>                        
+
+
+                            <!-- Number --> 
+                            <div class="oe_right" >
+                                <div class="oe_title" >
+                                    <h1><field name="treatment"     readonly="1"    /></h1>
+                                    <h2><field name="procedure"     readonly="1"    /></h2>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Fields --> 
+                        <group>
+                            <group></group>
+                            <group>
+                                <field name="evaluation_type"   invisible="1"   />
+                            </group>
+                            
+                            <group>
+                                <field name="doctor"    readonly="1"        options="{'no_create': True}"/>
+                                <field name="vspace"/>
+                                <field name="evaluation_start_date"/>
+                                <field name="vspace"/>
+<!--                                
+                                <field name="appointment"/> 
+-->
+                            </group>
+                            
+                            <group>
+                                <field name="x_done"/>
+                                <field name="vspace"/>
+                                <field name="chief_complaint"   readonly="1"/>
+                                <field name="vspace"/>
+                                <field name="laser"/>
+                                <field name="vspace"/>
+                                <field name="product"       readonly="1"/>
+                            </group>
+                        </group>
+
+
+
+                        <!-- Notebook - Config --> 
+                        <notebook></notebook>
+
+                        
+                        <!-- Notebook - Visia --> 
+                        <notebook>
+                            <page string="Fotos VISIA" >
+                                <field
+                                    name="image_ids"
+                                    nolabel="1"
+                                    context="{
+                                                'default_owner_model': 'openhealth.session.med',
+                                                'default_owner_id': id,
+                                    }"
+                                    mode="kanban"
+                                />
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+<!--                            
+                            <group>
+                                <field name="evaluation_nr"     readonly="1"    invisible="1"/>
+                                <field name="vspace"/>
+                                <field name="zone"          invisible="1"/>
+                            </group>
+                            <group>
+                            </group>
+-->
+
+
+
+<!-- TREE --> 
+        <record model="ir.ui.view" id="session_med_tree_view">
+            <field name="name">session.med.tree</field>
+            <field name="model">openhealth.session.med</field>
+            <field name="arch" type="xml">
+
+                <tree   string="Session Med Tree"
+                        colors="
+                        red:state=='draft';
+                        green:state=='inprogress';
+                        blue:state=='done'
+                ">
+
+                    
+                    <!-- Quick Button -->
+                    <button 
+                        type="object" 
+                        class="oe_highlight"    
+                        string="E"
+                        name="open_line_current" 
+                    />
+
+                    <field name="patient"  string="Paciente"/>
+
+                    <field name="doctor"   />
+
+                    <field name="chief_complaint"/>
+
+                    <field name="laser"/>
+
+                    <field name="evaluation_start_date"/>
+
+                    <field name="state"/>
+
+                    <field name="x_done"/>
+                </tree>
+            </field>
+        </record>
+
+
+<!--
+                    <field name="nr_days"/>
+                    <field name="nr_images"/>
+                    <field name="name"/>
+
+                    <field name="appointment"/>
+
+                    <field name="evaluation_nr"/>
+
+                    <field name="product"/>
+                    <field name="procedure"/>
+                    <field name="owner"/>
+
+                    <field name="treatment_id"/>
+                    <field name="duration"/>
+                    <field name="nr_services"/>
+                    <field name="price_total"/>
+-->
+        
+ 
+    </data>
+</openerp>
+
+

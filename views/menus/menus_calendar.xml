@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+
+<!--
+    groups="openhealth.roots,openhealth.assistants,openhealth.reception,openhealth.caja,openhealth.physicians,openhealth.directors,openhealth.manager"
+-->
+ <!-- CALENDARIO -->
+<menuitem   id="main_appointment_calendar_menu"
+	sequence="-17"
+
+	name="Calendario"	                
+/>
+
+
+
+<!-- Citas Confirmadas --> 
+        <menuitem id="oehealth_appointment_menu_jx" 
+                parent="main_appointment_calendar_menu"            
+                sequence="1"
+                name="Hoy"
+        />
+
+
+        <!-- Calendar --> 
+        <menuitem 
+                    id="oeh_medical_appointment_list_cal_calendar"
+                    parent="oehealth_appointment_menu_jx"  
+                    sequence="1"
+
+                    action="oeh_medical_appointment_action_calendar_confirmed" 
+
+                    name="Calendario"
+        />
+
+        <!-- Tree --> 
+        <menuitem 
+                    id="oeh_medical_appointment_list_cal_all"
+                    parent="oehealth_appointment_menu_jx"  
+                    sequence="3"
+
+                    action="oeh_medical_appointment_action_tree_all" 
+
+                    name="Todas"
+        />
+
+
+
+<!-- Citas No Confirmadas --> 
+        <menuitem id="oehealth_appointment_nc_menu"
+                parent="main_appointment_calendar_menu"
+                sequence="3"
+
+                name="Hoy - No Confirmadas"
+            />
+
+
+
+        <!-- Controls --> 
+        <menuitem 
+                    id="oeh_medical_appointment_list_nc_control" 
+                    parent="oehealth_appointment_nc_menu"  
+                    sequence="1"
+
+                    action="oeh_medical_appointment_action_tree_not_confirmed_control" 
+        />
+
+        <!-- Consultations --> 
+        <menuitem 
+                    id="oeh_medical_appointment_list_nc_consultation"
+                    parent="oehealth_appointment_nc_menu"  
+                    sequence="3"
+
+                    action="oeh_medical_appointment_action_tree_not_confirmed_consultation" 
+        />
+
+
+    </data>
+</openerp>

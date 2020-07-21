@@ -1,0 +1,368 @@
+<openerp>
+	<data>
+
+<!--
+Ticket Electronic
+Created: 	2019
+Last up:   	4 Dec 2019
+-->
+
+
+<!-- Electronic --> 
+<report
+	string="Ticket de Venta Electrónico"
+
+	id="print_ticket_receipt_electronic"
+
+	model="sale.order"
+	
+	report_type="qweb-pdf"
+	
+	name="openhealth.report_ticket_receipt_electronic"
+	
+	
+	file="openhealth.report_ticket_receipt_electronic"
+
+	paperformat="appointment_receipt_electronic"
+/>
+
+
+<!-- Template --> 
+<template id="report_ticket_receipt_electronic">
+	<t t-call="report.html_container">
+		<t t-foreach="docs" t-as="doc"> 
+
+<!-- Header Dep ! -->
+
+			<t t-call="openhealth.external_layout">
+				<div class="page" style="margin-top:100px;font-size: small;">
+
+
+
+<!--New Header -->
+<br/>
+<div class="row">
+<!--
+		<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_name()"/>
+		<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_ruc()"/>
+		<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_address()"/>
+		<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_phone()"/>
+-->
+
+	<center>
+
+		<!-- Company name -->
+		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_name()"/>
+
+		<!-- Company Ruc -->
+		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_ruc()"/>
+
+		<!-- Company Address -->
+		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_address()"/>
+
+		<!-- Company Phone -->
+		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_phone()"/>
+	</center>
+</div>
+
+
+
+<!--Title - Ok -->
+<div class="row">
+<!--
+		<div class="col-xs-12" style="border-top: 1px solid black;"/>
+		<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_title()"/>
+			<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_serial_nr()"/>
+		<div class="col-xs-12" style="border-top: 1px solid black;"/>
+-->
+
+	<center>
+	<b>
+		<!-- Border -->
+		<div style="border-top: 1px solid black;"/>
+		
+		<!-- Title -->
+		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_title()"/>
+
+		
+		<!-- Credit Note - Conditional -->
+		<t t-if="doc.state == 'credit_note'">
+			<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_serial_nr()"/>
+		</t>
+
+		<!-- Border -->
+		<div style="border-top: 1px solid black;"/>
+	</b>
+	</center>
+</div>
+
+
+
+
+
+<!-- ROW - Receptor - Begin -->
+<div class="row">
+
+<div>
+
+	<table style="width:100%">
+
+
+<!-- Conditional - Credit Note -->
+<t t-if="doc.state == 'credit_note'">
+
+	<t t-raw="doc.get_raw_line('date_credit_note')"/>
+</t>
+
+
+
+<!-- Conditional - Receipt -->
+<t t-if="doc.x_type == 'ticket_receipt'">
+<!--
+	<t t-raw="doc.get_patient_name_line()"/>
+	<t t-raw="doc.get_patient_dni_line()"/>
+	<t t-raw="doc.get_patient_address_line()"/>
+-->
+	<t t-raw="doc.get_raw_line('receipt_patient_name')"/>
+
+	<t t-raw="doc.get_raw_line('receipt_patient_dni')"/>
+
+	<t t-raw="doc.get_raw_line('receipt_patient_address')"/>
+</t>
+
+
+
+<!-- Conditional - Invoice -->
+<t t-if="doc.x_type == 'ticket_invoice'">
+<!--
+	<t t-raw="doc.get_patient_firm_line()"/>
+	<t t-raw="doc.get_patient_ruc_line()"/>
+	<t t-raw="doc.get_patient_firm_address_line()"/>
+-->
+	<t t-raw="doc.get_raw_line('invoice_firm_name')"/>
+
+	<t t-raw="doc.get_raw_line('invoice_patient_ruc')"/>
+
+	<t t-raw="doc.get_raw_line('invoice_firm_address')"/>
+</t>
+
+	</table>
+	<br/>
+</div>
+
+</div>
+<!-- ROW - Receptor - End -->
+
+
+
+
+
+
+<!-- ROW - Date and Serial Nr - Begin -->
+<div class="row">
+
+
+<!-- Conditional - Credit Note -->
+<t t-if="doc.state == 'credit_note'">
+	<div class="col-xs-12" style="border-top: 1px solid black;"/>
+	<b>
+		<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;">
+			Documento que Modifica
+		</div>
+	</b>
+	<table style="width:100%">
+
+<!--
+		<tr>
+			<td><b>Denominación:</b></td>
+			<td><t t-esc="doc.x_credit_note_owner.x_serial_nr"/></td> 
+		</tr>
+		<tr>
+			<td><b>Fecha de emisión:</b></td>
+			<td><t t-esc="doc.x_credit_note_owner.get_date_corrected()"/></td>
+		</tr>
+		<tr>
+			<td><b>Motivo:</b></td>
+			<td><t t-esc="doc.get_credit_note_type()"/></td> 
+		</tr>
+-->
+
+		<t t-raw="doc.get_raw_line('denomination_credit_note_owner')"/>
+
+		<t t-raw="doc.get_raw_line('date_credit_note_owner')"/>
+
+		<t t-raw="doc.get_raw_line('reason_credit_note')"/>
+	</table>
+</t>
+
+
+
+<!-- Conditional - Sale -->
+<t t-if="doc.state in ['sale', 'cancel']">
+	<table style="width:100%">
+<!--
+		<t t-raw="doc.get_ticket_date_line()"/>
+		<t t-raw="doc.get_ticket_number_line()"/>
+-->
+
+		<t t-raw="doc.get_raw_line('sale_date')"/>
+
+		<t t-raw="doc.get_raw_line('sale_serial_number')"/>
+	</table>
+</t>
+
+<br/>
+</div>
+<!-- ROW - Date and Serial Nr - End -->
+
+
+
+
+
+
+
+<!-- ROW - Sale - Begin -->
+<div class="row">
+<div class="col-xs-12" style="border-top: 1px solid black;"/>
+
+<table style="width:100%">
+<!--
+	<t t-raw="doc.get_order_lines_header()"/>
+-->
+
+	<t t-raw="doc.get_raw_line('items_header')"/>
+
+
+<!-- LOOP - Items --> 
+<t t-foreach="doc.order_line" t-as="line">
+
+	<t t-raw="line.get_item_line()"/>
+</t>
+
+
+</table>
+
+
+
+<!-- Line --> 
+<div class="col-xs-12" style="border-top: 1px solid black;"/>
+
+
+
+<!-- Totals --> 
+<table style="width:100%">
+<!--
+	<t t-raw="doc.get_ticket_total_net_line()"/>
+	<t t-raw="doc.get_ticket_total_free_line()"/>
+	<t t-raw="doc.get_ticket_total_exonerated_line()"/>
+	<t t-raw="doc.get_ticket_total_unaffected_line()"/>
+	<t t-raw="doc.get_ticket_total_tax_line()"/>
+	<t t-raw="doc.get_ticket_total_line()"/>
+-->
+
+	<t t-raw="doc.get_raw_line('totals_net')"/>
+
+	<t t-raw="doc.get_raw_line('totals_free')"/>
+
+	<t t-raw="doc.get_raw_line('totals_exonerated')"/>
+
+	<t t-raw="doc.get_raw_line('totals_unaffected')"/>
+
+	<t t-raw="doc.get_raw_line('totals_tax')"/>
+
+	<t t-raw="doc.get_raw_line('totals_total')"/>
+</table>
+<br/>
+
+
+
+
+<!-- Total In Words --> 
+<table style="width:100%">
+<!--
+	<t t-raw="doc.get_ticket_total_words_header()"/>
+	<t t-raw="doc.get_ticket_total_words_soles()"/>
+	<t t-raw="doc.get_ticket_total_words_cents()"/>
+	<t t-raw="doc.get_ticket_total_words_footer()"/>
+-->
+
+	<t t-raw="doc.get_raw_line('words_header')"/>
+
+	<t t-raw="doc.get_raw_line('words_soles')"/>
+
+	<t t-raw="doc.get_raw_line('words_cents')"/>
+
+	<t t-raw="doc.get_raw_line('words_footer')"/>
+</table>
+<br/>
+
+
+
+
+
+<!-- Note --> 
+<table style="width:100%">
+	<tr>
+		<td align="left" ><t t-esc="doc.get_note()"/></td> 
+	</tr>
+</table>
+<br/>
+
+</div>
+<!-- ROW - Sale - End --> 
+
+
+
+
+
+
+<!-- ROW - Footer - Begin --> 
+<div class="row">
+	<center>
+
+<!--
+	<div class="text-center col-xs-12" style="border-top: 1px solid black; margin-top: 5px;">
+	<div class="footer_">
+		<div class="text-center" style="margin-top:1px;margin-bottom:1px;width:100%;font-size: xx-small;">
+			<div class="col-xs-12 text-center" style="margin-top:7px;" t-esc="doc.get_description()"/>
+			<div class="col-xs-12 text-center" style="margin-top:7px;" t-esc="doc.get_warning()"/>
+			<div class="col-xs-12 text-center" style="margin-top:7px;" t-esc="doc.get_website()"/>
+			<div class="col-xs-12 text-center" style="margin-top:7px;" t-esc="doc.get_email()"/>
+-->
+
+
+	<!-- QR --> 
+	<div style="border-top: 1px solid black; margin-top: 5px;">
+		<img t-att-src="'data:image/png;base64,%s' % doc.x_qr_img"  style="max-height: 100px;"/>
+	</div>
+
+
+	<!-- Legal Warning --> 
+	<div>
+		<div style="margin-top:1px;margin-bottom:1px;width:100%;font-size: xx-small;">
+			<br/>
+			
+			<div style="margin-top:7px;" t-esc="doc.get_description()"/>
+
+			<div style="margin-top:7px;" t-esc="doc.get_warning()"/>
+			
+			<div style="margin-top:7px;" t-esc="doc.get_website()"/>
+
+			<div style="margin-top:7px;" t-esc="doc.get_email()"/>
+		</div>
+	</div>      
+
+
+	</center>
+</div>
+<!-- ROW - Footer - End --> 
+
+				</div>
+			</t>
+		</t>
+	</t>
+</template>
+
+
+	</data>
+</openerp>

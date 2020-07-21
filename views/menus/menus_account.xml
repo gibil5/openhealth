@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+
+<!--
+Dep - PL
+-->
+
+
+
+<!-- MENUS -->
+
+
+
+<!-- Contabilidad -->
+        <menuitem   id="main_account_menu" 
+                    sequence="1"
+                    name="Contabilidad"
+                    groups="openhealth.roots,openhealth.managers,openhealth.directors,openhealth.caja"
+            />
+
+
+
+
+<!-- Registro -->
+        <menuitem   id="account_menu" 
+                    name="Registro de Ventas"
+                    sequence="1"
+                    parent="main_account_menu"
+            />
+
+
+        <!-- Lineas -->
+        <menuitem   id="account_conta_menu"
+                    name="Líneas de Venta"
+                    parent="account_menu"
+                    sequence="0"
+
+                    action="account_contasis_list_action"
+
+                    groups="openhealth.roots,openhealth.managers,openhealth.directors"
+            />
+
+
+
+        <!-- Ventas - Only for Caja - Dep -->
+<!--        
+        <menuitem   id="account_conta_cash_menu"
+                    parent="account_menu"
+                    sequence="1"
+                    name="Ventas - Caja"
+                    
+                    action="account_contasis_cash_list_action"
+
+                    groups="openhealth.roots,openhealth.caja"
+            />
+-->
+
+
+
+
+
+
+<!-- Electronic -->
+
+        <!-- Electronic -->
+        <!-- Ventas -->
+        <!-- TXT --> 
+
+        <menuitem   id="account_electronic_menu"
+                    parent="main_account_menu"
+                    sequence="3"
+                    name="Facturación Electrónica"
+                />
+
+        <menuitem   id="account_all_sales_menu"
+                    name="Ventas"
+                    parent="account_electronic_menu"
+                    sequence="1"
+                    action="order_list_delta_action"
+                />
+
+        <menuitem   id="account_containter_menu"
+                    name="Generar TXT"
+                    parent="account_electronic_menu"
+                    sequence="2"
+                    action="container_list_action"
+            />
+
+
+
+    </data>
+</openerp>

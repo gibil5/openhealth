@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate='1'>
+
+
+
+<!-- Services --> 
+
+        <!-- Quick --> 
+        <record id='laser_quick' model='product.category'>
+            <field name='name'>Quick Laser</field>
+        </record>
+
+        <!-- Co2 --> 
+        <record id='laser_co2' model='product.category'>
+            <field name='name'>Laser Co2</field>
+        </record>
+
+        <!-- Excilite --> 
+        <record id='laser_excilite' model='product.category'>
+            <field name='name'>Laser Excilite</field>
+        </record>
+
+        <!-- M22 --> 
+        <record id='laser_m22' model='product.category'>
+            <field name='name'>Laser M22</field>
+        </record>
+
+        <!-- Medical --> 
+        <record id='medical' model='product.category'>
+            <field name='name'>Medical</field>
+        </record>
+
+        <!-- Consultation --> 
+        <record id='consultation' model='product.category'>
+            <field name='name'>Consultas</field>
+        </record>
+
+        <!-- Consumibles --> 
+        <record id='consumable' model='product.category'>
+            <field name='name'>Consumibles</field>
+        </record>
+
+
+
+<!-- Prods --> 
+
+        <!-- Cremas --> 
+        <record id='topical' model='product.category'>
+            <field name='name'>Cremas</field>
+        </record>
+
+        <record id='testing' model='product.category'>
+            <field name='name'>Testing Pla</field>
+        </record>
+
+        <!-- Legacy --> 
+        <record id='legacy' model='product.category'>
+            <field name='name'>legacy</field>
+        </record>
+
+    </data>
+</openerp> 

@@ -4,13 +4,13 @@
 
 ### Howto
 
-####Paths:
+#### Paths:
 - ~/Virtualenvs/Odoo9-min/odoo
 - ~/cellar/github/openhealth
 
-####Run:
-source ../bin/activate
-./odoo.py --log-level=error
+#### Run:
+- source ../bin/activate
+- ./odoo.py --log-level=error
 
 
 

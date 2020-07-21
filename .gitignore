@@ -8,8 +8,8 @@ controllers/
 demo/
 depend/
 doc/
-codeclimate.yml
-travis.yml
+CONTRIBUTING.md
+LICENSE
 
 # Before
 openerp.TRASH.py

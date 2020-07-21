@@ -2,6 +2,18 @@
 
 ## Version 7.0
 
+### Howto 
+
+Paths: 
+~/Virtualenvs/Odoo9-min/odoo
+~/cellar/github/openhealth
+
+Run: 
+source ../bin/activate 
+./odoo.py --log-level=error
+
+
+
 ### Description
 Object Oriented Module for the Odoo9 Python Platform. 
 Odoo is an open-source ERP (Enterprise Ressource Planning) system for small companies. 

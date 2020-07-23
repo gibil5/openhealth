@@ -1,284 +1,219 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created: 			26 Aug 2016
+Last up: 	 		22 Jul 2020
+-->
 <openerp>
 	<data>
 
-
-
-<!-- FORM --> 
+<!-- FORM -->
 		<record model="ir.ui.view" id="treatment_form_view">
 			<field name="name">treatment.form</field>
 			<field name="model">openhealth.treatment</field>
 			<field name="priority" eval="1"/>
 			<field name="arch" type="xml">
 				<form string="Treatment Form">
+<!-- Header -->
 					<header>
 
-
 <!-- Buttons - State Dependent -->
-						
-						<!-- Create Budget Consultation --> 
-						<button 
-							type="object" 
+						<!-- Create Budget Consultation -->
+						<button
+							type="object"
 							class="oe_highlight"
-
 							name="create_order_con"
-
 							string="Crear PRESUPUESTO - Consulta"
-
 							groups="openhealth.roots,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
-
 							states="empty,appointment"
 						/>
 
-						<!-- Create Consultation --> 
-						<button 
-							type="object" 
-							class="oe_highlight"                            
+						<!-- Create Consultation -->
+						<button
+							type="object"
+							class="oe_highlight"
 							name="create_consultation"
 							string="Crear CONSULTA"
 							groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
-
 							states="invoice_consultation"
 						/>
 
-						<!-- Create Reco --> 
-						<button 
-							type="object" 
+						<!-- Create Reco -->
+						<button
+							type="object"
 							class="oe_highlight"
 							name="create_service"
-							string="Crear RECOMENDACION" 
+							string="Crear RECOMENDACION"
 							groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
-
 							states="consultation,service"
 						/>
 
-						<!-- Create Order --> 
-						<button 
-							type="object" 
+						<!-- Create Order -->
+						<button
+							type="object"
 							class="oe_highlight"
-							name="create_order_pro" 
-							string="Crear PRESUPUESTO - Pro" 
-					groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
-					
+							name="create_order_pro"
+							string="Crear PRESUPUESTO - Pro"
+							groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
 							states="service"
 						/>
 
-						<!-- Create Procedure --> 
-						<button 
-							type="object" 
+						<!-- Create Procedure -->
+						<button
+							type="object"
 							class="oe_highlight"
-							name="create_procedure_man" 
-							string="Crear PROCEDIMIENTO" 
+							name="create_procedure_man"
+							string="Crear PROCEDIMIENTO"
 							groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
-
 							states="invoice_procedure"
 						/>
 
-
-
 <!-- State less - Archivers -->
-						<!-- Create Consultation --> 
-						<button 
-							type="object" 
+						<!-- Create Consultation -->
+						<button
+							type="object"
 							class="oe_highlight"
-							name="create_consultation" 
+							name="create_consultation"
 							string="CON"
-
 							groups="openhealth.archivers"
 						/>
 
-						<!-- Create Service --> 
-						<button 
-							type="object" 
+						<!-- Create Service -->
+						<button
+							type="object"
 							class="oe_highlight"
 							name="create_service"
-							string="REC" 
-
+							string="REC"
 							groups="openhealth.archivers"
 						/>
 
-						<!-- Create Order --> 
-						<button 
-							type="object" 
+						<!-- Create Order -->
+						<button
+							type="object"
 							class="oe_highlight"
-							name="create_order_pro" 
-							string="PresPro" 
-
+							name="create_order_pro"
+							string="PresPro"
 							groups="openhealth.archivers"
 						/>
 
-						<!-- Create Procedure --> 
-						<button 
-							type="object" 
+						<!-- Create Procedure -->
+						<button
+							type="object"
 							class="oe_highlight"
 							name="create_procedure_man"
-							string="PRO" 
-
+							string="PRO"
 							groups="openhealth.archivers"
 						/>
 
-						<!-- Create New Procedure --> 
-						<button 
-							type="object" 
+						<!-- Create New Procedure -->
+						<button
+							type="object"
 							class="oe_highlight"
 							name="create_new_procedure"
-							string="Crear Nuevo PROCEDIMIENTO" 
-
+							string="Crear Nuevo PROCEDIMIENTO"
 							states="empty"
-
 							groups="openhealth.archivers"
 						/>
 
-<!--
-								statusbar_visible="appointment, invoice_consultation, consultation, service, budget_procedure, invoice_procedure, procedure, sessions, controls, done"
--->
 						<!-- State -->
-						<field  name="state" 
+						<field  name="state"
 								widget="statusbar"
-
 								statusbar_visible="empty, budget_consultation, invoice_consultation, consultation, service, budget_procedure, invoice_procedure, procedure, sessions, controls, done"
-
 						/>
 					</header>
 
 
-
-
-
-<!-- Sheet -->  
+<!-- Sheet -->
 					<sheet>
-
-						<div>                       
-							<!-- Persona --> 
+						<div>
+							<!-- Persona -->
 							<div class="oe_left"  style="width: 250px;">
 								<div class="oe_title" >
-
-									<h1 class="jx_title">Tratamiento</h1>   
-
+									<h1 class="jx_title">Tratamiento</h1>
 									<h2><field name="name" class="oe_inline" invisible="1"/></h2>
-
-								</div>      
+								</div>
 								<group></group>
 									<h2><field name="patient"/></h2>
 							</div>
-<!--
-									<h1><field name="name" class="oe_inline"/></h1>
--->
 
 
-
-
-<!-- Buttons Nr ofs --> 
-<!--
-							<div class="oe_left" style="width: 400px;" name="buttons">
-							<div class="oe_right" name="buttons">
--->
+<!-- Buttons Nr ofs -->
 							<div class="oe_left" style="width: 550px;" name="buttons">
-							
-
 
 								<!-- Nr Budgets - Consultation -->
 								<button type="action" class="oe_stat_button" icon="fa-list"
-
 										attrs="{ 'invisible':[  ('nr_budgets_cons','=',0),  ]}"
-
 										name="%(order_form_tre_action)d"
-
 										context="{
 													'search_default_patient': patient,
 													'default_treatment': active_id,
-													'default_x_family': 'consultation', 
-												}"  
-										>
+													'default_x_family': 'consultation',
+												}">
 									<field string="Presu Con" name="nr_budgets_cons" widget="statinfo"/>
 								</button>
-
-
 
 								<!-- Nr Sales - Consultation -->
 								<button type="action" class="oe_stat_button" icon="fa-list"
 										attrs="{ 'invisible':[  ('nr_invoices_cons','in',[ False, 0, ]), ]}"
 										name="%(order_form_tre_action)d"
-										context="{                                  
+										context="{
 													'search_default_patient': patient,
 													'default_treatment': active_id,
-													'default_x_family': 'consultation', 
-												}"  
-										>
-
+													'default_x_family': 'consultation',
+												}">
 									<field string="Venta Con" name="nr_invoices_cons" widget="statinfo"/>
 								</button>
-
-
-
 
 								<!-- Consultations -->
 								<button type="action" class="oe_stat_button"
 									name="%(consultation_form_action)d"
-									context="{                                  
+									context="{
 												'search_default_treatment': active_id,
 											}"
 									icon="fa-list"
-									attrs="{ 'invisible':[  ('nr_consultations','=',0), ]}"
-									>
+									attrs="{ 'invisible':[  ('nr_consultations','=',0), ]}">
 									<field string="Consulta" name="nr_consultations" widget="statinfo"/>
 								</button>
 
-
-
-
-<!--
-								<button type="action" class="oe_stat_button" icon="fa-list" invisible="0"
-									name="%(service_list_action)d"
--->
-
-								<!-- Recommendations -->								
+								<!-- Recommendations -->
 								<button type="action" class="oe_stat_button" icon="fa-list"
 									name=""
-									context="{                                  
+									context="{
 												'search_default_treatment': active_id,
 											}"
 
-									attrs="{ 'invisible':[  ('nr_services','=',0), ]}"
-									>
+									attrs="{ 'invisible':[  ('nr_services','=',0), ]}">
 									<field string="Recom" name="nr_services" widget="statinfo"/>
 								</button>
-
-
 
 								<!-- Nr Budgets Pro - IMPORTANT -->
 								<button type="action" class="oe_stat_button" icon="fa-list"
 										name="%(order_form_tre_action)d"
-										context="{                                  
+										context="{
 													'search_default_patient': patient,
 													'default_treatment': active_id,
-													'default_x_family': 'procedure', 
-												}"  
-
+													'default_x_family': 'procedure',
+												}"
 										attrs="{ 'invisible':[  ('nr_budgets_pro','=',0), ]}">
-
 									<field string="Presu Pro" name="nr_budgets_pro" widget="statinfo"/>
 								</button>
 
-
 								<!-- Invoices - Pro -->
 								<button type="action" class="oe_stat_button" icon="fa-list"
-										name="%(order_form_tre_action)d"                                    
-										context="{                                  
+										name="%(order_form_tre_action)d"
+										context="{
 													'search_default_patient': patient,
 													'default_treatment': active_id,
-													'default_x_family': 'procedure', 
+													'default_x_family': 'procedure',
 												}"
 										attrs="{ 'invisible':[  ('nr_invoices_pro','=',0), ]}"
 									>
 									<field string="Venta Pro" name="nr_invoices_pro" widget="statinfo"/>
 								</button>
 
-
 								<!-- Procedures -->
-								<button type="action" class="oe_stat_button" 
+								<button type="action" class="oe_stat_button"
 									name="%(procedure_form_action)d"
-									context="{                                  
+									context="{
 											'search_default_treatment': active_id,
 											}"
 									icon="fa-list"
@@ -286,12 +221,11 @@
 									>
 									<field string="Proc" name="nr_procedures" widget="statinfo"/>
 								</button>
-						
 
 								<!-- Sessions -->
 								<button type="action" class="oe_stat_button"
 									name="%(session_med_form_action)d"
-									context="{                                  
+									context="{
 											'search_default_treatment': active_id,
 											}"
 									icon="fa-list"
@@ -299,12 +233,11 @@
 									>
 									<field string="Sesion" name="nr_sessions" widget="statinfo"/>
 								</button>
-						
 
 								<!-- Controls -->
 								<button type="action" class="oe_stat_button" icon="fa-list"
 									name="%(control_form_action)d"
-									context="{                                  
+									context="{
 											'search_default_treatment': active_id,
 											}"
 									attrs="{ 'invisible':[  ('nr_controls','=',0), ]}"
@@ -314,20 +247,17 @@
 							</div>
 						</div>
 
-
-								   
 <!-- Fields -->
-						<!-- Padding --> 
+						<!-- Padding -->
 						<group col="3">
 							<group>
-
 								<field name="x_test"   groups="openhealth.roots"/>
 								<field name="patient_sex"/>
 								<field name="patient_age"/>
 								<field name="patient_city"/>
 								<field name="vip" />
-							</group>
 
+							</group>
 							<group>
 								<field name="physician"         required="1"/>
 								<field name="vspace" />
@@ -335,75 +265,56 @@
 								<field name="vspace" />
 								<field name="active"/>
 							</group>
-
 							<group>
 								<field name="start_date"/>
 								<field name="vspace" />
 								<field name="treatment_closed"  invisible="0"/>
 								<field name="vspace" />
-
-
-
-
-								<button 
-									type="object" 
-									name="toggle_add_procedures" 
+								<button
+									type="object"
+									name="toggle_add_procedures"
 									attrs="{ 'invisible':[  ('add_procedures','!=',False),  ]}"
-									string="Manual"                                     
+									string="Manual"
 								/>
-
-								<button 
-									type="object" 
+								<button
+									type="object"
 									class="oe_highlight"
-									name="toggle_add_procedures" 
+									name="toggle_add_procedures"
 									attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
-									string="Manual"                                     
+									string="Manual"
 								/>
-
 								<field name="override"	groups='openhealth.roots'/>
-
 								<field name="add_procedures"    invisible="1"/>
 							</group>
 						</group>
 
 
-
-
-
 <!-- Test -->
 <!--
-<hr></hr>
 -->
+<hr></hr>
 						<group 	 attrs="{ 'invisible':[  ('x_test','==',False),  ]}">
 							<group>
 
-								<!-- Scenarios -->
+								<!-- Test scenarios -->
 								<field name="x_test_scenario"/>
-								
+
 								<!-- Price lists -->
 								<field name="test_pricelist_2019"/>
 								<field name="test_pricelist_2018"/>
 
-								<!-- Reports -->
-<!--
-								<field name="report_management"/>
-								<field name="report_marketing"/>
-								<field name="report_account"/>
-								<field name="report_contasis"/>
-								<field name="report_product"/>
--->
 										<!-- Test Integration -->
-										<button 
-											type="object" 
+										<button
+											type="object"
 											class="oe_highlight"
 											help='Test Integration'
-											name="test_integration" 
-											
+											name="test_integration"
+
 											string="Test Integration"
 										/>
 										<!-- Reset -->
-										<button 
-											type="object" 
+										<button
+											type="object"
 											class="oe_highlight"
 											groups="openhealth.roots"
 											help='Tests: Reset'
@@ -420,20 +331,20 @@
 										<!-- Reset -->
 <!--
 									<group>
-										<button 
-											type="object" 
+										<button
+											type="object"
 											class="oe_highlight"
 											help='Test Integration'
-											name="test_integration" 
-											
+											name="test_integration"
+
 											string="Test Integration"
 										/>
 
 									</group>
 
 									<group>
-										<button 
-											type="object" 
+										<button
+											type="object"
 											class="oe_highlight"
 											groups="openhealth.roots"
 											help='Tests: Reset'
@@ -441,82 +352,82 @@
 
 											string="Reset"
 										/>
-								
+
 									</group>
 -->
 
 
 									<!-- Test Cycle -->
-<!--			
+<!--
 									<group col="3">
--->		
+-->
 
 									<group 	 attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}">
 
 
 										<!-- Create Budget Consultation -->
-										<button 
-											type="object" 
+										<button
+											type="object"
 											class="oe_highlight"
 
-											name="test_create_budget_consultation" 
-											
+											name="test_create_budget_consultation"
+
 											string="Budget Con"
 										/>
 
 										<!-- Create Sale Consultation -->
-										<button 
-											type="object" 
+										<button
+											type="object"
 											class="oe_highlight"
 
-											name="test_create_sale_consultation" 
-											
+											name="test_create_sale_consultation"
+
 											string="Sale Con"
 										/>
 
 
 
 										<!-- Create Consultation -->
-										<button 
-											type="object" 
+										<button
+											type="object"
 											class="oe_highlight"
 
-											name="test_create_consultation" 
-											
+											name="test_create_consultation"
+
 											string="Consultation"
 										/>
 
 
 										<!-- Create Recommendations -->
-										<button 
-											type="object" 
+										<button
+											type="object"
 											class="oe_highlight"
 
-											name="test_create_recommendations" 
-											
+											name="test_create_recommendations"
+
 											string="Recommendations"
 										/>
 
 
 
 										<!-- Create Budget Procedure -->
-										<button 
-											type="object" 
+										<button
+											type="object"
 											class="oe_highlight"
 
-											name="test_create_budget_procedure" 
-											
+											name="test_create_budget_procedure"
+
 											string="Budget Pro"
 										/>
 
 
 										<!-- Create Sale procedure -->
-										<button 
-											type="object" 
+										<button
+											type="object"
 											class="oe_highlight"
 
-											name="test_create_sale_procedure" 
-											
+											name="test_create_sale_procedure"
+
 											string="Sale Pro"
 										/>
 
@@ -524,32 +435,32 @@
 
 
 										<!-- Create Procedure -->
-										<button 
-											type="object" 
+										<button
+											type="object"
 											class="oe_highlight"
 
-											name="test_create_procedure" 
-											
+											name="test_create_procedure"
+
 											string="Procedure"
 										/>
 
 										<!-- Create Sessions -->
-										<button 
-											type="object" 
+										<button
+											type="object"
 											class="oe_highlight"
 
 											name="test_create_sessions"
-											
+
 											string="Sessions"
 										/>
 
 										<!-- Create Controls -->
-										<button 
-											type="object" 
+										<button
+											type="object"
 											class="oe_highlight"
 
-											name="test_create_controls" 
-											
+											name="test_create_controls"
+
 											string="Controls"
 										/>
 
@@ -560,35 +471,35 @@
 <!--
 									<group>
 
-										<button 
+										<button
 												type="object"
 												class="oe_highlight"
 												name="test_report_management"
 												string="MGT"
 										/>
 
-										<button 
+										<button
 												type="object"
 												class="oe_highlight"
 												name="test_report_marketing"
 												string="MKT"
 										/>
 
-										<button 
+										<button
 												type="object"
 												class="oe_highlight"
 												name="test_report_account"
 												string="TXT"
 										/>
 
-										<button 
+										<button
 												type="object"
 												class="oe_highlight"
 												name="test_report_contasis"
 												string="ACC"
 										/>
 
-										<button 
+										<button
 												type="object"
 												class="oe_highlight"
 												name="test_report_product"
@@ -601,30 +512,30 @@
 
 
 
-<!-- Manual --> 
+<!-- Manual -->
 <!--
 <hr></hr>
 -->
 						<group  col="5" >
 
-							<!-- PRESU --> 
+							<!-- PRESU -->
 							<group>
-								<button 
-									type="object" 
+								<button
+									type="object"
 									class="oe_highlight"
 
 									attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
 
 									name="create_order_con"
 
-									string="PRESU CON" 
+									string="PRESU CON"
 								/>
 							</group>
 
-							<!-- CONS --> 
+							<!-- CONS -->
 							<group>
-								<button 
-									type="object" 
+								<button
+									type="object"
 									class="oe_highlight"
 									attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
 									name="create_consultation"
@@ -632,10 +543,10 @@
 								/>
 							</group>
 
-							<!-- RECO --> 
+							<!-- RECO -->
 							<group>
-								<button 
-									type="object" 
+								<button
+									type="object"
 									class="oe_highlight"
 									attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
 									name="create_service"
@@ -643,45 +554,45 @@
 								/>
 							</group>
 
-							<!-- PRESU --> 
+							<!-- PRESU -->
 							<group>
-								<button 
-									type="object" 
+								<button
+									type="object"
 									class="oe_highlight"
 									attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
 									name="create_order_pro"
-									string="PRESU" 
+									string="PRESU"
 								/>
 							</group>
 
-							<!-- PROC --> 
+							<!-- PROC -->
 							<group>
-								<button 
-									type="object" 
+								<button
+									type="object"
 									class="oe_highlight"
 									attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
 									name="create_procedure_man"
-									string="PROCEDIMIENTO" 
+									string="PROCEDIMIENTO"
 								/>
 							</group>
 
 
 							<!-- Manual -->
-<!--								
+<!--
 							<group>
-								<button 
-									type="object" 
-									name="toggle_add_procedures" 
+								<button
+									type="object"
+									name="toggle_add_procedures"
 									attrs="{ 'invisible':[  ('add_procedures','!=',False),  ]}"
-									string="Manual"                                     
+									string="Manual"
 								/>
 
-								<button 
-									type="object" 
+								<button
+									type="object"
 									class="oe_highlight"
-									name="toggle_add_procedures" 
+									name="toggle_add_procedures"
 									attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
-									string="Manual"                                     
+									string="Manual"
 								/>
 
 								<field name="add_procedures"    invisible="1"/>
@@ -700,14 +611,14 @@
 							<group></group>
 						</group>
 -->
-						<!-- Notebook --> 
+						<!-- Notebook -->
 						<notebook></notebook>
 					</sheet>
 				</form>
 			</field>
 		</record>
-		<!-- FORM --> 
-						<!-- Padding --> 
+		<!-- FORM -->
+						<!-- Padding -->
 
 
 <!--
@@ -724,7 +635,7 @@
 
 
 
-<!-- FORM 2 --> 
+<!-- FORM 2 -->
 		<record model="ir.ui.view" id="treatment_2_form_view">
 			<field name="name">treatment.form</field>
 			<field name="model">openhealth.treatment</field>
@@ -733,52 +644,52 @@
 				<form string="Treatment 2 Form">
 					<header>
 
-							<!-- CO2 --> 
-							<button 
-								type="object" 
-								class="oe_highlight"    
+							<!-- CO2 -->
+							<button
+								type="object"
+								class="oe_highlight"
 								name="create_service_co2"
 								string="LASER CO2"
 							/>
 
-							<!-- Quick --> 
-							<button 
-								type="object" 
-								class="oe_highlight"    
+							<!-- Quick -->
+							<button
+								type="object"
+								class="oe_highlight"
 								name="create_service_quick"
 								string="QUICK LASER"
 							/>
 
 							<!-- Excilite -->
-							<button 
-								type="object" 
-								class="oe_highlight"    
+							<button
+								type="object"
+								class="oe_highlight"
 								name="create_service_excilite"
 								string=" EXCILITE"
 							/>
 
-							<!-- M22-IPL --> 
-							<button 
-								type="object" 
-								class="oe_highlight"    
+							<!-- M22-IPL -->
+							<button
+								type="object"
+								class="oe_highlight"
 								name="create_service_ipl"
 								string=" M22-IPL"
 							/>
 
 							<!-- M22-NDYAG -->
-							<button 
-								type="object" 
-								class="oe_highlight"    
+							<button
+								type="object"
+								class="oe_highlight"
 								name="create_service_ndyag"
 								string=" M22-NDYAG"
 							/>
 
 
 
-							<!-- Product --> 
-							<button 
-								type="object" 
-								class="oe_highlight"    
+							<!-- Product -->
+							<button
+								type="object"
+								class="oe_highlight"
 								name="create_service_product"
 								string="PRODUCTOS"
 							/>
@@ -786,17 +697,17 @@
 
 
 							<!-- T. MEDICO -->
-							<button 
-								type="object" 
-								class="oe_highlight"    
+							<button
+								type="object"
+								class="oe_highlight"
 								name="create_service_medical"
 								string="T. MEDICO"
 							/>
 
 							<!-- Cosmeto -->
-							<button 
-								type="object" 
-								class="oe_highlight"    
+							<button
+								type="object"
+								class="oe_highlight"
 								name="create_service_cosmetology"
 								string="Cosmiatria"
 							/>
@@ -812,7 +723,7 @@
 
 
 
-<!-- TREE --> 
+<!-- TREE -->
 		<record model="ir.ui.view" id="treatment_tree_view">
 			<field name="name">treatment.tree</field>
 			<field name="model">openhealth.treatment</field>
@@ -842,7 +753,7 @@ blue:state=='controls'
 
 
 
-<!--                
+<!--
 				<tree default_order='start_date desc'>
 grey:state=='done';
 -->
@@ -867,7 +778,7 @@ limit = 40
 					<field name="end_date"/>
 					<field name="treatment_open"/>
 					<field name="id"/>
-					<field name="nr_appointments"/>                 
+					<field name="nr_appointments"/>
 					<field name="nr_consultations"  string="Consultas"  style="text-align:center;"/>
 					<field name="nr_orders"/>
 					<field name="nr_procedures"     string="Procedimientos" style="color:red;"/>
@@ -879,16 +790,16 @@ limit = 40
 
 					<field name="partner_id"/>
 -->
-		
-		
-		
+
+
+
 <!-- SEARCH -->
 		<record id="view_medical_treatment_filter" model="ir.ui.view">
 		   <field name="name">Treatment Search</field>
 		   <field name="model">openhealth.treatment</field>
 		   <field name="arch" type="xml">
 			   <search string="Treatments">
-					<field  name="patient" 
+					<field  name="patient"
 						filter_domain="['|',('patient','ilike',self),('physician','ilike',self)]"/>
 					<group expand="1" string="Group By">
 						<!--

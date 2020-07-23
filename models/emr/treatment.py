@@ -1,64 +1,47 @@
 # -*- coding: utf-8 -*-
 """
 		*** Treatment
-
 		Created: 			26 Aug 2016
-		Last up: 	 		26 Sep 2019
+		Last up: 	 		22 Jul 2020
 """
 from __future__ import print_function
-#import datetime
 from openerp import models, fields, api
-#from . import time_funcs
 from . import treatment_vars
 from openerp.addons.openhealth.models.libs import lib, user, eval_vars
-
 #from openerp.addons.openhealth.models.libs import creates as cre  	# Dep !
 from openerp.addons.price_list.models.treatment import pl_creates
 
 class Treatment(models.Model):
-	#_inherit = 'openhealth.process'  	# Dep !!!
 	_name = 'openhealth.treatment'
 	_order = 'write_date desc'
 	_description = 'Treatment'
 
-
-
-# ----------------------------------------------------------- Primitive --------------------------
-
+# ----------------------------------------------------------- Primitive ---------------------------
 	# Name
 	name = fields.Char(
 			string="Tratamiento #",
-
 			compute='_compute_name',
 		)
 	@api.multi
-	#@api.depends('start_date')
 	def _compute_name(self):
-
 		se = '-'
-
 		for record in self:
-			#record.name = 'TR0000' + str(record.id)
-			record.name = 'TR' + se + record.patient.get_name_code() + se + record.physician.get_name_code() 
-
-
-
+			record.name = 'TR' + se + record.patient.get_name_code() + se + record.physician.get_name_code()
 
 # ----------------------------------------------------------- Process --------------------------
-	# States 
+	# States
 	READONLY_STATES = {
-		'empty': 		[('readonly', False)], 
-		#'done': 		[('readonly', True)], 	
+		'empty': 		[('readonly', False)],
 	}
 
-	# Patient 
+	# Patient
 	patient = fields.Many2one(
 			'oeh.medical.patient',
 			string="Paciente",
-			index=True, 
-			ondelete='cascade',			
-			readonly=True, 
-			states=READONLY_STATES, 
+			index=True,
+			ondelete='cascade',
+			readonly=True,
+			states=READONLY_STATES,
 		)
 
 	# Physician
@@ -66,32 +49,29 @@ class Treatment(models.Model):
 			'oeh.medical.physician',
 			string="Médico",
 			index=True,
-			readonly=False, 
-			states=READONLY_STATES, 
+			readonly=False,
+			states=READONLY_STATES,
 		)
 
 	chief_complaint = fields.Selection(
-			string = 'Motivo de consulta', 						
-			selection = eval_vars._chief_complaint_list, 
+			string = 'Motivo de consulta',
+			selection = eval_vars._chief_complaint_list,
 			required=False,
-			readonly=False, 
+			readonly=False,
 		)
-
 
 	start_date = fields.Date(
-			string="Fecha inicio", 
+			string="Fecha inicio",
 			default = fields.Date.today,
-			readonly=True, 
-			states=READONLY_STATES, 
+			readonly=True,
+			states=READONLY_STATES,
 		)
-
 
 # ----------------------------------------------------------- Number ofs --------------------------
 
 	# Budgets - Consultations 			# DEP ?
 	nr_budgets_cons = fields.Integer(
 			string="Presupuestos Consultas",
-
 			compute="_compute_nr_budgets_cons",
 	)
 	@api.multi
@@ -100,15 +80,11 @@ class Treatment(models.Model):
 			record.nr_budgets_cons = self.env['sale.order'].search_count([
 																			('treatment', '=', record.id),
 																			('state', '=', 'draft'),
-
-																			#('x_family', '=', 'consultation'),
 																			('pl_family', 'like', 'CONSULTA'),
 																	])
-
 	# Invoices - Consultations
 	nr_invoices_cons = fields.Integer(
 			string="Facturas Consultas",
-
 			compute="_compute_nr_invoices_cons",
 	)
 	@api.multi
@@ -117,16 +93,11 @@ class Treatment(models.Model):
 			record.nr_invoices_cons = self.env['sale.order'].search_count([
 																			('treatment', '=', record.id),
 																			('state', '=', 'sale'),
-
-																			#('x_family', '=', 'consultation'),
-																			#('pl_family', 'like', 'CONSULTA'),
 																			('pl_family', '=', 'CONSULTA,'),
 																	])
-
 	# Consultations
 	nr_consultations = fields.Integer(
 			string="Nr Consultas",
-
 			compute="_compute_nr_consultations",
 	)
 	#@api.multi
@@ -139,12 +110,9 @@ class Treatment(models.Model):
 			record.nr_consultations = ctr
 
 
-
-
 	# Budgets - Proc   					# DEP ?
 	nr_budgets_pro = fields.Integer(
 			string="Presupuestos - Pro",
-
 			compute="_compute_nr_budgets_pro",
 	)
 	@api.multi
@@ -155,11 +123,9 @@ class Treatment(models.Model):
 																		('x_family', '=', 'procedure'),
 																		('state', '=', 'draft'),
 																	])
-
 	# Invoices - Proc
 	nr_invoices_pro = fields.Integer(
 			string="Facturas",
-
 			compute="_compute_nr_invoices_pro",
 	)
 	@api.multi
@@ -170,11 +136,9 @@ class Treatment(models.Model):
 																			('x_family', '=', 'procedure'),
 																			('state', '=', 'sale'),
 																	])
-
 	# Procedures
 	nr_procedures = fields.Integer(
 			string="Procedimientos",
-
 			compute="_compute_nr_procedures",
 	)
 	@api.multi
@@ -183,12 +147,9 @@ class Treatment(models.Model):
 			record.nr_procedures = self.env['openhealth.procedure'].search_count([
 																					('treatment', '=', record.id),
 																	])
-
-
 	# Sessions
 	nr_sessions = fields.Integer(
 			string="Sesiones",
-
 			compute="_compute_nr_sessions",
 	)
 	@api.multi
@@ -197,11 +158,9 @@ class Treatment(models.Model):
 			record.nr_sessions = self.env['openhealth.session.med'].search_count([
 																					('treatment', '=', record.id),
 																				])
-
 	# Controls
 	nr_controls = fields.Integer(
 			string="Controles",
-
 			compute="_compute_nr_controls",
 	)
 	@api.multi
@@ -211,33 +170,18 @@ class Treatment(models.Model):
 			record.nr_controls = self.env['openhealth.control'].search_count([
 																	('treatment', '=', record.id),
 																	])
-																	#order='appointment_date desc', limit=1)
 
-
-
-
-# ----------------------------------------------------------- Test ------------------------------------------------------------
+# ----------------------------------------------------------- Test ----------------------------------------------------
 	x_test = fields.Boolean(
 			'Test',
 			default=False,
 		)
 
-
-
-
 # ----------------------------------------------------------- Pricelist Fields - Dummy --------------------------------
-
-	#report_product = fields.Char(
-	#	)
-
 	report_product = fields.Many2one(
-			#'price_list.container',
 			'openhealth.container.pricelist',
 			string="PROD",
-			#required=True,
 		)
-
-
 
 # ----------------------------------------------------------- Pricelist Fields - Test --------------------------------
 
@@ -248,9 +192,7 @@ class Treatment(models.Model):
 				('laser', 'Laser'),
 				('cosmetology', 'Cosmetology'),
 				('medical', 'Medical'),
-
 				('new', 'New'),
-			
 				('credit_note', 'Nota de Credito'),
 				('block_flow', 'Flujo bloqueado'),
 			],
@@ -260,7 +202,6 @@ class Treatment(models.Model):
 
 	test_pricelist_2019 = fields.Boolean(
 			'PL 2019',
-			#default=False,
 			default=True,
 		)
 
@@ -270,48 +211,44 @@ class Treatment(models.Model):
 		)
 
 
-# ----------------------------------------------------------- Test Reports - Relational ----------------------------------------------
-	# Management
-	report_management = fields.Many2one(
-			'openhealth.management',
-			string="MGT",
+# ----------------------------------------------------------- Macro ------------
+	# Sex - Used by header
+	patient_sex = fields.Char(
+			string="Sexo",
+			compute='_compute_patient_sex',
 		)
+	@api.multi
+	def _compute_patient_sex(self):
+		for record in self:
+			if record.patient.sex != False:
+				record.patient_sex = record.patient.sex[0]
 
-	# Marketing
-	report_marketing = fields.Many2one(
-			'openhealth.marketing',
-			string="MKT",
+	# Age - id
+	patient_age = fields.Char(
+			string="Edad",
+			compute='_compute_patient_age',
 		)
+	@api.multi
+	def _compute_patient_age(self):
+		for record in self:
+			if record.patient.age != False:
+				record.patient_age = record.patient.age.split()[0]
 
-	# Contasis
-	report_contasis = fields.Many2one(
-			'openhealth.account.contasis',
-			string="ACC",
+	# City - id
+	patient_city = fields.Char(
+			string="Lugar de procedencia",
+			compute='_compute_patient_city',
 		)
+	@api.multi
+	def _compute_patient_city(self):
+		for record in self:
+			if record.patient.city_char != False:
+				city = record.patient.city_char
+				record.patient_city = city.title()
 
-	# Txt
-	report_account = fields.Many2one(
-			'openhealth.container',
-			string="TXT",
-		)
-
-
-
-
-# ----------------------------------------------------------- Dummy ------------------------
-
-	appointment_ids = fields.Char()
-
-
-
-
-# ----------------------------------------------------------- Vip  --------------------------------
-
-	# Vip
+	# Vip - id
 	vip = fields.Boolean(
 		string="VIP",
-		#default=False,
-
 		compute='_compute_vip',
 	)
 	@api.multi
@@ -320,12 +257,11 @@ class Treatment(models.Model):
 			card = record.env['openhealth.card'].search([
 															('patient_name', '=', record.patient.name),
 														],
-														#order='appointment_date desc',
 														limit=1,)
 			if card.name != False:
 				record.vip = True
 
-
+# ----------------------------------------------------------- Price list  --------------------------------
 
 	# Pricelist
 	pricelist_id = fields.Many2one(
@@ -342,14 +278,11 @@ class Treatment(models.Model):
 
 
 
-
 # ----------------------------------------------------------- Manual ------------------------------
-
 	# Override config
 	override = fields.Boolean(
 			default=False,
 		)
-
 
 	# Manual
 	add_procedures = fields.Boolean(
@@ -367,10 +300,7 @@ class Treatment(models.Model):
 	def toggle_add_procedures(self):
 		self.add_procedures = not self.add_procedures
 
-
-
 # ----------------------------------------------------------- Canonical ---------------------------
-
 	# Space
 	vspace = fields.Char(
 			' ',
@@ -387,62 +317,6 @@ class Treatment(models.Model):
 			string="De Alta",
 			default=False,
 		)
-
-
-# ----------------------------------------------------------- Macro -------------------------------
-
-	# Sex
-	patient_sex = fields.Char(
-			string="Sexo",
-
-			compute='_compute_patient_sex',
-		)
-
-	@api.multi
-	def _compute_patient_sex(self):
-		#print
-		#print 'Compute Patient Sex'
-		for record in self:
-			#print 'record'
-			if record.patient.sex != False:
-				record.patient_sex = record.patient.sex[0]
-
-
-	# Age
-	patient_age = fields.Char(
-			string="Edad",
-
-			compute='_compute_patient_age',
-		)
-
-	@api.multi
-	def _compute_patient_age(self):
-		#print
-		#print 'Compute Patient Age'
-		for record in self:
-			#print 'record'
-			if record.patient.age != False:
-				record.patient_age = record.patient.age.split()[0]
-
-
-	# City
-	patient_city = fields.Char(
-			string="Lugar de procedencia",
-
-			compute='_compute_patient_city',
-		)
-
-	@api.multi
-	def _compute_patient_city(self):
-		#print
-		#print 'Compute Patient City'
-		for record in self:
-			#print 'record'
-			if record.patient.city_char != False:
-				city = record.patient.city_char
-				record.patient_city = city.title()
-
-
 
 # ----------------------------------------------------------- Vip in prog -------------------------
 
@@ -610,70 +484,45 @@ class Treatment(models.Model):
 
 
 # ----------------------------------------------------------- State -------------------------------
-
 	# State
 	state = fields.Selection(
 			selection=treatment_vars._state_list,
 			string='Estado',
 			default='empty',
-
 			compute="_compute_state",
 		)
 
-
-
 	@api.multi
-	#@api.depends('consultation_ids')
 	def _compute_state(self):
 		for record in self:
-
-			# Init
 			state = 'empty'
-
-
 			if record.treatment_closed:
 				state = 'done'
-
 			elif record.nr_controls > 0:
 				state = 'controls'
-
 			elif record.nr_sessions > 0:
 				state = 'sessions'
-
 			elif record.nr_procedures > 0:
 				state = 'procedure'
-
 			elif record.nr_invoices_pro > 0:
 				state = 'invoice_procedure'
-
 			elif record.nr_budgets_pro > 0:
 				state = 'budget_procedure'
-
 			elif record.nr_services > 0:
 				state = 'service'
-
 			elif record.consultation_progress == 100:
 				state = 'consultation'
-
 			elif record.nr_invoices_cons > 0:
 				state = 'invoice_consultation'
-
 			elif record.nr_budgets_cons > 0:
 				state = 'budget_consultation'
-
-			# Assign
 			record.state = state
-
 	# _compute_state
-
-
-
 
 # ----------------------------------------------------------- Number ofs - Services ---------------
 	# Number of Services
 	nr_services = fields.Integer(
 			string="Servicios",
-
 			compute="_compute_nr_services",
 	)
 	@api.multi
@@ -816,14 +665,11 @@ class Treatment(models.Model):
 			record.nr_services_cosmetology = services
 
 
-
 # ----------------------------------------------------------- Open Myself -------------------------
 	# Open Myself
 	@api.multi
 	def open_myself(self):
-
 		treatment_id = self.id
-
 		return {
 			# Mandatory
 			'type': 'ir.actions.act_window',
@@ -853,16 +699,13 @@ class Treatment(models.Model):
 		"""
 		# Quick access Button
 		"""
-
 		return {
 				'type': 'ir.actions.act_window',
 				'name': ' Edit Order Current',
 				'view_type': 'form',
 				'view_mode': 'form',
-
 				'res_model': self._name,
 				'res_id': self.id,
-				
 				'target': 'current',
 				'flags': {
 						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}

@@ -106,14 +106,14 @@ class Patient(models.Model):
 		The patient is Vip if there is a Vip card, with his name
 		"""
 		for record in self:
-			x_card = record.env['openhealth.card'].search([
-															('patient_name', '=', record.name),
-														],
+			record.x_vip = False
+			#x_card = record.env['openhealth.card'].search([
+			#												('patient_name', '=', record.name),
+			#											],
 														#order='appointment_date desc',
-														limit=1,)
-
-			if x_card.name != False:
-				record.x_vip = True
+			#											limit=1,)
+			#if x_card.name != False:
+			#	record.x_vip = True
 
 
 
@@ -225,7 +225,7 @@ class Patient(models.Model):
 
 
 # ----------------------------------------------- Update --------------------------------
-	
+
 	@api.multi
 	def update(self):
 		print()
@@ -312,7 +312,7 @@ class Patient(models.Model):
 			control = self.control_ids.create({
 												'date': 		obj.evaluation_start_date,
 
-												'patient': 		obj.patient.id,												
+												'patient': 		obj.patient.id,
 												'doctor': 		obj.doctor.id,
 												'state': 		obj.state,
 
@@ -386,7 +386,7 @@ class Patient(models.Model):
 
 			# Create
 			obj = self.sale_ids.create({
-												'patient': 	order.patient.id,												
+												'patient': 	order.patient.id,
 												'doctor': 	order.x_doctor.id,
 												'date': 	order.date_order,
 												'state': 		order.state,
@@ -433,7 +433,7 @@ class Patient(models.Model):
 
 			# Create
 			consultation = self.consultation_ids.create({
-												'patient': 		obj.patient.id,												
+												'patient': 		obj.patient.id,
 												'doctor': 		obj.doctor.id,
 												'date': 		obj.evaluation_start_date,
 												'state': 		obj.state,
@@ -476,7 +476,7 @@ class Patient(models.Model):
 
 			# Create
 			procedure = self.procedure_ids.create({
-												'patient': 		obj.patient.id,												
+												'patient': 		obj.patient.id,
 												'doctor': 		obj.doctor.id,
 												'date': 		obj.evaluation_start_date,
 												'state': 		obj.state,
@@ -543,11 +543,11 @@ class Patient(models.Model):
 # ----------------------------------------------- User --------------------------------
 
 	user_id = fields.Many2one(
-		'res.users', 
-		#string='Salesperson', 
-		string='Creado por', 
+		'res.users',
+		#string='Salesperson',
+		string='Creado por',
 		#index=True,
-		track_visibility='onchange', 
+		track_visibility='onchange',
 		default=lambda self: self.env.user,
 	)
 
@@ -708,25 +708,25 @@ class Patient(models.Model):
 					# Mandatory
 					'type': 'ir.actions.act_window',
 					'name': 'Open Budget Current',
-					
+
 					# Model
 					'res_model': 'sale.order',
 
 					#'res_id': treatment.id,
-					
+
 					# Views
 					"views": [[False, "form"]],
-					
+
 					'view_mode': 'form',
-					
+
 					#'target': 'current',
 					'target': 'new',
-					
+
 					'flags': {
 							#'form': {'action_buttons': True, }
 							'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
 					},
-					
+
 					'context':   {
 									'default_patient': self.id,
 					}
@@ -1377,7 +1377,7 @@ class Patient(models.Model):
 
 		#self.street2 = pat_vars.zip_dic_inv[self.street2_sel]
 		self.street2 = pat_vars.get_zip_dic_inv(self.street2_sel)
-		
+
 		self.zip = self.street2_sel
 
 	# Street

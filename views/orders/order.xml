@@ -250,6 +250,7 @@
 					<field name="configurator"			required="1"/>
 					<field name="pricelist_id"          readonly="1"/>
 -->
+<field name="pricelist_id"          readonly="0"/>
 				</xpath>
 
 <!-- REPLACES -->

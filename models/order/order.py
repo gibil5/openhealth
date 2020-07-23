@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-	Order
+		Order - Openhealth
+
 		Created: 			26 Aug 2016
 		Last mod: 			20 Jul 2020
 """
@@ -22,18 +23,49 @@ from . import qr
 
 class sale_order(models.Model):
 	"""
-	Sale Class - Inherited from the medical Module OeHealth. Has the Business Logic of the Clinic.
-	This is only a Data Model. Must NOT contain Business Rules.
-	All BRs should be in Classes and Libraries.
+	Sale Class - Inherited from the medical Module OeHealth.
 	"""
 	_inherit = 'sale.order'
 	_description = 'Order'
+
+
+# ----------------------------------------------------------- Pricelist  -------------------------------
+	# Default
+	def _get_default_pricelist_id(self):
+		print()
+		print('Default Pricelist')
+
+		# Search
+		pricelist = self.env['product.pricelist'].search([
+												#('active', 'in', [True]),
+												],
+												#order='x_serial_nr asc',
+												limit=1,
+											)
+		print(pricelist)
+		print(pricelist.name)
+		return pricelist
+
+
+	# Pricelist
+	pricelist_id = fields.Many2one(
+			'product.pricelist',
+			string='Pricelist',
+
+			#readonly=True,
+			readonly=False,
+
+			#states={'draft': [('readonly', False)], 'sent': [('readonly', False)]},
+			help="Pricelist for current sales order.",
+			#required=True,
+
+			default=_get_default_pricelist_id,
+		)
 
 # ----------------------------------------------------------- Fields -------------------------------
 	# Transfer Free
 	pl_transfer_free = fields.Boolean(
 			'TRANSFERENCIA GRATUITA',
-
 			default=False,
 		)
 
@@ -160,30 +192,6 @@ class sale_order(models.Model):
 		)
 
 
-# ----------------------------------------------------------- Configurator -------------------------
-	#def _get_default_configurator(self):
-	#	print()
-	#	print('Default Configurator')
-		# Search
-	#	configurator = self.env['openhealth.configurator.emr'].search([
-												#('active', 'in', [True]),
-	#											],
-												#order='x_serial_nr asc',
-	#											limit=1,
-	#										)
-	#	return configurator
-
-	#configurator = fields.Many2one(
-	#		'openhealth.configurator.emr',
-	#		string="Config",
-	#		readonly=True,
-
-			#required=True,
-	#		required=False,
-			#default=_get_default_configurator,
-	#	)
-
-
 # ---------------------------------- Partner - Not Dep -------------------------
 	# On Change Partner
 	@api.onchange('partner_id')
@@ -208,194 +216,12 @@ class sale_order(models.Model):
 		self.patient = ord_funcs.search_patient_by_id_document(self)
 	# _onchange_x_partner_dni
 
-# ------------------------------- Used by - Print Ticket - Header and Footer ---
-	def get_title(self):
-		return self.x_title
-
-	def get_serial_nr(self):
-		return self.x_serial_nr
-
-	def get_firm_address(self):
-		return self.patient.x_firm_address
-
-	def get_patient_address(self):
-		return self.patient.x_address
-
-	def get_note(self):
-		if self.pl_transfer_free:
-			note = 'TRANSFERENCIA A TITULO GRATUITO'
-		else:
-			if self.x_type in ['ticket_receipt']:
-				note = 'Representación impresa de la BOLETA DE VENTA ELECTRONICA.'
-			elif self.x_type in ['ticket_invoice']:
-				note = 'Representación impresa de la FACTURA DE VENTA ELECTRONICA.'
-			else:
-				note = ''
-		return note
-
-# ----------------------------------------------------------- Ticket - Get Raw Line - Stub ----------------
-	def get_raw_line(self, argument):
-		"""
-		Just a stub.
-		"""
-		line = raw_funcs.get_ticket_raw_line(self, argument)
-		return line
-
-
-# ----------------------------------------------------------- Ticket - Header - Getters ----------------
-
-	# Company Address
-	def get_company_name(self):
-		company_name = self.configurator.company_name
-		return company_name
-
-	# Company Address
-	def get_company_address(self):
-		company_address = self.configurator.ticket_company_address
-		return company_address
-
-	# Company Address
-	def get_company_phone(self):
-		company_phone = self.configurator.company_phone
-		return company_phone
-
-	# Company Address
-	def get_company_ruc(self):
-		company_ruc = self.configurator.ticket_company_ruc
-		return company_ruc
-
-
-
-# ----------------------------------------------------------- Ticket - Footer - Getters ----------------
-
-	# Description
-	def get_description(self):
-		description = self.configurator.ticket_description
-		return description
-
-
-	# Warning
-	def get_warning(self):
-		warning = self.configurator.ticket_warning
-		return warning
-
-
-	# Website
-	def get_website(self):
-		website = self.configurator.website
-		return website
-
-
-	# Email
-	def get_email(self):
-		email = self.configurator.email
-		return email
-
-
-
-
-# ----------------------------------------------------------- Print Ticket - Amounts -------------------------------
-
-	def get_amount_total(self):
-		"""
-		Used by Print Ticket.
-		Is zero if Transfer Free.
-		"""
-		#print()
-		#print('Get Amount Total')
-
-		if self.pl_transfer_free:
-			total = 0
-
-		else:
-			total = tick_funcs.get_total(self)
-
-		#return tick_funcs.get_total(self)
-		return total
-
-
-
-
-	def get_total_net(self):
-		"""
-		Used by Print Ticket.
-		Is zero if Transfer Free.
-		"""
-		#print()
-		#print('Get Total Net')
-
-		if self.pl_transfer_free:
-			self.x_total_net = 0
-
-		else:
-			self.x_total_net =  tick_funcs.get_net(self)
-
-		return self.x_total_net
-
-
-
-	def get_total_tax(self):
-		"""
-		Used by Print Ticket.
-		Is zero if Transfer Free.
-		"""
-		#print()
-		#print('Get Total Tax')
-
-		if self.pl_transfer_free:
-			self.x_total_tax = 0
-
-		else:
-			self.x_total_tax = tick_funcs.get_tax(self)
-
-		return self.x_total_tax
-
-
-
-	def get_total_in_words(self):
-		"""
-		Used by Print Ticket.
-		"""
-		#print()
-		#print('Get Total Words')
-
-		if self.pl_transfer_free:
-			words = 'Cero'
-
-		else:
-			words = tick_funcs.get_words(self)
-
-		#return tick_funcs.get_words(self)
-		return words
-
-
-
-	def get_total_cents(self):
-		"""
-		Used by Print Ticket.
-		"""
-		#print()
-		#print('Get Total Cents')
-
-		if self.pl_transfer_free:
-			cents = '0.0'
-
-		else:
-			cents = tick_funcs.get_cents(self)
-
-		#return tick_funcs.get_cents(self)
-		return cents
-
-
-
-
 
 # ----------------------------------------------------------- Natives  - Computes OK -------------------------
 
 	# Type Code - OK
 	x_type_code = fields.Char(
 			string='Tipo Codigo',
-
 			compute='_compute_x_type_code',
 		)
 
@@ -437,13 +263,14 @@ class sale_order(models.Model):
 	@api.multi
 	def _compute_partner_vip(self):
 		for record in self:
-			count = self.env['openhealth.card'].search_count([
-																('patient_name', '=', record.partner_id.name),
-														])
-			if count == 0:
-				record.x_partner_vip = False
-			else:
-				record.x_partner_vip = True
+			record.x_partner_vip = False
+			#count = self.env['openhealth.card'].search_count([
+			#													('patient_name', '=', record.partner_id.name),
+			#											])
+			#if count == 0:
+			#	record.x_partner_vip = False
+			#else:
+			#	record.x_partner_vip = True
 
 
 
@@ -1216,15 +1043,6 @@ class sale_order(models.Model):
 			index=True,
 		)
 
-	# Pricelist
-	#pricelist_id = fields.Many2one(
-	#		'product.pricelist',
-	#		string='Pricelist',
-	#		readonly=True,
-	#		states={'draft': [('readonly', False)], 'sent': [('readonly', False)]},
-	#		help="Pricelist for current sales order.",
-	#		required=True,
-	#	)
 
 	# Payment Method
 	x_payment_method = fields.Many2one(

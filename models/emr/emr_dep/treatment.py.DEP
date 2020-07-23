@@ -1,6 +1,61 @@
 
 # 22 jul 2020
 
+<!-- Manual -->
+<!--
+<group>
+  <button
+    type="object"
+    name="toggle_add_procedures"
+    attrs="{ 'invisible':[  ('add_procedures','!=',False),  ]}"
+    string="Manual"
+  />
+
+  <button
+    type="object"
+    class="oe_highlight"
+    name="toggle_add_procedures"
+    attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
+    string="Manual"
+  />
+
+  <field name="add_procedures"    invisible="1"/>
+</group>
+-->
+
+
+<!--
+				<tree default_order='start_date desc'>
+grey:state=='done';
+-->
+<!--
+limit = 40
+					<field name="flag"/>
+					<field name="procedure_ids"     groups="openhealth.roots"/>
+-->
+<!--
+					<field name="x_test"/>
+					<field name="name"/>
+					<field name="patient_sex"/>
+					<field name="patient_age"/>
+					<field name="patient_city"/>
+					<field name="duration"/>
+					<field name="end_date"/>
+					<field name="treatment_open"/>
+					<field name="id"/>
+					<field name="nr_appointments"/>
+					<field name="nr_consultations"  string="Consultas"  style="text-align:center;"/>
+					<field name="nr_orders"/>
+					<field name="nr_procedures"     string="Procedimientos" style="color:red;"/>
+					<field name="nr_controls"/>
+					<field name="nr_sessions"/>
+					<field name="nr_evaluations"/>
+					<field name="nr_services"/>
+					<field name="price_total"/>
+					<field name="partner_id"/>
+-->
+
+
 
 # ----------------------------------------------------------- Dummy ------------------------
 	#appointment_ids = fields.Char()

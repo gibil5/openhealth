@@ -692,7 +692,6 @@ class Treatment(models.Model):
 		}
 	# open_myself
 
-
 #----------------------------------------------------------- Quick Button - Used by Patient ---------
 	@api.multi
 	def open_line_current(self):

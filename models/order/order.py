@@ -161,25 +161,27 @@ class sale_order(models.Model):
 
 
 # ----------------------------------------------------------- Configurator -------------------------
-	def _get_default_configurator(self):
-		print()
-		print('Default Configurator')
+	#def _get_default_configurator(self):
+	#	print()
+	#	print('Default Configurator')
 		# Search
-		configurator = self.env['openhealth.configurator.emr'].search([
+	#	configurator = self.env['openhealth.configurator.emr'].search([
 												#('active', 'in', [True]),
-												],
+	#											],
 												#order='x_serial_nr asc',
-												limit=1,
-											)
-		return configurator
+	#											limit=1,
+	#										)
+	#	return configurator
 
-	configurator = fields.Many2one(
-			'openhealth.configurator.emr',
-			string="Config",
-			required=True,
-			readonly=True,
-			default=_get_default_configurator,
-		)
+	#configurator = fields.Many2one(
+	#		'openhealth.configurator.emr',
+	#		string="Config",
+	#		readonly=True,
+
+			#required=True,
+	#		required=False,
+			#default=_get_default_configurator,
+	#	)
 
 
 # ---------------------------------- Partner - Not Dep -------------------------
@@ -505,23 +507,17 @@ class sale_order(models.Model):
 		print()
 		print('Validate')
 
-
 		# Handle Exceptions
-		exc_ord.handle_exceptions(self)
-
+		#exc_ord.handle_exceptions(self)
 
 		# If Everything is OK
 		self.check_and_generate()
-
-
 
 		# Make Serial Number
 		#if self.x_serial_nr != '' and not self.x_admin_mode:
 		#if self.state in ['validated']  and  self.x_serial_nr != '' and not self.x_admin_mode:
 
 		self.make_serial_number()
-
-
 
 		# Make QR
 		if self.x_type in ['ticket_receipt', 'ticket_invoice']:
@@ -683,7 +679,8 @@ class sale_order(models.Model):
 		print('Make QR')
 
 		# Init vars
-		ruc_company = self.configurator.company_ruc
+		#ruc_company = self.configurator.company_ruc
+		ruc_company = '12345678901'
 
 		x_type = self.x_type
 
@@ -1220,14 +1217,14 @@ class sale_order(models.Model):
 		)
 
 	# Pricelist
-	pricelist_id = fields.Many2one(
-			'product.pricelist',
-			string='Pricelist',
-			readonly=True,
-			states={'draft': [('readonly', False)], 'sent': [('readonly', False)]},
-			help="Pricelist for current sales order.",
-			required=True,
-		)
+	#pricelist_id = fields.Many2one(
+	#		'product.pricelist',
+	#		string='Pricelist',
+	#		readonly=True,
+	#		states={'draft': [('readonly', False)], 'sent': [('readonly', False)]},
+	#		help="Pricelist for current sales order.",
+	#		required=True,
+	#	)
 
 	# Payment Method
 	x_payment_method = fields.Many2one(

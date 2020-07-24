@@ -3,7 +3,7 @@
 		Order - Openhealth
 
 		Created: 			26 Aug 2016
-		Last mod: 			20 Jul 2020
+		Last mod: 			23 Jul 2020
 """
 from __future__ import print_function
 import datetime
@@ -19,6 +19,7 @@ from . import tick_funcs
 from . import ord_vars
 from . import ord_funcs
 from . import raw_funcs
+
 from . import qr
 
 class sale_order(models.Model):
@@ -169,7 +170,6 @@ class sale_order(models.Model):
 				products = products + line.get_product() + ', '
 			record.pl_product = products
 
-
 # ---------------------------------------------- Price List - Fields ------------------------------------------
 	# States
 	READONLY_STATES = {
@@ -190,7 +190,6 @@ class sale_order(models.Model):
 	pl_receptor = fields.Char(
 			string='Receptor',
 		)
-
 
 # ---------------------------------- Partner - Not Dep -------------------------
 	# On Change Partner
@@ -217,7 +216,7 @@ class sale_order(models.Model):
 	# _onchange_x_partner_dni
 
 
-# ----------------------------------------------------------- Natives  - Computes OK -------------------------
+# ------------------------------------------- Natives  - Computes OK -----------
 
 	# Type Code - OK
 	x_type_code = fields.Char(
@@ -232,13 +231,11 @@ class sale_order(models.Model):
 				record.x_type_code = ord_vars._dic_type_code[record.x_type]
 
 
-
 	# Nr lines - OK
 	nr_lines = fields.Integer(
 			default=0,
 			string='Nr líneas',
 			required=False,
-
 			compute='_compute_nr_lines',
 		)
 
@@ -256,7 +253,6 @@ class sale_order(models.Model):
 	x_partner_vip = fields.Boolean(
 			'Vip',
 			default=False,
-
 			compute="_compute_partner_vip",
 		)
 
@@ -272,10 +268,6 @@ class sale_order(models.Model):
 			#else:
 			#	record.x_partner_vip = True
 
-
-
-
-
 	# Amount total - OK
 	x_amount_total = fields.Float(
 			string="x Total",
@@ -290,9 +282,6 @@ class sale_order(models.Model):
 			for line in record.order_line:
 				sub = sub + line.price_subtotal
 			record.x_amount_total = sub
-
-
-
 
 	# Amount Flow - Verify !
 	x_amount_flow = fields.Float(
@@ -311,7 +300,6 @@ class sale_order(models.Model):
 			else:
 				record.x_amount_flow = record.amount_total
 
-
 # ----------------------------------------------------------- Natives  - Killed Computes -------------------------
 	# Net
 	x_total_net = fields.Float(
@@ -326,10 +314,9 @@ class sale_order(models.Model):
 # ----------------------------------------------------------- Validate Button ----------------------------
 
 	@api.multi
-	#def validate(self):
 	def validate_and_confirm(self):
 		"""
-		Validate the order. Before Confirmation.
+		Validate and confirm the order.
 		"""
 		print()
 		print('Validate')
@@ -341,23 +328,16 @@ class sale_order(models.Model):
 		self.check_and_generate()
 
 		# Make Serial Number
-		#if self.x_serial_nr != '' and not self.x_admin_mode:
-		#if self.state in ['validated']  and  self.x_serial_nr != '' and not self.x_admin_mode:
-
 		self.make_serial_number()
 
 		# Make QR
 		if self.x_type in ['ticket_receipt', 'ticket_invoice']:
 			self.make_qr()
 
-
-
 		# State
 		self.state = 'sale'
 
 	# validate
-
-
 
 # ----------------------------------------------------------- Check and Generate ----------------------------
 	def check_and_generate(self):
@@ -368,69 +348,43 @@ class sale_order(models.Model):
 		print()
 		print('Check and Generate')
 
-
 		# Payment method validation
 		self.check_payment_method()
-
 
 		# Doctor User Name
 		if self.x_doctor.name != False:
 			uid = self.x_doctor.x_user_name.id
 			self.x_doctor_uid = uid
 
-
-
 		# Date - Must be that of the Sale, not the Budget.
 		self.date_order = datetime.datetime.now()
-
-
 
 		# Date - Update Day and Month
 		ord_funcs.update_day_and_month(self)
 
-
 		# Update Descriptors (family and product)
 		ord_funcs.update_descriptors(self)
 
-
-
-
 		# Vip Card - Detect and Create
 		ord_funcs.detect_vip_card_and_create(self)
-
-
-
-
 
 		# Type
 		if self.x_payment_method.saledoc != False:
 			self.x_type = self.x_payment_method.saledoc
 
-
 		# Create Procedure
 		print('Create Procedure')
-
 		if self.treatment.name != False:
 			for line in self.order_line:
-
-				# Init
 				product = line.product_id
-
-				# Conditional
 				if product.is_procedure():
 					self.treatment.create_procedure_auto(product)
-
-
 				line.update_recos()
 
-
 			# Update Order
-			#self.x_procedure_created = True
 			self.set_procedure_created(True)
 
-
-
-		# Id Doc and Ruc
+	# Id Doc and Ruc
 		# Invoice
 		if self.x_type in ['ticket_invoice', 'invoice']:
 			if self.x_ruc in [False, '']:
@@ -443,16 +397,13 @@ class sale_order(models.Model):
 				msg = "Error: Documento de Identidad Ausente."
 				raise UserError(_(msg))
 
-
 		# Update Patient
 		if self.patient.x_id_doc in [False, '']:
 			self.patient.x_id_doc_type = self.x_id_doc_type
 			self.patient.x_id_doc = self.x_id_doc
 
-
 		# Change Electronic
 		self.x_electronic = True
-
 
 		# Title
 		if self.x_type in ['ticket_receipt', 'receipt']:
@@ -462,18 +413,14 @@ class sale_order(models.Model):
 		else:
 			self.x_title = 'Venta Electrónica'
 
-
-
 		# QR
 		#if self.x_type in ['ticket_receipt', 'ticket_invoice']:
 		#	self.make_qr()
-
 
 		# Change State
 		self.state = 'validated'
 
 	# check_and_generate
-
 
 
 # ----------------------------------------------------------- Make SN - BUtton ----------------------
@@ -491,8 +438,6 @@ class sale_order(models.Model):
 		self.x_counter_value = ord_funcs.get_next_counter_value(self, self.x_type, self.state)
 		# Make Serial Number
 		self.x_serial_nr = ord_funcs.get_serial_nr(self.x_type, self.x_counter_value, self.state)
-
-
 
 # ----------------------------------------------------------- Make QR - BUtton ----------------------
 	# Make QR
@@ -536,10 +481,6 @@ class sale_order(models.Model):
 				})
 	# make_qr
 
-
-
-
-
 # ----------------------------------------------------------- Credit Note -------------------------
 
 	x_block_flow = fields.Boolean(
@@ -573,7 +514,6 @@ class sale_order(models.Model):
 			'Nota de Crédito',
 		)
 
-
 # ---------------------------------------------- Credit Note - Block Flow -------------------------
 	# Block Flow
 	@api.multi
@@ -600,8 +540,6 @@ class sale_order(models.Model):
 		if self.state in ['credit_note']:
 			self.x_block_flow = False
 			self.x_credit_note_owner.x_block_flow = False
-
-
 
 # ---------------------------------------------- Credit Note - Update -----------------------------
 	# Update CN
@@ -635,8 +573,6 @@ class sale_order(models.Model):
 											'order_id': self.id,
 										})
 	# update_credit_note
-
-
 
 # ---------------------------------------------- Credit Note - Create -----------------------------
 	# Create CN
@@ -677,10 +613,7 @@ class sale_order(models.Model):
 					})
 	# create_credit_note
 
-
-
 # ----------------------------------------------------------- Dates -------------------------------
-
 	# Date
 	date_order = fields.Datetime(
 		states={
@@ -833,7 +766,6 @@ class sale_order(models.Model):
 
 
 # ---------------------------------------------- Electronic ------------------------------------
-
 	x_title = fields.Char(
 			'Titulo',
 			default='Venta Electrónica',
@@ -852,17 +784,13 @@ class sale_order(models.Model):
 			'Data QR'
 		)
 
-
-
 # ----------------------------------------------------------- Mode Admin --------------------------
 	x_admin_mode = fields.Boolean(
 			'Modo Admin',
 			help='Activa el Modo Administrador.',
 		)
 
-
 # ----------------------------------------------------------- Id Doc ------------------------------
-
 	# Id Document
 	x_id_doc = fields.Char(
 			'Nr. Doc.',
@@ -895,14 +823,12 @@ class sale_order(models.Model):
 				},
 		)
 
-
 # ----------------------------------------------------------- Correct -----------------------------
 	# Correct payment method
 	@api.multi
 	def correct_pm(self):
 		#print
 		#print 'Correct Payment Method'
-
 
 		if self.x_payment_method.name == False:
 			self.x_payment_method = self.env['openhealth.payment_method'].create({
@@ -935,7 +861,6 @@ class sale_order(models.Model):
 		}
 	# correct_pm
 
-
 # ----------------------------------------------------------- Pay ---------------------------------
 	# DNI
 	x_dni = fields.Char(
@@ -946,11 +871,9 @@ class sale_order(models.Model):
 	# RUC
 	x_ruc = fields.Char(
 			string='RUC',
-			#readonly=True,
 		)
 
 # ----------------------------------------------------------- Locked - By State -------------------
-
 	# States
 	READONLY_STATES = {
 		'draft': 		[('readonly', False)],
@@ -981,51 +904,37 @@ class sale_order(models.Model):
 			#states=READONLY_STATES, 			# Done by the View
 		)
 
-
 # ----------------------------------------------------------- On Changes --------------------------
-
 	# Patient
 	@api.onchange('patient')
 	def _onchange_patient(self):
-		#print
-		#print 'On Change Patient'
-
 		if self.patient.name != False:
-
-			# Init
 			self.x_ruc = False
 			self.partner_id = self.patient.partner_id.id
-
 			# Id Doc
 			if self.patient.x_id_doc != False:
 				self.x_id_doc = self.patient.x_id_doc
 				self.x_id_doc_type = self.patient.x_id_doc_type
-
 			# Get x Dni
 			elif self.patient.x_dni not in [False, '']:
 				self.x_id_doc = self.patient.x_dni
 				self.x_id_doc_type = 'dni'
 				self.x_dni = self.patient.x_dni
-
 			# Ruc
 			if self.patient.x_ruc != False:
 				self.x_ruc = self.patient.x_ruc
-
-
 
 	# Doctor
 	@api.onchange('x_doctor')
 	def _onchange_x_doctor(self):
 		if self.x_doctor.name != False:
-			treatment = self.env['openhealth.treatment'].search([
-																	('patient', '=', self.patient.name),
+			treatment = self.env['openhealth.treatment'].search([	('patient', '=', self.patient.name),
 																	('physician', '=', self.x_doctor.name),
 													],
 														order='write_date desc',
 														limit=1,
 													)
 			self.treatment = treatment
-
 
 # ----------------------------------------------------------- Primitives --------------------------
 
@@ -1042,7 +951,6 @@ class sale_order(models.Model):
 			default='draft',
 			index=True,
 		)
-
 
 	# Payment Method
 	x_payment_method = fields.Many2one(
@@ -1063,15 +971,11 @@ class sale_order(models.Model):
 			readonly=True
 		)
 
-
-# ----------------------------------------------------------- Primitives --------------------------
-
 	# Proc Created - For Doctor budget creation
 	x_procedure_created = fields.Boolean(
 			'Procedimiento Creado',
 			default=False,
 		)
-
 
 # ---------------------------------------------- Create Payment Method - Button Pagar ----------------------------
 	@api.multi
@@ -1107,14 +1011,10 @@ class sale_order(models.Model):
 		method = 'cash'
 		subtotal = self.x_amount_total
 		payment_method = self.x_payment_method.id
-
-		self.x_payment_method.pm_line_ids.create({
-																	'name': name,
-																	'method': method,
-																	'subtotal': subtotal,
-																	'payment_method': payment_method,
-										})
-
+		self.x_payment_method.pm_line_ids.create({	'name': name,
+													'method': method,
+													'subtotal': subtotal,
+													'payment_method': payment_method})
 		return {
 				'type': 'ir.actions.act_window',
 				'name': ' New PM Current',
@@ -1142,7 +1042,6 @@ class sale_order(models.Model):
 				}
 	# create_payment_method
 
-
 # ----------------------------------------------------------- Print -------------------------------
 	@api.multi
 	def print_ticket_electronic(self):
@@ -1160,13 +1059,11 @@ class sale_order(models.Model):
 		action = self.env['report'].get_action(self, name)
 		return action
 
-
-
 #----------------------------------------------------------- Quick Button - For Treatment ---------
 	@api.multi
 	def open_line_current(self):
 		"""
-		# Quick access Button
+		Quick access Button
 		"""
 		consultation_id = self.id
 		return {
@@ -1174,10 +1071,8 @@ class sale_order(models.Model):
 				'name': ' Edit Order Current',
 				'view_type': 'form',
 				'view_mode': 'form',
-
 				'res_model': self._name,
 				'res_id': consultation_id,
-
 				'target': 'current',
 				'flags': {
 						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
@@ -1186,12 +1081,11 @@ class sale_order(models.Model):
 				'context': {}
 		}
 
-
 #----------------------------------------------------------- Qpen myself --------------------------
 	@api.multi
 	def open_myself(self):
 		"""
-		For Payment Method comeback
+		Open myself - Used by Payment Method comeback
 		"""
 		order_id = self.id
 		return {
@@ -1224,7 +1118,7 @@ class sale_order(models.Model):
 	@api.multi
 	def reset(self):
 		"""
-		high level support for doing this and that.
+		Reset order
 		"""
 		self.x_payment_method.unlink()
 		self.state = 'draft'
@@ -1234,7 +1128,7 @@ class sale_order(models.Model):
 	@api.multi
 	def remove_myself(self):
 		"""
-		high level support for doing this and that.
+		Remove myself 
 		"""
 		if self.state in ['credit_note']:
 			#raise UserError("Advertencia: La Nota de Crédito va a ser eliminada del sistema !")
@@ -1255,8 +1149,7 @@ class sale_order(models.Model):
 		self.unlink()
 
 
-# ---------------------------------------------- Cancel -------------------------------------------
-	# Cancel
+# ---------------------------------------------- Cancel and Activate -------------------------------------------
 	x_cancel = fields.Boolean(
 			string='',
 			default=False
@@ -1278,7 +1171,6 @@ class sale_order(models.Model):
 		self.x_cancel = False
 		self.state = 'sale'
 
-
 # ----------------------------------------------------------- Test --------------------------------
 	def pay_myself(self):
 		"""
@@ -1287,5 +1179,55 @@ class sale_order(models.Model):
 		"""
 		print()
 		print('Order - Pay myself')
-
 		test_order.pay_myself(self)
+
+
+# ----------------------------------------------------------- Test QR --------------------------------
+	@api.multi
+	def test_qr(self):
+		"""
+		Test QR
+		"""
+		print()
+		print('order - test_qr')
+
+		# Init vars
+		#ruc_company = self.configurator.company_ruc
+		ruc_company = '12345678901'
+		x_type = self.x_type
+		serial_nr = self.x_serial_nr
+
+		amount_total = self.amount_total
+		total_tax = self.x_total_tax
+		date = self.date_order
+
+		receptor_id_doc_type = self.x_id_doc_type
+		receptor_id_doc = self.x_id_doc
+		receptor_ruc = self.x_ruc
+		
+		h = {}
+		h['ruc_company'] = str(ruc_company)
+		h['x_type'] = str(x_type)
+		h['serial_nr'] = str(serial_nr) 
+
+		h['amount_total'] = str(amount_total)
+		h['total_tax'] = str(total_tax)
+		h['date'] = str(date) 
+
+		h['receptor_id_doc_type'] = str(receptor_id_doc_type)
+		h['receptor_id_doc'] = str(receptor_id_doc)
+		h['receptor_ruc'] = str(receptor_ruc)
+
+		print(h)
+		qr_obj = qr.QR(h)
+
+		if False:
+			# Create Object
+			qr_obj = qr.QR(date, ruc_company, receptor_id_doc_type, receptor_id_doc, receptor_ruc, x_type, serial_nr, amount_total, total_tax)
+
+			print(qr_obj)
+			print(qr_obj.get_name())
+			qr_obj.print_obj()
+			print(qr_obj.get_img_str())
+			#print(qr_obj.get_img_str())
+

@@ -74,9 +74,18 @@
 							type="object"
 							class="oe_highlight"
 							name="test_serial_number"
-							string="T SN"
+							string="Test SN"
 							groups='openhealth.roots'
 						/>
+
+						<!-- Test QR -->
+						<button
+								type="object"
+								class="oe_highlight"
+								name="test_qr"
+								string="Test QR"
+								groups='openhealth.roots'
+							/>
 				</xpath>
 
 

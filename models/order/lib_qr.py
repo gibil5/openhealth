@@ -3,7 +3,7 @@
 		lib_qr.py
 
 		Created: 			02 Nov 2018
-		Last up: 	 		11 Nov 2019
+		Last up: 	 		23 Jul 2020
 """
 import datetime
 import base64
@@ -83,9 +83,6 @@ def get_qr_data(self):
 	# Other
 	else:
 		print('This should not happen !')
-
-
-
 
 	se = '|'
 

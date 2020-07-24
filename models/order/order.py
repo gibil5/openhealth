@@ -1220,6 +1220,9 @@ class sale_order(models.Model):
 
 		print(h)
 		qr_obj = qr.QR(h)
+		print(qr_obj.get_name())
+		qr_obj.print_obj()
+		print(qr_obj.get_img_str())
 
 		if False:
 			# Create Object

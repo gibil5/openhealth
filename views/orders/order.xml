@@ -86,6 +86,16 @@
 								string="Test QR"
 								groups='openhealth.roots'
 							/>
+
+							<!-- Test Ticket -->
+							<button
+									type="object"
+									class="oe_highlight"
+									name="test_ticket"
+									string="Test Ticket"
+									groups='openhealth.roots'
+								/>
+
 				</xpath>
 
 

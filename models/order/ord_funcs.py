@@ -2,75 +2,57 @@
 """
 	Order Funcs
 	Encapsulate Order Business Rules
-
 	Created: 			29 Aug 2019
-	Last up: 	 		14 Nov 2019
+	Last up: 	 		24 Jul 2020 
 """
 from __future__ import print_function
-
 from openerp.addons.openhealth.models.libs import lib
-
 from openerp import _
 from openerp.exceptions import Warning as OrderError
-
 from . import ord_vars
 
-
-
 # ----------------------------------------------------------- Ticket - Get Raw Line ----------------
+
 # Raw Line
 def check_ticket(self, family, state):
 	"""
-	Check Patient for Ticket
+	Check Ticket
 	Raise Errors 
 	"""
-
 	print()
-	print('Check Ticket')
-
+	print('ord_funcs - Check Ticket')
 
 	# Credit Note
-	if state in ['credit_note', ]:
+	#if state in ['credit_note', ]:
+	#	print()
+	#	print('Check - Credit Note - ok')
+
+	# Receipt
+	if family in ['ticket_receipt', 'receipt']:
 		print()
-		print('Check - Credit Note - ok')
-
-
+		print('Check - Receipt - ok')
 
 	# Invoice
-	if family in ['ticket_invoice', 'invoice']:
-
+	elif family in ['ticket_invoice', 'invoice']:
 		print('Check - Invoice')
-
 		# Address
 		address = self.get_firm_address()
-
 		if address in [False, '']:
 			msg = "Error: Factura - Empresa no tiene Direccion."
 			raise OrderError(_(msg))
 			#return OrderError(_(msg))
-
 		# Ruc
 		ruc = self.x_ruc
 
 		if ruc in [False, '']:
 			msg = "Error: Factura - Paciente no tiene RUC."
 			raise OrderError(_(msg))
-
 		# Firm
 		firm = self.patient.x_firm
 		if firm in [False, '']:
 			msg = "Error: Factura - Paciente no tiene Razon social."
 			raise OrderError(_(msg))
-
-
 		print('ok')
-
-
-	# Receipt
-	elif family in ['ticket_receipt', 'receipt']:
-		print()
-		print('Check - Receipt - ok')
-
 
 	# Other
 	else:

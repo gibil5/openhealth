@@ -1,31 +1,21 @@
 <openerp>
 	<data>
-
 <!--
-Ticket Electronic
-Created: 	2019
-Last up:   	4 Dec 2019
+		Ticket Electronic
+		Created: 	2019
+		Last up:  24 Jul 2020
 -->
-
 
 <!-- Electronic --> 
 <report
-	string="Ticket de Venta Electrónico"
-
-	id="print_ticket_receipt_electronic"
-
-	model="sale.order"
-	
-	report_type="qweb-pdf"
-	
 	name="openhealth.report_ticket_receipt_electronic"
-	
-	
+	string="Ticket de Venta Electrónico"
+	id="print_ticket_receipt_electronic"
+	model="sale.order"
+	report_type="qweb-pdf"
 	file="openhealth.report_ticket_receipt_electronic"
-
 	paperformat="appointment_receipt_electronic"
 />
-
 
 <!-- Template --> 
 <template id="report_ticket_receipt_electronic">
@@ -41,27 +31,25 @@ Last up:   	4 Dec 2019
 
 <!--New Header -->
 <br/>
+<!-- Company -->
 <div class="row">
+	<center>
 <!--
-		<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_name()"/>
-		<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_ruc()"/>
-		<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_address()"/>
-		<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_phone()"/>
+		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_name()"/>
+		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_ruc()"/>
+		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_address()"/>
+		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_phone()"/>
 -->
 
-	<center>
+<!-- Name -->
+		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company('name')"/>
 
-		<!-- Company name -->
-		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_name()"/>
-
-		<!-- Company Ruc -->
-		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_ruc()"/>
-
-		<!-- Company Address -->
-		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_address()"/>
-
-		<!-- Company Phone -->
-		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_phone()"/>
+		<!-- Ruc -->
+		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company('ruc')"/>
+		<!-- Address -->
+		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company('address')"/>
+		<!-- Phone -->
+		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company('phone')"/>
 	</center>
 </div>
 
@@ -69,25 +57,17 @@ Last up:   	4 Dec 2019
 
 <!--Title - Ok -->
 <div class="row">
-<!--
-		<div class="col-xs-12" style="border-top: 1px solid black;"/>
-		<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_title()"/>
-			<div class="col-xs-12 text-center" style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_serial_nr()"/>
-		<div class="col-xs-12" style="border-top: 1px solid black;"/>
--->
-
 	<center>
 	<b>
 		<!-- Border -->
 		<div style="border-top: 1px solid black;"/>
 		
 		<!-- Title -->
-		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_title()"/>
+		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_ticket('title')"/>
 
-		
 		<!-- Credit Note - Conditional -->
 		<t t-if="doc.state == 'credit_note'">
-			<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_serial_nr()"/>
+			<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_ticket('serial_nr')"/>
 		</t>
 
 		<!-- Border -->
@@ -297,23 +277,16 @@ Last up:   	4 Dec 2019
 <br/>
 
 
-
-
-
 <!-- Note --> 
 <table style="width:100%">
 	<tr>
-		<td align="left" ><t t-esc="doc.get_note()"/></td> 
+		<td align="left" ><t t-esc="doc.get_company('note')"/></td> 
 	</tr>
 </table>
 <br/>
 
 </div>
 <!-- ROW - Sale - End --> 
-
-
-
-
 
 
 <!-- ROW - Footer - Begin --> 
@@ -342,13 +315,13 @@ Last up:   	4 Dec 2019
 		<div style="margin-top:1px;margin-bottom:1px;width:100%;font-size: xx-small;">
 			<br/>
 			
-			<div style="margin-top:7px;" t-esc="doc.get_description()"/>
+			<div style="margin-top:7px;" t-esc="doc.get_company('description')"/>
 
-			<div style="margin-top:7px;" t-esc="doc.get_warning()"/>
+			<div style="margin-top:7px;" t-esc="doc.get_company('warning')"/>
 			
-			<div style="margin-top:7px;" t-esc="doc.get_website()"/>
+			<div style="margin-top:7px;" t-esc="doc.get_company('website')"/>
 
-			<div style="margin-top:7px;" t-esc="doc.get_email()"/>
+			<div style="margin-top:7px;" t-esc="doc.get_company('email')"/>
 		</div>
 	</div>      
 

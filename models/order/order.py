@@ -3,7 +3,24 @@
 		Order - Openhealth
 
 		Created: 			26 Aug 2016
-		Last mod: 			23 Jul 2020
+		Last mod: 			24 Jul 2020
+
+		This tangled object must be split in several objs, with clear roles. 
+		That will be:
+			- Loosely coupled, 
+			- Anthropomorphic, 
+			- ...
+	
+		Data will be injected into the loosely couple objs. 
+	
+		Service objects:
+			- QR 
+			- Serial Number
+			- TicketCompany 
+			- TicketCustomer 
+			- TicketSale 
+			- DocId 
+			- ...
 """
 from __future__ import print_function
 import datetime
@@ -450,34 +467,21 @@ class sale_order(models.Model):
 		print()
 		print('Make QR')
 
-		# Init vars
-		#ruc_company = self.configurator.company_ruc
-		ruc_company = '12345678901'
-
-		x_type = self.x_type
-
-		serial_nr = self.x_serial_nr
-		amount_total = self.amount_total
-		total_tax = self.x_total_tax
-		date = self.date_order
-		receptor_id_doc_type = self.x_id_doc_type
-		receptor_id_doc = self.x_id_doc
-		receptor_ruc = self.x_ruc
-
-		# Create Object
-		qr_obj = qr.QR(date, ruc_company, receptor_id_doc_type, receptor_id_doc, receptor_ruc, x_type, serial_nr, amount_total, total_tax)
+		# Create loosely coupled object 
+		h = self.get_hash_for_qr()
+		qr_obj = qr.QR(h)
 
 		# Get data
-		img_str = qr_obj.get_img_str()
 		name = qr_obj.get_name()
+		img_str = qr_obj.get_img_str()
 
 		# Print
 		qr_obj.print_obj()
 
 		# Update the Database
 		self.write({
-						'x_qr_img': img_str,
 						'qr_product_name':name,
+						'x_qr_img': img_str,
 				})
 	# make_qr
 
@@ -1181,6 +1185,32 @@ class sale_order(models.Model):
 		print('Order - Pay myself')
 		test_order.pay_myself(self)
 
+# ----------------------------------------------------------- QR - tools --------------------------------
+	def get_hash_for_qr(self):
+		# Init vars
+		#ruc_company = self.configurator.company_ruc
+		ruc_company = '12345678901'
+		x_type = self.x_type
+		serial_nr = self.x_serial_nr
+		amount_total = self.amount_total
+		total_tax = self.x_total_tax
+		date = self.date_order
+		receptor_id_doc_type = self.x_id_doc_type
+		receptor_id_doc = self.x_id_doc
+		receptor_ruc = self.x_ruc
+
+		h = {}
+		h['ruc_company'] = str(ruc_company)
+		h['x_type'] = str(x_type)
+		h['serial_nr'] = str(serial_nr) 
+		h['amount_total'] = str(amount_total)
+		h['total_tax'] = str(total_tax)
+		h['date'] = str(date) 
+		h['receptor_id_doc_type'] = str(receptor_id_doc_type)
+		h['receptor_id_doc'] = str(receptor_id_doc)
+		h['receptor_ruc'] = str(receptor_ruc)
+
+		return h 
 
 # ----------------------------------------------------------- Test QR --------------------------------
 	@api.multi
@@ -1191,46 +1221,94 @@ class sale_order(models.Model):
 		print()
 		print('order - test_qr')
 
-		# Init vars
-		#ruc_company = self.configurator.company_ruc
-		ruc_company = '12345678901'
-		x_type = self.x_type
-		serial_nr = self.x_serial_nr
-
-		amount_total = self.amount_total
-		total_tax = self.x_total_tax
-		date = self.date_order
-
-		receptor_id_doc_type = self.x_id_doc_type
-		receptor_id_doc = self.x_id_doc
-		receptor_ruc = self.x_ruc
-		
-		h = {}
-		h['ruc_company'] = str(ruc_company)
-		h['x_type'] = str(x_type)
-		h['serial_nr'] = str(serial_nr) 
-
-		h['amount_total'] = str(amount_total)
-		h['total_tax'] = str(total_tax)
-		h['date'] = str(date) 
-
-		h['receptor_id_doc_type'] = str(receptor_id_doc_type)
-		h['receptor_id_doc'] = str(receptor_id_doc)
-		h['receptor_ruc'] = str(receptor_ruc)
-
-		print(h)
+		# Create loosely coupled object 
+		h = self.get_hash_for_qr()
 		qr_obj = qr.QR(h)
+
+		# Get data
 		print(qr_obj.get_name())
-		qr_obj.print_obj()
 		print(qr_obj.get_img_str())
+		#qr_obj.print_obj()
 
-		if False:
-			# Create Object
-			qr_obj = qr.QR(date, ruc_company, receptor_id_doc_type, receptor_id_doc, receptor_ruc, x_type, serial_nr, amount_total, total_tax)
 
-			print(qr_obj)
-			print(qr_obj.get_name())
-			qr_obj.print_obj()
-			print(qr_obj.get_img_str())
-			#print(qr_obj.get_img_str())
+# ----------------------------------------------------------- Ticket - tools --------------------------------
+	def get_company(self, item):
+
+		#company_name = self.configurator.company_name
+		name = 'name'
+
+		ruc = 'ruc'
+
+		#company_address = self.configurator.ticket_company_address
+		address = 'address'
+
+		#company_phone = self.configurator.company_phone
+		phone = 'phone'
+
+		note = 'note'
+		description = 'description'
+		warning = 'warning'
+
+		website = 'website'
+		email = 'email'
+
+		if item == 'name':
+			return name
+		elif item == 'ruc':
+			return ruc
+		elif item == 'address':
+			return address
+		elif item == 'phone':
+			return phone
+
+		elif item == 'note':
+			return note
+		elif item == 'description':
+			return description
+		elif item == 'warning':
+			return warning
+
+		elif item == 'website':
+			return website
+		elif item == 'email':
+			return email
+
+
+	def get_ticket(self, item):
+		title = 'title'
+		serial_nr = 'serial_nr'
+
+		if item == 'title':
+			return title
+		elif item == 'serial_nr':
+			return serial_nr
+
+# ----------------------------------------------------------- Ticket - Get Raw Line - Stub ----------------
+	def get_raw_line(self, argument):
+		"""
+		Just a stub.
+		"""
+		#line = raw_funcs.get_ticket_raw_line(self, argument)
+		line = 'dum'
+		return line
+
+
+# ----------------------------------------------------------- Test Ticket --------------------------------
+	@api.multi
+	def test_ticket(self):
+		"""
+		Test Ticket
+		"""
+		print('')
+		print('Test Ticket')
+
+		# Check Patient for Ticket
+		#ord_funcs.check_ticket(self, self.x_type, self.state)
+
+		# Print
+		name = 'openhealth.report_ticket_receipt_electronic'
+		action = self.env['report'].get_action(self, name)
+		
+		print(action)
+		return action
 

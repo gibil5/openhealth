@@ -14,6 +14,18 @@
 - http://localhost:8069/
 
 
+#### Pylint:
+```
+pylint ~/cellar/github/openhealth/models/order/order.py
+python -tt ~/cellar/github/openhealth/models/order/order.py
+```
+#### Coverage:
+```
+coverage run ./odoo.py  --log-level warn
+coverage report
+coverage report > coverage_report
+```
+
 ### Description
 Object Oriented Module for the Odoo9 Python Platform.
 Odoo is an open-source ERP (Enterprise Ressource Planning) system for small companies.

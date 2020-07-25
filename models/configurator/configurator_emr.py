@@ -23,7 +23,6 @@ class ConfiguratorEmr(models.Model):
 	_name = 'openhealth.configurator.emr'
 	_description = 'Configurator Emr'
 
-
 # ----------------------------------------------------------- Companuy - Ticket and TXT ---------------
 
 	# Company
@@ -63,7 +62,6 @@ class ConfiguratorEmr(models.Model):
 		)
 
 	# Ticket
-	#website = fields.Char(
 	company_website = fields.Char(
 			required=True,
 			default="http://www.clinicachavarri.com/",
@@ -84,10 +82,9 @@ class ConfiguratorEmr(models.Model):
 			default="R.U.C.: 20523424221",
 		)
 
-
 	ticket_note = fields.Text(
 			required=True,
-			default="x",
+			default="Esto es una nota para el ticket.",
 		)
 
 	ticket_description = fields.Text(
@@ -104,7 +101,6 @@ class ConfiguratorEmr(models.Model):
 			#required=True,
 	#	)
 
-
 # ----------------------------------------------------------- Order Admin ------
 	order_admin = fields.Many2one(
 			'openhealth.order.admin',
@@ -112,7 +108,6 @@ class ConfiguratorEmr(models.Model):
 		)
 
 # ----------------------------------------------------------- PL - Paths -------
-
 	path_account_txt = fields.Char(
 			required=True,
 			default='/Users/gibil/mssoft/ventas/'
@@ -135,11 +130,7 @@ class ConfiguratorEmr(models.Model):
 			'configurator_id',
 		)
 
-
-
-
 # ----------------------------------------------------------- Fix --------------
-
 	@api.multi
 	def config_doctors(self):
 		"""
@@ -148,7 +139,6 @@ class ConfiguratorEmr(models.Model):
 		"""
 		print()
 		print('Configure Doctors')
-
 		print(self.name)
 
 		#procs = self.env['procurement.order'].search([
@@ -158,27 +148,16 @@ class ConfiguratorEmr(models.Model):
 													#limit=1,
 		#										)
 
-
 		count = 0
-
 		for doctor in self.doctor_line:
 			#print()
 			#print(doctor.physician.name)
 			#print(doctor.physician.active)
-
 			doctor.physician.active = doctor.x_active
 			count = count + 1
-
 			#print(count)
-
-
 		print('Finished !')
-
 	# config_doctors
-
-
-
-
 
 # ----------------------------------------------------------- PL - Redefined -------------------------------
 
@@ -207,7 +186,6 @@ class ConfiguratorEmr(models.Model):
 			' ',
 			readonly=True,
 		)
-
 
 # ----------------------------------------------------------- PL - Account Contasis ---------------
 	cuentab_services = fields.Char(
@@ -256,10 +234,6 @@ class ConfiguratorEmr(models.Model):
 			'Validacion de Errores Reporte MKT',
 			default=True,
 		)
-
-
-
-
 
 # ----------------------------------------------------------- Relational - Holidays ----------------
 	# Day Line

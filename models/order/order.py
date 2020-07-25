@@ -3,23 +3,23 @@
 		Order - Openhealth
 
 		Created: 			26 Aug 2016
-		Last mod: 			24 Jul 2020
+		Last mod: 			25 Jul 2020
 
-		This tangled object must be split in several objs, with clear roles. 
+		This tangled object must be split in several objs, with clear roles.
 		That will be:
-			- Loosely coupled, 
-			- Anthropomorphic, 
+			- Loosely coupled,
+			- Anthropomorphic,
 			- ...
-	
-		Data will be injected into the loosely couple objs. 
-	
+
+		Data will be injected into the loosely couple objs.
+
 		Service objects:
-			- QR 
+			- QR
 			- Serial Number
-			- TicketCompany 
-			- TicketCustomer 
-			- TicketSale 
-			- DocId 
+			- TicketCompany
+			- TicketCustomer
+			- TicketSale
+			- DocId
 			- ...
 """
 from __future__ import print_function
@@ -27,18 +27,20 @@ import datetime
 from openerp import models, fields, api
 from openerp import _
 from openerp.exceptions import Warning as UserError
-from openerp.addons.openhealth.models.libs import lib
 from openerp.addons.openhealth.models.patient import pat_vars, chk_patient
 from . import test_order
 from . import chk_order
-from . import exc_ord
-from . import tick_funcs
 from . import ord_vars
-from . import ord_funcs
 from . import raw_funcs
 
 from . import qr
-from . import ticket_line 
+from . import ticket_line
+from . import ord_funcs
+
+#from openerp.addons.openhealth.models.libs import lib
+#from . import exc_ord
+from . import tick_funcs
+
 
 class sale_order(models.Model):
 	"""
@@ -152,7 +154,7 @@ class sale_order(models.Model):
 		for record in self:
 			price_list = ''
 			for line in record.order_line:
-				price_list =line.get_price_list()
+				price_list = line.get_price_list()
 			record.pl_price_list = price_list
 
 	x_amount_flow = fields.Float(
@@ -229,7 +231,7 @@ class sale_order(models.Model):
 	# DNI - Used by Budget - Allows research of Patient by DNI - Important
 	x_partner_dni = fields.Char(
 			string='DNI',
-			states={	'draft': 	[('readonly', False)],
+			states={'draft': 	[('readonly', False)],
 						'sent': 	[('readonly', True)],
 						'sale': 	[('readonly', True)],
 						'cancel': 	[('readonly', True)],
@@ -478,7 +480,7 @@ class sale_order(models.Model):
 		print()
 		print('Make QR')
 
-		# Create loosely coupled object 
+		# Create loosely coupled object
 		h = self.get_hash_for_qr()
 		qr_obj = qr.QR(h)
 
@@ -943,7 +945,7 @@ class sale_order(models.Model):
 	@api.onchange('x_doctor')
 	def _onchange_x_doctor(self):
 		if self.x_doctor.name != False:
-			treatment = self.env['openhealth.treatment'].search([	('patient', '=', self.patient.name),
+			treatment = self.env['openhealth.treatment'].search([('patient', '=', self.patient.name),
 																	('physician', '=', self.x_doctor.name),
 													],
 														order='write_date desc',
@@ -1026,7 +1028,7 @@ class sale_order(models.Model):
 		method = 'cash'
 		subtotal = self.x_amount_total
 		payment_method = self.x_payment_method.id
-		self.x_payment_method.pm_line_ids.create({	'name': name,
+		self.x_payment_method.pm_line_ids.create({'name': name,
 													'method': method,
 													'subtotal': subtotal,
 													'payment_method': payment_method})
@@ -1143,7 +1145,7 @@ class sale_order(models.Model):
 	@api.multi
 	def remove_myself(self):
 		"""
-		Remove myself 
+		Remove myself
 		"""
 		if self.state in ['credit_note']:
 			#raise UserError("Advertencia: La Nota de Crédito va a ser eliminada del sistema !")
@@ -1198,6 +1200,9 @@ class sale_order(models.Model):
 
 # ----------------------------------------------------------- QR - tools --------------------------------
 	def get_hash_for_qr(self):
+		"""
+		QR Tool
+		"""
 		# Init vars
 		#ruc_company = self.configurator.company_ruc
 		ruc_company = '12345678901'
@@ -1213,15 +1218,15 @@ class sale_order(models.Model):
 		h = {}
 		h['ruc_company'] = str(ruc_company)
 		h['x_type'] = str(x_type)
-		h['serial_nr'] = str(serial_nr) 
+		h['serial_nr'] = str(serial_nr)
 		h['amount_total'] = str(amount_total)
 		h['total_tax'] = str(total_tax)
-		h['date'] = str(date) 
+		h['date'] = str(date)
 		h['receptor_id_doc_type'] = str(receptor_id_doc_type)
 		h['receptor_id_doc'] = str(receptor_id_doc)
 		h['receptor_ruc'] = str(receptor_ruc)
 
-		return h 
+		return h
 
 # ----------------------------------------------------------- Test QR --------------------------------
 	@api.multi
@@ -1232,7 +1237,7 @@ class sale_order(models.Model):
 		print()
 		print('order - test_qr')
 
-		# Create loosely coupled object 
+		# Create loosely coupled object
 		h = self.get_hash_for_qr()
 		qr_obj = qr.QR(h)
 
@@ -1244,7 +1249,9 @@ class sale_order(models.Model):
 
 # ----------------------------------------------------------- Ticket - tools --------------------------------
 	def get_company(self, item):
-
+		"""
+		Used by Ticket
+		"""
 		if item == 'name':
 			ret = self.configurator.company_name
 		elif item == 'ruc':
@@ -1266,7 +1273,7 @@ class sale_order(models.Model):
 		elif item == 'email':
 			ret = self.configurator.company_email
 
-		return ret 
+		return ret
 
 
 	def get_ticket(self, item):
@@ -1274,15 +1281,15 @@ class sale_order(models.Model):
 			ret = self.x_title
 		elif item == 'serial_nr':
 			ret = self.x_serial_nr
-		return ret 
+		return ret
 
 # ----------------------------------------------------------- Ticket - Get Raw Line - Stub ----------------
-	def get_raw_line(self, tag):
+	def get_ticket_line(self, tag):
 		"""
-		Uses the Ticket class. 
+		Uses the Ticket class.
 		"""
 		print()
-		print('get_raw_line')
+		print('get_ticket_line')
 		#line = raw_funcs.get_ticket_raw_line(self, tag)
 		print(tag)
 
@@ -1292,19 +1299,156 @@ class sale_order(models.Model):
 			value = self.x_id_doc
 		elif tag in ['Direccion']:
 			value = self.patient.x_address
-
 		elif tag in ['Fecha']:
 			value = raw_funcs.get_date_corrected(self.date_order)
 		elif tag in ['Ticket']:
 			value = self.x_serial_nr
 
-		else: 
-			tag = 'x'
-			value = 'x'
+		obj = ticket_line.TicketLine(tag, value)
+
+		line = obj.get_line()
+
+		return line
+
+# ----------------------------------------------------------- Ticket - Get Raw Line - Stub ----------------
+	def get_items_header(self, tag):
+		"""
+		Uses the Ticket class.
+		"""
+		print()
+		print('get_items_header')
+
+		if tag in ['items_header']:
+			tag = 'items'
+			value = 'header'
 
 		obj = ticket_line.TicketLine(tag, value)
-		line = obj.get_line()
+		line = obj.get_line_items()
 		return line
+
+
+# ----------------------------------------------------------- Ticket - Get Raw Line - Aux ----------------
+	def get_total_net(self):
+		"""
+		Used by Print Ticket.
+		Is zero if Transfer Free.
+		"""
+		if self.pl_transfer_free:
+			self.x_total_net = 0
+		else:
+			self.x_total_net =  tick_funcs.get_net(self)
+		return self.x_total_net
+
+	def get_total_tax(self):
+		"""
+		Used by Print Ticket.
+		Is zero if Transfer Free.
+		"""
+		if self.pl_transfer_free:
+			self.x_total_tax = 0
+		else:
+			self.x_total_tax = tick_funcs.get_tax(self)
+		return self.x_total_tax
+
+	def get_amount_total(self):
+		"""
+		Used by Print Ticket.
+		Is zero if Transfer Free.
+		"""
+		if self.pl_transfer_free:
+			total = 0
+		else:
+			total = tick_funcs.get_total(self)
+		return total
+
+	def get_total_in_words(self):
+		"""
+		Used by Print Ticket.
+		"""
+		if self.pl_transfer_free:
+			words = 'Cero'
+		else:
+			words = tick_funcs.get_words(self)
+		return words
+
+	def get_total_cents(self):
+		"""
+		Used by Print Ticket.
+		"""
+		if self.pl_transfer_free:
+			cents = '0.0'
+		else:
+			cents = tick_funcs.get_cents(self)
+		return cents
+
+# ----------------------------------------------------------- Ticket - Get Raw Line - Stub ----------------
+	#def get_raw_line(self, tag):
+	def get_raw_line(self, argument):
+		"""
+		Uses the Ticket class.
+		"""
+		print()
+		print('get_raw_line')
+		print(argument)
+
+		# Totals
+		if argument in ['totals_net']:
+			tag = 'OP. GRAVADAS S/.'
+			value = str(self.get_total_net())
+			bold = False
+
+		elif argument in ['totals_free']:
+			tag = 'OP. GRATUITAS S/.'
+			value = '0'
+			bold = False
+
+		elif argument in ['totals_exonerated']:
+			tag = 'OP. EXONERADAS S/.'
+			value = '0'
+			bold = False
+
+		elif argument in ['totals_unaffected']:
+			tag = 'OP. INAFECTAS S/.'
+			value = '0'
+			bold = False
+
+		elif argument in ['totals_tax']:
+			tag = 'I.G.V. 18% S/.'
+			value = str(self.get_total_tax())
+			bold = False
+
+		elif argument in ['totals_total']:
+			tag = 'TOTAL S/.'
+			value = str(self.get_amount_total())
+			bold = False
+
+		# Words
+		elif argument in ['words_header']:
+			tag = 'Son:'
+			value = ''
+
+		elif argument in ['words_soles']:
+			tag = ''
+			value = str(self.get_total_in_words())
+
+		elif argument in ['words_cents']:
+			tag = ''
+			value = str(self.get_total_cents())
+
+		elif argument in ['words_footer']:
+			tag = ''
+			value = 'Soles'
+
+		#else:
+		#	tag = 'x'
+		#	value = 'x'
+
+		obj = ticket_line.TicketLine(tag, value)
+
+		line = obj.get_line()
+
+		return line
+
 
 
 # ----------------------------------------------------------- Test Ticket --------------------------------
@@ -1322,6 +1466,6 @@ class sale_order(models.Model):
 		# Print
 		name = 'openhealth.report_ticket_receipt_electronic'
 		action = self.env['report'].get_action(self, name)
-		
+
 		print(action)
 		return action

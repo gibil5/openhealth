@@ -102,8 +102,6 @@ def get_ticket_raw_line(self, argument):
 		value = '0'
 		bold = False
 
-
-
 	elif argument in ['totals_unaffected']:
 		tag = 'OP. INAFECTAS S/.'
 		value = '0'
@@ -175,8 +173,6 @@ def format_line(tag, value):
 	Used by:
 		- Print ticket
 	"""
-
-
 	# Init
 	_size_font = '2'
 

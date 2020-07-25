@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 	Sale Order Line
-
 	Created: 			26 Aug 2016
-	Last mod: 			 9 Apr 2019
+	Last mod: 			25 Apr 2020
 """
 from __future__ import print_function
 from openerp import models, fields, api
@@ -16,152 +15,102 @@ class SaleOrderLine(models.Model):
 	"""
 	_inherit = 'sale.order.line'
 
-
-
-
-
 # ----------------------------------------------------------- Ticket - Get Item Lines  ----------------
-
-	def format_line(self, value):
-
-		value = str(value)
-
-		line = "<td>\
-					<font size='2'>" + value + "</font>\
-				</td>"
-
-		return line 
-
-
-
-
-	# Patient Name 
+	# Patient Name
 	def get_item_line(self):
+		"""
+		Used by Ticket
+		"""
 		print()
 		print('Get Item Line')
-
 		#print(self.product_id.get_name_ticket())
 		#print(self.get_quantity())
 		#print(self.get_price_unit())
 		#print(self.get_price_subtotal())
-
-
-		# Init
 		line_0 = self.format_line(self.product_id.get_name_ticket())
-
 		line_1 = self.format_line(self.get_quantity())
-
 		line_2 = self.format_line(self.get_price_unit())
-
 		line_3 = self.format_line(self.get_price_subtotal())
-
-
 		line = "<tr>" + line_0 + line_1 + line_2 + line_3 + "</tr>"
-
-		#print(line)
 		return line
 
+# ----------------------------------------------- Ticket - Get Item Lines  -----
+	def format_line(self, value):
+		"""
+		Used by Ticket - Aux
+		"""
+		value = str(value)
+		line = "<td>\
+					<font size='2'>" + value + "</font>\
+				</td>"
+		return line
 
+# --------------------------------------------------- Print Ticket --------------
+	def get_price_unit(self):
+		"""
+		Used by Ticket - Aux
+		"""
+		return self.price_unit
 
+	def get_price_subtotal(self):
+		"""
+		Used by Ticket - Aux
+		"""
+		return self.price_subtotal
 
+	def get_quantity(self):
+		"""
+		Used by Ticket - Aux
+		"""
+		return int(self.product_uom_qty)
 
-
-
-
-
-# ----------------------------------------------------------- Get Product Price List -------------------------------
+# ------------------------------------------------ Get Product Price List ------
 	def get_price_list(self):
-		#print()
-		#print('Get Price List')
+		"""
+		Used by x
+		"""
 		return self.product_id.pl_price_list
-
-
 
 # ----------------------------------------------------------- Get Product Family -------------------------------
 	def get_family(self):
-		#print()
-		#print('Get family')
-
-		_dic_families = {	
+		"""
+		Used by x
+		"""
+		_dic_families = {
 							'chavarri':			'PRODUCTO',
 							'commercial':		'PRODUCTO',
-
 							'consultation':		'CONSULTA',
-							
 							'quick':			'QUICK LASER',
 							'co2':				'LASER CO2',
 							'excilite':				'LASER EXCILITE',
 							'm22':				'LASER M22',
-
 							'medical':			'T MEDICO',
 							'cosmetology':		'COSMEATRIA',
-							
 							'gynecology':		'GINECOLOGIA',
 							'echography':		'ECOGRAFIA',
-							'promotion':		'PROMOCION',
-
-		}
+							'promotion':		'PROMOCION'}
 
 		# 2019
 		if self.product_id.pl_price_list in ['2019']:
-			#print(self.product_id.pl_family)
-			#print(self.product_id.pl_subfamily)
 			if self.product_id.pl_subfamily not in [False]:
-				
-				#value = self.product_id.pl_family
-				#value = self.product_id.pl_subfamily
-
 				if self.product_id.pl_subfamily in _dic_families:
 					value = _dic_families[self.product_id.pl_subfamily]
 				else:
 					value = self.product_id.pl_subfamily
-
 			else:
 				value = 'pl'
 
 		# 2018
 		else:
 			if self.product_id.x_family not in [False]:
-				
 				if self.product_id.x_family in _dic_families:
 					value = _dic_families[self.product_id.x_family]
 				else:
 					value = self.product_id.x_family
-			
 			else:
 				value = 'x'
 
 		return value
-
-
-
-
-
-# ----------------------------------------------------------- Print Ticket -------------------------------
-
-	def get_price_unit(self):
-		"""
-		Used by Print Ticket.
-		"""
-		return self.price_unit
-
-
-	def get_price_subtotal(self):
-		"""
-		Used by Print Ticket.
-		"""
-		return self.price_subtotal
-
-
-	def get_quantity(self):
-		"""
-		Used by Print Ticket.
-		"""
-		return int(self.product_uom_qty)
-
-
-
-
 
 # ----------------------------------------------------------- Prices ----------
 	# Price Unit
@@ -173,23 +122,15 @@ class SaleOrderLine(models.Model):
 		default=0.0,
 	)
 
-
 	# Quantity
 	product_uom_qty = fields.Float(
 			string='Quantity',
-
 			digits=(16, 0),
-			
 			required=False,
 			default=1.0,
 		)
 
-
-
-
-
-# ----------------------------------------------------------- Recommendations ---------------------
-
+# -------------------------------------------------- Recommendations -----------
 	service_product_id = fields.Many2one(
 			'openhealth.service.product',
 			string='Product',
@@ -240,9 +181,6 @@ class SaleOrderLine(models.Model):
 			string='Cosmetology',
 		)
 
-
-
-
 # ---------------------------------------------- Open Line Current --------------------------------
 	# Open Line
 	@api.multi
@@ -266,9 +204,7 @@ class SaleOrderLine(models.Model):
 		}
 	# open_line_current
 
-
-
-# ----------------------------------------------------------- Update ------------------------------
+# ----------------------------------------------------------- Update -----------
 	# Update Recommendations
 	#@api.multi
 	def update_recos(self):
@@ -285,7 +221,6 @@ class SaleOrderLine(models.Model):
 			categ = treatment
 		else:
 			categ = family
-
 
 		# Co2
 		if categ == 'laser_co2':

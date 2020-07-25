@@ -3,7 +3,7 @@
 <!--
 		Ticket Electronic
 		Created: 	2019
-		Last up:  24 Jul 2020
+		Last up:  25 Jul 2020
 -->
 
 <!-- Electronic --> 
@@ -78,8 +78,6 @@
 
 
 
-
-
 <!-- ROW - Receptor - Begin -->
 <div class="row">
 
@@ -107,9 +105,9 @@
 	<t t-raw="doc.get_raw_line('receipt_patient_dni')"/>
 	<t t-raw="doc.get_raw_line('receipt_patient_address')"/>
 -->
-	<t t-raw="doc.get_raw_line('Cliente')"/>
-	<t t-raw="doc.get_raw_line('DNI')"/>
-	<t t-raw="doc.get_raw_line('Direccion')"/>
+	<t t-raw="doc.get_ticket_line('Cliente')"/>
+	<t t-raw="doc.get_ticket_line('DNI')"/>
+	<t t-raw="doc.get_ticket_line('Direccion')"/>
 </t>
 
 
@@ -183,8 +181,8 @@
 		<t t-raw="doc.get_raw_line('sale_date')"/>
 		<t t-raw="doc.get_raw_line('sale_serial_number')"/>
 -->
-		<t t-raw="doc.get_raw_line('Fecha')"/>
-		<t t-raw="doc.get_raw_line('Ticket')"/>
+		<t t-raw="doc.get_ticket_line('Fecha')"/>
+		<t t-raw="doc.get_ticket_line('Ticket')"/>
 	</table>
 </t>
 
@@ -196,26 +194,24 @@
 
 
 
-
+<!-- SALE -->
 
 <!-- ROW - Sale - Begin -->
 <div class="row">
 <div class="col-xs-12" style="border-top: 1px solid black;"/>
-
 <table style="width:100%">
 <!--
 	<t t-raw="doc.get_order_lines_header()"/>
+	<t t-raw="doc.get_raw_line('items_header')"/>
 -->
 
-	<t t-raw="doc.get_raw_line('items_header')"/>
+	<t t-raw="doc.get_items_header('items_header')"/>
 
 
 <!-- LOOP - Items --> 
 <t t-foreach="doc.order_line" t-as="line">
-
 	<t t-raw="line.get_item_line()"/>
 </t>
-
 
 </table>
 

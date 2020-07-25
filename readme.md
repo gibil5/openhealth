@@ -5,14 +5,17 @@
 ### Howto
 
 #### Paths:
-- ~/Virtualenvs/Odoo9-min/odoo
-- ~/cellar/github/openhealth
+```
+cd ~/Virtualenvs/Odoo9-min/odoo
+cd ~/cellar/github/openhealth
+```
 
 #### Run:
-- source ../bin/activate
-- ./odoo.py --log-level=error
-- http://localhost:8069/
-
+```
+source ../bin/activate
+./odoo.py --log-level=error
+http://localhost:8069/
+```
 
 #### Pylint:
 ```

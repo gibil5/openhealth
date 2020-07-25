@@ -38,6 +38,7 @@ from . import ord_funcs
 from . import raw_funcs
 
 from . import qr
+from . import ticket_line 
 
 class sale_order(models.Model):
 	"""
@@ -46,6 +47,16 @@ class sale_order(models.Model):
 	_inherit = 'sale.order'
 	_description = 'Order'
 
+
+# ----------------------------------------------------------- Configurator  -------------------------------
+	configurator = fields.Many2one(
+			'openhealth.configurator.emr',
+			string="Config",
+			#readonly=True,
+			#required=True,
+			required=False,
+			#default=_get_default_configurator,
+		)
 
 # ----------------------------------------------------------- Pricelist  -------------------------------
 	# Default
@@ -1234,62 +1245,65 @@ class sale_order(models.Model):
 # ----------------------------------------------------------- Ticket - tools --------------------------------
 	def get_company(self, item):
 
-		#company_name = self.configurator.company_name
-		name = 'name'
-
-		ruc = 'ruc'
-
-		#company_address = self.configurator.ticket_company_address
-		address = 'address'
-
-		#company_phone = self.configurator.company_phone
-		phone = 'phone'
-
-		note = 'note'
-		description = 'description'
-		warning = 'warning'
-
-		website = 'website'
-		email = 'email'
-
 		if item == 'name':
-			return name
+			ret = self.configurator.company_name
 		elif item == 'ruc':
-			return ruc
+			ret = self.configurator.ticket_company_ruc
 		elif item == 'address':
-			return address
+			ret = self.configurator.ticket_company_address
 		elif item == 'phone':
-			return phone
+			ret = self.configurator.company_phone
 
 		elif item == 'note':
-			return note
+			ret = self.configurator.ticket_note
 		elif item == 'description':
-			return description
+			ret = self.configurator.ticket_description
 		elif item == 'warning':
-			return warning
+			ret = self.configurator.ticket_warning
 
 		elif item == 'website':
-			return website
+			ret = self.configurator.company_website
 		elif item == 'email':
-			return email
+			ret = self.configurator.company_email
+
+		return ret 
 
 
 	def get_ticket(self, item):
-		title = 'title'
-		serial_nr = 'serial_nr'
-
 		if item == 'title':
-			return title
+			ret = self.x_title
 		elif item == 'serial_nr':
-			return serial_nr
+			ret = self.x_serial_nr
+		return ret 
 
 # ----------------------------------------------------------- Ticket - Get Raw Line - Stub ----------------
-	def get_raw_line(self, argument):
+	def get_raw_line(self, tag):
 		"""
-		Just a stub.
+		Uses the Ticket class. 
 		"""
-		#line = raw_funcs.get_ticket_raw_line(self, argument)
-		line = 'dum'
+		print()
+		print('get_raw_line')
+		#line = raw_funcs.get_ticket_raw_line(self, tag)
+		print(tag)
+
+		if tag in ['Cliente']:
+			value = self.patient.name
+		elif tag in ['DNI']:
+			value = self.x_id_doc
+		elif tag in ['Direccion']:
+			value = self.patient.x_address
+
+		elif tag in ['Fecha']:
+			value = raw_funcs.get_date_corrected(self.date_order)
+		elif tag in ['Ticket']:
+			value = self.x_serial_nr
+
+		else: 
+			tag = 'x'
+			value = 'x'
+
+		obj = ticket_line.TicketLine(tag, value)
+		line = obj.get_line()
 		return line
 
 
@@ -1311,4 +1325,3 @@ class sale_order(models.Model):
 		
 		print(action)
 		return action
-

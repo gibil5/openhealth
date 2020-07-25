@@ -3,33 +3,161 @@
 	Order Funcs
 	Encapsulate Order Business Rules
 
-	Created: 			4 Dec 2019
-	Last up: 	 		Id.
+	Created: 			 4 Dec 2019
+	Last up: 	 		24 Jul 2020
 """
 from __future__ import print_function
 import datetime
 
+# ----------------------------------------------------------- Ticket - Get Raw Line ----------------
 
-# ----------------------------------------------------------- Ticket - Get Raw Line - Aux ----------------
-def get_date_corrected(date_order):
+# Raw Line
+def get_ticket_raw_line(self, argument):
 	"""
-	Used by:
-		- Get Ticket Raw
+	Abstraction. 
+	Used by tickets.
+	Can be used by all entries. 
+	Types:
+		- Receipt, 
+		- Invoice, 
+		- Credit note. 
 	"""
 	print()
-	print('Get Date Corrected')
+	print('Get Ticket Raw Line')
+	print(argument)
+	line = 'empty'
+	bold = True
 
-	DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
+	# Credit note
+	#if argument in ['date_credit_note']:
+	#	tag = 'Fecha:'
+	#	value = get_date_corrected(self.date_order)
+	#elif argument in ['denomination_credit_note_owner']:
+	#	tag = 'Denominacion:'
+	#	value = self.x_credit_note_owner.x_serial_nr
+	#elif argument in ['date_credit_note_owner']:
+	#	tag = 'Fecha de emision:'
+	#	value = get_date_corrected(self.x_credit_note_owner.date_order)
+	#elif argument in ['reason_credit_note']:
+	#	tag = 'Motivo:'
+	#	value = get_credit_note_type(self)
 
-	date_field1 = datetime.datetime.strptime(date_order, DATETIME_FORMAT)
 
-	date_field2 = date_field1 + datetime.timedelta(hours=-5, minutes=0)
-	
-	DATETIME_FORMAT_2 = "%d-%m-%Y %H:%M:%S"
+	# Receipt
+	#if argument in ['receipt_patient_name']:
+	#	tag = 'Cliente:'
+	#	value = self.patient.name
 
-	date_corrected = date_field2.strftime(DATETIME_FORMAT_2)
+	#elif argument in ['receipt_patient_dni']:
+	#	tag = 'DNI:'
+	#	value = self.x_id_doc
 
-	return date_corrected
+	#elif argument in ['receipt_patient_address']:
+	#	tag = 'Direccion:'
+		#value = self.get_patient_address()
+	#	value = 'address'
+
+
+	# Invoice
+	if argument in ['invoice_firm_name']:
+		tag = 'Razon social:'
+		value = self.patient.x_firm
+
+	elif argument in ['invoice_patient_ruc']:
+		tag = 'RUC:'
+		value = self.x_ruc
+
+	elif argument in ['invoice_firm_address']:
+		tag = 'Direccion:'
+		#value = self.get_firm_address()
+		value = 'address'
+
+
+
+	# Sale - Not Credit Note
+	elif argument in ['sale_date']:
+		tag = 'Fecha:'
+		value = get_date_corrected(self.date_order)
+
+	elif argument in ['sale_serial_number']:
+		tag = 'Ticket:'
+		value = self.x_serial_nr
+
+
+
+
+	# Totals
+	elif argument in ['totals_net']:
+		tag = 'OP. GRAVADAS S/.'
+		value = str(self.get_total_net())
+		bold = False
+
+	elif argument in ['totals_free']:
+		tag = 'OP. GRATUITAS S/.'
+		value = '0'
+		bold = False
+
+	elif argument in ['totals_exonerated']:
+		tag = 'OP. EXONERADAS S/.'
+		value = '0'
+		bold = False
+
+
+
+	elif argument in ['totals_unaffected']:
+		tag = 'OP. INAFECTAS S/.'
+		value = '0'
+		bold = False
+
+	elif argument in ['totals_tax']:
+		tag = 'I.G.V. 18% S/.'
+		value = str(self.get_total_tax())
+		bold = False
+
+	elif argument in ['totals_total']:
+		tag = 'TOTAL S/.'
+		value = str(self.get_amount_total())
+		bold = False
+
+
+	# Words
+	elif argument in ['words_header']:
+		tag = 'Son:'
+		value = ''
+
+	elif argument in ['words_soles']:
+		tag = ''
+		value = str(self.get_total_in_words())
+
+	elif argument in ['words_cents']:
+		tag = ''
+		value = str(self.get_total_cents())
+
+	elif argument in ['words_footer']:
+		tag = ''
+		value = 'Soles'
+
+	# Items
+	elif argument in ['items_header']:
+		tag = 'items'
+		value = 'header'
+
+	# Else
+	else:
+		print('This should not happen !')
+
+
+
+	# Go
+	if bold:
+		line = format_line(tag, value)
+	else:
+		line = format_line_lean(tag, value)
+
+	#print(line)
+
+	return line
+	# get_ticket_raw_line
 
 
 
@@ -103,9 +231,7 @@ def format_line_lean(tag, value):
 	Abstraction. 
 	Lean version (not bold)
 	"""
-
 	#value = str(value)
-
 	line = "<tr>\
 				<td>\
 					<font size='2'>" + tag + "</font>\
@@ -118,182 +244,20 @@ def format_line_lean(tag, value):
 	return line 
 
 
-
-
-# ----------------------------------------------------------- Ticket - Get Raw Line ----------------
-# Raw Line
-def get_ticket_raw_line(self, argument):
+# ----------------------------------------------------------- Ticket - Get Raw Line - Aux ----------------
+def get_date_corrected(date_order):
 	"""
-	Abstraction. 
-	Used by tickets.
-	Can be used by all entries. 
-	Types:
-		- Receipt, 
-		- Invoice, 
-		- Credit note. 
+	Used by:
+		- Get Ticket Raw
 	"""
-
 	print()
-	print('Get Ticket Raw Line')
-
-	print(argument)
-
-	line = 'empty'
-
-	bold = True
-
-
-
-	# Credit note
-	if argument in ['date_credit_note']:
-		tag = 'Fecha:'
-		value = get_date_corrected(self.date_order)
-
-	elif argument in ['denomination_credit_note_owner']:
-		tag = 'Denominacion:'
-		value = self.x_credit_note_owner.x_serial_nr
-
-	elif argument in ['date_credit_note_owner']:
-		tag = 'Fecha de emision:'
-		value = get_date_corrected(self.x_credit_note_owner.date_order)
-
-	elif argument in ['reason_credit_note']:
-		tag = 'Motivo:'
-		#value = self.get_credit_note_type()
-		value = get_credit_note_type(self)
-
-
-
-
-	# Receipt
-	elif argument in ['receipt_patient_name']:
-		tag = 'Cliente:'
-		value = self.patient.name
-
-	elif argument in ['receipt_patient_dni']:
-		tag = 'DNI:'
-		value = self.x_id_doc
-
-	elif argument in ['receipt_patient_address']:
-		tag = 'Direccion:'
-		value = self.get_patient_address()
-
-
-
-
-	# Invoice
-	elif argument in ['invoice_firm_name']:
-		tag = 'Razon social:'
-		value = self.patient.x_firm
-
-	elif argument in ['invoice_patient_ruc']:
-		tag = 'RUC:'
-		value = self.x_ruc
-
-	elif argument in ['invoice_firm_address']:
-		tag = 'Direccion:'
-		value = self.get_firm_address()
-
-
-
-
-	# Sale - Not Credit Note
-	elif argument in ['sale_date']:
-		tag = 'Fecha:'
-		value = get_date_corrected(self.date_order)
-
-	elif argument in ['sale_serial_number']:
-		tag = 'Ticket:'
-		value = self.x_serial_nr
-
-
-
-
-	# Totals
-	elif argument in ['totals_net']:
-		tag = 'OP. GRAVADAS S/.'
-		value = str(self.get_total_net())
-		bold = False
-
-	elif argument in ['totals_free']:
-		tag = 'OP. GRATUITAS S/.'
-		value = '0'
-		bold = False
-
-	elif argument in ['totals_exonerated']:
-		tag = 'OP. EXONERADAS S/.'
-		value = '0'
-		bold = False
-
-
-
-	elif argument in ['totals_unaffected']:
-		tag = 'OP. INAFECTAS S/.'
-		value = '0'
-		bold = False
-
-	elif argument in ['totals_tax']:
-		tag = 'I.G.V. 18% S/.'
-		value = str(self.get_total_tax())
-		bold = False
-
-	elif argument in ['totals_total']:
-		tag = 'TOTAL S/.'
-		value = str(self.get_amount_total())
-		bold = False
-
-
-
-
-	# Words
-	elif argument in ['words_header']:
-		tag = 'Son:'
-		value = ''
-
-	elif argument in ['words_soles']:
-		tag = ''
-		value = str(self.get_total_in_words())
-
-	elif argument in ['words_cents']:
-		tag = ''
-		value = str(self.get_total_cents())
-
-	elif argument in ['words_footer']:
-		tag = ''
-		value = 'Soles'
-
-
-
-
-	# Items
-	elif argument in ['items_header']:
-		tag = 'items'
-		value = 'header'
-
-
-
-
-
-	# Else
-	else:
-		print('This should not happen !')
-
-
-
-	# Go
-	if bold:
-		line = format_line(tag, value)
-
-	else:
-		line = format_line_lean(tag, value)
-
-
-	#print(line)
-
-	return line
-	# get_ticket_raw_line
-
-
+	print('Get Date Corrected')
+	DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
+	date_field1 = datetime.datetime.strptime(date_order, DATETIME_FORMAT)
+	date_field2 = date_field1 + datetime.timedelta(hours=-5, minutes=0)
+	DATETIME_FORMAT_2 = "%d-%m-%Y %H:%M:%S"
+	date_corrected = date_field2.strftime(DATETIME_FORMAT_2)
+	return date_corrected
 
 # ----------------------------------------------------------- Ticket - Get Raw Line - Aux ----------------
 def get_credit_note_type(self):
@@ -316,5 +280,4 @@ def get_credit_note_type(self):
 	}
 
 	return _dic_cn[self.x_credit_note_type]
-
 

@@ -3,7 +3,7 @@
 	Configurator - EMR
 
 	Created: 			25 Jan 2019
-	Last updated: 		 4 Oct 2019
+	Last updated: 		24 Jul 2020
 """
 from __future__ import print_function
 from openerp import models, fields, api
@@ -20,50 +20,115 @@ class ConfiguratorEmr(models.Model):
 		- Holidays, 
 		- Opening hours.
 	"""
-
 	_name = 'openhealth.configurator.emr'
-
 	_description = 'Configurator Emr'
 
 
+# ----------------------------------------------------------- Companuy - Ticket and TXT ---------------
+
+	# Company
+	company_name = fields.Char(
+			required=True,
+			default="SERVICIOS MÉDICOS ESTÉTICOS S.A.C",
+		)
+
+	company_address = fields.Char(
+			required=True,
+			default="Av. La Merced 161",
+		)
+
+	company_phone = fields.Char(
+			required=True,
+			default="Teléfono: (051) 321 2394",
+		)
+
+	company_ruc = fields.Char(
+			required=True,
+			default="20523424221",
+		)
+
+	company_ubigeo = fields.Char(
+			required=True,
+			default="150101",
+		)
+
+	company_country = fields.Char(
+			required=True,
+			default="PE",
+		)
+
+	company_account = fields.Char(
+			required=True,
+			default="6",
+		)
+
+	# Ticket
+	#website = fields.Char(
+	company_website = fields.Char(
+			required=True,
+			default="http://www.clinicachavarri.com/",
+		)
+
+	company_email = fields.Char(
+			required=True,
+			default="info@clinicachavarri.com",
+		)
+
+	ticket_company_address = fields.Char(
+			required=True,
+			default="Av. La Merced 161 Miraflores - Lima",
+		)
+
+	ticket_company_ruc = fields.Char(
+			required=True,
+			default="R.U.C.: 20523424221",
+		)
 
 
-# ----------------------------------------------------------- Order Admin -------------------------------
+	ticket_note = fields.Text(
+			required=True,
+			default="x",
+		)
 
+	ticket_description = fields.Text(
+			required=True,
+			default="Representación impresa generada por SERVICIOS MÉDICOS ESTÉTICOS S.A.C.",
+		)
+
+	ticket_warning = fields.Text(
+			required=True,
+			default="Por medio del presente, se informa que en caso de cancelación de tratamiento o de la consulta por parte del paciente, ya sea de manera expresa o tácita, este autoriza a la empresa la retención del 15%% del costo del tratamiento o el 25%% de la consulta, sea el caso, por concepto de gastos administrativos y gastos operativos. (Art. 67 Ley 29571, Art 40 Ley General de Salud",
+		)
+
+	#warning = fields.Text(			# dep
+			#required=True,
+	#	)
+
+
+# ----------------------------------------------------------- Order Admin ------
 	order_admin = fields.Many2one(
 			'openhealth.order.admin',
 			#string='Venta',
 		)
 
-
-
-
-# ----------------------------------------------------------- PL - Paths -------------------------------
+# ----------------------------------------------------------- PL - Paths -------
 
 	path_account_txt = fields.Char(
 			required=True,
 			default='/Users/gibil/mssoft/ventas/'
 		)
 
-
 	path_csv_pricelist = fields.Char(
 			required=True,
 			default='/Users/gibil/cellar/github/price_list/csv/',
 		)
 
-
-
-# ----------------------------------------------------------- Patients -------------------------------
-
+# ----------------------------------------------------------- Patients ---------
 	# Patient Limit
 	patient_limit = fields.Integer(
 		)
 
-
-
-
-# ----------------------------------------------------------- Relational -------------------------------
-
+# ----------------------------------------------------------- Relational -------
 	# Doctor Line
 	doctor_line = fields.One2many(	
 			'openhealth.doctor',
@@ -73,7 +138,7 @@ class ConfiguratorEmr(models.Model):
 
 
 
-# ----------------------------------------------------------- Fix ------------------------
+# ----------------------------------------------------------- Fix --------------
 
 	@api.multi
 	def config_doctors(self):
@@ -193,90 +258,6 @@ class ConfiguratorEmr(models.Model):
 		)
 
 
-# ----------------------------------------------------------- PL - Ticket and TXT ---------------
-	# TXT
-	company_name = fields.Char(
-			required=True,
-
-			default="SERVICIOS MÉDICOS ESTÉTICOS S.A.C",
-		)
-
-	company_address = fields.Char(
-			required=True,
-
-			default="Av. La Merced 161",
-		)
-
-	company_phone = fields.Char(
-			required=True,
-
-			default="Teléfono: (051) 321 2394",
-		)
-
-	company_ruc = fields.Char(
-			required=True,
-
-			default="20523424221",
-		)
-
-	company_ubigeo = fields.Char(
-			required=True,
-
-			default="150101",
-		)
-
-	company_country = fields.Char(
-			required=True,
-
-			default="PE",
-		)
-
-	company_account = fields.Char(
-			required=True,
-
-			default="6",
-		)
-
-	# Ticket
-	website = fields.Char(
-			required=True,
-
-			default="http://www.clinicachavarri.com/",
-		)
-
-	email = fields.Char(
-			required=True,
-
-			default="info@clinicachavarri.com",
-		)
-
-	ticket_company_address = fields.Char(
-			required=True,
-
-			default="Av. La Merced 161 Miraflores - Lima",
-		)
-
-	ticket_company_ruc = fields.Char(
-			required=True,
-
-			default="R.U.C.: 20523424221",
-		)
-
-	ticket_description = fields.Text(
-			required=True,
-
-			default="Representación impresa generada por SERVICIOS MÉDICOS ESTÉTICOS S.A.C.",
-		)
-
-	ticket_warning = fields.Text(
-			required=True,
-
-			default="Por medio del presente, se informa que en caso de cancelación de tratamiento o de la consulta por parte del paciente, ya sea de manera expresa o tácita, este autoriza a la empresa la retención del 15%% del costo del tratamiento o el 25%% de la consulta, sea el caso, por concepto de gastos administrativos y gastos operativos. (Art. 67 Ley 29571, Art 40 Ley General de Salud",
-		)
-
-	#warning = fields.Text(			# dep
-			#required=True,
-	#	)
 
 
 

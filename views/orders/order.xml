@@ -2,8 +2,6 @@
 <openerp>
 	<data>
 
-
-
 <!-- FORM -->
 		<record model="ir.ui.view" id="view_order_form">
 			<field name="name">sale.order.form</field>
@@ -13,16 +11,13 @@
 			<field name="priority">1</field>
 			<field name="arch" type="xml">
 
-<!-- Status -->
+				<!-- Status -->
 				<xpath expr="//field[@name='state']" position="replace">
 					<field  name="state"
 							widget="statusbar"
 							statusbar_visible="draft, verified, sent, sale"
 					/>
 				</xpath>
-
-
-
 
 
 <!-- PRICELIST BUTTONS -->
@@ -269,6 +264,7 @@
 					<field name="configurator"			required="1"/>
 					<field name="pricelist_id"          readonly="1"/>
 -->
+<field name="configurator"			required="0"/>
 <field name="pricelist_id"          readonly="0"/>
 				</xpath>
 

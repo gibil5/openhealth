@@ -77,8 +77,8 @@
 
 							<!-- Ticket -->
 							<group string="Ticket">
-									<field name="website"/>
-									<field name="email"/>
+									<field name="company_website"/>
+									<field name="company_email"/>
 									<field name="vspace"/>
 									<field name="ticket_company_address"/>
 									<field name="ticket_company_ruc"/>

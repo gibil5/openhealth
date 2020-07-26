@@ -403,10 +403,10 @@ class sale_order(models.Model):
 		# Payment method validation - lower complexity
 		#self.check_payment_method()
 
+
 		# Doctor User Name
-		if self.x_doctor.name != False:
-			uid = self.x_doctor.x_user_name.id
-			self.x_doctor_uid = uid
+		self.x_doctor_uid = raw_funcs.get_doctor_uid(self.x_doctor)
+		
 
 		# Date - Must be that of the Sale, not the Budget.
 		self.date_order = datetime.datetime.now()
@@ -425,30 +425,14 @@ class sale_order(models.Model):
 		if self.x_payment_method.saledoc:
 			self.x_type = self.x_payment_method.saledoc
 
+
 		# Create Procedure
-		print('Create Procedure')
-		if self.treatment.name != False:
-			for line in self.order_line:
-				product = line.product_id
-				if product.is_procedure():
-					self.treatment.create_procedure_auto(product)
-				line.update_recos()
+		raw_funcs.create_procedure(self.treatment, self.order_line)
 
-			# Update Order
-			self.set_procedure_created(True)
 
-	# Id Doc and Ruc
-		# Invoice
-		if self.x_type in ['ticket_invoice', 'invoice']:
-			if self.x_ruc in [False, '']:
-				msg = "Error: RUC Ausente."
-				raise UserError(_(msg))
+		# Id Doc and Ruc
+		raw_funcs.check_docs(self.x_type, self.x_ruc, self.x_id_doc, self.x_id_doc_type)
 
-		# Receipt
-		elif self.x_type in ['ticket_receipt', 'receipt']:
-			if self.x_id_doc_type in [False, '']  or self.x_id_doc in [False, '']:
-				msg = "Error: Documento de Identidad Ausente."
-				raise UserError(_(msg))
 
 		# Update Patient
 		if self.patient.x_id_doc in [False, '']:

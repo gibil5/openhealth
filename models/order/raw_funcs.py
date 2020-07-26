@@ -7,8 +7,52 @@
 """
 from __future__ import print_function
 import datetime
+from openerp.exceptions import Warning as UserError
 
 
+def get_doctor_uid(doctor):
+	"""
+	Used by Order
+	"""
+	print('get_doctor_uid')
+	if doctor.name != False:
+		uid = doctor.x_user_name.id
+		doctor_uid = uid
+	else: 
+		doctor_uid = False
+	return doctor_uid
+
+# ----------------------------------------------------------- Create procedure ----------------
+def create_procedure(treatment, order_line):
+	"""
+	Used by Order
+	"""
+	print('Create Procedure')
+	if treatment.name:
+		for line in order_line:
+			product = line.product_id
+			if product.is_procedure():
+				treatment.create_procedure_auto(product)
+			line.update_recos()
+		# Update Order - Dep ?
+		#set_procedure_created(True)
+
+# ----------------------------------------------------------- Check Id Doc ----------------
+def check_docs(type, ruc, id_doc, id_doc_type):
+	"""
+	Used by Order
+	"""
+	# Invoice
+	if type in ['ticket_invoice', 'invoice']:
+		if ruc in [False, '']:
+			msg = "Error: RUC Ausente."
+			raise UserError(_(msg))
+
+	# Receipt
+	elif type in ['ticket_receipt', 'receipt']:
+		if id_doc_type in [False, '']  or id_doc in [False, '']:
+			msg = "Error: Documento de Identidad Ausente."
+			raise UserError(_(msg))
 
 # ----------------------------------------------------------- Get Treatment ----------------
 def get_title(type):
@@ -112,5 +156,5 @@ def get_credit_note_type(self):
 				False: 						'',
 	}
 
-	return _dic_cn[self.x_credit_note_type]
+	return _dic_cn[credit_note_type]
 

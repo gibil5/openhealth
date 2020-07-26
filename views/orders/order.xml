@@ -51,7 +51,7 @@
 													('state','not in',['sale', 'credit_note']),
 											]}"
 							name="correct_serial_number"
-							string="Corregir Num de Serie"
+							string="Corregir Num Serie"
 						/>
 
 
@@ -90,6 +90,15 @@
 									string="Test Ticket"
 									groups='openhealth.roots'
 								/>
+
+								<!-- Test Validate -->
+								<button
+										type="object"
+										class="oe_highlight"
+										name="test_validation"
+										string="Test Validation"
+										groups='openhealth.roots'
+									/>
 
 				</xpath>
 
@@ -289,7 +298,7 @@
 											]}"
 							name="print_ticket_electronic"
 							groups="openhealth.roots, openhealth.caja, openhealth.managers, openhealth.directors"
-							string="Imprimir - Electrónico"
+							string="Imprimir"
 						/>
 
 

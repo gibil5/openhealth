@@ -458,13 +458,10 @@ class sale_order(models.Model):
 		# Change Electronic
 		self.x_electronic = True
 
+
 		# Title
-		if self.x_type in ['ticket_receipt', 'receipt']:
-			self.x_title = 'Boleta de Venta Electrónica'
-		elif self.x_type in ['ticket_invoice', 'invoice']:
-			self.x_title = 'Factura de Venta Electrónica'
-		else:
-			self.x_title = 'Venta Electrónica'
+		self.x_title = raw_funcs.get_title(self.x_type)
+
 
 		# Change State
 		self.state = 'validated'
@@ -894,34 +891,13 @@ class sale_order(models.Model):
 	# Patient
 	@api.onchange('patient')
 	def _onchange_patient(self):
-		if self.patient.name != False:
-			self.x_ruc = False
-			self.partner_id = self.patient.partner_id.id
-			# Id Doc
-			if self.patient.x_id_doc != False:
-				self.x_id_doc = self.patient.x_id_doc
-				self.x_id_doc_type = self.patient.x_id_doc_type
-			# Get x Dni
-			elif self.patient.x_dni not in [False, '']:
-				self.x_id_doc = self.patient.x_dni
-				self.x_id_doc_type = 'dni'
-				self.x_dni = self.patient.x_dni
-			# Ruc
-			if self.patient.x_ruc != False:
-				self.x_ruc = self.patient.x_ruc
+		self.partner_id, self.x_dni, self.x_ruc, self.x_id_doc, self.x_id_doc_type = raw_funcs.get_patient_ids(self.patient)
 
 	# Doctor
 	@api.onchange('x_doctor')
 	def _onchange_x_doctor(self):
-		#if self.x_doctor.name != False:
-		if self.x_doctor.name:
-			treatment = self.env['openhealth.treatment'].search([('patient', '=', self.patient.name),
-																	('physician', '=', self.x_doctor.name),
-													],
-														order='write_date desc',
-														limit=1,
-													)
-			self.treatment = treatment
+		self.treatment = raw_funcs.get_treatment(self.env['openhealth.treatment'], self.patient.name, self.x_doctor.name)
+
 
 # ----------------------------------------------------------- Primitives --------------------------
 
@@ -1419,12 +1395,16 @@ class sale_order(models.Model):
 		"""
 		print('')
 		print('Test Ticket')
-
-		# Check Patient for Ticket
-		#ord_funcs.check_ticket(self, self.x_type, self.state)
-
-		# Print
 		name = 'openhealth.report_ticket_receipt_electronic'
 		action = self.env['report'].get_action(self, name)
-
 		return action
+
+# ----------------------------------------------------------- Test Validation --------------------------------
+	@api.multi
+	def test_validation(self):
+		"""
+		Test Validation
+		"""
+		print('')
+		print('Test Validation')
+		self.validate_and_confirm()

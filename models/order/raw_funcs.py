@@ -9,7 +9,62 @@ from __future__ import print_function
 import datetime
 
 
-# ----------------------------------------------------------- Ticket - Get Raw Line - Aux ----------------
+
+# ----------------------------------------------------------- Get Treatment ----------------
+def get_title(type):
+	"""
+	Used by Order
+	"""
+	if type in ['ticket_receipt', 'receipt']:
+		title = 'Boleta de Venta Electrónica'
+	elif type in ['ticket_invoice', 'invoice']:
+		title = 'Factura de Venta Electrónica'
+	else:
+		title = 'Venta Electrónica'
+	return title 
+
+
+# ----------------------------------------------------------- Get Treatment ----------------
+def get_treatment(env, patient_name, doctor_name):
+	"""
+	Used by Order
+	"""
+	if doctor_name:
+		treatment = env.search([('patient', '=', patient_name),
+								('physician', '=', doctor_name),
+							],
+								order='write_date desc',
+								limit=1,
+							)
+	return treatment
+
+# ----------------------------------------------------------- Get Patient ids ----------------
+def get_patient_ids(patient):
+	"""
+	Used by Order
+	"""
+	
+	if patient.name != False:
+		dni = False 
+		ruc = False
+		partner_id = patient.partner_id.id
+		# Id Doc
+		if patient.x_id_doc != False:
+			id_doc = patient.x_id_doc
+			id_doc_type = patient.x_id_doc_type
+		# Get x Dni
+		elif patient.x_dni not in [False, '']:
+			id_doc = patient.x_dni
+			id_doc_type = 'dni'
+			dni = patient.x_dni
+		# Ruc
+		if patient.x_ruc != False:
+			ruc = patient.x_ruc
+
+	return partner_id, dni, ruc, id_doc, id_doc_type
+
+
+# ----------------------------------------------------------- Ticket - Get Amount Flow ----------------
 def get_amount_flow(block_flow, state, credit_note_amount, amount_total):
 	"""
 	Used by Order

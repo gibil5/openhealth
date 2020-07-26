@@ -1,3 +1,86 @@
+# 26 Jul 2020 
+		options = {
+			0 : zero,
+			1 : sqr,
+			4 : sqr,
+			9 : sqr,
+			2 : even,
+			3 : prime,
+			5 : prime,
+			7 : prime,
+		}
+
+
+	def get_company(self, item):
+
+		if item == 'name':
+			ret = self.configurator.company_name
+		elif item == 'ruc':
+			ret = self.configurator.ticket_company_ruc
+		elif item == 'address':
+			ret = self.configurator.ticket_company_address
+
+		elif item == 'phone':
+			ret = self.configurator.company_phone
+		elif item == 'note':
+			ret = self.configurator.ticket_note
+		elif item == 'description':
+			ret = self.configurator.ticket_description
+
+		elif item == 'warning':
+			ret = self.configurator.ticket_warning
+		elif item == 'website':
+			ret = self.configurator.company_website
+		elif item == 'email':
+			ret = self.configurator.company_email
+
+		return ret
+
+
+
+# ----------------------------------------------------------- Correct -----------------------------
+	# Correct payment method
+	@api.multi
+	def correct_pm(self):
+		"""
+		Correct payment method
+		"""
+		if self.x_payment_method.name == False:
+			self.x_payment_method = self.env['openhealth.payment_method'].create({
+																					'order': 	self.id,
+																					'partner':	self.partner_id.id,
+																					'total':	self.amount_total,
+																			})
+		res_id = self.x_payment_method.id
+
+		return {
+			# Mandatory
+			'type': 'ir.actions.act_window',
+			'name': 'Open Payment Method Current',
+			# Window action
+			'res_id': res_id,
+			'res_model': 'openhealth.payment_method',
+			# Views
+			"views": [[False, "form"]],
+			'view_mode': 'form',
+			'target': 'current',
+			#'view_id': view_id,
+			#"domain": [["patient", "=", self.patient.name]],
+			#'auto_search': False,
+			'flags': {
+						'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						#'form': {'action_buttons': True, }
+						#'form': {'action_buttons': False, }
+					},
+			'context': {}
+		}
+	# correct_pm
+
+
+
+
+
+
 # 25 Jul 2D2020
 
 # ----------------------------------------------------------- Constraints - Sql -------------------

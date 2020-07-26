@@ -828,44 +828,6 @@ class sale_order(models.Model):
 				},
 		)
 
-# ----------------------------------------------------------- Correct -----------------------------
-	# Correct payment method
-	@api.multi
-	def correct_pm(self):
-		"""
-		Correct payment method
-		"""
-		if self.x_payment_method.name == False:
-			self.x_payment_method = self.env['openhealth.payment_method'].create({
-																					'order': 	self.id,
-																					'partner':	self.partner_id.id,
-																					'total':	self.amount_total,
-																			})
-		res_id = self.x_payment_method.id
-
-		return {
-			# Mandatory
-			'type': 'ir.actions.act_window',
-			'name': 'Open Payment Method Current',
-			# Window action
-			'res_id': res_id,
-			'res_model': 'openhealth.payment_method',
-			# Views
-			"views": [[False, "form"]],
-			'view_mode': 'form',
-			'target': 'current',
-			#'view_id': view_id,
-			#"domain": [["patient", "=", self.patient.name]],
-			#'auto_search': False,
-			'flags': {
-						'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-						#'form': {'action_buttons': True, }
-						#'form': {'action_buttons': False, }
-					},
-			'context': {}
-		}
-	# correct_pm
-
 # ----------------------------------------------------- Admin --------------------------
 	@api.multi
 	def correct_serial_number(self):
@@ -1259,32 +1221,25 @@ class sale_order(models.Model):
 
 
 # ----------------------------------------------------------- Ticket - tools --------------------------------
-	def get_company(self, item):
+	def get_company(self, tag):
 		"""
 		Used by Ticket
 		"""
-		if item == 'name':
-			ret = self.configurator.company_name
-		elif item == 'ruc':
-			ret = self.configurator.ticket_company_ruc
-		elif item == 'address':
-			ret = self.configurator.ticket_company_address
-		elif item == 'phone':
-			ret = self.configurator.company_phone
+		options = {
+			'name' : self.configurator.company_name,
+			'ruc' : self.configurator.ticket_company_ruc,
+			'address' : self.configurator.ticket_company_address,
 
-		elif item == 'note':
-			ret = self.configurator.ticket_note
-		elif item == 'description':
-			ret = self.configurator.ticket_description
-		elif item == 'warning':
-			ret = self.configurator.ticket_warning
+			'phone' : self.configurator.company_phone,
+			'note' : self.configurator.ticket_note,
+			'description' : self.configurator.ticket_company_address,
 
-		elif item == 'website':
-			ret = self.configurator.company_website
-		elif item == 'email':
-			ret = self.configurator.company_email
+			'warning' : self.configurator.ticket_warning,
+			'website' : self.configurator.company_website,
+			'email' : self.configurator.company_email,
+		}
 
-		return ret
+		return options[tag]
 
 
 	def get_ticket(self, item):
@@ -1339,7 +1294,6 @@ class sale_order(models.Model):
 		obj = ticket_line.TicketLine(tag, value)
 		line = obj.get_line_items()
 		return line
-
 
 # ----------------------------------------------------------- Ticket - Get Raw Line - Aux ----------------
 	def get_total_net(self):

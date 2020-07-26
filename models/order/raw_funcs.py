@@ -11,6 +11,36 @@ from openerp.exceptions import Warning as UserError
 
 
 # ----------------------------------------------------------- Create procedure ----------------
+def open_myself(res_model, res_id):
+	"""
+	Used by Order
+	"""
+	print('open_myself')
+	return {
+		# Mandatory
+		'type': 'ir.actions.act_window',
+		'name': 'Open Order Current',
+		# Window action
+		'res_model': res_model,
+		'res_id': res_id,
+		# Views
+		"views": [[False, "form"]],
+		'view_mode': 'form',
+		'target': 'current',
+		#'view_id': view_id,
+		#"domain": [["patient", "=", self.patient.name]],
+		#'auto_search': False,
+		'flags': {
+				'form': {'action_buttons': True, }
+				#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+		},
+		'context':   {
+
+		}
+	}
+
+
+# ----------------------------------------------------------- Create procedure ----------------
 def open_line_current(res_model, res_id):
 	"""
 	Used by Order

@@ -196,25 +196,6 @@ class sale_order(models.Model):
 			record.pl_product = products
 
 # ---------------------------------------------- Price List - Fields ------------------------------------------
-	# States
-	READONLY_STATES = {
-		'draft': 		[('readonly', False)],
-		'sent': 		[('readonly', False)],
-		'sale': 		[('readonly', True)],
-		'cancel': 		[('readonly', True)],
-	}
-
-	# Doctor
-	x_doctor = fields.Many2one(
-			'oeh.medical.physician',
-			string="Médico",
-			states=READONLY_STATES,
-		)
-
-	# Receptor
-	pl_receptor = fields.Char(
-			string='Receptor',
-		)
 
 
 # ------------------------------------------- Natives  - Computes OK -----------
@@ -771,18 +752,18 @@ class sale_order(models.Model):
 		'cancel': 		[('readonly', True)],
 	}
 
-	# Patient
-	patient = fields.Many2one(
-			'oeh.medical.patient',
-			string='Paciente',
-			#states=READONLY_STATES,
-		)
-
 	# Doctor
 	x_doctor = fields.Many2one(
 			'oeh.medical.physician',
 			string="Médico",
 			states=READONLY_STATES,
+		)
+
+	# Patient
+	patient = fields.Many2one(
+			'oeh.medical.patient',
+			string='Paciente',
+			#states=READONLY_STATES,
 		)
 
 	# Order Line
@@ -791,6 +772,11 @@ class sale_order(models.Model):
 			'order_id',
 			string='Order Lines',
 			#states=READONLY_STATES, 			# Done by the View
+		)
+
+	# Receptor
+	pl_receptor = fields.Char(
+			string='Receptor',
 		)
 
 # ----------------------------------------------------------- On Changes --------------------------
@@ -964,8 +950,8 @@ class sale_order(models.Model):
 		Used by Treatment
 		"""
 		print('open_line_current')
-		res_model = self._name
 		#res_model = 'sale.order'
+		res_model = self._name
 		res_id = self.id
 		ret = raw_funcs.open_line_current(res_model, res_id)
 		#print(ret)
@@ -977,30 +963,11 @@ class sale_order(models.Model):
 		"""
 		Open myself - Used by Payment Method comeback
 		"""
-		order_id = self.id
-		return {
-			# Mandatory
-			'type': 'ir.actions.act_window',
-			'name': 'Open Order Current',
-			# Window action
-			'res_model': 'sale.order',
-			'res_id': order_id,
-			# Views
-			"views": [[False, "form"]],
-			'view_mode': 'form',
-			'target': 'current',
-			#'view_id': view_id,
-			#"domain": [["patient", "=", self.patient.name]],
-			#'auto_search': False,
-			'flags': {
-					'form': {'action_buttons': True, }
-					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-			},
-			'context':   {
-
-			}
-		}
-	# open_myself
+		print('open_myself')
+		res_model = self._name
+		res_id = self.id
+		ret = raw_funcs.open_myself(res_model, res_id)
+		return ret 
 
 
 # ----------------------------------------------------------- Remove and Reset ------------

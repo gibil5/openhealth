@@ -1383,19 +1383,29 @@ class sale_order(models.Model):
 			tag = 'TOTAL S/.'
 			value = str(self.get_amount_total())
 
+		obj = ticket_line.TicketLine(tag, value)
+		line = obj.get_line()
+		return line
+
+# ----------------------------------------------------------- Ticket - Get Raw Line - Stub ----------------
+	def get_words_line(self, argument):
+		"""
+		Uses the Ticket class.
+		"""
+		print()
+		print('get_words_line')
+		print(argument)
+
 		# Words
-		elif argument in ['words_header']:
+		if argument in ['words_header']:
 			tag = 'Son:'
 			value = ''
-
 		elif argument in ['words_soles']:
 			tag = ''
 			value = str(self.get_total_in_words())
-
 		elif argument in ['words_cents']:
 			tag = ''
 			value = str(self.get_total_cents())
-
 		elif argument in ['words_footer']:
 			tag = ''
 			value = 'Soles'

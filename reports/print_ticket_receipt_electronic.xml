@@ -3,7 +3,7 @@
 <!--
 		Ticket Electronic
 		Created: 	2019
-		Last up:  25 Jul 2020
+		Last up:  26 Jul 2020
 -->
 
 <!-- Electronic --> 
@@ -253,10 +253,10 @@
 	<t t-raw="doc.get_ticket_total_words_footer()"/>
 -->
 
-	<t t-raw="doc.get_raw_line('words_header')"/>
-	<t t-raw="doc.get_raw_line('words_soles')"/>
-	<t t-raw="doc.get_raw_line('words_cents')"/>
-	<t t-raw="doc.get_raw_line('words_footer')"/>
+	<t t-raw="doc.get_words_line('words_header')"/>
+	<t t-raw="doc.get_words_line('words_soles')"/>
+	<t t-raw="doc.get_words_line('words_cents')"/>
+	<t t-raw="doc.get_words_line('words_footer')"/>
 </table>
 <br/>
 

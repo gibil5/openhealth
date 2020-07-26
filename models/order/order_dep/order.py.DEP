@@ -10,6 +10,37 @@
 			7 : prime,
 		}
 
+		#options = {
+		#	'totals_net' : ('OP. GRAVADAS S/.', str(self.get_total_net())),
+		#	'totals_free' : ('OP. GRATUITAS S/.', '0'),
+		#	'totals_exonerated' : ('OP. EXONERADAS S/.', '0'),
+		#	'totals_unaffected' : (),
+		#	'totals_tax' : (),
+		#	'totals_total' : (),
+		#	'warning' : (),
+		#	'website' : (),
+		#	'email' : (),
+		#}
+		#return options[tag]
+
+
+	def get_raw_line(self, argument):
+
+		# Totals
+		if argument in ['totals_net']:
+			tag = 'OP. GRAVADAS S/.'
+			value = str(self.get_total_net())
+
+		elif argument in ['totals_free']:
+			tag = 'OP. GRATUITAS S/.'
+			value = '0'
+
+		elif argument in ['totals_exonerated']:
+			tag = 'OP. EXONERADAS S/.'
+			value = '0'
+
+
+
 
 	def get_company(self, item):
 

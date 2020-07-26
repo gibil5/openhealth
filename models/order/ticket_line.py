@@ -14,9 +14,11 @@ class TicketLine(object):
 	Does not use Bootstrap classed. Is much more robust than the previous approach.
 	Allows for easy font size config.
 	"""
-
+	#def __init__(self, tag, value = None):
+    #    if value is None:
+	#		tag = argument
 	def __init__(self, tag, value):
-		#print 'Ticket - init'
+		print('init - tag and value')
 		self.tag = tag
 		self.value = value
 

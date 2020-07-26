@@ -400,10 +400,6 @@ class sale_order(models.Model):
 		print()
 		print('Check and Generate')
 
-		# Payment method validation - lower complexity
-		#self.check_payment_method()
-
-
 		# Doctor User Name
 		self.x_doctor_uid = raw_funcs.get_doctor_uid(self.x_doctor)
 		
@@ -421,18 +417,14 @@ class sale_order(models.Model):
 		ord_funcs.detect_vip_card_and_create(self)
 
 		# Type
-		#if self.x_payment_method.saledoc != False:
 		if self.x_payment_method.saledoc:
 			self.x_type = self.x_payment_method.saledoc
-
 
 		# Create Procedure
 		raw_funcs.create_procedure(self.treatment, self.order_line)
 
-
 		# Id Doc and Ruc
 		raw_funcs.check_docs(self.x_type, self.x_ruc, self.x_id_doc, self.x_id_doc_type)
-
 
 		# Update Patient
 		if self.patient.x_id_doc in [False, '']:
@@ -442,10 +434,8 @@ class sale_order(models.Model):
 		# Change Electronic
 		self.x_electronic = True
 
-
 		# Title
 		self.x_title = raw_funcs.get_title(self.x_type)
-
 
 		# Change State
 		self.state = 'validated'
@@ -1315,6 +1305,10 @@ class sale_order(models.Model):
 		print('get_raw_line')
 		print(argument)
 
+		# Default
+		tag = 'TOTAL S/.'
+		value = str(self.get_amount_total())
+
 		# Totals
 		if argument in ['totals_net']:
 			tag = 'OP. GRAVADAS S/.'
@@ -1336,9 +1330,9 @@ class sale_order(models.Model):
 			tag = 'I.G.V. 18% S/.'
 			value = str(self.get_total_tax())
 
-		elif argument in ['totals_total']:
-			tag = 'TOTAL S/.'
-			value = str(self.get_amount_total())
+		#elif argument in ['totals_total']:
+		#	tag = 'TOTAL S/.'
+		#	value = str(self.get_amount_total())
 
 		obj = ticket_line.TicketLine(tag, value)
 		line = obj.get_line()

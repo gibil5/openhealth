@@ -2,12 +2,25 @@
 """
 	Order Funcs
 	Encapsulate Order Business Rules
-
 	Created: 			 4 Dec 2019
-	Last up: 	 		24 Jul 2020
+	Last up: 	 		26 Jul 2020
 """
 from __future__ import print_function
 import datetime
+
+
+# ----------------------------------------------------------- Ticket - Get Raw Line - Aux ----------------
+def get_amount_flow(block_flow, state, credit_note_amount, amount_total):
+	"""
+	Used by Order
+	"""
+	if block_flow:
+		value = 0
+	elif state in ['credit_note']  and  credit_note_amount not in [0, False]:
+		value = - credit_note_amount
+	else:
+		value = amount_total
+	return value
 
 # ----------------------------------------------------------- Ticket - Get Raw Line - Aux ----------------
 def get_date_corrected(date_order):

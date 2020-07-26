@@ -232,17 +232,11 @@
 	<t t-raw="doc.get_ticket_total_tax_line()"/>
 	<t t-raw="doc.get_ticket_total_line()"/>
 -->
-
 	<t t-raw="doc.get_raw_line('totals_net')"/>
-
 	<t t-raw="doc.get_raw_line('totals_free')"/>
-
 	<t t-raw="doc.get_raw_line('totals_exonerated')"/>
-
 	<t t-raw="doc.get_raw_line('totals_unaffected')"/>
-
 	<t t-raw="doc.get_raw_line('totals_tax')"/>
-
 	<t t-raw="doc.get_raw_line('totals_total')"/>
 </table>
 <br/>
@@ -260,11 +254,8 @@
 -->
 
 	<t t-raw="doc.get_raw_line('words_header')"/>
-
 	<t t-raw="doc.get_raw_line('words_soles')"/>
-
 	<t t-raw="doc.get_raw_line('words_cents')"/>
-
 	<t t-raw="doc.get_raw_line('words_footer')"/>
 </table>
 <br/>
@@ -307,17 +298,12 @@
 	<div>
 		<div style="margin-top:1px;margin-bottom:1px;width:100%;font-size: xx-small;">
 			<br/>
-			
 			<div style="margin-top:7px;" t-esc="doc.get_company('description')"/>
-
 			<div style="margin-top:7px;" t-esc="doc.get_company('warning')"/>
-			
 			<div style="margin-top:7px;" t-esc="doc.get_company('website')"/>
-
 			<div style="margin-top:7px;" t-esc="doc.get_company('email')"/>
 		</div>
-	</div>      
-
+	</div>
 
 	</center>
 </div>
@@ -328,7 +314,5 @@
 		</t>
 	</t>
 </template>
-
-
 	</data>
 </openerp>

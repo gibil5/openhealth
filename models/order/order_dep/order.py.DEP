@@ -1,11 +1,42 @@
+# 25 Jul 2D2020
+
+# ----------------------------------------------------------- Constraints - Sql -------------------
+	# Uniqueness constraints for:
+	# Serial Number
+	_sql_constraints = [
+				#('x_serial_nr','unique(x_serial_nr)', 'SQL Warning: x_serial_nr must be unique !'),
+				('x_serial_nr', 'Check(1=1)', 'SQL Warning: x_serial_nr must be unique !'),
+			]
+
+	@api.multi
+	def fix_treatment_month(self):
+		"""
+		Fix Treatment Month
+		"""
+		print()
+		print('Fix Treatment Month')
+
+
+	@api.multi
+	def fix_treatment_all(self):
+		"""
+		Fix Treatment All
+		"""
+		print()
+		print('Fix Treatment All')
+
+
+
+
+
+# 24 Jul 2020
+
 """
 Sale Class - Inherited from the medical Module OeHealth.
 Has the Business Logic of the Clinic.
 This is only a Data Model. Must NOT contain Business Rules.
 All BRs should be in Classes and Libraries.
 """
-
-
 
 
 

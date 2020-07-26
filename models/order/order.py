@@ -24,10 +24,12 @@
 """
 from __future__ import print_function
 import datetime
+
 from openerp import models, fields, api
 from openerp import _
 from openerp.exceptions import Warning as UserError
 from openerp.addons.openhealth.models.patient import pat_vars, chk_patient
+
 from . import test_order
 from . import chk_order
 from . import ord_vars
@@ -35,6 +37,8 @@ from . import raw_funcs
 
 from . import qr
 from . import ticket_line
+from . import fix_treatment
+
 from . import ord_funcs
 
 #from openerp.addons.openhealth.models.libs import lib
@@ -48,6 +52,25 @@ class sale_order(models.Model):
 	"""
 	_inherit = 'sale.order'
 	_description = 'Order'
+
+
+# ----------------------------------------- Constraints - From Patient ----------
+	# Check Ruc
+	@api.constrains('x_ruc')
+	def _check_x_ruc(self):
+		if self.x_type in ['ticket_invoice', 'invoice']:
+			chk_patient.check_x_ruc(self)
+
+	# Check Id doc - Use Chk Patient
+	@api.constrains('x_id_doc')
+	def _check_x_id_doc(self):
+		if self.x_type in ['ticket_receipt', 'receipt']:
+			chk_patient.check_x_id_doc(self)
+
+	# Check Serial Nr
+	@api.constrains('x_serial_nr')
+	def _check_x_serial_nr(self):
+		chk_order.check_serial_nr(self)
 
 
 # ----------------------------------------------------------- Configurator  -------------------------------
@@ -260,7 +283,6 @@ class sale_order(models.Model):
 			if record.x_type in ['ticket_receipt', 'ticket_invoice', 'receipt', 'invoice', 'advertisement', 'sale_note']:
 				record.x_type_code = ord_vars._dic_type_code[record.x_type]
 
-
 	# Nr lines - OK
 	nr_lines = fields.Integer(
 			default=0,
@@ -301,7 +323,6 @@ class sale_order(models.Model):
 	# Amount total - OK
 	x_amount_total = fields.Float(
 			string="x Total",
-
 			compute="_compute_x_amount_total",
 		)
 
@@ -316,7 +337,6 @@ class sale_order(models.Model):
 	# Amount Flow - Verify !
 	x_amount_flow = fields.Float(
 			'Total F',
-
 			compute='_compute_x_amount_flow',
 		)
 
@@ -330,7 +350,7 @@ class sale_order(models.Model):
 			else:
 				record.x_amount_flow = record.amount_total
 
-# ----------------------------------------------------------- Natives  - Killed Computes -------------------------
+# ----------------------------------------------------------- Natives -------------------------
 	# Net
 	x_total_net = fields.Float(
 			"Neto",
@@ -353,6 +373,11 @@ class sale_order(models.Model):
 
 		# Handle Exceptions
 		#exc_ord.handle_exceptions(self)
+
+
+		# Payment method validation
+		self.check_payment_method()
+
 
 		# If Everything is OK
 		self.check_and_generate()
@@ -378,8 +403,8 @@ class sale_order(models.Model):
 		print()
 		print('Check and Generate')
 
-		# Payment method validation
-		self.check_payment_method()
+		# Payment method validation - lower complexity
+		#self.check_payment_method()
 
 		# Doctor User Name
 		if self.x_doctor.name != False:
@@ -399,7 +424,8 @@ class sale_order(models.Model):
 		ord_funcs.detect_vip_card_and_create(self)
 
 		# Type
-		if self.x_payment_method.saledoc != False:
+		#if self.x_payment_method.saledoc != False:
+		if self.x_payment_method.saledoc:
 			self.x_type = self.x_payment_method.saledoc
 
 		# Create Procedure
@@ -442,10 +468,6 @@ class sale_order(models.Model):
 			self.x_title = 'Factura de Venta Electrónica'
 		else:
 			self.x_title = 'Venta Electrónica'
-
-		# QR
-		#if self.x_type in ['ticket_receipt', 'ticket_invoice']:
-		#	self.make_qr()
 
 		# Change State
 		self.state = 'validated'
@@ -563,7 +585,7 @@ class sale_order(models.Model):
 	@api.multi
 	def update_credit_note(self):
 		"""
-		high level support for doing this and that.
+		Update Credit note
 		"""
 		print()
 		print('Update CN')
@@ -596,7 +618,7 @@ class sale_order(models.Model):
 	@api.multi
 	def create_credit_note(self):
 		"""
-		high level support for doing this and that.
+		Create Credit note
 		"""
 		print()
 		print('Create CN')
@@ -694,7 +716,6 @@ class sale_order(models.Model):
 			'Diners',
 		)
 
-
 # ----------------------------------------------------------- Checksum ----------------------------
 	# Checksum
 	x_checksum = fields.Float(
@@ -707,7 +728,7 @@ class sale_order(models.Model):
 	@api.multi
 	def checksum(self):
 		"""
-		high level support for doing this and that.
+		Checksum
 		"""
 		#print
 		#print 'CheckSum'
@@ -729,7 +750,7 @@ class sale_order(models.Model):
 	@api.multi
 	def check_payment_method(self):
 		"""
-		high level support for doing this and that.
+		Check Payment method
 		"""
 		#print
 		#print 'Check Payment Method'
@@ -738,10 +759,7 @@ class sale_order(models.Model):
 			pm_total = pm_total + pm.subtotal
 		self.x_pm_total = pm_total
 
-
-
 # ----------------------------------------------------------- Serial Nr ---------------------------
-
 	# Serial Number
 	x_serial_nr = fields.Char(
 			'Número de serie',
@@ -751,36 +769,6 @@ class sale_order(models.Model):
 	x_counter_value = fields.Integer(
 			string="Contador",
 		)
-
-
-# ----------------------------------------------------------- Constraints - Sql -------------------
-	# Uniqueness constraints for:
-	# Serial Number
-	_sql_constraints = [
-				#('x_serial_nr','unique(x_serial_nr)', 'SQL Warning: x_serial_nr must be unique !'),
-				('x_serial_nr', 'Check(1=1)', 'SQL Warning: x_serial_nr must be unique !'),
-			]
-
-# ----------------------------------------------------------- Constraints - From Chk Patient ------
-
-	# Check Ruc
-	@api.constrains('x_ruc')
-	def _check_x_ruc(self):
-		if self.x_type in ['ticket_invoice', 'invoice']:
-			chk_patient.check_x_ruc(self)
-
-	# Check Id doc - Use Chk Patient
-	@api.constrains('x_id_doc')
-	def _check_x_id_doc(self):
-		if self.x_type in ['ticket_receipt', 'receipt']:
-			chk_patient.check_x_id_doc(self)
-
-	# Check Serial Nr
-	@api.constrains('x_serial_nr')
-	def _check_x_serial_nr(self):
-		chk_order.check_serial_nr(self)
-
-
 
 # ---------------------------------------------- Electronic ------------------------------------
 	x_title = fields.Char(
@@ -844,9 +832,9 @@ class sale_order(models.Model):
 	# Correct payment method
 	@api.multi
 	def correct_pm(self):
-		#print
-		#print 'Correct Payment Method'
-
+		"""
+		Correct payment method
+		"""
 		if self.x_payment_method.name == False:
 			self.x_payment_method = self.env['openhealth.payment_method'].create({
 																					'order': 	self.id,
@@ -877,6 +865,28 @@ class sale_order(models.Model):
 			'context': {}
 		}
 	# correct_pm
+
+# ----------------------------------------------------- Admin --------------------------
+	@api.multi
+	def correct_serial_number(self):
+		"""
+		Correct Serial Number - Admin only
+		"""
+		print()
+		print('correct_serial_number')
+		self.x_serial_nr = ord_funcs.get_serial_nr(self.x_type, self.x_counter_value, self.state)
+
+
+# ----------------------------------------------------- Fixers --------------------------
+	@api.multi
+	def fix_treatment(self):
+		"""
+		Fix Treatment
+		"""
+		print()
+		print('Fix Treatment')
+		fixer = fix_treatment.FixTreatment(self.env['openhealth.treatment'], self.patient.id, self.x_doctor.id)
+		fixer.fix() 
 
 # ----------------------------------------------------------- Pay ---------------------------------
 	# DNI
@@ -944,7 +954,8 @@ class sale_order(models.Model):
 	# Doctor
 	@api.onchange('x_doctor')
 	def _onchange_x_doctor(self):
-		if self.x_doctor.name != False:
+		#if self.x_doctor.name != False:
+		if self.x_doctor.name:
 			treatment = self.env['openhealth.treatment'].search([('patient', '=', self.patient.name),
 																	('physician', '=', self.x_doctor.name),
 													],
@@ -1277,6 +1288,9 @@ class sale_order(models.Model):
 
 
 	def get_ticket(self, item):
+		"""
+		Used by Ticket
+		"""
 		if item == 'title':
 			ret = self.x_title
 		elif item == 'serial_nr':
@@ -1336,7 +1350,7 @@ class sale_order(models.Model):
 		if self.pl_transfer_free:
 			self.x_total_net = 0
 		else:
-			self.x_total_net =  tick_funcs.get_net(self)
+			self.x_total_net = tick_funcs.get_net(self)
 		return self.x_total_net
 
 	def get_total_tax(self):
@@ -1382,7 +1396,6 @@ class sale_order(models.Model):
 		return cents
 
 # ----------------------------------------------------------- Ticket - Get Raw Line - Stub ----------------
-	#def get_raw_line(self, tag):
 	def get_raw_line(self, argument):
 		"""
 		Uses the Ticket class.
@@ -1395,32 +1408,26 @@ class sale_order(models.Model):
 		if argument in ['totals_net']:
 			tag = 'OP. GRAVADAS S/.'
 			value = str(self.get_total_net())
-			bold = False
 
 		elif argument in ['totals_free']:
 			tag = 'OP. GRATUITAS S/.'
 			value = '0'
-			bold = False
 
 		elif argument in ['totals_exonerated']:
 			tag = 'OP. EXONERADAS S/.'
 			value = '0'
-			bold = False
 
 		elif argument in ['totals_unaffected']:
 			tag = 'OP. INAFECTAS S/.'
 			value = '0'
-			bold = False
 
 		elif argument in ['totals_tax']:
 			tag = 'I.G.V. 18% S/.'
 			value = str(self.get_total_tax())
-			bold = False
 
 		elif argument in ['totals_total']:
 			tag = 'TOTAL S/.'
 			value = str(self.get_amount_total())
-			bold = False
 
 		# Words
 		elif argument in ['words_header']:
@@ -1439,17 +1446,9 @@ class sale_order(models.Model):
 			tag = ''
 			value = 'Soles'
 
-		#else:
-		#	tag = 'x'
-		#	value = 'x'
-
 		obj = ticket_line.TicketLine(tag, value)
-
 		line = obj.get_line()
-
 		return line
-
-
 
 # ----------------------------------------------------------- Test Ticket --------------------------------
 	@api.multi
@@ -1467,5 +1466,4 @@ class sale_order(models.Model):
 		name = 'openhealth.report_ticket_receipt_electronic'
 		action = self.env['report'].get_action(self, name)
 
-		print(action)
 		return action

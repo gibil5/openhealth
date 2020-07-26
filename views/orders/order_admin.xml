@@ -21,40 +21,31 @@
 			                        <button 
 			                                type="object" 
 			                                class="oe_highlight"
-
 			                                name="fix_treatment"
-
 			                                string="Fix Tratamiento"
 			                        />
 			                    </group>
+<!--
 								<group>
-
-
 			                        <button 
 			                                type="object" 
 			                                class="oe_highlight"
-
 			                                name="fix_treatment_month"
-
 			                                string="Fix TR Mes"
-
 			                                groups='openhealth.roots'
 			                        />
-
-			                    </group>
+			          </group>
 								<group>
 
 			                        <button 
 			                                type="object" 
 			                                class="oe_highlight"
-
 			                                name="fix_treatment_all"
-
 			                                string="Fix TR Todo"
-
 			                                groups='openhealth.roots'
 			                        />
-			                    </group>
+			        </group>
+-->
 							</page>
 
 

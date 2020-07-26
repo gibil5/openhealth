@@ -10,6 +10,69 @@ import datetime
 from openerp.exceptions import Warning as UserError
 
 
+# ----------------------------------------------------------- Create PM ----------------
+def create_pm(env, order_id, date_order, amount_total, partner_id, patient_firm, patient_ruc):
+	"""
+	Used by Order
+	"""
+	print('create_pm')
+
+	# Init vars
+	name = 'Pago'
+	method = 'cash'
+	balance = amount_total
+	total = amount_total
+	firm = patient_firm
+	ruc = patient_ruc
+
+	# Create
+	payment_method = env.create({
+									'order': order_id,
+									'method': method,
+									'subtotal': balance,
+									'total': total,
+									'partner': partner_id,
+									'date_created': date_order,
+									'firm': firm,
+									'ruc': ruc,
+							})
+	payment_method_id = payment_method.id
+
+	# Create Lines
+	name = '1'
+	method = 'cash'
+	subtotal = amount_total
+	payment_method.pm_line_ids.create({'name': name,
+												'method': method,
+												'subtotal': subtotal,
+												'payment_method': payment_method_id})
+	ret = {
+			'type': 'ir.actions.act_window',
+			'name': ' New PM Current',
+			'view_type': 'form',
+			'view_mode': 'form',
+			'target': 'current',
+			'res_model': 'openhealth.payment_method',
+			'res_id': payment_method_id,
+			'flags': 	{
+						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						#'form': {'action_buttons': False, }
+						'form':{'action_buttons': False, 'options': {'mode': 'edit'}}
+						},
+			'context': {
+						'default_order': order_id,
+						'default_name': name,
+						'default_method': method,
+						'default_subtotal': balance,
+						'default_total': amount_total,
+						'default_partner': partner_id,
+						'default_date_created': date_order,
+						'default_firm': firm,
+						'default_ruc': ruc,
+						}
+			}
+	return payment_method, ret
+
 # ----------------------------------------------------------- Create procedure ----------------
 def open_myself(res_model, res_id):
 	"""

@@ -869,62 +869,9 @@ class sale_order(models.Model):
 		"""
 		# Update Descriptors
 		ord_funcs.update_descriptors(self)
-
-		# Init vars
-		name = 'Pago'
-		method = 'cash'
-		balance = self.x_amount_total
-		firm = self.patient.x_firm
-		ruc = self.patient.x_ruc
-
-		# Create
-		self.x_payment_method = self.env['openhealth.payment_method'].create({
-																				'order': self.id,
-																				'method': method,
-																				'subtotal': balance,
-																				'total': self.x_amount_total,
-																				'partner': self.partner_id.id,
-																				'date_created': self.date_order,
-																				'firm': firm,
-																				'ruc': ruc,
-																			})
-		payment_method_id = self.x_payment_method.id
-
-		# Create Lines
-		name = '1'
-		method = 'cash'
-		subtotal = self.x_amount_total
-		payment_method = self.x_payment_method.id
-		self.x_payment_method.pm_line_ids.create({'name': name,
-													'method': method,
-													'subtotal': subtotal,
-													'payment_method': payment_method})
-		return {
-				'type': 'ir.actions.act_window',
-				'name': ' New PM Current',
-				'view_type': 'form',
-				'view_mode': 'form',
-				'target': 'current',
-				'res_model': 'openhealth.payment_method',
-				'res_id': payment_method_id,
-				'flags': 	{
-							#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-							#'form': {'action_buttons': False, }
-							'form':{'action_buttons': False, 'options': {'mode': 'edit'}}
-							},
-				'context': {
-							'default_order': self.id,
-							'default_name': name,
-							'default_method': method,
-							'default_subtotal': balance,
-							'default_total': self.x_amount_total,
-							'default_partner': self.partner_id.id,
-							'default_date_created': self.date_order,
-							'default_firm': firm,
-							'default_ruc': ruc,
-							}
-				}
-	# create_payment_method
+		env = self.env['openhealth.payment_method']
+		self.x_payment_method, ret = raw_funcs.create_pm(env, self.id, self.date_order, self.x_amount_total, self.partner_id.id, self.patient.x_firm, self.patient.x_ruc)		
+		return ret 
 
 # ----------------------------------------------------------- Print -------------------------------
 	@api.multi
@@ -1306,3 +1253,14 @@ class sale_order(models.Model):
 		print('')
 		print('Test Validation')
 		self.validate_and_confirm()
+
+# ----------------------------------------------------------- Test Payment method --------------------------------
+	@api.multi
+	def test_pm(self):
+		"""
+		Test Payment method
+		"""
+		print('')
+		print('test_pm')
+		self.create_payment_method()
+

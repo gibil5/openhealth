@@ -100,6 +100,14 @@
 										groups='openhealth.roots'
 									/>
 
+									<!-- Test Validate -->
+									<button
+											type="object"
+											class="oe_highlight"
+											name="test_pm"
+											string="Test PM"
+											groups='openhealth.roots'
+										/>
 				</xpath>
 
 

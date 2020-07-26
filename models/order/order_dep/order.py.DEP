@@ -1,4 +1,46 @@
 # 26 Jul 2020 
+
+	# Partner Vip - OK
+	x_partner_vip = fields.Boolean(
+			'Vip',
+			default=False,
+			compute="_compute_partner_vip",
+		)
+
+	@api.multi
+	def _compute_partner_vip(self):
+		for record in self:
+			record.x_partner_vip = False
+			#count = self.env['openhealth.card'].search_count([
+			#													('patient_name', '=', record.partner_id.name),
+			#											])
+			#if count == 0:
+			#	record.x_partner_vip = False
+			#else:
+			#	record.x_partner_vip = True
+
+
+# --------------------------------- Price List - Computes ----------------------
+	# Price List
+	pl_price_list = fields.Char(
+			string="Pl - Price List",
+			compute='_compute_pl_price_list',
+		)
+	@api.multi
+	def _compute_pl_price_list(self):
+		for record in self:
+			price_list = ''
+			for line in record.order_line:
+				price_list = line.get_price_list()
+			record.pl_price_list = price_list
+
+
+	# Check Serial Nr
+	@api.constrains('x_serial_nr')
+	def _check_x_serial_nr(self):
+		chk_order.check_serial_nr(self)
+
+
 		options = {
 			0 : zero,
 			1 : sqr,

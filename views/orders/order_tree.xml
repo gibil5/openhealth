@@ -17,8 +17,9 @@
 						blue:state=='sale';
 						grey:state in ('cancel')
 						">
-
+<!--
 					<field name="pl_price_list"	string="Lista de Precios"  	groups="openhealth.roots"/>
+-->
 					<field name="name"          string="Referencia"/>
 
 

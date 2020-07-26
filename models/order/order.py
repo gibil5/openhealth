@@ -26,7 +26,7 @@ from __future__ import print_function
 import datetime
 
 from openerp import models, fields, api
-from openerp import _
+#from openerp import _
 from openerp.exceptions import Warning as UserError
 from openerp.addons.openhealth.models.patient import pat_vars, chk_patient
 
@@ -67,12 +67,6 @@ class sale_order(models.Model):
 		if self.x_type in ['ticket_receipt', 'receipt']:
 			chk_patient.check_x_id_doc(self)
 
-	# Check Serial Nr
-	@api.constrains('x_serial_nr')
-	def _check_x_serial_nr(self):
-		chk_order.check_serial_nr(self)
-
-
 # ----------------------------------------------------------- Configurator  -------------------------------
 	configurator = fields.Many2one(
 			'openhealth.configurator.emr',
@@ -100,19 +94,15 @@ class sale_order(models.Model):
 		print(pricelist.name)
 		return pricelist
 
-
 	# Pricelist
 	pricelist_id = fields.Many2one(
 			'product.pricelist',
 			string='Pricelist',
-
 			#readonly=True,
 			readonly=False,
-
 			#states={'draft': [('readonly', False)], 'sent': [('readonly', False)]},
 			help="Pricelist for current sales order.",
 			#required=True,
-
 			default=_get_default_pricelist_id,
 		)
 
@@ -164,21 +154,6 @@ class sale_order(models.Model):
 			string="Producto",
 		)
 
-
-# --------------------------------- Price List - Computes ----------------------
-	# Price List
-	pl_price_list = fields.Char(
-			string="Pl - Price List",
-			compute='_compute_pl_price_list',
-		)
-
-	@api.multi
-	def _compute_pl_price_list(self):
-		for record in self:
-			price_list = ''
-			for line in record.order_line:
-				price_list = line.get_price_list()
-			record.pl_price_list = price_list
 
 	# Amount flow
 	x_amount_flow = fields.Float(
@@ -241,30 +216,6 @@ class sale_order(models.Model):
 			string='Receptor',
 		)
 
-# ---------------------------------- Partner - Not Dep -------------------------
-	# On Change Partner
-	@api.onchange('partner_id')
-	def _onchange_partner_id(self):
-		if self.partner_id.name != False:
-			self.x_partner_dni = self.partner_id.x_dni
-
-	# DNI - Used by Budget - Allows research of Patient by DNI - Important
-	x_partner_dni = fields.Char(
-			string='DNI',
-			states={'draft': 	[('readonly', False)],
-						'sent': 	[('readonly', True)],
-						'sale': 	[('readonly', True)],
-						'cancel': 	[('readonly', True)],
-						'done': 	[('readonly', True)],
-					},
-		)
-
-	# On Change Partner Dni
-	@api.onchange('x_partner_dni')
-	def _onchange_x_partner_dni(self):
-		self.patient = ord_funcs.search_patient_by_id_document(self)
-	# _onchange_x_partner_dni
-
 
 # ------------------------------------------- Natives  - Computes OK -----------
 
@@ -298,24 +249,6 @@ class sale_order(models.Model):
 			record.nr_lines = ctr
 
 
-	# Partner Vip - OK
-	x_partner_vip = fields.Boolean(
-			'Vip',
-			default=False,
-			compute="_compute_partner_vip",
-		)
-
-	@api.multi
-	def _compute_partner_vip(self):
-		for record in self:
-			record.x_partner_vip = False
-			#count = self.env['openhealth.card'].search_count([
-			#													('patient_name', '=', record.partner_id.name),
-			#											])
-			#if count == 0:
-			#	record.x_partner_vip = False
-			#else:
-			#	record.x_partner_vip = True
 
 	# Amount total - OK
 	x_amount_total = fields.Float(
@@ -402,7 +335,7 @@ class sale_order(models.Model):
 
 		# Doctor User Name
 		self.x_doctor_uid = raw_funcs.get_doctor_uid(self.x_doctor)
-		
+
 
 		# Date - Must be that of the Sale, not the Budget.
 		self.date_order = datetime.datetime.now()
@@ -806,7 +739,6 @@ class sale_order(models.Model):
 		print('correct_serial_number')
 		self.x_serial_nr = ord_funcs.get_serial_nr(self.x_type, self.x_counter_value, self.state)
 
-
 # ----------------------------------------------------- Fixers --------------------------
 	@api.multi
 	def fix_treatment(self):
@@ -816,7 +748,7 @@ class sale_order(models.Model):
 		print()
 		print('Fix Treatment')
 		fixer = fix_treatment.FixTreatment(self.env['openhealth.treatment'], self.patient.id, self.x_doctor.id)
-		fixer.fix() 
+		fixer.fix()
 
 # ----------------------------------------------------------- Pay ---------------------------------
 	# DNI
@@ -865,13 +797,42 @@ class sale_order(models.Model):
 	# Patient
 	@api.onchange('patient')
 	def _onchange_patient(self):
+		print('_onchange_patient')
+		print(self.pricelist_id)
 		self.partner_id, self.x_dni, self.x_ruc, self.x_id_doc, self.x_id_doc_type = raw_funcs.get_patient_ids(self.patient)
+		print(self.pricelist_id)
 
 	# Doctor
 	@api.onchange('x_doctor')
 	def _onchange_x_doctor(self):
 		self.treatment = raw_funcs.get_treatment(self.env['openhealth.treatment'], self.patient.name, self.x_doctor.name)
 
+
+# ---------------------------------- Partner - Not Dep -------------------------
+	# Partner
+	@api.onchange('partner_id')
+	def _onchange_partner_id(self):
+		print('_onchange_partner_id')
+		print(self.pricelist_id)
+		if self.partner_id.name != False:
+			self.x_partner_dni = self.partner_id.x_dni
+		print(self.pricelist_id)
+
+	# DNI - Used by Budget - Allows research of Patient by DNI - Important
+	x_partner_dni = fields.Char(
+			string='DNI',
+			states={'draft': 	[('readonly', False)],
+						'sent': 	[('readonly', True)],
+						'sale': 	[('readonly', True)],
+						'cancel': 	[('readonly', True)],
+						'done': 	[('readonly', True)],
+					},
+		)
+
+	# On Change Partner Dni
+	@api.onchange('x_partner_dni')
+	def _onchange_x_partner_dni(self):
+		self.patient = ord_funcs.search_patient_by_id_document(self)
 
 # ----------------------------------------------------------- Primitives --------------------------
 
@@ -1000,23 +961,15 @@ class sale_order(models.Model):
 	@api.multi
 	def open_line_current(self):
 		"""
-		Quick access Button
+		Used by Treatment
 		"""
-		consultation_id = self.id
-		return {
-				'type': 'ir.actions.act_window',
-				'name': ' Edit Order Current',
-				'view_type': 'form',
-				'view_mode': 'form',
-				'res_model': self._name,
-				'res_id': consultation_id,
-				'target': 'current',
-				'flags': {
-						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-						'form': {'action_buttons': True, }
-						},
-				'context': {}
-		}
+		print('open_line_current')
+		res_model = self._name
+		#res_model = 'sale.order'
+		res_id = self.id
+		ret = raw_funcs.open_line_current(res_model, res_id)
+		#print(ret)
+		return ret 
 
 #----------------------------------------------------------- Qpen myself --------------------------
 	@api.multi

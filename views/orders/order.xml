@@ -229,9 +229,9 @@
 
 <!-- Natives -->
 				<xpath expr="//field[@name='validity_date']" position="before">
-
+<!--
 					<field name="x_partner_vip"/>
-
+-->
 					<field name="vspace"/>
 
 					<field name="date_order"            string="Fecha"
@@ -330,7 +330,9 @@
 					<group>
 						<h3>
 							<field name="x_title"       readonly="0"/>
+<!--
 							<field name="pl_price_list"/>
+-->
 						</h3>
 					</group>
 					<group></group>

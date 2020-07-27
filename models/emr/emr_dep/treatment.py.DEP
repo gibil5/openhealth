@@ -1,3 +1,32 @@
+# 26 jul 2020
+
+
+state = 'empty'
+if record.treatment_closed:
+  state = 'done'
+elif record.nr_controls > 0:
+  state = 'controls'
+elif record.nr_sessions > 0:
+  state = 'sessions'
+elif record.nr_procedures > 0:
+  state = 'procedure'
+elif record.nr_invoices_pro > 0:
+  state = 'invoice_procedure'
+elif record.nr_budgets_pro > 0:
+  state = 'budget_procedure'
+elif record.nr_services > 0:
+  state = 'service'
+elif record.consultation_progress == 100:
+  state = 'consultation'
+elif record.nr_invoices_cons > 0:
+  state = 'invoice_consultation'
+elif record.nr_budgets_cons > 0:
+  state = 'budget_consultation'
+
+record.state = state
+
+
+
 
 # 22 jul 2020
 

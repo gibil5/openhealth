@@ -2,16 +2,22 @@
 """
 		*** Treatment
 		Created: 			26 Aug 2016
-		Last up: 	 		22 Jul 2020
+		Last up: 	 		26 Jul 2020
 """
 from __future__ import print_function
 from openerp import models, fields, api
+from openerp.addons.openhealth.models.libs import eval_vars
 from . import treatment_vars
-from openerp.addons.openhealth.models.libs import lib, user, eval_vars
+from . import treatment_state
+
+#from openerp.addons.openhealth.models.libs import lib, user, eval_vars
 #from openerp.addons.openhealth.models.libs import creates as cre  	# Dep !
-from openerp.addons.price_list.models.treatment import pl_creates
+#from openerp.addons.price_list.models.treatment import pl_creates
 
 class Treatment(models.Model):
+	"""
+	Treatment class
+	"""
 	_name = 'openhealth.treatment'
 	_order = 'write_date desc'
 	_description = 'Treatment'
@@ -54,21 +60,20 @@ class Treatment(models.Model):
 		)
 
 	chief_complaint = fields.Selection(
-			string = 'Motivo de consulta',
-			selection = eval_vars._chief_complaint_list,
+			string='Motivo de consulta',
+			selection=eval_vars._chief_complaint_list,
 			required=False,
 			readonly=False,
 		)
 
 	start_date = fields.Date(
 			string="Fecha inicio",
-			default = fields.Date.today,
+			default=fields.Date.today,
 			readonly=True,
 			states=READONLY_STATES,
 		)
 
 # ----------------------------------------------------------- Number ofs --------------------------
-
 	# Budgets - Consultations 			# DEP ?
 	nr_budgets_cons = fields.Integer(
 			string="Presupuestos Consultas",
@@ -495,29 +500,9 @@ class Treatment(models.Model):
 	@api.multi
 	def _compute_state(self):
 		for record in self:
-			state = 'empty'
-			if record.treatment_closed:
-				state = 'done'
-			elif record.nr_controls > 0:
-				state = 'controls'
-			elif record.nr_sessions > 0:
-				state = 'sessions'
-			elif record.nr_procedures > 0:
-				state = 'procedure'
-			elif record.nr_invoices_pro > 0:
-				state = 'invoice_procedure'
-			elif record.nr_budgets_pro > 0:
-				state = 'budget_procedure'
-			elif record.nr_services > 0:
-				state = 'service'
-			elif record.consultation_progress == 100:
-				state = 'consultation'
-			elif record.nr_invoices_cons > 0:
-				state = 'invoice_consultation'
-			elif record.nr_budgets_cons > 0:
-				state = 'budget_consultation'
-			record.state = state
-	# _compute_state
+			obj = treatment_state.TreatmentState(record)
+			record.state = obj.get_state()
+
 
 # ----------------------------------------------------------- Number ofs - Services ---------------
 	# Number of Services

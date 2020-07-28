@@ -1,19 +1,14 @@
 
-
-
 # Sub Family
 _pro_subfamily_list = [
-
 	# Prods
-('chavarri', 	'CHAVARRI'),
-('commercial', 	'COMERCIAL'),
+	('chavarri', 	'CHAVARRI'),
+	('commercial', 	'COMERCIAL'),
 ]
-
 
 
 # Family
 _ser_family_list = [
-
 	# Servs
 	('laser', 		'LASER'),
 	('medical', 	'T. MEDICOS'),
@@ -24,23 +19,16 @@ _ser_family_list = [
 ]
 
 
-
-
 # Treatment
-
 _treatment_list_laser = [
-
-('LASER CO2 FRACCIONAL',	'LASER CO2 FRACCIONAL'),
-('QUICKLASER',	'QUICKLASER'),
-('LASER EXCILITE',	'LASER EXCILITE'),
-('LASER M22 IPL',	'LASER M22 IPL'),
-('LASER M22 ND YAG',	'LASER M22 ND YAG'),
+	('LASER CO2 FRACCIONAL',	'LASER CO2 FRACCIONAL'),
+	('QUICKLASER',	'QUICKLASER'),
+	('LASER EXCILITE',	'LASER EXCILITE'),
+	('LASER M22 IPL',	'LASER M22 IPL'),
+	('LASER M22 ND YAG',	'LASER M22 ND YAG'),
 ]
 
-
-
 _treatment_list_medical = [
-
 ('CONSULTA MEDICA',	'CONSULTA MEDICA'),
 ('CONSULTA MEDICA DR. CHAVARRI',	'CONSULTA MEDICA DR. CHAVARRI'),
 ('CONSULTA GINECOLOGICA',	'CONSULTA GINECOLOGICA'),
@@ -55,18 +43,13 @@ _treatment_list_medical = [
 ('INFILTRACIONES',	'INFILTRACIONES'),
 ]
 
-
-
 _treatment_list_cosmetology = [
-
 ('PUNTA DE DIAMANTES',	'PUNTA DE DIAMANTES'),
 ('CARBOXITERAPIA',	'CARBOXITERAPIA'),
 ('LASER TRIACTIVE + CARBOXITERAPIA',	'LASER TRIACTIVE + CARBOXITERAPIA'),
 ]
 
-
 _treatment_list_gynecology = [
-
 ('CONSULTA GINECOLOGICA',	'CONSULTA GINECOLOGICA'),
 ('LASER CO2 FRACCIONAL',	'LASER CO2 FRACCIONAL'),
 ('CRIOCIRUGIA',	'CRIOCIRUGIA'),
@@ -75,57 +58,30 @@ _treatment_list_gynecology = [
 ('TRATAMIENTO',	'TRATAMIENTO'),
 ]
 
-
-
-
-
 _treatment_list_co2 = [
 ('LASER CO2 FRACCIONAL',	'LASER CO2 FRACCIONAL'),
 ('2018', 	'2018'),
 ]
 
 _treatment_list_exc = [
-#('LASER CO2 FRACCIONAL',	'LASER CO2 FRACCIONAL'),
-#('QUICKLASER',	'QUICKLASER'),
 ('LASER EXCILITE',	'LASER EXCILITE'),
-#('LASER M22 IPL',	'LASER M22 IPL'),
-#('LASER M22 ND YAG',	'LASER M22 ND YAG'),
 ('2018', 	'2018'),
 ]
 
 _treatment_list_ipl = [
-
-#('LASER CO2 FRACCIONAL',	'LASER CO2 FRACCIONAL'),
-#('QUICKLASER',	'QUICKLASER'),
-#('LASER EXCILITE',	'LASER EXCILITE'),
 ('LASER M22 IPL',	'LASER M22 IPL'),
-#('LASER M22 ND YAG',	'LASER M22 ND YAG'),
 ('2018', 	'2018'),
 ]
 
 _treatment_list_ndy = [
-
-#('LASER CO2 FRACCIONAL',	'LASER CO2 FRACCIONAL'),
-#('QUICKLASER',	'QUICKLASER'),
-#('LASER EXCILITE',	'LASER EXCILITE'),
-#('LASER M22 IPL',	'LASER M22 IPL'),
 ('LASER M22 ND YAG',	'LASER M22 ND YAG'),
 ('2018', 	'2018'),
 ]
 
 _treatment_list_qui = [
-
-#('LASER CO2 FRACCIONAL',	'LASER CO2 FRACCIONAL'),
 ('QUICKLASER',	'QUICKLASER'),
-#('LASER EXCILITE',	'LASER EXCILITE'),
-#('LASER M22 IPL',	'LASER M22 IPL'),
-#('LASER M22 ND YAG',	'LASER M22 ND YAG'),
 ('2018', 	'2018'),
 ]
-
-
-
-
 
 
 _zone_list_co2 = [
@@ -135,7 +91,6 @@ _zone_list_co2 = [
 ('Manos',	'Manos'),
 ('Localizado Rostro',	'Localizado Rostro'),
 ('Localizado Cuerpo',	'Localizado Cuerpo'),
-
 ('2018', 	'2018'),
 ]
 
@@ -146,11 +101,8 @@ _zone_list_qui = [
 ('Manos',	'Manos'),
 ('Localizado Rostro',	'Localizado Rostro'),
 ('Localizado Cuerpo',	'Localizado Cuerpo'),
-
 ('2018', 	'2018'),
 ]
-
-
 
 _zone_list_exc_ipl = [
 ('Abdomen',	'Abdomen'),
@@ -159,7 +111,6 @@ _zone_list_exc_ipl = [
 ('Cuello',	'Cuello'),
 ('Brazos',	'Brazos'),
 ('Espalda',	'Espalda'),
-
 ('Gluteos',	'Gluteos'),
 ('Hombros',	'Hombros'),
 ('Manos',	'Manos'),
@@ -168,15 +119,12 @@ _zone_list_exc_ipl = [
 ('Pies',	'Pies'),
 ('Piernas',	'Piernas'),
 ('Rostro',	'Rostro'),
-
 ('2018', 	'2018'),
 ]
-
 
 _zone_list_ndy = [
 ('Localizado Rostro',	'Localizado Rostro'),
 ('Localizado Cuerpo',	'Localizado Cuerpo'),
-
 ('2018', 	'2018'),
 ]
 
@@ -188,27 +136,21 @@ _zone_list_med = [
 ('Indeterminada',	'Indeterminada'),
 ('Piernas',	'Piernas'),
 ('Todo Rostro',	'Todo Rostro'),
-
 ('na',	'na'),
-
 ('2018', 	'2018'),
 ]
-
 
 _zone_list_cos = [
 ('Cuerpo',	'Cuerpo'),
 ('Rostro',	'Rostro'),
 ('Rostro + Papada + Cuello',	'Rostro + Papada + Cuello'),
-
 ('2018', 	'2018'),
 ]
-
 
 _zone_list_gyn = [
 ('Vagina',	'Vagina'),
 ('Indeterminada',	'Indeterminada'),
 ]
-
 
 _zone_list_echo = [
 ('Indeterminada',	'Indeterminada'),
@@ -224,18 +166,9 @@ _zone_list_promo = [
 ('Todo Rostro + Manos + Cuello',	'Todo Rostro + Manos + Cuello'),
 ]
 
-
-
-
-
-
-
-
-
 _zone_list = [
 ('test_zone',	'test_zone'),
 ('na',	'na'),
-
 ('Indeterminada',	'Indeterminada'),
 ('Todo Rostro',	'Todo Rostro'),
 ('Pomulos',	'Pomulos'),

@@ -15,6 +15,9 @@ from . import pl_user
 from . import time_funcs
 import datetime
 
+from . import test_treatment
+from . import reco_funcs
+
 #from openerp.addons.openhealth.models.libs import lib, user, eval_vars
 #from openerp.addons.openhealth.models.libs import creates as cre  	# Dep !
 #from openerp.addons.price_list.models.treatment import pl_creates
@@ -1089,3 +1092,137 @@ class Treatment(models.Model):
 						pl_creates.create_procedure_go(self, product_product)
 
 	# create_procedure_man
+
+# ----------------------------------------------------------- Create Services  ------------
+	# co2
+	@api.multi
+	def create_service_co2(self):
+		"""
+		Create Service Co2
+		"""
+		# Init
+		family = 'laser'
+		subfamily = 'co2'
+		treatment_id = self.id
+		physician_id = self.physician.id
+
+		# Create
+		ret = reco_funcs.create_service(treatment_id, family, subfamily, physician_id)
+
+		return ret
+
+
+
+# ----------------------------------------------------------- Test All Cycle - Step by Step --------------------------
+	@api.multi
+	def test_create_budget_consultation(self):
+		"""
+		Test
+		"""
+		print()
+		print('Test Create Budget Consultation')
+		test_treatment.test_create_budget_consultation(self)
+
+	@api.multi
+	def test_create_sale_consultation(self):
+		"""
+		Test
+		"""
+		print()
+		print('Test Create Sale Consultation')
+		test_treatment.test_create_sale_consultation(self)
+
+	@api.multi
+	def test_create_consultation(self):
+		"""
+		Test
+		"""
+		print()
+		print('Test Create Consultation')
+		test_treatment.test_create_consultation(self)
+
+	@api.multi
+	def test_create_recommendations(self):
+		"""
+		Test
+		"""
+		print()
+		print('Test Create Recommendations')
+		test_treatment.test_create_recommendations(self)
+
+	@api.multi
+	def test_create_budget_procedure(self):
+		"""
+		Test
+		"""
+		print()
+		print('Test Create Budget procedure')
+		test_treatment.test_create_budget_procedure(self)
+
+	@api.multi
+	def test_create_sale_procedure(self):
+		"""
+		Test
+		"""
+		print()
+		print('Test Create Sale procedure')
+		test_treatment.test_create_sale_procedure(self)
+
+	@api.multi
+	def test_create_procedure(self):
+		"""
+		Test
+		"""
+		print()
+		print('Test Create procedure')
+		test_treatment.test_create_procedure(self)
+
+	@api.multi
+	def test_create_sessions(self):
+		"""
+		Test
+		"""
+		print()
+		print('Test Create sessions')
+		test_treatment.test_create_sessions(self)
+
+	@api.multi
+	def test_create_controls(self):
+		"""
+		Test
+		"""
+		print()
+		print('Test Create controls')
+		test_treatment.test_create_controls(self)
+
+
+# ----------------------------------------------------------- Test Integration --------------------
+	@api.multi
+	def test_integration(self):
+		"""
+		Integration Test
+		"""
+		print()
+		print('OH - treatment.py - test_integration')
+		if self.patient.x_test:
+			# Reset
+			#test_treatment.reset_treatment(self)
+			# Test Integration
+			test_treatment.test_integration_treatment(self)
+		print()
+		print()
+		print('SUCCESS !')
+
+# ----------------------------------------------------------- Test Reset --------------------------
+	@api.multi
+	def test_reset(self):
+		"""
+		Reset Test
+		"""
+		print()
+		print('OH - Test Reset Button')
+		if self.patient.x_test:
+			test_treatment.test_reset_treatment(self)
+		print()
+		print()
+		print('SUCCESS !')

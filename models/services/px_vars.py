@@ -3,26 +3,19 @@
 # Used by:
 # 	- Product Template
 
-
-_price_list_list = [
-	
+_price_list_list = [	
 	('2019', '2019'),
 	('2018', '2018'),
 ]
 
-
-
 _family_list = [
-
 	# Prods
 	('topical', 	'Topico'),
 	('card', 		'Tarjeta'),
 	('kit', 		'Kit'),
 
-
 	# Consultations
 	('consultation', 	'Consulta'),
-
 
 	# Procedures
 	('laser', 		'Laser'),
@@ -32,25 +25,18 @@ _family_list = [
 	('promotion', 	'Promos'),
 	('echography', 	'Ecografia'),
 
-
 	# Other
 	('test', 	'test'),
 	('other', 		'Otros'),
 	('2018', 	'2018'),
 ]
 
-
-
-
 _subfamily_list = [
-
 ('consultation', 	'Consulta'),
-
 
 # Products
 ('chavarri', 	'Chavarri'),
 ('commercial', 	'Comercial'),
-
 
 # Laser
 ('co2', 		'Laser Co2'),
@@ -58,53 +44,33 @@ _subfamily_list = [
 ('excilite', 	'Laser Excilite'),
 ('m22', 		'Laser M22'),
 
-
-
 # Cosmetology
 ('cosmetology', 	'Cosmeatria'),
 ('carboxytherapy', 	'Carboxiterapia'),
 ('diamond_tip', 	'Punta de Diamante'),
 ('laser_triactive_carboxytherapy', 	'Laser Triactivo + Cosmeatria'),
 
-
-
 # Medical
 ('medical', 	'T. Medicos'),
-
 ('botox', 					'Botox'),
 ('cryosurgery', 			'Criocirugia'),
 ('hyaluronic_acid', 		'Acido Hialuronico'),
-
 ('infiltrations', 			'Infiltraciones'),
 ('mesotherapy', 			'Mesoterapia'),
 ('plasma', 					'Plasma'),
-
 ('redux', 					'Redux'),
 ('sclerotherapy', 			'Escleroterapia'),
 ('vitamin_c_intravenous', 	'Vitamina C Endovenosa'),
-
-
-
 
 # Other
 ('echography', 	'Ecografia'),
 ('gynecology', 	'Ginecologia'),
 ('promotion', 	'Promos'),
-
 ('test', 		'test'),
-
 ('other', 		'Otros'),
 ('commission', 	'Comision'),
-
-
 ('2018', 	'2018'),
 ]
-
-
-
-
-
-
 
 # Treatment
 _treatment_list = [
@@ -119,10 +85,8 @@ _treatment_list = [
 ('CONSULTA MEDICA DR. CHAVARRI',	'CONSULTA MEDICA DR. CHAVARRI'),
 ('CONSULTA GINECOLOGICA',	'CONSULTA GINECOLOGICA'),
 
-
 ('VICTAMINA C ENDOVENOSA',	'VICTAMINA C ENDOVENOSA'),
 ('VITAMINA C ENDOVENOSA',	'VITAMINA C ENDOVENOSA'),
-
 
 ('CRIOCIRUGIA',	'CRIOCIRUGIA'),
 ('ESCLEROTERAPIA',	'ESCLEROTERAPIA'),
@@ -170,14 +134,10 @@ _treatment_list = [
 ('2018', 	'2018'),
 ]
 
-
-
 _type_list = [
 	('service', 'service'),
 	('product', 'product'),
 ]
-
-
 
 
 _level_list = [
@@ -319,8 +279,6 @@ _sessions_list = [
 
 ('2018', 	'2018'),
 ]
-
-
 
 
 # File name

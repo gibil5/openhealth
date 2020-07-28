@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
+"""
+    TimeFuncs - Openhealth
 
+    Created:                27 Jul 2020
+    Last updated:           27 Jul 2020
+"""
 from datetime import datetime,tzinfo,timedelta
 
-
-
 #------------------------------------------------ Time ---------------------------------------------------
-
 class Zone(tzinfo):
     def __init__(self,offset,isdst,name):
         self.offset = offset

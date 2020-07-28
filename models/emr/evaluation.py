@@ -224,42 +224,44 @@ class Evaluation(models.Model):
 	x_diagnosis = fields.Text(
 			string='Diagnóstico',
 			required=False,
+			default = 'x', 
 		)
 
 	x_antecedents = fields.Text(
 			string='Antecedentes médicos',
 			required=False,
+			default = 'x', 
 		)
 
 	x_allergies_medication = fields.Text(
 			string='Alergias a medicamentos',
 			required=False,
+			default = 'x', 
 		)
 
 	x_observations = fields.Text(
 			string='Observaciones',
 			required=False,
+			default = 'x', 
 		)
 
 	x_indications = fields.Text(
 			string='Indicaciones',
 			required=False,
+			default = 'x', 
 		)
 
 	x_analysis_lab = fields.Boolean(
 			string='Análisis de laboratorio',
 			default=False,
+			#default = 'x', 
 		)
-
-
 
 	x_examination = fields.Text(
 			string='Examen clínico',
 			required=False,
+			default = 'x', 
 		)
-
-
-
 
 	# ----------------------------------------------------------- Patient -------------------------
 

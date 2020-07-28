@@ -3,30 +3,24 @@
  		Consultation 
 
 		Created: 			 1 Nov 2016
-		Last updated: 	 	 2 Oct 2019
+		Last updated: 	 	27 Jul 2020
 """
 from datetime import datetime,tzinfo,timedelta
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.libs import eval_vars
 
 class Consultation(models.Model):
-
 	_name = 'openhealth.consultation'
-
 	_inherit = 'oeh.medical.evaluation'
 	
-
-# ----------------------------------------------------------- Primitives ------------------------------------------------------
-
+# ----------------------------------------------------------- Primitives -------
 	# Name 
 	name = fields.Char(
 			string = 'Consulta #',
 			)
 
-
 	# Profile 
 	x_profile = fields.Selection(
-			#selection=app_vars._profile_list, 
 			[
 				('normal','Normal'), 
 				('anxious','Ansioso'), 
@@ -39,15 +33,12 @@ class Consultation(models.Model):
 			string="Perfil psicológico", 
 		)
 
-
 	# Complaint
 	chief_complaint = fields.Selection(			# Necessary 
 			string = 'Motivo de consulta', 
 			selection = eval_vars._chief_complaint_list, 
 			required=False, 
 		)
-
-
 
 	# State 
 	state = fields.Selection(
@@ -111,8 +102,7 @@ class Consultation(models.Model):
 
 
 
-# ----------------------------------------------------------- Relational ------------------------------------------------------
-
+# ----------------------------------------------------------- Relational -------
 	treatment = fields.Many2one(
 			'openhealth.treatment',
 			ondelete='cascade', 
@@ -120,12 +110,7 @@ class Consultation(models.Model):
 			#required=True, 
 		)
 
-
-
-
-
-# --------------------------------------------------------- Consultation Fundamentals ------------------------------------------------------
-	
+# --------------------------------------------- Consultation Fundamentals ------
 	x_reason_consultation = fields.Text(
 			string = 'Motivo de consulta (detalle)', 
 			)
@@ -143,18 +128,15 @@ class Consultation(models.Model):
 	x_fitzpatrick = fields.Selection(
 			selection = eval_vars.FITZ_TYPE, 
 			string = 'Fitzpatrick',
-			default = '', 
+			default = 'one', 
 			)
 
 	x_photo_aging = fields.Selection(
 			selection = eval_vars.PHOTO_TYPE, 
 			string = 'Foto-envejecimiento',
-			default = '', 
+			default = 'one', 
 			)
 
-
-
-	
 
 	# --------------------------------------------------------- Consultation First ------------------------------------------------------
 

@@ -2,13 +2,18 @@
 """
 		*** Treatment
 		Created: 			26 Aug 2016
-		Last up: 	 		26 Jul 2020
+		Last up: 	 		27 Jul 2020
 """
 from __future__ import print_function
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.libs import eval_vars
 from . import treatment_vars
 from . import treatment_state
+
+from . import pl_creates
+from . import pl_user
+from . import time_funcs
+import datetime
 
 #from openerp.addons.openhealth.models.libs import lib, user, eval_vars
 #from openerp.addons.openhealth.models.libs import creates as cre  	# Dep !
@@ -298,11 +303,17 @@ class Treatment(models.Model):
 	# Reset
 	@api.multi
 	def reset_procs(self):
+		"""
+		Reset Procedures
+		"""
 		self.add_procedures = False
 
 	# Toggle
 	@api.multi
 	def toggle_add_procedures(self):
+		"""
+		Toggle add procedures
+		"""
 		self.add_procedures = not self.add_procedures
 
 # ----------------------------------------------------------- Canonical ---------------------------
@@ -654,6 +665,9 @@ class Treatment(models.Model):
 	# Open Myself
 	@api.multi
 	def open_myself(self):
+		"""
+		Used by
+		"""
 		treatment_id = self.id
 		return {
 			# Mandatory
@@ -697,3 +711,295 @@ class Treatment(models.Model):
 						},
 				'context': {}
 		}
+
+
+# ----------------------------------------------------------- Create Buttons  ----------
+	@api.multi
+	def create_order_con(self):
+		"""
+		Create Order Consultation Standard - Medical
+		One mode
+		"""
+		print()
+		#print('PL - treatment - create_order_con')
+		print('OH - create_order_con')
+
+		# Init
+		price_list = '2019'
+		target = 'medical'
+
+		#order = self.create_order_con_target(target)
+		order = pl_creates.pl_create_order_con(self, target, price_list)
+
+		# Open Order
+		return {
+				# Created
+				'res_id': order.id,
+				# Mandatory
+				'type': 'ir.actions.act_window',
+				'name': 'Open Order Current',
+				# Window action
+				'res_model': 'sale.order',
+				# Views
+				"views": [[False, "form"]],
+				'view_mode': 'form',
+				'target': 'current',
+				#'view_id': view_id,
+				#"domain": [["patient", "=", self.patient.name]],
+				#'auto_search': False,
+				'flags': {
+						'form': {'action_buttons': True, }
+						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						},
+				'context': {}
+			}
+
+# ----------------------------------------------------- Create Consultations ---------------------------------------------
+
+# ----------------------------------------------------- Create Consultation -----------------------
+	# Create Consultation
+	@api.multi
+	def create_consultation(self):
+		print()
+		print('OH - create_consultation')
+
+		# Init vars
+		patient_id = self.patient.id
+		treatment_id = self.id
+		chief_complaint = self.chief_complaint
+
+		# Doctor
+		doctor = pl_user.get_actual_doctor(self)
+		doctor_id = doctor.id
+		if doctor_id == False:
+			doctor_id = self.physician.id
+
+		# Date
+		GMT = time_funcs.Zone(0, False, 'GMT')
+		evaluation_start_date = datetime.datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
+
+		# Search
+		consultation = self.env['openhealth.consultation'].search([
+																		('treatment', '=', self.id),
+																],
+																#order='appointment_date desc',
+																limit=1,)
+
+		# If Consultation not exist
+		if consultation.name == False:
+			# Create
+			consultation = self.env['openhealth.consultation'].create({
+																		'patient': patient_id,
+																		'treatment': treatment_id,
+																		'evaluation_start_date': evaluation_start_date,
+																		'chief_complaint': chief_complaint,
+																		'doctor': doctor_id,
+													})
+
+		return {
+				# Mandatory
+				'type': 'ir.actions.act_window',
+				'name': 'Open Consultation Current',
+				# Window action
+				'res_model': 'openhealth.consultation',
+				#'res_id': consultation_id,
+				'res_id': consultation.id,
+				# Views
+				"views": [[False, "form"]],
+				'view_mode': 'form',
+				'target': 'current',
+				#'view_id': view_id,
+				#'view_id': 'oeh_medical_evaluation_view',
+				#"domain": [["patient", "=", self.patient.name]],
+				#'auto_search': False,
+				'flags': {
+							'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+							#'form': {'action_buttons': True, }
+						},
+				'context':   {
+								'search_default_treatment': treatment_id,
+								'default_patient': patient_id,
+								'default_doctor': doctor_id,
+								'default_treatment': treatment_id,
+								'default_evaluation_start_date': evaluation_start_date,
+								'default_chief_complaint': chief_complaint,
+				}
+			}
+	# create_consultation
+
+# ----------------------------------------------------------- Create Service ---------------------------
+	@api.multi
+	def create_service(self):
+		"""
+		Create Service
+		Opens a new form. For Reco choice.
+		"""
+		print()
+		print('OH - create_service')
+
+		# Init
+		res_id = self.id
+		res_model = 'openhealth.treatment'
+		view_id = self.env.ref('openhealth.treatment_2_form_view').id
+
+		# Open
+		return {
+			# Mandatory
+			'type': 'ir.actions.act_window',
+			'name': 'Open Treatment Current',
+			# Window action
+			'priority': 1,
+			'res_id': res_id,
+			'res_model': res_model,
+			#'view_id': view_id,
+			# Views
+			#"views": [[False, "form"]],
+			"views": [[view_id, "form"]],
+			'view_mode': 'form',
+			'target': 'current',
+			#"domain": [["patient", "=", self.patient.name]],
+			#'auto_search': False,
+			'flags': {
+						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						'form': {'action_buttons': False, }
+					},
+			'context': {
+						#'default_treatment': treatment_id,
+					}
+		}
+	# create_service
+
+# -----------------------------------------------------------  Create Order Procedure - 2019 -------------
+	@api.multi
+	def create_order_pro(self):
+		"""
+		Create Order Procedure - 2019
+		From Recommendations
+		"""
+		print('OH - create_order_pro')
+
+		# Clear
+		self.shopping_cart_ids.unlink()
+
+		# Init
+		price_list = '2019'
+
+		service_list = [
+							self.service_product_ids,
+							self.service_co2_ids,
+							self.service_excilite_ids,
+							self.service_ipl_ids,
+							self.service_ndyag_ids,
+							self.service_quick_ids,
+							self.service_medical_ids,
+							self.service_cosmetology_ids,
+							self.service_gynecology_ids,
+							self.service_echography_ids,
+							self.service_promotion_ids,
+		]
+
+		# Create Cart
+		for service_ids in service_list:
+			for service in service_ids:
+
+				if (service.service.name not in [False]) 	and 	(service.service.pl_price_list in [price_list]):
+					#print(service.service.name)
+					#print(service.service)
+					#print(service.service.id)
+					#print(service.price_applied)
+					#print(service.qty)
+					#print()
+
+					# Product
+					product = self.env['product.product'].search([
+																	('name', '=', service.service.name),
+																	('sale_ok', '=', True),
+																	('pl_price_list', '=', '2019'),
+													])
+					#print(product)
+					#print(product.name)
+					#print()
+					#print()
+
+					# Create Cart
+					if product.name not in [False]:
+						cart_line = self.shopping_cart_ids.create({
+																			'product': 		product.id,
+																			'price': 		service.price_applied,
+																			'qty': 			service.qty,
+																			'treatment': 	self.id,
+																})
+
+		# Create Order
+		order = pl_creates.pl_create_order(self)
+		#print(order)
+
+		# Open Order
+		return {
+				# Created
+				'res_id': order.id,
+				# Mandatory
+				'type': 'ir.actions.act_window',
+				'name': 'Open Order Current',
+				# Window action
+				'res_model': 'sale.order',
+				# Views
+				"views": [[False, "form"]],
+				'view_mode': 'form',
+				'target': 'current',
+				#'view_id': view_id,
+				#"domain": [["patient", "=", self.patient.name]],
+				#'auto_search': False,
+				'flags': {
+						'form': {'action_buttons': True, }
+						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						},
+				'context': {}
+			}
+	# create_order_pro
+
+# ----------------------------------------------------------- Create Procedure  -------------------
+	# Create Procedure
+	#@api.multi
+	#def create_procedure(self, product):
+	def create_procedure_auto(self, product):
+		"""
+		Used by: Order
+		Uses: Price List PL-Creates Library
+		"""
+		print()
+		print('OH - create_procedure_auto')
+		print(self)
+		print(product)
+		pl_creates.create_procedure_go(self, product)
+	# create_procedure
+
+# ----------------------------------------------------------- Create Procedure Manual  ------------
+	@api.multi
+	def create_procedure_man(self):
+		"""
+		Create Procedure Manual
+		"""
+		print()
+		print('OH - create_procedure_man')
+
+		# Loop
+		for order in self.order_pro_ids:
+			#if order.state == 'sale':
+			#if (order.state == 'sale')	and  (not order.x_procedure_created):
+			#if (order.state == 'sale')	and  (not order.is_procedure_created()):
+			if self.override or 		((order.state == 'sale')	and  	(not order.is_procedure_created())):
+
+
+				# Update Order
+				order.set_procedure_created(True)
+
+				# Loop
+				for line in order.order_line:
+					print(line.product_id)
+					if line.product_id.is_procedure():
+						product_product = line.product_id
+						# Create
+						pl_creates.create_procedure_go(self, product_product)
+
+	# create_procedure_man

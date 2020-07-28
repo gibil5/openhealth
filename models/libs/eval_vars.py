@@ -1,11 +1,5 @@
 # -*- coding: utf-8 -*-
 
-
-
-
-
-
-
 # Consultation
 _state_list = [
 					('cancel', 		'Anulado'),
@@ -41,7 +35,6 @@ EVALUATION_TYPE = [
 		('session', 'Sesión'),
 
 		]
-
 
 FITZ_TYPE = [
 		('one','I'),

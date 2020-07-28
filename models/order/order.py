@@ -102,8 +102,9 @@ class sale_order(models.Model):
 			readonly=False,
 			#states={'draft': [('readonly', False)], 'sent': [('readonly', False)]},
 			help="Pricelist for current sales order.",
-			#required=True,
-			default=_get_default_pricelist_id,
+			#default=_get_default_pricelist_id,
+			#required=False,
+			required=True,
 		)
 
 # ----------------------------------------------------------- Fields -------------------------------
@@ -1263,4 +1264,37 @@ class sale_order(models.Model):
 		print('')
 		print('test_pm')
 		self.create_payment_method()
+
+
+# ----------------------------------------------------------- Test Payment method --------------------------------
+	@api.multi
+	def test_serial_number(self):
+		"""
+		Test Serial Number
+		"""
+		print('')
+		print('test_serial_number')
+		self.make_serial_number()
+
+# ----------------------------------------------------- Test --------------------------
+	@api.multi
+	def test(self):
+		"""
+		Unit Testing - All
+		"""
+		print()
+		print('Test Order')
+		#tester = TestOrder(self)
+		#tester.test_raw_receipt(self)
+		#tester.test_raw_invoice(self)
+		#tester.test_raw_credit_note(self)
+		#tester.test_serial_number(self)
+		#action0 = self.test_raw_receipt()
+		#return action0
+		#action1 = self.test_raw_invoice()
+		#return action1
+		#action2 = self.test_raw_credit_note()
+		#return action2
+		#self.test_serial_number()
+		#return action0, action1, action2
 

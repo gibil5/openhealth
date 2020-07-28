@@ -15,8 +15,6 @@ from . import px_vars_promo
 class ServiceCo2(models.Model):
 	"""
 	Service Co2
-	Created: 			15 Apr 2019
-	Last mod: 			28 Jul 2020
 	"""
 	_name = 'price_list.service_co2'
 	_inherit = 'price_list.service'
@@ -70,8 +68,6 @@ class ServiceCo2(models.Model):
 class ServiceCosmetology(models.Model):
 	"""
 	Service Cosmetology
-	Created: 				 1 Nov 2016
-	Last mod: 			28 Jul 2020
 	"""
 	_name = 'price_list.service_cosmetology'
 	_inherit = 'price_list.service'
@@ -124,8 +120,6 @@ class ServiceCosmetology(models.Model):
 class ServiceEchography(models.Model):
 	"""
 	Service echo
-	Created: 				15 Apr 2019
-	Last: 					15 Apr 2019
 	"""
 	_name = 'price_list.service_echography'
 	_inherit = 'price_list.service'
@@ -201,8 +195,6 @@ class ServiceEchography(models.Model):
 class ServiceExcilite(models.Model):
 	"""
 	Service Excilite
-	Created: 				15 Apr 2019
-	Last mod: 			28 Jul 2020
 	"""
 	_name = 'price_list.service_excilite'
 	_inherit = 'price_list.service'
@@ -255,8 +247,6 @@ class ServiceExcilite(models.Model):
 class ServiceGynecology(models.Model):
 	"""
 	Service Gyn
-	Created: 				15 Apr 2019
-	Last: 					15 Apr 2019
 	"""
 	_name = 'price_list.service_gynecology'
 	_inherit = 'price_list.service'
@@ -333,8 +323,6 @@ class ServiceGynecology(models.Model):
 class ServiceIpl(models.Model):
 	"""
 	Service Ipl
-	Created: 				15 Apr 2019
-	Last updated: 	 		15 Apr 2019
 	"""
 	_name = 'price_list.service_ipl'
 	_inherit = 'price_list.service'
@@ -385,8 +373,6 @@ class ServiceIpl(models.Model):
 class ServiceNdyag(models.Model):
 	"""
 	Service Ndyag
-	Created: 				15 Apr 2019
-	Last updated: 	 		15 Apr 2019
 	"""
 	_name = 'price_list.service_ndyag'
 	_inherit = 'price_list.service'
@@ -438,8 +424,6 @@ class ServiceNdyag(models.Model):
 class ServiceProduct(models.Model):
 	"""
 	Service Product - 2019
-	Created: 				15 Apr 2019
-	Last updated: 	 		15 Apr 2019
 	"""
 	_name = 'price_list.service_product'
 	_inherit = 'price_list.service'
@@ -461,8 +445,6 @@ class ServiceProduct(models.Model):
 class ServicePromotion(models.Model):
 	"""
 	Service Promo
-	Created: 				15 Apr 2019
-	Last: 					15 Apr 2019
 	"""
 	_name = 'price_list.service_promotion'
 	_inherit = 'price_list.service'
@@ -522,8 +504,6 @@ class ServicePromotion(models.Model):
 class ServiceQuick(models.Model):
 	"""
 	Service Quick
-	Created: 				15 Apr 2019
-	Last updated: 	 		15 Apr 2019
 	"""
 	_name = 'price_list.service_quick'
 	_inherit = 'price_list.service'

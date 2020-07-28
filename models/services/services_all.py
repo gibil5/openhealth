@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+"""
+Services All
+Created: 			28 Jul 2020
+Last mod: 			28 Jul 2020
+"""
 from openerp import models, fields, api
 from . import px_vars
 from . import px_vars_ext
@@ -7,13 +12,12 @@ from . import px_vars_gyn
 from . import px_vars_promo
 
 # ---------------------------------------------- Co2 -------------------------------------
-"""
- 		Service Co2 
- 		Created: 			15 Apr 2019
-	    Last mod: 			28 Jul 2020
-"""
-
 class ServiceCo2(models.Model):
+	"""
+	Service Co2
+	Created: 			15 Apr 2019
+	Last mod: 			28 Jul 2020
+	"""
 	_name = 'price_list.service_co2'
 	_inherit = 'price_list.service'
 
@@ -31,22 +35,22 @@ class ServiceCo2(models.Model):
 			required=True,
 		)
 
-	# Sel Zone 
-	@api.onchange('sel_zone')	
+	# Sel Zone
+	@api.onchange('sel_zone')
 	def _onchange_sel_zone(self):
-		if self.sel_zone != False: 
+		if self.sel_zone != False:
 			pl_treatment = 'LASER CO2 FRACCIONAL'
-			return {'domain': {'service': [														
+			return {'domain': {'service': [
 												('pl_price_list', '=', '2019'),
-												('pl_treatment', '=', pl_treatment),		
+												('pl_treatment', '=', pl_treatment),
 												('pl_zone', '=', self.sel_zone),
 			],},}
 
 # ----------------------------------------------------------- Relational -------
-	# Service 
+	# Service
 	service = fields.Many2one(
 			'product.template',
-			domain = [
+			domain=[
 						('type', '=', 'service'),
 						('pl_price_list', '=', '2019'),
 						('pl_treatment', '=', 'LASER CO2 FRACCIONAL'),
@@ -62,13 +66,13 @@ class ServiceCo2(models.Model):
 
 
 # ---------------------------------------------- Cosmeto -------------------------------------
-"""
-		Service Cosmetology
-		Created: 				 1 Nov 2016
-	    Last mod: 			28 Jul 2020
-"""
 
 class ServiceCosmetology(models.Model):
+	"""
+	Service Cosmetology
+	Created: 				 1 Nov 2016
+	Last mod: 			28 Jul 2020
+	"""
 	_name = 'price_list.service_cosmetology'
 	_inherit = 'price_list.service'
 
@@ -86,14 +90,14 @@ class ServiceCosmetology(models.Model):
 			#required=True,
 		)
 
-	# Sel Zone 
-	@api.onchange('sel_zone')	
+	# Sel Zone
+	@api.onchange('sel_zone')
 	def _onchange_sel_zone(self):
-		if self.sel_zone != False: 
+		if self.sel_zone != False:
 			pl_family = 'cosmetology'
-			return {'domain': {'service': [														
+			return {'domain': {'service': [
 												('pl_price_list', '=', '2019'),
-												('pl_family', '=', pl_family),		
+												('pl_family', '=', pl_family),
 												('pl_zone', '=', self.sel_zone),
 			],},}
 
@@ -115,18 +119,17 @@ class ServiceCosmetology(models.Model):
 			required=False,
 		)
 
-
 # ---------------------------------------------- Echo -------------------------------------
-"""
-		Service echo
-		Created: 				15 Apr 2019
-		Last: 					15 Apr 2019
-"""
 
 class ServiceEchography(models.Model):
+	"""
+	Service echo
+	Created: 				15 Apr 2019
+	Last: 					15 Apr 2019
+	"""
 	_name = 'price_list.service_echography'
 	_inherit = 'price_list.service'
-	
+
 # ---------------------------------------------- Pl Treatment ------------------
 	pl_treatment = fields.Selection(
 			selection=px_vars_echo._treatment_list,
@@ -141,22 +144,22 @@ class ServiceEchography(models.Model):
 			required=True,
 		)
 
-	# Sel Zone 
-	@api.onchange('sel_zone')	
+	# Sel Zone
+	@api.onchange('sel_zone')
 	def _onchange_sel_zone(self):
-		if self.sel_zone != False: 
+		if self.sel_zone != False:
 			pl_family = 'echography'
-			return {'domain': {'service': [														
+			return {'domain': {'service': [
 												('pl_price_list', '=', '2019'),
-												('pl_family', '=', pl_family),		
+												('pl_family', '=', pl_family),
 												('pl_zone', '=', self.sel_zone),
 			],},}
 
 # ----------------------------------------------------------- Natives ----------
-	# Service 
+	# Service
 	service = fields.Many2one(
 			'product.template',
-			domain = [
+			domain=[
 						('type', '=', 'service'),
 						('pl_family', '=', 'echography'),
 						('pl_price_list', '=', '2019'),
@@ -194,13 +197,13 @@ class ServiceEchography(models.Model):
 		)
 
 # ---------------------------------------------- Exc -------------------------------------
-"""
-		Service Excilite
- 		Created: 				15 Apr 2019
-	    Last mod: 			28 Jul 2020
-"""
 
 class ServiceExcilite(models.Model):
+	"""
+	Service Excilite
+	Created: 				15 Apr 2019
+	Last mod: 			28 Jul 2020
+	"""
 	_name = 'price_list.service_excilite'
 	_inherit = 'price_list.service'
 
@@ -219,28 +222,28 @@ class ServiceExcilite(models.Model):
 			required=True,
 		)
 
-	# Sel Zone 
-	@api.onchange('sel_zone')	
+	# Sel Zone
+	@api.onchange('sel_zone')
 	def _onchange_sel_zone(self):
-		if self.sel_zone != False: 
+		if self.sel_zone != False:
 			pl_treatment = 'LASER EXCILITE'
-			return {'domain': {'service': [														
+			return {'domain': {'service': [
 												('pl_price_list', '=', '2019'),
-												('pl_treatment', '=', pl_treatment),		
+												('pl_treatment', '=', pl_treatment),
 												('pl_zone', '=', self.sel_zone),
 			],},}
 
 # ----------------------------------------------------------- Relational -------
-	# Service 
+	# Service
 	service = fields.Many2one(
 			'product.template',
-			domain = [
+			domain=[
 						('type', '=', 'service'),
 						('pl_price_list', '=', '2019'),
 						('pl_treatment', '=', 'LASER EXCILITE'),
 					],
 	)
-	
+
 # ----------------------------------------------------------- Categorized ------
 	level = fields.Selection(
 			selection=px_vars._level_list,
@@ -249,16 +252,15 @@ class ServiceExcilite(models.Model):
 		)
 
 # ---------------------------------------------- Gyn -------------------------------------
-"""
-		Service Gyn
-		Created: 				15 Apr 2019
-		Last: 					15 Apr 2019
-"""
-
 class ServiceGynecology(models.Model):
+	"""
+	Service Gyn
+	Created: 				15 Apr 2019
+	Last: 					15 Apr 2019
+	"""
 	_name = 'price_list.service_gynecology'
 	_inherit = 'price_list.service'
-	
+
 # ---------------------------------------------- Pl Treatment ------------------
 	pl_treatment = fields.Selection(
 			selection=px_vars_gyn._treatment_list,
@@ -273,22 +275,22 @@ class ServiceGynecology(models.Model):
 			required=True,
 		)
 
-	# Sel Zone 
-	@api.onchange('sel_zone')	
+	# Sel Zone
+	@api.onchange('sel_zone')
 	def _onchange_sel_zone(self):
-		if self.sel_zone != False: 
+		if self.sel_zone != False:
 			pl_family = 'gynecology'
-			return {'domain': {'service': [														
+			return {'domain': {'service': [
 												('pl_price_list', '=', '2019'),
-												('pl_family', '=', pl_family),		
+												('pl_family', '=', pl_family),
 												('pl_zone', '=', self.sel_zone),
 			],},}
 
 # ----------------------------------------------------------- Natives ----------
-	# Service 
+	# Service
 	service = fields.Many2one(
 			'product.template',
-			domain = [
+			domain=[
 						('type', '=', 'service'),
 						('pl_price_list', '=', '2019'),
 
@@ -328,16 +330,15 @@ class ServiceGynecology(models.Model):
 		)
 
 # ---------------------------------------------- Ipl -------------------------------------
-"""
-		Service Ipl
- 		Created: 				15 Apr 2019
- 		Last updated: 	 		15 Apr 2019
-"""
-
 class ServiceIpl(models.Model):
+	"""
+	Service Ipl
+	Created: 				15 Apr 2019
+	Last updated: 	 		15 Apr 2019
+	"""
 	_name = 'price_list.service_ipl'
 	_inherit = 'price_list.service'
-	
+
 # ---------------------------------------------- Pl Treatment ------------------
 	pl_treatment = fields.Selection(
 			selection=px_vars_ext._treatment_list_ipl,
@@ -352,21 +353,21 @@ class ServiceIpl(models.Model):
 			required=True,
 		)
 
-	# Sel Zone 
-	@api.onchange('sel_zone')	
+	# Sel Zone
+	@api.onchange('sel_zone')
 	def _onchange_sel_zone(self):
-		if self.sel_zone != False: 
+		if self.sel_zone != False:
 			pl_treatment = 'LASER M22 IPL'
-			return {'domain': {'service': [														
+			return {'domain': {'service': [
 												('pl_price_list', '=', '2019'),
-												('pl_treatment', '=', pl_treatment),		
+												('pl_treatment', '=', pl_treatment),
 												('pl_zone', '=', self.sel_zone),
 			],},}
 
 # ----------------------------------------------------------- Relational -------
 	service = fields.Many2one(
 			'product.template',
-			domain = [
+			domain=[
 						('type', '=', 'service'),
 						('pl_price_list', '=', '2019'),
 						('pl_treatment', '=', 'LASER M22 IPL'),
@@ -381,16 +382,15 @@ class ServiceIpl(models.Model):
 		)
 
 # ---------------------------------------------- Ndyag -------------------------------------
-"""
-		Service Ndyag
- 		Created: 				15 Apr 2019
- 		Last updated: 	 		15 Apr 2019
-"""
-
 class ServiceNdyag(models.Model):
+	"""
+	Service Ndyag
+	Created: 				15 Apr 2019
+	Last updated: 	 		15 Apr 2019
+	"""
 	_name = 'price_list.service_ndyag'
 	_inherit = 'price_list.service'
-	
+
 # ---------------------------------------------- Pl Treatment ------------------
 	pl_treatment = fields.Selection(
 			selection=px_vars_ext._treatment_list_ndy,
@@ -405,21 +405,21 @@ class ServiceNdyag(models.Model):
 			required=True,
 		)
 
-	# Sel Zone 
-	@api.onchange('sel_zone')	
+	# Sel Zone
+	@api.onchange('sel_zone')
 	def _onchange_sel_zone(self):
-		if self.sel_zone != False: 
-			pl_treatment = 'LASER M22 ND YAG'			
-			return {'domain': {'service': [														
+		if self.sel_zone != False:
+			pl_treatment = 'LASER M22 ND YAG'
+			return {'domain': {'service': [
 												('pl_price_list', '=', '2019'),
-												('pl_treatment', '=', pl_treatment),		
+												('pl_treatment', '=', pl_treatment),
 												('pl_zone', '=', self.sel_zone),
 			],},}
 
 # ----------------------------------------------------------- Relational -------
 	service = fields.Many2one(
 			'product.template',
-			domain = [
+			domain=[
 						('type', '=', 'service'),
 						('pl_price_list', '=', '2019'),
 						('pl_treatment', '=', 'LASER M22 ND YAG'),
@@ -434,13 +434,13 @@ class ServiceNdyag(models.Model):
 		)
 
 # ---------------------------------------------- Prod -------------------------------------
-"""
- 		Service Product - 2019
- 		Created: 				15 Apr 2019
- 		Last updated: 	 		15 Apr 2019
-"""
 
 class ServiceProduct(models.Model):
+	"""
+	Service Product - 2019
+	Created: 				15 Apr 2019
+	Last updated: 	 		15 Apr 2019
+	"""
 	_name = 'price_list.service_product'
 	_inherit = 'price_list.service'
 
@@ -449,25 +449,24 @@ class ServiceProduct(models.Model):
 	# Service - Pricelist 2019
 	service = fields.Many2one(
 			'product.template',
-			domain = [
+			domain=[
 						('type', '=', 'product'),
 						('pl_price_list', '=', '2019'),
 					],
 			string="Servicio",
-			required=True, 
+			required=True,
 		)
 
 # ---------------------------------------------- Promo -------------------------------------
-"""
-		Service Promo
-		Created: 				15 Apr 2019
-		Last: 					15 Apr 2019
-"""
-
 class ServicePromotion(models.Model):
+	"""
+	Service Promo
+	Created: 				15 Apr 2019
+	Last: 					15 Apr 2019
+	"""
 	_name = 'price_list.service_promotion'
 	_inherit = 'price_list.service'
-	
+
 # ---------------------------------------------- Pl Treatment ------------------
 	pl_treatment = fields.Selection(
 			selection=px_vars_promo._treatment_list,
@@ -482,28 +481,28 @@ class ServicePromotion(models.Model):
 			required=True,
 		)
 
-	# Sel Zone 
-	@api.onchange('sel_zone')	
+	# Sel Zone
+	@api.onchange('sel_zone')
 	def _onchange_sel_zone(self):
-		if self.sel_zone != False: 
+		if self.sel_zone != False:
 			pl_family = 'promotion'
-			return {'domain': {'service': [														
+			return {'domain': {'service': [
 												('pl_price_list', '=', '2019'),
-												('pl_family', '=', pl_family),		
+												('pl_family', '=', pl_family),
 												('pl_zone', '=', self.sel_zone),
 			],},}
 
 # ----------------------------------------------------------- Natives ----------
-	# Service 
+	# Service
 	service = fields.Many2one(
 			'product.template',
-			domain = [
+			domain=[
 						('type', '=', 'service'),
 						('pl_price_list', '=', '2019'),
 
 						('pl_family', '=', 'promotion'),
 					],
-	
+
 	)
 
 # ----------------------------------------------------------- Modified ---------
@@ -520,13 +519,12 @@ class ServicePromotion(models.Model):
 		)
 
 # ---------------------------------------------- Quick -------------------------------------
-"""
-		Service Quick 	
- 		Created: 				15 Apr 2019
- 		Last updated: 	 		15 Apr 2019
-"""
-
 class ServiceQuick(models.Model):
+	"""
+	Service Quick
+	Created: 				15 Apr 2019
+	Last updated: 	 		15 Apr 2019
+	"""
 	_name = 'price_list.service_quick'
 	_inherit = 'price_list.service'
 
@@ -544,21 +542,21 @@ class ServiceQuick(models.Model):
 			required=True,
 		)
 
-	# Sel Zone 
-	@api.onchange('sel_zone')	
+	# Sel Zone
+	@api.onchange('sel_zone')
 	def _onchange_sel_zone(self):
-		if self.sel_zone != False: 
+		if self.sel_zone != False:
 			pl_treatment = 'QUICKLASER'
-			return {'domain': {'service': [														
+			return {'domain': {'service': [
 												('pl_price_list', '=', '2019'),
-												('pl_treatment', '=', pl_treatment),		
+												('pl_treatment', '=', pl_treatment),
 												('pl_zone', '=', self.sel_zone),
 			],},}
 
 # ----------------------------------------------------------- Relational -------
 	service = fields.Many2one(
 			'product.template',
-			domain = [
+			domain=[
 						('type', '=', 'service'),
 						('pl_price_list', '=', '2019'),
 						('pl_treatment', '=', 'QUICKLASER'),
@@ -577,4 +575,3 @@ class ServiceQuick(models.Model):
 			string='Time',
 			required=False,
 		)
-

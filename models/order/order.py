@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 		Order - Openhealth
-
 		Created: 			26 Aug 2016
-		Last mod: 			25 Jul 2020
+		Last mod: 			27 Jul 2020
 
 		This tangled object must be split in several objs, with clear roles.
 		That will be:
@@ -21,6 +20,11 @@
 			- TicketSale
 			- DocId
 			- ...
+
+From PgAdmin
+-------------
+SELECT * FROM public.sale_order;
+DELETE FROM public.sale_order WHERE partner_id = 391;
 """
 from __future__ import print_function
 import datetime
@@ -1297,4 +1301,3 @@ class sale_order(models.Model):
 		#return action2
 		#self.test_serial_number()
 		#return action0, action1, action2
-

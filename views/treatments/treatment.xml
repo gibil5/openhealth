@@ -594,6 +594,14 @@ Last up: 	 		22 Jul 2020
 					<header>
 
 							<!-- CO2 -->
+							<!-- Quick -->
+							<!-- Excilite -->
+							<!-- M22-IPL -->
+							<!-- M22-NDYAG -->
+							<!-- Product -->
+							<!-- T. MEDICO -->
+							<!-- Cosmeto -->
+
 							<button
 								type="object"
 								class="oe_highlight"
@@ -601,7 +609,6 @@ Last up: 	 		22 Jul 2020
 								string="LASER CO2"
 							/>
 
-							<!-- Quick -->
 							<button
 								type="object"
 								class="oe_highlight"
@@ -609,7 +616,6 @@ Last up: 	 		22 Jul 2020
 								string="QUICK LASER"
 							/>
 
-							<!-- Excilite -->
 							<button
 								type="object"
 								class="oe_highlight"
@@ -617,7 +623,6 @@ Last up: 	 		22 Jul 2020
 								string=" EXCILITE"
 							/>
 
-							<!-- M22-IPL -->
 							<button
 								type="object"
 								class="oe_highlight"
@@ -625,7 +630,6 @@ Last up: 	 		22 Jul 2020
 								string=" M22-IPL"
 							/>
 
-							<!-- M22-NDYAG -->
 							<button
 								type="object"
 								class="oe_highlight"
@@ -633,7 +637,6 @@ Last up: 	 		22 Jul 2020
 								string=" M22-NDYAG"
 							/>
 
-							<!-- Product -->
 							<button
 								type="object"
 								class="oe_highlight"
@@ -641,7 +644,6 @@ Last up: 	 		22 Jul 2020
 								string="PRODUCTOS"
 							/>
 
-							<!-- T. MEDICO -->
 							<button
 								type="object"
 								class="oe_highlight"
@@ -649,7 +651,6 @@ Last up: 	 		22 Jul 2020
 								string="T. MEDICO"
 							/>
 
-							<!-- Cosmeto -->
 							<button
 								type="object"
 								class="oe_highlight"

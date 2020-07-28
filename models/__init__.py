@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-
-
 # Inheritable
 #from . import line
 #from . import repo
@@ -100,6 +98,8 @@ from patient import *
 from product import *
 
 
+# Services- From PL
+from services import *  
 
 
 # EMR

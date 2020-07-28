@@ -18,6 +18,8 @@ from . import appointment 			# Highly Deprecated
 from . import image		
 from . import allergy				
 
+from . import cart_line				
+
 #from . import process
 from . import treatment
 

@@ -27,6 +27,92 @@ class Treatment(models.Model):
 	_order = 'write_date desc'
 	_description = 'Treatment'
 
+# ----------------------------------------------------------- PL ---------------------------
+	# Shopping cart
+	shopping_cart_ids = fields.One2many(
+			'price_list.cart_line',
+			'treatment',
+			string="Shopping Cart"
+		)
+
+# ----------------------------------------------------------- Fields - Services ------------------------
+	# co2
+	service_co2_ids = fields.One2many(
+			'price_list.service_co2',
+			'treatment',
+			string="Servicios Co2"
+	)
+
+	# excilite
+	service_excilite_ids = fields.One2many(
+			'price_list.service_excilite',
+			'treatment',
+			string="Servicios excilite"
+	)
+
+  # cosmetology
+	service_cosmetology_ids = fields.One2many(
+			'price_list.service_cosmetology',
+			'treatment',
+			string="Servicios cosmetology"
+	)
+
+  # echography
+	service_echography_ids = fields.One2many(
+			'price_list.service_echography',
+			'treatment',
+			string="Servicios Ecografia"
+	)
+
+	# ipl
+	service_ipl_ids = fields.One2many(
+	    'price_list.service_ipl',
+	    'treatment',
+	    string="Servicios ipl"
+	    )
+
+	# ndyag
+	service_ndyag_ids = fields.One2many(
+	    'price_list.service_ndyag',
+	    'treatment',
+	    string="Servicios ndyag"
+	    )
+
+	# medical
+	service_medical_ids = fields.One2many(
+	    'price_list.service_medical',
+	    'treatment',
+	    string="Servicios medical"
+	    )
+
+	# quick
+	service_quick_ids = fields.One2many(
+	    'price_list.service_quick',
+	    'treatment',
+	    string="Servicios quick"
+	    )
+
+	# product
+	service_product_ids = fields.One2many(
+	    'price_list.service_product',
+	    'treatment',
+	    string="Servicios product"
+	    )
+
+	# gynecology
+	service_gynecology_ids = fields.One2many(
+	    'price_list.service_gynecology',
+	    'treatment',
+	    string="Servicios Ginecologia"
+	    )
+
+	# promotion
+	service_promotion_ids = fields.One2many(
+	    'price_list.service_promotion',
+	    'treatment',
+	    string="Servicios Promocion"
+	    )
+
 # ----------------------------------------------------------- Primitive ---------------------------
 	# Name
 	name = fields.Char(

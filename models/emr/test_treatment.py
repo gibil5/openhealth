@@ -29,17 +29,19 @@ def test_integration_treatment(self):
 	# Create Consultation
 	create_consultation(self)
 
+	# Recommendations and Sale
+	create_recommentations_and_procedure_sale(self)
+	create_sessions(self)
+	create_controls(self)
+
+	# Dep ?
 	# Create Credit Note
-	if self.x_test_scenario in ['credit_note']:
-		create_credit_note(self)
+	#if self.x_test_scenario in ['credit_note']:
+	#	create_credit_note(self)
 
 	# Create Block Flow
-	elif self.x_test_scenario in ['block_flow']:
-		create_block_flow(self)
-
-	# Recommendations and Sale
-	else:
-		create_recommentations_and_procedure_sale(self)
+	#elif self.x_test_scenario in ['block_flow']:
+	#	create_block_flow(self)
 
 # test_integration_treatment
 
@@ -131,6 +133,31 @@ def create_recommentations_and_procedure_sale(self):
 				print("An exception occurred")
 			#print('mark 11')
 	test_funcs.enablePrint()
+
+# ----------------------------------------------- Sessions -------------------------------------
+def create_sessions(self):
+	"""
+	Create Sessions
+	"""
+	print()
+	print('Create Sessions')
+	for procedure in self.procedure_ids:
+		#for _ in range(2):
+		for _ in range(1):
+			procedure.create_sessions()
+
+# ----------------------------------------------- Controls -------------------------------------
+def create_controls(self):
+	"""
+	Create Controls
+	"""
+	print()
+	print('Create Controls')
+	for procedure in self.procedure_ids:
+		#for _ in range(1):
+		for _ in range(6):
+			procedure.create_controls()
+
 
 # ----------------------------------------------- 3nd level --------------------------------
 
@@ -314,27 +341,6 @@ def test_create_controls(self):
 
 # ----------------------------------------------------------- Second Level ---------------------------------------------
 
-# ----------------------------------------------- Sessions -------------------------------------
-def create_sessions(self):
-	"""
-	Create Sessions
-	"""
-	#print('Create Sessions')
-	for procedure in self.procedure_ids:
-		#for _ in range(2):
-		for _ in range(1):
-			procedure.create_sessions()
-
-# ----------------------------------------------- Controls -------------------------------------
-def create_controls(self):
-	"""
-	Create Controls
-	"""
-	#print('Create Controls')
-	for procedure in self.procedure_ids:
-		#for _ in range(1):
-		for _ in range(6):
-			procedure.create_controls()
 
 # ----------------------------------------------------------- Create Recommendations - 2019 --------------
 def create_recommendations_2019(self):
@@ -393,35 +399,36 @@ def create_recommendations_2019(self):
 		}
 
 	model_dic = {
-					'prod_0': 	'price_list.service_product',
-					'prod_1': 	'price_list.service_product',
-					'prod_2': 	'price_list.service_product',
-					'prod_3': 	'price_list.service_product',
-					'prod_4': 	'price_list.service_product',
+					'prod_0': 	'openhealth.service_product',
+					'prod_1': 	'openhealth.service_product',
+					'prod_2': 	'openhealth.service_product',
+					'prod_3': 	'openhealth.service_product',
+					'prod_4': 	'openhealth.service_product',
 
-					'co2': 		'price_list.service_co2',
-					'exc': 		'price_list.service_excilite',
-					'ipl': 		'price_list.service_ipl',
-					'ndy': 		'price_list.service_ndyag',
-					'qui': 		'price_list.service_quick',
+					'co2': 		'openhealth.service_co2',
 
-					'cos_0': 	'price_list.service_cosmetology',
-					'cos_1': 	'price_list.service_cosmetology',
-					'cos_2': 	'price_list.service_cosmetology',
+					'exc': 		'openhealth.service_excilite',
+					'ipl': 		'openhealth.service_ipl',
+					'ndy': 		'openhealth.service_ndyag',
+					'qui': 		'openhealth.service_quick',
 
-					'med_0': 	'price_list.service_medical',
-					'med_1': 	'price_list.service_medical',
-					'med_2': 	'price_list.service_medical',
-					'med_3': 	'price_list.service_medical',
-					'med_4': 	'price_list.service_medical',
-					'med_5': 	'price_list.service_medical',
-					'med_6': 	'price_list.service_medical',
-					'med_7': 	'price_list.service_medical',
-					'med_8': 	'price_list.service_medical',
+					'cos_0': 	'openhealth.service_cosmetology',
+					'cos_1': 	'openhealth.service_cosmetology',
+					'cos_2': 	'openhealth.service_cosmetology',
 
-					'gyn': 		'price_list.service_gynecology',
-					'echo': 	'price_list.service_echography',
-					'prom': 	'price_list.service_promotion',
+					'med_0': 	'openhealth.service_medical',
+					'med_1': 	'openhealth.service_medical',
+					'med_2': 	'openhealth.service_medical',
+					'med_3': 	'openhealth.service_medical',
+					'med_4': 	'openhealth.service_medical',
+					'med_5': 	'openhealth.service_medical',
+					'med_6': 	'openhealth.service_medical',
+					'med_7': 	'openhealth.service_medical',
+					'med_8': 	'openhealth.service_medical',
+
+					'gyn': 		'openhealth.service_gynecology',
+					'echo': 	'openhealth.service_echography',
+					'prom': 	'openhealth.service_promotion',
 		}
 
 	tst_list_all = [

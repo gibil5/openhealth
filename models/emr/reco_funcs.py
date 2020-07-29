@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-	*** Reco Funcs - Openhealth
+	Reco Funcs - Openhealth
 	Created: 				 15 Apr 2019
 	Last up: 				 28 Jul 2020
 """
@@ -17,18 +17,18 @@ def create_service(treatment_id, family, subfamily, physician_id):
 	print('Create Service Generic - ', subfamily)
 
 	model_dic = {
-					'co2': 			'price_list.service_co2',
+					'co2': 			'openhealth.service_co2',
 
-					'excilite': 			'price_list.service_excilite',					
-					'ipl': 			'price_list.service_ipl',
-					'ndyag': 		'price_list.service_ndyag',
-					'quick': 		'price_list.service_quick',
-					'cosmetology': 	'price_list.service_cosmetology',
-					'medical': 		'price_list.service_medical',
-					'gynecology': 	'price_list.service_gynecology',
-					'echography': 	'price_list.service_echography',
-					'promotion': 	'price_list.service_promotion',
-					'product': 		'price_list.service_product',
+					'excilite': 	'openhealth.service_excilite',					
+					'ipl': 			'openhealth.service_ipl',
+					'ndyag': 		'openhealth.service_ndyag',
+					'quick': 		'openhealth.service_quick',
+					'cosmetology': 	'openhealth.service_cosmetology',
+					'medical': 		'openhealth.service_medical',
+					'gynecology': 	'openhealth.service_gynecology',
+					'echography': 	'openhealth.service_echography',
+					'promotion': 	'openhealth.service_promotion',
+					'product': 		'openhealth.service_product',
 		}
 
 	model = model_dic[subfamily]

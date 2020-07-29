@@ -1,19 +1,26 @@
 # -*- coding: utf-8 -*-
 """
-		*** Treatment
+		Treatment
 		Created: 			26 Aug 2016
 		Last up: 	 		27 Jul 2020
+
+From PgAdmin
+-------------
+SELECT * FROM public.sale_order;
+DELETE FROM public.sale_order WHERE partner_id = 391;
 """
+
 from __future__ import print_function
+import datetime
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.libs import eval_vars
+
 from . import treatment_vars
 from . import treatment_state
 
 from . import pl_creates
 from . import pl_user
 from . import time_funcs
-import datetime
 
 from . import test_treatment
 from . import reco_funcs
@@ -41,77 +48,77 @@ class Treatment(models.Model):
 # ----------------------------------------------------------- Fields - Services ------------------------
 	# co2
 	service_co2_ids = fields.One2many(
-			'price_list.service_co2',
+			'openhealth.service_co2',
 			'treatment',
 			string="Servicios Co2"
 	)
 
 	# excilite
 	service_excilite_ids = fields.One2many(
-			'price_list.service_excilite',
+			'openhealth.service_excilite',
 			'treatment',
 			string="Servicios excilite"
 	)
 
   # cosmetology
 	service_cosmetology_ids = fields.One2many(
-			'price_list.service_cosmetology',
+			'openhealth.service_cosmetology',
 			'treatment',
 			string="Servicios cosmetology"
 	)
 
   # echography
 	service_echography_ids = fields.One2many(
-			'price_list.service_echography',
+			'openhealth.service_echography',
 			'treatment',
 			string="Servicios Ecografia"
 	)
 
 	# ipl
 	service_ipl_ids = fields.One2many(
-	    'price_list.service_ipl',
+	    'openhealth.service_ipl',
 	    'treatment',
 	    string="Servicios ipl"
 	    )
 
 	# ndyag
 	service_ndyag_ids = fields.One2many(
-	    'price_list.service_ndyag',
+	    'openhealth.service_ndyag',
 	    'treatment',
 	    string="Servicios ndyag"
 	    )
 
 	# medical
 	service_medical_ids = fields.One2many(
-	    'price_list.service_medical',
+	    'openhealth.service_medical',
 	    'treatment',
 	    string="Servicios medical"
 	    )
 
 	# quick
 	service_quick_ids = fields.One2many(
-	    'price_list.service_quick',
+	    'openhealth.service_quick',
 	    'treatment',
 	    string="Servicios quick"
 	    )
 
 	# product
 	service_product_ids = fields.One2many(
-	    'price_list.service_product',
+	    'openhealth.service_product',
 	    'treatment',
 	    string="Servicios product"
 	    )
 
 	# gynecology
 	service_gynecology_ids = fields.One2many(
-	    'price_list.service_gynecology',
+	    'openhealth.service_gynecology',
 	    'treatment',
 	    string="Servicios Ginecologia"
 	    )
 
 	# promotion
 	service_promotion_ids = fields.One2many(
-	    'price_list.service_promotion',
+	    'openhealth.service_promotion',
 	    'treatment',
 	    string="Servicios Promocion"
 	    )
@@ -613,8 +620,10 @@ class Treatment(models.Model):
 	@api.multi
 	def _compute_nr_services(self):
 		for record in self:
-			quick =	self.env['openhealth.service.quick'].search_count([('treatment', '=', record.id),])
+
 			co2 = self.env['openhealth.service.co2'].search_count([('treatment', '=', record.id),])
+
+			quick =	self.env['openhealth.service.quick'].search_count([('treatment', '=', record.id),])
 			exc = self.env['openhealth.service.excilite'].search_count([('treatment', '=', record.id),])
 			ipl = self.env['openhealth.service.ipl'].search_count([('treatment', '=', record.id),])
 			ndyag = self.env['openhealth.service.ndyag'].search_count([('treatment', '=', record.id),])
@@ -849,6 +858,9 @@ class Treatment(models.Model):
 	# Create Consultation
 	@api.multi
 	def create_consultation(self):
+		"""
+		Create consultation - Button
+		"""
 		print()
 		print('OH - create_consultation')
 
@@ -860,7 +872,7 @@ class Treatment(models.Model):
 		# Doctor
 		doctor = pl_user.get_actual_doctor(self)
 		doctor_id = doctor.id
-		if doctor_id == False:
+		if not doctor_id:
 			doctor_id = self.physician.id
 
 		# Date
@@ -875,7 +887,7 @@ class Treatment(models.Model):
 																limit=1,)
 
 		# If Consultation not exist
-		if consultation.name == False:
+		if not consultation.name:
 			# Create
 			consultation = self.env['openhealth.consultation'].create({
 																		'patient': patient_id,
@@ -1015,7 +1027,8 @@ class Treatment(models.Model):
 						cart_line = self.shopping_cart_ids.create({
 																			'product': 		product.id,
 																			'price': 		service.price_applied,
-																			'qty': 			service.qty,
+																			#'qty': 			service.qty,
+																			'qty': 			1,
 																			'treatment': 	self.id,
 																})
 

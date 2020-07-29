@@ -3,20 +3,16 @@
 # Consultation
 _state_list = [
 					('cancel', 		'Anulado'),
-
 					('draft', 		'Inicio'),
 					('inprogress', 	'En progreso'),
 					('done', 		'Completo'),	
 				]
-
 
 _hash_progress = {
 					'draft':          	10, 
 					'inprogress': 		50,
 					'done': 			100, 
 				}	
-
-
 
 # Evaluation
 EVALUATION_TYPE = [
@@ -27,7 +23,6 @@ EVALUATION_TYPE = [
 		('Ambulatory', 'Procedimiento'),
 		('procedure', 'Procedimiento'),
 
-		
 		('Periodic Control', 'Control'),
 		('control', 'Control'),
 
@@ -50,11 +45,6 @@ PHOTO_TYPE = [
 		('two','II (4,5,6)'),
 		('three','III (7,8,9)')
 		]
-
-
-
-
-
 
 # Chief complaint
 _chief_complaint_list = [
@@ -79,21 +69,13 @@ _chief_complaint_list = [
 			#('rejuvenation_face_1','Rejuvenecimiento Facial Grado 1'),
 			#('rejuvenation_face_2','Rejuvenecimiento Facial Grado 2'),
 			#('rejuvenation_face_3','Rejuvenecimiento Facial Grado 3'),
-
 			#('none',''), 
 
-
-
 			# Begin
-
-
 			('acne_active','Acné Activo'),
 			('acne_sequels','Acné y Secuelas'),
-
 			('tatoo','Tatuaje'),
 			('cosmetology','Cosmiatria'),
-
-
 			('alopecia','Alopecias'),
 			('scar','Cicatriz'),
 			('depilation','Depilación'),
@@ -119,7 +101,4 @@ _chief_complaint_list = [
 			('wart','Verruga'),
 			('vitiligo','Vitiligo'),
 			# End 		
-
-
-			]
-
+]

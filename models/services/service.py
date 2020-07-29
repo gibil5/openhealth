@@ -12,15 +12,8 @@ class Service(models.Model):
 	"""
 	Price list aware
 	"""
-	_name = 'price_list.service'
-
-# ----------------------------------------------------------- Select -----------
-	# Zone
-	sel_zone = fields.Selection(
-			selection=px_vars._zone_list,
-			string='Seleccionar Zona',
-			#required=True,
-		)
+	#_name = 'price_list.service'
+	_name = 'openhealth.service'
 
 # ----------------------------------------------------------- Relationals ------
 	# Treatement
@@ -40,6 +33,15 @@ class Service(models.Model):
 	price_applied = fields.Float(
 			required=True,
 		)
+
+# ----------------------------------------------------------- Select -----------
+	# Zone
+	sel_zone = fields.Selection(
+			selection=px_vars._zone_list,
+			string='Seleccionar Zona',
+			#required=True,
+		)
+
 
 # ----------------------------------------------------------- Natives ----------
 	# Physician

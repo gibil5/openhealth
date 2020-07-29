@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-	*** Test Treatment - openhealth
+		Test Treatment - openhealth
+		Used by:			Treatment
+
 		Created: 			14 Aug 2018
 		Last up: 	 		28 Jul 2020
-		Used by:			treatment.py
 """
 from __future__ import print_function
 from openerp.addons.price_list.models.lib import test_funcs
@@ -108,12 +109,12 @@ def create_recommentations_and_procedure_sale(self):
 		self.create_order_pro()				# Actual Button - 2019
 
 	# 2018
-	if self.test_pricelist_2018:
-		create_recommendations_2018(self)
+	#if self.test_pricelist_2018:
+	#	create_recommendations_2018(self)
 		#test_funcs.disablePrint()
-		print()
-		print()
-		self.create_order_pro_2018()		# Actual Button - 2018
+	#	print()
+	#	print()
+	#	self.create_order_pro_2018()		# Actual Button - 2018
 		#test_funcs.enablePrint()
 
 	# Pay Order Procedure
@@ -137,7 +138,7 @@ def create_recommentations_and_procedure_sale(self):
 # ----------------------------------------------- Test Cycle --------------------------------
 def test_create_budget_consultation(self):
 	"""
-	Test
+	Test Budget
 	"""
 	print()
 	print('Test Create Budget Consultation')
@@ -147,19 +148,30 @@ def test_create_budget_consultation(self):
 
 def test_create_sale_consultation(self):
 	"""
-	Test
+	Test Sale
 	"""
 	print()
 	print('Test Create Sale Consultation')
-
 	# Pay Budget Consultation
 	for order in self.order_ids:
 		if order.state in ['draft']:
 			order.pay_myself()
 
+
+def test_create_consultation(self):
+	"""
+	Test Consultation
+	"""
+	print()
+	print('Test Create Consultation')
+
+	# Create Consultation
+	self.create_consultation()			# Actual Button
+
+
 def test_create_recommendations(self):
 	"""
-	Test
+	Test Service
 	"""
 	print()
 	print('Test Create Recommendations')
@@ -168,14 +180,10 @@ def test_create_recommendations(self):
 					# Lasers
 					'co2': 		'LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento - Grado 1 - 1 sesion',	# Co2
 		}
-
-
 	model_dic = {
-					'co2': 		'price_list.service_co2',
+					#'co2': 		'price_list.service_co2',
+					'co2': 		'openhealth.service_co2',
 		}
-
-
-
 	tst_list = [
 					'co2',
 	]
@@ -188,6 +196,8 @@ def test_create_recommendations(self):
 		model = model_dic[tst]
 
 		# Search
+		print()
+		print('Search Product')
 		product = self.env['product.template'].search([
 															('name', '=', name),
 															('pl_price_list', 'in', ['2019']),
@@ -196,18 +206,15 @@ def test_create_recommendations(self):
 												limit=1,
 									)
 		# Manage Exception
-		try:
-			product.ensure_one()
-
-		except:
+		#try:
+		#	product.ensure_one()
+		#except:
 			#print("An exception occurred")
-			msg_name = "ERROR: Record Must be One Only."
-			class_name = type(product).__name__
-			obj_name = name
-			msg =  msg_name + '\n' + class_name + '\n' + obj_name
-			raise UserError(_(msg))
-
-
+		#	msg_name = "ERROR: Record Must be One Only."
+		#	class_name = type(product).__name__
+		#	obj_name = name
+		#	msg = msg_name + '\n' + class_name + '\n' + obj_name
+		#	raise UserError(_(msg))
 
 		product_id = product.id
 
@@ -215,8 +222,11 @@ def test_create_recommendations(self):
 		print(product)
 		print(product.name)
 
-
 		# Create
+		print()
+		print('Create Service')
+		print(model)
+
 		service = self.env[model].create({
 														'service': 			product_id,
 														'family': 			product.pl_family,
@@ -232,12 +242,14 @@ def test_create_recommendations(self):
 
 														'treatment': 		self.id,
 											})
+		print(service)
+
 # test_create_recommendations
 
 
 def test_create_budget_procedure(self):
 	"""
-	Test
+	Test Budget Pro
 	"""
 	print()
 	print('Test Create Budget Procedure')
@@ -248,11 +260,10 @@ def test_create_budget_procedure(self):
 
 def test_create_sale_procedure(self):
 	"""
-	Test
+	Test Sale Pro
 	"""
 	print()
 	print('Test Create Sale Procedure')
-
 	# Pay Budget Procedures
 	for order in self.order_ids:
 		if order.state in ['draft']:
@@ -260,7 +271,6 @@ def test_create_sale_procedure(self):
 				order.pay_myself()
 			except:
 				print("An exception occurred")
-
 
 def test_create_procedure(self):
 	"""
@@ -272,11 +282,9 @@ def test_create_procedure(self):
 	# Create Procedure
 	self.create_procedure_man()
 
-
-
 def test_create_sessions(self):
 	"""
-	Test
+	Test Session
 	"""
 	print()
 	print('Test Create Sessions')
@@ -289,11 +297,9 @@ def test_create_sessions(self):
 			print('create sesion')
 			procedure.create_sessions_manual()
 
-
-
 def test_create_controls(self):
 	"""
-	Test
+	Test Control
 	"""
 	print()
 	print('Test Create Controls')
@@ -306,23 +312,7 @@ def test_create_controls(self):
 			print('create control')
 			procedure.create_controls_manual()
 
-
-
-
-
-
-
-
 # ----------------------------------------------------------- Second Level ---------------------------------------------
-
-
-
-
-
-
-
-
-
 
 # ----------------------------------------------- Sessions -------------------------------------
 def create_sessions(self):
@@ -335,7 +325,6 @@ def create_sessions(self):
 		for _ in range(1):
 			procedure.create_sessions()
 
-
 # ----------------------------------------------- Controls -------------------------------------
 def create_controls(self):
 	"""
@@ -346,8 +335,6 @@ def create_controls(self):
 		#for _ in range(1):
 		for _ in range(6):
 			procedure.create_controls()
-
-
 
 # ----------------------------------------------------------- Create Recommendations - 2019 --------------
 def create_recommendations_2019(self):
@@ -363,7 +350,6 @@ def create_recommendations_2019(self):
 	print('Create Recommendations 2019')
 
 	# Init
-
 	#price_list = '2019'
 
 	name_dic = {
@@ -374,7 +360,6 @@ def create_recommendations_2019(self):
 					'prod_3':		'OTROS',						# Other
 					'prod_4':		'COMISION DE ENVIO',			# Comission
 
-
 					# Lasers
 					'co2': 		'LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento - Grado 1 - 1 sesion',	# Co2
 					'exc':		'LASER EXCILITE - Abdomen - Alopecias - 1 sesion - 15 min',					# Excilite
@@ -382,34 +367,23 @@ def create_recommendations_2019(self):
 					'ndy':		'LASER M22 ND YAG - Localizado Cuerpo - Hemangiomas - 1 sesion - 15 min',	# Ndyag
 					'qui':		'QUICKLASER - Cuello - Rejuvenecimiento - Grado 1 - 1 sesion',				# Quick
 
-
 					# Cosmetology
 					'cos_0':		'CARBOXITERAPIA - Cuerpo - Rejuvenecimiento - 1 sesion - 30 min',				# Carboxitherapy
 					'cos_1':		'PUNTA DE DIAMANTES - Rostro - Limpieza profunda - 1 sesion - 30 min',			# Diamond Tip
 					'cos_2':		'LASER TRIACTIVE + CARBOXITERAPIA - Rostro + Papada + Cuello - Reafirmacion - 10 sesiones - 30 min',	# Laser Triactive + Carbo
 					#'cos_1':		'',			# Carboxitherapy
 
-
 					# Medical
 					'med_0':		'BOTOX - 1 Zona - Rejuvenecimiento Zona - 1 sesion',										# Botox
 					'med_1':		'CRIOCIRUGIA - Todo Rostro - Acne - 1 sesion',												# Cryo
 					'med_2':		'ACIDO HIALURONICO - 1 Jeringa - Rejuvenecimiento Facial - 1 sesion - FILORGA UNIVERSAL',	# Hialuronic
-
 					'med_3':		'INFILTRACIONES',																			# Infil
 					'med_4':		'MESOTERAPIA NCTF - Todo Rostro - Rejuvenecimiento Facial - 5 sesiones',					# Meso
 					'med_5':		'PLASMA - Todo Rostro - Rejuvenecimiento Facial - 1 sesion',								# Plasma
-
 					'med_6':		'REDUX - 1 Zona - Rejuvenecimiento Zona - 1 sesion',										# Redux
 					'med_7':		'ESCLEROTERAPIA - Piernas - Varices - 1 sesion',											# Sclero
-
-
 					'med_8':		'VITAMINA C ENDOVENOSA',																	# Vitamin
 					#'med_8':		'VICTAMINA C ENDOVENOSA',																	# Vitamin
-
-
-					#'med_1':		'',			# Plasma
-
-
 
 					# New Services
 					'gyn':		'LASER CO2 FRACCIONAL - Monalisa Touch / Revitalizacion',
@@ -418,7 +392,6 @@ def create_recommendations_2019(self):
 					#'gyn':		'ANALISIS - Vagina - Biopsias',
 		}
 
-
 	model_dic = {
 					'prod_0': 	'price_list.service_product',
 					'prod_1': 	'price_list.service_product',
@@ -426,39 +399,30 @@ def create_recommendations_2019(self):
 					'prod_3': 	'price_list.service_product',
 					'prod_4': 	'price_list.service_product',
 
-
 					'co2': 		'price_list.service_co2',
 					'exc': 		'price_list.service_excilite',
 					'ipl': 		'price_list.service_ipl',
 					'ndy': 		'price_list.service_ndyag',
 					'qui': 		'price_list.service_quick',
 
-					'cos_0': 		'price_list.service_cosmetology',
-					'cos_1': 		'price_list.service_cosmetology',
-					'cos_2': 		'price_list.service_cosmetology',
+					'cos_0': 	'price_list.service_cosmetology',
+					'cos_1': 	'price_list.service_cosmetology',
+					'cos_2': 	'price_list.service_cosmetology',
 
-
-
-					'med_0': 		'price_list.service_medical',
-					'med_1': 		'price_list.service_medical',
-					'med_2': 		'price_list.service_medical',
-
-					'med_3': 		'price_list.service_medical',
-					'med_4': 		'price_list.service_medical',
-					'med_5': 		'price_list.service_medical',
-
-					'med_6': 		'price_list.service_medical',
-					'med_7': 		'price_list.service_medical',
-					'med_8': 		'price_list.service_medical',
-
-
+					'med_0': 	'price_list.service_medical',
+					'med_1': 	'price_list.service_medical',
+					'med_2': 	'price_list.service_medical',
+					'med_3': 	'price_list.service_medical',
+					'med_4': 	'price_list.service_medical',
+					'med_5': 	'price_list.service_medical',
+					'med_6': 	'price_list.service_medical',
+					'med_7': 	'price_list.service_medical',
+					'med_8': 	'price_list.service_medical',
 
 					'gyn': 		'price_list.service_gynecology',
 					'echo': 	'price_list.service_echography',
 					'prom': 	'price_list.service_promotion',
 		}
-
-
 
 	tst_list_all = [
 					'prod_0',
@@ -473,24 +437,19 @@ def create_recommendations_2019(self):
 					'ndy',
 					'qui',
 
-					#'cos',
 					'cos_0',
 					'cos_1',
 					'cos_2',
 
-
 					'med_0',
 					'med_1',
 					'med_2',
-
 					'med_3',
 					'med_4',
 					'med_5',
-
 					'med_6',
 					'med_7',
 					'med_8',
-
 
 					'gyn',
 					'echo',
@@ -526,11 +485,9 @@ def create_recommendations_2019(self):
 					'med_0',
 					'med_1',
 					'med_2',
-
 					'med_3',
 					'med_4',
 					'med_5',
-
 					'med_6',
 					'med_7',
 					'med_8',
@@ -542,11 +499,7 @@ def create_recommendations_2019(self):
 					'prom',
 	]
 
-
-
 	tst_list_empty = []
-
-
 
 	if self.x_test_scenario in ['all']:
 		tst_list = tst_list_all
@@ -566,19 +519,13 @@ def create_recommendations_2019(self):
 	elif self.x_test_scenario in ['new']:
 		tst_list = tst_list_new
 
-
 	elif self.x_test_scenario in [False]:
 		tst_list = tst_list_empty
 
-
-
 	# Loop
-	#for tst in tst_list_all:
 	for tst in tst_list:
-
 		# Init
 		name = name_dic[tst]
-
 		model = model_dic[tst]
 
 		# Search
@@ -593,22 +540,15 @@ def create_recommendations_2019(self):
 		# Manage Exception
 		try:
 			product.ensure_one()
-
 		except:
 			#print("An exception occurred")
 			msg_name = "ERROR: Record Must be One Only."
-
 			class_name = type(product).__name__
-
 			#obj_name = product.name
 			obj_name = name
-
-			msg =  msg_name + '\n' + class_name + '\n' + obj_name
+			msg = msg_name + '\n' + class_name + '\n' + obj_name
 			#msg =  msg_name + '\n' + class_name + '\n'
-
 			raise UserError(_(msg))
-
-
 
 		product_id = product.id
 
@@ -631,7 +571,6 @@ def create_recommendations_2019(self):
 		#	print(product.pl_level)
 		#	print(product.pl_time)
 
-
 		# Create
 		service = self.env[model].create({
 														'service': 			product_id,
@@ -645,18 +584,15 @@ def create_recommendations_2019(self):
 														'price_applied': 	product.list_price,
 														'sel_zone': 		product.pl_zone,
 														'pl_treatment': 	product.pl_treatment,
-
 														'treatment': 		self.id,
 											})
 # create_recommendations_2019
 
-
-
-# ----------------------------------------------------------- Reset Treatment ---------------------
+# ------------------------------------------------------ Reset Treatment -------
 
 def test_reset_treatment(self):
 	"""
-	Test Reset - For Treatment
+	Test Reset - Used by Treatment
 	"""
 	print()
 	print('Test Reset Function')
@@ -688,7 +624,7 @@ def test_reset_treatment(self):
 	# Alta
 	self.treatment_closed = False
 
-	# Orders - Keep them !
-	#for order in self.order_ids:
-	#	order.remove_myself_force()
+	# Orders - Do not keep them !
+	for order in self.order_ids:
+		order.remove_myself_force()
 # reset

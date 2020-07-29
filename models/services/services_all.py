@@ -16,8 +16,10 @@ class ServiceCo2(models.Model):
 	"""
 	Service Co2
 	"""
-	_name = 'price_list.service_co2'
-	_inherit = 'price_list.service'
+	#_name = 'price_list.service_co2'
+	#_inherit = 'price_list.service'
+	_name = 'openhealth.service_co2'
+	_inherit = 'openhealth.service'
 
 # ---------------------------------------------- Pl Treatment ------------------
 	pl_treatment = fields.Selection(
@@ -70,7 +72,7 @@ class ServiceCosmetology(models.Model):
 	Service Cosmetology
 	"""
 	_name = 'price_list.service_cosmetology'
-	_inherit = 'price_list.service'
+	_inherit = 'openhealth.service'
 
 # ---------------------------------------------- Pl Treatment ------------------
 	pl_treatment = fields.Selection(
@@ -121,8 +123,8 @@ class ServiceEchography(models.Model):
 	"""
 	Service echo
 	"""
-	_name = 'price_list.service_echography'
-	_inherit = 'price_list.service'
+	_name = 'openhealth.service_echography'
+	_inherit = 'openhealth.service'
 
 # ---------------------------------------------- Pl Treatment ------------------
 	pl_treatment = fields.Selection(
@@ -196,8 +198,8 @@ class ServiceExcilite(models.Model):
 	"""
 	Service Excilite
 	"""
-	_name = 'price_list.service_excilite'
-	_inherit = 'price_list.service'
+	_name = 'openhealth.service_excilite'
+	_inherit = 'openhealth.service'
 
 # ---------------------------------------------- Pl Treatment ------------------
 	pl_treatment = fields.Selection(
@@ -248,8 +250,8 @@ class ServiceGynecology(models.Model):
 	"""
 	Service Gyn
 	"""
-	_name = 'price_list.service_gynecology'
-	_inherit = 'price_list.service'
+	_name = 'openhealth.service_gynecology'
+	_inherit = 'openhealth.service'
 
 # ---------------------------------------------- Pl Treatment ------------------
 	pl_treatment = fields.Selection(
@@ -324,8 +326,8 @@ class ServiceIpl(models.Model):
 	"""
 	Service Ipl
 	"""
-	_name = 'price_list.service_ipl'
-	_inherit = 'price_list.service'
+	_name = 'openhealth.service_ipl'
+	_inherit = 'openhealth.service'
 
 # ---------------------------------------------- Pl Treatment ------------------
 	pl_treatment = fields.Selection(
@@ -374,8 +376,8 @@ class ServiceNdyag(models.Model):
 	"""
 	Service Ndyag
 	"""
-	_name = 'price_list.service_ndyag'
-	_inherit = 'price_list.service'
+	_name = 'openhealth.service_ndyag'
+	_inherit = 'openhealth.service'
 
 # ---------------------------------------------- Pl Treatment ------------------
 	pl_treatment = fields.Selection(
@@ -425,8 +427,8 @@ class ServiceProduct(models.Model):
 	"""
 	Service Product - 2019
 	"""
-	_name = 'price_list.service_product'
-	_inherit = 'price_list.service'
+	_name = 'openhealth.service_product'
+	_inherit = 'openhealth.service'
 
 
 # ----------------------------------------------------------- Natives ----------
@@ -446,8 +448,8 @@ class ServicePromotion(models.Model):
 	"""
 	Service Promo
 	"""
-	_name = 'price_list.service_promotion'
-	_inherit = 'price_list.service'
+	_name = 'openhealth.service_promotion'
+	_inherit = 'openhealth.service'
 
 # ---------------------------------------------- Pl Treatment ------------------
 	pl_treatment = fields.Selection(
@@ -505,8 +507,8 @@ class ServiceQuick(models.Model):
 	"""
 	Service Quick
 	"""
-	_name = 'price_list.service_quick'
-	_inherit = 'price_list.service'
+	_name = 'openhealth.service_quick'
+	_inherit = 'openhealth.service'
 
 # ---------------------------------------------- Pl Treatment ------------------
 	pl_treatment = fields.Selection(

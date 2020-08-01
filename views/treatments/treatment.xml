@@ -259,9 +259,7 @@ Last up: 	 		22 Jul 2020
 							</group>
 							<group>
 								<field name="physician"         required="1"/>
-								<field name="vspace" />
 								<field name="chief_complaint"   required="1"/>
-								<field name="vspace" />
 								<field name="active"/>
 							</group>
 							<group>
@@ -276,14 +274,14 @@ Last up: 	 		22 Jul 2020
 									type="object"
 									name="toggle_add_procedures"
 									attrs="{ 'invisible':[  ('add_procedures','!=',False),  ]}"
-									string="Manual 1"
+									string="Manual"
 								/>
 								<button
 									type="object"
 									class="oe_highlight"
 									name="toggle_add_procedures"
 									attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
-									string="Manual 2"
+									string="Manual"
 								/>
 							</group>
 						</group>
@@ -330,7 +328,7 @@ Last up: 	 		22 Jul 2020
 
 							<group>
 									<!-- Test Cycle -->
-									<group col="3"	 attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}">
+									<group col="3"	 attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}" >
 
 										<!-- Create Budget Consultation -->
 										<button

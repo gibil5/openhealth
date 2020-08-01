@@ -251,7 +251,6 @@ Last up: 	 		22 Jul 2020
 						<!-- Padding -->
 						<group col="3">
 							<group>
-								<field name="x_test"   groups="openhealth.roots"/>
 								<field name="patient_sex"/>
 								<field name="patient_age"/>
 								<field name="patient_city"/>
@@ -267,24 +266,25 @@ Last up: 	 		22 Jul 2020
 							</group>
 							<group>
 								<field name="start_date"/>
-								<field name="vspace" />
 								<field name="treatment_closed"  invisible="0"/>
-								<field name="vspace" />
+								<field name="override"	groups='openhealth.roots'/>
+								<field name="add_procedures"    invisible="1"/>
+
+								<!-- Test -->
+								<field name="x_test"   groups="openhealth.roots"/>
 								<button
 									type="object"
 									name="toggle_add_procedures"
 									attrs="{ 'invisible':[  ('add_procedures','!=',False),  ]}"
-									string="Manual"
+									string="Manual 1"
 								/>
 								<button
 									type="object"
 									class="oe_highlight"
 									name="toggle_add_procedures"
 									attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
-									string="Manual"
+									string="Manual 2"
 								/>
-								<field name="override"	groups='openhealth.roots'/>
-								<field name="add_procedures"    invisible="1"/>
 							</group>
 						</group>
 
@@ -294,164 +294,105 @@ Last up: 	 		22 Jul 2020
 -->
 <hr></hr>
 						<group 	 attrs="{ 'invisible':[  ('x_test','==',False),  ]}">
+
 							<group>
 
 								<!-- Test scenarios -->
-								<field name="x_test_scenario"/>
+								<field name="x_test_scenario" string="Scenarios"/>
 
 								<!-- Price lists -->
 								<field name="test_pricelist_2019"/>
+								<!--
 								<field name="test_pricelist_2018"/>
-
+								-->
 										<!-- Test Integration -->
 										<button
 											type="object"
 											class="oe_highlight"
 											help='Test Integration'
-											string="Test Integration"
+
+											string="Integration"
 
 											name="test_integration"
 										/>
-
 										<!-- Reset -->
 										<button
 											type="object"
 											class="oe_highlight"
 											groups="openhealth.roots"
 											help='Tests: Reset'
+
 											string="Reset"
 
 											name="test_reset"
 										/>
-
 							</group>
 
 							<group>
-
-										<!-- Test Integration -->
-										<!-- Reset -->
-<!--
-									<group>
-										<button
-											type="object"
-											class="oe_highlight"
-											help='Test Integration'
-											name="test_integration"
-
-											string="Test Integration"
-										/>
-
-									</group>
-
-									<group>
-										<button
-											type="object"
-											class="oe_highlight"
-											groups="openhealth.roots"
-											help='Tests: Reset'
-											name="test_reset"
-
-											string="Reset"
-										/>
-
-									</group>
--->
-
-
 									<!-- Test Cycle -->
-<!--
-									<group col="3">
--->
-
-									<group 	 attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}">
-
+									<group col="3"	 attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}">
 
 										<!-- Create Budget Consultation -->
 										<button
 											type="object"
 											class="oe_highlight"
-
 											name="test_create_budget_consultation"
-
-											string="Budget Con"
+											string="Budget C"
 										/>
 
 										<!-- Create Sale Consultation -->
 										<button
 											type="object"
 											class="oe_highlight"
-
 											name="test_create_sale_consultation"
-
-											string="Sale Con"
+											string="Sale C"
 										/>
-
-
 
 										<!-- Create Consultation -->
 										<button
 											type="object"
 											class="oe_highlight"
-
 											name="test_create_consultation"
-
-											string="Consultation"
+											string="Consult"
 										/>
-
 
 										<!-- Create Recommendations -->
 										<button
 											type="object"
 											class="oe_highlight"
-
 											name="test_create_recommendations"
-
-											string="Recommendations"
+											string="Recom"
 										/>
-
-
 
 										<!-- Create Budget Procedure -->
 										<button
 											type="object"
 											class="oe_highlight"
-
 											name="test_create_budget_procedure"
-
-											string="Budget Pro"
+											string="Budget P"
 										/>
-
 
 										<!-- Create Sale procedure -->
 										<button
 											type="object"
 											class="oe_highlight"
-
 											name="test_create_sale_procedure"
-
-											string="Sale Pro"
+											string="Sale P"
 										/>
-
-
-
 
 										<!-- Create Procedure -->
 										<button
 											type="object"
 											class="oe_highlight"
-
 											name="test_create_procedure"
-
-											string="Procedure"
+											string="Procs"
 										/>
 
 										<!-- Create Sessions -->
 										<button
 											type="object"
 											class="oe_highlight"
-
 											name="test_create_sessions"
-
 											string="Sessions"
 										/>
 
@@ -459,46 +400,38 @@ Last up: 	 		22 Jul 2020
 										<button
 											type="object"
 											class="oe_highlight"
-
 											name="test_create_controls"
-
 											string="Controls"
 										/>
 									</group>
 
-
 									<!-- Reports -->
 <!--
 									<group>
-
 										<button
 												type="object"
 												class="oe_highlight"
 												name="test_report_management"
 												string="MGT"
 										/>
-
 										<button
 												type="object"
 												class="oe_highlight"
 												name="test_report_marketing"
 												string="MKT"
 										/>
-
 										<button
 												type="object"
 												class="oe_highlight"
 												name="test_report_account"
 												string="TXT"
 										/>
-
 										<button
 												type="object"
 												class="oe_highlight"
 												name="test_report_contasis"
 												string="ACC"
 										/>
-
 										<button
 												type="object"
 												class="oe_highlight"
@@ -514,7 +447,6 @@ Last up: 	 		22 Jul 2020
 
 <!-- Manual -->
 <hr></hr>
-
 						<group  col="5" >
 
 							<!-- PRESU -->
@@ -522,11 +454,8 @@ Last up: 	 		22 Jul 2020
 								<button
 									type="object"
 									class="oe_highlight"
-
 									attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
-
 									name="create_order_con"
-
 									string="PRESU CON"
 								/>
 							</group>

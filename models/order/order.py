@@ -62,29 +62,22 @@ class SaleOrder(models.Model):
 
 
 
-# ---------------------------------------------------- Used by Treatment -------
-
+# ---------------------------------------------------- Used by Treatment - Create Proc -------
 	def create_procedure_man(self, treatment):
 		"""
 		Create Procedure Man - In prog
 		Used by: Treatment
 		"""
 		# Update Order
-		#self.set_procedure_created(True)
 		self.set_procedure_created()
-
 		# Loop
 		for line in self.order_line:
 			print(line.product_id)
 			if line.product_id.is_procedure():
 				product_product = line.product_id
-
-				# Create
-				#pl_creates.create_procedure_go(self, product_product)
+				# Create Procedure
 				pl_creates.create_procedure_go(treatment, product_product)
 
-
-	#def set_procedure_created(self, value):
 	def set_procedure_created(self, value=True):
 		"""
 		Set Procedure Created
@@ -94,15 +87,12 @@ class SaleOrder(models.Model):
 		print('order - set_procedure_created')
 		self.x_procedure_created = value
 
-
-	#def is_procedure_created(self):
 	def proc_is_not_created_and_state_is_sale(self):
 		"""
 		Used by: Treatment
 		"""
 		print()
 		print('order - proc_is_not_created_and_state_is_sale')
-		#return self.x_procedure_created
 		return not self.x_procedure_created and self.state == 'sale'
 
 # ----------------------------------------- Constraints - From Patient ----------

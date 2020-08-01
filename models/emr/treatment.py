@@ -1084,26 +1084,11 @@ class Treatment(models.Model):
 		print()
 		print('treatment - create_procedure_man')
 		print("order_pro_ids: {}".format(self.order_pro_ids))
-
 		# Loop
 		for order in self.order_pro_ids:
 			print("order: {}".format(order))
-
 			if order.proc_is_not_created_and_state_is_sale() or self.override:
-
 				order.create_procedure_man(self)
-
-				# Update Order
-				#order.set_procedure_created()
-
-				# Loop
-				#for line in order.order_line:
-				#	print(line.product_id)
-				#	if line.product_id.is_procedure():
-				#		product_product = line.product_id
-						# Create
-				#		pl_creates.create_procedure_go(self, product_product)
-
 	# create_procedure_man
 
 # ----------------------------------------------------------- Create Services  ------------
@@ -1191,7 +1176,8 @@ class Treatment(models.Model):
 		print()
 		print('Test Create procedure manual')
 
-		if True:
+		#if True:
+		if False:
 			test_funcs.disablePrint()
 			self.test_reset()
 			self.test_create_budget_consultation()

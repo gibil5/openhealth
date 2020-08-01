@@ -16,21 +16,19 @@ class TreatmentState(object):
 		print('TreatmentState  -  init')
 		self.record = record
 		#print(self.record)
-		
-		print("nr_budgets_cons: {}".format(self.record.nr_budgets_cons))
-		print("nr_invoices_cons: {}".format(self.record.nr_invoices_cons))
-		print("consultation_progress: {}".format(self.record.consultation_progress))
-		
-		print("nr_services: {}".format(self.record.nr_services))
 
-		print("nr_budgets_pro: {}".format(self.record.nr_budgets_pro))
-		print("nr_invoices_pro: {}".format(self.record.nr_invoices_pro))
-
-		print("nr_procedures: {}".format(self.record.nr_procedures))
-		print("nr_sessions: {}".format(self.record.nr_sessions))
-		print("nr_controls: {}".format(self.record.nr_controls))
-
-		print("treatment_closed: {}".format(self.record.treatment_closed))
+		verbose = False
+		if verbose: 
+			print("nr_budgets_cons: {}".format(self.record.nr_budgets_cons))
+			print("nr_invoices_cons: {}".format(self.record.nr_invoices_cons))
+			print("consultation_progress: {}".format(self.record.consultation_progress))
+			print("nr_services: {}".format(self.record.nr_services))
+			print("nr_budgets_pro: {}".format(self.record.nr_budgets_pro))
+			print("nr_invoices_pro: {}".format(self.record.nr_invoices_pro))
+			print("nr_procedures: {}".format(self.record.nr_procedures))
+			print("nr_sessions: {}".format(self.record.nr_sessions))
+			print("nr_controls: {}".format(self.record.nr_controls))
+			print("treatment_closed: {}".format(self.record.treatment_closed))
 
 
 	def get_state(self):

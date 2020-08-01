@@ -167,6 +167,7 @@ def pl_create_order(self):
 
 
 #------------------------------------------------ Create Procedure Go --------------------------------
+#def create_procedure_go(patient, doctor, chief_complaint, product, treatment_id):
 def create_procedure_go(self, product):
 	"""
 	Create Procedure - Core
@@ -176,9 +177,7 @@ def create_procedure_go(self, product):
 	print()
 	print('OH - create_procedure_go')
 
-
 # Init
-
 	# Product Template
 	product_template = product.get_product_template()
 	#print(product_template)
@@ -206,7 +205,6 @@ def create_procedure_go(self, product):
 											'doctor':doctor_id,
 											'product':product_template.id,
 											'chief_complaint':chief_complaint,
-
 											'treatment':treatment_id,
 										})
 	print(procedure)

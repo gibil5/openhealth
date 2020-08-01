@@ -299,15 +299,14 @@ def test_create_sale_procedure(self):
 			except:
 				print("An exception occurred")
 
-def test_create_procedure(self):
-	"""
-	Test
-	"""
-	print()
-	print('Test Create Procedure')
-
+#def test_create_procedure(self):
+#	"""
+#	Test - Dep
+#	"""
+#	print()
+#	print('Test Create Procedure')
 	# Create Procedure
-	self.create_procedure_man()
+#	self.create_procedure_man()
 
 def test_create_sessions(self):
 	"""

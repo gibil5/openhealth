@@ -2,7 +2,7 @@
 """
 		Treatment
 		Created: 			26 Aug 2016
-		Last up: 	 		27 Jul 2020
+		Last up: 	 		31 Jul 2020
 
 From PgAdmin
 -------------
@@ -24,10 +24,6 @@ from . import time_funcs
 
 from . import test_treatment
 from . import reco_funcs
-
-#from openerp.addons.openhealth.models.libs import lib, user, eval_vars
-#from openerp.addons.openhealth.models.libs import creates as cre  	# Dep !
-#from openerp.addons.price_list.models.treatment import pl_creates
 
 class Treatment(models.Model):
 	"""
@@ -979,7 +975,7 @@ class Treatment(models.Model):
 		"""
 		print('OH - create_order_pro')
 
-		# Clear
+		# Clear cart
 		self.shopping_cart_ids.unlink()
 
 		# Init
@@ -998,31 +994,29 @@ class Treatment(models.Model):
 							self.service_echography_ids,
 							self.service_promotion_ids,
 		]
+		
+		#obj = order_proceure.OrderProcedure(service_list)
+		#order = obj.create_order(self.env['product.product'], self.shopping_cart_ids)
 
 		# Create Cart
 		for service_ids in service_list:
 			for service in service_ids:
 
 				if (service.service.name not in [False]) 	and 	(service.service.pl_price_list in [price_list]):
-					#print(service.service.name)
-					#print(service.service)
-					#print(service.service.id)
-					#print(service.price_applied)
-					#print(service.qty)
-					#print()
 
 					# Product
+					print()
+					print('Product search')
 					product = self.env['product.product'].search([
 																	('name', '=', service.service.name),
 																	('sale_ok', '=', True),
 																	('pl_price_list', '=', '2019'),
 													])
 					#print(product)
-					#print(product.name)
-					#print()
-					#print()
 
 					# Create Cart
+					print()
+					print('Create cart')
 					if product.name not in [False]:
 						cart_line = self.shopping_cart_ids.create({
 																			'product': 		product.id,
@@ -1033,6 +1027,8 @@ class Treatment(models.Model):
 																})
 
 		# Create Order
+		print()
+		print('Create order')
 		order = pl_creates.pl_create_order(self)
 		#print(order)
 
@@ -1083,18 +1079,19 @@ class Treatment(models.Model):
 		Create Procedure Manual
 		"""
 		print()
-		print('OH - create_procedure_man')
+		print('treatment - create_procedure_man')
+
+		print(self.order_pro_ids)
 
 		# Loop
 		for order in self.order_pro_ids:
-			#if order.state == 'sale':
-			#if (order.state == 'sale')	and  (not order.x_procedure_created):
-			#if (order.state == 'sale')	and  (not order.is_procedure_created()):
-			if self.override or 		((order.state == 'sale')	and  	(not order.is_procedure_created())):
+			print(order)
+			if self.override or order.proc_is_not_created_and_state_is_sale():
 
+				#order.create_procedure_man(treatment) - In prog
 
 				# Update Order
-				order.set_procedure_created(True)
+				order.set_procedure_created()
 
 				# Loop
 				for line in order.order_line:
@@ -1181,14 +1178,17 @@ class Treatment(models.Model):
 		print('Test Create Sale procedure')
 		test_treatment.test_create_sale_procedure(self)
 
+
 	@api.multi
 	def test_create_procedure(self):
 		"""
-		Test
+		Create Procedure - Button
 		"""
 		print()
 		print('Test Create procedure')
-		test_treatment.test_create_procedure(self)
+		#test_treatment.test_create_procedure(self)
+		self.create_procedure_man()
+
 
 	@api.multi
 	def test_create_sessions(self):

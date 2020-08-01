@@ -2,7 +2,7 @@
 """
 		Treatment
 		Created: 			26 Aug 2016
-		Last up: 	 		31 Jul 2020
+		Last up: 	 		01 Aug 2020
 
 From PgAdmin
 -------------
@@ -14,6 +14,8 @@ from __future__ import print_function
 import datetime
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.libs import eval_vars
+
+from openerp.addons.price_list.models.lib import test_funcs
 
 from . import treatment_vars
 from . import treatment_state
@@ -1073,6 +1075,7 @@ class Treatment(models.Model):
 	# create_procedure
 
 # ----------------------------------------------------------- Create Procedure Manual  ------------
+	#jx
 	@api.multi
 	def create_procedure_man(self):
 		"""
@@ -1080,26 +1083,26 @@ class Treatment(models.Model):
 		"""
 		print()
 		print('treatment - create_procedure_man')
-
-		print(self.order_pro_ids)
+		print("order_pro_ids: {}".format(self.order_pro_ids))
 
 		# Loop
 		for order in self.order_pro_ids:
-			print(order)
-			if self.override or order.proc_is_not_created_and_state_is_sale():
+			print("order: {}".format(order))
 
-				#order.create_procedure_man(treatment) - In prog
+			if order.proc_is_not_created_and_state_is_sale() or self.override:
+
+				order.create_procedure_man(self)
 
 				# Update Order
-				order.set_procedure_created()
+				#order.set_procedure_created()
 
 				# Loop
-				for line in order.order_line:
-					print(line.product_id)
-					if line.product_id.is_procedure():
-						product_product = line.product_id
+				#for line in order.order_line:
+				#	print(line.product_id)
+				#	if line.product_id.is_procedure():
+				#		product_product = line.product_id
 						# Create
-						pl_creates.create_procedure_go(self, product_product)
+				#		pl_creates.create_procedure_go(self, product_product)
 
 	# create_procedure_man
 
@@ -1179,15 +1182,29 @@ class Treatment(models.Model):
 		test_treatment.test_create_sale_procedure(self)
 
 
+	#jx
 	@api.multi
 	def test_create_procedure(self):
 		"""
 		Create Procedure - Button
 		"""
 		print()
-		print('Test Create procedure')
+		print('Test Create procedure manual')
+
+		if True:
+			test_funcs.disablePrint()
+			self.test_reset()
+			self.test_create_budget_consultation()
+			self.test_create_sale_consultation()
+			self.test_create_consultation()
+			self.test_create_recommendations()
+			self.test_create_budget_procedure()
+			self.test_create_sale_procedure()
+			test_funcs.enablePrint()
+
 		#test_treatment.test_create_procedure(self)
 		self.create_procedure_man()
+
 
 
 	@api.multi

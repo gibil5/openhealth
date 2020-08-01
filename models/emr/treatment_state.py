@@ -12,8 +12,8 @@ class TreatmentState(object):
 	Used by Treatment
 	"""
 	def __init__(self, record):
-		print()
-		print('TreatmentState  -  init')
+		#print()
+		#print('TreatmentState  -  init')
 		self.record = record
 		#print(self.record)
 
@@ -35,8 +35,8 @@ class TreatmentState(object):
 		"""
 		Format Line Items
 		"""
-		print()
-		print('get_state')
+		#print()
+		#print('get_state')
 		state = 'empty'
 		if self.record.treatment_closed:
 			state = 'done'

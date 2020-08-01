@@ -34,6 +34,8 @@ from openerp import models, fields, api
 from openerp.exceptions import Warning as UserError
 from openerp.addons.openhealth.models.patient import pat_vars, chk_patient
 
+from openerp.addons.openhealth.models.emr import pl_creates
+
 from . import test_order
 from . import chk_order
 from . import ord_vars
@@ -50,13 +52,58 @@ from . import ord_funcs
 from . import tick_funcs
 
 
-class sale_order(models.Model):
+#class sale_order(models.Model):
+class SaleOrder(models.Model):
 	"""
 	Sale Class - Inherited from the medical Module OeHealth.
 	"""
 	_inherit = 'sale.order'
 	_description = 'Order'
 
+
+
+# ---------------------------------------------------- Used by Treatment -------
+
+	def create_procedure_man(self, treatment):
+		"""
+		Create Procedure Man - In prog
+		Used by: Treatment
+		"""
+		# Update Order
+		#self.set_procedure_created(True)
+		self.set_procedure_created()
+
+		# Loop
+		for line in self.order_line:
+			print(line.product_id)
+			if line.product_id.is_procedure():
+				product_product = line.product_id
+
+				# Create
+				#pl_creates.create_procedure_go(self, product_product)
+				pl_creates.create_procedure_go(treatment, product_product)
+
+
+	#def set_procedure_created(self, value):
+	def set_procedure_created(self, value=True):
+		"""
+		Set Procedure Created
+		Used by: Treatment and Order
+		"""
+		print()
+		print('order - set_procedure_created')
+		self.x_procedure_created = value
+
+
+	#def is_procedure_created(self):
+	def proc_is_not_created_and_state_is_sale(self):
+		"""
+		Used by: Treatment
+		"""
+		print()
+		print('order - proc_is_not_created_and_state_is_sale')
+		#return self.x_procedure_created
+		return not self.x_procedure_created and self.state == 'sale'
 
 # ----------------------------------------- Constraints - From Patient ----------
 	# Check Ruc
@@ -875,8 +922,8 @@ class sale_order(models.Model):
 		# Update Descriptors
 		ord_funcs.update_descriptors(self)
 		env = self.env['openhealth.payment_method']
-		self.x_payment_method, ret = raw_funcs.create_pm(env, self.id, self.date_order, self.x_amount_total, self.partner_id.id, self.patient.x_firm, self.patient.x_ruc)		
-		return ret 
+		self.x_payment_method, ret = raw_funcs.create_pm(env, self.id, self.date_order, self.x_amount_total, self.partner_id.id, self.patient.x_firm, self.patient.x_ruc)
+		return ret
 
 # ----------------------------------------------------------- Print -------------------------------
 	@api.multi
@@ -907,7 +954,7 @@ class sale_order(models.Model):
 		res_id = self.id
 		ret = raw_funcs.open_line_current(res_model, res_id)
 		#print(ret)
-		return ret 
+		return ret
 
 #----------------------------------------------------------- Qpen myself --------------------------
 	@api.multi
@@ -919,7 +966,7 @@ class sale_order(models.Model):
 		res_model = self._name
 		res_id = self.id
 		ret = raw_funcs.open_myself(res_model, res_id)
-		return ret 
+		return ret
 
 
 # ----------------------------------------------------------- Remove and Reset ------------

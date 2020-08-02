@@ -145,13 +145,14 @@ def create_procedure(treatment, order_line):
 	"""
 	Used by Order
 	"""
-	print('Create Procedure')
+	#print('Create Procedure')
+	print('raw_funcs - create_procedure')
 	if treatment.name:
 		for line in order_line:
 			product = line.product_id
 			if product.is_procedure():
 				treatment.create_procedure_auto(product)
-			line.update_recos()
+			#line.update_recos()
 		# Update Order - Dep ?
 		#set_procedure_created(True)
 

@@ -2,7 +2,7 @@
 """
 		Treatment
 		Created: 			26 Aug 2016
-		Last up: 	 		01 Aug 2020
+		Last up: 	 		02 Aug 2020
 
 From PgAdmin
 -------------
@@ -14,18 +14,16 @@ from __future__ import print_function
 import datetime
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.libs import eval_vars
-
 from openerp.addons.price_list.models.lib import test_funcs
 
 from . import treatment_vars
 from . import treatment_state
-
 from . import pl_creates
 from . import pl_user
 from . import time_funcs
-
 from . import test_treatment
 from . import reco_funcs
+
 
 class Treatment(models.Model):
 	"""
@@ -85,13 +83,6 @@ class Treatment(models.Model):
 	    'treatment',
 	    string="Servicios ndyag"
 	    )
-
-	# medical
-	#service_medical_ids = fields.One2many(
-	#   'openhealth.service_medical',
-	#    'treatment',
-	#   string="Servicios medical"
-	#   )
 
 	# quick
 	service_quick_ids = fields.One2many(
@@ -315,7 +306,7 @@ class Treatment(models.Model):
 		)
 
 
-# ----------------------------------------------------------- Macro ------------
+# ----------------------------------------------------------- Card ------------
 	# Sex - Used by header
 	patient_sex = fields.Char(
 			string="Sexo",
@@ -372,14 +363,12 @@ class Treatment(models.Model):
 			'product.pricelist',
 			string='Pricelist',
 			readonly=True,
-
 			compute='_compute_pricelist_id',
 	)
 	@api.multi
 	def _compute_pricelist_id(self):
 		for record in self:
 			record.pricelist_id = record.patient.property_product_pricelist
-
 
 
 # ----------------------------------------------------------- Manual ------------------------------
@@ -442,7 +431,6 @@ class Treatment(models.Model):
 	def _compute_vip_inprog(self):
 		for record in self:
 			record.x_vip_inprog = False
-
 			#nr_vip = self.env['openhealth.service.product'].search_count([
 			#																('treatment', '=', record.id),
 			#																('service', 'in', ['tarjeta vip', 'Tarjeta Vip', 'Tarjeta VIP', 'TARJETA VIP']),
@@ -460,7 +448,6 @@ class Treatment(models.Model):
 			'treatment',
 			string="Consultas",
 		)
-
 
 	procedure_ids = fields.One2many(
 			'openhealth.procedure',
@@ -480,15 +467,12 @@ class Treatment(models.Model):
 			string="Controles",
 		)
 
-
-
 	# Orders
 	order_ids = fields.One2many(
 			'sale.order',
 			'treatment',
 			string="Presupuestos",
 		)
-
 
 	# Orders Procedures
 	order_pro_ids = fields.One2many(
@@ -500,82 +484,6 @@ class Treatment(models.Model):
 						('pl_family', 'in', ['LASER CO2']),
 					],
 		)
-
-
-
-# ----------------------------------------------------------- Services Old - Dep !! ----------------------------
-
-	# Product
-	#service_product_ids = fields.One2many(
-	#		'openhealth.service.product',
-	#		'treatment',
-	#		string="Servicios Producto"
-	#	)
-
-	# Vip
-	#service_vip_ids = fields.One2many(
-	#		'openhealth.service.vip',
-	#		'treatment',
-	#		string="Servicios vip"
-	#	)
-
-	# Service
-	#service_ids = fields.One2many(
-	#		'openhealth.service',
-	#		'treatment',
-	#		string="Servicios"
-	#	)
-
-	# Quick
-	#service_quick_ids = fields.One2many(
-	#		'openhealth.service.quick',
-	#		'treatment',
-	#		string="Servicios quick"
-	#		)
-
-	# Co2
-	#service_co2_ids = fields.One2many(
-	#		'openhealth.service.co2',
-	#		'treatment',
-	#		string="Servicios Co2"
-	#		)
-
-	# Excilite
-	#service_excilite_ids = fields.One2many(
-	#		'openhealth.service.excilite',
-	#		'treatment',
-	#		string="Servicios Excilite"
-	#		)
-
-	# Ipl
-	#service_ipl_ids = fields.One2many(
-	#		'openhealth.service.ipl',
-	#		'treatment',
-	#		string="Servicios ipl"
-	#		)
-
-	# Ndyag
-	#service_ndyag_ids = fields.One2many(
-	#		'openhealth.service.ndyag',
-	#		'treatment',
-	#		string="Servicios ndyag"
-	#		)
-
-	# Medical
-	#service_medical_ids = fields.One2many(
-	#		'openhealth.service.medical',
-	#		'treatment',
-	#		string="Servicios medical"
-	#		)
-
-	# Cosmetology
-	#service_cosmetology_ids = fields.One2many(
-	#		'openhealth.service.cosmetology',
-	#		'treatment',
-	#		string="Servicios cosmeatria"
-	#	)
-
-
 
 # ----------------------------------------------------------- Consultation Progress ---------------
 
@@ -592,8 +500,6 @@ class Treatment(models.Model):
 		for record in self:
 			for con in record.consultation_ids:
 				record.consultation_progress = con.progress
-
-
 
 # ----------------------------------------------------------- State -------------------------------
 	# State
@@ -649,58 +555,6 @@ class Treatment(models.Model):
 			#services = self.env['price_list.service_co2'].search_count([('treatment', '=', record.id),])
 			services = self.env['openhealth.service_co2'].search_count([('treatment', '=', record.id),])
 			record.nr_services_co2 = services
-
-
-# ----------------------------------------------------------- Open Myself -------------------------
-	# Open Myself
-	@api.multi
-	def open_myself(self):
-		"""
-		Used by
-		"""
-		treatment_id = self.id
-		return {
-			# Mandatory
-			'type': 'ir.actions.act_window',
-			'name': 'Open Consultation Current',
-			# Window action
-			'res_model': 'openhealth.treatment',
-			'res_id': treatment_id,
-			# Views
-			"views": [[False, "form"]],
-			'view_mode': 'form',
-			'target': 'current',
-			#'view_id': view_id,
-			#"domain": [["patient", "=", self.patient.name]],
-			#'auto_search': False,
-			'flags': {
-					'form': {'action_buttons': True, }
-					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-			},
-			'context':   {}
-		}
-	# open_myself
-
-#----------------------------------------------------------- Quick Button - Used by Patient ---------
-	@api.multi
-	def open_line_current(self):
-		"""
-		# Quick access Button
-		"""
-		return {
-				'type': 'ir.actions.act_window',
-				'name': ' Edit Order Current',
-				'view_type': 'form',
-				'view_mode': 'form',
-				'res_model': self._name,
-				'res_id': self.id,
-				'target': 'current',
-				'flags': {
-						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-						'form': {'action_buttons': True, }
-						},
-				'context': {}
-		}
 
 
 # ----------------------------------------------------------- Create Buttons  ----------
@@ -1001,6 +855,56 @@ class Treatment(models.Model):
 		return ret
 
 
+# ----------------------------------------------------------- Open Myself -------------------------
+	# Open Myself
+	@api.multi
+	def open_myself(self):
+		"""
+		Used by
+		"""
+		treatment_id = self.id
+		return {
+			# Mandatory
+			'type': 'ir.actions.act_window',
+			'name': 'Open Consultation Current',
+			# Window action
+			'res_model': 'openhealth.treatment',
+			'res_id': treatment_id,
+			# Views
+			"views": [[False, "form"]],
+			'view_mode': 'form',
+			'target': 'current',
+			#'view_id': view_id,
+			#"domain": [["patient", "=", self.patient.name]],
+			#'auto_search': False,
+			'flags': {
+					'form': {'action_buttons': True, }
+					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+			},
+			'context':   {}
+		}
+	# open_myself
+
+#----------------------------------------------------------- Quick Button - Used by Patient ---------
+	@api.multi
+	def open_line_current(self):
+		"""
+		# Quick access Button
+		"""
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' Edit Order Current',
+				'view_type': 'form',
+				'view_mode': 'form',
+				'res_model': self._name,
+				'res_id': self.id,
+				'target': 'current',
+				'flags': {
+						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+						'form': {'action_buttons': True, }
+						},
+				'context': {}
+		}
 
 # ----------------------------------------------------------- Test All Cycle - Step by Step --------------------------
 	@api.multi
@@ -1133,3 +1037,4 @@ class Treatment(models.Model):
 		print()
 		print()
 		print('SUCCESS !')
+

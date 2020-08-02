@@ -2,7 +2,7 @@
 """
 		Order - Openhealth
 		Created: 			26 Aug 2016
-		Last mod: 			01 Aug 2020
+		Last mod: 			02 Aug 2020
 
 		This tangled object must be split in several objs, with clear roles.
 		That will be:
@@ -30,37 +30,27 @@ from __future__ import print_function
 import datetime
 
 from openerp import models, fields, api
-#from openerp import _
 from openerp.exceptions import Warning as UserError
 from openerp.addons.openhealth.models.patient import pat_vars, chk_patient
-
 from openerp.addons.openhealth.models.emr import pl_creates
 
 from . import test_order
 from . import chk_order
 from . import ord_vars
 from . import raw_funcs
-
 from . import qr
 from . import ticket_line
 from . import fix_treatment
-
 from . import ord_funcs
-
-#from openerp.addons.openhealth.models.libs import lib
-#from . import exc_ord
 from . import tick_funcs
 
 
-#class sale_order(models.Model):
 class SaleOrder(models.Model):
 	"""
 	Sale Class - Inherited from the medical Module OeHealth.
 	"""
 	_inherit = 'sale.order'
 	_description = 'Order'
-
-
 
 # ---------------------------------------------------- Used by Treatment - Create Proc -------
 	def create_procedure_man(self, treatment):
@@ -376,8 +366,10 @@ class SaleOrder(models.Model):
 		if self.x_payment_method.saledoc:
 			self.x_type = self.x_payment_method.saledoc
 
+		
 		# Create Procedure
-		#raw_funcs.create_procedure(self.treatment, self.order_line)
+		raw_funcs.create_procedure(self.treatment, self.order_line)
+
 
 		# Id Doc and Ruc
 		raw_funcs.check_docs(self.x_type, self.x_ruc, self.x_id_doc, self.x_id_doc_type)

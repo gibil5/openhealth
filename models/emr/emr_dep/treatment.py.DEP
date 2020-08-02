@@ -1,3 +1,91 @@
+# 2 Aug 2020 
+
+
+# ----------------------------------------------------------- Services ----------------------------
+
+	# medical
+	#service_medical_ids = fields.One2many(
+	#   'openhealth.service_medical',
+	#    'treatment',
+	#   string="Servicios medical"
+	#   )
+
+# ----------------------------------------------------------- Services Old - Dep !! ----------------------------
+
+	# Product
+	#service_product_ids = fields.One2many(
+	#		'openhealth.service.product',
+	#		'treatment',
+	#		string="Servicios Producto"
+	#	)
+
+	# Vip
+	#service_vip_ids = fields.One2many(
+	#		'openhealth.service.vip',
+	#		'treatment',
+	#		string="Servicios vip"
+	#	)
+
+	# Service
+	#service_ids = fields.One2many(
+	#		'openhealth.service',
+	#		'treatment',
+	#		string="Servicios"
+	#	)
+
+	# Quick
+	#service_quick_ids = fields.One2many(
+	#		'openhealth.service.quick',
+	#		'treatment',
+	#		string="Servicios quick"
+	#		)
+
+	# Co2
+	#service_co2_ids = fields.One2many(
+	#		'openhealth.service.co2',
+	#		'treatment',
+	#		string="Servicios Co2"
+	#		)
+
+	# Excilite
+	#service_excilite_ids = fields.One2many(
+	#		'openhealth.service.excilite',
+	#		'treatment',
+	#		string="Servicios Excilite"
+	#		)
+
+	# Ipl
+	#service_ipl_ids = fields.One2many(
+	#		'openhealth.service.ipl',
+	#		'treatment',
+	#		string="Servicios ipl"
+	#		)
+
+	# Ndyag
+	#service_ndyag_ids = fields.One2many(
+	#		'openhealth.service.ndyag',
+	#		'treatment',
+	#		string="Servicios ndyag"
+	#		)
+
+	# Medical
+	#service_medical_ids = fields.One2many(
+	#		'openhealth.service.medical',
+	#		'treatment',
+	#		string="Servicios medical"
+	#		)
+
+	# Cosmetology
+	#service_cosmetology_ids = fields.One2many(
+	#		'openhealth.service.cosmetology',
+	#		'treatment',
+	#		string="Servicios cosmeatria"
+	#	)
+
+
+
+
+
 # 1 Aug 2020 
 
 	# product

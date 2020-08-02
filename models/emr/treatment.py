@@ -178,12 +178,6 @@ class Treatment(models.Model):
 			obj = counter_objects.CounterObjects(self.env['sale.order'], 'draft', 'CONSULTA', record.id,)
 			record.nr_budgets_cons = obj.count()
 
-			#record.nr_budgets_cons = self.env['sale.order'].search_count([
-			#																('treatment', '=', record.id),
-			#																('state', '=', 'draft'),
-			#																#('pl_family', 'like', 'CONSULTA'),
-			#																('pl_family', '=', 'CONSULTA'),
-			#														])
 
 	# Invoices - Consultations
 	nr_invoices_cons = fields.Integer(
@@ -193,19 +187,11 @@ class Treatment(models.Model):
 	@api.multi
 	def _compute_nr_invoices_cons(self):
 		for record in self:
-			
 			obj = counter_objects.CounterObjects(self.env['sale.order'], 'sale', 'CONSULTA', record.id,)
-			
 			record.nr_invoices_cons = obj.count()
 
-			#record.nr_invoices_cons = self.env['sale.order'].search_count([
-			#																('treatment', '=', record.id),
-			#																('state', '=', 'sale'),
-			#																('pl_family', '=', 'CONSULTA,'),
-			#														])
 
-
-	# Budgets - Proc   					# DEP ?
+	# Budgets - Proc
 	nr_budgets_pro = fields.Integer(
 			string="Presupuestos - Pro",
 			compute="_compute_nr_budgets_pro",
@@ -213,16 +199,8 @@ class Treatment(models.Model):
 	@api.multi
 	def _compute_nr_budgets_pro(self):
 		for record in self:
-
 			obj = counter_objects.CounterObjects(self.env['sale.order'], 'draft', 'procedure', record.id, 'x_family')
-			
 			record.nr_budgets_pro = obj.count()
-
-			#record.nr_budgets_pro = self.env['sale.order'].search_count([
-			#															('treatment', '=', record.id),
-			#															('state', '=', 'sale'),
-			#															('x_family', '=', 'procedure'),
-			#														])
 
 	# Invoices - Proc
 	nr_invoices_pro = fields.Integer(
@@ -232,16 +210,8 @@ class Treatment(models.Model):
 	@api.multi
 	def _compute_nr_invoices_pro(self):
 		for record in self:
-
 			obj = counter_objects.CounterObjects(self.env['sale.order'], 'sale', 'procedure', record.id, 'x_family')
-			
 			record.nr_invoices_pro = obj.count()
-
-			#record.nr_invoices_pro = self.env['sale.order'].search_count([
-			#																('treatment', '=', record.id),
-			#																('state', '=', 'sale'),
-			#																('x_family', '=', 'procedure'),
-			#														])
 
 
 	# Consultations

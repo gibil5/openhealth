@@ -66,7 +66,8 @@ class SaleOrder(models.Model):
 			if line.product_id.is_procedure():
 				product_product = line.product_id
 				# Create Procedure
-				pl_creates.create_procedure_go(treatment, product_product)
+				#pl_creates.create_procedure_go(treatment, product_product)
+				pl_creates.create_procedure(treatment, product_product)
 
 	def set_procedure_created(self, value=True):
 		"""

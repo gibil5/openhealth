@@ -26,6 +26,8 @@ from . import reco_funcs
 
 from . import action_funcs
 
+from . import counter_objects
+
 class Treatment(models.Model):
 	"""
 	Treatment class
@@ -173,11 +175,16 @@ class Treatment(models.Model):
 	@api.multi
 	def _compute_nr_budgets_cons(self):
 		for record in self:
-			record.nr_budgets_cons = self.env['sale.order'].search_count([
-																			('treatment', '=', record.id),
-																			('state', '=', 'draft'),
-																			('pl_family', 'like', 'CONSULTA'),
-																	])
+			obj = counter_objects.CounterObjects(self.env['sale.order'], 'draft', 'CONSULTA', record.id,)
+			record.nr_budgets_cons = obj.count()
+
+			#record.nr_budgets_cons = self.env['sale.order'].search_count([
+			#																('treatment', '=', record.id),
+			#																('state', '=', 'draft'),
+			#																#('pl_family', 'like', 'CONSULTA'),
+			#																('pl_family', '=', 'CONSULTA'),
+			#														])
+
 	# Invoices - Consultations
 	nr_invoices_cons = fields.Integer(
 			string="Facturas Consultas",
@@ -186,11 +193,57 @@ class Treatment(models.Model):
 	@api.multi
 	def _compute_nr_invoices_cons(self):
 		for record in self:
-			record.nr_invoices_cons = self.env['sale.order'].search_count([
-																			('treatment', '=', record.id),
-																			('state', '=', 'sale'),
-																			('pl_family', '=', 'CONSULTA,'),
-																	])
+			
+			obj = counter_objects.CounterObjects(self.env['sale.order'], 'sale', 'CONSULTA', record.id,)
+			
+			record.nr_invoices_cons = obj.count()
+
+			#record.nr_invoices_cons = self.env['sale.order'].search_count([
+			#																('treatment', '=', record.id),
+			#																('state', '=', 'sale'),
+			#																('pl_family', '=', 'CONSULTA,'),
+			#														])
+
+
+	# Budgets - Proc   					# DEP ?
+	nr_budgets_pro = fields.Integer(
+			string="Presupuestos - Pro",
+			compute="_compute_nr_budgets_pro",
+	)
+	@api.multi
+	def _compute_nr_budgets_pro(self):
+		for record in self:
+
+			obj = counter_objects.CounterObjects(self.env['sale.order'], 'draft', 'procedure', record.id, 'x_family')
+			
+			record.nr_budgets_pro = obj.count()
+
+			#record.nr_budgets_pro = self.env['sale.order'].search_count([
+			#															('treatment', '=', record.id),
+			#															('state', '=', 'sale'),
+			#															('x_family', '=', 'procedure'),
+			#														])
+
+	# Invoices - Proc
+	nr_invoices_pro = fields.Integer(
+			string="Facturas",
+			compute="_compute_nr_invoices_pro",
+	)
+	@api.multi
+	def _compute_nr_invoices_pro(self):
+		for record in self:
+
+			obj = counter_objects.CounterObjects(self.env['sale.order'], 'sale', 'procedure', record.id, 'x_family')
+			
+			record.nr_invoices_pro = obj.count()
+
+			#record.nr_invoices_pro = self.env['sale.order'].search_count([
+			#																('treatment', '=', record.id),
+			#																('state', '=', 'sale'),
+			#																('x_family', '=', 'procedure'),
+			#														])
+
+
 	# Consultations
 	nr_consultations = fields.Integer(
 			string="Nr Consultas",
@@ -206,32 +259,6 @@ class Treatment(models.Model):
 			record.nr_consultations = ctr
 
 
-	# Budgets - Proc   					# DEP ?
-	nr_budgets_pro = fields.Integer(
-			string="Presupuestos - Pro",
-			compute="_compute_nr_budgets_pro",
-	)
-	@api.multi
-	def _compute_nr_budgets_pro(self):
-		for record in self:
-			record.nr_budgets_pro = self.env['sale.order'].search_count([
-																		('treatment', '=', record.id),
-																		('x_family', '=', 'procedure'),
-																		('state', '=', 'draft'),
-																	])
-	# Invoices - Proc
-	nr_invoices_pro = fields.Integer(
-			string="Facturas",
-			compute="_compute_nr_invoices_pro",
-	)
-	@api.multi
-	def _compute_nr_invoices_pro(self):
-		for record in self:
-			record.nr_invoices_pro = self.env['sale.order'].search_count([
-																			('treatment', '=', record.id),
-																			('x_family', '=', 'procedure'),
-																			('state', '=', 'sale'),
-																	])
 	# Procedures
 	nr_procedures = fields.Integer(
 			string="Procedimientos",
@@ -264,8 +291,8 @@ class Treatment(models.Model):
 		for record in self:
 			record.nr_controls = 0
 			record.nr_controls = self.env['openhealth.control'].search_count([
-																	('treatment', '=', record.id),
-																	])
+																				('treatment', '=', record.id),
+																				])
 
 # ----------------------------------------------------------- Test ----------------------------------------------------
 	x_test = fields.Boolean(

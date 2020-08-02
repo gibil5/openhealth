@@ -1,0 +1,97 @@
+# 02 Aug 2020
+
+
+# ----------------------------------------------------------- Patient ---------------------------
+# Update
+#@api.multi
+#def update_patient(self):
+#	print
+  #print 'Update Patient - Evaluation'
+  #self.patient_sex = self.patient.sex[0]
+  #self.patient_age =  self.patient.age.split()[0]
+  #self.patient_city = self.patient.city.title()
+
+
+  # ----------------------------------------------------------- Automatic ---------------------------
+
+  	@api.multi
+  	def get_name_auto(self, patient_name, date):
+  		"""
+  		Get Name Auto
+  		"""
+  		#print()
+  		#print('Get Name Auto')
+  		#print(patient_name)
+  		#print(date)
+  		if date not in [False]:
+  			date_format = "%Y-%m-%d %H:%M:%S"
+  			date_dt = datetime.datetime.strptime(date, date_format) + datetime.timedelta(hours=-5, minutes=0)
+  			date_str = date_dt.strftime(date_format)
+  			name = patient_name + ' ' + date_str.split(' ')[0]
+  		else:
+  			name = patient_name
+
+  		return name
+
+
+
+
+
+# ----------------------------------------------------------- Appointment -------------------------
+
+	# Update App
+	@api.multi
+	def update_dates(self):
+		"""
+		high level support for doing this and that.
+		"""
+		#print
+		#print 'Update Dates'
+		self.evaluation_start_date = self.appointment.appointment_date
+
+
+
+# Update App
+@api.multi
+def update_appointment(self):
+  """
+  high level support for doing this and that.
+  """
+  #print
+  #print 'Update Appointment'
+
+  res_id = self.appointment.id
+
+  # Treatment Flag
+  self.treatment.update()
+
+  return {
+
+    # Mandatory
+    'type': 'ir.actions.act_window',
+    'name': 'Open Appointment',
+
+    # Window action
+    'res_model': 'oeh.medical.appointment',
+    'res_id': res_id,
+
+    # Views
+    "views": [[False, "form"]],
+    'view_mode': 'form',
+    'target': 'current',
+    #'view_id': view_id,
+
+    #"domain": [["patient", "=", self.patient.name]],
+    #'auto_search': False,
+    'flags': {
+        'form': {'action_buttons': True, }
+        #'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+    },
+    'context':   {}
+  }
+# update_appointment
+
+
+
+
+

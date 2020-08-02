@@ -24,6 +24,7 @@ from . import time_funcs
 from . import test_treatment
 from . import reco_funcs
 
+from . import action_funcs
 
 class Treatment(models.Model):
 	"""
@@ -572,32 +573,11 @@ class Treatment(models.Model):
 		price_list = '2019'
 		target = 'medical'
 
-		#order = self.create_order_con_target(target)
-		#order = pl_creates.pl_create_order_con(self, target, price_list)
 		order = pl_creates.create_order_con(self, target, price_list)
 
 		# Open Order
-		return {
-				# Created
-				'res_id': order.id,
-				# Mandatory
-				'type': 'ir.actions.act_window',
-				'name': 'Open Order Current',
-				# Window action
-				'res_model': 'sale.order',
-				# Views
-				"views": [[False, "form"]],
-				'view_mode': 'form',
-				'target': 'current',
-				#'view_id': view_id,
-				#"domain": [["patient", "=", self.patient.name]],
-				#'auto_search': False,
-				'flags': {
-						'form': {'action_buttons': True, }
-						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-						},
-				'context': {}
-			}
+		return action_funcs.open_order(order)
+
 
 # ----------------------------------------------------- Create Consultations ---------------------------------------------
 
@@ -762,27 +742,8 @@ class Treatment(models.Model):
 		#print(order)
 
 		# Open Order
-		return {
-				# Created
-				'res_id': order.id,
-				# Mandatory
-				'type': 'ir.actions.act_window',
-				'name': 'Open Order Current',
-				# Window action
-				'res_model': 'sale.order',
-				# Views
-				"views": [[False, "form"]],
-				'view_mode': 'form',
-				'target': 'current',
-				#'view_id': view_id,
-				#"domain": [["patient", "=", self.patient.name]],
-				#'auto_search': False,
-				'flags': {
-						'form': {'action_buttons': True, }
-						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-						},
-				'context': {}
-			}
+		return action_funcs.open_order(order)
+
 	# create_order_pro
 
 # ----------------------------------------------------------- Create Procedure  -------------------

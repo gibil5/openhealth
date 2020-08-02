@@ -1,0 +1,110 @@
+# 2 Aug 2020
+
+# ----------------------------------------------------------- Update Recos -----------
+	# Update Recommendations
+	#@api.multi
+	def update_recos(self):
+		"""
+		Used by Order
+		"""
+		#print
+		#print 'Update - Recommendations'
+
+		# Init
+		family = self.product_id.x_family
+		treatment = self.product_id.x_treatment
+		if family in ['laser', 'consultation', 'consultation_gyn']:
+			categ = treatment
+		else:
+			categ = family
+
+		# Co2
+		if categ == 'laser_co2':
+			lib.change_state(self.service_co2_id, 'sale')
+
+		# Exc
+		elif categ == 'laser_excilite':
+			lib.change_state(self.service_excilite_id, 'sale')
+
+		# Ipl
+		elif categ == 'laser_ipl':
+			lib.change_state(self.service_ipl_id, 'sale')
+
+		# Ndyag
+		elif categ == 'laser_ndyag':
+			lib.change_state(self.service_ndyag_id, 'sale')
+
+		# Quick
+		elif categ == 'laser_quick':
+			lib.change_state(self.service_quick_id, 'sale')
+
+		# Medical
+		elif categ == 'medical':
+			lib.change_state(self.service_medical_id, 'sale')
+
+		# Cosmetology
+		elif categ == 'cosmetology':
+			lib.change_state(self.service_cosmetology_id, 'sale')
+
+		# Consultation
+		elif categ == 'consultation':
+			#print
+			pass
+
+		# Products
+		else:
+			lib.change_state(self.service_product_id, 'sale')
+
+	# update_recos
+
+
+# -------------------------------------------------- Recommendations -----------
+	#service_product_id = fields.Many2one(
+	#		'openhealth.service.product',
+	#		string='Product',
+	#	)
+
+	#service_consultation_id = fields.Many2one(
+	#		'openhealth.service.consultation',
+	#		string='Consultation',
+	#	)
+
+	#service_co2_id = fields.Many2one(
+	#		'openhealth.service.co2',
+	#		string='Co2',
+	#	)
+
+	#service_quick_id = fields.Many2one(
+	#		'openhealth.service.quick',
+	#		string='Quick',
+	#	)
+
+	#service_vip_id = fields.Many2one(
+	#		'openhealth.service.vip',
+	#		string='Vip',
+	#	)
+
+	#service_excilite_id = fields.Many2one(
+	#		'openhealth.service.excilite',
+	#		string='Excilite',
+	#	)
+
+	#service_ipl_id = fields.Many2one(
+	#		'openhealth.service.ipl',
+	#		string='Ipl',
+	#	)
+
+	#service_ndyag_id = fields.Many2one(
+	#		'openhealth.service.ndyag',
+	#		string='Ndyag',
+	#	)
+
+	#service_medical_id = fields.Many2one(
+	#		'openhealth.service.medical',
+	#		string='Medical',
+	#	)
+
+	#service_cosmetology_id = fields.Many2one(
+	#		'openhealth.service.cosmetology',
+	#		string='Cosmetology',
+	#	)

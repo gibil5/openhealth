@@ -1,20 +1,58 @@
 # -*- coding: utf-8 -*-
 """
-	Encapsulates actual Creation on Database
+	Pl Creates - Used by Treatment
 	Created: 			27 Jul 2020
-	Last up: 	 		27 Jul 2020
+	Last up: 	 		02 Aug 2020
+	
+	Encapsulates creation on database
 	...
-	pl_create_order_con
-	pl_create_order
-	create_procedure_go
+
+	Create Order
+		- create_order_con
+		- create_order
+
+	Create Procedure 
+		- create_procedure
 """
 from __future__ import print_function
 from . import pl_user
 
-# ----------------------------------------------------------- Create Order Target -----------------
-def pl_create_order_con(self, target, price_list):
+
+# ----------------------------------------------------------- Create Shopping Cart -----------------
+def create_shopping_cart(treatment, env, service, treatment_id):
 	"""
-	Used by Treatment
+	Used by Treatment - create_order_pro
+	"""
+	print()
+	print('pl_creates - create_shopping_cart')
+
+	# init 
+	service_name = service.service.name
+	price = service.price_applied
+	qty = service.qty
+
+	# Search product
+	print()
+	print('Search product ')
+	product_id = env.search([	('name', '=', service_name),
+								('sale_ok', '=', True),
+								('pl_price_list', '=', '2019')]).id
+	#print(product)
+
+	# Create cart
+	#if product.name:
+	cart_line = treatment.shopping_cart_ids.create({	'product': 		product_id,
+														'price': 		price,
+														'qty': 			qty,
+														'treatment': 	treatment_id})
+# create_shopping_cart
+
+
+# ----------------------------------------------------------- Create Order Target -----------------
+def create_order_con(self, target, price_list):
+	"""
+	Used by Treatment - create_order_con
+	Create order - consultation
 	"""
 	print()
 	print('OH - pl_create_order_con')
@@ -95,10 +133,12 @@ def pl_create_order_con(self, target, price_list):
 									'order_id': 		order.id,
 								})
 	return order
+# create_order_con
 
 # ----------------------------------------------------------- Create Order Target -----------------
-def pl_create_order(self):
+def create_order(self):
 	"""
+	Used by Treatment - create_order_pro
 	Create Order - By Line
 	"""
 	print()
@@ -164,14 +204,13 @@ def pl_create_order(self):
 										'order_id': 	order.id,
 									})
 	return order
-
+#create_order
 
 #------------------------------------------------ Create Procedure Go --------------------------------
-#def create_procedure_go(patient, doctor, chief_complaint, product, treatment_id):
-def create_procedure_go(self, product):
+def create_procedure(self, product):
 	"""
+	Used by: Treatment - create_procedure_auto
 	Create Procedure - Core
-	Used by: Treatment
 	Input is a Product Product !!!
 	"""
 	print()
@@ -209,4 +248,5 @@ def create_procedure_go(self, product):
 										})
 	print(procedure)
 	print(procedure.name)
+
 # create_procedure_go

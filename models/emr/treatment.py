@@ -573,7 +573,8 @@ class Treatment(models.Model):
 		target = 'medical'
 
 		#order = self.create_order_con_target(target)
-		order = pl_creates.pl_create_order_con(self, target, price_list)
+		#order = pl_creates.pl_create_order_con(self, target, price_list)
+		order = pl_creates.create_order_con(self, target, price_list)
 
 		# Open Order
 		return {
@@ -745,38 +746,19 @@ class Treatment(models.Model):
 							self.service_promotion_ids,
 		]
 		
-		#obj = order_proceure.OrderProcedure(service_list)
-		#order = obj.create_order(self.env['product.product'], self.shopping_cart_ids)
-
 		# Create Cart
 		for service_ids in service_list:
 			for service in service_ids:
-
-				# Product
-				print()
-				print('Search product ')
-				product = self.env['product.product'].search([
-																('name', '=', service.service.name),
-																('sale_ok', '=', True),
-																('pl_price_list', '=', '2019'),
-												])
-				#print(product)
-
-				# Create Cart
 				print()
 				print('Create cart')
-				if product.name not in [False]:
-					cart_line = self.shopping_cart_ids.create({
-																		'product': 		product.id,
-																		'price': 		service.price_applied,
-																		'qty': 			service.qty,
-																		#'qty': 			1,
-																		'treatment': 	self.id,
-															})
+				pl_creates.create_shopping_cart(self, self.env['product.product'], service, self.id)
+
+
 		# Create Order
 		print()
 		print('Create order')
-		order = pl_creates.pl_create_order(self)
+		#order = pl_creates.pl_create_order(self)
+		order = pl_creates.create_order(self)
 		#print(order)
 
 		# Open Order
@@ -816,7 +798,8 @@ class Treatment(models.Model):
 		print('OH - create_procedure_auto')
 		print(self)
 		print(product)
-		pl_creates.create_procedure_go(self, product)
+		#pl_creates.create_procedure_go(self, product)
+		pl_creates.create_procedure(self, product)
 	# create_procedure
 
 # ----------------------------------------------------------- Create Procedure Manual  ------------

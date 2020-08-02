@@ -613,7 +613,7 @@ def test_reset_treatment(self):
 	self.service_ndyag_ids.unlink()
 	self.service_quick_ids.unlink()
 	self.service_product_ids.unlink()
-	self.service_medical_ids.unlink()
+	#self.service_medical_ids.unlink()
 	self.service_cosmetology_ids.unlink()
 	self.service_gynecology_ids.unlink()
 	self.service_echography_ids.unlink()

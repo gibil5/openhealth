@@ -27,52 +27,62 @@
 
 
                             <!-- Products --> 
+<!--
                             <page string="PRODUCTOS"        attrs="{'invisible':[('nr_services_product', '=', 0)]}"     >
                                 <field name="service_product_ids"/> 
                             </page>
-
+-->
 
                             <!-- Co2 --> 
+<!--
                             <page string="CO2"          attrs="{'invisible':[('nr_services_co2', '=', 0)]}"  >
+-->
+                            <page string="CO2">
                                 <field name="service_co2_ids"/> 
                             </page>
 
 
                             <!-- Quick --> 
+<!--
                             <page string="QUICK"            attrs="{'invisible':[('nr_services_quick', '=', 0)]}"           >   
                                 <field name="service_quick_ids"/>   
                             </page>
-
+-->
 
                             <!-- Excilite --> 
+<!--
                             <page string="EXCILITE"     attrs="{'invisible':[('nr_services_excilite', '=', 0)]}"    >
                                 <field name="service_excilite_ids"/>
                             </page>
-
+-->
 
                             <!-- Ipl --> 
+<!--
                             <page string="IPL"          attrs="{'invisible':[('nr_services_ipl', '=', 0)]}"  >
                                 <field name="service_ipl_ids"/> 
                             </page>
-
+-->
 
                             <!-- Ndyag --> 
+<!--
                             <page string="NDYAG"        attrs="{'invisible':[('nr_services_ndyag', '=', 0)]}"  >
                                 <field name="service_ndyag_ids"/>                       
                             </page>
-
+-->
 
                             <!-- Medical --> 
+<!--
                             <page string="Tratamientos Médicos"         attrs="{'invisible':[('nr_services_medical', '=', 0)]}"  >
                                 <field name="service_medical_ids"/>                     
                             </page>
-
+-->
 
                             <!-- Cosmetology --> 
+<!--
                             <page string="Cosmiatria"           attrs="{'invisible':[('nr_services_cosmetology', '=', 0)]}"  >
                                 <field name="service_cosmetology_ids"/>                     
                             </page>
-                            
+-->                            
                         </notebook>
                     </page>
                 </notebook>

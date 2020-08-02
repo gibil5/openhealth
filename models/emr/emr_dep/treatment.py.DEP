@@ -1,3 +1,110 @@
+# 1 Aug 2020 
+
+	# product
+	nr_services_product = fields.Integer(
+			string="Servicios Producto",
+
+			compute="_compute_nr_services_product",
+	)
+	@api.multi
+	def _compute_nr_services_product(self):
+		for record in self:
+			services = self.env['openhealth.service.product'].search_count([('treatment', '=', record.id),])
+			record.nr_services_product = services
+
+
+
+	# vip
+	nr_services_vip = fields.Integer(
+			string="Servicios vip",
+
+			compute="_compute_nr_services_vip",
+	)
+	@api.multi
+	def _compute_nr_services_vip(self):
+		for record in self:
+			services = self.env['openhealth.service.vip'].search_count([('treatment', '=', record.id),])
+			record.nr_services_vip = services
+
+	# Quick
+	nr_services_quick = fields.Integer(
+			string="Servicios Quick",
+
+			compute="_compute_nr_services_quick",
+	)
+	@api.multi
+	def _compute_nr_services_quick(self):
+		for record in self:
+			services = self.env['openhealth.service.quick'].search_count([('treatment', '=', record.id),])
+			record.nr_services_quick = services
+
+
+	# excilite
+	nr_services_excilite = fields.Integer(
+			string="Servicios",
+
+			compute="_compute_nr_services_excilite",
+	)
+	@api.multi
+	def _compute_nr_services_excilite(self):
+		for record in self:
+			services = self.env['openhealth.service.excilite'].search_count([('treatment', '=', record.id),])
+			record.nr_services_excilite = services
+
+	# ipl
+	nr_services_ipl = fields.Integer(
+			string="Servicios",
+
+			compute="_compute_nr_services_ipl",
+	)
+	@api.multi
+	def _compute_nr_services_ipl(self):
+		for record in self:
+			services = self.env['openhealth.service.ipl'].search_count([('treatment', '=', record.id),])
+			record.nr_services_ipl = services
+
+	# ndyag
+	nr_services_ndyag = fields.Integer(
+			string="Servicios",
+
+			compute="_compute_nr_services_ndyag",
+	)
+	@api.multi
+	def _compute_nr_services_ndyag(self):
+		for record in self:
+			services = self.env['openhealth.service.ndyag'].search_count([('treatment', '=', record.id),])
+			record.nr_services_ndyag = services
+
+	# medical
+	nr_services_medical = fields.Integer(
+			string="Servicios",
+
+			compute="_compute_nr_services_medical",
+	)
+	@api.multi
+	def _compute_nr_services_medical(self):
+		for record in self:
+			services = self.env['openhealth.service.medical'].search_count([('treatment', '=', record.id),])
+			record.nr_services_medical = services
+
+	# Cosmetology
+	nr_services_cosmetology = fields.Integer(
+			string="Servicios",
+
+			compute="_compute_nr_services_cosmetology",
+	)
+	@api.multi
+	def _compute_nr_services_cosmetology(self):
+		for record in self:
+			services = self.env['openhealth.service.cosmetology'].search_count([('treatment', '=', record.id),])
+			record.nr_services_cosmetology = services
+
+
+
+
+
+
+
 # 28 jul 2020
 
 

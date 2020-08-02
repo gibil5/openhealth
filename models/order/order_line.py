@@ -131,55 +131,55 @@ class SaleOrderLine(models.Model):
 		)
 
 # -------------------------------------------------- Recommendations -----------
-	service_product_id = fields.Many2one(
-			'openhealth.service.product',
-			string='Product',
-		)
+	#service_product_id = fields.Many2one(
+	#		'openhealth.service.product',
+	#		string='Product',
+	#	)
 
-	service_consultation_id = fields.Many2one(
-			'openhealth.service.consultation',
-			string='Consultation',
-		)
+	#service_consultation_id = fields.Many2one(
+	#		'openhealth.service.consultation',
+	#		string='Consultation',
+	#	)
 
-	service_co2_id = fields.Many2one(
-			'openhealth.service.co2',
-			string='Co2',
-		)
+	#service_co2_id = fields.Many2one(
+	#		'openhealth.service.co2',
+	#		string='Co2',
+	#	)
 
-	service_quick_id = fields.Many2one(
-			'openhealth.service.quick',
-			string='Quick',
-		)
+	#service_quick_id = fields.Many2one(
+	#		'openhealth.service.quick',
+	#		string='Quick',
+	#	)
 
-	service_vip_id = fields.Many2one(
-			'openhealth.service.vip',
-			string='Vip',
-		)
+	#service_vip_id = fields.Many2one(
+	#		'openhealth.service.vip',
+	#		string='Vip',
+	#	)
 
-	service_excilite_id = fields.Many2one(
-			'openhealth.service.excilite',
-			string='Excilite',
-		)
+	#service_excilite_id = fields.Many2one(
+	#		'openhealth.service.excilite',
+	#		string='Excilite',
+	#	)
 
-	service_ipl_id = fields.Many2one(
-			'openhealth.service.ipl',
-			string='Ipl',
-		)
+	#service_ipl_id = fields.Many2one(
+	#		'openhealth.service.ipl',
+	#		string='Ipl',
+	#	)
 
-	service_ndyag_id = fields.Many2one(
-			'openhealth.service.ndyag',
-			string='Ndyag',
-		)
+	#service_ndyag_id = fields.Many2one(
+	#		'openhealth.service.ndyag',
+	#		string='Ndyag',
+	#	)
 
-	service_medical_id = fields.Many2one(
-			'openhealth.service.medical',
-			string='Medical',
-		)
+	#service_medical_id = fields.Many2one(
+	#		'openhealth.service.medical',
+	#		string='Medical',
+	#	)
 
-	service_cosmetology_id = fields.Many2one(
-			'openhealth.service.cosmetology',
-			string='Cosmetology',
-		)
+	#service_cosmetology_id = fields.Many2one(
+	#		'openhealth.service.cosmetology',
+	#		string='Cosmetology',
+	#	)
 
 # ---------------------------------------------- Open Line Current --------------------------------
 	# Open Line
@@ -209,7 +209,7 @@ class SaleOrderLine(models.Model):
 	#@api.multi
 	def update_recos(self):
 		"""
-		high level support for doing this and that.
+		Used by Order
 		"""
 		#print
 		#print 'Update - Recommendations'

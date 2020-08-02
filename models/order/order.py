@@ -377,7 +377,7 @@ class SaleOrder(models.Model):
 			self.x_type = self.x_payment_method.saledoc
 
 		# Create Procedure
-		raw_funcs.create_procedure(self.treatment, self.order_line)
+		#raw_funcs.create_procedure(self.treatment, self.order_line)
 
 		# Id Doc and Ruc
 		raw_funcs.check_docs(self.x_type, self.x_ruc, self.x_id_doc, self.x_id_doc_type)

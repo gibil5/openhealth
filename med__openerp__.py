@@ -296,6 +296,7 @@
 	# Treatments - 2
 	'views/treatments/treatment_orders.xml',
 	'views/treatments/treatment_consultations.xml',
+	'views/treatments/treatment_services.xml',
 	'views/treatments/treatment_procedures.xml',
 	'views/treatments/treatment_controls.xml', 	# Sab
 

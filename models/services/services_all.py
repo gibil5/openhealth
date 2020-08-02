@@ -71,7 +71,7 @@ class ServiceCosmetology(models.Model):
 	"""
 	Service Cosmetology
 	"""
-	_name = 'price_list.service_cosmetology'
+	_name = 'openhealth.service_cosmetology'
 	_inherit = 'openhealth.service'
 
 # ---------------------------------------------- Pl Treatment ------------------

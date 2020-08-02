@@ -58,14 +58,14 @@ class Treatment(models.Model):
 			string="Servicios excilite"
 	)
 
-  # cosmetology
+  	# cosmetology
 	service_cosmetology_ids = fields.One2many(
 			'openhealth.service_cosmetology',
 			'treatment',
 			string="Servicios cosmetology"
 	)
 
-  # echography
+  	# echography
 	service_echography_ids = fields.One2many(
 			'openhealth.service_echography',
 			'treatment',
@@ -87,11 +87,11 @@ class Treatment(models.Model):
 	    )
 
 	# medical
-	service_medical_ids = fields.One2many(
-	    'openhealth.service_medical',
-	    'treatment',
-	    string="Servicios medical"
-	    )
+	#service_medical_ids = fields.One2many(
+	#   'openhealth.service_medical',
+	#    'treatment',
+	#   string="Servicios medical"
+	#   )
 
 	# quick
 	service_quick_ids = fields.One2many(
@@ -441,13 +441,15 @@ class Treatment(models.Model):
 	@api.multi
 	def _compute_vip_inprog(self):
 		for record in self:
-			nr_vip = self.env['openhealth.service.product'].search_count([
-																			('treatment', '=', record.id),
-																			('service', 'in', ['tarjeta vip', 'Tarjeta Vip', 'Tarjeta VIP', 'TARJETA VIP']),
+			record.x_vip_inprog = False
+
+			#nr_vip = self.env['openhealth.service.product'].search_count([
+			#																('treatment', '=', record.id),
+			#																('service', 'in', ['tarjeta vip', 'Tarjeta Vip', 'Tarjeta VIP', 'TARJETA VIP']),
 																			#('state','=', 'draft'),
-				])
-			if nr_vip > 0:
-				record.x_vip_inprog = True
+			#	])
+			#if nr_vip > 0:
+			#	record.x_vip_inprog = True
 
 
 
@@ -501,77 +503,77 @@ class Treatment(models.Model):
 
 
 
-# ----------------------------------------------------------- Services - Dep ? ----------------------------
+# ----------------------------------------------------------- Services Old - Dep !! ----------------------------
 
 	# Product
-	service_product_ids = fields.One2many(
-			'openhealth.service.product',
-			'treatment',
-			string="Servicios Producto"
-		)
+	#service_product_ids = fields.One2many(
+	#		'openhealth.service.product',
+	#		'treatment',
+	#		string="Servicios Producto"
+	#	)
 
 	# Vip
-	service_vip_ids = fields.One2many(
-			'openhealth.service.vip',
-			'treatment',
-			string="Servicios vip"
-		)
+	#service_vip_ids = fields.One2many(
+	#		'openhealth.service.vip',
+	#		'treatment',
+	#		string="Servicios vip"
+	#	)
 
 	# Service
-	service_ids = fields.One2many(
-			'openhealth.service',
-			'treatment',
-			string="Servicios"
-		)
+	#service_ids = fields.One2many(
+	#		'openhealth.service',
+	#		'treatment',
+	#		string="Servicios"
+	#	)
 
 	# Quick
-	service_quick_ids = fields.One2many(
-			'openhealth.service.quick',
-			'treatment',
-			string="Servicios quick"
-			)
+	#service_quick_ids = fields.One2many(
+	#		'openhealth.service.quick',
+	#		'treatment',
+	#		string="Servicios quick"
+	#		)
 
 	# Co2
-	service_co2_ids = fields.One2many(
-			'openhealth.service.co2',
-			'treatment',
-			string="Servicios Co2"
-			)
+	#service_co2_ids = fields.One2many(
+	#		'openhealth.service.co2',
+	#		'treatment',
+	#		string="Servicios Co2"
+	#		)
 
 	# Excilite
-	service_excilite_ids = fields.One2many(
-			'openhealth.service.excilite',
-			'treatment',
-			string="Servicios Excilite"
-			)
+	#service_excilite_ids = fields.One2many(
+	#		'openhealth.service.excilite',
+	#		'treatment',
+	#		string="Servicios Excilite"
+	#		)
 
 	# Ipl
-	service_ipl_ids = fields.One2many(
-			'openhealth.service.ipl',
-			'treatment',
-			string="Servicios ipl"
-			)
+	#service_ipl_ids = fields.One2many(
+	#		'openhealth.service.ipl',
+	#		'treatment',
+	#		string="Servicios ipl"
+	#		)
 
 	# Ndyag
-	service_ndyag_ids = fields.One2many(
-			'openhealth.service.ndyag',
-			'treatment',
-			string="Servicios ndyag"
-			)
+	#service_ndyag_ids = fields.One2many(
+	#		'openhealth.service.ndyag',
+	#		'treatment',
+	#		string="Servicios ndyag"
+	#		)
 
 	# Medical
-	service_medical_ids = fields.One2many(
-			'openhealth.service.medical',
-			'treatment',
-			string="Servicios medical"
-			)
+	#service_medical_ids = fields.One2many(
+	#		'openhealth.service.medical',
+	#		'treatment',
+	#		string="Servicios medical"
+	#		)
 
 	# Cosmetology
-	service_cosmetology_ids = fields.One2many(
-			'openhealth.service.cosmetology',
-			'treatment',
-			string="Servicios cosmeatria"
-		)
+	#service_cosmetology_ids = fields.One2many(
+	#		'openhealth.service.cosmetology',
+	#		'treatment',
+	#		string="Servicios cosmeatria"
+	#	)
 
 
 
@@ -609,7 +611,7 @@ class Treatment(models.Model):
 			record.state = obj.get_state()
 
 
-# ----------------------------------------------------------- Number ofs - Services ---------------
+# ----------------------------------------------------------- Number ofs - Services - Dep ? ---------------
 	# Number of Services
 	nr_services = fields.Integer(
 			string="Servicios",
@@ -619,61 +621,20 @@ class Treatment(models.Model):
 	def _compute_nr_services(self):
 		for record in self:
 
-			co2 = self.env['openhealth.service.co2'].search_count([('treatment', '=', record.id),])
+			#record.nr_services = 0
 
-			quick =	self.env['openhealth.service.quick'].search_count([('treatment', '=', record.id),])
-			exc = self.env['openhealth.service.excilite'].search_count([('treatment', '=', record.id),])
-			ipl = self.env['openhealth.service.ipl'].search_count([('treatment', '=', record.id),])
-			ndyag = self.env['openhealth.service.ndyag'].search_count([('treatment', '=', record.id),])
-			medical = self.env['openhealth.service.medical'].search_count([('treatment', '=', record.id),])
-			vip = self.env['openhealth.service.vip'].search_count([('treatment', '=', record.id),])
-			product = self.env['openhealth.service.product'].search_count([('treatment', '=', record.id),])
+			#co2 = self.env['openhealth.service.co2'].search_count([('treatment', '=', record.id),])
+			#quick =	self.env['openhealth.service.quick'].search_count([('treatment', '=', record.id),])
+			#exc = self.env['openhealth.service.excilite'].search_count([('treatment', '=', record.id),])
+			#ipl = self.env['openhealth.service.ipl'].search_count([('treatment', '=', record.id),])
+			#ndyag = self.env['openhealth.service.ndyag'].search_count([('treatment', '=', record.id),])
+			#medical = self.env['openhealth.service.medical'].search_count([('treatment', '=', record.id),])
+			#vip = self.env['openhealth.service.vip'].search_count([('treatment', '=', record.id),])
+			#product = self.env['openhealth.service.product'].search_count([('treatment', '=', record.id),])
+			#record.nr_services = quick + co2 + exc + ipl + ndyag + medical + vip + product
 
-			record.nr_services = quick + co2 + exc + ipl + ndyag + medical + vip + product
-
-
-
-	# product
-	nr_services_product = fields.Integer(
-			string="Servicios Producto",
-
-			compute="_compute_nr_services_product",
-	)
-	@api.multi
-	def _compute_nr_services_product(self):
-		for record in self:
-			services = self.env['openhealth.service.product'].search_count([('treatment', '=', record.id),])
-			record.nr_services_product = services
-
-
-
-	# vip
-	nr_services_vip = fields.Integer(
-			string="Servicios vip",
-
-			compute="_compute_nr_services_vip",
-	)
-	@api.multi
-	def _compute_nr_services_vip(self):
-		for record in self:
-			services = self.env['openhealth.service.vip'].search_count([('treatment', '=', record.id),])
-			record.nr_services_vip = services
-
-
-
-
-	# Quick
-	nr_services_quick = fields.Integer(
-			string="Servicios Quick",
-
-			compute="_compute_nr_services_quick",
-	)
-	@api.multi
-	def _compute_nr_services_quick(self):
-		for record in self:
-			services = self.env['openhealth.service.quick'].search_count([('treatment', '=', record.id),])
-			record.nr_services_quick = services
-
+			co2 = self.env['openhealth.service_co2'].search_count([('treatment', '=', record.id),])
+			record.nr_services = co2
 
 
 	# Co2
@@ -685,76 +646,9 @@ class Treatment(models.Model):
 	@api.multi
 	def _compute_nr_services_co2(self):
 		for record in self:
-			services = self.env['price_list.service_co2'].search_count([('treatment', '=', record.id),])
+			#services = self.env['price_list.service_co2'].search_count([('treatment', '=', record.id),])
+			services = self.env['openhealth.service_co2'].search_count([('treatment', '=', record.id),])
 			record.nr_services_co2 = services
-
-
-
-	# excilite
-	nr_services_excilite = fields.Integer(
-			string="Servicios",
-
-			compute="_compute_nr_services_excilite",
-	)
-	@api.multi
-	def _compute_nr_services_excilite(self):
-		for record in self:
-			services = self.env['openhealth.service.excilite'].search_count([('treatment', '=', record.id),])
-			record.nr_services_excilite = services
-
-
-	# ipl
-	nr_services_ipl = fields.Integer(
-			string="Servicios",
-
-			compute="_compute_nr_services_ipl",
-	)
-	@api.multi
-	def _compute_nr_services_ipl(self):
-		for record in self:
-			services = self.env['openhealth.service.ipl'].search_count([('treatment', '=', record.id),])
-			record.nr_services_ipl = services
-
-
-
-	# ndyag
-	nr_services_ndyag = fields.Integer(
-			string="Servicios",
-
-			compute="_compute_nr_services_ndyag",
-	)
-	@api.multi
-	def _compute_nr_services_ndyag(self):
-		for record in self:
-			services = self.env['openhealth.service.ndyag'].search_count([('treatment', '=', record.id),])
-			record.nr_services_ndyag = services
-
-
-
-	# medical
-	nr_services_medical = fields.Integer(
-			string="Servicios",
-
-			compute="_compute_nr_services_medical",
-	)
-	@api.multi
-	def _compute_nr_services_medical(self):
-		for record in self:
-			services = self.env['openhealth.service.medical'].search_count([('treatment', '=', record.id),])
-			record.nr_services_medical = services
-
-
-	# Cosmetology
-	nr_services_cosmetology = fields.Integer(
-			string="Servicios",
-
-			compute="_compute_nr_services_cosmetology",
-	)
-	@api.multi
-	def _compute_nr_services_cosmetology(self):
-		for record in self:
-			services = self.env['openhealth.service.cosmetology'].search_count([('treatment', '=', record.id),])
-			record.nr_services_cosmetology = services
 
 
 # ----------------------------------------------------------- Open Myself -------------------------
@@ -975,7 +869,7 @@ class Treatment(models.Model):
 		Create Order Procedure - 2019
 		From Recommendations
 		"""
-		print('OH - create_order_pro')
+		print('treatment - create_order_pro')
 
 		# Clear cart
 		self.shopping_cart_ids.unlink()
@@ -990,7 +884,7 @@ class Treatment(models.Model):
 							self.service_ipl_ids,
 							self.service_ndyag_ids,
 							self.service_quick_ids,
-							self.service_medical_ids,
+							#self.service_medical_ids,
 							self.service_cosmetology_ids,
 							self.service_gynecology_ids,
 							self.service_echography_ids,
@@ -1004,30 +898,27 @@ class Treatment(models.Model):
 		for service_ids in service_list:
 			for service in service_ids:
 
-				if (service.service.name not in [False]) 	and 	(service.service.pl_price_list in [price_list]):
+				# Product
+				print()
+				print('Search product ')
+				product = self.env['product.product'].search([
+																('name', '=', service.service.name),
+																('sale_ok', '=', True),
+																('pl_price_list', '=', '2019'),
+												])
+				#print(product)
 
-					# Product
-					print()
-					print('Product search')
-					product = self.env['product.product'].search([
-																	('name', '=', service.service.name),
-																	('sale_ok', '=', True),
-																	('pl_price_list', '=', '2019'),
-													])
-					#print(product)
-
-					# Create Cart
-					print()
-					print('Create cart')
-					if product.name not in [False]:
-						cart_line = self.shopping_cart_ids.create({
-																			'product': 		product.id,
-																			'price': 		service.price_applied,
-																			#'qty': 			service.qty,
-																			'qty': 			1,
-																			'treatment': 	self.id,
-																})
-
+				# Create Cart
+				print()
+				print('Create cart')
+				if product.name not in [False]:
+					cart_line = self.shopping_cart_ids.create({
+																		'product': 		product.id,
+																		'price': 		service.price_applied,
+																		'qty': 			service.qty,
+																		#'qty': 			1,
+																		'treatment': 	self.id,
+															})
 		# Create Order
 		print()
 		print('Create order')

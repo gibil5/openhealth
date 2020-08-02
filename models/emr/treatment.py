@@ -806,27 +806,9 @@ class Treatment(models.Model):
 		"""
 		Used by
 		"""
-		treatment_id = self.id
-		return {
-			# Mandatory
-			'type': 'ir.actions.act_window',
-			'name': 'Open Consultation Current',
-			# Window action
-			'res_model': 'openhealth.treatment',
-			'res_id': treatment_id,
-			# Views
-			"views": [[False, "form"]],
-			'view_mode': 'form',
-			'target': 'current',
-			#'view_id': view_id,
-			#"domain": [["patient", "=", self.patient.name]],
-			#'auto_search': False,
-			'flags': {
-					'form': {'action_buttons': True, }
-					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-			},
-			'context':   {}
-		}
+		#treatment_id = self.id
+		return action_funcs.open_myself('openhealth.treatment', self.id)
+
 	# open_myself
 
 #----------------------------------------------------------- Quick Button - Used by Patient ---------

@@ -3,15 +3,13 @@
 		Evaluation
 
 		Created: 			 1 Nov 2016
-		Last updated: 	 	23 Jan 2019
+		Last updated: 	 	02 Aug 2020
 """
 from __future__ import print_function
-
 import datetime
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.libs import eval_vars
 from openerp.addons.openhealth.models.patient import pat_vars
-
 from openerp.addons.openhealth.models.product import prodvars
 
 class Evaluation(models.Model):
@@ -20,11 +18,7 @@ class Evaluation(models.Model):
 	Inherited from: OeHealth
 	Used by: Consultation, Procedure, Session and Control
 	"""
-
 	_inherit = 'oeh.medical.evaluation'
-
-
-
 
 # ----------------------------------------------------------- Inactive Bug -------------------------
 	# Doctor
@@ -36,10 +30,7 @@ class Evaluation(models.Model):
 			#required=False,			# To avoid DB inconsistencies in Lima !
 		)
 
-
-
 # ----------------------------------------------------------- Getters -------------------------
-
 	# Get Treatment
 	#@api.multi
 	def get_treatment(self):
@@ -51,10 +42,7 @@ class Evaluation(models.Model):
 		return self.product.get_treatment()
 
 
-
-
 # ----------------------------------------------------------- Laser ------------------------
-
 	# Laser
 	laser = fields.Selection(
 			selection=prodvars._laser_type_list,
@@ -72,22 +60,15 @@ class Evaluation(models.Model):
 			record.laser = record.get_treatment()  			# RLOD
 
 
-
-
 # ----------------------------------------------------------- Dates - OK ------------------------------------------------------
 	# Date
 	evaluation_start_date = fields.Datetime(
-
 			#string="Fecha y hora",
 			string="Evaluation Start Date",
-
 			#default = fields.Date.today,
 			required=True,
-
 			#readonly=True,
 		)
-
-
 
 # ----------------------------------------------------------- Configurator ------------------------
 
@@ -120,11 +101,7 @@ class Evaluation(models.Model):
 			#default=_get_default_configurator,
 		)
 
-
-
-
 # ----------------------------------------------------------- Relationals -------------------------
-
 	# Treatment
 	treatment = fields.Many2one(
 			'openhealth.treatment',
@@ -132,7 +109,6 @@ class Evaluation(models.Model):
 			required=True,
 			readonly=True,
 		)
-
 
 	# Patient
 	patient = fields.Many2one(
@@ -143,8 +119,6 @@ class Evaluation(models.Model):
 			readonly=True,
 		)
 
-
-
 	# Product
 	product = fields.Many2one(
 			'product.template',
@@ -153,71 +127,6 @@ class Evaluation(models.Model):
 						('x_origin', '=', False),
 					],
 		)
-
-
-
-
-
-# ----------------------------------------------------------- Appointment -------------------------
-
-	# Update App
-	@api.multi
-	def update_dates(self):
-		"""
-		high level support for doing this and that.
-		"""
-		#print
-		#print 'Update Dates'
-		self.evaluation_start_date = self.appointment.appointment_date
-
-
-
-
-
-	# Update App
-	@api.multi
-	def update_appointment(self):
-		"""
-		high level support for doing this and that.
-		"""
-		#print
-		#print 'Update Appointment'
-
-		res_id = self.appointment.id
-
-		# Treatment Flag
-		self.treatment.update()
-
-		return {
-
-			# Mandatory
-			'type': 'ir.actions.act_window',
-			'name': 'Open Appointment',
-
-			# Window action
-			'res_model': 'oeh.medical.appointment',
-			'res_id': res_id,
-
-			# Views
-			"views": [[False, "form"]],
-			'view_mode': 'form',
-			'target': 'current',
-			#'view_id': view_id,
-
-			#"domain": [["patient", "=", self.patient.name]],
-			#'auto_search': False,
-			'flags': {
-					'form': {'action_buttons': True, }
-					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-			},
-			'context':   {}
-		}
-	# update_appointment
-
-
-
-
-
 
 # --------------------------------------------------------- Consultation First --------------------
 
@@ -263,20 +172,7 @@ class Evaluation(models.Model):
 			default = 'x', 
 		)
 
-	# ----------------------------------------------------------- Patient -------------------------
-
-	# Update
-	#@api.multi
-	#def update_patient(self):
-	#	print
-		#print 'Update Patient - Evaluation'
-		#self.patient_sex = self.patient.sex[0]
-		#self.patient_age =  self.patient.age.split()[0]
-		#self.patient_city = self.patient.city.title()
-
-
-
-
+# ----------------------------------------------------------- Patient -------------------------
 	# Sex
 	patient_sex = fields.Char(
 			string="Sexo",
@@ -304,12 +200,9 @@ class Evaluation(models.Model):
 			if record.patient.age != False:
 				record.patient_age = record.patient.age.split()[0]
 
-
-
 	# City
 	patient_city = fields.Char(
 			string="Lugar de procedencia",
-
 			compute='_compute_patient_city',
 		)
 
@@ -495,8 +388,6 @@ class Evaluation(models.Model):
 	# open_treatment
 
 
-
-
 # ----------------------------------------------------------- Open Myself -------------------------
 	# Open Myself
 	@api.multi
@@ -533,26 +424,3 @@ class Evaluation(models.Model):
 		}
 	# open_myself
 
-
-
-# ----------------------------------------------------------- Automatic ---------------------------
-
-	@api.multi
-	def get_name_auto(self, patient_name, date):
-		"""
-		Get Name Auto
-		"""
-		#print()
-		#print('Get Name Auto')
-		#print(patient_name)
-		#print(date)
-
-		if date not in [False]:
-			date_format = "%Y-%m-%d %H:%M:%S"
-			date_dt = datetime.datetime.strptime(date, date_format) + datetime.timedelta(hours=-5, minutes=0)
-			date_str = date_dt.strftime(date_format)
-			name = patient_name + ' ' + date_str.split(' ')[0]
-		else:
-			name = patient_name
-
-		return name

@@ -875,7 +875,7 @@ class Treatment(models.Model):
 		self.shopping_cart_ids.unlink()
 
 		# Init
-		price_list = '2019'
+		#price_list = '2019'
 
 		service_list = [
 							self.service_product_ids,

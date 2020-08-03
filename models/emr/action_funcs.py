@@ -6,7 +6,7 @@
 	
 """
 
-# ----------------------------------------------------------- Create Shopping Cart -----------------
+# ----------------------------------------------------------- Open myself ------
 def open_myself(res_model, res_id):
 	"""
 	Used by Treatment - create_order_pro
@@ -36,6 +36,31 @@ def open_myself(res_model, res_id):
 		},
 		'context':   {}
 	}
+
+# ---------------------------------------------------- Open line current -------
+def open_line_current(res_model, res_id):
+	"""
+	Used by Order
+	"""
+	print('open_line_current')
+	return {
+			#'res_model': self._name,
+			#'res_id': consultation_id,
+			'type': 'ir.actions.act_window',
+			'name': ' Edit Order Current',
+			'view_type': 'form',
+			'view_mode': 'form',
+			'res_model': res_model,
+			'res_id': res_id,
+			'target': 'current',
+			'flags': {
+					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+					'form': {'action_buttons': True, }
+					},
+			'context': {}
+	}
+
+
 
 # ----------------------------------------------------------- Create Shopping Cart -----------------
 def open_order(order):

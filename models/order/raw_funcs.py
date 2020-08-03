@@ -103,7 +103,7 @@ def open_myself(res_model, res_id):
 	}
 
 
-# ----------------------------------------------------------- Create procedure ----------------
+# ---------------------------------------------------- Open line current -------
 def open_line_current(res_model, res_id):
 	"""
 	Used by Order

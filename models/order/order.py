@@ -32,7 +32,7 @@ import datetime
 from openerp import models, fields, api
 from openerp.exceptions import Warning as UserError
 from openerp.addons.openhealth.models.patient import pat_vars, chk_patient
-from openerp.addons.openhealth.models.emr import pl_creates
+from openerp.addons.openhealth.models.emr import pl_creates, action_funcs
 
 from . import test_order
 from . import chk_order
@@ -98,6 +98,7 @@ class SaleOrder(models.Model):
 	def _check_x_id_doc(self):
 		if self.x_type in ['ticket_receipt', 'receipt']:
 			chk_patient.check_x_id_doc(self)
+
 
 # ----------------------------------------------------------- Configurator  -------------------------------
 	configurator = fields.Many2one(
@@ -932,12 +933,9 @@ class SaleOrder(models.Model):
 		Used by Treatment
 		"""
 		print('open_line_current')
-		#res_model = 'sale.order'
 		res_model = self._name
 		res_id = self.id
-		ret = raw_funcs.open_line_current(res_model, res_id)
-		#print(ret)
-		return ret
+		return action_funcs.open_line_current(res_model, res_id)
 
 #----------------------------------------------------------- Qpen myself --------------------------
 	@api.multi
@@ -948,8 +946,7 @@ class SaleOrder(models.Model):
 		print('open_myself')
 		res_model = self._name
 		res_id = self.id
-		ret = raw_funcs.open_myself(res_model, res_id)
-		return ret
+		return action_funcs.open_myself(res_model, res_id)
 
 
 # ----------------------------------------------------------- Remove and Reset ------------

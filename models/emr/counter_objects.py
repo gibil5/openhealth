@@ -10,7 +10,8 @@ class CounterObjects(object):
 	"""
 	Used by Treatment
 	"""
-	def __init__(self, env, state, family, owner_id, family_tag='pl_family'):
+	#def __init__(self, env, state, family, owner_id, family_tag='pl_family'):
+	def __init__(self, env, owner_id, state='draft', family='CONSULTA',  family_tag='pl_family'):
 		print('init')
 		self.env = env
 		self.state = state
@@ -25,4 +26,10 @@ class CounterObjects(object):
 										#('pl_family', '=', self.family),
 										(self.family_tag, '=', self.family),
 								])
+		return count
+		
+	def count_fast(self):
+		count = self.env.search_count([
+										('treatment', '=', self.owner_id),
+										])
 		return count

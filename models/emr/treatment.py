@@ -117,16 +117,6 @@ class Treatment(models.Model):
 	    )
 
 # ----------------------------------------------------------- Primitive ---------------------------
-	# Name
-	name = fields.Char(
-			string="Tratamiento #",
-			compute='_compute_name',
-		)
-	@api.multi
-	def _compute_name(self):
-		se = '-'
-		for record in self:
-			record.name = 'TR' + se + record.patient.get_name_code() + se + record.physician.get_name_code()
 
 # ----------------------------------------------------------- Process --------------------------
 	# States
@@ -169,6 +159,18 @@ class Treatment(models.Model):
 
 
 # ----------------------------------------------------------- Card ------------
+	# Name
+	name = fields.Char(
+			string="Tratamiento #",
+			compute='_compute_name',
+		)
+	@api.multi
+	def _compute_name(self):
+		se = '-'
+		for record in self:
+			record.name = 'TR' + se + record.patient.get_name_code() + se + record.physician.get_name_code()
+
+
 	# Sex - Used by header
 	patient_sex = fields.Char(
 			string="Sexo",
@@ -371,21 +373,6 @@ class Treatment(models.Model):
 			default=False,
 		)
 
-	# Reset
-	@api.multi
-	def reset_procs(self):
-		"""
-		Reset Procedures
-		"""
-		self.add_procedures = False
-
-	# Toggle
-	@api.multi
-	def toggle_add_procedures(self):
-		"""
-		Toggle add procedures
-		"""
-		self.add_procedures = not self.add_procedures
 
 # ----------------------------------------------------------- Canonical ---------------------------
 	# Space
@@ -531,18 +518,6 @@ class Treatment(models.Model):
 			record.nr_services = co2
 
 
-	# Co2
-	nr_services_co2 = fields.Integer(
-			string="Servicios",
-
-			compute="_compute_nr_services_co2",
-	)
-	@api.multi
-	def _compute_nr_services_co2(self):
-		for record in self:
-			#services = self.env['price_list.service_co2'].search_count([('treatment', '=', record.id),])
-			services = self.env['openhealth.service_co2'].search_count([('treatment', '=', record.id),])
-			record.nr_services_co2 = services
 
 
 # ----------------------------------------------------------- Create Buttons  ----------
@@ -786,38 +761,6 @@ class Treatment(models.Model):
 		return ret
 
 
-# ----------------------------------------------------------- Open Myself -------------------------
-	# Open Myself
-	@api.multi
-	def open_myself(self):
-		"""
-		Used by
-		"""
-		#treatment_id = self.id
-		return action_funcs.open_myself('openhealth.treatment', self.id)
-
-	# open_myself
-
-#----------------------------------------------------------- Quick Button - Used by Patient ---------
-	@api.multi
-	def open_line_current(self):
-		"""
-		# Quick access Button
-		"""
-		return {
-				'type': 'ir.actions.act_window',
-				'name': ' Edit Order Current',
-				'view_type': 'form',
-				'view_mode': 'form',
-				'res_model': self._name,
-				'res_id': self.id,
-				'target': 'current',
-				'flags': {
-						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-						'form': {'action_buttons': True, }
-						},
-				'context': {}
-		}
 
 # ----------------------------------------------------------- Test All Cycle - Step by Step --------------------------
 	@api.multi

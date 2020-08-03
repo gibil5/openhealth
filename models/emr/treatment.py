@@ -218,7 +218,6 @@ class Treatment(models.Model):
 	# Consultations
 	nr_consultations = fields.Integer(
 			string="Nr Consultas",
-
 			compute="_compute_nr_consultations",
 	)
 	#@api.multi
@@ -228,12 +227,6 @@ class Treatment(models.Model):
 			model = 'openhealth.consultation'
 			obj = counter_objects.CounterObjects(self.env[model], record.id)
 			record.nr_consultations = obj.count_fast()
-
-			#ctr = 0
-			#for c in record.consultation_ids:
-			#	ctr = ctr + 1
-			#record.nr_consultations = ctr
-
 
 	# Procedures
 	nr_procedures = fields.Integer(
@@ -247,10 +240,6 @@ class Treatment(models.Model):
 			obj = counter_objects.CounterObjects(self.env[model], record.id)
 			record.nr_procedures = obj.count_fast()
 
-			#record.nr_procedures = self.env['openhealth.procedure'].search_count([
-			#																		('treatment', '=', record.id),
-			#														])
-
 	# Sessions
 	nr_sessions = fields.Integer(
 			string="Sesiones",
@@ -263,10 +252,6 @@ class Treatment(models.Model):
 			obj = counter_objects.CounterObjects(self.env[model], record.id)
 			record.nr_sessions = obj.count_fast()
 
-			#record.nr_sessions = self.env['openhealth.session.med'].search_count([
-			#																		('treatment', '=', record.id),
-			#																	])
-
 	# Controls
 	nr_controls = fields.Integer(
 			string="Controles",
@@ -278,10 +263,6 @@ class Treatment(models.Model):
 			model = 'openhealth.control'
 			obj = counter_objects.CounterObjects(self.env[model], record.id)
 			record.nr_controls = obj.count_fast()
-
-			#record.nr_controls = self.env['openhealth.control'].search_count([
-			#																	('treatment', '=', record.id),
-			#																	])
 
 # ----------------------------------------------------------- Test ----------------------------------------------------
 	x_test = fields.Boolean(

@@ -166,6 +166,58 @@ class Treatment(models.Model):
 			states=READONLY_STATES,
 		)
 
+
+# ----------------------------------------------------------- Card ------------
+	# Sex - Used by header
+	patient_sex = fields.Char(
+			string="Sexo",
+			compute='_compute_patient_sex',
+			#compute=lambda self: self.patient.sex[0]
+		)
+	@api.multi
+	def _compute_patient_sex(self):
+		for record in self:
+			record.patient_sex = record.patient.sex[0] if record.patient.sex else False
+
+
+	# Age
+	patient_age = fields.Char(
+			string="Edad",
+			compute='_compute_patient_age',
+		)
+	@api.multi
+	def _compute_patient_age(self):
+		for record in self:
+			record.patient_age = record.patient.age.split()[0] if record.patient.age else False
+
+
+	# City - id
+	patient_city = fields.Char(
+			string="Lugar de procedencia",
+			compute='_compute_patient_city',
+		)
+	@api.multi
+	def _compute_patient_city(self):
+		for record in self:
+			record.patient_city = record.patient.city_char.title() if record.patient.city_char else False
+
+
+	# Vip - id
+	vip = fields.Boolean(
+		string="VIP",
+		compute='_compute_vip',
+	)
+	@api.multi
+	def _compute_vip(self):
+		for record in self:
+			card = record.env['openhealth.card'].search([
+															('patient_name', '=', record.patient.name),
+														],
+														limit=1,)
+			if card.name != False:
+				record.vip = True
+
+
 # ----------------------------------------------------------- Number ofs --------------------------
 
 	# Budgets - Consultations
@@ -304,55 +356,6 @@ class Treatment(models.Model):
 		)
 
 
-# ----------------------------------------------------------- Card ------------
-	# Sex - Used by header
-	patient_sex = fields.Char(
-			string="Sexo",
-			compute='_compute_patient_sex',
-		)
-	@api.multi
-	def _compute_patient_sex(self):
-		for record in self:
-			if record.patient.sex != False:
-				record.patient_sex = record.patient.sex[0]
-
-	# Age - id
-	patient_age = fields.Char(
-			string="Edad",
-			compute='_compute_patient_age',
-		)
-	@api.multi
-	def _compute_patient_age(self):
-		for record in self:
-			if record.patient.age != False:
-				record.patient_age = record.patient.age.split()[0]
-
-	# City - id
-	patient_city = fields.Char(
-			string="Lugar de procedencia",
-			compute='_compute_patient_city',
-		)
-	@api.multi
-	def _compute_patient_city(self):
-		for record in self:
-			if record.patient.city_char != False:
-				city = record.patient.city_char
-				record.patient_city = city.title()
-
-	# Vip - id
-	vip = fields.Boolean(
-		string="VIP",
-		compute='_compute_vip',
-	)
-	@api.multi
-	def _compute_vip(self):
-		for record in self:
-			card = record.env['openhealth.card'].search([
-															('patient_name', '=', record.patient.name),
-														],
-														limit=1,)
-			if card.name != False:
-				record.vip = True
 
 # ----------------------------------------------------------- Price list  --------------------------------
 

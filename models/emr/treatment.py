@@ -153,8 +153,8 @@ class Treatment(models.Model):
 		)
 
 	chief_complaint = fields.Selection(
-			string='Motivo de consulta',
 			selection=eval_vars._chief_complaint_list,
+			string='Motivo de consulta',
 			required=False,
 			readonly=False,
 		)
@@ -214,8 +214,10 @@ class Treatment(models.Model):
 															('patient_name', '=', record.patient.name),
 														],
 														limit=1,)
-			if card.name != False:
-				record.vip = True
+			record.vip = True if card.name else False
+
+			#if card.name:
+			#	record.vip = True
 
 
 # ----------------------------------------------------------- Number ofs --------------------------
@@ -331,19 +333,9 @@ class Treatment(models.Model):
 # ----------------------------------------------------------- Pricelist Fields - Test --------------------------------
 
 	x_test_scenario = fields.Selection(
-			[
-				('all', 'All'),
-				('product', 'Product'),
-				('laser', 'Laser'),
-				('cosmetology', 'Cosmetology'),
-				('medical', 'Medical'),
-				('new', 'New'),
-				('credit_note', 'Nota de Credito'),
-				('block_flow', 'Flujo bloqueado'),
-			],
+			selection=treatment_vars._test_scenario_list,
 			string="Test Scenarios",
 		)
-
 
 	test_pricelist_2019 = fields.Boolean(
 			'PL 2019',

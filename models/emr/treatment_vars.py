@@ -1,5 +1,15 @@
 # -*- coding: utf-8 -*-
 
+_test_scenario_list = [
+	('all', 'All'),
+	('product', 'Product'),
+	('laser', 'Laser'),
+	('cosmetology', 'Cosmetology'),
+	('medical', 'Medical'),
+	('new', 'New'),
+	('credit_note', 'Nota de Credito'),
+	('block_flow', 'Flujo bloqueado'),
+]
 
 
 # State 

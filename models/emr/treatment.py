@@ -27,6 +27,7 @@ from . import reco_funcs
 from . import action_funcs
 
 from . import counter_objects
+from . import search_objects
 
 class Treatment(models.Model):
 	"""
@@ -210,14 +211,8 @@ class Treatment(models.Model):
 	@api.multi
 	def _compute_vip(self):
 		for record in self:
-			card = record.env['openhealth.card'].search([
-															('patient_name', '=', record.patient.name),
-														],
-														limit=1,)
-			record.vip = True if card.name else False
-
-			#if card.name:
-			#	record.vip = True
+			card = search_objects.SearchObjects(record.env['openhealth.card'], 'patient_name', record.patient.name)
+			record.vip = True if card.get_name() else False
 
 
 # ----------------------------------------------------------- Number ofs --------------------------

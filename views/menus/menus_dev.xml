@@ -1,37 +1,73 @@
 <?xml version="1.0"?>
 <openerp>
     <data>
-
+<!-- 
+8 Aug 2D20
+-->
 
 <!-- Main - DEV -->
-<menuitem   	id="main_dev_menu"
-				sequence="-6"
+<menuitem id="main_dev_menu"
+				sequence="-20"
 				name="DEV"
 				groups="openhealth.roots"
 		/>
 
 
-		<!-- DEV --> 
-		<menuitem   id="parent_dev_menu" 
-
-							name="Clean System"
-			
+<!-- Models --> 
+		<menuitem id="dev_model_menu" 
+							name="Models"
 							parent="main_dev_menu"
 							sequence="1"
 						/>
 
+            <!-- Partners --> 
+        		<menuitem id="dev_res_partners_menu"
+        					parent="dev_model_menu"
+        					sequence="3"
+        					name="Partners"
+        					action="partner_list_action"
+        				/>
+<!--
+res.partner
+-->
+
+            <!-- Pricelists --> 
+        		<menuitem id="dev_pricelists_menu"
+        					parent="dev_model_menu"
+        					sequence="5"
+        					name="Pricelists"
+        					action="pricelist_list_action"
+        				/>
+<!--
+product.pricelist
+-->
+
+            <!-- Cards --> 
+            <menuitem id="dev_cards_menu"
+                  parent="dev_model_menu"
+                  sequence="7"
+                  name="Cards"
+                  action="card_list_action"
+                />
+<!--
+openhealth.card
+-->
 
 
+
+
+<!-- DEV --> 
+		<menuitem   id="parent_dev_menu" 
+							name="Clean System"
+							parent="main_dev_menu"
+							sequence="3"
+						/>
 
 		<!-- Procurement Orders --> 
 		<menuitem   id="dev_procurement_order_menu"
-
 					parent="parent_dev_menu"
-			
 					sequence="15"
-
 					name="Procurement Orders"
-
 					action="procurement_order_list_action"
 				/>
 <!--
@@ -40,30 +76,20 @@ procurement.order
 
 		<!-- Stock Moves --> 
 		<menuitem   id="dev_stock_move_menu"
-
 					parent="parent_dev_menu"
-			
 					sequence="16"
-
 					name="Stock Moves"
-
 					action="stock_move_list_action"
 				/>
 <!--
 stock.move
 -->
 
-
-
 		<!-- Product Template --> 
 		<menuitem   id="dev_product_template_menu"
-
 					parent="parent_dev_menu"
-			
 					sequence="17"
-
 					name="Product Template Consu"
-
 					action="product_template_consu_list_action"
 				/>
 <!--
@@ -71,17 +97,11 @@ product.template
 -->
 
 
-
-
 		<!-- Product Product --> 
 		<menuitem   id="dev_product_product_menu"
-
 					parent="parent_dev_menu"
-			
 					sequence="21"
-
 					name="Product Product"
-
 					action="product_product_list_action"
 				/>
 <!--
@@ -89,57 +109,27 @@ product.product
 -->
 
 
-
-
-		<!-- Partners --> 
-		<menuitem   id="dev_res_partners_menu"
-
-					parent="parent_dev_menu"
-			
-					sequence="23"
-
-					name="Partners"
-
-					action="partner_list_action"
-				/>
-<!--
-res.partner
--->
-
-
-
-
 		<!-- Payment Method --> 
 		<menuitem   id="dev_payment_method_menu"
-
 					parent="parent_dev_menu"
-			
 					sequence="55"
-
 					name="Payment Methods"
-
 					action="payment_method_list_action"
 				/>
 <!--
 payment.method
 -->
 
-
 		<!-- Payment Method Line --> 
 		<menuitem   id="dev_payment_method_line_menu"
-
 					parent="parent_dev_menu"
-			
 					sequence="57"
-
 					name="Payment Method Lines"
-
 					action="payment_method_line_list_action"
 				/>
 <!--
 payment.method
 -->
-
 
     </data>
 </openerp>

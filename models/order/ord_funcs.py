@@ -3,7 +3,7 @@
 	Order Funcs
 	Encapsulate Order Business Rules
 	Created: 			29 Aug 2019
-	Last up: 	 		24 Jul 2020 
+	Last up: 	 		08 Aug 2020 
 """
 from __future__ import print_function
 from openerp.addons.openhealth.models.libs import lib

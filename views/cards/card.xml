@@ -1,109 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
-
-
-
+<!-- 
+8 Aug 2D20
+-->
         <!-- FORM --> 
         <record model="ir.ui.view" id="card_form_view">
             <field name="name">openhealth.card</field>
             <field name="model">openhealth.card</field>
-            <field name="arch" type="xml">
-                
+            <field name="arch" type="xml">                
                 <form string="Card Form">
-                    
-
                     <header>
-
                         <button 
-                                name="remove_myself"
-                                type="object" 
-                                class="oe_highlight"
-                                string="REMOVEM"
-
-                                groups="openhealth.roots"
+                            name="remove_myself"
+                            type="object" 
+                            class="oe_highlight"
+                            string="REMOVEM"
+                            groups="openhealth.roots"
                         />
-                        
                     </header>
-
-
-
                     <sheet>
-
                         <group>
                             <group>
                                 <field name="name"/>
-
+                                <field name="patient"/>
+                                <field name="partner_id"/>
+<!--
                                 <field name="patient_name"/>
-
-                                <field name="date_created"/>
-                            </group>
-                            
+-->
+                            </group>                            
                             <group>
                                 <field name="active"/>
+                                <field name="date_created"/>
                             </group>
-
                         </group>
-
-                        <notebook>
-                        </notebook>
+                        <notebook></notebook>
                     </sheet>
                 </form>
             </field>
         </record>
-
-
-
-
-
-
-
-
-
-
-
 
         <!-- TREE -->
         <record model="ir.ui.view" id="card_tree_view">
             <field name="name">card.tree</field>
             <field name="model">openhealth.card</field>
             <field name="arch" type="xml">
-
             <!--    
             <field name="priority" eval="1"/>
             -->
-
                 <tree string="Card Tree">
-
                     <field name="name"/>
-
                     <field name="categ_id"/>
-
-
-
                     <field name="patient_name"/>
-<!--
-                    <field name="patient"/>
-
-                    <field name="partner_id"/>
--->
                     <field name="date_created"/>
-
                     <field name="date_product"/>
-
                     <field name="product"/>
-
                     <field name="days_after"/>
                 </tree>
             </field>
         </record>
 <!--
+<field name="patient"/>
+<field name="partner_id"/>
 -->
-
-
-
-
-
 
         <!-- Window List action -->
         <record model="ir.actions.act_window" id="card_list_action">            
@@ -111,10 +70,8 @@
             <field name="res_model">openhealth.card</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form,kanban</field>
-            
             <field name="domain">[]</field>
             <field name="context">{'order': 'name'}</field>
-
             <!--
             <field name="context">{}</field>
             <field name="view_id" eval="False"/>
@@ -124,10 +81,6 @@
             </field>
             -->
         </record>
-
-
-
-
 
         <!-- Window List action -->
         <record model="ir.actions.act_window" id="card_inactive_list_action">           
@@ -135,17 +88,11 @@
             <field name="res_model">openhealth.card</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form,kanban</field>
-            
-
             <field name="domain">[
                                     ('active', '=', False),
                 
                 ]</field>
-
-
-
             <field name="context">{'order': 'name'}</field>
-
             <!--
             <field name="domain">[]</field>
             <field name="context">{}</field>
@@ -156,10 +103,6 @@
             </field>
             -->
         </record>
-
-
-
-
 
         <!-- Filter --> 
         <record id="view_card_filter" model="ir.ui.view">
@@ -171,6 +114,5 @@
                </search>           
            </field>
        </record>
-
     </data>
 </openerp>

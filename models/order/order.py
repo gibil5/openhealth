@@ -2,7 +2,7 @@
 """
 		Order - Openhealth
 		Created: 			26 Aug 2016
-		Last mod: 			02 Aug 2020
+		Last mod: 			08 Aug 2020
 
 		This tangled object must be split in several objs, with clear roles.
 		That will be:
@@ -112,7 +112,7 @@ class SaleOrder(models.Model):
 
 # ----------------------------------------------------------- Pricelist  -------------------------------
 	# Default
-	def _get_default_pricelist_id(self):
+	def _get_default_pricelist_id_dep(self):
 		print()
 		print('Default Pricelist')
 
@@ -131,21 +131,11 @@ class SaleOrder(models.Model):
 	pricelist_id = fields.Many2one(
 			'product.pricelist',
 			string='Pricelist',
-			#readonly=True,
 			readonly=False,
-			#states={'draft': [('readonly', False)], 'sent': [('readonly', False)]},
-			help="Pricelist for current sales order.",
 			#default=_get_default_pricelist_id,
-			#required=False,
-			required=True,
+			#required=True,
 		)
 
-# ----------------------------------------------------------- Fields -------------------------------
-	# Transfer Free
-	pl_transfer_free = fields.Boolean(
-			'TRANSFERENCIA GRATUITA',
-			default=False,
-		)
 
 # ----------------------------------------------------------- Relational -------------------------------
 	# Patient
@@ -169,6 +159,13 @@ class SaleOrder(models.Model):
 			string="Cliente",
 			required=False,
 			readonly=False,
+		)
+
+# ----------------------------------------------------------- Fields -------------------------------
+	# Transfer Free
+	pl_transfer_free = fields.Boolean(
+			'TRANSFERENCIA GRATUITA',
+			default=False,
 		)
 
 # ----------------------------------------------------------- Descriptors ------
@@ -820,14 +817,16 @@ class SaleOrder(models.Model):
 	@api.onchange('patient')
 	def _onchange_patient(self):
 		print('_onchange_patient')
-		print(self.pricelist_id)
-		self.partner_id, self.x_dni, self.x_ruc, self.x_id_doc, self.x_id_doc_type = raw_funcs.get_patient_ids(self.patient)
-		print(self.pricelist_id)
+		if self.patient.name:
+			self.partner_id, self.x_dni, self.x_ruc, self.x_id_doc, self.x_id_doc_type = raw_funcs.get_patient_ids(self.patient)
+			
+			self.pricelist_id = raw_funcs.get_pricelist(self.patient, self.env['product.pricelist'])
 
 	# Doctor
 	@api.onchange('x_doctor')
 	def _onchange_x_doctor(self):
-		self.treatment = raw_funcs.get_treatment(self.env['openhealth.treatment'], self.patient.name, self.x_doctor.name)
+		if self.patient.name:
+			self.treatment = raw_funcs.get_treatment(self.env['openhealth.treatment'], self.patient.name, self.x_doctor.name)
 
 
 # ---------------------------------- Partner - Not Dep -------------------------

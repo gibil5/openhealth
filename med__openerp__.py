@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 {
-'name': "Open Health - OBJECT ORIENTED - ODOO 9 MODULE - Oder, Treatment, Patient",
+'name': "Open Health - OBJECT ORIENTED - ODOO 9 MODULE - Order, Treatment, Patient",
 'summary': """
 	ERP system for a Clinic. Inherits OeHealth. Contains ALL the Data Model. Business logic is in classes and libraries.
 """,
 'description': """
 
-	02 Aug 2020
+	08 Aug 2020
 
 	Contains:
 		- All External Dependencies,

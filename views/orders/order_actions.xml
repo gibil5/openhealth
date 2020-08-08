@@ -1,37 +1,22 @@
 <?xml version="1.0"?>
 <openerp>
     <data>
+<!-- 
+8 Aug 2D20
+-->
         
-
-
 <!-- ACTIONS -->
 
-
         <!-- Order Admin --> 
-
         <record model="ir.actions.act_window" id="order_admin_list_action">
-            
             <field name="name">Order Admins</field>
-            
             <field name="res_model">openhealth.order.admin</field>
-            
             <field name="view_type">form</field>
-            
             <field name="view_mode">tree,form</field>   
-
-
             <field name="domain">[]
             </field>
-
             <field name="context">{}</field>
         </record>
-
-
-
-
-
-
-
 
         <!-- Action - All - From Patient --> 
         <record model="ir.actions.act_window" id="order_form_patient_action">
@@ -39,20 +24,15 @@
             <field name="res_model">sale.order</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>   
-
 <!--
                                     ('patient', '=', default_patient),  
 -->
-
             <field name="domain">[                              
                                     ('state', '=', 'sale'),
                                 ]
             </field>
-
             <field name="context">{}</field>
         </record>
-
-
 
 
         <!-- Action - All - From Treatment --> 
@@ -61,20 +41,14 @@
             <field name="res_model">sale.order</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>   
-
             <field name="domain">[                              
                                     ('treatment', '=', default_treatment),
 
                                     ('x_family', '=', default_x_family),
                                 ]
             </field>
-
             <field name="context">{}</field>
         </record>
-
-
-
-
 
 
         <!-- Ventas -->
@@ -154,13 +128,6 @@
             <field name="context">{}</field>
             <field name="limit">500</field>
         </record>
-
-
-
-
-
-
-
 
 
         <!-- Budgets -->

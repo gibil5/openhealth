@@ -12,7 +12,6 @@ from openerp.exceptions import Warning as OrderError
 from . import ord_vars
 
 # ----------------------------------------------------------- Ticket - Get Raw Line ----------------
-
 # Raw Line
 def check_ticket(self, family, state):
 	"""
@@ -21,12 +20,10 @@ def check_ticket(self, family, state):
 	"""
 	print()
 	print('ord_funcs - Check Ticket')
-
 	# Credit Note
 	#if state in ['credit_note', ]:
 	#	print()
 	#	print('Check - Credit Note - ok')
-
 	# Receipt
 	if family in ['ticket_receipt', 'receipt']:
 		print()
@@ -274,12 +271,7 @@ def detect_vip_card_and_create(self):
 		self.partner_id.property_product_pricelist = pl
 
 		print('Partner Updated')
-
-
-
 # detect_create_card
-
-
 
 
 # ----------------------------------------------------------- Getters -------------------------

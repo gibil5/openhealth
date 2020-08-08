@@ -1,3 +1,38 @@
+# 8 Aug 2020 
+
+	# Check payment method
+	#@api.multi
+	#def check_payment_method(self):
+	#	"""
+	#	Check Payment method
+	#	"""
+		#print
+		#print 'Check Payment Method'
+	#	pm_total = 0
+	#	for pm in self.x_payment_method.pm_line_ids:
+	#		pm_total = pm_total + pm.subtotal
+	#	self.x_pm_total = pm_total
+
+
+# ----------------------------------------------------------- Pricelist  -------------------------------
+	# Default
+	def _get_default_pricelist(self):
+		print()
+		print('Default Pricelist')
+		# Search
+		pricelist = self.env['product.pricelist'].search([
+												#('active', 'in', [True]),
+												],
+												#order='x_serial_nr asc',
+												limit=1,
+											)
+		print(pricelist)
+		print(pricelist.name)
+		return pricelist
+
+
+
+
 
 # 1 Aug 2020 
 from openerp.addons.openhealth.models.emr import pl_creates

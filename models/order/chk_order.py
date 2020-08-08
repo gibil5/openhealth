@@ -11,10 +11,7 @@
 from __future__ import print_function
 from openerp.exceptions import ValidationError
 
-
-
 # -----------------------------------------------------------  Serial Nr --------------------------
-
 def check_serial_nr(self):
 	#print()
 	#print('Check Serial Nr')

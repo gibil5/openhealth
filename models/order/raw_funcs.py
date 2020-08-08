@@ -11,15 +11,86 @@ from openerp.exceptions import Warning as UserError
 from openerp import _
 
 
-# --------------------------------------------------------- Get Doctor uid  ----
-def get_pricelist(patient, env):
+# ----------------------------------------------------- Check Payment method  ------
+def get_total_net(amount_total, transfer_free):
+	"""
+	Used by Order.
+	Zero if transfer-free.
+	"""
+	if transfer_free:
+		total_net = 0
+	else:
+		total_net = get_net(amount_total)
+	return total_net
+
+
+def get_total_tax(amount_total, transfer_free):
+	"""
+	Used by Order.
+	Is zero if Transfer Free.
+	"""
+	if transfer_free:
+		total_tax = 0
+	else:
+		total_tax = get_tax(amount_total)
+	return total_tax
+
+
+
+def get_net(amount_total):
+	x = amount_total / 1.18
+	net = float("{0:.2f}".format(x))
+	return net
+
+
+def get_tax(amount_total):
+	#x = self.x_total_net * 0.18
+	x = self.get_net(amount_total) * 0.18
+	tax = float("{0:.2f}".format(x))
+	return tax
+
+
+# ----------------------------------------------------- Check Payment method  ------
+def check_payment_method(lines):
+	"""
+	Check Payment method
+	Used by Order
+	"""
+	print('check_payment_method')
+	total = 0
+	for line in lines:
+		total = total + line.subtotal
+	return total
+
+
+# -------------------------------------------------------- Get Configurator  ------
+def get_configurator(env):
+	"""
+	Used by Order
+	"""
+	print('get_configurator')
+	# Search
+	obj = env.search([
+								#('active', 'in', [True]),
+							],
+							#order='x_serial_nr asc',
+							limit=1,
+						)
+	#print(patient.name)
+	print(obj)
+	print(obj.name)
+	print(obj.id)
+	return obj
+
+# -------------------------------------------------------- Get Pricelist  ------
+#def get_pricelist(patient, env):
+def get_pricelist(env):
 	"""
 	Used by Order
 	"""
 	print('get_pricelist')
-	print(patient)
+	#print(patient)
 	print(env)
-
 	# Search
 	pricelist = env.search([
 								#('active', 'in', [True]),

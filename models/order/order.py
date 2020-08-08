@@ -5,37 +5,37 @@
 		Last mod: 			08 Aug 2020
 
 		This tangled object must be split in several objs, with clear roles.
-		That will be:
-			- Loosely coupled,
-			- Anthropomorphic,
+		That must be be:
+			- Anthropomorphic.
+			- With clear roles.
+			- Loosely coupled.
 			- ...
 
-		Data will be injected into the loosely couple objs.
+		Data should be injected into the loosely couple objs.
 
-		Service objects:
+		Objects:
 			- QR
 			- Serial Number
 			- TicketCompany
 			- TicketCustomer
 			- TicketSale
 			- DocId
-			- ...
 
-From PgAdmin
--------------
-SELECT * FROM public.sale_order;
-DELETE FROM public.sale_order WHERE partner_id = 391;
+		From PgAdmin
+		-------------
+		SELECT * FROM public.sale_order;
+		DELETE FROM public.sale_order WHERE partner_id = 391;
 """
 from __future__ import print_function
 import datetime
 
 from openerp import models, fields, api
-from openerp.exceptions import Warning as UserError
+#from openerp.exceptions import Warning as UserError
 from openerp.addons.openhealth.models.patient import pat_vars, chk_patient
 from openerp.addons.openhealth.models.emr import pl_creates, action_funcs
 
 from . import test_order
-from . import chk_order
+#from . import chk_order
 from . import ord_vars
 from . import raw_funcs
 from . import qr
@@ -44,6 +44,7 @@ from . import fix_treatment
 from . import ord_funcs
 from . import tick_funcs
 
+from . import check_order
 
 class SaleOrder(models.Model):
 	"""
@@ -51,91 +52,6 @@ class SaleOrder(models.Model):
 	"""
 	_inherit = 'sale.order'
 	_description = 'Order'
-
-# ---------------------------------------------------- Used by Treatment - Create Proc -------
-	def create_procedure_man(self, treatment):
-		"""
-		Create Procedure Man - In prog
-		Used by: Treatment
-		"""
-		# Update Order
-		self.set_procedure_created()
-		# Loop
-		for line in self.order_line:
-			print(line.product_id)
-			if line.product_id.is_procedure():
-				product_product = line.product_id
-				# Create Procedure
-				#pl_creates.create_procedure_go(treatment, product_product)
-				pl_creates.create_procedure(treatment, product_product)
-
-	def set_procedure_created(self, value=True):
-		"""
-		Set Procedure Created
-		Used by: Treatment and Order
-		"""
-		print()
-		print('order - set_procedure_created')
-		self.x_procedure_created = value
-
-	def proc_is_not_created_and_state_is_sale(self):
-		"""
-		Used by: Treatment
-		"""
-		print()
-		print('order - proc_is_not_created_and_state_is_sale')
-		return not self.x_procedure_created and self.state == 'sale'
-
-# ----------------------------------------- Constraints - From Patient ----------
-	# Check Ruc
-	@api.constrains('x_ruc')
-	def _check_x_ruc(self):
-		if self.x_type in ['ticket_invoice', 'invoice']:
-			chk_patient.check_x_ruc(self)
-
-	# Check Id doc - Use Chk Patient
-	@api.constrains('x_id_doc')
-	def _check_x_id_doc(self):
-		if self.x_type in ['ticket_receipt', 'receipt']:
-			chk_patient.check_x_id_doc(self)
-
-
-# ----------------------------------------------------------- Configurator  -------------------------------
-	configurator = fields.Many2one(
-			'openhealth.configurator.emr',
-			string="Config",
-			#readonly=True,
-			#required=True,
-			required=False,
-			#default=_get_default_configurator,
-		)
-
-# ----------------------------------------------------------- Pricelist  -------------------------------
-	# Default
-	def _get_default_pricelist_id_dep(self):
-		print()
-		print('Default Pricelist')
-
-		# Search
-		pricelist = self.env['product.pricelist'].search([
-												#('active', 'in', [True]),
-												],
-												#order='x_serial_nr asc',
-												limit=1,
-											)
-		print(pricelist)
-		print(pricelist.name)
-		return pricelist
-
-	# Pricelist
-	pricelist_id = fields.Many2one(
-			'product.pricelist',
-			string='Pricelist',
-			readonly=False,
-			#default=_get_default_pricelist_id,
-			#required=True,
-		)
-
 
 # ----------------------------------------------------------- Relational -------------------------------
 	# Patient
@@ -159,6 +75,25 @@ class SaleOrder(models.Model):
 			string="Cliente",
 			required=False,
 			readonly=False,
+		)
+
+	# Pricelist
+	pricelist_id = fields.Many2one(
+			'product.pricelist',
+			string='Pricelist',
+			readonly=False,
+			#default=_get_default_pricelist_id,
+			#default=lambda self: self._get_default_pricelist(),
+			default=lambda self: raw_funcs.get_pricelist(self.env['product.pricelist']),
+			required=True,
+		)
+
+	# Configurator
+	configurator = fields.Many2one(
+			'openhealth.configurator.emr',
+			string="Config",
+			required=True,
+			default=lambda self: raw_funcs.get_configurator(self.env['openhealth.configurator.emr']),
 		)
 
 # ----------------------------------------------------------- Fields -------------------------------
@@ -226,6 +161,21 @@ class SaleOrder(models.Model):
 				products = products + line.get_product() + ', '
 			record.pl_product = products
 
+# ----------------------------------------- Constraints - From Patient ----------
+	# Check Ruc
+	@api.constrains('x_ruc')
+	def _check_x_ruc(self):
+		if self.x_type in ['ticket_invoice', 'invoice']:
+			chk_patient.check_x_ruc(self)
+
+	# Check Id doc - Use Chk Patient
+	@api.constrains('x_id_doc')
+	def _check_x_id_doc(self):
+		if self.x_type in ['ticket_receipt', 'receipt']:
+			chk_patient.check_x_id_doc(self)
+
+
+
 # ---------------------------------------------- Price List - Fields ------------------------------------------
 
 
@@ -250,7 +200,6 @@ class SaleOrder(models.Model):
 			required=False,
 			compute='_compute_nr_lines',
 		)
-
 	@api.multi
 	#@api.depends('order_line')
 	def _compute_nr_lines(self):
@@ -260,14 +209,11 @@ class SaleOrder(models.Model):
 				ctr = ctr + 1
 			record.nr_lines = ctr
 
-
-
 	# Amount total - OK
 	x_amount_total = fields.Float(
 			string="x Total",
 			compute="_compute_x_amount_total",
 		)
-
 	@api.multi
 	def _compute_x_amount_total(self):
 		for record in self:
@@ -311,15 +257,14 @@ class SaleOrder(models.Model):
 		Validate and confirm the order.
 		"""
 		print()
-		print('Validate')
+		print('Validate and confirm')
 
 		# Handle Exceptions
 		#exc_ord.handle_exceptions(self)
 
-
 		# Payment method validation
-		self.check_payment_method()
-
+		#self.check_payment_method()
+		self.x_pm_total = raw_funcs.check_payment_method(self.x_payment_method.pm_line_ids)
 
 		# If Everything is OK
 		self.check_and_generate()
@@ -365,7 +310,7 @@ class SaleOrder(models.Model):
 		if self.x_payment_method.saledoc:
 			self.x_type = self.x_payment_method.saledoc
 
-		
+
 		# Create Procedure
 		raw_funcs.create_procedure(self.treatment, self.order_line)
 
@@ -644,10 +589,12 @@ class SaleOrder(models.Model):
 	def checksum(self):
 		"""
 		Checksum
-		"""
-		#print
-		#print 'CheckSum'
-		self.check_payment_method()
+		"""		
+		#obj = check_order.CheckOrder()
+		
+		#self.check_payment_method()
+		self.x_pm_total = raw_funcs.check_payment_method(self.x_payment_method.pm_line_ids)
+
 		delta = int(self.amount_total) - int(self.x_pm_total)
 		if delta != 0:
 			self.x_checksum = 1
@@ -660,19 +607,6 @@ class SaleOrder(models.Model):
 			'Total MP',
 			readonly=True,
 		)
-
-	# Check payment method
-	@api.multi
-	def check_payment_method(self):
-		"""
-		Check Payment method
-		"""
-		#print
-		#print 'Check Payment Method'
-		pm_total = 0
-		for pm in self.x_payment_method.pm_line_ids:
-			pm_total = pm_total + pm.subtotal
-		self.x_pm_total = pm_total
 
 # ----------------------------------------------------------- Serial Nr ---------------------------
 	# Serial Number
@@ -819,8 +753,7 @@ class SaleOrder(models.Model):
 		print('_onchange_patient')
 		if self.patient.name:
 			self.partner_id, self.x_dni, self.x_ruc, self.x_id_doc, self.x_id_doc_type = raw_funcs.get_patient_ids(self.patient)
-			
-			self.pricelist_id = raw_funcs.get_pricelist(self.patient, self.env['product.pricelist'])
+			self.pricelist_id = raw_funcs.get_pricelist(self.env['product.pricelist'])
 
 	# Doctor
 	@api.onchange('x_doctor')
@@ -1074,16 +1007,13 @@ class SaleOrder(models.Model):
 			'name' : self.configurator.company_name,
 			'ruc' : self.configurator.ticket_company_ruc,
 			'address' : self.configurator.ticket_company_address,
-
 			'phone' : self.configurator.company_phone,
 			'note' : self.configurator.ticket_note,
 			'description' : self.configurator.ticket_company_address,
-
 			'warning' : self.configurator.ticket_warning,
 			'website' : self.configurator.company_website,
 			'email' : self.configurator.company_email,
 		}
-
 		return options[tag]
 
 
@@ -1131,37 +1061,16 @@ class SaleOrder(models.Model):
 		"""
 		print()
 		print('get_items_header')
-
 		if tag in ['items_header']:
 			tag = 'items'
 			value = 'header'
-
 		obj = ticket_line.TicketLine(tag, value)
 		line = obj.get_line_items()
 		return line
 
 # ----------------------------------------------------------- Ticket - Get Raw Line - Aux ----------------
-	def get_total_net(self):
-		"""
-		Used by Print Ticket.
-		Is zero if Transfer Free.
-		"""
-		if self.pl_transfer_free:
-			self.x_total_net = 0
-		else:
-			self.x_total_net = tick_funcs.get_net(self)
-		return self.x_total_net
-
-	def get_total_tax(self):
-		"""
-		Used by Print Ticket.
-		Is zero if Transfer Free.
-		"""
-		if self.pl_transfer_free:
-			self.x_total_tax = 0
-		else:
-			self.x_total_tax = tick_funcs.get_tax(self)
-		return self.x_total_tax
+	#def get_total_net(self):
+	#def get_total_tax(self):
 
 	def get_amount_total(self):
 		"""
@@ -1210,7 +1119,8 @@ class SaleOrder(models.Model):
 		# Totals
 		if argument in ['totals_net']:
 			tag = 'OP. GRAVADAS S/.'
-			value = str(self.get_total_net())
+			#value = str(self.get_total_net())
+			value = str(raw_funcs.get_total_net(self.amount_total, self.pl_transfer_free))
 
 		elif argument in ['totals_free']:
 			tag = 'OP. GRATUITAS S/.'
@@ -1226,7 +1136,8 @@ class SaleOrder(models.Model):
 
 		elif argument in ['totals_tax']:
 			tag = 'I.G.V. 18% S/.'
-			value = str(self.get_total_tax())
+			#value = str(self.get_total_tax())
+			value = str(raw_funcs.get_total_tax(self.amount_total, self.pl_transfer_free))
 
 		#elif argument in ['totals_total']:
 		#	tag = 'TOTAL S/.'
@@ -1327,3 +1238,38 @@ class SaleOrder(models.Model):
 		#return action2
 		#self.test_serial_number()
 		#return action0, action1, action2
+
+
+# ---------------------------------------------------- Used by Treatment - Create Proc -------
+	def create_procedure_man(self, treatment):
+		"""
+		Create Procedure Man - In prog
+		Used by: Treatment
+		"""
+		# Update Order
+		self.set_procedure_created()
+		# Loop
+		for line in self.order_line:
+			print(line.product_id)
+			if line.product_id.is_procedure():
+				product_product = line.product_id
+				# Create Procedure
+				#pl_creates.create_procedure_go(treatment, product_product)
+				pl_creates.create_procedure(treatment, product_product)
+
+	def set_procedure_created(self, value=True):
+		"""
+		Set Procedure Created
+		Used by: Treatment and Order
+		"""
+		print()
+		print('order - set_procedure_created')
+		self.x_procedure_created = value
+
+	def proc_is_not_created_and_state_is_sale(self):
+		"""
+		Used by: Treatment
+		"""
+		print()
+		print('order - proc_is_not_created_and_state_is_sale')
+		return not self.x_procedure_created and self.state == 'sale'

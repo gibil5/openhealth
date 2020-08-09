@@ -281,8 +281,9 @@
 					<field name="configurator"			required="1"/>
 					<field name="pricelist_id"          readonly="1"/>
 -->
-<field name="configurator"			required="0"/>
-<field name="pricelist_id"          readonly="0"/>
+<field name="ticket"/>
+<field name="configurator"/>
+<field name="pricelist_id"/>
 				</xpath>
 
 <!-- REPLACES -->

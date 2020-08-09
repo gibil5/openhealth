@@ -40,16 +40,14 @@
 		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_address()"/>
 		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company_phone()"/>
 -->
-
-<!-- Name -->
-		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company('name')"/>
-
+		<!-- Name -->
+		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.ticket.get_company('name')"/>
 		<!-- Ruc -->
-		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company('ruc')"/>
+		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.ticket.get_company('ruc')"/>
 		<!-- Address -->
-		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company('address')"/>
+		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.ticket.get_company('address')"/>
 		<!-- Phone -->
-		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_company('phone')"/>
+		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.ticket.get_company('phone')"/>
 	</center>
 </div>
 
@@ -63,11 +61,11 @@
 		<div style="border-top: 1px solid black;"/>
 		
 		<!-- Title -->
-		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_ticket('title')"/>
+		<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.ticket.get_ticket('title', doc)"/>
 
 		<!-- Credit Note - Conditional -->
 		<t t-if="doc.state == 'credit_note'">
-			<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.get_ticket('serial_nr')"/>
+			<div style="margin-top:5px;margin-bottom:5px;font-size: small;" t-esc="doc.ticket.get_ticket('serial_nr', doc)"/>
 		</t>
 
 		<!-- Border -->
@@ -82,16 +80,13 @@
 <div class="row">
 
 <div>
-
 	<table style="width:100%">
 
 
 <!-- Conditional - Credit Note -->
 <t t-if="doc.state == 'credit_note'">
-
-	<t t-raw="doc.get_raw_line('date_credit_note')"/>
+	<t t-raw="doc.ticket.get_raw_line('date_credit_note', doc)"/>
 </t>
-
 
 
 <!-- Conditional - Receipt -->
@@ -100,14 +95,10 @@
 	<t t-raw="doc.get_patient_name_line()"/>
 	<t t-raw="doc.get_patient_dni_line()"/>
 	<t t-raw="doc.get_patient_address_line()"/>
-
-	<t t-raw="doc.get_raw_line('receipt_patient_name')"/>
-	<t t-raw="doc.get_raw_line('receipt_patient_dni')"/>
-	<t t-raw="doc.get_raw_line('receipt_patient_address')"/>
 -->
-	<t t-raw="doc.get_ticket_line('Cliente')"/>
-	<t t-raw="doc.get_ticket_line('DNI')"/>
-	<t t-raw="doc.get_ticket_line('Direccion')"/>
+	<t t-raw="doc.ticket.get_ticket_line('Cliente', doc)"/>
+	<t t-raw="doc.ticket.get_ticket_line('DNI', doc)"/>
+	<t t-raw="doc.ticket.get_ticket_line('Direccion', doc)"/>
 </t>
 
 
@@ -119,9 +110,9 @@
 	<t t-raw="doc.get_patient_ruc_line()"/>
 	<t t-raw="doc.get_patient_firm_address_line()"/>
 -->
-	<t t-raw="doc.get_raw_line('invoice_firm_name')"/>
-	<t t-raw="doc.get_raw_line('invoice_patient_ruc')"/>
-	<t t-raw="doc.get_raw_line('invoice_firm_address')"/>
+	<t t-raw="doc.ticket.get_raw_line('invoice_firm_name', doc)"/>
+	<t t-raw="doc.ticket.get_raw_line('invoice_patient_ruc', doc)"/>
+	<t t-raw="doc.ticket.get_raw_line('invoice_firm_address', doc)"/>
 </t>
 
 	</table>
@@ -162,11 +153,9 @@
 		</tr>
 -->
 
-		<t t-raw="doc.get_raw_line('denomination_credit_note_owner')"/>
-
-		<t t-raw="doc.get_raw_line('date_credit_note_owner')"/>
-
-		<t t-raw="doc.get_raw_line('reason_credit_note')"/>
+		<t t-raw="doc.ticket.get_raw_line('denomination_credit_note_owner', doc)"/>
+		<t t-raw="doc.ticket.get_raw_line('date_credit_note_owner', doc)"/>
+		<t t-raw="doc.ticket.get_raw_line('reason_credit_note', doc)"/>
 	</table>
 </t>
 
@@ -177,12 +166,9 @@
 <!--
 		<t t-raw="doc.get_ticket_date_line()"/>
 		<t t-raw="doc.get_ticket_number_line()"/>
-
-		<t t-raw="doc.get_raw_line('sale_date')"/>
-		<t t-raw="doc.get_raw_line('sale_serial_number')"/>
 -->
-		<t t-raw="doc.get_ticket_line('Fecha')"/>
-		<t t-raw="doc.get_ticket_line('Ticket')"/>
+		<t t-raw="doc.ticket.get_ticket_line('Fecha', doc)"/>
+		<t t-raw="doc.ticket.get_ticket_line('Ticket', doc)"/>
 	</table>
 </t>
 
@@ -202,10 +188,8 @@
 <table style="width:100%">
 <!--
 	<t t-raw="doc.get_order_lines_header()"/>
-	<t t-raw="doc.get_raw_line('items_header')"/>
 -->
-
-	<t t-raw="doc.get_items_header('items_header')"/>
+	<t t-raw="doc.ticket.get_items_header('items_header')"/>
 
 
 <!-- LOOP - Items --> 
@@ -232,12 +216,12 @@
 	<t t-raw="doc.get_ticket_total_tax_line()"/>
 	<t t-raw="doc.get_ticket_total_line()"/>
 -->
-	<t t-raw="doc.get_raw_line('totals_net')"/>
-	<t t-raw="doc.get_raw_line('totals_free')"/>
-	<t t-raw="doc.get_raw_line('totals_exonerated')"/>
-	<t t-raw="doc.get_raw_line('totals_unaffected')"/>
-	<t t-raw="doc.get_raw_line('totals_tax')"/>
-	<t t-raw="doc.get_raw_line('totals_total')"/>
+	<t t-raw="doc.ticket.get_raw_line('totals_net', doc)"/>
+	<t t-raw="doc.ticket.get_raw_line('totals_free', doc)"/>
+	<t t-raw="doc.ticket.get_raw_line('totals_exonerated', doc)"/>
+	<t t-raw="doc.ticket.get_raw_line('totals_unaffected', doc)"/>
+	<t t-raw="doc.ticket.get_raw_line('totals_tax', doc)"/>
+	<t t-raw="doc.ticket.get_raw_line('totals_total', doc)"/>
 </table>
 <br/>
 
@@ -252,11 +236,10 @@
 	<t t-raw="doc.get_ticket_total_words_cents()"/>
 	<t t-raw="doc.get_ticket_total_words_footer()"/>
 -->
-
-	<t t-raw="doc.get_words_line('words_header')"/>
-	<t t-raw="doc.get_words_line('words_soles')"/>
-	<t t-raw="doc.get_words_line('words_cents')"/>
-	<t t-raw="doc.get_words_line('words_footer')"/>
+	<t t-raw="doc.ticket.get_words_line('words_header', doc)"/>
+	<t t-raw="doc.ticket.get_words_line('words_soles', doc)"/>
+	<t t-raw="doc.ticket.get_words_line('words_cents', doc)"/>
+	<t t-raw="doc.ticket.get_words_line('words_footer', doc)"/>
 </table>
 <br/>
 
@@ -264,7 +247,7 @@
 <!-- Note --> 
 <table style="width:100%">
 	<tr>
-		<td align="left" ><t t-esc="doc.get_company('note')"/></td> 
+		<td align="left" ><t t-esc="doc.ticket.get_company('note')"/></td> 
 	</tr>
 </table>
 <br/>
@@ -298,10 +281,10 @@
 	<div>
 		<div style="margin-top:1px;margin-bottom:1px;width:100%;font-size: xx-small;">
 			<br/>
-			<div style="margin-top:7px;" t-esc="doc.get_company('description')"/>
-			<div style="margin-top:7px;" t-esc="doc.get_company('warning')"/>
-			<div style="margin-top:7px;" t-esc="doc.get_company('website')"/>
-			<div style="margin-top:7px;" t-esc="doc.get_company('email')"/>
+			<div style="margin-top:7px;" t-esc="doc.ticket.get_company('description')"/>
+			<div style="margin-top:7px;" t-esc="doc.ticket.get_company('warning')"/>
+			<div style="margin-top:7px;" t-esc="doc.ticket.get_company('website')"/>
+			<div style="margin-top:7px;" t-esc="doc.ticket.get_company('email')"/>
 		</div>
 	</div>
 

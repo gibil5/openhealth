@@ -112,6 +112,25 @@ def check_payment_method(lines):
 
 
 # -------------------------------------------------------- Get Configurator  ------
+def get_ticket(env):
+	"""
+	Used by Order
+	"""
+	print('get_ticket')
+	# Search
+	obj = env.search([
+							#('active', 'in', [True]),
+						],
+						#order='x_serial_nr asc',
+						limit=1,
+					)
+	#print(obj)
+	#print(obj.name)
+	#print(obj.id)
+	return obj
+
+
+# -------------------------------------------------------- Get Configurator  ------
 def get_configurator(env):
 	"""
 	Used by Order

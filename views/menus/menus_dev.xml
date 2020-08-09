@@ -1,9 +1,8 @@
 <?xml version="1.0"?>
 <openerp>
     <data>
-<!-- 
-8 Aug 2D20
--->
+<!-- 8 Aug 2D20 -->
+
 
 <!-- Main - DEV -->
 <menuitem id="main_dev_menu"
@@ -14,44 +13,72 @@
 
 
 <!-- Models --> 
-		<menuitem id="dev_model_menu" 
-							name="Models"
-							parent="main_dev_menu"
-							sequence="1"
-						/>
+<menuitem id="dev_model_menu" 
+					name="Models"
+					parent="main_dev_menu"
+					sequence="1"
+				/>
 
-            <!-- Partners --> 
-        		<menuitem id="dev_res_partners_menu"
-        					parent="dev_model_menu"
-        					sequence="3"
-        					name="Partners"
-        					action="partner_list_action"
-        				/>
+    <!-- Partners --> 
+    <menuitem id="dev_res_partners_menu"
+    			parent="dev_model_menu"
+    			sequence="3"
+    			name="Partners"
+    			action="partner_list_action"
+    		/>
 <!--
 res.partner
 -->
 
-            <!-- Pricelists --> 
-        		<menuitem id="dev_pricelists_menu"
-        					parent="dev_model_menu"
-        					sequence="5"
-        					name="Pricelists"
-        					action="pricelist_list_action"
-        				/>
+    <!-- Pricelists --> 
+    <menuitem id="dev_pricelists_menu"
+    			parent="dev_model_menu"
+    			sequence="5"
+    			name="Pricelists"
+    			action="pricelist_list_action"
+    		/>
 <!--
 product.pricelist
 -->
 
-            <!-- Cards --> 
-            <menuitem id="dev_cards_menu"
-                  parent="dev_model_menu"
-                  sequence="7"
-                  name="Cards"
-                  action="card_list_action"
-                />
+    <!-- Cards --> 
+    <menuitem id="dev_cards_menu"
+          parent="dev_model_menu"
+          sequence="7"
+          name="Cards"
+          action="card_list_action"
+        />
 <!--
 openhealth.card
 -->
+
+    <!-- Cards --> 
+    <menuitem id="dev_cards_menu"
+      parent="dev_model_menu"
+      sequence="7"
+      name="Cards"
+      action="card_list_action"
+    />
+<!--
+openhealth.card
+-->
+
+
+    <!-- Cards --> 
+    <menuitem id="dev_tickets_menu"
+      parent="dev_model_menu"
+      sequence="9"
+      name="Tickets"
+      action="ticket_list_action"
+    />
+<!--
+openhealth.card
+-->
+
+
+
+
+
 
 
 

@@ -30,7 +30,6 @@ from __future__ import print_function
 import datetime
 
 from openerp import models, fields, api
-#from openerp.exceptions import Warning as UserError
 from openerp.addons.openhealth.models.patient import pat_vars, chk_patient
 from openerp.addons.openhealth.models.emr import pl_creates, action_funcs
 
@@ -39,12 +38,13 @@ from . import test_order
 from . import ord_vars
 from . import raw_funcs
 from . import qr
-from . import ticket_line
 from . import fix_treatment
 from . import ord_funcs
-from . import tick_funcs
 
-from . import check_order
+#from openerp.exceptions import Warning as UserError
+#from . import check_order
+#from . import tick_funcs
+#from . import ticket_line
 
 class SaleOrder(models.Model):
 	"""
@@ -52,6 +52,15 @@ class SaleOrder(models.Model):
 	"""
 	_inherit = 'sale.order'
 	_description = 'Order'
+
+# ----------------------------------------------------------- Relational -------------------------------
+	# Patient
+	ticket = fields.Many2one(
+			'openhealth.ticket',
+			#string="Ticket",
+			required=True,
+			default=lambda self: raw_funcs.get_ticket(self.env['openhealth.ticket']),
+		)
 
 # ----------------------------------------------------------- Relational -------------------------------
 	# Patient
@@ -584,9 +593,9 @@ class SaleOrder(models.Model):
 	def checksum(self):
 		"""
 		Checksum
-		"""		
+		"""
 		#obj = check_order.CheckOrder()
-		
+
 		#self.check_payment_method()
 		self.x_pm_total = raw_funcs.check_payment_method(self.x_payment_method.pm_line_ids)
 
@@ -757,7 +766,6 @@ class SaleOrder(models.Model):
 			self.treatment = raw_funcs.get_treatment(self.env['openhealth.treatment'], self.patient.name, self.x_doctor.name)
 
 
-# ---------------------------------- Partner - Not Dep -------------------------
 	# Partner
 	@api.onchange('partner_id')
 	def _onchange_partner_id(self):
@@ -782,6 +790,7 @@ class SaleOrder(models.Model):
 	@api.onchange('x_partner_dni')
 	def _onchange_x_partner_dni(self):
 		self.patient = ord_funcs.search_patient_by_id_document(self)
+
 
 # ----------------------------------------------------------- Primitives --------------------------
 
@@ -835,6 +844,7 @@ class SaleOrder(models.Model):
 		env = self.env['openhealth.payment_method']
 		self.x_payment_method, ret = raw_funcs.create_pm(env, self.id, self.date_order, self.x_amount_total, self.partner_id.id, self.patient.x_firm, self.patient.x_ruc)
 		return ret
+
 
 # ----------------------------------------------------------- Print -------------------------------
 	@api.multi
@@ -992,155 +1002,18 @@ class SaleOrder(models.Model):
 		print(qr_obj.get_img_str())
 		#qr_obj.print_obj()
 
+# ----------------------------------------------------------- Ticket - tools --------------------------------
 # ----------------------------------------------------------- Ticket - Aux ----------------
 	#def get_total_net(self):
 	#def get_total_tax(self):
 	#def get_amount_total(self):
 	#def get_total_in_words(self):
 	#def get_total_cents(self):
-
-# ----------------------------------------------------------- Ticket - tools --------------------------------
-	def get_company(self, tag):
-		"""
-		Used by Ticket
-		"""
-		options = {
-			'name' : self.configurator.company_name,
-			'ruc' : self.configurator.ticket_company_ruc,
-			'address' : self.configurator.ticket_company_address,
-			'phone' : self.configurator.company_phone,
-			'note' : self.configurator.ticket_note,
-			'description' : self.configurator.ticket_company_address,
-			'warning' : self.configurator.ticket_warning,
-			'website' : self.configurator.company_website,
-			'email' : self.configurator.company_email,
-		}
-		return options[tag]
-
-	def get_ticket(self, item):
-		"""
-		Used by Ticket
-		"""
-		if item == 'title':
-			ret = self.x_title
-		elif item == 'serial_nr':
-			ret = self.x_serial_nr
-		return ret
-
 # ----------------------------------------------------------- Ticket - Get Raw Line - Stub ----------------
-	def get_ticket_line(self, tag):
-		"""
-		Uses the Ticket class.
-		"""
-		print()
-		print('get_ticket_line')
-		#line = raw_funcs.get_ticket_raw_line(self, tag)
-		print(tag)
-
-		if tag in ['Cliente']:
-			value = self.patient.name
-		elif tag in ['DNI']:
-			value = self.x_id_doc
-		elif tag in ['Direccion']:
-			value = self.patient.x_address
-		elif tag in ['Fecha']:
-			value = raw_funcs.get_date_corrected(self.date_order)
-		elif tag in ['Ticket']:
-			value = self.x_serial_nr
-
-		obj = ticket_line.TicketLine(tag, value)
-
-		line = obj.get_line()
-
-		return line
-
 # ----------------------------------------------------------- Ticket - Get Raw Line - Stub ----------------
-	def get_items_header(self, tag):
-		"""
-		Uses the Ticket class.
-		"""
-		print()
-		print('get_items_header')
-		if tag in ['items_header']:
-			tag = 'items'
-			value = 'header'
-		obj = ticket_line.TicketLine(tag, value)
-		line = obj.get_line_items()
-		return line
 
-# ----------------------------------------------------------- Ticket - Get Raw Line - Stub ----------------
-	def get_raw_line(self, argument):
-		"""
-		Uses the Ticket class.
-		"""
-		print()
-		print('get_raw_line')
-		print(argument)
 
-		# Default
-		tag = 'TOTAL S/.'
-		#value = str(self.get_amount_total())
-		value = str(raw_funcs.get_amount_total(self.amount_total, self.pl_transfer_free))
 
-		# Totals
-		if argument in ['totals_net']:
-			tag = 'OP. GRAVADAS S/.'
-			#value = str(self.get_total_net())
-			value = str(raw_funcs.get_total_net(self.amount_total, self.pl_transfer_free))
-
-		elif argument in ['totals_free']:
-			tag = 'OP. GRATUITAS S/.'
-			value = '0'
-
-		elif argument in ['totals_exonerated']:
-			tag = 'OP. EXONERADAS S/.'
-			value = '0'
-
-		elif argument in ['totals_unaffected']:
-			tag = 'OP. INAFECTAS S/.'
-			value = '0'
-
-		elif argument in ['totals_tax']:
-			tag = 'I.G.V. 18% S/.'
-			#value = str(self.get_total_tax())
-			value = str(raw_funcs.get_total_tax(self.amount_total, self.pl_transfer_free))
-
-		#elif argument in ['totals_total']:
-		#	tag = 'TOTAL S/.'
-		#	value = str(self.get_amount_total())
-
-		obj = ticket_line.TicketLine(tag, value)
-		line = obj.get_line()
-		return line
-
-# ----------------------------------------------------------- Ticket - Get Raw Line - Stub ----------------
-	def get_words_line(self, argument):
-		"""
-		Uses the Ticket class.
-		"""
-		print()
-		print('get_words_line')
-		print(argument)
-
-		# Words
-		if argument in ['words_header']:
-			tag = 'Son:'
-			value = ''
-		elif argument in ['words_soles']:
-			tag = ''
-			#value = str(self.get_total_in_words())
-			value = str(raw_funcs.get_total_in_words(self.amount_total, self.pl_transfer_free))
-		elif argument in ['words_cents']:
-			tag = ''
-			#value = str(self.get_total_cents())
-			value = str(raw_funcs.get_total_cents(self.amount_total, self.pl_transfer_free))
-		elif argument in ['words_footer']:
-			tag = ''
-			value = 'Soles'
-
-		obj = ticket_line.TicketLine(tag, value)
-		line = obj.get_line()
-		return line
 
 # ----------------------------------------------------------- Test Ticket --------------------------------
 	@api.multi

@@ -10,6 +10,7 @@ from . import report_sale_product
 
 from . import order_admin
 
+from . import ticket
 
 from . import order
 

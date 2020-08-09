@@ -7,11 +7,49 @@
 """
 from __future__ import print_function
 import datetime
+import math
+from num2words import num2words
+
 from openerp.exceptions import Warning as UserError
 from openerp import _
 
 
-# ----------------------------------------------------- Check Payment method  ------
+# ----------------------------------------------------- Ticket get line  ------
+def get_total_cents(amount_total, transfer_free):
+	"""
+	Used by Print Ticket.
+	"""
+	if transfer_free:
+		cents = '0.0'
+	else:
+		cents = get_cents(amount_total)
+	return cents
+
+
+def get_total_in_words(amount_total, transfer_free):
+	"""
+	Used by Print Ticket.
+	"""
+	if transfer_free:
+		words = 'Cero'
+	else:
+		words = get_words(amount_total)
+	return words
+
+
+def get_amount_total(amount_total, transfer_free):
+	"""
+	Used by Order.
+	Is zero if Transfer Free.
+	"""
+	if transfer_free:
+		total = 0
+	else:
+		total = amount_total
+	return total
+
+
+
 def get_total_net(amount_total, transfer_free):
 	"""
 	Used by Order.
@@ -35,17 +73,27 @@ def get_total_tax(amount_total, transfer_free):
 		total_tax = get_tax(amount_total)
 	return total_tax
 
+# ----------------------------------------------------- Ticket Aux  ------
+def get_cents(amount_total):
+	frac, whole = math.modf(amount_total)
+	total_cents = frac * 100
+	return total_cents
 
+def get_words(amount_total):
+	words = num2words(amount_total, lang='es')
+	if 'punto' in words:
+		words = words.split('punto')[0]
+	total_words = words.title()
+	return total_words
 
 def get_net(amount_total):
 	x = amount_total / 1.18
 	net = float("{0:.2f}".format(x))
 	return net
 
-
 def get_tax(amount_total):
 	#x = self.x_total_net * 0.18
-	x = self.get_net(amount_total) * 0.18
+	x = get_net(amount_total) * 0.18
 	tax = float("{0:.2f}".format(x))
 	return tax
 
@@ -223,8 +271,7 @@ def get_amount_flow(block_flow, state, credit_note_amount, amount_total):
 # ----------------------------------------------------------- Ticket - Get Raw Line - Aux ----------------
 def get_date_corrected(date_order):
 	"""
-	Used by:
-		- Get Ticket Raw
+	Used by - Get Ticket Raw
 	"""
 	print()
 	print('Get Date Corrected')
@@ -304,7 +351,6 @@ def create_pm(env, order_id, date_order, amount_total, partner_id, patient_firm,
 			'res_model': 'openhealth.payment_method',
 			'res_id': payment_method_id,
 			'flags': 	{
-						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
 						#'form': {'action_buttons': False, }
 						'form':{'action_buttons': False, 'options': {'mode': 'edit'}}
 						},
@@ -351,7 +397,6 @@ def open_myself(res_model, res_id):
 		}
 	}
 
-
 # ---------------------------------------------------- Open line current -------
 def open_line_current(res_model, res_id):
 	"""
@@ -359,8 +404,6 @@ def open_line_current(res_model, res_id):
 	"""
 	print('open_line_current')
 	return {
-			#'res_model': self._name,
-			#'res_id': consultation_id,
 			'type': 'ir.actions.act_window',
 			'name': ' Edit Order Current',
 			'view_type': 'form',

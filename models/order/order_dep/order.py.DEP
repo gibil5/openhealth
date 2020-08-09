@@ -1,5 +1,11 @@
 # 8 Aug 2020 
 
+	# Date Date
+	#x_date_order_date = fields.Date(
+	#	'Fecha',
+	#)
+
+
 	# Check payment method
 	#@api.multi
 	#def check_payment_method(self):

@@ -96,6 +96,13 @@ class SaleOrder(models.Model):
 			default=lambda self: raw_funcs.get_configurator(self.env['openhealth.configurator.emr']),
 		)
 
+# ----------------------------------------------------------- Legacy ------------------------------
+	# Legacy
+	x_legacy = fields.Boolean(
+			'Legacy',
+			default=False,
+		)
+
 # ----------------------------------------------------------- Fields -------------------------------
 	# Transfer Free
 	pl_transfer_free = fields.Boolean(
@@ -119,7 +126,6 @@ class SaleOrder(models.Model):
 	x_product = fields.Char(
 			string="Producto",
 		)
-
 
 	# Amount flow
 	x_amount_flow = fields.Float(
@@ -175,9 +181,7 @@ class SaleOrder(models.Model):
 			chk_patient.check_x_id_doc(self)
 
 
-
-# ---------------------------------------------- Price List - Fields ------------------------------------------
-
+# ---------------------------------------------- Price List - Fields ------------------------
 
 # ------------------------------------------- Natives  - Computes OK -----------
 
@@ -200,6 +204,7 @@ class SaleOrder(models.Model):
 			required=False,
 			compute='_compute_nr_lines',
 		)
+
 	@api.multi
 	#@api.depends('order_line')
 	def _compute_nr_lines(self):
@@ -214,6 +219,7 @@ class SaleOrder(models.Model):
 			string="x Total",
 			compute="_compute_x_amount_total",
 		)
+
 	@api.multi
 	def _compute_x_amount_total(self):
 		for record in self:
@@ -516,16 +522,11 @@ class SaleOrder(models.Model):
 	# Date
 	date_order = fields.Datetime(
 		states={
-					'draft': [('readonly', False)],
-					'sent': [('readonly', False)],
-					'sale': [('readonly', True)],
+				'draft': [('readonly', False)],
+				'sent': [('readonly', False)],
+				'sale': [('readonly', True)],
 				},
 		index=True,
-	)
-
-	# Date Date
-	x_date_order_date = fields.Date(
-		'Fecha',
 	)
 
 	# Month
@@ -540,12 +541,6 @@ class SaleOrder(models.Model):
 			string='Dia',
 		)
 
-# ----------------------------------------------------------- Legacy ------------------------------
-	# Legacy
-	x_legacy = fields.Boolean(
-			'Legacy',
-			default=False,
-		)
 
 # ----------------------------------------------------------- Payment ----------------------------
 	x_pm_cash = fields.Float(
@@ -997,6 +992,12 @@ class SaleOrder(models.Model):
 		print(qr_obj.get_img_str())
 		#qr_obj.print_obj()
 
+# ----------------------------------------------------------- Ticket - Aux ----------------
+	#def get_total_net(self):
+	#def get_total_tax(self):
+	#def get_amount_total(self):
+	#def get_total_in_words(self):
+	#def get_total_cents(self):
 
 # ----------------------------------------------------------- Ticket - tools --------------------------------
 	def get_company(self, tag):
@@ -1068,41 +1069,6 @@ class SaleOrder(models.Model):
 		line = obj.get_line_items()
 		return line
 
-# ----------------------------------------------------------- Ticket - Get Raw Line - Aux ----------------
-	#def get_total_net(self):
-	#def get_total_tax(self):
-
-	def get_amount_total(self):
-		"""
-		Used by Print Ticket.
-		Is zero if Transfer Free.
-		"""
-		if self.pl_transfer_free:
-			total = 0
-		else:
-			total = tick_funcs.get_total(self)
-		return total
-
-	def get_total_in_words(self):
-		"""
-		Used by Print Ticket.
-		"""
-		if self.pl_transfer_free:
-			words = 'Cero'
-		else:
-			words = tick_funcs.get_words(self)
-		return words
-
-	def get_total_cents(self):
-		"""
-		Used by Print Ticket.
-		"""
-		if self.pl_transfer_free:
-			cents = '0.0'
-		else:
-			cents = tick_funcs.get_cents(self)
-		return cents
-
 # ----------------------------------------------------------- Ticket - Get Raw Line - Stub ----------------
 	def get_raw_line(self, argument):
 		"""
@@ -1114,7 +1080,8 @@ class SaleOrder(models.Model):
 
 		# Default
 		tag = 'TOTAL S/.'
-		value = str(self.get_amount_total())
+		#value = str(self.get_amount_total())
+		value = str(raw_funcs.get_amount_total(self.amount_total, self.pl_transfer_free))
 
 		# Totals
 		if argument in ['totals_net']:
@@ -1162,10 +1129,12 @@ class SaleOrder(models.Model):
 			value = ''
 		elif argument in ['words_soles']:
 			tag = ''
-			value = str(self.get_total_in_words())
+			#value = str(self.get_total_in_words())
+			value = str(raw_funcs.get_total_in_words(self.amount_total, self.pl_transfer_free))
 		elif argument in ['words_cents']:
 			tag = ''
-			value = str(self.get_total_cents())
+			#value = str(self.get_total_cents())
+			value = str(raw_funcs.get_total_cents(self.amount_total, self.pl_transfer_free))
 		elif argument in ['words_footer']:
 			tag = ''
 			value = 'Soles'
@@ -1205,7 +1174,6 @@ class SaleOrder(models.Model):
 		print('')
 		print('test_pm')
 		self.create_payment_method()
-
 
 # ----------------------------------------------------------- Test Payment method --------------------------------
 	@api.multi

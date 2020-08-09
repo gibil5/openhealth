@@ -1,5 +1,15 @@
 # 8 Aug 2020 
 
+def set_procedure_created(self, value=True):
+	"""
+	Set Procedure Created
+	Used by: Treatment and Order
+	"""
+	print()
+	print('order - set_procedure_created')
+	self.x_procedure_created = value
+
+
 	# Date Date
 	#x_date_order_date = fields.Date(
 	#	'Fecha',

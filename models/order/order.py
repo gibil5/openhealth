@@ -1017,7 +1017,6 @@ class SaleOrder(models.Model):
 		}
 		return options[tag]
 
-
 	def get_ticket(self, item):
 		"""
 		Used by Ticket
@@ -1215,24 +1214,14 @@ class SaleOrder(models.Model):
 		Used by: Treatment
 		"""
 		# Update Order
-		self.set_procedure_created()
+		self.x_procedure_created = True
 		# Loop
 		for line in self.order_line:
 			print(line.product_id)
 			if line.product_id.is_procedure():
 				product_product = line.product_id
 				# Create Procedure
-				#pl_creates.create_procedure_go(treatment, product_product)
 				pl_creates.create_procedure(treatment, product_product)
-
-	def set_procedure_created(self, value=True):
-		"""
-		Set Procedure Created
-		Used by: Treatment and Order
-		"""
-		print()
-		print('order - set_procedure_created')
-		self.x_procedure_created = value
 
 	def proc_is_not_created_and_state_is_sale(self):
 		"""

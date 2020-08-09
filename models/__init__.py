@@ -33,13 +33,11 @@ from patient import *
 # Product - New
 from product import *
 
-
-# Services- From PL
+# Services
 from services import *  
 
 # EMR
 from emr import *
-
 
 # Order 
 from order import *
@@ -48,11 +46,8 @@ from order import *
 from account import *
 
 
-
-
 # Dep - 1 Aug 2020
 #from service import *
-
 
 #from . import product_counter 
 #from . import product_pricelist_item

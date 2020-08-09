@@ -55,60 +55,80 @@
 						/>
 
 
-					<!-- Test -->
+<!-- Test All -->
 					<button
 							type="object"
 							class="oe_highlight"
-							name="test"
+							name="test_all"
 							string="Test"
 							groups='openhealth.roots'
-						/>
+							context="{'key': 'value'}"
+					/>
 
 					<!-- Test Serial Number -->
+					<!--
+					name="test_serial_number"
+					-->
 					<button
 							type="object"
 							class="oe_highlight"
-							name="test_serial_number"
+							name="test_all"
 							string="Test SN"
 							groups='openhealth.roots'
-						/>
 
-						<!-- Test QR -->
-						<button
-								type="object"
-								class="oe_highlight"
-								name="test_qr"
-								string="Test QR"
-								groups='openhealth.roots'
-							/>
+							context="{'key': 'test_serial_number'}"
+					/>
 
-							<!-- Test Ticket -->
-							<button
-									type="object"
-									class="oe_highlight"
-									name="test_ticket"
-									string="Test Ticket"
-									groups='openhealth.roots'
-								/>
+					<!-- Test QR -->
+					<!-- test_qr -->
+					<button
+							type="object"
+							class="oe_highlight"
+							name="test_all"
+							string="Test QR"
+							groups='openhealth.roots'
 
-								<!-- Test Validate -->
-								<button
-										type="object"
-										class="oe_highlight"
-										name="test_validation"
-										string="Test Validation"
-										groups='openhealth.roots'
-									/>
+							context="{'key': 'test_qr'}"
+					/>
 
-									<!-- Test Validate -->
-									<button
-											type="object"
-											class="oe_highlight"
-											name="test_pm"
-											string="Test PM"
-											groups='openhealth.roots'
-										/>
-				</xpath>
+					<!-- Test Ticket -->
+					<!-- test_ticket -->
+					<button
+							type="object"
+							class="oe_highlight"
+							name="test_all"
+							string="Test Ticket"
+							groups='openhealth.roots'
+
+							context="{'key': 'test_ticket'}"
+					/>
+
+
+
+					<!-- Test Validate -->
+					<!-- test_validation -->
+					<button
+							type="object"
+							class="oe_highlight"
+							name="test_all"
+							string="Test Validation"
+							groups='openhealth.roots'
+
+							context="{'key': 'test_validation'}"
+					/>
+
+					<!-- Test Validate -->
+					<!-- test_pm -->
+					<button
+							type="object"
+							class="oe_highlight"
+							name="test_all"
+							string="Test PM"
+							groups='openhealth.roots'
+
+							context="{'key': 'test_pm'}"
+					/>
+			</xpath>
 
 
 

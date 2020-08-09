@@ -1,5 +1,68 @@
 # 8 Aug 2020 
 
+
+# ----------------------------------------------------------- Test Validation --------------------------------
+	#@api.multi
+	#def test_validation(self):
+	#	"""
+	#	Test Validation
+	#	"""
+	#	print('')
+	#	print('Test Validation')
+	#	self.validate_and_confirm()
+
+# ----------------------------------------------------------- Test Payment method --------------------------------
+	#@api.multi
+	#def test_pm(self):
+	#	"""
+	#	Test Payment method
+	#	"""
+	#	print('')
+	#	print('test_pm')
+	#	self.create_payment_method()
+
+# ----------------------------------------------------------- Test Ticket --------------------------------
+	#@api.multi
+	#def test_ticket(self):
+	#	"""
+	#	Test Ticket
+	#	"""
+	#	print('')
+	#	print('Test Ticket')
+	#	name = 'openhealth.report_ticket_receipt_electronic'
+	#	action = self.env['report'].get_action(self, name)
+	#	return action
+
+# ----------------------------------------------------------- Test QR --------------------------------
+	#@api.multi
+	#def test_qr(self):
+	#	"""
+	#	Test QR
+	#	"""
+	#	print()
+	#	print('order - test_qr')
+		# Create loosely coupled object
+	#	h = self.get_hash_for_qr()
+	#	qr_obj = qr.QR(h)
+		# Get data
+	#	print(qr_obj.get_name())
+	#	print(qr_obj.get_img_str())
+		#qr_obj.print_obj()
+
+
+# ----------------------------------------------------------- Test Payment method --------------------------------
+	#@api.multi
+	#def test_serial_number(self):
+	#	"""
+	#	Test Serial Number
+	#	"""
+	#	print('')
+	#	print('test_serial_number')
+	#	self.make_serial_number()
+
+
+
+
 def set_procedure_created(self, value=True):
 	"""
 	Set Procedure Created

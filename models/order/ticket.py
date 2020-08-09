@@ -4,7 +4,6 @@
 	Created: 			09 Aug 2020
 	Last up: 	 		09 Aug 2020
 """
-
 from __future__ import print_function
 from openerp import models, fields, api
 from . import raw_funcs
@@ -70,7 +69,6 @@ class Ticket(models.Model):
 		obj = ticket_line.TicketLine(tag, value)
 		line = obj.get_line_items()
 		return line
-
 
 
 # --------------------------------------------- Is function of the caller ------

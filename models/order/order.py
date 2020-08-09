@@ -2,9 +2,12 @@
 """
 		Order - Openhealth
 		Created: 			26 Aug 2016
-		Last mod: 			08 Aug 2020
+		Last mod: 			09 Aug 2020
 
-		This tangled object must be split in several objs, with clear roles.
+		Follow the LOD (Law of Demeter - Tell dont aks).
+			- Coupling is bad. 
+			- Cohesion is good. 
+
 		That must be be:
 			- Anthropomorphic.
 			- With clear roles.
@@ -13,13 +16,12 @@
 
 		Data should be injected into the loosely couple objs.
 
-		Objects:
-			- QR
-			- Serial Number
-			- TicketCompany
-			- TicketCustomer
-			- TicketSale
-			- DocId
+		Remember SOLID:
+			- Single responsiblity. 
+			- Open/closed.
+			- Liskov susbstitution. 
+			- Interface seggregation. 
+			- Dependency inversion. 
 
 		From PgAdmin
 		-------------
@@ -863,6 +865,30 @@ class SaleOrder(models.Model):
 		action = self.env['report'].get_action(self, name)
 		return action
 
+# ---------------------------------------------------- Used by Treatment - Create Proc -------
+	def create_procedure_man(self, treatment):
+		"""
+		Create Procedure Man - In prog
+		Used by: Treatment
+		"""
+		# Update Order
+		self.x_procedure_created = True
+		# Loop
+		for line in self.order_line:
+			print(line.product_id)
+			if line.product_id.is_procedure():
+				product_product = line.product_id
+				# Create Procedure
+				pl_creates.create_procedure(treatment, product_product)
+
+	def proc_is_not_created_and_state_is_sale(self):
+		"""
+		Used by: Treatment
+		"""
+		print()
+		print('order - proc_is_not_created_and_state_is_sale')
+		return not self.x_procedure_created and self.state == 'sale'
+
 #----------------------------------------------------------- Quick Button - For Treatment ---------
 	@api.multi
 	def open_line_current(self):
@@ -896,7 +922,6 @@ class SaleOrder(models.Model):
 		self.x_payment_method.unlink()
 		self.state = 'draft'
 
-
 	# Remove - Protected for Sales
 	@api.multi
 	def remove_myself(self):
@@ -910,7 +935,6 @@ class SaleOrder(models.Model):
 		else:
 			#raise UserError("Advertencia: La Venta va a ser convertida en Presupuesto !")
 			self.reset()
-
 
 	# Remove Force
 	@api.multi
@@ -944,7 +968,7 @@ class SaleOrder(models.Model):
 		self.x_cancel = False
 		self.state = 'sale'
 
-# ----------------------------------------------------------- Test --------------------------------
+# ----------------------------------------------------------- Test aux --------------------------------
 	def pay_myself(self):
 		"""
 		Pay Myself
@@ -981,125 +1005,44 @@ class SaleOrder(models.Model):
 		h['receptor_id_doc_type'] = str(receptor_id_doc_type)
 		h['receptor_id_doc'] = str(receptor_id_doc)
 		h['receptor_ruc'] = str(receptor_ruc)
-
 		return h
-
-# ----------------------------------------------------------- Test QR --------------------------------
-	@api.multi
-	def test_qr(self):
-		"""
-		Test QR
-		"""
-		print()
-		print('order - test_qr')
-
-		# Create loosely coupled object
-		h = self.get_hash_for_qr()
-		qr_obj = qr.QR(h)
-
-		# Get data
-		print(qr_obj.get_name())
-		print(qr_obj.get_img_str())
-		#qr_obj.print_obj()
-
-# ----------------------------------------------------------- Ticket - tools --------------------------------
-# ----------------------------------------------------------- Ticket - Aux ----------------
-	#def get_total_net(self):
-	#def get_total_tax(self):
-	#def get_amount_total(self):
-	#def get_total_in_words(self):
-	#def get_total_cents(self):
-# ----------------------------------------------------------- Ticket - Get Raw Line - Stub ----------------
-# ----------------------------------------------------------- Ticket - Get Raw Line - Stub ----------------
-
-
-
-
-# ----------------------------------------------------------- Test Ticket --------------------------------
-	@api.multi
-	def test_ticket(self):
-		"""
-		Test Ticket
-		"""
-		print('')
-		print('Test Ticket')
-		name = 'openhealth.report_ticket_receipt_electronic'
-		action = self.env['report'].get_action(self, name)
-		return action
-
-# ----------------------------------------------------------- Test Validation --------------------------------
-	@api.multi
-	def test_validation(self):
-		"""
-		Test Validation
-		"""
-		print('')
-		print('Test Validation')
-		self.validate_and_confirm()
-
-# ----------------------------------------------------------- Test Payment method --------------------------------
-	@api.multi
-	def test_pm(self):
-		"""
-		Test Payment method
-		"""
-		print('')
-		print('test_pm')
-		self.create_payment_method()
-
-# ----------------------------------------------------------- Test Payment method --------------------------------
-	@api.multi
-	def test_serial_number(self):
-		"""
-		Test Serial Number
-		"""
-		print('')
-		print('test_serial_number')
-		self.make_serial_number()
 
 # ----------------------------------------------------- Test --------------------------
 	@api.multi
-	def test(self):
+	def test_all(self):
 		"""
 		Unit Testing - All
 		"""
 		print()
-		print('Test Order')
-		#tester = TestOrder(self)
-		#tester.test_raw_receipt(self)
-		#tester.test_raw_invoice(self)
-		#tester.test_raw_credit_note(self)
-		#tester.test_serial_number(self)
-		#action0 = self.test_raw_receipt()
-		#return action0
-		#action1 = self.test_raw_invoice()
-		#return action1
-		#action2 = self.test_raw_credit_note()
-		#return action2
-		#self.test_serial_number()
-		#return action0, action1, action2
+		print('test_all')
+		value = self.env.context.get('key')
+		print(value)
+
+		if value == 'test_serial_number':
+			print('test_serial_number')
+			self.make_serial_number()
+
+		elif value == 'test_qr':
+			print('test_qr')
+			# Create loosely coupled object
+			h = self.get_hash_for_qr()
+			qr_obj = qr.QR(h)
+			# Get data
+			print(qr_obj.get_name())
+			print(qr_obj.get_img_str())
+			
+		elif value == 'test_ticket':
+			print('test_ticket')
+			name = 'openhealth.report_ticket_receipt_electronic'
+			action = self.env['report'].get_action(self, name)
+			return action
+
+		elif value == 'test_validation':
+			print('test_validation')
+			self.validate_and_confirm()
+			
+		elif value == 'test_pm':
+			print('test_pm')
+			self.create_payment_method()
 
 
-# ---------------------------------------------------- Used by Treatment - Create Proc -------
-	def create_procedure_man(self, treatment):
-		"""
-		Create Procedure Man - In prog
-		Used by: Treatment
-		"""
-		# Update Order
-		self.x_procedure_created = True
-		# Loop
-		for line in self.order_line:
-			print(line.product_id)
-			if line.product_id.is_procedure():
-				product_product = line.product_id
-				# Create Procedure
-				pl_creates.create_procedure(treatment, product_product)
-
-	def proc_is_not_created_and_state_is_sale(self):
-		"""
-		Used by: Treatment
-		"""
-		print()
-		print('order - proc_is_not_created_and_state_is_sale')
-		return not self.x_procedure_created and self.state == 'sale'

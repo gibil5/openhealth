@@ -20,9 +20,8 @@ from . import allergy
 
 from . import cart_line				
 
-#from . import process
+#from . import process      # Dep !
 from . import treatment
-
 
 from . import evaluation
 

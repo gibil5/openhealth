@@ -13,7 +13,7 @@ from libs import *
 from configurator import *
 
 # Counter
-#from counter import *
+#from counter import *      # Dep !
 
 # Pricelist
 from pricelist import *

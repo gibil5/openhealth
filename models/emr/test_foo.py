@@ -5,7 +5,6 @@
 from __future__ import print_function
 from openerp.addons.openhealth.models.containers import lib_exp
 from openerp.addons.openhealth.models.patient import chk_patient
-
 #from . import gen
 
 
@@ -24,13 +23,10 @@ class Base(object):
 		return description
 
 
-
-
 class LibGen(object):
 	"""
 	high level support for doing this and that.
 	"""
-
 
 	def __init__(self):
 

@@ -9,6 +9,5 @@ mv marketing/*.pyc ./pyc/.
 mv order/*.pyc ./pyc/.
 mv patient/*.pyc ./pyc/.
 mv service/*.pyc ./pyc/.
-
 mv configurator/*.pyc ./pyc/.
 mv pricelist/*.pyc ./pyc/.

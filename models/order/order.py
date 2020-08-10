@@ -1044,5 +1044,3 @@ class SaleOrder(models.Model):
 		elif value == 'test_pm':
 			print('test_pm')
 			self.create_payment_method()
-
-

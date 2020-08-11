@@ -12,7 +12,7 @@ class CounterObjects(object):
 	"""
 	#def __init__(self, env, state, family, owner_id, family_tag='pl_family'):
 	def __init__(self, env, owner_id, state='draft', family='CONSULTA',  family_tag='pl_family'):
-		print('init')
+		#print('init')
 		self.env = env
 		self.state = state
 		self.family = family

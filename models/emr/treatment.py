@@ -9,7 +9,6 @@ From PgAdmin
 SELECT * FROM public.sale_order;
 DELETE FROM public.sale_order WHERE partner_id = 391;
 """
-
 from __future__ import print_function
 import datetime
 from openerp import models, fields, api

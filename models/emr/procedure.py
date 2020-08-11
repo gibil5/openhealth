@@ -2,8 +2,9 @@
 """
 	Procedure
 	Created: 				 1 Nov 2016
-	Last updated: 	 	 	09 Aug 2020
+	Last updated: 	 	 	10 Aug 2020
 """
+from __future__ import print_function
 from openerp import models, fields, api
 from . import pro_con_funcs
 from . import pro_ses_funcs
@@ -11,12 +12,49 @@ from . import pro_ses_funcs
 class Procedure(models.Model):
 	"""
 	Procedure class
-	Used by -
+	Used by
 	"""
 	_name = 'openhealth.procedure'
 	_inherit = 'oeh.medical.evaluation'
 	_description = 'Procedure'
 	#_order = 'write_date desc'
+
+
+# ----------------------------------------------------------- Creates control Man -------------------------
+	# Create Controls Manual
+	@api.multi
+	def create_controls_manual(self):
+		"""
+		Create controls man
+		"""
+		print()
+		print('oh - procedure - create_controls_manual')
+
+		nr_controls = 1
+		nr_ctl_created = self.env['openhealth.control'].search_count([
+																		('procedure', '=', self.id),
+																	])
+		# Create
+		ret = pro_con_funcs.create_controls(self, nr_controls, nr_ctl_created)
+
+
+# ----------------------------------------------------------- Creates sessions Man -------------------------
+	# Create Sessions Manual
+	@api.multi
+	def create_sessions_manual(self):
+		"""
+		Create sessions man
+		"""
+		print()
+		print('oh - procedure - create_sessions_manual')
+
+		nr_sessions = 1
+		nr_ses_created = self.env['openhealth.session.med'].search_count([
+																			('procedure', '=', self.id),
+																	])
+		# Create
+		ret = pro_ses_funcs.create_sessions(self, nr_sessions, nr_ses_created)
+
 
 
 # ---------------------------------------------------- Create controls ---------
@@ -26,6 +64,8 @@ class Procedure(models.Model):
 		"""
 		Create controls
 		"""
+		print()
+		print('oh - procedure - create_controls')
 		# Init
 		if self.configurator.name != False:
 			if self.laser in ['laser_co2']:
@@ -61,6 +101,8 @@ class Procedure(models.Model):
 		"""
 		Create sessions
 		"""
+		print()
+		print('oh - procedure- create_sessions')
 		# Init
 		if self.configurator.name != False:
 			if self.laser in ['laser_co2']:
@@ -90,44 +132,21 @@ class Procedure(models.Model):
 
 
 
-# ----------------------------------------------------------- Creates control Man -------------------------
-	# Create Controls Manual
-	@api.multi
-	def create_controls_manual(self):
-		"""
-		Create controls man
-		"""
-		#print()
-		#print('Create Controls Manual')
-		nr_controls = 1
-		nr_ctl_created = self.env['openhealth.control'].search_count([
-																		('procedure', '=', self.id),
-																	])
-		# Create
-		ret = pro_con_funcs.create_controls(self, nr_controls, nr_ctl_created)
 
 
+# ---------------------------------------------- Fields ------------------------------------------
+	# Laser
+	pl_laser = fields.Char(		
+			string="Pl Láser",
 
-# ----------------------------------------------------------- Creates sessions Man -------------------------
-	# Create Sessions Manual
-	@api.multi
-	def create_sessions_manual(self):
-		"""
-		Create sessions man
-		"""
-		#print()
-		#print('Create Sessions Manual')
-		nr_sessions = 1
-		nr_ses_created = self.env['openhealth.session.med'].search_count([
-																			('procedure', '=', self.id),
-																	])
-		# Create
-		ret = pro_ses_funcs.create_sessions(self, nr_sessions, nr_ses_created)
+			compute='_compute_pl_laser',
+		)
 
-
-
-# ----------------------------------------------------------- PL -----------------------------
-	pl_laser = fields.Char()
+	#@api.multi
+	@api.depends('product')
+	def _compute_pl_laser(self):
+		for record in self:
+			record.pl_laser = record.product.pl_treatment
 
 
 # ----------------------------------------------------------- Relational --------------------------

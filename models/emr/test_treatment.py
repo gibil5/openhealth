@@ -4,13 +4,12 @@
 		Used by:			Treatment
 
 		Created: 			14 Aug 2018
-		Last up: 	 		28 Jul 2020
+		Last up: 	 		10 Aug 2020
 """
 from __future__ import print_function
 from openerp.addons.price_list.models.lib import test_funcs
 from openerp import _
 from openerp.exceptions import Warning as UserError
-#from . import exc_tre
 
 # ----------------------------------------------------------- First Level - Buttons ---------------------------------------------
 
@@ -20,36 +19,40 @@ def test_integration_treatment(self):
  	Integration Tests for the Treatment Class.
 	"""
 	print()
-	#print('Test Integration Function')
 	print('OH - test_treatment.py - test_integration_treatment')
 
 	# Handle Exceptions
 	#exc_tre.handle_exceptions(self)
 
+
 	# Create Consultation
-	create_consultation(self)
+	#create_consultation(self)
+	verbose = False
+	create_consultation(self, verbose)
 
-	# Recommendations and Sale
-	create_recommentations_and_procedure_sale(self)
-	create_sessions(self)
-	create_controls(self)
 
-	# Dep ?
 	# Create Credit Note
-	#if self.x_test_scenario in ['credit_note']:
-	#	create_credit_note(self)
+	if self.x_test_scenario in ['credit_note']:
+		create_credit_note(self)
 
 	# Create Block Flow
-	#elif self.x_test_scenario in ['block_flow']:
-	#	create_block_flow(self)
+	elif self.x_test_scenario in ['block_flow']:
+		create_block_flow(self)
+
+	# Recommendations and Sale
+	else:
+		create_recommentations_and_procedure_sale(self)
+		create_sessions(self, True)
+		create_controls(self, True)
 
 # test_integration_treatment
 
 
-# ----------------------------------------------- 2nd level --------------------------------
+# ----------------------------------------------- 2nd level ---------------------------------------
 
-# ----------------------------------------------- Consultation ------------------------------------
-def create_consultation(self):
+# ----------------------------------------------- Consultation -----------------
+#def create_consultation(self):
+def create_consultation(self, verbose=False):
 	"""
 	Create Consultation
 	"""
@@ -57,7 +60,10 @@ def create_consultation(self):
 	print()
 	print(msg)
 
-	#test_funcs.disablePrint()
+	if verbose:
+		test_funcs.enablePrint()
+	else:
+		test_funcs.disablePrint()
 
 	# Create Consultation Sale
 	self.create_order_con()			# Actual Button
@@ -97,6 +103,7 @@ def create_block_flow(self):
 		if order.state in ['sale']:
 			order.block_flow()
 
+
 def create_recommentations_and_procedure_sale(self):
 	"""
 	Create Recommendations and Procedure Sale
@@ -134,25 +141,41 @@ def create_recommentations_and_procedure_sale(self):
 			#print('mark 11')
 	test_funcs.enablePrint()
 
-# ----------------------------------------------- Sessions -------------------------------------
-def create_sessions(self):
+
+
+# ----------------------------------------------- Sessions ---------------------
+#def create_sessions(self):
+def create_sessions(self, verbose=False):
 	"""
 	Create Sessions
 	"""
 	print()
-	print('Create Sessions')
+	print('oh - test_treatment - create_sessions')
+
+	if verbose:
+		test_funcs.enablePrint()
+	else:
+		test_funcs.disablePrint()
+
 	for procedure in self.procedure_ids:
 		#for _ in range(2):
 		for _ in range(1):
 			procedure.create_sessions()
 
 # ----------------------------------------------- Controls -------------------------------------
-def create_controls(self):
+#def create_controls(self):
+def create_controls(self, verbose=False):
 	"""
 	Create Controls
 	"""
 	print()
-	print('Create Controls')
+	print('oh - test_treatment - create_controls')
+
+	if verbose:
+		test_funcs.enablePrint()
+	else:
+		test_funcs.disablePrint()
+
 	for procedure in self.procedure_ids:
 		#for _ in range(1):
 		for _ in range(6):
@@ -160,7 +183,6 @@ def create_controls(self):
 
 
 # ----------------------------------------------- 3nd level --------------------------------
-
 
 # ----------------------------------------------- Test Cycle --------------------------------
 def test_create_budget_consultation(self):

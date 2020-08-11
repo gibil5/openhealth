@@ -1,14 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-# 	*** Procedure Control Funcs
-#
-# 	Created: 				  1 Nov 2016
-# 	Last updated: 	 	 	 21 Jan 2019
+	Procedure Control Funcs
+	Created: 				  1 Nov 2016
+	Last updated: 	 	 	 10 Jan 2020
 """
-#from libs import user
-#from libs import lib
+from __future__ import print_function
 from openerp.addons.openhealth.models.libs import user, lib
-
 
 #------------------------------------------------ Create Controls ---------------------------------
 # Create Controls
@@ -16,14 +13,8 @@ def create_controls(self, nr_controls, nr_ctl_created):
 	"""
 	Creates Controls for the Procedure Class.
 	"""
-	#print
-	#print 'Create Controls'
-
-	# Clean - Deprecated
-	#rec_set = self.env['openhealth.control'].search([
-	#													('procedure', '=', self.id),
-	#												])
-	#ret = rec_set.unlink()
+	print()
+	print('oh - pro_con_funcs - create_controls')
 
 	# Init
 	patient_id = self.patient.id
@@ -57,95 +48,32 @@ def create_controls(self, nr_controls, nr_ctl_created):
 
 
 	# Loop
-	#for k in range(0, nr_controls):
 	for k in range(nr_controls):
-
 
 		# Init
 		delta = 0
 		nr_days = k_dic[k] + delta
 
-		#if nr_ctl_created < 6:
-		#	nr_days = k_dic[nr_ctl_created]
-		#else:
-		#	nr_days = 7
-
-
 		# Control date
 		control_date = lib.get_next_date(self, evaluation_start_date, nr_days)
-
 		control_date_str = control_date.strftime("%Y-%m-%d")
 		control_date_str = control_date_str + ' 14:00:00'			# 09:00:00
 
-
-
-
 		# Appointment
-
-		# Create App - Dep !
-		if False:
-			duration = 0.25
-			state = 'pre_scheduled_control'
-			states = ['pre_scheduled_control']
-			x_type = 'control'
-
-			# Check and Push
-			appointment_date_str = user.check_and_push(self, control_date_str, duration, doctor_name, states)
-
-			# Create Appointment
-			appointment = self.env['oeh.medical.appointment'].create({
-																		'appointment_date': appointment_date_str,
-
-																		'patient': patient_id,
-																		'doctor': doctor_id,
-																		'duration': duration,
-																		'state': state,
-																		'x_chief_complaint': chief_complaint,
-																		'x_create_procedure_automatic': False,
-																		'x_target': 'doctor',
-																		'x_type': x_type,
-																		'x_subtype': subtype,
-
-																		'treatment': treatment_id,
-																	})
-			appointment_id = appointment.id
-
-
-
-
-
 		appointment_id = False
 
 		# Create Control
 		control = self.control_ids.create({
-											#'evaluation_start_date':control_date,
-
-											#'first_date':control_date,
 											'control_date':control_date,
-
-
 											'patient':patient_id,
 											'doctor':doctor_id,
 											'product':product_id,
 											'chief_complaint':chief_complaint,
 											'evaluation_nr': k+1,
-
 											'procedure':procedure_id,
 											'appointment': appointment_id,
 											'treatment': treatment_id,
 									})
-		control_id = control.id
-
-
-
-		# Update Appointments
-		if False:
-			rec_set = self.env['oeh.medical.appointment'].browse([appointment_id])
-			ret = rec_set.write({
-									'control': control_id,
-									'procedure': procedure_id,
-								})
-
 	return ret
 
 # create_controls

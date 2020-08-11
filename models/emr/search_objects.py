@@ -11,7 +11,7 @@ class SearchObjects(object):
 	Used by Treatment
 	"""
 	def __init__(self, env, name, value):
-		print('init')
+		#print('init')
 		self.env = env
 		self.name = name 
 		self.value = value 

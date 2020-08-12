@@ -3,7 +3,7 @@
     TimeFuncs - Openhealth
 
     Created:                27 Jul 2020
-    Last updated:           27 Jul 2020
+    Last updated:           11 Aug 2020
 """
 from datetime import datetime,tzinfo,timedelta
 

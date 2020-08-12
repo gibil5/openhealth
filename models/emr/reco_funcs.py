@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 	Reco Funcs - Openhealth
+
 	Created: 				 15 Apr 2019
 	Last up: 				 28 Jul 2020
 """

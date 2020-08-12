@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-	Pl Creates - Used by Treatment
+	Pl Creates - Openhealth
+	
+	Used by Treatment
 	Created: 			27 Jul 2020
 	Last up: 	 		02 Aug 2020
 	
@@ -16,7 +18,6 @@
 """
 from __future__ import print_function
 from . import pl_user
-
 
 # ----------------------------------------------------------- Create Shopping Cart -----------------
 def create_shopping_cart(treatment, env, service, treatment_id):

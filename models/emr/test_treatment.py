@@ -1,19 +1,19 @@
 # -*- coding: utf-8 -*-
 """
-		Test Treatment - openhealth
-		Used by:			Treatment
+		Test treatment - Openhealth
 
+		Used by:			Treatment
 		Created: 			14 Aug 2018
-		Last up: 	 		10 Aug 2020
+		Last up: 	 		11 Aug 2020
 """
 from __future__ import print_function
 from openerp.addons.price_list.models.lib import test_funcs
 from openerp import _
 from openerp.exceptions import Warning as UserError
 
-# ----------------------------------------------------------- First Level - Buttons ---------------------------------------------
+# ------------------------------------------------------- First Level - Buttons -------------------
 
-# ----------------------------------------------- Test Integration --------------------------------
+# ----------------------------------------------- Test Integration -------------
 def test_integration_treatment(self):
 	"""
  	Integration Tests for the Treatment Class.
@@ -23,7 +23,6 @@ def test_integration_treatment(self):
 
 	# Handle Exceptions
 	#exc_tre.handle_exceptions(self)
-
 
 	# Create Consultation
 	#create_consultation(self)
@@ -182,9 +181,9 @@ def create_controls(self, verbose=False):
 			procedure.create_controls()
 
 
-# ----------------------------------------------- 3nd level --------------------------------
+# ----------------------------------------------- 3nd level ---------------------------------------
 
-# ----------------------------------------------- Test Cycle --------------------------------
+# ----------------------------------------------- Test Cycle -------------------
 def test_create_budget_consultation(self):
 	"""
 	Test Budget
@@ -321,6 +320,7 @@ def test_create_sale_procedure(self):
 			except:
 				print("An exception occurred")
 
+
 #def test_create_procedure(self):
 #	"""
 #	Test - Dep
@@ -329,6 +329,7 @@ def test_create_sale_procedure(self):
 #	print('Test Create Procedure')
 	# Create Procedure
 #	self.create_procedure_man()
+
 
 def test_create_sessions(self):
 	"""
@@ -345,6 +346,7 @@ def test_create_sessions(self):
 			print('create sesion')
 			procedure.create_sessions_manual()
 
+
 def test_create_controls(self):
 	"""
 	Test Control
@@ -359,6 +361,7 @@ def test_create_controls(self):
 		for _ in range(6):
 			print('create control')
 			procedure.create_controls_manual()
+
 
 # ----------------------------------------------------------- Second Level ---------------------------------------------
 

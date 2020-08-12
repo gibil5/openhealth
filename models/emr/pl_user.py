@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-		user.py - DEP ?
+		User - Openhealth - Dep ?
 
  		Created: 			13 Aug 2018
- 		Last up: 	 		27 Jul 2020
+ 		Last up: 	 		11 Aug 2020
 """
-
 #------------------------------------------------ Get Actual Doctor -------------------------------
 # Get Actual Doctor
 def get_actual_doctor(self):

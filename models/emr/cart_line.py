@@ -1,32 +1,25 @@
 # -*- coding: utf-8 -*-
 """
-	Pricelist - Price Line
+	Price Line - Openhealth
 
 	Created: 			 1 Apr 2019
-	Last mod: 			28 Jul 2020
+	Last mod: 			11 Aug 2020
 """
 from __future__ import print_function
 from openerp import models, fields, api
 
-
 class CartLine(models.Model):
-
 	"""
-	high level support for doing this and that.
+	Cart line class
 	"""
 	_name = 'price_list.cart_line'
-
 	_description = 'Cart Line'
 
-
-
-
-# ---------------------------------------------- Fields - Chars -----------------------
-
+# ---------------------------------------------- Fields - Chars ----------------
 	name = fields.Char(
 			#required=True,
 		)
-
+		
 	price = fields.Float(
 			#required=True,
 		)
@@ -35,35 +28,20 @@ class CartLine(models.Model):
 			#required=True,
 		)
 
-
-
-
 # ----------------------------------------------------------- Product ----------
-	#product_id = fields.Many2one(
-	product = fields.Many2one(
-		
+	product = fields.Many2one(		
 		#'product.template',
 		'product.product',
-		
 		string='Product',
-		
 		domain=[
 					#('sale_ok', '=', True),
 					#('pl_price_list', '=', '2019'),
 				],
-
-
 		#change_default=True,
 		#ondelete='restrict',
-
 		#required=True,
 		required=False,
 	)
-
-
-
-
-
 
 	# Treatment
 	treatment = fields.Many2one(

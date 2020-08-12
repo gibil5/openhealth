@@ -2,7 +2,7 @@
 """
 	Procedure
 	Created: 				 1 Nov 2016
-	Last updated: 	 	 	10 Aug 2020
+	Last updated: 	 	 	11 Aug 2020
 """
 from __future__ import print_function
 from openerp import models, fields, api
@@ -66,30 +66,35 @@ class Procedure(models.Model):
 		"""
 		print()
 		print('oh - procedure - create_controls')
+		
+		self.number_controls = self.configurator.get_number(self.laser, 'control')
+
 		# Init
-		if self.configurator.name != False:
-			if self.laser in ['laser_co2']:
-				nr_controls = self.configurator.nr_controls_co2
-			elif self.laser in ['laser_quick']:
-				nr_controls = self.configurator.nr_controls_quick
-			elif self.laser in ['laser_exc']:
-				nr_controls = self.configurator.nr_controls_exc
-			elif self.laser in ['laser_ipl']:
-				nr_controls = self.configurator.nr_controls_ipl
-			elif self.laser in ['laser_ndyag']:
-				nr_controls = self.configurator.nr_controls_ndyag
-			else:
-				nr_controls = 0
-		else:
-			nr_controls = 0
+		#if self.configurator.name != False:
+		#	if self.laser in ['laser_co2']:
+		#		nr_controls = self.configurator.nr_controls_co2
+		#	elif self.laser in ['laser_quick']:
+		#		nr_controls = self.configurator.nr_controls_quick
+		#	elif self.laser in ['laser_exc']:
+		#		nr_controls = self.configurator.nr_controls_exc
+		#	elif self.laser in ['laser_ipl']:
+		#		nr_controls = self.configurator.nr_controls_ipl
+		#	elif self.laser in ['laser_ndyag']:
+		#		nr_controls = self.configurator.nr_controls_ndyag
+		#	else:
+		#		nr_controls = 0
+		#else:
+		#	nr_controls = 0
 
-		self.number_controls = nr_controls
+		#self.number_controls = nr_controls
 
-		nr_ctl_created = self.env['openhealth.control'].search_count([
+
+		already_created = self.env['openhealth.control'].search_count([
 																		('procedure', '=', self.id),
 																	])
 		# Create
-		ret = pro_con_funcs.create_controls(self, nr_controls, nr_ctl_created)
+		#ret = pro_con_funcs.create_controls(self, nr_controls, nr_ctl_created)
+		ret = pro_con_funcs.create_controls(self, self.number_controls, already_created)
 
 	# create_controls
 
@@ -103,34 +108,36 @@ class Procedure(models.Model):
 		"""
 		print()
 		print('oh - procedure- create_sessions')
+
+		self.number_sessions = self.configurator.get_number(self.laser, 'session')
+
 		# Init
-		if self.configurator.name != False:
-			if self.laser in ['laser_co2']:
-				nr_sessions = self.configurator.nr_sessions_co2
-			elif self.laser in ['laser_quick']:
-				nr_sessions = self.configurator.nr_sessions_quick
-			elif self.laser in ['laser_exc']:
-				nr_sessions = self.configurator.nr_sessions_exc
-			elif self.laser in ['laser_ipl']:
-				nr_sessions = self.configurator.nr_sessions_ipl
-			elif self.laser in ['laser_ndyag']:
-				nr_sessions = self.configurator.nr_sessions_ndyag
-			else:
-				nr_sessions = 0
-		else:
-			nr_sessions = 0
+		#if self.configurator.name != False:
+		#	if self.laser in ['laser_co2']:
+		#		nr_sessions = self.configurator.nr_sessions_co2
+		#	elif self.laser in ['laser_quick']:
+		#		nr_sessions = self.configurator.nr_sessions_quick
+		#	elif self.laser in ['laser_exc']:
+		#		nr_sessions = self.configurator.nr_sessions_exc
+		#	elif self.laser in ['laser_ipl']:
+		#		nr_sessions = self.configurator.nr_sessions_ipl
+		#	elif self.laser in ['laser_ndyag']:
+		#		nr_sessions = self.configurator.nr_sessions_ndyag
+		#	else:
+		#		nr_sessions = 0
+		#else:
+		#	nr_sessions = 0
 
-		self.number_sessions = nr_sessions
+		#self.number_sessions = nr_sessions
 
-		nr_ses_created = self.env['openhealth.session.med'].search_count([
+		already_created = self.env['openhealth.session.med'].search_count([
 																			('procedure', '=', self.id),
 																	])
 		# Create
-		ret = pro_ses_funcs.create_sessions(self, nr_sessions, nr_ses_created)
+		#ret = pro_ses_funcs.create_sessions(self, nr_sessions, nr_ses_created)
+		ret = pro_ses_funcs.create_sessions(self, self.nr_sessions, already_created)
 
 	# create_sessions
-
-
 
 
 

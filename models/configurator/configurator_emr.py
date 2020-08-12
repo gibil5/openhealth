@@ -3,28 +3,65 @@
 	Configurator - EMR
 
 	Created: 			25 Jan 2019
-	Last updated: 		24 Jul 2020
+	Last updated: 		11 Aug 2020
 """
 from __future__ import print_function
 from openerp import models, fields, api
 
 class ConfiguratorEmr(models.Model):
 	"""
-	Permits Multi Company behavior. 
+	Permits Multi Company behavior.
 	Configuration can be done for:
-		- Ticket content. 
+		- Ticket content.
 		- Electronic Billing,
-		- Laser procedures, 
-		- Error validation, 
+		- Laser procedures,
+		- Error validation,
 		- CSV path for product input,
-		- Holidays, 
+		- Holidays,
 		- Opening hours.
 	"""
 	_name = 'openhealth.configurator.emr'
 	_description = 'Configurator Emr'
 
-# ----------------------------------------------------------- Companuy - Ticket and TXT ---------------
 
+# ----------------------------------------------------------- Getters ----------
+	def get_number(self, laser, evaluation):
+		"""
+		Get nr controls
+		Used by procedure
+		"""
+		if evaluation == 'control':
+			if laser in ['laser_co2']:
+				number = self.nr_controls_co2
+			elif laser in ['laser_quick']:
+				number = self.nr_controls_quick
+			elif laser in ['laser_exc']:
+				number = self.nr_controls_exc
+			elif laser in ['laser_ipl']:
+				number = self.nr_controls_ipl
+			elif laser in ['laser_ndyag']:
+				number = self.nr_controls_ndyag
+			else:
+				number = 0
+
+		elif evaluation == 'session':
+			if laser in ['laser_co2']:
+				number = self.nr_sessions_co2
+			elif laser in ['laser_quick']:
+				number = self.nr_sessions_quick
+			elif laser in ['laser_exc']:
+				number = self.nr_sessions_exc
+			elif laser in ['laser_ipl']:
+				number = self.nr_sessions_ipl
+			elif laser in ['laser_ndyag']:
+				number = self.nr_sessions_ndyag
+			else:
+				number = 0
+
+		return number
+
+
+# --------------------------------------------- Companuy - Ticket and TXT ------
 	# Company
 	company_name = fields.Char(
 			required=True,
@@ -125,7 +162,7 @@ class ConfiguratorEmr(models.Model):
 
 # ----------------------------------------------------------- Relational -------
 	# Doctor Line
-	doctor_line = fields.One2many(	
+	doctor_line = fields.One2many(
 			'openhealth.doctor',
 			'configurator_id',
 		)
@@ -161,7 +198,7 @@ class ConfiguratorEmr(models.Model):
 
 # ----------------------------------------------------------- PL - Redefined -------------------------------
 
-	name = fields.Selection(			
+	name = fields.Selection(
 			[
 				('Lima', 'Sede Lima'),
 				('Tacna', 'Sede Tacna'),

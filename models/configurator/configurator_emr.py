@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 	Configurator - EMR
-
 	Created: 			25 Jan 2019
-	Last updated: 		11 Aug 2020
+	Last updated: 		22 Aug 2020
 """
 from __future__ import print_function
 from openerp import models, fields, api
@@ -344,4 +343,43 @@ class ConfiguratorEmr(models.Model):
 	date_close = fields.Datetime(
 			'Hora Cierre',
 			default=fields.Date.today,
+		)
+
+
+# ----------------------------------------------------------- Doctor ------------------------------
+class Doctor(models.Model):
+	"""
+	Used by Configurator Emr
+	"""
+	_name = 'openhealth.doctor'
+	_order = 'physician'
+
+# ----------------------------------------------------------- Relational -------
+
+	# get default
+	def _get_default_configurator(self):
+		# Search
+		configurator = self.env['openhealth.configurator.emr'].search([
+																		#('active', 'in', [True]),
+											],
+												#order='x_serial_nr asc',
+												limit=1,
+											)
+		return configurator
+
+	# config
+	configurator_id = fields.Many2one(
+			'openhealth.configurator.emr',
+			ondelete='cascade', 
+			required=True,
+			default=_get_default_configurator,
+		)
+
+# ----------------------------------------------------------- Fields -----------
+	physician = fields.Many2one(
+			'oeh.medical.physician',
+			required=True,
+		)
+	x_active = fields.Boolean(
+			default=False,
 		)

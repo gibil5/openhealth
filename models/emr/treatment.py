@@ -905,3 +905,82 @@ class Treatment(models.Model):
 		return action_funcs.open_myself('openhealth.treatment', self.id)
 
 	# open_myself
+
+
+# ----------------------------------------------------------- Test Reports ----------------------------------------------
+	# Management
+	report_management = fields.Many2one(
+			'openhealth.management',
+			string="MGT",
+		)
+
+	# Marketing
+	report_marketing = fields.Many2one(
+			'openhealth.marketing',
+			string="MKT",
+		)
+
+	# Contasis
+	report_contasis = fields.Many2one(
+			'openhealth.account.contasis',
+			string="ACC",
+		)
+
+	# Txt
+	report_account = fields.Many2one(
+			'openhealth.container',
+			string="TXT",
+		)
+
+
+# ----------------------------------------------------------- Test Report MGT -----------------------------------------
+	@api.multi
+	def test_report_management(self):
+		"""
+		Test Report Management
+		"""
+		print()
+		print('Test Report Management - Button')
+		test_treatment.test_report_management(self)
+		print()
+		print()
+		print('SUCCESS !')
+
+# ----------------------------------------------------------- Test Report PROD -----------------------------------------
+	@api.multi
+	def test_report_product(self):
+		"""
+		Test Report Products
+		"""
+		print()
+		print('Test Report Product - Button')
+		test_treatment.test_report_product(self)
+		print()
+		print()
+		print('SUCCESS !')
+
+# ----------------------------------------------------------- Test Report ACC -----------------------------------------
+	@api.multi
+	def test_report_account(self):
+		"""
+		Test Report Accounting
+		"""
+		print()
+		print('Test Report account - Button')
+		test_treatment.test_report_account(self)
+		print()
+		print()
+		print('SUCCESS !')
+
+# ----------------------------------------------------------- Test Report ACC -----------------------------------------
+	@api.multi
+	def test_report_contasis(self):
+		"""
+		Test Report Accounting Contasis
+		"""
+		print()
+		print('Test Report Contasis - Button')
+		test_treatment.test_report_contasis(self)
+		print()
+		print()
+		print('SUCCESS !')

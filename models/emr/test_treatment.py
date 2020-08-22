@@ -659,3 +659,105 @@ def test_reset_treatment(self):
 	for order in self.order_ids:
 		order.remove_myself_force()
 # reset
+
+
+# ----------------------------------------------- Test Report Management ----------------------------------------------
+def test_report_management(self):
+	"""
+	Test Report Management
+	"""
+	print()
+	print('Test Report Management')
+
+	# Print Disable
+	test_funcs.disablePrint()
+
+	# Test
+	report = self.report_management
+
+	report.update_fast()
+	report.update_patients()
+	report.update_doctors()
+	report.update_productivity()
+	report.update_daily()
+
+	# Print Enable
+	test_funcs.enablePrint()
+
+
+# ----------------------------------------------- Test Report Marketing -----------------------------------------------
+def test_report_marketing(self):
+	"""
+	Test Report Marketing
+	"""
+	print()
+	print('Test Report Marketing')
+
+	# Print Disable
+	test_funcs.disablePrint()
+
+	# Test
+	report = self.report_marketing
+	report.update_patients()
+	report.pl_update_sales()
+
+	# Print Enable
+	test_funcs.enablePrint()
+
+
+# ----------------------------------------------- Test Report account -----------------------------------------------
+def test_report_account(self):
+	"""
+	Test Report account
+	"""
+	print()
+	print('Test Report account')
+
+	# Print Disable
+	#test_funcs.disablePrint()
+
+	# Test
+	report = self.report_account
+	report.pl_create_electronic()
+	report.pl_export_txt()
+
+	# Print Enable
+	#test_funcs.enablePrint()
+
+
+# ----------------------------------------------- Test Report account -----------------------------------------------
+def test_report_contasis(self):
+	"""
+	Test Report account
+	"""
+	print()
+	print('Test Report Contasis')
+
+	# Print Disable
+	#test_funcs.disablePrint()
+
+	# Test
+	report = self.report_contasis
+	report.update()
+
+	# Print Enable
+	#test_funcs.enablePrint()
+
+# ----------------------------------------------- Test Report product -----------------------------------------------
+def test_report_product(self):
+	"""
+	Test Report product
+	"""
+	print()
+	print('Test Report product')
+
+	# Print Disable
+	#test_funcs.disablePrint()
+
+	# Test
+	report = self.report_product
+	report.validate()
+
+	# Print Enable
+	#test_funcs.enablePrint()
+

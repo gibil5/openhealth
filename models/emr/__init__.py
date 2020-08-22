@@ -16,7 +16,7 @@
 
 #from . import product
 from . import image		
-from . import allergy				
+#from . import allergy	 # dep 22 aug 2020			
 
 from . import cart_line				
 
@@ -31,7 +31,7 @@ from . import control
 from . import session 
 from . import session_med
 from . import physician
-from . import doctor 
+#from . import doctor
 
 
 

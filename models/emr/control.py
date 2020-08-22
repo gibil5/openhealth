@@ -7,9 +7,6 @@ Last updated: 	 	19 Sep 2019
 """
 import datetime
 from openerp import models, fields, api
-#from openerp.addons.openhealth.models.libs import lib
-#from . import time_funcs
-#from . import control_vars
 
 class Control(models.Model):
 	"""

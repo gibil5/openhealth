@@ -3,56 +3,38 @@
 		*** Oeh Medical Physician
  
 		Created: 		 6 Mar 2017
-		Last up:		10 Sep 2019
+		Last up:		22 Aug 2020
 """
 from openerp import models, fields, api
 
 class Physician(models.Model):
+	"""
+	Overwrites the oh class
+	"""
 
 	_inherit = 'oeh.medical.physician'	
-	
-	#_order = 'name'
-	#_order = 'idx asc'
 
-
-# ----------------------------------------------- Get Name Code --------------------------------
-
+# ------------------------------------------------------ Getter ----------------
 	#@api.multi
 	def get_name_code(self):
-
+		"""
+		Getter
+		"""
 		code = 'x'
-
 		if self.name not in [False]:
-
 			words = self.name.upper().split()
-	
-
 			if len(words) > 1:
-	
 				code = words[0] + '_' + words[1][0:3]
-
 				code = code.replace('.', '')
-		
-	
 		return code
 
-
-
-
-# ----------------------------------------------------------- Relational --------------------------
-
+# ----------------------------------------------------------- Relational -------
 	configurator_id = fields.Many2one(
 			'openhealth.configurator.emr',
 		)
 
-
-
-
-# ----------------------------------------------------------- Fields ------------------------------------------------------
-
-	#idx = fields.Integer(
+# ----------------------------------------------------------- Fields -----------
 	idx = fields.Char(
-			#default=-1, 
 		)
 
 	x_therapist = fields.Boolean(

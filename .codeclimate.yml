@@ -12,4 +12,5 @@ exclude_paths:
 - "**/*.DEP"
 - "**/*.dep"
 
-- "**/__openerp__.py"   # because this is fed to eval
+- "**/__openerp__.py"
+- "**/__init__.py"

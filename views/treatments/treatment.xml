@@ -22,7 +22,7 @@ Last up: 	 		22 Jul 2020
 							type="object"
 							class="oe_highlight"
 							name="create_order_con"
-							string="Crear PRESUPUESTO - Consulta"
+							string="Crear PRESU - Consulta"
 							groups="openhealth.roots,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
 							states="empty,appointment"
 						/>
@@ -42,7 +42,7 @@ Last up: 	 		22 Jul 2020
 							type="object"
 							class="oe_highlight"
 							name="create_service"
-							string="Crear RECOMENDACION"
+							string="Crear Reco"
 							groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
 							states="consultation,service"
 						/>
@@ -52,7 +52,7 @@ Last up: 	 		22 Jul 2020
 							type="object"
 							class="oe_highlight"
 							name="create_order_pro"
-							string="Crear PRESUPUESTO - Pro"
+							string="Crear Presu Pro"
 							groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
 							states="service"
 						/>

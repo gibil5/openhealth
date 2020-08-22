@@ -149,18 +149,19 @@ class Procedure(models.Model):
 	session_date = fields.Datetime(
 			string="Fecha Sesion",
 			readonly=True,
+
 			compute='_compute_session_date',
 		)
 
 	@api.multi
-	#@api.depends('state')
 	def _compute_session_date(self):
 		for record in self:
-			first = True
+			#first = True
 			for session in record.session_ids:
-				if first:
+				#if first:
+				if not record.session_date:
 					record.session_date = session.evaluation_start_date
-					first = False
+					#first = False
 
 # --------------------------------------------------------- Redefinition -------
 	# Default - HC Number
@@ -357,6 +358,14 @@ class Procedure(models.Model):
 
 # --------------------------------------------------------- Funcs ---------------------------------
 
+	#def get_session_date(self):
+	#	first = True
+	#	for session in self.session_ids:
+	#		if first:
+	#			session_date = session.evaluation_start_date
+	#			first = False
+	#	return session_date
+
 #---------------------------------------------------------- Create Controls ----
 	# Create Controls
 	#def create_controls(self, nr_controls, nr_ctl_created):
@@ -377,10 +386,12 @@ class Procedure(models.Model):
 		#subtype = self.product.x_treatment
 
 		# Start date
-		if self.session_date != False:
+		if self.session_date:
 			evaluation_start_date = self.session_date
+			#evaluation_start_date = self.get_session_date()
 		else:
 			evaluation_start_date = self.evaluation_start_date
+		
 
 		# Doctor
 		doctor_id = user.get_actual_doctor_pro(self)

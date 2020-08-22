@@ -9,3 +9,4 @@ exclude_paths:
 
 #jx: 22 aug 2020
 - "**/*.txt"
+- "**/*.DEP"

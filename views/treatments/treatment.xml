@@ -289,6 +289,7 @@ Last up: 	 		22 Jul 2020
 
 <!-- Test -->
 <!--
+<field name="test_pricelist_2018"/>
 -->
 <hr></hr>
 						<group 	 attrs="{ 'invisible':[  ('x_test','==',False),  ]}" col="4">
@@ -297,31 +298,30 @@ Last up: 	 		22 Jul 2020
 							<!-- Test Integration -->
 							<group string="Integration">
 
-								<!-- scenarios -->
-								<field name="x_test_scenario" string="Scenarios"/>
+									<!-- scenarios -->
+									<field name="x_test_scenario" string="Scenarios"/>
 
-								<!-- Price lists -->
-								<field name="test_pricelist_2019"/>
-								<!--
-								<field name="test_pricelist_2018"/>
-								-->
-										<!-- Integration -->
-										<button
-											type="object"
-											class="oe_highlight"
-											help='Test Integration'
-											string="Integration"
-											name="test_integration"
-										/>
-										<!-- Reset -->
-										<button
-											type="object"
-											class="oe_highlight"
-											groups="openhealth.roots"
-											help='Tests: Reset'
-											string="Reset"
-											name="test_reset"
-										/>
+									<!-- Price lists -->
+									<field name="test_pricelist_2019"/>
+
+									<!-- Integration -->
+									<button
+										type="object"
+										class="oe_highlight"
+										help='Test Integration'
+										string="Integration"
+										name="test_integration"
+									/>
+
+									<!-- Reset -->
+									<button
+										type="object"
+										class="oe_highlight"
+										groups="openhealth.roots"
+										help='Tests: Reset'
+										string="Reset"
+										name="test_reset"
+									/>
 							</group>
 
 
@@ -331,20 +331,28 @@ Last up: 	 		22 Jul 2020
 								<field name="report_management"/>
 
 								<group>
+<!--
+name="test_report_management"
+name="test_report_product"
+-->
 									<!-- Mgt -->
 									<button
 											type="object"
 											class="oe_highlight"
-											name="test_report_management"
 											string="MGT"
+
+											name="test_report"
+											context="{'key': 'test_report_management'}"
 									/>
 
 									<!-- Rsp -->
 									<button
 											type="object"
 											class="oe_highlight"
-											name="test_report_product"
 											string="PROD"
+
+											name="test_report"
+											context="{'key': 'test_report_product'}"
 									/>
 								</group>
 						</group>
@@ -358,22 +366,31 @@ Last up: 	 		22 Jul 2020
 <button
 		type="object"
 		class="oe_highlight"
-		name="test_report_account"
 		string="TXT"
+		name="test_report_account"
+
+		name="test_report"
+		context="{'key': 'test_report_account'}"
 />
 
 <button
 		type="object"
 		class="oe_highlight"
-		name="test_report_contasis"
 		string="ACC"
+		name="test_report_contasis"
+
+		name="test_report"
+		context="{'key': 'test_report_contasis'}"
 />
 
 <button
 		type="object"
 		class="oe_highlight"
-		name="test_report_marketing"
 		string="MKT"
+		name="test_report_marketing"
+
+		name="test_report"
+		context="{'key': 'test_report_marketing'}"
 />
 </group>
 -->

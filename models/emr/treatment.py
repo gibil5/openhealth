@@ -978,55 +978,28 @@ class Treatment(models.Model):
 			string="TXT",
 		)
 
-
-# ----------------------------------------------------------- Test Report MGT -----------------------------------------
+# ----------------------------------------------------- Test --------------------------
 	@api.multi
-	def test_report_management(self):
+	def test_report(self):
 		"""
-		Test Report Management
+		Test Report
 		"""
 		print()
-		print('Test Report Management - Button')
-		test_treatment.test_report_management(self)
-		print()
-		print()
-		print('SUCCESS !')
+		print('test_report')
+		value = self.env.context.get('key')
+		print(value)
 
-# ----------------------------------------------------------- Test Report PROD -----------------------------------------
-	@api.multi
-	def test_report_product(self):
-		"""
-		Test Report Products
-		"""
-		print()
-		print('Test Report Product - Button')
-		test_treatment.test_report_product(self)
-		print()
-		print()
-		print('SUCCESS !')
+		if value == 'test_report_management':
+			test_treatment.test_report_management(self)
 
-# ----------------------------------------------------------- Test Report ACC -----------------------------------------
-	@api.multi
-	def test_report_account(self):
-		"""
-		Test Report Accounting
-		"""
-		print()
-		print('Test Report account - Button')
-		test_treatment.test_report_account(self)
-		print()
-		print()
-		print('SUCCESS !')
+		elif value == 'test_report_product':
+			test_treatment.test_report_product(self)
 
-# ----------------------------------------------------------- Test Report ACC -----------------------------------------
-	@api.multi
-	def test_report_contasis(self):
-		"""
-		Test Report Accounting Contasis
-		"""
-		print()
-		print('Test Report Contasis - Button')
-		test_treatment.test_report_contasis(self)
-		print()
+		elif value == 'test_report_account':
+			test_treatment.test_report_account(self)
+
+		elif value == 'test_report_contasis':
+			test_treatment.test_report_contasis(self)
+
 		print()
 		print('SUCCESS !')

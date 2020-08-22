@@ -11,3 +11,5 @@ exclude_paths:
 - "**/*.txt"
 - "**/*.DEP"
 - "**/*.dep"
+
+- "**/__openerp__.py"   # because this is fed to eval

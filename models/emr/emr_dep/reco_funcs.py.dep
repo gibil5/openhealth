@@ -1,0 +1,8 @@
+# -*- coding: utf-8 -*-
+"""
+	Reco Funcs - Openhealth - Dep !
+	Created: 				 15 Apr 2019
+	Last up: 				 22 aug 2020
+"""
+from openerp import models, fields, api
+

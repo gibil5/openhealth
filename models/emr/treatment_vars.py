@@ -11,23 +11,18 @@ _test_scenario_list = [
 	('block_flow', 'Flujo bloqueado'),
 ]
 
-
 # State 
 _state_list = [
-				('empty', 					'Inicio'),		# OK
-
+				('empty', 					'Inicio'),
 				#('appointment', 			'Cita'),		# Dep
-
-				('budget_consultation', 	'Presu C'),		# Important	
-				('invoice_consultation', 	'Caja C'),			# OK 
-				('consultation', 			'Consulta'),			# OK				
-				('service', 				'Recom'),		# OK
+				('budget_consultation', 	'Presu C'),		
+				('invoice_consultation', 	'Caja C'),		
+				('consultation', 			'Consulta'),	
+				('service', 				'Recom'),		
 				('budget_procedure', 		'Presu P'),		
-				('invoice_procedure', 		'Caja P'),					# OK
-				('procedure', 				'Proc'),					# OK
-				('sessions', 				'Sesion'),				# OK
+				('invoice_procedure', 		'Caja P'),		
+				('procedure', 				'Proc'),		
+				('sessions', 				'Sesion'),		
 				('controls', 				'Control'),					
-				('done', 					'Alta'),					# OK 
+				('done', 					'Alta'),		
 ]
-
-

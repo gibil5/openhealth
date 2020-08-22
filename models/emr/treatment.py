@@ -2,7 +2,7 @@
 """
 		Treatment
 		Created: 			26 Aug 2016
-		Last up: 	 		02 Aug 2020
+		Last up: 	 		22 Aug 2020
 
 From PgAdmin
 -------------
@@ -18,15 +18,16 @@ from openerp.addons.price_list.models.lib import test_funcs
 from . import treatment_vars
 from . import treatment_state
 from . import pl_creates
-from . import pl_user
-from . import time_funcs
+
 from . import test_treatment
 from . import reco_funcs
-
 from . import action_funcs
-
 from . import counter_objects
 from . import search_objects
+
+#from . import time_funcs
+#from . import pl_user
+from . import tre_funcs
 
 class Treatment(models.Model):
 	"""
@@ -558,13 +559,13 @@ class Treatment(models.Model):
 		chief_complaint = self.chief_complaint
 
 		# Doctor
-		doctor = pl_user.get_actual_doctor(self)
+		doctor = tre_funcs.get_actual_doctor(self)
 		doctor_id = doctor.id
 		if not doctor_id:
 			doctor_id = self.physician.id
 
 		# Date
-		GMT = time_funcs.Zone(0, False, 'GMT')
+		GMT = tre_funcs.Zone(0, False, 'GMT')
 		evaluation_start_date = datetime.datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
 
 		# Search
@@ -755,11 +756,57 @@ class Treatment(models.Model):
 		physician_id = self.physician.id
 
 		# Create
-		ret = reco_funcs.create_service(treatment_id, family, subfamily, physician_id)
+		#ret = reco_funcs.create_service(treatment_id, family, subfamily, physician_id)
+		ret = self.create_service_for_me(treatment_id, family, subfamily, physician_id)
 
 		return ret
 
+# ---------------------------------------------- Create Service ----------------
+	def create_service_for_me(self, treatment_id, family, subfamily, physician_id):
+		"""
+		Generic method for creating Services. 
+		Compact. And easy to maintain. 
+		"""
+		print()
+		print('Create Service Generic - ', subfamily)
+		# init
+		model_dic = {
+						'co2': 			'openhealth.service_co2',
+						'excilite': 	'openhealth.service_excilite',					
+						'ipl': 			'openhealth.service_ipl',
+						'ndyag': 		'openhealth.service_ndyag',
+						'quick': 		'openhealth.service_quick',
+						'cosmetology': 	'openhealth.service_cosmetology',
+						'medical': 		'openhealth.service_medical',
+						'gynecology': 	'openhealth.service_gynecology',
+						'echography': 	'openhealth.service_echography',
+						'promotion': 	'openhealth.service_promotion',
+						'product': 		'openhealth.service_product',
+			}
+		model = model_dic[subfamily]
 
+		# open 	
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' New Service Current', 
+				'res_model':  	model,			
+				#'res_id': consultation_id,
+				"views": [[False, "form"]],
+				#'view_type': 'form',
+				'view_mode': 'form',	
+				'target': 'current',
+				'flags': 	{
+								'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
+								#'form': {'action_buttons': False, }
+							},
+				'context': {							
+								'default_family': family,
+								'default_physician': physician_id,
+								#'default_pl_subfamily': subfamily,
+								'default_treatment': treatment_id,
+							}
+				}
+	# create_service
 
 # ----------------------------------------------------------- Test All Cycle - Step by Step --------------------------
 	@api.multi
@@ -905,7 +952,6 @@ class Treatment(models.Model):
 		return action_funcs.open_myself('openhealth.treatment', self.id)
 
 	# open_myself
-
 
 # ----------------------------------------------------------- Test Reports ----------------------------------------------
 	# Management

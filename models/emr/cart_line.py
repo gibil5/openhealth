@@ -16,30 +16,17 @@ class CartLine(models.Model):
 	_description = 'Cart Line'
 
 # ---------------------------------------------- Fields - Chars ----------------
-	name = fields.Char(
-			#required=True,
-		)
+	name = fields.Char()
 		
-	price = fields.Float(
-			#required=True,
-		)
+	price = fields.Float()
 
-	qty = fields.Integer(
-			#required=True,
-		)
+	qty = fields.Integer()
 
 # ----------------------------------------------------------- Product ----------
 	product = fields.Many2one(		
-		#'product.template',
 		'product.product',
 		string='Product',
-		domain=[
-					#('sale_ok', '=', True),
-					#('pl_price_list', '=', '2019'),
-				],
-		#change_default=True,
-		#ondelete='restrict',
-		#required=True,
+		domain=[],
 		required=False,
 	)
 

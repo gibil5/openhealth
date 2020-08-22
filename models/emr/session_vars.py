@@ -1,44 +1,26 @@
 # -*- coding: utf-8 -*-
 """
 	*** Session Vars 
-
 	Created: 					2016
-	Last up: 	 		 07 Oct 2019
+	Last up: 	 		 22 aug 2020
 """
 
-
-
-# ----------------------------------------------------------- Co2 ------------------------------------------------------
-
+# ----------------------------------------------------------- Co2 --------------
 _co2_mode_emission_list = [
-
 		('continuous','Continua'), 
 		('fractional','Fraccionado'), 
-		
-		('deep','Deep'), 
-
-		#('',''), 
+		('deep','Deep'),
 ]
 
-
-
-_co2_mode_exposure_list = [
-		#('one','uno'), 
-		#('two','dos'), 
-		
+_co2_mode_exposure_list = [		
 		('continuous',	'Continuo'), 
 		('repete',		'Repetir'), 
-
 		('hp',			'Hp'), 
 		('smat',		'Smart'), 
-		('pulse',		'Pulse'), 
-		#('',''), 
+		('pulse',		'Pulse'),
 ]
 
-
-
-# ----------------------------------------------------------- Ipl ------------------------------------------------------
-
+# ----------------------------------------------------------- Ipl --------------
 _ipl_pulse_type = [
 		('one','Unico'), 
 		('two','Doble'), 
@@ -48,16 +30,12 @@ _ipl_pulse_type = [
 _ndyag_pulse_type = [
 		('one','Unico'), 
 		('two','Doble'), 
-		#('three','Triple'), 
 		]
 		
 _ndyag_pulse_spot = [
 		('one','6mm'), 
 		('two','2 x 6mm'), 
-		#('three','Triple'), 
-
 		]
-
 
 # Zone
 _zone_list = [
@@ -78,9 +56,6 @@ _zone_list = [
 			('shoulders','Hombros'), 
 			('linea_alba','Linea Alba'), 
 			
-			#('body_localized','Localizado cuerpo'), 
-			#('face_localized','Localizado rostro'), 
-			
 			('hands','Manos'), 
 			('chin','Mentón'), 
 			('nape','Nuca'), 
@@ -95,29 +70,19 @@ _zone_list = [
 			('nail','Uña'), 
 			('vagina','Vagina'), 
 			
-			
 			('face','Rostro'), 
 			('face_local','Localizado rostro'), 
 			('body_local','Localizado cuerpo'), 
-			#('ariola','Areola'), 
 			('areolas','Areola'), 
 			('arms','Brazos'), 
 			('legs','Piernas'), 
-
 			('package','Paquete'), 
-			
-			
-			
+
 			# Medical 
 			('x','x'), 
 			('1_hypodermic','1_hypodermic'), 
 			('1_hypodermic_repair','1_hypodermic_repair'), 
-
 			('1_zone','1_zone'), 
 
-			#('na','na'), 
-
-
 			('none',''), 
-			]
-
+]

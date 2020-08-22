@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 	*** Session Med
-
 	Created: 			24 Feb 2017
-	Last up: 	 		19 Sep 2019
+	Last up: 	 		22 aug 2020
 """
 from openerp import models, fields, api
 from datetime import datetime
@@ -17,46 +16,9 @@ class SessionMed(models.Model):
 	Should not define the Business Rules. 
 	"""	
 	_name = 'openhealth.session.med'
-
 	_inherit = ['openhealth.session', 'base_multi_image.owner']
 
-
-
-# ----------------------------------------------------------- Dates - OK ------------------------------------------------------
-
-	# Date
-	evaluation_start_date = fields.Datetime(
-			string = "Fecha", 	
-			required=False, 		
-		)
-
-
-
-
-
-# ----------------------------------------------------------- Nr Days ------------------------------------------------------
-
-	# Nr Days after Session
-	nr_days = fields.Integer(
-			'Nr Dias', 
-
-			compute='_compute_nr_days', 
-		)
-
-	@api.multi
-	#@api.depends('state')
-	def _compute_nr_days(self):
-		for record in self:
-			
-			record.nr_days = lib.get_nr_days(self, record.procedure.session_date, record.evaluation_start_date)
-
-
-
-
-
-
-#------------------------------------------------------ Quick ----------------------------------------------------------
-
+#------------------------------------------------------ Quick ------------------
 	quick_type=fields.Selection(
 			selection = [
 							('zoom','Zoom'),
@@ -107,11 +69,7 @@ class SessionMed(models.Model):
 			required=False, 
 		)
 
-
-
-
-#------------------------------------------------------ Quick - 2 ----------------------------------------------------------
-
+#------------------------------------------------------ Quick - 2 --------------
 	quick_type_2=fields.Selection(
 			selection = [
 							('zoom','Zoom'),
@@ -162,13 +120,7 @@ class SessionMed(models.Model):
 			required=False, 
 		)
 
-
-
-
-
-
-#------------------------------------------------------ Co2 ----------------------------------------------------------
-
+#------------------------------------------------------ Co2 --------------------
 	co2_power=fields.Char(
 			string="Potencia (W)",
 			default='', 
@@ -184,14 +136,10 @@ class SessionMed(models.Model):
 			default='', 
 		)
 
-
-
 	co2_mode_emission=fields.Selection(
 			string="Modo de EMISION",
 			selection=session_vars._co2_mode_emission_list, 
 		)
-	
-
 
 	co2_mode_exposure=fields.Selection(
 			string="Modo de EXPOSICION",
@@ -218,16 +166,11 @@ class SessionMed(models.Model):
 			default='', 
 		)
 
-
 	co2_observations=fields.Text(
 			string="Observaciones",
-			#default="x",
 		)
 
-
-
-#------------------------------------------------------ Co2 2 ----------------------------------------------------------
-
+#------------------------------------------------------ Co2 2 ------------------
 	co2_power_2=fields.Char(
 			string="Potencia (W)",
 			default='', 
@@ -273,18 +216,12 @@ class SessionMed(models.Model):
 			default='', 
 		)
 
-
 	co2_observations_2=fields.Text(
 			string="Observaciones",
 			#default="x",
 		)
 
-
-
-
-
-#------------------------------------------------------ Ipl ----------------------------------------------------------
-
+#------------------------------------------------------ Ipl --------------------
 	ipl_fluency=fields.Float(
 			string="Fluencia (J/cm2)",
 			)
@@ -335,12 +272,7 @@ class SessionMed(models.Model):
 			required=False, 
 			)
 
-	
-
-
-
-#------------------------------------------------------ Ipl - 2 ----------------------------------------------------------
-
+#------------------------------------------------------ Ipl - 2 ----------------
 	ipl_fluency_2=fields.Float(
 			string="Fluencia (J/cm2)",
 			)
@@ -391,15 +323,7 @@ class SessionMed(models.Model):
 			required=False, 
 			)
 
-
-
-
-
-
-
-
-#------------------------------------------------------ Excilite ----------------------------------------------------------
-
+#------------------------------------------------------ Excilite ---------------
 	exc_time=fields.Float(
 			string="Tiempo de tratamiento",
 			required=False, 
@@ -425,11 +349,7 @@ class SessionMed(models.Model):
 			required=False, 
 			)
 
-
-
-
-#------------------------------------------------------ Ndyag ----------------------------------------------------------
-
+#------------------------------------------------------ Ndyag ------------------
 	ndy_fluency=fields.Float(
 			string="Fluencia (J/cm2)",
 			)
@@ -468,5 +388,38 @@ class SessionMed(models.Model):
 			string="Observaciones",
 			)
 
+# ----------------------------------------------------------- Fields -----------
+	# Date
+	evaluation_start_date = fields.Datetime(
+			string = "Fecha", 	
+			required=False, 		
+		)
 
+# ----------------------------------------------------------- Computes ---------
+	# Nr Days after Session
+	nr_days = fields.Integer(
+			'Nr Dias', 
+			compute='_compute_nr_days', 
+		)
+
+	@api.multi
+	def _compute_nr_days(self):
+		for record in self:
+			record.nr_days = lib.get_nr_days(self, record.procedure.session_date, record.evaluation_start_date)
+
+# ----------------------------------------------------------- On changes -------
+	# Autofill
+	@api.onchange('x_autofill')	
+	def _onchange_x_autofill(self):
+		if self.x_autofill == True:
+			self.co2_mode_emission = 'fractional'
+			self.co2_mode_exposure = 'continuous'
+			self.co2_observations = 'Cicatriz plana hiperpigmentada en pómulo derecho. Pápulas en pómulos.'
+			self.co2_power = 1.5
+			self.co2_energy = 150
+			self.co2_frequency = 10
+			self.co2_fluency = 20
+			self.co2_density = 30
+			self.co2_time = 40
+			self.co2_distance = 50
 

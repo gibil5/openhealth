@@ -6,7 +6,6 @@
 	Created: 			24 Jul 2020
 	Last up: 	 		24 Jul 2020
 """
-
 class TreatmentState(object):
 	"""
 	Used by Treatment

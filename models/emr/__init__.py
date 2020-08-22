@@ -10,7 +10,7 @@
 
 # Medical
 
-from . import appointment 			# Highly Deprecated
+#from . import appointment 			# Highly Deprecated
 #from . import appointment_dep		# Min
 
 

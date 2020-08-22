@@ -10,9 +10,6 @@ from openerp import models, fields, api
 from openerp.addons.openhealth.models.libs import user, lib
 from . import time_funcs
 
-#from . import pro_con_funcs - Dep
-#from . import pro_ses_funcs - Dep
-
 class Procedure(models.Model):
 	"""
 	Procedure class
@@ -156,12 +153,9 @@ class Procedure(models.Model):
 	@api.multi
 	def _compute_session_date(self):
 		for record in self:
-			#first = True
 			for session in record.session_ids:
-				#if first:
 				if not record.session_date:
 					record.session_date = session.evaluation_start_date
-					#first = False
 
 # --------------------------------------------------------- Redefinition -------
 	# Default - HC Number

@@ -9,7 +9,7 @@ import datetime
 from openerp import models, fields, api
 #from openerp.addons.openhealth.models.libs import lib
 #from . import time_funcs
-from . import control_vars
+#from . import control_vars
 
 class Control(models.Model):
 	"""
@@ -18,10 +18,8 @@ class Control(models.Model):
 	Should not define the Business Rules. 
 	"""	
 	_name = 'openhealth.control'
-
-	_inherit = ['oeh.medical.evaluation', 'base_multi_image.owner']
-
 	_description = 'Control'
+	_inherit = ['oeh.medical.evaluation', 'base_multi_image.owner']
 
 
 # ----------------------------------------------------------- Dep ------------------------------------------------------
@@ -39,6 +37,15 @@ class Control(models.Model):
 	evaluation_next_date = fields.Date()
 
 
+# ----------------------------------------------------------- Consts -----------
+	# State
+	_state_list = [
+					('cancel', 			'Anulado'),
+					('draft', 			'Inicio'),
+					#('inprogress', 	'En progreso'),
+					('app_confirmed', 	'Cita Confirmada'),
+					('done', 			'Completo'),	
+				]
 
 # ----------------------------------------------------------- Dates - OK ------------------------------------------------------
 
@@ -53,7 +60,8 @@ class Control(models.Model):
 	
 	# State 
 	state = fields.Selection(
-			selection = control_vars._state_list, 
+			#selection = control_vars._state_list, 
+			selection = _state_list, 
 			
 			compute='_compute_state', 
 		)

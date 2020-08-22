@@ -893,3 +893,15 @@ class Treatment(models.Model):
 		print()
 		print('SUCCESS !')
 
+
+# -------------------------------------------------------- Open Myself ---------
+	# Open Myself
+	@api.multi
+	def open_myself(self):
+		"""
+		Used by - Procedure
+		"""
+		#treatment_id = self.id
+		return action_funcs.open_myself('openhealth.treatment', self.id)
+
+	# open_myself

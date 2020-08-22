@@ -1,11 +1,16 @@
 # -*- coding: utf-8 -*-
 {
-'name': "Open Health - Odoo9 Module - Object Oriented - Order, Treatment, Patient.",
+'name': "Open Health - Odoo9 mod - Object Oriented - Refactorized with CodeClimate.",
 'summary': """ ERP system for a Clinic. Inherits OeHealth. Contains ALL the Data Model. Business logic is in classes and libraries.
 """,
 'description': """
 
-	21 Aug 2020
+	22 Aug 2020
+
+	Classess: 
+		- Order, 
+		- Treatment, 
+		- Patient.
 
 	Contains:
 		- All External Dependencies,
@@ -53,7 +58,7 @@
 		- Remove Computes.
 
 	Created:        11 Sep 2016
-	Last up:        21 Jul 2020
+	Last up:        22 Aug 2020
 
 	(From 17 Mar 2018 - 13 963)
 

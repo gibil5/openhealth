@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-	Procedure Session Funcs 
+	Procedure Session Funcs Dep !!
 	Created: 				01 Nov 2016
-	Last updated: 	 	 	10 Aug 2020
+	Last updated: 	 	 	22 Aug 2020
 """
 from __future__ import print_function
 from datetime import datetime
@@ -81,16 +81,13 @@ def create_sessions(self, nr_sessions, nr_ses_created):
 		session = self.env['openhealth.session.med'].create({
 																'evaluation_start_date':session_date,																
 																'patient': patient_id,
-																'doctor': doctor_id,													
-
+																'doctor': doctor_id,
 																'evaluation_type':evaluation_type,
 																'product': product_id,
 																'laser': laser,
-
 																'chief_complaint': chief_complaint,																
 																'appointment': appointment_id,																
-																'procedure': procedure_id,				
-
+																'procedure': procedure_id,
 																'treatment': treatment_id,	
 											})
 	return 0	

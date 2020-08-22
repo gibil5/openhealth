@@ -1,17 +1,5 @@
 # 2 Aug 2020 
 
-# ----------------------------------------------------------- Open Myself -------------------------
-	# Open Myself
-	@api.multi
-	def open_myself(self):
-		"""
-		Used by
-		"""
-		#treatment_id = self.id
-		return action_funcs.open_myself('openhealth.treatment', self.id)
-
-	# open_myself
-
 #----------------------------------------------------------- Quick Button - Used by Patient ---------
 	@api.multi
 	def open_line_current(self):

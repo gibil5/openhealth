@@ -2,12 +2,12 @@
 """
 		Treatment
 		Created: 			26 Aug 2016
-		Last up: 	 		22 Aug 2020
+		Last up: 	 		23 Aug 2020
 
-From PgAdmin
--------------
-SELECT * FROM public.sale_order;
-DELETE FROM public.sale_order WHERE partner_id = 391;
+		From PgAdmin
+		-------------
+		SELECT * FROM public.sale_order;
+		DELETE FROM public.sale_order WHERE partner_id = 391;
 """
 from __future__ import print_function
 import datetime
@@ -35,41 +35,41 @@ class Treatment(models.Model):
 	_order = 'write_date desc'
 	_description = 'Treatment'
 
-# ----------------------------------------------------------- PL ---------------------------
+# ------------------------------------------------------------------------------
 	# Shopping cart
 	shopping_cart_ids = fields.One2many(
-			'price_list.cart_line',
-			'treatment',
-			string="Shopping Cart"
-		)
+		'price_list.cart_line',
+		'treatment',
+		string="Shopping Cart"
+	)
 
-# ----------------------------------------------------------- Fields - Services ------------------------
+# ------------------------------------------------------------ Services --------
 	# co2
 	service_co2_ids = fields.One2many(
-			'openhealth.service_co2',
-			'treatment',
-			string="Servicios Co2"
+		'openhealth.service_co2',
+		'treatment',
+		string="Servicios Co2"
 	)
 
 	# excilite
 	service_excilite_ids = fields.One2many(
-			'openhealth.service_excilite',
-			'treatment',
-			string="Servicios excilite"
+		'openhealth.service_excilite',
+		'treatment',
+		string="Servicios excilite"
 	)
 
   	# cosmetology
 	service_cosmetology_ids = fields.One2many(
-			'openhealth.service_cosmetology',
-			'treatment',
-			string="Servicios cosmetology"
+		'openhealth.service_cosmetology',
+		'treatment',
+		string="Servicios cosmetology"
 	)
 
   	# echography
 	service_echography_ids = fields.One2many(
-			'openhealth.service_echography',
-			'treatment',
-			string="Servicios Ecografia"
+		'openhealth.service_echography',
+		'treatment',
+		string="Servicios Ecografia"
 	)
 
 	# ipl
@@ -77,46 +77,46 @@ class Treatment(models.Model):
 	    'openhealth.service_ipl',
 	    'treatment',
 	    string="Servicios ipl"
-	    )
+    )
 
 	# ndyag
 	service_ndyag_ids = fields.One2many(
 	    'openhealth.service_ndyag',
 	    'treatment',
 	    string="Servicios ndyag"
-	    )
+    )
 
 	# quick
 	service_quick_ids = fields.One2many(
 	    'openhealth.service_quick',
 	    'treatment',
 	    string="Servicios quick"
-	    )
+	)
 
 	# product
 	service_product_ids = fields.One2many(
 	    'openhealth.service_product',
 	    'treatment',
 	    string="Servicios product"
-	    )
+	)
 
 	# gynecology
 	service_gynecology_ids = fields.One2many(
 	    'openhealth.service_gynecology',
 	    'treatment',
 	    string="Servicios Ginecologia"
-	    )
+	)
 
 	# promotion
 	service_promotion_ids = fields.One2many(
 	    'openhealth.service_promotion',
 	    'treatment',
 	    string="Servicios Promocion"
-	    )
+	)
 
 # ----------------------------------------------------------- Primitive ---------------------------
 
-# ----------------------------------------------------------- Process --------------------------
+# ----------------------------------------------------------- Process ----------
 	# States
 	READONLY_STATES = {
 		'empty': 		[('readonly', False)],
@@ -124,44 +124,44 @@ class Treatment(models.Model):
 
 	# Patient
 	patient = fields.Many2one(
-			'oeh.medical.patient',
-			string="Paciente",
-			index=True,
-			ondelete='cascade',
-			readonly=True,
-			states=READONLY_STATES,
-		)
+		'oeh.medical.patient',
+		string="Paciente",
+		index=True,
+		ondelete='cascade',
+		readonly=True,
+		states=READONLY_STATES,
+	)
 
 	# Physician
 	physician = fields.Many2one(
-			'oeh.medical.physician',
-			string="Médico",
-			index=True,
-			readonly=False,
-			states=READONLY_STATES,
-		)
+		'oeh.medical.physician',
+		string="Médico",
+		index=True,
+		readonly=False,
+		states=READONLY_STATES,
+	)
 
 	chief_complaint = fields.Selection(
-			selection=eval_vars._chief_complaint_list,
-			string='Motivo de consulta',
-			required=False,
-			readonly=False,
-		)
+		selection=eval_vars._chief_complaint_list,
+		string='Motivo de consulta',
+		required=False,
+		readonly=False,
+	)
 
 	start_date = fields.Date(
-			string="Fecha inicio",
-			default=fields.Date.today,
-			readonly=True,
-			states=READONLY_STATES,
-		)
+		string="Fecha inicio",
+		default=fields.Date.today,
+		readonly=True,
+		states=READONLY_STATES,
+	)
 
 
 # ----------------------------------------------------------- Card ------------
 	# Name
 	name = fields.Char(
-			string="Tratamiento #",
-			compute='_compute_name',
-		)
+		string="Tratamiento #",
+		compute='_compute_name',
+	)
 	@api.multi
 	def _compute_name(self):
 		se = '-'
@@ -171,10 +171,10 @@ class Treatment(models.Model):
 
 	# Sex - Used by header
 	patient_sex = fields.Char(
-			string="Sexo",
-			compute='_compute_patient_sex',
-			#compute=lambda self: self.patient.sex[0]
-		)
+		string="Sexo",
+		compute='_compute_patient_sex',
+		#compute=lambda self: self.patient.sex[0]
+	)
 	@api.multi
 	def _compute_patient_sex(self):
 		for record in self:
@@ -183,9 +183,9 @@ class Treatment(models.Model):
 
 	# Age
 	patient_age = fields.Char(
-			string="Edad",
-			compute='_compute_patient_age',
-		)
+		string="Edad",
+		compute='_compute_patient_age',
+	)
 	@api.multi
 	def _compute_patient_age(self):
 		for record in self:
@@ -194,9 +194,9 @@ class Treatment(models.Model):
 
 	# City - id
 	patient_city = fields.Char(
-			string="Lugar de procedencia",
-			compute='_compute_patient_city',
-		)
+		string="Lugar de procedencia",
+		compute='_compute_patient_city',
+	)
 	@api.multi
 	def _compute_patient_city(self):
 		for record in self:
@@ -219,8 +219,8 @@ class Treatment(models.Model):
 
 	# Budgets - Consultations
 	nr_budgets_cons = fields.Integer(
-			string="Presupuestos Consultas",
-			compute="_compute_nr_budgets_cons",
+		string="Presupuestos Consultas",
+		compute="_compute_nr_budgets_cons",
 	)
 	@api.multi
 	def _compute_nr_budgets_cons(self):
@@ -231,8 +231,8 @@ class Treatment(models.Model):
 
 	# Invoices - Consultations
 	nr_invoices_cons = fields.Integer(
-			string="Facturas Consultas",
-			compute="_compute_nr_invoices_cons",
+		string="Facturas Consultas",
+		compute="_compute_nr_invoices_cons",
 	)
 	@api.multi
 	def _compute_nr_invoices_cons(self):
@@ -243,8 +243,8 @@ class Treatment(models.Model):
 
 	# Budgets - Proc
 	nr_budgets_pro = fields.Integer(
-			string="Presupuestos - Pro",
-			compute="_compute_nr_budgets_pro",
+		string="Presupuestos - Pro",
+		compute="_compute_nr_budgets_pro",
 	)
 	@api.multi
 	def _compute_nr_budgets_pro(self):
@@ -254,8 +254,8 @@ class Treatment(models.Model):
 
 	# Invoices - Proc
 	nr_invoices_pro = fields.Integer(
-			string="Facturas",
-			compute="_compute_nr_invoices_pro",
+		string="Facturas",
+		compute="_compute_nr_invoices_pro",
 	)
 	@api.multi
 	def _compute_nr_invoices_pro(self):
@@ -266,8 +266,8 @@ class Treatment(models.Model):
 
 	# Consultations
 	nr_consultations = fields.Integer(
-			string="Nr Consultas",
-			compute="_compute_nr_consultations",
+		string="Nr Consultas",
+		compute="_compute_nr_consultations",
 	)
 	#@api.multi
 	@api.depends('consultation_ids')
@@ -279,8 +279,8 @@ class Treatment(models.Model):
 
 	# Procedures
 	nr_procedures = fields.Integer(
-			string="Procedimientos",
-			compute="_compute_nr_procedures",
+		string="Procedimientos",
+		compute="_compute_nr_procedures",
 	)
 	@api.multi
 	def _compute_nr_procedures(self):
@@ -291,8 +291,8 @@ class Treatment(models.Model):
 
 	# Sessions
 	nr_sessions = fields.Integer(
-			string="Sesiones",
-			compute="_compute_nr_sessions",
+		string="Sesiones",
+		compute="_compute_nr_sessions",
 	)
 	@api.multi
 	def _compute_nr_sessions(self):
@@ -303,8 +303,8 @@ class Treatment(models.Model):
 
 	# Controls
 	nr_controls = fields.Integer(
-			string="Controles",
-			compute="_compute_nr_controls",
+		string="Controles",
+		compute="_compute_nr_controls",
 	)
 	@api.multi
 	def _compute_nr_controls(self):
@@ -315,90 +315,85 @@ class Treatment(models.Model):
 
 # ----------------------------------------------------------- Test ----------------------------------------------------
 	x_test = fields.Boolean(
-			'Test',
-			default=False,
-		)
+		'Test',
+		default=False,
+	)
 
 # ----------------------------------------------------------- Pricelist Fields - Dummy --------------------------------
 	report_product = fields.Many2one(
-			'openhealth.container.pricelist',
-			string="PROD",
-		)
+		'openhealth.container.pricelist',
+		string="PROD",
+	)
 
 # ----------------------------------------------------------- Pricelist Fields - Test --------------------------------
 
 	x_test_scenario = fields.Selection(
-			selection=treatment_vars._test_scenario_list,
-			string="Test Scenarios",
-		)
+		selection=treatment_vars._test_scenario_list,
+		string="Test Scenarios",
+	)
 
 	test_pricelist_2019 = fields.Boolean(
-			'PL 2019',
-			default=True,
-		)
+		'PL 2019',
+		default=True,
+	)
 
 	test_pricelist_2018 = fields.Boolean(
-			'PL 2018',
-			default=False,
-		)
+		'PL 2018',
+		default=False,
+	)
 
 
-
-# ----------------------------------------------------------- Price list  --------------------------------
-
+# ----------------------------------------------------------- Price list  ------
 	# Pricelist
 	pricelist_id = fields.Many2one(
-			'product.pricelist',
-			string='Pricelist',
-			readonly=True,
-			compute='_compute_pricelist_id',
+		'product.pricelist',
+		string='Pricelist',
+		readonly=True,
+		compute='_compute_pricelist_id',
 	)
 	@api.multi
 	def _compute_pricelist_id(self):
 		for record in self:
 			record.pricelist_id = record.patient.property_product_pricelist
 
-
 # ----------------------------------------------------------- Manual ------------------------------
 	# Override config
 	override = fields.Boolean(
-			default=False,
-		)
+		default=False,
+	)
 
 	# Manual
 	add_procedures = fields.Boolean(
-			string="Control Manual",
-			default=False,
-		)
-
+		string="Control Manual",
+		default=False,
+	)
 
 # ----------------------------------------------------------- Canonical ---------------------------
 	# Space
 	vspace = fields.Char(
-			' ',
-			readonly=True
-		)
+		' ',
+		readonly=True
+	)
 
 	# Active
 	active = fields.Boolean(
-			default=True,
-		)
+		default=True,
+	)
 
 	# Closed
 	treatment_closed = fields.Boolean(
-			string="De Alta",
-			default=False,
-		)
+		string="De Alta",
+		default=False,
+	)
 
 # ----------------------------------------------------------- Vip in prog -------------------------
 
 	# Vip in progress
 	x_vip_inprog = fields.Boolean(
-			string="Vip en progreso",
-			default=False,
-
-			compute='_compute_vip_inprog',
-		)
+		string="Vip en progreso",
+		default=False,
+		compute='_compute_vip_inprog',
+	)
 
 	@api.multi
 	def _compute_vip_inprog(self):
@@ -413,59 +408,53 @@ class Treatment(models.Model):
 			#	record.x_vip_inprog = True
 
 
-
 # ----------------------------------------------------------- Relational --------------------------
-
 	consultation_ids = fields.One2many(
-			'openhealth.consultation',
-			'treatment',
-			string="Consultas",
-		)
+		'openhealth.consultation',
+		'treatment',
+		string="Consultas",
+	)
 
 	procedure_ids = fields.One2many(
-			'openhealth.procedure',
-			'treatment',
-			string="Procedimientos",
-		)
+		'openhealth.procedure',
+		'treatment',
+		string="Procedimientos",
+	)
 
 	session_ids = fields.One2many(
-			'openhealth.session.med',
-			'treatment',
-			string="Sesiones",
-		)
+		'openhealth.session.med',
+		'treatment',
+		string="Sesiones",
+	)
 
 	control_ids = fields.One2many(
-			'openhealth.control',
-			'treatment',
-			string="Controles",
-		)
+		'openhealth.control',
+		'treatment',
+		string="Controles",
+	)
 
 	# Orders
 	order_ids = fields.One2many(
-			'sale.order',
-			'treatment',
-			string="Presupuestos",
-		)
+		'sale.order',
+		'treatment',
+		string="Presupuestos",
+	)
 
 	# Orders Procedures
 	order_pro_ids = fields.One2many(
-			'sale.order',
-			'treatment',
-			string="Presupuestos",
-			domain=[
-						#('x_family', 'in', ['procedure', 'cosmetology']),
-						('pl_family', 'in', ['LASER CO2']),
-					],
-		)
+		'sale.order',
+		'treatment',
+		string="Presupuestos",
+		domain=[],
+	)
 
 # ----------------------------------------------------------- Consultation Progress ---------------
 
 	# Consultation progress
 	consultation_progress = fields.Float(
-			default=0,
-
-			compute="_compute_progress",
-		)
+		default=0,
+		compute="_compute_progress",
+	)
 
 	@api.multi
 	#@api.depends('consultation_ids')
@@ -477,11 +466,11 @@ class Treatment(models.Model):
 # ----------------------------------------------------------- State -------------------------------
 	# State
 	state = fields.Selection(
-			selection=treatment_vars._state_list,
-			string='Estado',
-			default='empty',
-			compute="_compute_state",
-		)
+		selection=treatment_vars._state_list,
+		string='Estado',
+		default='empty',
+		compute="_compute_state",
+	)
 
 	@api.multi
 	def _compute_state(self):
@@ -493,15 +482,13 @@ class Treatment(models.Model):
 # ----------------------------------------------------------- Number ofs - Services - Dep ? ---------------
 	# Number of Services
 	nr_services = fields.Integer(
-			string="Servicios",
-			compute="_compute_nr_services",
+		string="Servicios",
+		compute="_compute_nr_services",
 	)
 	@api.multi
 	def _compute_nr_services(self):
 		for record in self:
-
 			#record.nr_services = 0
-
 			#co2 = self.env['openhealth.service.co2'].search_count([('treatment', '=', record.id),])
 			#quick =	self.env['openhealth.service.quick'].search_count([('treatment', '=', record.id),])
 			#exc = self.env['openhealth.service.excilite'].search_count([('treatment', '=', record.id),])
@@ -511,23 +498,19 @@ class Treatment(models.Model):
 			#vip = self.env['openhealth.service.vip'].search_count([('treatment', '=', record.id),])
 			#product = self.env['openhealth.service.product'].search_count([('treatment', '=', record.id),])
 			#record.nr_services = quick + co2 + exc + ipl + ndyag + medical + vip + product
-
 			co2 = self.env['openhealth.service_co2'].search_count([('treatment', '=', record.id),])
 			record.nr_services = co2
 
-
-
-
 # ----------------------------------------------------------- Create Buttons  ----------
 	@api.multi
-	def create_order_con(self):
+	def btn_create_order_con(self):
 		"""
 		Create Order Consultation Standard - Medical
 		One mode
 		"""
 		print()
-		#print('PL - treatment - create_order_con')
-		print('OH - create_order_con')
+		#print('PL - treatment - btn_create_order_con')
+		print('OH - btn_create_order_con')
 
 		# Init
 		price_list = '2019'
@@ -544,12 +527,12 @@ class Treatment(models.Model):
 # ----------------------------------------------------- Create Consultation -----------------------
 	# Create Consultation
 	@api.multi
-	def create_consultation(self):
+	def btn_create_consultation(self):
 		"""
 		Create consultation - Button
 		"""
 		print()
-		print('OH - create_consultation')
+		print('OH - btn_create_consultation')
 
 		# Init vars
 		patient_id = self.patient.id
@@ -613,17 +596,17 @@ class Treatment(models.Model):
 								'default_chief_complaint': chief_complaint,
 				}
 			}
-	# create_consultation
+	# btn_create_consultation
 
 # ----------------------------------------------------------- Create Service ---------------------------
 	@api.multi
-	def create_service(self):
+	def btn_create_reco(self):
 		"""
 		Create Service
 		Opens a new form. For Reco choice.
 		"""
 		print()
-		print('OH - create_service')
+		print('OH - btn_create_reco')
 
 		# Init
 		res_id = self.id
@@ -655,16 +638,16 @@ class Treatment(models.Model):
 						#'default_treatment': treatment_id,
 					}
 		}
-	# create_service
+	# btn_create_reco
 
 # -----------------------------------------------------------  Create Order Procedure - 2019 -------------
 	@api.multi
-	def create_order_pro(self):
+	def btn_create_order_pro(self):
 		"""
 		Create Order Procedure - 2019
 		From Recommendations
 		"""
-		print('treatment - create_order_pro')
+		print('treatment - btn_create_order_pro')
 
 		# Clear cart
 		self.shopping_cart_ids.unlink()
@@ -704,7 +687,7 @@ class Treatment(models.Model):
 		# Open Order
 		return action_funcs.open_order(order)
 
-	# create_order_pro
+	# btn_create_order_pro
 
 # ----------------------------------------------------------- Create Procedure  -------------------
 	# Create Procedure
@@ -726,19 +709,19 @@ class Treatment(models.Model):
 # ----------------------------------------------------------- Create Procedure Manual  ------------
 	#jx
 	@api.multi
-	def create_procedure_man(self):
+	def btn_create_procedure_man(self):
 		"""
 		Create Procedure Manual
 		"""
 		print()
-		print('treatment - create_procedure_man')
+		print('treatment - btn_create_procedure_man')
 		print("order_pro_ids: {}".format(self.order_pro_ids))
 		# Loop
 		for order in self.order_pro_ids:
 			print("order: {}".format(order))
 			if order.proc_is_not_created_and_state_is_sale() or self.override:
 				order.create_procedure_man(self)
-	# create_procedure_man
+	# btn_create_procedure_man
 
 # ----------------------------------------------------------- Create Services  ------------
 	# co2
@@ -754,7 +737,7 @@ class Treatment(models.Model):
 		physician_id = self.physician.id
 
 		# Create
-		#ret = reco_funcs.create_service(treatment_id, family, subfamily, physician_id)
+		#ret = reco_funcs.btn_create_reco(treatment_id, family, subfamily, physician_id)
 		ret = self.create_service_for_me(treatment_id, family, subfamily, physician_id)
 
 		return ret
@@ -804,8 +787,7 @@ class Treatment(models.Model):
 								'default_treatment': treatment_id,
 							}
 				}
-	# create_service
-
+	# btn_create_reco
 
 # ---------------------------------------------------- Test Integration --------
 	@api.multi
@@ -815,29 +797,17 @@ class Treatment(models.Model):
 		"""
 		print()
 		print('OH - treatment.py - test_integration')
+		value = self.env.context.get('key')
+		print(value)
 		if self.patient.x_test:
-			# Reset
-			#test_treatment.reset_treatment(self)
-			# Test Integration
-			test_treatment.test_integration_treatment(self)
+			if value == 'test_integration':
+					test_treatment.test_integration_treatment(self)
+
+			elif value == 'test_reset':
+				test_treatment.test_reset_treatment(self)
 		print()
 		print()
 		print('SUCCESS !')
-
-# ----------------------------------------------------------- Test Reset -------
-	@api.multi
-	def test_reset(self):
-		"""
-		Reset Test
-		"""
-		print()
-		print('OH - Test Reset Button')
-		if self.patient.x_test:
-			test_treatment.test_reset_treatment(self)
-		print()
-		print()
-		print('SUCCESS !')
-
 
 # -------------------------------------------------- Test Cycle ----------------
 	@api.multi
@@ -856,27 +826,27 @@ class Treatment(models.Model):
 # ----------------------------------------------------------- Test Reports -----
 	# Management
 	report_management = fields.Many2one(
-			'openhealth.management',
-			string="MGT",
-		)
+		'openhealth.management',
+		string="MGT",
+	)
 
 	# Marketing
 	report_marketing = fields.Many2one(
-			'openhealth.marketing',
-			string="MKT",
-		)
+		'openhealth.marketing',
+		string="MKT",
+	)
 
 	# Contasis
 	report_contasis = fields.Many2one(
-			'openhealth.account.contasis',
-			string="ACC",
-		)
+		'openhealth.account.contasis',
+		string="ACC",
+	)
 
 	# Txt
 	report_account = fields.Many2one(
-			'openhealth.container',
-			string="TXT",
-		)
+		'openhealth.container',
+		string="TXT",
+	)
 
 # ----------------------------------------------------- Test Report --------------------------
 	@api.multi

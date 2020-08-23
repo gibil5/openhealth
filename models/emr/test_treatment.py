@@ -38,7 +38,7 @@ def test_create(self, value):
 		test_create_sale_procedure(self)
 
 	elif value == 'test_create_procedure':
-		self.create_procedure_man()
+		self.btn_create_procedure_man()
 
 	elif value == 'test_create_sessions':
 		test_create_sessions(self)
@@ -64,7 +64,7 @@ def test_integration_treatment(self):
 	# Create Consultation
 	#create_consultation(self)
 	verbose = False
-	create_consultation(self, verbose)
+	create_consultation(self, verbose) 
 
 
 	# Create Credit Note
@@ -102,13 +102,13 @@ def create_consultation(self, verbose=False):
 		test_funcs.disablePrint()
 
 	# Create Consultation Sale
-	self.create_order_con()			# Actual Button
+	self.btn_create_order_con()			# Actual Button
 	for order in self.order_ids:
 		if order.state in ['draft']:
 			order.pay_myself()
 
 	# Create and Fill Consultation
-	self.create_consultation()
+	self.btn_create_consultation()			# Actual Button
 	for consultation in self.consultation_ids:
 		consultation.autofill()
 
@@ -151,7 +151,7 @@ def create_recommentations_and_procedure_sale(self):
 	# 2019
 	if self.test_pricelist_2019:
 		create_recommendations_2019(self)
-		self.create_order_pro()				# Actual Button - 2019
+		self.btn_create_order_pro()				# Actual Button - 2019
 
 	# 2018
 	#if self.test_pricelist_2018:
@@ -159,7 +159,7 @@ def create_recommentations_and_procedure_sale(self):
 		#test_funcs.disablePrint()
 	#	print()
 	#	print()
-	#	self.create_order_pro_2018()		# Actual Button - 2018
+	#	self.btn_create_order_pro_2018()		# Actual Button - 2018
 		#test_funcs.enablePrint()
 
 	# Pay Order Procedure
@@ -229,7 +229,7 @@ def test_create_budget_consultation(self):
 	print('Test Create Budget Consultation')
 
 	# Create Budget Consultation
-	self.create_order_con()			# Actual Button
+	self.btn_create_order_con()			# Actual Button
 
 def test_create_sale_consultation(self):
 	"""
@@ -251,7 +251,7 @@ def test_create_consultation(self):
 	print('Test Create Consultation')
 
 	# Create Consultation
-	self.create_consultation()			# Actual Button
+	self.btn_create_consultation()			# Actual Button
 
 
 def test_create_recommendations(self):
@@ -340,7 +340,7 @@ def test_create_budget_procedure(self):
 	print('Test Create Budget Procedure')
 
 	# Pay Budget Procedures
-	self.create_order_pro()				# Actual Button - 2019
+	self.btn_create_order_pro()				# Actual Button - 2019
 
 
 def test_create_sale_procedure(self):
@@ -365,7 +365,7 @@ def test_create_sale_procedure(self):
 #	print()
 #	print('Test Create Procedure')
 	# Create Procedure
-#	self.create_procedure_man()
+#	self.btn_create_procedure_man()
 
 
 def test_create_sessions(self):
@@ -381,7 +381,7 @@ def test_create_sessions(self):
 		#for _ in range(2):
 		for _ in range(1):
 			print('create sesion')
-			procedure.create_sessions_manual()
+			procedure.btn_create_sessions_manual() 	# Button
 
 
 def test_create_controls(self):
@@ -397,7 +397,7 @@ def test_create_controls(self):
 		#for _ in range(1):
 		for _ in range(6):
 			print('create control')
-			procedure.create_controls_manual()
+			procedure.btn_create_controls_manual()	# Button
 
 
 # ----------------------------------------------------------- Second Level ---------------------------------------------
@@ -623,21 +623,6 @@ def create_recommendations_2019(self):
 		print()
 		print(product)
 		print(product.name)
-
-		#print(tst)
-		#print(product_id)
-		#print(product.pl_price_list)
-		#print(product.pl_treatment)
-
-		#if False:
-		#	print(product.pl_family)
-		#	print(product.pl_subfamily)
-		#	print(product.pl_treatment)
-		#	print(product.pl_zone)
-		#	print(product.pl_pathology)
-		#	print(product.pl_sessions)
-		#	print(product.pl_level)
-		#	print(product.pl_time)
 
 		# Create
 		service = self.env[model].create({

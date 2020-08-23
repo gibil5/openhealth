@@ -24,12 +24,12 @@ class Procedure(models.Model):
 # ----------------------------------------------------------- Creates control Man -------------------------
 	# Create Controls Manual
 	@api.multi
-	def create_controls_manual(self):
+	def btn_create_controls_manual(self):
 		"""
 		Create controls manual
 		"""
 		print()
-		print('oh - procedure - create_controls_manual')
+		print('oh - procedure - btn_create_controls_manual')
 
 		nr_ctl_created = self.env['openhealth.control'].search_count([
 																		('procedure', '=', self.id),
@@ -63,12 +63,12 @@ class Procedure(models.Model):
 # ----------------------------------------------------------- Creates sessions Man -------------------------
 	# Create Sessions Manual
 	@api.multi
-	def create_sessions_manual(self):
+	def btn_create_sessions_manual(self):
 		"""
 		Create sessions man
 		"""
 		print()
-		print('oh - procedure - create_sessions_manual')
+		print('oh - procedure - btn_create_sessions_manual')
 
 		nr_ses_created = self.env['openhealth.session.med'].search_count([
 																			('procedure', '=', self.id),

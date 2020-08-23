@@ -370,11 +370,9 @@ class Evaluation(models.Model):
 	# open_procedure
 
 
-
-
 	# Open Treatment
 	@api.multi
-	def open_treatment(self):
+	def btn_open_treatment(self):
 		"""
 		Goes Back to Treatment
 		Used by: Procedure
@@ -386,7 +384,6 @@ class Evaluation(models.Model):
 		ret = treatment.open_myself()
 		return ret
 	# open_treatment
-
 
 # ----------------------------------------------------------- Open Myself -------------------------
 	# Open Myself

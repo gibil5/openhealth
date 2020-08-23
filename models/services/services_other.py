@@ -43,10 +43,8 @@ class ServiceCosmetology(models.Model):
 	@api.onchange('sel_zone')
 	def _onchange_sel_zone(self):
 		if self.sel_zone != False:
-			pl_family = 'cosmetology'
 			return {'domain': {'service': [
 												('pl_price_list', '=', '2019'),
-												('pl_family', '=', pl_family),
 												('pl_zone', '=', self.sel_zone),
 			],},}
 
@@ -57,7 +55,6 @@ class ServiceCosmetology(models.Model):
 			domain=[
 						('type', '=', 'service'),
 						('pl_price_list', '=', '2019'),
-						('pl_family', '=', 'cosmetology'),
 					],
 		)
 
@@ -95,10 +92,8 @@ class ServiceEchography(models.Model):
 	@api.onchange('sel_zone')
 	def _onchange_sel_zone(self):
 		if self.sel_zone != False:
-			pl_family = 'echography'
 			return {'domain': {'service': [
 												('pl_price_list', '=', '2019'),
-												('pl_family', '=', pl_family),
 												('pl_zone', '=', self.sel_zone),
 			],},}
 
@@ -108,7 +103,6 @@ class ServiceEchography(models.Model):
 			'product.template',
 			domain=[
 						('type', '=', 'service'),
-						('pl_family', '=', 'echography'),
 						('pl_price_list', '=', '2019'),
 					],
 	)
@@ -170,10 +164,8 @@ class ServiceGynecology(models.Model):
 	@api.onchange('sel_zone')
 	def _onchange_sel_zone(self):
 		if self.sel_zone != False:
-			pl_family = 'gynecology'
 			return {'domain': {'service': [
 												('pl_price_list', '=', '2019'),
-												('pl_family', '=', pl_family),
 												('pl_zone', '=', self.sel_zone),
 			],},}
 
@@ -184,8 +176,6 @@ class ServiceGynecology(models.Model):
 			domain=[
 						('type', '=', 'service'),
 						('pl_price_list', '=', '2019'),
-
-						('pl_family', '=', 'gynecology'),
 					],
 	)
 
@@ -268,10 +258,8 @@ class ServicePromotion(models.Model):
 	@api.onchange('sel_zone')
 	def _onchange_sel_zone(self):
 		if self.sel_zone != False:
-			pl_family = 'promotion'
 			return {'domain': {'service': [
 												('pl_price_list', '=', '2019'),
-												('pl_family', '=', pl_family),
 												('pl_zone', '=', self.sel_zone),
 			],},}
 
@@ -282,8 +270,6 @@ class ServicePromotion(models.Model):
 			domain=[
 						('type', '=', 'service'),
 						('pl_price_list', '=', '2019'),
-
-						('pl_family', '=', 'promotion'),
 					],
 
 	)

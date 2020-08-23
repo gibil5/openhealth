@@ -21,7 +21,7 @@ Last up: 	 		22 Jul 2020
 						<button
 							type="object"
 							class="oe_highlight"
-							name="create_order_con"
+							name="btn_create_order_con"
 							string="Crear PRESU - Consulta"
 							groups="openhealth.roots,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
 							states="empty,appointment"
@@ -31,7 +31,7 @@ Last up: 	 		22 Jul 2020
 						<button
 							type="object"
 							class="oe_highlight"
-							name="create_consultation"
+							name="btn_create_consultation"
 							string="Crear CONSULTA"
 							groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
 							states="invoice_consultation"
@@ -41,7 +41,7 @@ Last up: 	 		22 Jul 2020
 						<button
 							type="object"
 							class="oe_highlight"
-							name="create_service"
+							name="btn_create_reco"
 							string="Crear Reco"
 							groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
 							states="consultation,service"
@@ -51,7 +51,7 @@ Last up: 	 		22 Jul 2020
 						<button
 							type="object"
 							class="oe_highlight"
-							name="create_order_pro"
+							name="btn_create_order_pro"
 							string="Crear Presu Pro"
 							groups="openhealth.roots,openhealth.physicians,openhealth.reception,openhealth.caja,openhealth.managers,openhealth.directors"
 							states="service"
@@ -61,7 +61,7 @@ Last up: 	 		22 Jul 2020
 						<button
 							type="object"
 							class="oe_highlight"
-							name="create_procedure_man"
+							name="btn_create_procedure_man"
 							string="Crear PROCEDIMIENTO"
 							groups="openhealth.roots,openhealth.physicians,openhealth.managers,openhealth.directors"
 							states="invoice_procedure"
@@ -72,7 +72,7 @@ Last up: 	 		22 Jul 2020
 						<button
 							type="object"
 							class="oe_highlight"
-							name="create_consultation"
+							name="btn_create_consultation"
 							string="CON"
 							groups="openhealth.archivers"
 						/>
@@ -81,7 +81,7 @@ Last up: 	 		22 Jul 2020
 						<button
 							type="object"
 							class="oe_highlight"
-							name="create_service"
+							name="btn_create_reco"
 							string="REC"
 							groups="openhealth.archivers"
 						/>
@@ -90,7 +90,7 @@ Last up: 	 		22 Jul 2020
 						<button
 							type="object"
 							class="oe_highlight"
-							name="create_order_pro"
+							name="btn_create_order_pro"
 							string="PresPro"
 							groups="openhealth.archivers"
 						/>
@@ -99,7 +99,7 @@ Last up: 	 		22 Jul 2020
 						<button
 							type="object"
 							class="oe_highlight"
-							name="create_procedure_man"
+							name="btn_create_procedure_man"
 							string="PRO"
 							groups="openhealth.archivers"
 						/>
@@ -310,7 +310,9 @@ Last up: 	 		22 Jul 2020
 										class="oe_highlight"
 										help='Test Integration'
 										string="Integration"
+
 										name="test_integration"
+										context="{'key': 'test_integration'}"
 									/>
 
 									<!-- Reset -->
@@ -320,7 +322,9 @@ Last up: 	 		22 Jul 2020
 										groups="openhealth.roots"
 										help='Tests: Reset'
 										string="Reset"
-										name="test_reset"
+
+										name="test_integration"
+										context="{'key': 'test_reset'}"
 									/>
 							</group>
 
@@ -520,7 +524,7 @@ name="test_create_budget_procedure"
 									type="object"
 									class="oe_highlight"
 									attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
-									name="create_order_con"
+									name="btn_create_order_con"
 									string="PRESU CON"
 								/>
 							</group>
@@ -531,7 +535,7 @@ name="test_create_budget_procedure"
 									type="object"
 									class="oe_highlight"
 									attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
-									name="create_consultation"
+									name="btn_create_consultation"
 									string="CONSULTA"
 								/>
 							</group>
@@ -542,8 +546,8 @@ name="test_create_budget_procedure"
 									type="object"
 									class="oe_highlight"
 									attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
-									name="create_service"
-									string="RECOM"
+									name="btn_create_reco"
+									string="RECO"
 								/>
 							</group>
 
@@ -553,8 +557,8 @@ name="test_create_budget_procedure"
 									type="object"
 									class="oe_highlight"
 									attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
-									name="create_order_pro"
-									string="PRESU"
+									name="btn_create_order_pro"
+									string="PRESU PRO"
 								/>
 							</group>
 
@@ -564,8 +568,8 @@ name="test_create_budget_procedure"
 									type="object"
 									class="oe_highlight"
 									attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
-									name="create_procedure_man"
-									string="PROCEDIMIENTO"
+									name="btn_create_procedure_man"
+									string="PROC"
 								/>
 							</group>
 						</group>

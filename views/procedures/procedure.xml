@@ -20,7 +20,7 @@
 							type="object" 
 							class="oe_highlight"
 
-							name="create_sessions_manual"  
+							name="btn_create_sessions_manual"  
 
 							string="Crear Sesiones"
 						/>
@@ -30,7 +30,7 @@
 							type="object" 
 							class="oe_highlight"
 
-							name="create_controls_manual" 
+							name="btn_create_controls_manual" 
 
 							string="Crear Controles"                            
 						/>
@@ -40,7 +40,7 @@
 						<button 
 								type="object"       
 								class="oe_highlight oe_right"
-								name="open_treatment"
+								name="btn_open_treatment"
 								
 								string="Regresar al TRATAMIENTO"
 							/>

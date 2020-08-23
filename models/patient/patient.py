@@ -389,17 +389,13 @@ class Patient(models.Model):
 												'patient': 	order.patient.id,
 												'doctor': 	order.x_doctor.id,
 												'date': 	order.date_order,
-												'state': 		order.state,
-
-												'product': 		order.pl_product,
-												'family': 		order.pl_family,
-
-												'res_id': 		order.id,
-												'res_model': 	order._name,
-
-												'nr_lines': 	order.nr_lines,
-												'amount': 		order.amount_total,
-
+												'state': 	order.state,
+												'product': 	order.pl_product,
+												'family': 	order.pl_family,
+												'res_id': 	order.id,
+												'res_model': order._name,
+												'nr_lines': order.nr_lines,
+												'amount': 	order.amount_total,
 												'patient_id': self.id,
 							})
 
@@ -437,13 +433,8 @@ class Patient(models.Model):
 												'doctor': 		obj.doctor.id,
 												'date': 		obj.evaluation_start_date,
 												'state': 		obj.state,
-
-												#'product': 		obj.pl_product,
-												#'family': 		obj.pl_family,
-
 												'res_id': 		obj.id,
 												'res_model': 	obj._name,
-
 												'patient_id': self.id,
 							})
 

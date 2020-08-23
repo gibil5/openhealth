@@ -11,6 +11,43 @@ from openerp.addons.price_list.models.lib import test_funcs
 from openerp import _
 from openerp.exceptions import Warning as UserError
 
+# ------------------------------------------------------- Level 0 - Creates ----
+def test_create(self, value):
+	"""
+	Test create - Used by Treatment
+	"""
+	# Consultation
+	if value == 'test_create_budget_consultation':
+		test_create_budget_consultation(self)
+
+	elif value == 'test_create_sale_consultation':
+		test_create_sale_consultation(self)
+
+	elif value == 'test_create_consultation':
+		test_create_consultation(self)
+
+	# Reco
+	elif value == 'test_create_recommendations':
+		test_create_recommendations(self)
+
+	# Procedure
+	elif value == 'test_create_budget_procedure':
+		test_create_budget_procedure(self)
+
+	elif value == 'test_create_sale_procedure':
+		test_create_sale_procedure(self)
+
+	elif value == 'test_create_procedure':
+		self.create_procedure_man()
+
+	elif value == 'test_create_sessions':
+		test_create_sessions(self)
+
+	elif value == 'test_create_controls':
+		test_create_controls(self)
+
+
+
 # ------------------------------------------------------- First Level - Buttons -------------------
 
 # ----------------------------------------------- Test Integration -------------

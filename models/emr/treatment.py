@@ -852,35 +852,7 @@ class Treatment(models.Model):
 		value = self.env.context.get('key')
 		print(value)
 
-		# Consultation
-		if value == 'test_create_budget_consultation':
-			test_treatment.test_create_budget_consultation(self)
-
-		elif value == 'test_create_sale_consultation':
-			test_treatment.test_create_sale_consultation(self)
-
-		elif value == 'test_create_consultation':
-			test_treatment.test_create_consultation(self)
-
-		# Reco
-		elif value == 'test_create_recommendations':
-			test_treatment.test_create_recommendations(self)
-
-		# Procedure
-		elif value == 'test_create_budget_procedure':
-			test_treatment.test_create_budget_procedure(self)
-
-		elif value == 'test_create_sale_procedure':
-			test_treatment.test_create_sale_procedure(self)
-
-		elif value == 'test_create_procedure':
-			self.create_procedure_man()
-
-		elif value == 'test_create_sessions':
-			test_treatment.test_create_sessions(self)
-
-		elif value == 'test_create_controls':
-			test_treatment.test_create_controls(self)
+		test_treatment.test_create(self, value)
 
 
 # ----------------------------------------------------------- Test Reports -----

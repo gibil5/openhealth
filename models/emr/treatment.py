@@ -25,8 +25,6 @@ from . import action_funcs
 from . import counter_objects
 from . import search_objects
 
-#from . import time_funcs
-#from . import pl_user
 from . import tre_funcs
 
 class Treatment(models.Model):

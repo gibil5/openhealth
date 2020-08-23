@@ -14,3 +14,4 @@ exclude_paths:
 
 - "**/__openerp__.py"
 - "**/__init__.py"
+- "**/travis.yml"

@@ -399,82 +399,112 @@ name="test_report_product"
 							<group string="Cycle">
 
 									<group col="3"	 attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}" >
+<!--
+name="test_create_budget_consultation"
+name="test_create_sale_consultation"
 
+name="test_create_consultation"
+name="test_create_recommendations"
+name="test_create_budget_procedure"
+-->
 										<!-- Create Budget Consultation -->
 										<button
 											type="object"
 											class="oe_highlight"
-											name="test_create_budget_consultation"
 											string="Budget C"
+
+											name="test_cycle"
+											context="{'key': 'test_create_budget_consultation'}"
 										/>
 
 										<!-- Create Sale Consultation -->
 										<button
 											type="object"
 											class="oe_highlight"
-											name="test_create_sale_consultation"
 											string="Sale C"
+
+											name="test_cycle"
+											context="{'key': 'test_create_sale_consultation'}"
 										/>
+
+
 
 										<!-- Create Consultation -->
 										<button
 											type="object"
 											class="oe_highlight"
-											name="test_create_consultation"
 											string="Consult"
+
+											name="test_cycle"
+											context="{'key': 'test_create_consultation'}"
 										/>
 
 										<!-- Create Recommendations -->
 										<button
 											type="object"
 											class="oe_highlight"
-											name="test_create_recommendations"
 											string="Recom"
+
+											name="test_cycle"
+											context="{'key': 'test_create_recommendations'}"
 										/>
 
 										<!-- Create Budget Procedure -->
 										<button
 											type="object"
 											class="oe_highlight"
-											name="test_create_budget_procedure"
 											string="Budget P"
+
+											name="test_cycle"
+											context="{'key': 'test_create_budget_procedure'}"
 										/>
+<!--
+										name="test_create_sale_procedure"
+										name="test_create_procedure"
+										name="test_create_sessions"
+										name="test_create_controls"
+-->
 
 										<!-- Create Sale procedure -->
 										<button
 											type="object"
 											class="oe_highlight"
-											name="test_create_sale_procedure"
 											string="Sale P"
+
+											name="test_cycle"
+											context="{'key': 'test_create_sale_procedure'}"
 										/>
 
 										<!-- Create Procedure -->
 										<button
 											type="object"
 											class="oe_highlight"
-											name="test_create_procedure"
 											string="Procs"
+
+											name="test_cycle"
+											context="{'key': 'test_create_procedure'}"
 										/>
 
 										<!-- Create Sessions -->
 										<button
 											type="object"
 											class="oe_highlight"
-											name="test_create_sessions"
 											string="Sessions"
+
+											name="test_cycle"
+											context="{'key': 'test_create_sessions'}"
 										/>
 
 										<!-- Create Controls -->
 										<button
 											type="object"
 											class="oe_highlight"
-											name="test_create_controls"
 											string="Controls"
+
+											name="test_cycle"
+											context="{'key': 'test_create_controls'}"
 										/>
 									</group>
-
-
-
 							</group>
 						</group>
 

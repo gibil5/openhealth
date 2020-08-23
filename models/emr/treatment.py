@@ -808,108 +808,8 @@ class Treatment(models.Model):
 				}
 	# create_service
 
-# ----------------------------------------------------------- Test All Cycle - Step by Step --------------------------
-	@api.multi
-	def test_create_budget_consultation(self):
-		"""
-		Test
-		"""
-		print()
-		print('Test Create Budget Consultation')
-		test_treatment.test_create_budget_consultation(self)
 
-	@api.multi
-	def test_create_sale_consultation(self):
-		"""
-		Test
-		"""
-		print()
-		print('Test Create Sale Consultation')
-		test_treatment.test_create_sale_consultation(self)
-
-	@api.multi
-	def test_create_consultation(self):
-		"""
-		Test
-		"""
-		print()
-		print('Test Create Consultation')
-		test_treatment.test_create_consultation(self)
-
-	@api.multi
-	def test_create_recommendations(self):
-		"""
-		Test
-		"""
-		print()
-		print('Test Create Recommendations')
-		test_treatment.test_create_recommendations(self)
-
-	@api.multi
-	def test_create_budget_procedure(self):
-		"""
-		Test
-		"""
-		print()
-		print('Test Create Budget procedure')
-		test_treatment.test_create_budget_procedure(self)
-
-	@api.multi
-	def test_create_sale_procedure(self):
-		"""
-		Test
-		"""
-		print()
-		print('Test Create Sale procedure')
-		test_treatment.test_create_sale_procedure(self)
-
-
-	#jx
-	@api.multi
-	def test_create_procedure(self):
-		"""
-		Create Procedure - Button
-		"""
-		print()
-		print('Test Create procedure manual')
-
-		#if True:
-		if False:
-			test_funcs.disablePrint()
-			self.test_reset()
-			self.test_create_budget_consultation()
-			self.test_create_sale_consultation()
-			self.test_create_consultation()
-			self.test_create_recommendations()
-			self.test_create_budget_procedure()
-			self.test_create_sale_procedure()
-			test_funcs.enablePrint()
-
-		#test_treatment.test_create_procedure(self)
-		self.create_procedure_man()
-
-
-
-	@api.multi
-	def test_create_sessions(self):
-		"""
-		Test
-		"""
-		print()
-		print('Test Create sessions')
-		test_treatment.test_create_sessions(self)
-
-	@api.multi
-	def test_create_controls(self):
-		"""
-		Test
-		"""
-		print()
-		print('Test Create controls')
-		test_treatment.test_create_controls(self)
-
-
-# ----------------------------------------------------------- Test Integration --------------------
+# ---------------------------------------------------- Test Integration --------
 	@api.multi
 	def test_integration(self):
 		"""
@@ -926,7 +826,7 @@ class Treatment(models.Model):
 		print()
 		print('SUCCESS !')
 
-# ----------------------------------------------------------- Test Reset --------------------------
+# ----------------------------------------------------------- Test Reset -------
 	@api.multi
 	def test_reset(self):
 		"""
@@ -941,19 +841,49 @@ class Treatment(models.Model):
 		print('SUCCESS !')
 
 
-# -------------------------------------------------------- Open Myself ---------
-	# Open Myself
+# -------------------------------------------------- Test Cycle ----------------
 	@api.multi
-	def open_myself(self):
+	def test_cycle(self):
 		"""
-		Used by - Procedure
+		Test Cycle
 		"""
-		#treatment_id = self.id
-		return action_funcs.open_myself('openhealth.treatment', self.id)
+		print()
+		print('test_cycle')
+		value = self.env.context.get('key')
+		print(value)
 
-	# open_myself
+		# Consultation
+		if value == 'test_create_budget_consultation':
+			test_treatment.test_create_budget_consultation(self)
 
-# ----------------------------------------------------------- Test Reports ----------------------------------------------
+		elif value == 'test_create_sale_consultation':
+			test_treatment.test_create_sale_consultation(self)
+
+		elif value == 'test_create_consultation':
+			test_treatment.test_create_consultation(self)
+
+		# Reco
+		elif value == 'test_create_recommendations':
+			test_treatment.test_create_recommendations(self)
+
+		# Procedure
+		elif value == 'test_create_budget_procedure':
+			test_treatment.test_create_budget_procedure(self)
+
+		elif value == 'test_create_sale_procedure':
+			test_treatment.test_create_sale_procedure(self)
+
+		elif value == 'test_create_procedure':
+			self.create_procedure_man()
+
+		elif value == 'test_create_sessions':
+			test_treatment.test_create_sessions(self)
+
+		elif value == 'test_create_controls':
+			test_treatment.test_create_controls(self)
+
+
+# ----------------------------------------------------------- Test Reports -----
 	# Management
 	report_management = fields.Many2one(
 			'openhealth.management',
@@ -978,7 +908,7 @@ class Treatment(models.Model):
 			string="TXT",
 		)
 
-# ----------------------------------------------------- Test --------------------------
+# ----------------------------------------------------- Test Report --------------------------
 	@api.multi
 	def test_report(self):
 		"""
@@ -1003,3 +933,13 @@ class Treatment(models.Model):
 
 		print()
 		print('SUCCESS !')
+
+# -------------------------------------------------------- Open Myself ---------
+	# Open Myself
+	@api.multi
+	def open_myself(self):
+		"""
+		Used by - Procedure
+		"""
+		#treatment_id = self.id
+		return action_funcs.open_myself('openhealth.treatment', self.id)

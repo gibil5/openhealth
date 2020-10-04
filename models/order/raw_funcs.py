@@ -302,26 +302,26 @@ def get_date_corrected(date_order):
 	return date_corrected
 
 # ----------------------------------------------------------- Ticket - Get Raw Line - Aux ----------------
-def get_credit_note_type(self):
-	"""
-	Used by:
-		- Get Ticket Raw
-	"""
-	_dic_cn = {
-				'cancel': 					'Anulación de la operación.',
-				'cancel_error_ruc': 		'Anulación por error en el RUC.',
-				'correct_error_desc': 		'Corrección por error en la descripción.',
-				'discount': 				'Descuento global.',
-				'discount_item': 			'Descuento por item.',
-				'return': 					'Devolución total.',
-				'return_item': 				'Devolución por item.',
-				'bonus': 					'Bonificación.',
-				'value_drop': 				'Disminución en el valor.',
-				'other': 					'Otros.',
-				False: 						'',
-	}
-
-	return _dic_cn[credit_note_type]
+#def get_credit_note_type(self):
+#	"""
+#	Used by:
+#		- Get Ticket Raw
+#	"""
+#	_dic_cn = {
+#				'cancel': 					'Anulación de la operación.',
+#				'cancel_error_ruc': 		'Anulación por error en el RUC.',
+#				'correct_error_desc': 		'Corrección por error en la descripción.',
+#				'discount': 				'Descuento global.',
+#				'discount_item': 			'Descuento por item.',
+#				'return': 					'Devolución total.',
+#				'return_item': 				'Devolución por item.',
+#				'bonus': 					'Bonificación.',
+#				'value_drop': 				'Disminución en el valor.',
+#				'other': 					'Otros.',
+#				False: 						'',
+#	}
+#
+#	return _dic_cn[credit_note_type]
 
 
 # ----------------------------------------------------------- Create PM ----------------

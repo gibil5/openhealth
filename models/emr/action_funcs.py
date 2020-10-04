@@ -2,9 +2,10 @@
 """
 	Action Funcs - Used by Treatment
 	Created: 			02 Aug 2020
-	Last up: 	 		02 Aug 2020
-	
+	Last up: 	 		 4 oct 2020
 """
+
+_action_window = "ir.actions.act_window"
 
 # ----------------------------------------------------------- Open myself ------
 def open_myself(res_model, res_id):
@@ -16,12 +17,10 @@ def open_myself(res_model, res_id):
 
 	return {
 		# Mandatory
-		'type': 'ir.actions.act_window',
+		'type': _action_window,
 		'name': 'Open Consultation Current',
 		# Window action
-		#'res_model': 'openhealth.treatment',
 		'res_model': res_model,
-		#'res_id': treatment_id,
 		'res_id': res_id,
 		# Views
 		"views": [[False, "form"]],
@@ -32,7 +31,6 @@ def open_myself(res_model, res_id):
 		#'auto_search': False,
 		'flags': {
 				'form': {'action_buttons': True, }
-				#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
 		},
 		'context':   {}
 	}
@@ -44,9 +42,7 @@ def open_line_current(res_model, res_id):
 	"""
 	print('open_line_current')
 	return {
-			#'res_model': self._name,
-			#'res_id': consultation_id,
-			'type': 'ir.actions.act_window',
+			'type': _action_window,
 			'name': ' Edit Order Current',
 			'view_type': 'form',
 			'view_mode': 'form',
@@ -54,7 +50,6 @@ def open_line_current(res_model, res_id):
 			'res_id': res_id,
 			'target': 'current',
 			'flags': {
-					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
 					'form': {'action_buttons': True, }
 					},
 			'context': {}
@@ -74,7 +69,7 @@ def open_order(order):
 			# Created
 			'res_id': order.id,
 			# Mandatory
-			'type': 'ir.actions.act_window',
+			'type': _action_window,
 			'name': 'Open Order Current',
 			# Window action
 			'res_model': 'sale.order',
@@ -87,7 +82,6 @@ def open_order(order):
 			#'auto_search': False,
 			'flags': {
 					'form': {'action_buttons': True, }
-					#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
 					},
 			'context': {}
 		}

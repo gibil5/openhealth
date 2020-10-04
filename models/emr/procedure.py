@@ -1,14 +1,19 @@
 # -*- coding: utf-8 -*-
 """
 	Procedure
-	Created: 				 1 Nov 2016
-	Last updated: 	 	 	22 Aug 2020
+	Created: 			 1 Nov 2016
+	Last up: 	 		 4 oct 2020
 """
 from __future__ import print_function
 from datetime import datetime
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.libs import user, lib
 from . import time_funcs
+
+_model_control = "openhealth.control"
+_model_session = "openhealth.session.med"
+_model_app = "oeh.medical.appointment"
+
 
 class Procedure(models.Model):
 	"""
@@ -17,9 +22,8 @@ class Procedure(models.Model):
 	"""
 	_name = 'openhealth.procedure'
 	_description = 'Procedure'
-	#_order = 'write_date desc'
-
 	_inherit = 'oeh.medical.evaluation'
+	#_order = 'write_date desc'
 
 # ----------------------------------------------------------- Creates control Man -------------------------
 	# Create Controls Manual
@@ -31,7 +35,7 @@ class Procedure(models.Model):
 		print()
 		print('oh - procedure - btn_create_controls_manual')
 
-		nr_ctl_created = self.env['openhealth.control'].search_count([
+		nr_ctl_created = self.env[_model_control].search_count([
 																		('procedure', '=', self.id),
 																	])
 		# Create
@@ -51,7 +55,7 @@ class Procedure(models.Model):
 
 		self.number_controls = self.configurator.get_number(self.laser, 'control')
 
-		already_created = self.env['openhealth.control'].search_count([
+		already_created = self.env[_model_control].search_count([
 																		('procedure', '=', self.id),
 																	])
 		# Create
@@ -70,7 +74,7 @@ class Procedure(models.Model):
 		print()
 		print('oh - procedure - btn_create_sessions_manual')
 
-		nr_ses_created = self.env['openhealth.session.med'].search_count([
+		nr_ses_created = self.env[_model_session].search_count([
 																			('procedure', '=', self.id),
 																	])
 		# Create
@@ -90,7 +94,7 @@ class Procedure(models.Model):
 
 		self.number_sessions = self.configurator.get_number(self.laser, 'session')
 
-		already_created = self.env['openhealth.session.med'].search_count([
+		already_created = self.env[_model_session].search_count([
 																			('procedure', '=', self.id),
 																	])
 		# Create
@@ -165,7 +169,7 @@ class Procedure(models.Model):
 		#print 'Get Default App - 2'
 		patient = self.treatment.patient
 		doctor = self.treatment.physician
- 		app = self.env['oeh.medical.appointment'].search([
+ 		app = self.env[_model_app].search([
 																('patient', '=', patient),
 																('doctor', '=', doctor),
 														],
@@ -183,7 +187,7 @@ class Procedure(models.Model):
 		#print 'Get Default App'
 		patient = self.patient
 		doctor = self.doctor
- 		app = self.env['oeh.medical.appointment'].search([
+ 		app = self.env[_model_app].search([
 																('patient', '=', patient),
 																('doctor', '=', doctor),
 														],
@@ -206,7 +210,7 @@ class Procedure(models.Model):
 		patient = self.patient
 		doctor = self.doctor
 		x_type = 'procedure'
- 		app = self.env['oeh.medical.appointment'].search([
+ 		app = self.env[_model_app].search([
 																('patient', '=', patient.name),
 																('doctor', '=', doctor.name),
 																('x_type', '=', x_type),
@@ -505,7 +509,7 @@ class Procedure(models.Model):
 
 			# Create Session
 			appointment_id = False
-			self.env['openhealth.session.med'].create({
+			self.env[_model_session].create({
 																	'evaluation_start_date':session_date,
 																	'patient': patient_id,
 																	'doctor': doctor_id,

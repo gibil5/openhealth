@@ -10,8 +10,8 @@ import datetime
 import math
 try:
 	from num2words import num2words
-except (ImportError, IOError) as err:
-	_logger.debug(err)
+#except (ImportError, IOError) as err:
+#	_logger.debug(err)
 
 
 # ---------------------------------------------------- Ticket - tools -------------

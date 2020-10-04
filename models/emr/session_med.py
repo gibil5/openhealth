@@ -2,12 +2,20 @@
 """
 	*** Session Med
 	Created: 			24 Feb 2017
-	Last up: 	 		22 aug 2020
+	Last up: 	 		 4 oct 2020
 """
 from openerp import models, fields, api
 from datetime import datetime
 from . import session_vars
 from openerp.addons.openhealth.models.libs import lib
+
+_fluency = "Fluencia (J/cm2)"
+_frequency = "Frecuencia (Hz)"
+_lesion_type = "Tipo de lesión"
+_lesion_depth = "Profundidad de lesión"
+_pulse_type = "Tipo de pulso"
+_pulse_duration = "Duración de pulso"
+_time_bet = "Tiempo entre pulsos"
 
 class SessionMed(models.Model):	
 	"""
@@ -60,7 +68,7 @@ class SessionMed(models.Model):
 		)
 
 	quick_frequency=fields.Char(
-			string="Frecuencia (Hz)",
+			string=_frequency,
 			default='', 
 		)
 
@@ -106,12 +114,12 @@ class SessionMed(models.Model):
 		)
 
 	quick_fluency_2=fields.Char(
-			string="Fluencia (J/cm2)",	
+			string=_fluency,	
 			default='', 
 		)
 
 	quick_frequency_2=fields.Char(
-			string="Frecuencia (Hz)",
+			string=_frequency,
 			default='', 
 		)
 
@@ -127,7 +135,7 @@ class SessionMed(models.Model):
 		)
 	
 	co2_frequency=fields.Char(
-			string="Frecuencia (Hz)",
+			string=_frequency,
 			default='', 
 		)
 	
@@ -147,7 +155,7 @@ class SessionMed(models.Model):
 		)
 	
 	co2_fluency = fields.Char(
-			string="Fluencia (J/cm2)",	
+			string=_fluency,	
 			default='', 
 		)
 
@@ -177,7 +185,7 @@ class SessionMed(models.Model):
 		)
 	
 	co2_frequency_2=fields.Char(
-			string="Frecuencia (Hz)",
+			string=_frequency,
 			default='', 
 		)
 	
@@ -197,7 +205,7 @@ class SessionMed(models.Model):
 		)
 	
 	co2_fluency_2=fields.Char(
-			string="Fluencia (J/cm2)",	
+			string=_fluency,	
 			default='', 
 		)
 
@@ -223,7 +231,7 @@ class SessionMed(models.Model):
 
 #------------------------------------------------------ Ipl --------------------
 	ipl_fluency=fields.Float(
-			string="Fluencia (J/cm2)",
+			string=_fluency,
 			)
 			
 	ipl_phototype=fields.Char(
@@ -232,28 +240,28 @@ class SessionMed(models.Model):
 			)
 			
 	ipl_lesion_type=fields.Char(
-			string="Tipo de lesión",
+			string=_lesion_type,
 			required=False, 
 			)
 	
 	ipl_lesion_depth=fields.Char(
-			string="Profundidad de lesión",
+			string=_lesion_depth,
 			required=False, 
 			)
 			
 	ipl_pulse_type=fields.Selection(
 			selection=session_vars._ipl_pulse_type,
-			string="Tipo de pulso",
+			string=_pulse_type,
 			required=False, 
 			)
 			
 	ipl_pulse_duration=fields.Char(
-			string="Duración de pulso",
+			string=_pulse_duration,
 			required=False, 
 			)
 			
 	ipl_pulse_time_between=fields.Char(
-			string="Tiempo entre pulsos",
+			string=_time_bet,
 			required=False, 
 			)
 			
@@ -274,7 +282,7 @@ class SessionMed(models.Model):
 
 #------------------------------------------------------ Ipl - 2 ----------------
 	ipl_fluency_2=fields.Float(
-			string="Fluencia (J/cm2)",
+			string=_fluency,
 			)
 			
 	ipl_phototype_2=fields.Char(
@@ -283,28 +291,28 @@ class SessionMed(models.Model):
 			)
 			
 	ipl_lesion_type_2=fields.Char(
-			string="Tipo de lesión",
+			string=_lesion_type,
 			required=False, 
 			)
 	
 	ipl_lesion_depth_2=fields.Char(
-			string="Profundidad de lesión",
+			string=_lesion_depth,
 			required=False, 
 			)
 			
 	ipl_pulse_type_2=fields.Selection(
 			selection=session_vars._ipl_pulse_type,
-			string="Tipo de pulso",
+			string=_pulse_type,
 			required=False, 
 			)
 			
 	ipl_pulse_duration_2=fields.Char(
-			string="Duración de pulso",
+			string=_pulse_duration,
 			required=False, 
 			)
 			
 	ipl_pulse_time_between_2=fields.Char(
-			string="Tiempo entre pulsos",
+			string=_time_bet,
 			required=False, 
 			)
 			
@@ -359,24 +367,24 @@ class SessionMed(models.Model):
 			)
 			
 	ndy_lesion_type=fields.Char(
-			string="Tipo de lesión",
+			string=_lesion_type,
 			)
 			
 	ndy_lesion_depth=fields.Char(
-			string="Profundidad de lesión",
+			string=_lesion_depth,
 			)
 			
 	ndy_pulse_type=fields.Selection(
 			selection=session_vars._ndyag_pulse_type,
-			string="Tipo de pulso",
+			string=_pulse_type,
 			)
 			
 	ndy_pulse_duration=fields.Char(
-			string="Duración de pulso",
+			string=_pulse_duration,
 			)
 
 	ndy_pulse_time_between=fields.Char(
-			string="Tiempo entre pulsos",
+			string=_time_bet,
 			)
 			
 	ndy_pulse_spot=fields.Selection(

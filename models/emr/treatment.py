@@ -27,11 +27,17 @@ from . import search_objects
 
 from . import tre_funcs
 
+_model_treatment = "openhealth.treatment"
+_model_ser_co2 = "openhealth.service_co2"
+_model_sale = "sale.order"
+_model_consultation = "openhealth.consultation"
+_model_action = "ir.actions.act_window"
+
 class Treatment(models.Model):
 	"""
 	Treatment class
 	"""
-	_name = 'openhealth.treatment'
+	_name = _model_treatment
 	_order = 'write_date desc'
 	_description = 'Treatment'
 
@@ -225,7 +231,7 @@ class Treatment(models.Model):
 	@api.multi
 	def _compute_nr_budgets_cons(self):
 		for record in self:
-			obj = counter_objects.CounterObjects(self.env['sale.order'], record.id, 'draft', 'CONSULTA')
+			obj = counter_objects.CounterObjects(self.env[_model_sale], record.id, 'draft', 'CONSULTA')
 			record.nr_budgets_cons = obj.count()
 
 
@@ -237,7 +243,7 @@ class Treatment(models.Model):
 	@api.multi
 	def _compute_nr_invoices_cons(self):
 		for record in self:
-			obj = counter_objects.CounterObjects(self.env['sale.order'], record.id, 'sale', 'CONSULTA')
+			obj = counter_objects.CounterObjects(self.env[_model_sale], record.id, 'sale', 'CONSULTA')
 			record.nr_invoices_cons = obj.count()
 
 
@@ -249,7 +255,7 @@ class Treatment(models.Model):
 	@api.multi
 	def _compute_nr_budgets_pro(self):
 		for record in self:
-			obj = counter_objects.CounterObjects(self.env['sale.order'], record.id, 'draft', 'procedure', 'x_family')
+			obj = counter_objects.CounterObjects(self.env[_model_sale], record.id, 'draft', 'procedure', 'x_family')
 			record.nr_budgets_pro = obj.count()
 
 	# Invoices - Proc
@@ -260,7 +266,7 @@ class Treatment(models.Model):
 	@api.multi
 	def _compute_nr_invoices_pro(self):
 		for record in self:
-			obj = counter_objects.CounterObjects(self.env['sale.order'], record.id, 'sale', 'procedure',  'x_family')
+			obj = counter_objects.CounterObjects(self.env[_model_sale], record.id, 'sale', 'procedure',  'x_family')
 			record.nr_invoices_pro = obj.count()
 
 
@@ -273,7 +279,7 @@ class Treatment(models.Model):
 	@api.depends('consultation_ids')
 	def _compute_nr_consultations(self):
 		for record in self:
-			model = 'openhealth.consultation'
+			model = _model_consultation
 			obj = counter_objects.CounterObjects(self.env[model], record.id)
 			record.nr_consultations = obj.count_fast()
 
@@ -498,7 +504,7 @@ class Treatment(models.Model):
 			#vip = self.env['openhealth.service.vip'].search_count([('treatment', '=', record.id),])
 			#product = self.env['openhealth.service.product'].search_count([('treatment', '=', record.id),])
 			#record.nr_services = quick + co2 + exc + ipl + ndyag + medical + vip + product
-			co2 = self.env['openhealth.service_co2'].search_count([('treatment', '=', record.id),])
+			co2 = self.env[_model_ser_co2].search_count([('treatment', '=', record.id),])
 			record.nr_services = co2
 
 # ----------------------------------------------------------- Create Buttons  ----------
@@ -550,7 +556,7 @@ class Treatment(models.Model):
 		evaluation_start_date = datetime.datetime.now(GMT).strftime("%Y-%m-%d %H:%M:%S")
 
 		# Search
-		consultation = self.env['openhealth.consultation'].search([
+		consultation = self.env[_model_consultation].search([
 																		('treatment', '=', self.id),
 																],
 																#order='appointment_date desc',
@@ -559,7 +565,7 @@ class Treatment(models.Model):
 		# If Consultation not exist
 		if not consultation.name:
 			# Create
-			consultation = self.env['openhealth.consultation'].create({
+			consultation = self.env[_model_consultation].create({
 																		'patient': patient_id,
 																		'treatment': treatment_id,
 																		'evaluation_start_date': evaluation_start_date,
@@ -569,10 +575,10 @@ class Treatment(models.Model):
 
 		return {
 				# Mandatory
-				'type': 'ir.actions.act_window',
+				'type': _model_action,
 				'name': 'Open Consultation Current',
 				# Window action
-				'res_model': 'openhealth.consultation',
+				'res_model': _model_consultation,
 				#'res_id': consultation_id,
 				'res_id': consultation.id,
 				# Views
@@ -610,13 +616,13 @@ class Treatment(models.Model):
 
 		# Init
 		res_id = self.id
-		res_model = 'openhealth.treatment'
+		res_model = _model_treatment
 		view_id = self.env.ref('openhealth.treatment_2_form_view').id
 
 		# Open
 		return {
 			# Mandatory
-			'type': 'ir.actions.act_window',
+			'type': _model_action,
 			'name': 'Open Treatment Current',
 			# Window action
 			'priority': 1,
@@ -752,7 +758,7 @@ class Treatment(models.Model):
 		print('Create Service Generic - ', subfamily)
 		# init
 		model_dic = {
-						'co2': 			'openhealth.service_co2',
+						'co2': 			_model_ser_co2,
 						'excilite': 	'openhealth.service_excilite',					
 						'ipl': 			'openhealth.service_ipl',
 						'ndyag': 		'openhealth.service_ndyag',
@@ -768,7 +774,7 @@ class Treatment(models.Model):
 
 		# open 	
 		return {
-				'type': 'ir.actions.act_window',
+				'type': _model_action,
 				'name': ' New Service Current', 
 				'res_model':  	model,			
 				#'res_id': consultation_id,
@@ -882,4 +888,4 @@ class Treatment(models.Model):
 		Used by - Procedure
 		"""
 		#treatment_id = self.id
-		return action_funcs.open_myself('openhealth.treatment', self.id)
+		return action_funcs.open_myself(_model_treatment, self.id)

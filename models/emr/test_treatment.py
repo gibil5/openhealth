@@ -4,12 +4,16 @@
 
 		Used by:			Treatment
 		Created: 			14 Aug 2018
-		Last up: 	 		11 Aug 2020
+		Last up: 	 		 4 oct 2020
 """
 from __future__ import print_function
 from openerp.addons.price_list.models.lib import test_funcs
 from openerp import _
 from openerp.exceptions import Warning as UserError
+
+_model_ser_pro = "openhealth.service_product'"
+_model_ser_cos = "openhealth.service_cosmetology"
+_model_ser_med = "openhealth.service_medical" 
 
 # ------------------------------------------------------- Level 0 - Creates ----
 def test_create(self, value):
@@ -460,11 +464,11 @@ def create_recommendations_2019(self):
 		}
 
 	model_dic = {
-					'prod_0': 	'openhealth.service_product',
-					'prod_1': 	'openhealth.service_product',
-					'prod_2': 	'openhealth.service_product',
-					'prod_3': 	'openhealth.service_product',
-					'prod_4': 	'openhealth.service_product',
+					'prod_0': 	_model_ser_pro,
+					'prod_1': 	_model_ser_pro,
+					'prod_2': 	_model_ser_pro,
+					'prod_3': 	_model_ser_pro,
+					'prod_4': 	_model_ser_pro,
 
 					'co2': 		'openhealth.service_co2',
 
@@ -473,19 +477,19 @@ def create_recommendations_2019(self):
 					'ndy': 		'openhealth.service_ndyag',
 					'qui': 		'openhealth.service_quick',
 
-					'cos_0': 	'openhealth.service_cosmetology',
-					'cos_1': 	'openhealth.service_cosmetology',
-					'cos_2': 	'openhealth.service_cosmetology',
+					'cos_0': 	_model_ser_cos,
+					'cos_1': 	_model_ser_cos,
+					'cos_2': 	_model_ser_cos,
 
-					'med_0': 	'openhealth.service_medical',
-					'med_1': 	'openhealth.service_medical',
-					'med_2': 	'openhealth.service_medical',
-					'med_3': 	'openhealth.service_medical',
-					'med_4': 	'openhealth.service_medical',
-					'med_5': 	'openhealth.service_medical',
-					'med_6': 	'openhealth.service_medical',
-					'med_7': 	'openhealth.service_medical',
-					'med_8': 	'openhealth.service_medical',
+					'med_0': 	_model_ser_med,
+					'med_1': 	_model_ser_med,
+					'med_2': 	_model_ser_med,
+					'med_3': 	_model_ser_med,
+					'med_4': 	_model_ser_med,
+					'med_5': 	_model_ser_med,
+					'med_6': 	_model_ser_med,
+					'med_7': 	_model_ser_med,
+					'med_8': 	_model_ser_med,
 
 					'gyn': 		'openhealth.service_gynecology',
 					'echo': 	'openhealth.service_echography',

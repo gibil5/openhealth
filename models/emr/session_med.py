@@ -17,6 +17,7 @@ _pulse_type = "Tipo de pulso"
 _pulse_duration = "Duración de pulso"
 _time_bet = "Tiempo entre pulsos"
 
+
 class SessionMed(models.Model):	
 	"""
 	Class Session Med
@@ -63,7 +64,7 @@ class SessionMed(models.Model):
 		)
 
 	quick_fluency = fields.Char(
-			string="Fluencia (J/cm2)",	
+			string=_fluency,	
 			default='', 
 		)
 
@@ -359,7 +360,7 @@ class SessionMed(models.Model):
 
 #------------------------------------------------------ Ndyag ------------------
 	ndy_fluency=fields.Float(
-			string="Fluencia (J/cm2)",
+			string=_fluency,
 			)
 			
 	ndy_phototype=fields.Char(

@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
- 		Consultation 
+		Consultation 
 
-		Created: 			 1 Nov 2016
-		Last updated: 	 	27 Jul 2020
+		Created: 			 1 nov 2016
+		Last updated: 	 	10 oct 2020
 """
 from datetime import datetime,tzinfo,timedelta
 from openerp import models, fields, api
@@ -49,39 +49,22 @@ class Consultation(models.Model):
 
 	@api.multi
 	def _compute_state(self):
+
+		dic = {	0: 'draft',
+				7: 'done' }
+
 		for record in self:
 
+			#pro = record.x_fitzpatrick + record.x_photo_aging + record.x_diagnosis + record.x_antecedents + record.x_allergies_medication + record.x_observations + record.x_indications
+
+			# Calc
 			pro = 0
-
-			if record.x_fitzpatrick != False:
-				pro = pro + 1
-
-			if record.x_photo_aging != False:
-				pro = pro + 1
-			
-			if record.x_diagnosis != False:
-				pro = pro + 1
-			
-			if record.x_antecedents != False:
-				pro = pro + 1
-
-			if record.x_allergies_medication != False:
-				pro = pro + 1
-
-			if record.x_observations != False:
-				pro = pro + 1
-
-			if record.x_indications != False:
-				pro = pro + 1
-
-			if pro == 0:
-				record.state = 'draft'
-			elif pro == 7:
-				record.state = 'done'
-			elif 0 < pro < 7: 
+			for p in [record.x_fitzpatrick, record.x_photo_aging, record.x_diagnosis, record.x_antecedents, record.x_allergies_medication, record.x_observations, record.x_indications]:
+				pro+=1 if p else 0
+			if pro in dic:
+				record.state = dic[pro]
+			else: 
 				record.state = 'inprogress'
-
-
 
 
 	# Progress

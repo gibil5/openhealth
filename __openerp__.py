@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 {
-'name': "Open Health - Odoo9 mod - Object Oriented - Refactorized with CodeClimate.",
+'name': "Open Health - Odoo9 mod - Object Oriented - Refactorized - CodeClimate - SonarQube.",
 'summary': """ ERP system for a Clinic. Inherits OeHealth. Contains ALL the Data Model. Business logic is in classes and libraries.
 """,
 'description': """
 
-	4 Oct 2020
+	10 Oct 2020
 
 	Classess: 
 		- Order, 

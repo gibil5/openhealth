@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 	Configurator - EMR
-	Created: 			25 Jan 2019
-	Last updated: 		 4  2020
+	Created: 			25 jan 2019
+	Last updated: 		10 oct  2020
 """
 from __future__ import print_function
 from openerp import models, fields, api
@@ -26,39 +26,36 @@ class ConfiguratorEmr(models.Model):
 # ----------------------------------------------------------- Getters ----------
 	def get_number(self, laser, evaluation):
 		"""
-		Get nr controls
-		Used by procedure
+		Get nr controls, for controls and sessions.
+		Used by procedure.
 		"""
+
+		dic_control = {	
+				'laser_co2': self.nr_controls_co2, 
+				'laser_quick': self.nr_controls_quick, 
+				'laser_exc': self.nr_controls_exc, 
+				'laser_ipl': self.nr_controls_ipl, 
+				'laser_ndyag': self.nr_controls_ndyag 
+				}
+		dic_session = {	
+				'laser_co2': self.nr_sessions_co2, 
+				'laser_quick': self.nr_sessions_quick, 
+				'laser_exc': self.nr_sessions_exc, 
+				'laser_ipl': self.nr_sessions_ipl, 
+				'laser_ndyag': self.nr_sessions_ndyag 
+				}
+
+		number = 0
+		
 		if evaluation == 'control':
-			if laser in ['laser_co2']:
-				number = self.nr_controls_co2
-			elif laser in ['laser_quick']:
-				number = self.nr_controls_quick
-			elif laser in ['laser_exc']:
-				number = self.nr_controls_exc
-			elif laser in ['laser_ipl']:
-				number = self.nr_controls_ipl
-			elif laser in ['laser_ndyag']:
-				number = self.nr_controls_ndyag
-			else:
-				number = 0
+			if laser in dic_control:
+				number = dic_control[laser]
 
 		elif evaluation == 'session':
-			if laser in ['laser_co2']:
-				number = self.nr_sessions_co2
-			elif laser in ['laser_quick']:
-				number = self.nr_sessions_quick
-			elif laser in ['laser_exc']:
-				number = self.nr_sessions_exc
-			elif laser in ['laser_ipl']:
-				number = self.nr_sessions_ipl
-			elif laser in ['laser_ndyag']:
-				number = self.nr_sessions_ndyag
-			else:
-				number = 0
+			if laser in dic_session:
+				number = dic_session[laser]
 
 		return number
-
 
 # --------------------------------------------- Companuy - Ticket and TXT ------
 	# Company

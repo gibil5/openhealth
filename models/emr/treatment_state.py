@@ -3,20 +3,19 @@
 	treatment_state.py
 	TreatmentState Class
 
-	Created: 			24 Jul 2020
-	Last up: 	 		24 Jul 2020
+	Created: 			24 jul 2020
+	Last up: 	 		11 oct 2020
 """
 class TreatmentState(object):
 	"""
 	Used by Treatment
 	"""
-	def __init__(self, record):
+	def __init__(self, record, verbose):
 		#print()
 		#print('TreatmentState  -  init')
 		self.record = record
 		#print(self.record)
 
-		verbose = False
 		if verbose: 
 			print("nr_budgets_cons: {}".format(self.record.nr_budgets_cons))
 			print("nr_invoices_cons: {}".format(self.record.nr_invoices_cons))

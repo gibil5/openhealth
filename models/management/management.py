@@ -2,10 +2,10 @@
 """
 	Management Report
 
-	Only Data model. No functions.
+	** Only Data model. No functions **
 
-	Created: 			28 May 2018
-	Last updated: 		 8 Dec 2019
+	Created: 			28 may 2018
+	Last updated: 		11 oct 2020
 """
 from __future__ import print_function
 
@@ -21,50 +21,32 @@ from . import mgt_vars
 class Management(models.Model):
 	"""
 	Contains only the data model. No functions.
-
-	- Management Report (Gerencia)
-	- Reports Sales, for a time period. From a Star Date to an End Date.
-	- Allows several analysis like: Doctor Sale analysis, Patient Purchase analysis, Productivity analysis, Daily Sales, per Doctor, Statistics, Report Validation.
+		- Management Report (Gerencia)
+		- Reports Sales, for a time period. From a Star Date to an End Date.
+		- Allows several analysis like: Doctor Sale analysis, Patient Purchase analysis, Productivity analysis, Daily Sales, per Doctor, Statistics, Report Validation.
 	"""
 	_name = 'openhealth.management'
-
 	_inherit = 'openhealth.repo'
-
 	_order = 'date_begin desc'
 
-
-
-
-# ----------------------------------------------------------- Prod ----------------------
+# ----------------------------------------------------------- Prod -------------
 	# For Update Productivity
 	productivity_day = fields.One2many(
-
 			'productivity.day',
-
 			'management_id',
 		)
 
-
-
-
-# ----------------------------------------------------------- PL - Natives ----------------------
-
+# ----------------------------------------------------------- PL - Natives -----
 	mode = fields.Selection(
-
-			[
-				('normal', 'Normal'),
+			[ 	('normal', 'Normal'),
 				('test', 'Test'),
 				#('legacy', 'Legacy'),
 			],
-
 			default='normal',
 			required=True,
 		)
 
-
-
-
-# ----------------------------------------------------------- PL - Natives ----------------------
+# ----------------------------------------------------------- PL - Natives -----
 	# All Year Max and Min
 	pl_max = fields.Boolean(
 			'Max',
@@ -74,8 +56,7 @@ class Management(models.Model):
 			'Min',
 		)
 
-
-# ----------------------------------------------------------- PL - Relational ----------------------
+# -------------------------------------------------------- PL - Relational -----
 	# Doctor
 	# For Update Daily
 	doctor_line = fields.One2many(
@@ -83,14 +64,10 @@ class Management(models.Model):
 			'management_id',
 		)
 
-
-
-
-# ----------------------------------------------------------- PL - Natives ----------------------
-
+# ----------------------------------------------------------- PL - Natives -----
 	# New Procedures
 
-	# New - Echography
+	# Echography
 	nr_echo = fields.Integer(
 			'Nr Ecografia',
 		)
@@ -104,8 +81,7 @@ class Management(models.Model):
 			'Precio Prom. Ecografia',
 		)
 
-
-	# New - Gynecology
+	# Gynecology
 	nr_gyn = fields.Integer(
 			'Nr Ginecologia',
 		)
@@ -119,8 +95,7 @@ class Management(models.Model):
 			'Precio Prom. Ginecologia',
 		)
 
-
-	# New - Promotions
+	# Promotions
 	nr_prom = fields.Integer(
 			'Nr Promocion',
 		)
@@ -134,17 +109,10 @@ class Management(models.Model):
 			'Precio Prom. Promocion',
 		)
 
-
-
-
-
-
-# ----------------------------------------------------------- PL Natives -------------------------
-
+# ----------------------------------------------------------- PL Natives -------
 	# Credit Notes
 	per_amo_credit_notes = fields.Float(
 		)
-
 
 	# Consultations
 	nr_sub_con_med = fields.Integer(
@@ -159,7 +127,6 @@ class Management(models.Model):
 			'% Monto Cons Med',
 		)
 
-
 	# Gynecology
 	nr_sub_con_gyn = fields.Integer(
 			'Nr Cons Gin',
@@ -172,7 +139,6 @@ class Management(models.Model):
 	per_amo_sub_con_gyn = fields.Float(
 			'% Monto Cons Gin',
 		)
-
 
 	# Chavarri Brand
 	nr_sub_con_cha = fields.Integer(

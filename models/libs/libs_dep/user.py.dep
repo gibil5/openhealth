@@ -1,21 +1,17 @@
 # -*- coding: utf-8 -*-
 """
 		user.py - Dep ?
+			Who is using this ?
 
-		Who is using this ?
+ 			Bussiness oriented. Can not be Unit-tested (depends on a third-party library: Odoo).
 
- 		Bussiness oriented. Can not be Unit-tested (depends on a third-party library: Odoo).
-
- 		Created: 			13 Aug 2018
- 		Last up: 	 		 2 Sep 2019
+ 		Created: 			13 aug 2018
+ 		Last up: 	 		11 oct 2020
 """
 import datetime
 from openerp.addons.openhealth.models.order import ord_vars
 
-
 #------------------------------------------------ Get Counter - Dep -------------------------------------
-
-#def get_counter_value(self, x_type, state):
 def get_next_counter_value(self, x_type, state):
 	"""
 	Get Next Counter value. Given type and state.
@@ -25,7 +21,6 @@ def get_next_counter_value(self, x_type, state):
 	print('Get Counter Value')
 	print(x_type)
 	print(state)
-
 
 	# Sale, Cancel
 	#if state in ['validated']:
@@ -50,10 +45,6 @@ def get_next_counter_value(self, x_type, state):
 											limit=1,
 										)
 	return order.x_counter_value + 1
-
-
-
-
 
 
 #------------------------------------------------ Get Serial Nr - Dep -----------------------------------
@@ -82,10 +73,6 @@ def get_serial_nr(x_type, counter_value, state):
 	return serial_nr
 
 
-
-
-
-
 #------------------------------------------------ Get Counter From Serial Nr ----------------------
 # Get Counter From Serial Nr
 def get_counter_from_serial_nr(serial_nr):
@@ -97,9 +84,6 @@ def get_counter_from_serial_nr(serial_nr):
 	#print(serial_nr)
 	counter = int(serial_nr.split('-')[1])
 	return counter
-
-
-
 
 
 #------------------------------------------------ Check and Push ----------------------------------

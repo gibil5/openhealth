@@ -1,0 +1,2 @@
+#Scan 
+sonar-scanner -Dsonar.projectKey=python_openhealth -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.login=65cca8af9caa495b5b85c3009e8c6f33550367c9   

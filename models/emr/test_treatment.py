@@ -3,8 +3,8 @@
 		Test treatment - Openhealth
 
 		Used by:			Treatment
-		Created: 			14 Aug 2018
-		Last up: 	 		 4 oct 2020
+		Created: 			14 aug 2018
+		Last up: 	 		11 oct 2020
 """
 from __future__ import print_function
 from openerp.addons.price_list.models.lib import test_funcs
@@ -14,6 +14,16 @@ from openerp.exceptions import Warning as UserError
 _model_ser_pro = "openhealth.service_product'"
 _model_ser_cos = "openhealth.service_cosmetology"
 _model_ser_med = "openhealth.service_medical" 
+
+
+# ----------------------------------------------------------- Exceptions -------------------------
+class OrderErrorException(Exception):
+	print('This is my first management of order exceptions')
+
+class ProductErrorException(Exception):
+	print('This is my first management of product exceptions')
+
+
 
 # ------------------------------------------------------- Level 0 - Creates ----
 def test_create(self, value):
@@ -173,12 +183,12 @@ def create_recommentations_and_procedure_sale(self):
 	#print('Create Order - Procedure')
 	for order in self.order_ids:
 		if order.state in ['draft']:
-			#print('mark 10')
+			# Manage Exception
 			try:
 				order.pay_myself()
-			except:
-				print("An exception occurred")
-			#print('mark 11')
+			except OrderErrorException:
+				raise OrderErrorException('jx - Pay myself exception')
+
 	test_funcs.enablePrint()
 
 
@@ -294,17 +304,6 @@ def test_create_recommendations(self):
 												#order='date_order desc',
 												limit=1,
 									)
-		# Manage Exception
-		#try:
-		#	product.ensure_one()
-		#except:
-			#print("An exception occurred")
-		#	msg_name = "ERROR: Record Must be One Only."
-		#	class_name = type(product).__name__
-		#	obj_name = name
-		#	msg = msg_name + '\n' + class_name + '\n' + obj_name
-		#	raise UserError(_(msg))
-
 		product_id = product.id
 
 		print()
@@ -356,20 +355,11 @@ def test_create_sale_procedure(self):
 	# Pay Budget Procedures
 	for order in self.order_ids:
 		if order.state in ['draft']:
+			# Manage Exception
 			try:
 				order.pay_myself()
-			except:
-				print("An exception occurred")
-
-
-#def test_create_procedure(self):
-#	"""
-#	Test - Dep
-#	"""
-#	print()
-#	print('Test Create Procedure')
-	# Create Procedure
-#	self.btn_create_procedure_man()
+			except OrderErrorException:
+				raise OrderErrorException('jx - Pay myself exception')
 
 
 def test_create_sessions(self):
@@ -612,15 +602,12 @@ def create_recommendations_2019(self):
 		# Manage Exception
 		try:
 			product.ensure_one()
-		except:
-			#print("An exception occurred")
+		except ProductErrorException:
 			msg_name = "ERROR: Record Must be One Only."
 			class_name = type(product).__name__
-			#obj_name = product.name
 			obj_name = name
 			msg = msg_name + '\n' + class_name + '\n' + obj_name
-			#msg =  msg_name + '\n' + class_name + '\n'
-			raise UserError(_(msg))
+			raise ProductErrorException('msg')
 
 		product_id = product.id
 

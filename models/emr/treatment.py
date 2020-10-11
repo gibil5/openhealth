@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 		Treatment
-		Created: 			26 Aug 2016
-		Last up: 	 		23 Aug 2020
+		Created: 			26 aug 2016
+		Last up: 	 		11 oct 2020
 
 		From PgAdmin
 		-------------
@@ -480,8 +480,9 @@ class Treatment(models.Model):
 
 	@api.multi
 	def _compute_state(self):
+		verbose = False
 		for record in self:
-			obj = treatment_state.TreatmentState(record)
+			obj = treatment_state.TreatmentState(record, verbose)
 			record.state = obj.get_state()
 
 

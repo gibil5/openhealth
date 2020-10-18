@@ -5,33 +5,27 @@
 	Only Data model. No functions.
 
  	Created: 			 3 Nov 2018
- 	Last up: 	 		10 Dec 2019
+ 	Last up: 	 		17 oct 2020
 """
-
 from openerp import models, fields, api
 
 class ProductProduct(models.Model):
-
 	_inherit = 'product.product'
 
-	#_order = 'name'
 
 
+# ----------------------------------------------------------- PL ---------------
+	pl_subfamily = fields.Char()
 
 
-# ----------------------------------------------------------- Print Ticket -------------------------------
-
+# ----------------------------------------------------------- Print Ticket -----
 	x_name_ticket = fields.Char()
-
 
 	def get_name_ticket(self):
 		"""
 		Used by Print Ticket.
 		"""
 		return self.x_name_ticket
-		#return False
-
-
 
 # ----------------------------------------------------------- Electronic - Get Code ----------------------------
 	# Get Code

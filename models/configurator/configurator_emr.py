@@ -2,7 +2,7 @@
 """
 	Configurator - EMR
 	Created: 			25 jan 2019
-	Last updated: 		10 oct  2020
+	Last updated: 		11 oct  2020
 """
 from __future__ import print_function
 from openerp import models, fields, api
@@ -21,7 +21,6 @@ class ConfiguratorEmr(models.Model):
 	"""
 	_name = 'openhealth.configurator.emr'
 	_description = 'Configurator Emr'
-
 
 # ----------------------------------------------------------- Getters ----------
 	def get_number(self, laser, evaluation):
@@ -341,3 +340,18 @@ class ConfiguratorEmr(models.Model):
 			'Hora Cierre',
 			default=fields.Date.today,
 		)
+
+# ----------------------------------------------------------- Get Inactive Days -------------------------------
+	def get_inactive_days(self):
+		"""
+		LOD friendly.
+		Gets Inactive Days. From Configurator. 
+		"""
+		#print()
+		#print('Configurator - Get Inactive Days')
+		days_inactive = []
+		if self.name not in [False]:		
+			for day in self.day_line:								# Respects the LOD
+				if day.holiday:
+					days_inactive.append(day.date)
+		return days_inactive

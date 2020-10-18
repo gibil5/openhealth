@@ -8,14 +8,14 @@
 	Last updated: 		11 oct 2020
 """
 from __future__ import print_function
-
 import os
 import collections
 import datetime
 from timeit import default_timer as timer
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.order import ord_vars
-from . import mgt_funcs
+
+#from . import mgt_funcs
 from . import mgt_vars
 
 class Management(models.Model):
@@ -153,8 +153,6 @@ class Management(models.Model):
 			'% Monto Sub Cons Dr. Chav',
 		)
 
-
-
 	# Families and Sub Families
 	per_amo_families = fields.Float(
 			'% Monto Familias',
@@ -171,8 +169,6 @@ class Management(models.Model):
 	#per_amo_subfamilies_procedures = fields.Float(
 	#		'% Monto Sub Familias Procedimientos',
 	#	)
-
-
 
 	# Report Sale Product
 	report_sale_product = fields.Many2one(
@@ -195,11 +191,7 @@ class Management(models.Model):
 			'RSP Total Delta',
 		)
 
-
-
-
-# ----------------------------------------------------------- PL - Admin ---------------------------------------------
-
+# ----------------------------------------------------------- PL - Admin -------
 	admin_mode = fields.Boolean()
 
 	nr_products_stats = fields.Integer()
@@ -208,9 +200,7 @@ class Management(models.Model):
 
 	nr_procedures_stats = fields.Integer()
 
-
-
-# ----------------------------------------------------------- PL - Fields ----------------------
+# ----------------------------------------------------------- PL - Fields ------
 	# Owner
 	owner = fields.Selection(
 			[
@@ -223,51 +213,27 @@ class Management(models.Model):
 			required=True,
 		)
 
-
 	month = fields.Selection(
-			#selection=pl_mgt_vars._month_order_list,
-			
-			selection=mgt_vars._month_order_list,
-			
+			selection=mgt_vars._month_order_list,			
 			string='Mes',
 			required=True,
 		)
 
-	#month = fields.Selection(
-	#		selection=ord_vars._month_order_list,
-	#		string='Mes',
-	#		required=True,
-	#	)
-
-
-
-
-
-# ----------------------------------------------------------- PL - Dummy -------------------------
+# ----------------------------------------------------------- PL - Dummy -------
 	# patient
 	#patient_line = fields.One2many(
-	patient_line = fields.Char(
 	#		'openhealth.management.patient.line',
 	#		'management_id',
-	)
+	#)
+	patient_line = fields.Char()
 
-
-
-
-
-
-
-# ----------------------------------------------------------- QC ----------------------------------
-
+# ----------------------------------------------------------- QC ---------------
 	year = fields.Selection(
-
 			selection=ord_vars._year_order_list,
-
 			string='Año',
 			default='2020',
 			required=True,
 		)
-
 
 	delta_fast = fields.Float(
 			'Delta Fast',
@@ -277,24 +243,17 @@ class Management(models.Model):
 			'Delta Doctor',
 		)
 
-
-
-# ----------------------------------------------------------- Fields ----------------------
-
-
-
+# ----------------------------------------------------------- Fields -----------
 	# Type Array
 	type_arr = fields.Selection(
 			selection=mgt_vars._type_arr_list,
 			string='Type Array',
+			required=True,
 			#default='ticket_receipt,ticket_invoice',
 			default='all',
-			required=True,
 		)
 
-
-# ----------------------------------------------------------- Relational --------------------------
-
+# ----------------------------------------------------------- Relational -------
 	# Sales
 	order_line = fields.One2many(
 			'openhealth.management.order.line',
@@ -306,7 +265,6 @@ class Management(models.Model):
 			'openhealth.management.order.line',
 			'management_tkr_id',
 		)
-
 
 	# Family
 	family_line = fields.One2many(
@@ -320,28 +278,21 @@ class Management(models.Model):
 			'management_id',
 		)
 
-
-
 	# Daily
-	# 	# For Update Productivity
 	day_line = fields.One2many(
 			'openhealth.management.day.line',
 			'management_id',
 		)
 
-
-
-# ----------------------------------------------------------- Totals ------------------------------
+# ----------------------------------------------------------- Totals -----------
 	# Sales
 	total_count = fields.Integer(
-			#'Nr Líneas',
 			'Nr Ventas',
 			readonly=True, 
 		)
 
 	# Ticket
 	total_tickets = fields.Integer(
-			#'Nr Ventas',
 			'Nr Tickets',
 			readonly=True,
 		)
@@ -351,35 +302,22 @@ class Management(models.Model):
 			'Ratio (proc/con) %',
 		)
 
-
 # ----------------------------------------------------------- Percentages -------------------------
-
-	#per_amo_other = fields.Float(
-	#		'Porc Monto',
-	#	)
-
 	per_amo_products = fields.Float(
-			#'Porc Monto',
 			'% Monto Productos',
 		)
 
 	per_amo_consultations = fields.Float(
-			#'Porc Monto',
 			'% Monto Consultas',
 		)
 
 	per_amo_procedures = fields.Float(
-			#'Porc Monto',
 			'% Monto Procedimientos',
 		)
 
 	per_amo_other = fields.Float(
 			'Porc Monto',
 		)
-
-
-
-
 
 	per_nr_products = fields.Float(
 			'Porc Nr',
@@ -396,8 +334,6 @@ class Management(models.Model):
 	per_nr_other = fields.Float(
 			'Porc Nr',
 		)
-
-
 
 	per_amo_co2 = fields.Float(
 			'% Monto Co2',
@@ -439,7 +375,6 @@ class Management(models.Model):
 			'% Monto Kits',
 		)
 
-
 # ----------------------------------------------------------- Amounts -----------------------------
 
 	amo_products = fields.Float(
@@ -454,7 +389,6 @@ class Management(models.Model):
 			'Monto Consultas',
 		)
 
-
 	amo_other = fields.Float(
 			'Monto Otros',
 		)
@@ -462,8 +396,6 @@ class Management(models.Model):
 	amo_credit_notes = fields.Float(
 			'Monto Notas de Credito',
 		)
-
-
 
 	amo_co2 = fields.Float(
 			'Monto Co2',
@@ -509,11 +441,8 @@ class Management(models.Model):
 			'Monto Kits',
 		)
 
-
-# ----------------------------------------------------------- Numbers -----------------------------
-
+# ----------------------------------------------------------- Numbers ----------
 	nr_procedures = fields.Integer(
-			#'Nr Procedimientos',
 			'Nr Procs',
 		)
 
@@ -532,7 +461,6 @@ class Management(models.Model):
 	nr_credit_notes = fields.Integer(
 			'Nr Notas de Credito',
 		)
-
 
 	# Procedures
 	nr_co2 = fields.Integer(
@@ -581,9 +509,7 @@ class Management(models.Model):
 			'Nr Kits',
 		)
 
-
-# ----------------------------------------------------------- Avg ---------------------------------
-
+# ----------------------------------------------------------- Avg --------------
 	avg_other = fields.Float(
 			'Precio Prom. Otros',
 		)
@@ -604,7 +530,6 @@ class Management(models.Model):
 			'Precio Prom. Servicios',
 		)
 
-
 	# Products
 	avg_topical = fields.Float(
 			'Precio Prom. Cremas',
@@ -617,7 +542,6 @@ class Management(models.Model):
 	avg_kit = fields.Float(
 			'Precio Prom. Kits',
 		)
-
 
 	# Procedures
 	avg_co2 = fields.Float(

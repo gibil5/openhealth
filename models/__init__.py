@@ -12,14 +12,13 @@ from libs import *
 # Configurator
 from configurator import *
 
-# Counter
-#from counter import *      # Dep !
-
 # Pricelist
 from pricelist import *
 
+
 # Management
 from management import *
+
 
 # Electronic
 from electronic import *
@@ -45,6 +44,10 @@ from order import *
 # Accounting
 from account import *
 
+
+
+# Counter
+#from counter import *      # Dep !
 
 # Dep - 1 Aug 2020
 #from service import *

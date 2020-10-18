@@ -1,44 +1,35 @@
 # -*- coding: utf-8 -*-
 """
-	Mgt Funcs
+	Mgt Funcs - Dep ?
 
 	Used by:
+		Management
 		Acccount: Txt gen
 
 	Created: 			28 May 2018
-	Last mod: 			 9 Dec 2019
+	Last mod: 			11 oct 2020
 """
 from __future__ import print_function
-
 import datetime
 
-
-
-# ----------------------------------------------------------- Line Analysis -----------------------
+# ----------------------------------------------------------- Line Analysis ----
 def line_analysis(self, line):
 	"""
 	Line Analysis
 	Used by
 	"""
-	#print()
-	#print('Line Analysis')
-
-
 	# Init
 	prod = line.product_id
-
 
 	# Services
 	if prod.type in ['service']:
 		self.nr_services = self.nr_services + line.product_uom_qty
 		self.amo_services = self.amo_services + line.price_subtotal
 
-
 		# Consultations
 		if prod.x_treatment in ['consultation']:
 			self.nr_consultations = self.nr_consultations + line.product_uom_qty
 			self.amo_consultations = self.amo_consultations + line.price_subtotal
-
 
 		# Procedures
 		else:
@@ -81,13 +72,10 @@ def line_analysis(self, line):
 					self.nr_cosmetology = self.nr_cosmetology + line.product_uom_qty
 					self.amo_cosmetology = self.amo_cosmetology + line.price_subtotal
 
-
 	# Products
-	#else:
 	elif prod.type in ['product']:
 		self.nr_products = self.nr_products + line.product_uom_qty
 		self.amo_products = self.amo_products + line.price_subtotal
-
 
 		# Topical
 		if prod.x_family in ['topical']:
@@ -104,35 +92,15 @@ def line_analysis(self, line):
 			self.nr_kit = self.nr_kit + line.product_uom_qty
 			self.amo_kit = self.amo_kit + line.price_subtotal
 
-
-
 	# Consu
 	elif prod.type in ['consu']:
-
-		#print('Consu')
-
 		self.nr_other = self.nr_other + line.product_uom_qty
 		self.amo_other = self.amo_other + line.price_subtotal
 
-
-		#if prod.x_family in ['credit_note']:
-		#	self.nr_credit_notes = self.nr_credit_notes + line.product_uom_qty
-		#	self.amo_credit_notes = self.amo_credit_notes + line.price_subtotal
-
-
-
-
-
-
 	return False
-
 # line_analysis
 
-
-
-
-
-# ----------------------------------------------------------- Get Orders Fast -------------------
+# --------------------------------------------------------- Get Orders Fast ----
 # States: In State Array
 def get_orders_filter_fast(self, date_bx, date_ex):
 	"""
@@ -140,10 +108,6 @@ def get_orders_filter_fast(self, date_bx, date_ex):
 	Fast version. 
 	Used by:
 	"""
-	#print('')
-	#print('Get Orders - Fast')
-
-
 	# Init
 	DATETIME_FORMAT = "%Y-%m-%d"
 
@@ -157,9 +121,7 @@ def get_orders_filter_fast(self, date_bx, date_ex):
 
 	# Orders
 	orders = self.env['sale.order'].search([
-													#('state', 'in', ['sale']),
 													('state', 'in', ['sale', 'credit_note']),
-
 													('date_order', '>=', date_begin),
 													('date_order', '<', date_end),
 													('x_legacy', '=', False),
@@ -169,7 +131,6 @@ def get_orders_filter_fast(self, date_bx, date_ex):
 											)
 	# Count
 	count = self.env['sale.order'].search_count([
-													#('state', 'in', ['sale']),
 													('state', 'in', ['sale', 'credit_note']),
 
 													('date_order', '>=', date_begin),
@@ -180,12 +141,9 @@ def get_orders_filter_fast(self, date_bx, date_ex):
 												#limit=1,
 											)
 	return orders, count
-
 # get_orders_filter_fast
 
-
-
-# ---------------------------------------------- Get orders - Filter ------------------------------
+# ---------------------------------------------- Get orders - Filter -----------
 # States: In State Array
 def get_orders_filter(self, date_bx, date_ex, state_arr, type_arr):
 	"""

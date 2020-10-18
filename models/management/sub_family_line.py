@@ -5,7 +5,7 @@
 	Only Data model. No functions.
 
 	Created: 			20 Aug 2018
-	Last up: 			 9 Dec 2019
+	Last up: 			18 Dec 2020
 """
 from __future__ import print_function
 from openerp import models, fields, api
@@ -14,16 +14,11 @@ from . import mgt_vars
 class SubFamilyLine(models.Model):	
 	"""
 	Sub Family Line
-	"""
-	#_inherit = 'openhealth.management.line'  	# Dep
-	
+	"""	
 	_name = 'openhealth.management.sub_family.line'
-	
 	_order = 'amount desc'
 
-
-
-# ----------------------------------------------------------- Relational --------------------------
+# ----------------------------------------------------------- Relational -------
 	management_id = fields.Many2one(
 			'openhealth.management',
 			#ondelete='cascade',
@@ -34,59 +29,114 @@ class SubFamilyLine(models.Model):
 			ondelete='cascade',
 		)
 
-
-# ----------------------------------------------------------- Fields ---------------------------
+# ----------------------------------------------------------- Fields -----------
 	name = fields.Char(
 			'Name',
 			required=True,
 		)
 
-
 	name_sp = fields.Char(
 			'Nombre',
 		)
-
 
 	meta = fields.Char(
 			'Meta',
 		)
 
-
 	meta_sp = fields.Char(
 			'Meta',
 		)
-
 
 	idx = fields.Integer(
 			'Idx',
 		)
 
-
 	x_count = fields.Integer(
 			'Nr',
 		)
-
 
 	amount = fields.Float(
 			'Monto',
 			digits=(16, 1),
 		)
 
-
 	per_amo = fields.Float(
 			'% Monto',
-			#digits=(16, 1),
 		)
-
 
 	per_nr = fields.Float(
 			'% Nr',
 		)
 
 
+# ----------------------------------------------------------- Update -----------
+	def update(self):  
+		#print()
+		#print('X - Update - Sub Family')
 
+		# Idx 
+		_h_idx = {
+					False: 0, 		
+					'laser_co2': 			10,
+					'laser_excilite': 		11,
+					'laser_ipl': 			12,
+					'laser_ndyag': 			13,
+					'laser_quick': 			14,
+					'criosurgery' : 	31, 		
+					'botulinum_toxin' : 32, 		
+					'hyaluronic_acid' : 33, 		
+					'cosmetology': 		70,
+					'product': 			80, 	
+					'consultation': 	90, 		
+		}
 
-#----------------------------------------------------------- Open Line Current --------------------
+		# Medical 
+		medical_arr = [
+							'botulinum_toxin', 		# Bot
+							'criosurgery', 			# Crio
+							'hyaluronic_acid', 		# Hial
+							'infiltration_scar', 	# Infil
+							'infiltration_keloid', 	# Infil
+							'intravenous_vitamin', 		# Intra
+							'lepismatic', 				# Lep
+							'plasma', 				# Pla
+							'mesotherapy_nctf', 	# Meso
+							'sclerotherapy', 		# Escl
+		]
+
+		# Idx
+		if self.name in _h_idx: 
+			self.idx = _h_idx[self.name]
+		else: 
+			self.idx = 100
+
+		# Meta 
+		if self.name in ['laser_co2', 'laser_excilite', 'laser_ipl', 'laser_ndyag', 'laser_quick']:
+			self.meta = 'laser'
+			self.meta_sp = 'Laser'
+
+		elif self.name in medical_arr:
+			self.meta = 'medical'
+			self.meta_sp = 'TM'
+
+		elif self.name in ['cosmetology']:
+			self.meta = 'cosmetology'
+			self.meta_sp = 'Cosmiatria'
+
+		elif self.name in ['consultation']:
+			self.meta = 'consultation'
+			self.meta_sp = 'Consulta'
+
+		elif self.name in ['product']:
+			self.meta = 'product'
+			self.meta_sp = 'Producto'
+
+		elif self.name in ['other']:
+			self.meta = 'other'
+			self.meta_sp = 'Otros'
+	# update
+
+#-------------------------------------------------------- Open Line Current ----
 	@api.multi
 	def open_line_current(self):
 		"""

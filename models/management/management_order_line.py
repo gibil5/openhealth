@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
-#
-# 	Management Order Line - Clean This !
-# 
-# 	Created: 			28 May 2018
-# 	Last updated: 		 9 Dec 2019
-#
+"""
+	Management Order Line - Clean This !
+
+	Created: 			28 May 2018
+	Last updated: 		18 oct 2020
+"""
+
 from openerp import models, fields, api
-from openerp.addons.openhealth.models.order import ord_vars
-
-from openerp.addons.openhealth.models.product import prodvars
-
 import openerp.addons.decimal_precision as dp
+
+from openerp.addons.openhealth.models.order import ord_vars
+from openerp.addons.openhealth.models.product import prodvars
 
 class management_order_line(models.Model):
 	"""
@@ -21,161 +21,11 @@ class management_order_line(models.Model):
 			For Txt generation
 	"""
 	#_inherit='openhealth.line'
-
 	_name = 'openhealth.management.order.line'
-
 	_description = "Openhealth Management Order Line"
 
 
-
-# ----------------------------------------------------------- Inherited from line.py ------------------------------------------------------
-	# Name 
-	name = fields.Char(
-			string="Nombre", 		
-			#required=True, 
-		)
-
-
-	# Date Created 
-	x_date_created = fields.Datetime(
-			#string='Fecha', 
-			string='Fecha y Hora', 
-		)
-
-
-	# Date Order
-	date_order_date = fields.Datetime(
-		'Fecha',
-	)
-
-
-
-	# Qty
-	product_uom_qty = fields.Float(
-			string='Cantidad', 
-			digits=dp.get_precision('Product Unit of Measure'), 
-			default=1.0,
-			required=True, 
-		)
-
-
-	# Product Product 
-	product_id = fields.Many2one(
-			
-			'product.product', 
-			
-			string='Producto', 
-			domain=[('sale_ok', '=', True)], 
-			change_default=True, 
-			ondelete='restrict', 			
-			#required=True, 
-		)
-
-
-	# Total 
-	price_total = fields.Float(
-			string='Total', 
-			readonly=True, 
-			store=True, 
-
-			compute='_compute_amount', 
-		)
-
-
-	# Compute - Total and Subtotal 
-	@api.multi
-	#@api.depends('product_uom_qty', 'price_unit')
-	def _compute_amount(self):
-		for line in self:
-
-			price_unit = line.price_unit
-
-			unit_net, unit_tax = lib.get_net_tax(price_unit)
-			
-			total = price_unit * line.product_uom_qty
-			net, tax = lib.get_net_tax(total)
-
-			line.update({
-				'price_total': total,
-				'price_subtotal': total,
-
-				'price_net': net,
-				'price_tax': tax,
-
-				'price_unit_net': unit_net,
-				#'price_unit_tax': unit_tax,
-			})
-
-
-	# Subtotal 
-	price_subtotal = fields.Float(
-			string='Subtotal', 
-			readonly=True, 
-			store=True, 
-
-			compute='_compute_amount', 
-		)
-	
-
-	# Unit 
-	price_unit = fields.Float(
-			'Precio Unit.', 
-			digits=dp.get_precision('Product Price'), 
-			default=0.0, 
-			required=True, 
-		)
-
-
-# ----------------------------------------------------------- Families ------------------------------------------------------
-
-
-# ----------------------------------------------------------- 2019 !!! -------------------------------------
-	# Family 
-	family = fields.Selection(
-
-			string = "Familia", 	
-
-			selection = [
-							('gynecology',	'Ginecologia'),
-							('echography',	'Ecografia'), 
-							('promotion',	'Promocion'), 
-
-							('credit_note',	'Notas de Credito'),
-
-							('other',	'Otros'), 
-							('topical',	'Cremas'), 
-							('card',	'Tarjeta'), 
-							('kit',		'Kit'), 
-							('product',	'Producto'), 
-							('consultation',		'Consulta'), 
-							('consultation_gyn',	'Consulta Ginecológica'), 
-							('consultation_100',	'Consulta 100'), 
-							('consultation_0',		'Consulta Gratuita'), 
-							('procedure',	'Procedimiento'), 
-							('laser',		'Laser'), 							
-							('cosmetology',	'Cosmiatría'), 
-							('medical',		'Tratamiento Médico'), 
-			], 
-
-			#required=False, 
-			required=True, 
-		)
-
-
-
-	# Sub Family
-	sub_family = fields.Char(
-			string = "Sub-familia",
-			selection=prodvars._treatment_list,
-
-			#required=False,
-			required=True, 
-		)	
-
-
-
-# ----------------------------------------------------------- Handles -----------------------------
-
+# ----------------------------------------------------------- Handles ----------
 	# Management 
 	management_id = fields.Many2one(
 			'openhealth.management',
@@ -194,16 +44,11 @@ class management_order_line(models.Model):
 			ondelete='cascade', 			
 		)
 
-
-
-
 	# Sales TKR
 	management_tkr_id = fields.Many2one(			
 			'openhealth.management',
 			ondelete='cascade',		
 		)
-
-
 
 	# Account - Txt
 	container_id = fields.Many2one(
@@ -211,12 +56,117 @@ class management_order_line(models.Model):
 			ondelete='cascade',
 		)
 
+# -------------------------------------------------- Inherited from line.py ----
+	# Name 
+	name = fields.Char(
+			string="Nombre", 		
+		)
+
+	# Date Created 
+	x_date_created = fields.Datetime(
+			string='Fecha y Hora', 
+		)
+
+	# Date Order
+	date_order_date = fields.Datetime(
+		'Fecha',
+	)
+
+	# Qty
+	product_uom_qty = fields.Float(
+			string='Cantidad', 
+			digits=dp.get_precision('Product Unit of Measure'), 
+			default=1.0,
+			required=True, 
+		)
+
+	# Product Product 
+	product_id = fields.Many2one(
+			'product.product', 
+			string='Producto', 
+			domain=[('sale_ok', '=', True)], 
+			change_default=True, 
+			ondelete='restrict', 			
+			#required=True, 
+		)
+
+	# Total 
+	price_total = fields.Float(
+			string='Total', 
+			readonly=True, 
+			store=True, 
+			compute='_compute_amount', 
+		)
+	@api.multi
+	def _compute_amount(self):
+		for line in self:
+			price_unit = line.price_unit
+			unit_net, unit_tax = lib.get_net_tax(price_unit)
+			total = price_unit * line.product_uom_qty
+			net, tax = lib.get_net_tax(total)
+			line.update({
+				'price_total': total,
+				'price_subtotal': total,
+				'price_net': net,
+				'price_tax': tax,
+				'price_unit_net': unit_net,
+				#'price_unit_tax': unit_tax,
+			})
+
+	# Subtotal 
+	price_subtotal = fields.Float(
+			string='Subtotal', 
+			readonly=True, 
+			store=True, 
+			compute='_compute_amount', 
+		)	
+
+	# Unit 
+	price_unit = fields.Float(
+			'Precio Unit.', 
+			digits=dp.get_precision('Product Price'), 
+			default=0.0, 
+			required=True, 
+		)
+
+# ----------------------------------------------------------- Families ----------------------------
+
+# ----------------------------------------------------------- 2019 !!! ---------
+	# Family 
+	family = fields.Selection(
+			string = "Familia", 	
+			selection = [
+							('gynecology',	'Ginecologia'),
+							('echography',	'Ecografia'), 
+							('promotion',	'Promocion'), 
+							('credit_note',	'Notas de Credito'),
+							('other',	'Otros'), 
+							('topical',	'Cremas'), 
+							('card',	'Tarjeta'), 
+							('kit',		'Kit'), 
+							('product',	'Producto'), 
+							('consultation',		'Consulta'), 
+							('consultation_gyn',	'Consulta Ginecológica'), 
+							('consultation_100',	'Consulta 100'), 
+							('consultation_0',		'Consulta Gratuita'), 
+							('procedure',	'Procedimiento'), 
+							('laser',		'Laser'), 							
+							('cosmetology',	'Cosmiatría'), 
+							('medical',		'Tratamiento Médico'), 
+			], 
+			required=True, 
+		)
+
+	# Sub Family
+	sub_family = fields.Char(
+			string = "Sub-familia",
+			selection=prodvars._treatment_list,
+			required=True, 
+		)	
 
 
 
-
-# ----------------------------------------------------------- Fields ------------------------------------------------------
-
+# ----------------------------------------------------------- Fields -----------
 	# Patient 
 	patient = fields.Many2one(
 			'oeh.medical.patient', 
@@ -247,10 +197,7 @@ class management_order_line(models.Model):
 			default='draft',
 		)
 
-
-
-# ----------------------------------------------------------- Electronic - Dep ? ------------------------------------------------------
-
+# ------------------------------------------------------ Electronic - Dep ? ----
 	# Receptor 
 	receptor = fields.Char(
 			string='Receptor', 
@@ -272,8 +219,6 @@ class management_order_line(models.Model):
 	id_doc = fields.Char(
 			'Doc Id', 
 			default=".", 
-
-			#required=True, 
 		)
 
 	# Order 
@@ -290,11 +235,7 @@ class management_order_line(models.Model):
 			default="PEN", 
 		)
 
-
-
-
-# ----------------------------------------------------------- Account Txt ---------------------
-
+# ----------------------------------------------------------- Account Txt ------
 	# Firm 
 	firm = fields.Char(
 			'Firm',
@@ -307,7 +248,6 @@ class management_order_line(models.Model):
 			default='20523424221', 
 		)
 
-
 	# Address
 	address = fields.Char(
 			'Address', 
@@ -315,22 +255,14 @@ class management_order_line(models.Model):
 			default='Av. La Merced 161', 
 		)
 
-
 	# Ubigeo
 	ubigeo = fields.Char(
 			'Ubigeo',
 			default='150101', 
 		)
 
-
-
 	# Country
 	country = fields.Char(
 			'Country', 
 			default='PE', 
 		)
-
-
-
-
-

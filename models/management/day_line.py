@@ -5,7 +5,7 @@
 	Only Data model. No functions.
 
 	Created: 			15 Jan 2019
-	Last up: 			15 Jan 2019
+	Last up: 			18 oct 2020
 """
 from __future__ import print_function
 import numpy as np
@@ -13,7 +13,6 @@ from openerp import models, fields, api
 
 from openerp.addons.openhealth.models.order import ord_vars
 from . import mgt_funcs
-
 from openerp.addons.openhealth.models.libs import lib
 
 class DayLine(models.Model):
@@ -21,65 +20,43 @@ class DayLine(models.Model):
 	Day Line
 	"""
 	_inherit = 'openhealth.management.line'
-
 	_name = 'openhealth.management.day.line'
-
 	_order = 'date asc'
 
-
-
-# ----------------------------------------------------------- Relational --------------------------
+# ----------------------------------------------------------- Relational -------
 	configurator_emr_id = fields.Many2one(
 			'openhealth.configurator.emr'
 		)
 
-
-# ----------------------------------------------------------- Redefined ---------------------------
+# ----------------------------------------------------------- Redefined --------
 	amount = fields.Float(
 			'Venta por dia',
 			digits=(16, 1),
 		)
 
-
-# ----------------------------------------------------------- Primitives --------------------------
-
+# ----------------------------------------------------------- Primitives -------
 	state = fields.Selection(
 			selection=[
 							('today', 'Hoy'),
-							#('holiday', 'Feriado'),
 			],
 			string='Estado',
 		)
 
-
 	today = fields.Boolean(
 			'Hoy',
 			default=False,
-
 			compute='_compute_today',
 		)
-
 	@api.multi
-	#@api.depends('order_line')
 	def _compute_today(self):
 		for record in self:
-			
 			if lib.is_today_date(record.date):
-			
 				record.today = True
-
-
-
 
 	holiday = fields.Boolean(
 			'Feriado',
 			default=False,
-			#readonly=True,
 		)
-
-
-
-
 
 	date = fields.Date(
 			'Fecha',
@@ -92,14 +69,11 @@ class DayLine(models.Model):
 
 	cumulative = fields.Float(
 			'Acumulado',
-			#digits=(16, 1),
 		)
 
 	avg_amount = fields.Float(
 			'Promedio diario',
-			#digits=(16, 1),
 		)
-
 
 	projection = fields.Float(
 			'Proyección a final del mes',
@@ -109,7 +83,6 @@ class DayLine(models.Model):
 			'Duracion',
 		)
 
-
 	nr_days = fields.Float(
 			'Nr dias',
 		)
@@ -117,9 +90,6 @@ class DayLine(models.Model):
 	nr_days_total = fields.Float(
 			'Total dias',
 		)
-
-
-
 
 # ----------------------------------------------------------- Update ------------------------------
 	# Update

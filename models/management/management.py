@@ -45,9 +45,6 @@ class DoctorLine(models.Model):
 			'openhealth.management',
 		)
 
-
-
-
 # -------------------------------------------------------------------------------------------------
 class management_order_line(models.Model):
 	"""
@@ -63,7 +60,6 @@ class management_order_line(models.Model):
 			'openhealth.management',
 		)
 
-
 # -------------------------------------------------------------------------------------------------
 class FamilyLine(models.Model):
 	"""
@@ -75,7 +71,6 @@ class FamilyLine(models.Model):
 			'openhealth.management',
 		)
 
-
 # -------------------------------------------------------------------------------------------------
 class SubFamilyLine(models.Model):	
 	"""
@@ -86,6 +81,8 @@ class SubFamilyLine(models.Model):
 	management_id = fields.Many2one(
 			'openhealth.management',
 		)
+
+
 
 
 

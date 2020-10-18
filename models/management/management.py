@@ -12,12 +12,97 @@ import os
 import collections
 import datetime
 from timeit import default_timer as timer
+
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.order import ord_vars
 
 #from . import mgt_funcs
 from . import mgt_vars
 
+
+
+# -------------------------------------------------------------------------------------------------
+class ProductivityDay(models.Model):
+	"""
+	Productivity Day
+	"""
+	_name = 'productivity.day'
+# ----------------------------------------------------------- Relational -------
+	management_id = fields.Many2one(
+			'openhealth.management',
+			ondelete='cascade',
+			required=True,
+		)
+
+# -------------------------------------------------------------------------------------------------
+class DoctorLine(models.Model):
+	"""
+	Management doctor line
+	"""
+	#_inherit = 'openhealth.management.line'
+	_name = 'openhealth.management.doctor.line'
+
+	management_id = fields.Many2one(
+			'openhealth.management',
+		)
+
+
+# -------------------------------------------------------------------------------------------------
+class management_order_line(models.Model):
+	"""
+	Management Order Line
+	"""
+	_name = 'openhealth.management.order.line'
+
+	management_id = fields.Many2one(
+			'openhealth.management',
+		)
+
+	management_tkr_id = fields.Many2one(
+			'openhealth.management',
+		)
+
+
+# -------------------------------------------------------------------------------------------------
+class FamilyLine(models.Model):
+	"""
+	Famliy line
+	"""
+	_name = 'openhealth.management.family.line'
+
+	management_id = fields.Many2one(
+			'openhealth.management',
+		)
+
+
+# -------------------------------------------------------------------------------------------------
+class SubFamilyLine(models.Model):	
+	"""
+	Sub Family Line
+	"""
+	_name = 'openhealth.management.sub_family.line'
+
+	management_id = fields.Many2one(
+			'openhealth.management',
+		)
+
+
+
+class DayLine(models.Model):
+	"""
+	Day Line
+	"""
+	#_inherit = 'openhealth.management.line'
+	_name = 'openhealth.management.day.line'
+
+	management_id = fields.Many2one(
+			'openhealth.management',
+		)
+
+
+
+
+# -------------------------------------------------------------------------------------------------
 class Management(models.Model):
 	"""
 	Contains only the data model. No functions.

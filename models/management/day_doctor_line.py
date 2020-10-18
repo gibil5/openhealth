@@ -29,12 +29,10 @@ class DayDoctorLine(models.Model):
 
 # ----------------------------------------------------------- Relational --------------------------
 	# Sales
-	order_line = fields.One2many(
-			
-			'openhealth.management.order.line',
-
-			'doctor_day_id',
-		)
+	#order_line = fields.One2many(
+	#		'openhealth.management.order.line',
+	#		'doctor_day_id',
+	#	)
 
 
 

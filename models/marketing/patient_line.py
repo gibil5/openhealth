@@ -135,17 +135,17 @@ class PatientLine(models.Model):
 
 
 	# Sales
-	sale_line = fields.One2many(
-			'openhealth.marketing.order.line', 
-			'patient_line_sale_id',
-		)
+	#sale_line = fields.One2many(
+	#		'openhealth.marketing.order.line', 
+	#		'patient_line_sale_id',
+	#	)
 
 
 	# Budgets
-	budget_line = fields.One2many(
-			'openhealth.marketing.order.line', 
-			'patient_line_budget_id',
-		)
+	#budget_line = fields.One2many(
+	#		'openhealth.marketing.order.line', 
+	#		'patient_line_budget_id',
+	#	)
 
 
 	# Consus
@@ -162,11 +162,11 @@ class PatientLine(models.Model):
 		)
 
 	# Procedures
-	procedure_line = fields.One2many(
-			'openhealth.marketing.order.line', 
-			'patient_line_proc_id',
-			string="Procedimientos", 
-		)
+	#procedure_line = fields.One2many(
+	#		'openhealth.marketing.order.line', 
+	#		'patient_line_proc_id',
+	#		string="Procedimientos", 
+	#	)
 
 	# Vip Sales
 	order_line = fields.One2many(

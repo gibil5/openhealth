@@ -5,7 +5,7 @@
 """,
 'description': """
 
-	10 Oct 2020
+	18 Oct 2020
 
 	Classess: 
 		- Order, 
@@ -119,7 +119,7 @@
 	'security/openhealth_security_managers.xml',
 
 # ----------------------------------------------------------- Configurator ------------------------------------------------------
-	'views/configurators/configurator_emr.xml',         # Includes Menu
+	#'views/configurators/configurator_emr.xml',         # Includes Menu
 
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 	'views/patients/patient_actions.xml',
@@ -139,8 +139,8 @@
 	'views/account/account_contasis.xml',
 
 	# Electronic
-	'views/electronic/electronic_order.xml',
-	'views/electronic/electronic_line.xml',
+	#'views/electronic/electronic_order.xml',
+	#'views/electronic/electronic_line.xml',
 
 
 	# Dep - Done In PL

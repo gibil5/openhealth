@@ -25,16 +25,16 @@ class marketing_order_line(models.Model):
 		)
 
 	# Budget 
-	patient_line_budget_id = fields.Many2one(			
-			'openhealth.patient.line',
-			ondelete='cascade', 			
-		)
+	#patient_line_budget_id = fields.Many2one(			
+	#		'openhealth.patient.line',
+	#		ondelete='cascade', 			
+	#	)
 
 	# Sale 
-	patient_line_sale_id = fields.Many2one(			
-			'openhealth.patient.line',
-			ondelete='cascade', 			
-		)
+	#patient_line_sale_id = fields.Many2one(			
+	#		'openhealth.patient.line',
+	#		ondelete='cascade', 			
+	#	)
 
 	# Consu 
 	patient_line_consu_id = fields.Many2one(			
@@ -49,10 +49,10 @@ class marketing_order_line(models.Model):
 		)
 
 	# Proc
-	patient_line_proc_id = fields.Many2one(
-			'openhealth.patient.line',
-			ondelete='cascade', 			
-		)
+	#patient_line_proc_id = fields.Many2one(
+	#		'openhealth.patient.line',
+	#		ondelete='cascade', 			
+	#	)
 
 	# Patient Line - Vip
 	patient_line_id = fields.Many2one(			

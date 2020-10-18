@@ -29,10 +29,10 @@ class ManagementLine(models.Model):
 			#ondelete='cascade',
 		)
 
-	doctor_id = fields.Many2one(
-			'openhealth.management.doctor.line',
-			ondelete='cascade',
-		)
+	#doctor_id = fields.Many2one(
+	#		'openhealth.management.doctor.line',
+	#		ondelete='cascade',
+	#	)
 
 
 # ----------------------------------------------------------- Primitive ---------------------------

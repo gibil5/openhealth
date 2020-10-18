@@ -20,17 +20,16 @@ from openerp.addons.openhealth.models.order import ord_vars
 from . import mgt_vars
 
 
-
 # -------------------------------------------------------------------------------------------------
 class ProductivityDay(models.Model):
 	"""
 	Productivity Day
 	"""
 	_name = 'productivity.day'
-# ----------------------------------------------------------- Relational -------
+
 	management_id = fields.Many2one(
 			'openhealth.management',
-			ondelete='cascade',
+			ondelete='cascade',  	# When the management is deleted, the productivity_day is also deleted
 			required=True,
 		)
 
@@ -45,6 +44,8 @@ class DoctorLine(models.Model):
 	management_id = fields.Many2one(
 			'openhealth.management',
 		)
+
+
 
 
 # -------------------------------------------------------------------------------------------------

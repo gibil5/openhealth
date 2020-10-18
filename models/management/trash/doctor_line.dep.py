@@ -23,29 +23,19 @@ class DoctorLine(models.Model):
 
 	_order = 'amount desc'
 
-
-
-# ----------------------------------------------------------- Nex --------------------------
+# ----------------------------------------------------------- Nex --------------
 	# Day Line
 	day_line = fields.One2many(
-
 			'openhealth.management.day.doctor.line',
-
 			'doctor_id',
 		)
 
-
-
-
-# ----------------------------------------------------------- Relational --------------------------
-
+# ------------------------------------------------------------- Relational -----
 	# Sales
 	order_line = fields.One2many(
 			'openhealth.management.order.line',
 			'doctor_id',
 		)
-
-
 
 	# Family
 	family_line = fields.One2many(
@@ -59,9 +49,7 @@ class DoctorLine(models.Model):
 			'doctor_id',
 		)
 
-
-# ----------------------------------------------------------- Primitives --------------------------
-
+# ----------------------------------------------------------- Primitives -------
 	# Nr Families
 	nr_consultations = fields.Integer(
 			'Nr Consultas',
@@ -77,7 +65,6 @@ class DoctorLine(models.Model):
 			'Nr Procedimientos',
 			default=0,
 		)
-
 
 	# Nr Sub Families
 	nr_procedures_co2 = fields.Integer(
@@ -100,8 +87,6 @@ class DoctorLine(models.Model):
 			default=0,
 		)
 
-
-
 	# Ratios
 	ratio_pro_con = fields.Float(
 			'Ratio Total %',
@@ -116,8 +101,12 @@ class DoctorLine(models.Model):
 		)
 
 
-# ----------------------------------------------------------- Stats -------------------------------
 
+
+
+
+
+# ----------------------------------------------------------- Stats ------------
 	# Stats
 	@api.multi
 	def stats(self):
@@ -126,14 +115,11 @@ class DoctorLine(models.Model):
 		"""
 		print()
 		print('Doctor - Stats')
-
 		# Using collections - More Abstract !
-
 
 		# Clear
 		self.sub_family_line.unlink()
 		self.family_line.unlink()
-
 
 		# Init
 		family_arr = []
@@ -150,33 +136,19 @@ class DoctorLine(models.Model):
 		self.ratio_pro_con_co2 = 0
 		self.ratio_pro_con_quick = 0
 
-
-
 		# Loop
 		for line in self.order_line:
-
 			# Family
 			family_arr.append(line.family)
-
 			# Sub family
 			sub_family_arr.append(line.sub_family)
 
-
-
-
-
-
-
 # Count and Create
-
 		#print 'Count'
-
 		# Family - Using collections
 		counter_family = collections.Counter(family_arr)
 		for key in counter_family:
-
 			#print('Gotcha !')
-
 			count = counter_family[key]
 			#print key
 			#print count
@@ -203,7 +175,6 @@ class DoctorLine(models.Model):
 			if key == 'cosmetology':
 				self.nr_cosmetologies = self.nr_cosmetologies + count
 
-
 		# Subfamily - Using collections
 		counter_sub_family = collections.Counter(sub_family_arr)
 		for key in counter_sub_family:
@@ -226,21 +197,11 @@ class DoctorLine(models.Model):
 				self.nr_procedures_quick = count
 
 
-
-
-
-
-
 # Amounts and Percentages
-
 		#print 'Amounts'
-
 		# Family
 		for family in self.family_line:
-
 			amount = 0
-
-
 			orders = self.env['openhealth.management.order.line'].search([
 																			('family', '=', family.name),
 																			('doctor_id', '=', self.id),
@@ -264,13 +225,9 @@ class DoctorLine(models.Model):
 			#print amount
 			#print
 
-
-
 		# Sub Family
 		for sub_family in self.sub_family_line:
-
 			amount = 0
-
 			orders = self.env['openhealth.management.order.line'].search([
 																			('sub_family', '=', sub_family.name),
 																			('doctor_id', '=', self.id),
@@ -282,14 +239,11 @@ class DoctorLine(models.Model):
 			for order in orders:
 				amount = amount + order.price_total
 
-
 			sub_family.amount = amount
 
 			# Percentage
 			if self.amount != 0:
 				sub_family.per_amo = sub_family.amount / self.amount
-
-
 
 			#print sub_family.name
 			#print amount
@@ -297,11 +251,10 @@ class DoctorLine(models.Model):
 
 		#self.update_fields()
 		self.update()
-
 	# stats
 
 
-# ----------------------------------------------------------- Update ------------------------------
+# ----------------------------------------------------------- Update -----------
 	def update(self):
 		"""
 		high level support for doing this and that.

@@ -4,36 +4,35 @@
 
 	Only Data model. No functions.
 
+	Used by;
+		Doctor line
+
 	Created: 		18 May 2018
-	Last up: 		 9 Dec 2019
+	Last up: 		18 oct 2020
 """
 from openerp import models, fields, api
 
 class ManagementLine(models.Model):
 	"""
 	Used by:
-		Day Line
 		Doctor Line
+
+		Day Line
 		Family Line
 		Sub Family Line  	# not any more
 	"""
 	_name = 'openhealth.management.line'
-
 	_order = 'idx asc'
-
-
 
 # ----------------------------------------------------------- Relational --------------------------
 	management_id = fields.Many2one(
 			'openhealth.management',
-			#ondelete='cascade',
 		)
 
 	#doctor_id = fields.Many2one(
 	#		'openhealth.management.doctor.line',
 	#		ondelete='cascade',
 	#	)
-
 
 # ----------------------------------------------------------- Primitive ---------------------------
 	name = fields.Char(
@@ -73,9 +72,6 @@ class ManagementLine(models.Model):
 	per_nr = fields.Float(
 			'% Nr',
 		)
-
-
-
 
 #----------------------------------------------------------- Open Line Current --------------------
 	@api.multi

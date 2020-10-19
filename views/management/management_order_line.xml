@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+
+
+<!-- TREE --> 
+        <record model="ir.ui.view" id="management_order_line_view_tree">
+            <field name="name">openhealth.management.order.line.tree</field>
+            <field name="model">openhealth.management.order.line</field>
+            <field name="arch" type="xml">
+
+                <tree string="management order line Tree">
+
+
+                    <field name="date_order_date"   widget="date"/>
+
+                    <field name="x_date_created"/>
+<!--
+                    <field name="price_total"    sum="Monto Total"         widget="monetary"       string="Monto"/>
+-->
+                    <field name="receptor"/>
+
+                    <field name="patient"/>
+
+
+
+                    <field name="doctor"/>
+
+                    <field name="family"/>
+
+                    <field name="sub_family"/>
+
+                    <field name="product_id"/>
+
+<!--
+                    <field name="price_total"/>
+-->
+
+
+                    <field name="state"/>
+
+
+
+                    <field name="id_doc_type"/>
+                    <field name="id_doc_type_code"/>
+                    <field name="id_doc"/>
+                    <field name="ruc"/>
+
+
+                    <field name="x_type"/>
+                    <field name="type_code"/>
+                    <field name="serial_nr"/>
+
+                    
+                    <field name="product_uom_qty"/>
+<!--
+                    <field name="price_net"/>
+                    <field name="price_tax"/>
+-->
+                </tree>
+            </field>
+        </record>
+
+
+<!--
+                    <field name="management_id"/>
+
+                    <field name="price_subtotal"/>
+                    <field name="doctor_id"/>
+                    <field name="delta"/>
+                    <field name="name"/>
+                    <field name="state"/>
+                    <field name="price_unit"/>
+-->
+
+
+
+
+
+
+<!-- ACTION - Order -->
+        <record model="ir.actions.act_window" id="management_order_line_form_action">   
+            <field name="name">Ventas</field>
+            <field name="res_model">openhealth.management.order.line</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="limit">1000</field>
+            <!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>            
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first order
+                </p>
+            </field>
+            -->
+        </record>
+
+
+
+
+
+<!-- FILTER --> 
+        <record id="view_management_order_line_filter" model="ir.ui.view">
+            <field name="name">Treatment Search</field>
+            <field name="model">openhealth.management.order.line</field>
+            <field name="arch" type="xml">
+               <search string="Ventas">
+                    <field  name="management_id"/>
+                    <group expand="1" string="Group By">
+                        <filter name="Médico" context="{'group_by':'doctor'}"/>
+                        <filter name="Paciente" context="{'group_by':'patient'}"/>
+                        <filter name="Familia" context="{'group_by':'family'}"/>
+                        <filter name="Subfamilia" context="{'group_by':'sub_family'}"/>
+                        <filter name="Reporte" context="{'group_by':'management_id'}"/>
+                    </group>
+               </search>
+           </field>
+       </record>
+
+
+    </data>
+</openerp>

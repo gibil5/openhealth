@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+<!-- TREE --> 
+<!--
+		<record model="ir.ui.view" id="openhealth.management_view_tree">
+-->
+		<record model="ir.ui.view" id="management_view_tree">
+			<field name="name">openhealth.management.tree</field>
+			<field name="model">openhealth.management</field>
+			<field name="arch" type="xml">
+
+				<tree string="Management Tree">
+
+					<field name="name"/>
+
+					<field name="configurator"  string="Config"/>
+
+
+					<field name="state" 	groups='openhealth.roots'/>
+
+					<field name="date_test"/>
+
+
+
+					<field name="month"  	groups="openhealth.roots"/>
+					<field name="year"   	groups="openhealth.roots"/>
+					
+					<field name="owner"         	groups="openhealth.roots"/>
+
+
+
+					<field name="total_amount"      sum="Total" widget="monetary"/>
+					<field name="per_amo_total"     string="Porcentaje Anual"		widget="percentage"  />
+
+
+					<field name="type_arr"     	groups="openhealth.roots"/>
+
+
+					<field name="nr_products"/>
+					<field name="nr_consultations"/>
+					<field name="nr_procedures"/>
+
+					<field name="nr_credit_notes"/>
+					<field name="nr_other"/>
+
+
+					<field name="ratio_pro_con"     string="Ratio"/>
+					
+					<field name="total_tickets"/>
+					<field name="total_count"/>
+				</tree>
+			</field>
+		</record>
+
+
+<!--
+					<field name="write_date"        string="Actualizado"	groups="openhealth.roots"/>
+
+					<field name="rsp_count_delta"	groups="openhealth.roots"/>
+					<field name="rsp_total_delta"	groups="openhealth.roots"/>
+
+					<field name="pl_max"/>
+					<field name="pl_min"/>
+
+					<field name="per_amo_families"  	string="% Mto Fam"		widget="percentage"	groups="openhealth.roots"/>
+					<field name="per_amo_subfamilies"  	string="% Mto Sub Fam"	widget="percentage"	groups="openhealth.roots"/>
+-->
+
+
+
+<!--
+					<field name="total_amount_year"/>
+
+					<field name="type_arr"      groups="openhealth.roots"/>
+					<field name="delta_fast"        groups="openhealth.roots"/>
+					<field name="delta_doctor"      groups="openhealth.roots"/>
+					<field name="write_date"        string="Actualizado"/>
+					<field name="date_begin"    string="Fecha Inicio"   groups="openhealth.roots"/>
+					<field name="date_end"      string="Fecha Fin"      groups="openhealth.roots"/>
+					<field name="avg_total_amount"/>
+					<field name="write_date"    string="Actualizado"/>
+					<field name="test_target"   groups="openhealth.roots"/>
+					<field name="date_begin"    string="Fecha Inicio"/>
+					<field name="date_end"      string="Fecha Fin"/>
+					<field name="total_amount"/>
+-->
+
+
+	</data>
+</openerp>

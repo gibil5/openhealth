@@ -17,10 +17,12 @@ class DoctorLine(models.Model):
 	"""
     Doctor line
 	"""
-	_inherit = 'openhealth.management.line'
 
 	_name = 'openhealth.management.doctor.line'
+
+	_inherit = 'openhealth.management.line'
 	_order = 'amount desc'
+
 
 # ----------------------------------------------------------- Relational --------------
 	management_id = fields.Many2one(
@@ -29,10 +31,10 @@ class DoctorLine(models.Model):
 
 # ----------------------------------------------------------- Nex --------------
 	# Day Line
-	day_line = fields.One2many(
-			'openhealth.management.day.doctor.line',
-			'doctor_id',
-		)
+	#day_line = fields.One2many(
+	#		'openhealth.management.day.doctor.line',
+	#		'doctor_id',
+	#	)
 
 # ------------------------------------------------------------- Relational -----
 	# Sales

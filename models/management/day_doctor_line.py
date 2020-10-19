@@ -19,8 +19,6 @@ class DayDoctorLine(models.Model):
 
 	_name = 'openhealth.management.day.doctor.line'
 
-
-
 	_inherit = 'openhealth.management.day.line'
 
 	_order = 'date asc'

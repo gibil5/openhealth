@@ -1182,14 +1182,14 @@ class Patient(models.Model):
 
 
 
-		allergy_id = self.env['openhealth.allergy'].search([
-															('name', '=', 'Ninguna'),
-														],
+		#allergy_id = self.env['openhealth.allergy'].search([
+		#													('name', '=', 'Ninguna'),
+		#												],
 															#order='write_date desc',
-															limit=1,
-													).id
-		if allergy_id != False:
-			self.x_allergies = allergy_id
+		#													limit=1,
+		#											).id
+		#if allergy_id != False:
+		#	self.x_allergies = allergy_id
 
 
 

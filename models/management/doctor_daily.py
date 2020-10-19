@@ -15,7 +15,7 @@ class DoctorDaily(models.Model):
 
 	_name = 'doctor.daily'
 
-	#_inherit = 'openhealth.management.doctor.line'
+	_inherit = 'openhealth.management.doctor.line'
 
 
 # ----------------------------------------------------------- Relational --------------------------

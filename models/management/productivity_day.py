@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-	Productivity Day
-	Simplified version of Day Line - Just an empty shell
+	Productivity Day - Simplified version of Day Line - Just an empty shell
 
 	Created: 			 8 dec 2019
 	Last up: 			18 oct 2020
@@ -16,17 +15,19 @@ class ProductivityDay(models.Model):
 	"""
 	_name = 'productivity.day'
 
-# ----------------------------------------------------------- Relational -------
+
+# ----------------------------------------------------------- Interface -------
 	management_id = fields.Many2one(
 			'openhealth.management',
 			ondelete='cascade',  	# When the management is deleted, the productivity_day is also deleted
 			required=True,
 		)
 
-	configurator_emr_id = fields.Many2one(
-			'openhealth.configurator.emr',
+	#configurator_emr_id = fields.Many2one(
+	#		'openhealth.configurator.emr',
 			#required=True,
-		)
+	#	)
+
 
 # -------------------------------------------------- Required at creation ------
 	name = fields.Char(

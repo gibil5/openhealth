@@ -20,10 +20,13 @@ class management_order_line(models.Model):
 		Account
 			For Txt generation
 	"""
-	#_inherit='openhealth.line'
+	_inherit='openhealth.line'
 	_name = 'openhealth.management.order.line'
 	_description = "Openhealth Management Order Line"
 
+
+# ----------------------------------------------------------- View ----------
+	#price_total = fields.Char()
 
 # ----------------------------------------------------------- Handles ----------
 	# Management 

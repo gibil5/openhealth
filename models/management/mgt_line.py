@@ -21,18 +21,22 @@ class ManagementLine(models.Model):
 		Family Line
 		Sub Family Line  	# not any more
 	"""
+	
 	_name = 'openhealth.management.line'
+	
 	_order = 'idx asc'
 
-# ----------------------------------------------------------- Relational --------------------------
+
+# ----------------------------------------------------------- Interface --------------------------
 	management_id = fields.Many2one(
 			'openhealth.management',
 		)
 
-	#doctor_id = fields.Many2one(
-	#		'openhealth.management.doctor.line',
-	#		ondelete='cascade',
-	#	)
+	doctor_id = fields.Many2one(
+			'openhealth.management.doctor.line',
+			ondelete='cascade',
+		)
+
 
 # ----------------------------------------------------------- Primitive ---------------------------
 	name = fields.Char(

@@ -4,159 +4,66 @@
 
 
 
-
 <!-- Management -->
-        <menuitem id="main_management_menu" 
+<menuitem id="main_management_menu" 
             sequence="1"
-            name="Gerencia"
-            
+            name="Gerencia"            
             groups="openhealth.roots,openhealth.managers,openhealth.directors"
             />
 
 
-
 <!-- Ventas -->
-        <menuitem   id="management_menu" 
+    <menuitem   id="management_menu" 
                     name="Ventas"
                     parent="main_management_menu"
+                    sequence="1"/>
+
+
+        <!-- Month 2020 -->
+        <menuitem   id="management_sales_mgt_2020_menu"
+                    name="Mensual 2020"
+                    parent="management_menu"
                     sequence="1"
-                />
+                    action="management_list_mgt_2020_action"/>
 
 
         <!-- Month 2019 -->
-        <menuitem   id="management_sales_mgt_2019_menu" 
-
-                    name="Mensual 2019" 
-            
+        <menuitem   id="management_sales_mgt_2019_menu"
+                    name="Mensual 2019"
                     parent="management_menu"
-            
-                    sequence="1"
-            
-                    action="management_list_mgt_2019_action"
-
-                />
+                    sequence="2"
+                    action="management_list_mgt_2019_action"/>
 
 
         <!-- Month 2018 -->
-        <menuitem   id="management_sales_mgt_2018_menu" 
-
-                    name="Mensual 2018" 
-            
+        <menuitem   id="management_sales_mgt_2018_menu"
+                    name="Mensual 2018"
                     parent="management_menu"
-            
                     sequence="3"
-            
-                    action="management_list_mgt_2018_action"
-                />
-
+                    action="management_list_mgt_2018_action"/>
 
 
         <!-- Month 2017 -->
-        <menuitem   id="management_sales_mgt_2017_menu" 
-
-                    name="Mensual 2017" 
-            
+        <menuitem   id="management_sales_mgt_2017_menu"
+                    name="Mensual 2017"
                     parent="management_menu"
-            
                     sequence="5"
-            
-                    action="management_list_mgt_2017_action"
-                />
-
+                    action="management_list_mgt_2017_action"/>
 
 
         <!-- Month 2016 -->
-        <menuitem   id="management_sales_mgt_2016_menu" 
-
+        <menuitem   id="management_sales_mgt_2016_menu"
                     name="Mensual 2016" 
-            
                     parent="management_menu"
-            
                     sequence="7"
-            
-                    action="management_list_mgt_2016_action"
-                />
+                    action="management_list_mgt_2016_action"/>
 
 
-
-<!-- Month All -->
-        <menuitem   id="management_sales_mgt_all_menu" 
-
+        <!-- All reports -->
+        <menuitem   id="management_sales_mgt_all_menu"
                     name="Todo" 
-            
                     parent="management_menu"
-            
                     sequence="13"
-            
-                    action="management_list_mgt_all_action"
-
-                />
-
-
-
-
-<!-- Macros 2019 -->
-        <!-- Family -->
-        <!-- subfamily -->
-<!--
-        <menuitem   id="management_macros_2019_menu" 
-                    
-                    name="Macros 2019"
-                    
-                    parent="main_management_menu"
-
-                    sequence="3"
-                />
-        
-        <menuitem   id="management_family_2019_menu" 
-
-                    name="Familias" 
-            
-                    parent="management_macros_2019_menu"
-            
-                    sequence="1"
-            
-                    action="management_list_mgt_2019_families_action"
-                />
-
-
-        <menuitem   id="management_subfamily_2019_menu" 
-
-                    name="Sub Familias" 
-            
-                    parent="management_macros_2019_menu"
-            
-                    sequence="3"
-            
-                    action="management_list_mgt_2019_subfamilies_action"
-                />
--->
-
-
-<!-- Macros 2018 -->
-        <!-- Month 2018 -->
-<!--
-        <menuitem   id="management_macros_2018_menu" 
-                    
-                    name="Macros 2018"
-                    
-                    parent="main_management_menu"
-
-                    sequence="5"
-                />
-        
-        <menuitem   id="management_family_2018_menu" 
-
-                    name="Familias" 
-            
-                    parent="management_macros_2018_menu"
-            
-                    sequence="1"
-            
-                    action="management_list_mgt_2018_families_action"
-                />
--->
-
-
+                    action="management_list_mgt_all_action"/>
     </data>
 </openerp>

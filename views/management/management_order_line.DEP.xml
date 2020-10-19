@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+
+
+<!-- TREE --> 
+        <record model="ir.ui.view" id="openhealth.management_order_line_view_tree">
+
+            <field name="name">openhealth.management.order.line.tree</field>
+            <field name="model">openhealth.management.order.line</field>
+            <field name="arch" type="xml">
+
+                <tree string="management order line Tree">
+
+
+
+                    <field name="management_id"/>
+
+
+
+
+                    <field name="doctor"/>
+
+                    <field name="date_order_date"   widget="date"/>
+                    <field name="x_date_created"/>
+
+<!--
+                    <field name="price_total"/>
+-->
+                    <field name="price_total"    sum="Monto Total"         widget="monetary"       string="Monto"/>
+
+
+                    <field name="state"/>
+
+
+
+                    <field name="receptor"/>
+                    <field name="patient"/>
+                    <field name="id_doc_type"/>
+                    <field name="id_doc_type_code"/>
+                    <field name="id_doc"/>
+                    <field name="ruc"/>
+
+
+                    <field name="x_type"/>
+                    <field name="type_code"/>
+                    <field name="serial_nr"/>
+                    <field name="family"/>
+                    <field name="sub_family"/>
+                    <field name="product_id"/>
+                    <field name="product_uom_qty"/>
+<!--
+                    <field name="price_net"/>
+                    <field name="price_tax"/>
+-->
+                </tree>
+            </field>
+        </record>
+
+
+<!--
+
+                    <field name="price_subtotal"/>
+                    <field name="doctor_id"/>
+                    <field name="delta"/>
+                    <field name="name"/>
+                    <field name="state"/>
+                    <field name="price_unit"/>
+-->
+
+
+
+
+
+    </data>
+</openerp>

@@ -160,46 +160,30 @@
 	#'views/marketing/marketing.xml',  # Dep
 	#'views/marketing/marketing_pivot.xml',
 
-	# Management - Dep
-	# Done in PL
-	#'views/management/management_day_line.xml',  		# Dep
-	#'views/management/management_day_doctor_line.xml',	# Dep
-	#'views/management/management_productivity_day.xml',
-	#'views/management/management_doctor_daily.xml',
-	#'views/management/management_family_line.xml',
-	#'views/management/management_subfamily_line.xml',
-	#'views/management/management_order_line.xml',
-	#'views/management/management_doctor_line.xml',
-	#'views/management/management_trees.xml',
-	#'views/management/management_actions.xml',
-	#'views/management/management.xml',
 
-	# Service
-	#'views/services/service_search.xml',  	# Dep
-	#'views/services/service.xml',
 
-	# Containers - Dep - In PL
-	#'views/containers/texto.xml',
-	#'views/containers/container.xml',
-	#'views/containers/corrector.xml',
 
-	# Services - 2 - Dep !
-	#'views/services/service_product.xml',
-	#'views/services/service_co2.xml',
-	#'views/services/service_excilite.xml',
-	#'views/services/service_ipl.xml',
-	#'views/services/service_ndyag.xml',
-	#'views/services/service_quick.xml',
-	#'views/services/service_medical.xml',
-	#'views/services/service_cosmetology.xml',
+	# Management - New
+	'views/management/mgt_patient_line.xml',
+	'views/management/management_order_line.xml',
+	'views/management/management_productivity_day.xml',
+	'views/management/management_trees.xml',
+	'views/management/management_actions.xml',
+	'views/management/management.xml',
+
+	# Too complex
+	#'views/management/management_doctor_line.xml',		# too complex
+	#'views/management/management_doctor_daily.xml',	# too complex
+
+
+
+
 
 	# Dep - Done In PL
 	#'views/menus/menus_management.xml',
 	#'views/menus/menus_rsp.xml',			# Dep PL
 	#'views/menus/menus_marketing.xml', 	# Dep PL
 	#'views/menus/menus_account.xml',  		# DEP PL
-
-
 
 # ----------------------------------------------------------- Views - Base Actions ------------------------------------------------------
 	# Base - Form and List Actions - Must be the first
@@ -329,6 +313,9 @@
 	'views/menus/menus_caja.xml',
 	'views/menus/menus_products.xml',
 	'views/menus/menus_oeh.xml',
+
+	'views/menus/menus_management.xml',
+
 
 # ----------------------------------------------------------- Security - Models - Last ------------------------------------------------------
 	'security/ir.model.access.csv',

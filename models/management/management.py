@@ -5,7 +5,7 @@
 	** Only Data model. No functions **
 
 	Created: 			28 may 2018
-	Last updated: 		11 oct 2020
+	Last updated: 		18 oct 2020
 """
 from __future__ import print_function
 import os
@@ -660,3 +660,57 @@ class Management(models.Model):
 	avg_cosmetology = fields.Float(
 			'Precio Prom. Cosmiatria',
 		)
+
+
+
+# ----------------------------------------------------------- From PL ----------
+	_dic_weekday = {
+					0: 	'monday',
+					1: 	'tuesday',
+					2: 	'wednesday',
+					3: 	'thursday',
+					4: 	'friday',
+					5: 	'saturday',
+					6: 	'sunday',
+	}
+
+	_h_name = {
+				# Families
+				'gynecology': 		'Ginecologia',
+				'echography': 		'Ecografia',
+				'promotion': 		'Promocion',
+
+				# 13 Jul 2018 
+				'other': 		'Otro',
+				'product': 		'Producto',
+				'consultation': 'Consulta', 		
+				'consultation_gyn': 'Consulta Ginecológica', 		
+				'consultation_100': 'Consulta 100', 		
+				'consultation_0': 'Consulta Gratuita', 		
+
+				'procedure': 	'Procedimiento Laser', 		
+				'laser': 		'Laser', 		
+
+				'medical': 		'Tratamiento Médico', 		
+				'cosmetology': 	'Cosmeatria', 	
+
+				'card': 		'Tarjeta Vip', 	
+				'kit': 			'Kits', 	
+				'topical': 		'Cremas', 	
+
+				# Subfamilies
+				'laser_co2' : 		'Laser Co2', 		
+				'laser_excilite' : 	'Laser Exc', 		
+				'laser_ipl' : 		'Laser Ipl', 		
+				'laser_ndyag' : 	'Laser Ndyag', 		
+				'laser_quick' : 	'Quick Laser', 		
+
+				'criosurgery' : 			'Criocirugía', 		
+				'intravenous_vitamin' : 	'Vitamina Intravenosa', 		
+				'botulinum_toxin' : 		'Toxina Botulínica', 		
+				'hyaluronic_acid' : 		'Acido Hialurónico', 		
+
+				'mesotherapy_nctf': 		'Mesoterapia NCTF', 
+				'infiltration_scar': 		'Infiltración Cicatriz', 
+				'infiltration_keloid': 		'Infiltración Queloide',
+	}

@@ -26,6 +26,7 @@ from . import day_doctor_line
 
 
 from . import management
+from . import management_methods
 
 
 # Patient

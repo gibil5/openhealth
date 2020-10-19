@@ -39,7 +39,9 @@ build/
 develop-eggs/
 dist/
 eggs/
-lib/
+
+#jx(18 oct 2020) lib/
+
 lib64/
 parts/
 sdist/

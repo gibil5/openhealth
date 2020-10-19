@@ -1,42 +1,51 @@
 # -*- coding: utf-8 -*-
 """
-	Doctor Line - Dep ?
+	Doctor Line
 
-	Only Data model. No functions.
+	Why is this too complex ?
+	
+		- It has too much crossed relations:  5 One2many (has many)
+		- It has a confusing inheritance. Is this necessary ?
 
-	Created: 			18 May 2018
-	Last up: 			13 Feb 2019
+	Solution:
+		- Keep the complexity but isolate this into a new module. 
+		- Refactor into a completely independent new model. Follow Marketing approach. 
+
+	Created: 			18 may 2018
+	Last up: 			19 oct 2020
 """
 from __future__ import print_function
-
 import collections
 from openerp import models, fields, api
-from . import mgt_vars
 
 class DoctorLine(models.Model):
 	"""
     Doctor line
 	"""
+	_inherit = 'openhealth.management.line'
 
 	_name = 'openhealth.management.doctor.line'
 
-	_inherit = 'openhealth.management.line'
 	_order = 'amount desc'
 
-
-# ----------------------------------------------------------- Relational --------------
+# ----------------------------------------------------------- Relationals ------
 	management_id = fields.Many2one(
 			'openhealth.management',
 		)
 
-# ----------------------------------------------------------- Nex --------------
+# ----------------------------------------------------------- One2many ---------
 	# Day Line
-	#day_line = fields.One2many(
-	#		'openhealth.management.day.doctor.line',
-	#		'doctor_id',
-	#	)
+	day_line = fields.One2many(
+			'openhealth.management.day.doctor.line',
+			'doctor_id',
+		)
 
-# ------------------------------------------------------------- Relational -----
+	# Doctor daily
+	doctor_daily = fields.One2many(
+			'doctor.daily',
+			'doctor_id',
+		)
+
 	# Sales
 	order_line = fields.One2many(
 			'openhealth.management.order.line',
@@ -54,6 +63,8 @@ class DoctorLine(models.Model):
 			'openhealth.management.sub_family.line',
 			'doctor_id',
 		)
+
+# ------------------------------------------------------------- Many2one -------
 
 # ----------------------------------------------------------- Primitives -------
 	# Nr Families
@@ -106,34 +117,10 @@ class DoctorLine(models.Model):
 			'Ratio Quick %',
 		)
 
-
-
-# ----------------------------------------------------------- From Pl - Vars -----
-
-# ----------------------------------------------------------- Relational -------
-	# Day Line
-	#day_line = fields.One2many(
-	#		'openhealth.management.day.doctor.line',
-	#		'doctor_id',
-	#	)
-
-	# Doctor daily
-	doctor_daily = fields.One2many(
-			'doctor.daily',
-			'doctor_id',
-		)
-	# Sales
-	order_line = fields.One2many(
-			'openhealth.management.order.line',
-			'doctor_id',
-		)
-
-
 # ----------------------------------------------------------- From Pl - Methods -----
 
 # ----------------------------------------------------------- Update Daily -----
 	@api.multi
-	#def update_daily(self):
 	def update_daily(self, management_id):
 		"""
 		Update daily for each Doctor
@@ -332,6 +319,5 @@ class DoctorLine(models.Model):
 			#print amount
 			#print
 
-		#self.update_fields()
 		self.update()
 	# stats

@@ -5,7 +5,10 @@
 	Only Data model. No functions.
 
 	Used by;
-		Doctor line
+		- Doctor line
+		- Day Line
+		- Family Line
+		- Sub Family Line  	# not any more ?
 
 	Created: 		18 May 2018
 	Last up: 		18 oct 2020
@@ -16,16 +19,14 @@ class ManagementLine(models.Model):
 	"""
 	Used by:
 		Doctor Line
-
 		Day Line
 		Family Line
-		Sub Family Line  	# not any more
+		Sub Family Line  	# not any more ?
 	"""
 	
 	_name = 'openhealth.management.line'
 	
 	_order = 'idx asc'
-
 
 # ----------------------------------------------------------- Interface --------------------------
 	management_id = fields.Many2one(
@@ -36,7 +37,6 @@ class ManagementLine(models.Model):
 			'openhealth.management.doctor.line',
 			ondelete='cascade',
 		)
-
 
 # ----------------------------------------------------------- Primitive ---------------------------
 	name = fields.Char(

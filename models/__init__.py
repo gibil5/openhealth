@@ -16,8 +16,11 @@ from configurator import *
 from pricelist import *
 
 
+
 # Management
 from management import *
+#from management_doctor import *
+
 
 
 # Electronic

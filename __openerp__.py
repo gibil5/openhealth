@@ -5,14 +5,15 @@
 """,
 'description': """
 
-	18 Oct 2020
+	19 Oct 2020
 
 	Classes: 
 		- Order
 		- Treatment
 		- Patient
 		- Management
-
+		- Management Doctor (in prog)
+		
 	Contains:
 		- All External Dependencies
 		- All Models

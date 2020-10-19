@@ -5,7 +5,7 @@
 	** Only Data model. No functions **
 
 	Created: 			28 may 2018
-	Last updated: 		18 oct 2020
+	Last up: 			19 oct 2020
 """
 from __future__ import print_function
 import os
@@ -16,7 +16,6 @@ from timeit import default_timer as timer
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.order import ord_vars
 
-#from . import mgt_funcs
 from . import mgt_vars
 
 
@@ -107,7 +106,6 @@ from . import mgt_vars
 #	management_id = fields.Many2one(
 #			'openhealth.management',
 #		)
-
 
 
 # -------------------------------------------------------------------------------------------------

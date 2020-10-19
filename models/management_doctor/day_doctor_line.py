@@ -16,7 +16,6 @@ class DayDoctorLine(models.Model):
 	"""
 	high level support for doing this and that.
 	"""
-
 	_name = 'openhealth.management.day.doctor.line'
 
 	_inherit = 'openhealth.management.day.line'

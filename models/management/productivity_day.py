@@ -5,8 +5,12 @@
 	Created: 			 8 dec 2019
 	Last up: 			18 oct 2020
 """
+import numpy as np
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.order import ord_vars
+from openerp.addons.openhealth.models.libs import lib
+
+from lib import mgt_funcs
 
 # -------------------------------------------------------------------------------------------------
 class ProductivityDay(models.Model):

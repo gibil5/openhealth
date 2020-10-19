@@ -2,8 +2,6 @@
 """
  	Family Line 
 
-	Only Data model. No functions.
-
 	Created: 			20 Aug 2018
 	Last up: 			18 Dec 2020
 """
@@ -11,14 +9,16 @@ from __future__ import print_function
 from openerp import models, fields, api
 from . import mgt_vars
 
+from management import Management
+
 class FamilyLine(models.Model):
 	"""
 	Only Data model. No functions.
 
 	Should not be inherited
 	"""
-	_inherit = 'openhealth.management.line'
 	_name = 'openhealth.management.family.line'
+	_inherit = 'openhealth.management.line'
 	_order = 'amount desc'
 
 # ----------------------------------------------------------- Update -----------

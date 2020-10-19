@@ -5,12 +5,12 @@
 	Created: 			28 May 2018
 	Last updated: 		18 oct 2020
 """
-
 from openerp import models, fields, api
 import openerp.addons.decimal_precision as dp
 
 from openerp.addons.openhealth.models.order import ord_vars
 from openerp.addons.openhealth.models.product import prodvars
+from openerp.addons.openhealth.models.libs import lib
 
 class management_order_line(models.Model):
 	"""

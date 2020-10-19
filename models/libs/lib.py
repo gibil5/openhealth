@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
 """
- 		lib.py
+    lib.py
 
- 		Abstract, general purpose. Can be Unit-tested.
- 		Is completely standard. Gives service to all Users.
+    Used by: 
+        management_order_line
 
- 		Created: 			13 aug 2018
- 		Last up: 	 		11 oct 2020
+    Abstract, general purpose. Can be Unit-tested.
+    Is completely standard. Gives service to all Users.
+
+    Created: 			13 aug 2018
+    Last up: 	 		18 oct 2020
 """
 from __future__ import print_function
 import datetime

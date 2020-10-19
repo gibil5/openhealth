@@ -96,7 +96,7 @@ class ConfiguratorEmr(models.Model):
 	# Ticket
 	company_website = fields.Char(
 			required=True,
-			default="http://www.clinicachavarri.com/",
+			default="https://www.clinicachavarri.com/",
 		)
 
 	company_email = fields.Char(

@@ -174,8 +174,8 @@
 	'views/management/management.xml',
 
 	# Too complex
-	#'views/management/management_doctor_line.xml',		# too complex
-	#'views/management/management_doctor_daily.xml',	# too complex
+	'views/management/management_doctor_line.xml',		# too complex
+	'views/management/management_doctor_daily.xml',	# too complex
 
 
 

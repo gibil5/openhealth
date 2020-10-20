@@ -23,9 +23,9 @@ class DoctorDaily(models.Model):
 
 
 # ----------------------------------------------------------- Relational -------
-	#management_id = fields.Many2one(
-	#		'openhealth.management',
+	management_id = fields.Many2one(
+			'openhealth.management',
 			#ondelete='cascade',
-	#		required=True,
-	#	)
+			required=True,
+		)
 

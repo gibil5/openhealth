@@ -146,6 +146,12 @@ class Management(models.Model):
 			'management_id',
 		)
 
+	# Doctor Day - Dep ?
+	doctor_daily = fields.One2many(
+			'doctor.daily',
+			'management_id',
+		)
+
 
 # ----------------------------------------------------------- Prod -------------
 	# For Update Productivity

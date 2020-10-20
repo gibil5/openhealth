@@ -75,6 +75,31 @@
 						    string="Ventas" 
 						/>
 
+
+						<!-- List Doctors -->
+						<button
+						    class="oe_highlight"
+						    type="action"
+						    context="{
+						          'search_default_management_id': active_id,
+						        }"
+						    name="%(management_doctor_line_form_action)d"
+						    string=" Doctores"
+						/>
+
+
+						<!-- See Doctor Daily -->
+						<button
+						    class="oe_highlight"
+						    type="action" 
+						    context="{
+						          'search_default_management_id': active_id,  
+						        }"
+						    name="%(doctor_daily_list_action)d" 
+						    string="Diario"   
+						/>
+
+
 						<!-- See Productivity -->
 						<button
 						    class="oe_highlight"
@@ -329,14 +354,42 @@
 <!-- Notebook --> 
 						<notebook>  
 
+							<!-- Doctores --> 
+							<page   string="Por Doctor">
+							  <field name="doctor_line">
+							    <tree string="Doctor">                                          
+							      <!-- Open Button -->
+							      <button 
+							        type="object" 
+							        class="oe_highlight"    
+							        name="open_line_current" 
+							        string="e"
+							      />
+							      <field name="name"/>
+							      <field name="per_nr"   widget="percentage"/>
+							      <field name="nr_consultations"/>
+							      <field name="nr_procedures"/>
+							      <field name="nr_products"/>
+							      <field name="ratio_pro_con"/>
+							      <field name="ratio_pro_con_co2"/>
+							      <field name="ratio_pro_con_quick"/>
+							      <field name="amount"/>
+							      <field name="per_amo"   widget="percentage"/>
+							    </tree>
+							  </field>
+							</page>
+
+
 							<!-- Day Prod --> 
 							<page   string="Productividad">
 <!--
-								<field name="day_line">
+								<field name="day_line"/>
 -->
 								<field name="productivity_day">
 
 									<tree string="Day Prod">
+
+
 										<field name="date"/>
 										<field name="weekday"/>
 										<field name="holiday"/>
@@ -349,6 +402,7 @@
 									</tree>
 								</field>
 							</page>
+
 
 							<!-- Familias --> 
 							<page   string="Familias">

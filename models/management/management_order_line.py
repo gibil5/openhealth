@@ -35,7 +35,7 @@ class management_order_line(models.Model):
 			ondelete='cascade',
 		)
 
-	# Doctor 
+	# Doctor line
 	doctor_id = fields.Many2one(			
 			'openhealth.management.doctor.line',
 			ondelete='cascade', 			

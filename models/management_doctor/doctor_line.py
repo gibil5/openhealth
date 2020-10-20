@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-	Doctor Line
+	Doctor Line - Too complex - Refactor !
+
+	Inherits  - mgt_line
 
 	Why is this too complex ?
 	
@@ -28,37 +30,41 @@ class DoctorLine(models.Model):
 
 	_order = 'amount desc'
 
-# ----------------------------------------------------------- Relationals ------
+
+# ----------------------------------------------------------- Relations --------
 	management_id = fields.Many2one(
 			'openhealth.management',
 		)
 
+
 # ----------------------------------------------------------- One2many ---------
-	# Day Line
+	# Day doctor Line
 	day_line = fields.One2many(
 			'openhealth.management.day.doctor.line',
 			'doctor_id',
 		)
 
-	# Doctor daily
-	doctor_daily = fields.One2many(
-			'doctor.daily',
-			'doctor_id',
-		)
 
-	# Sales
+	# Doctor daily - Dep ?
+	#doctor_daily = fields.One2many(
+	#		'doctor.daily',
+	#		'doctor_id',
+	#	)
+
+
+	# Sales - ok
 	order_line = fields.One2many(
 			'openhealth.management.order.line',
 			'doctor_id',
 		)
 
-	# Family
+	# Family - ok
 	family_line = fields.One2many(
 			'openhealth.management.family.line',
 			'doctor_id',
 		)
 
-	# Sub family
+	# Sub family - ok
 	sub_family_line = fields.One2many(
 			'openhealth.management.sub_family.line',
 			'doctor_id',

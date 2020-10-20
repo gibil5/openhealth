@@ -12,10 +12,8 @@ import os
 import collections
 import datetime
 from timeit import default_timer as timer
-
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.order import ord_vars
-
 from . import mgt_vars
 
 
@@ -26,6 +24,23 @@ from . import mgt_vars
 	#		'openhealth.management.doctor.line',
 	#		'management_id',
 	#	)
+
+
+# ------------------------------------------------------------------ Vars ------
+	# For Update Productivity
+	#productivity_day = fields.One2many(
+	#		'productivity.day',
+	#		'management_id',
+	#	)
+
+	
+# ------------------------------------------------------------------ Vars ------
+	# Doctor Day - Dep ?
+	#doctor_daily = fields.One2many(
+	#		'doctor.daily',
+	#		'management_id',
+	#	)
+
 
 
 
@@ -121,6 +136,16 @@ class Management(models.Model):
 	_name = 'openhealth.management'
 	_inherit = 'openhealth.repo'
 	_order = 'date_begin desc'
+
+
+# ----------------------------------------------------------- Relations --------
+	# Doctor line
+	# For Update Daily
+	doctor_line = fields.One2many(
+			'openhealth.management.doctor.line',
+			'management_id',
+		)
+
 
 # ----------------------------------------------------------- Prod -------------
 	# For Update Productivity

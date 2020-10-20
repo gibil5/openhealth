@@ -23,9 +23,8 @@ class ManagementLine(models.Model):
 		Family Line
 		Sub Family Line  	# not any more ?
 	"""
-	
 	_name = 'openhealth.management.line'
-	
+
 	_order = 'idx asc'
 
 # ----------------------------------------------------------- Interface --------------------------

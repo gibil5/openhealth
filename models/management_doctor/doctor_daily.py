@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-	Doctor Daily
+	Doctor Daily - Too complex - Refactor !
+
+	Inherits - doctor_line
 
 	Created: 			 8 Dec 2019
 	Last up: 			 8 Dec 2019
@@ -10,18 +12,20 @@ from openerp import models, fields, api
 
 class DoctorDaily(models.Model):
 	"""
-	For Doctor Daily
+	DoctorDaily
+		DoctorLine
+			ManagementLine
 	"""
+	_inherit = 'openhealth.management.doctor.line'
 
 	_name = 'doctor.daily'
 
-	_inherit = 'openhealth.management.doctor.line'
 
 
-# ----------------------------------------------------------- Relational --------------------------
-
-	management_id = fields.Many2one(
-			'openhealth.management',
+# ----------------------------------------------------------- Relational -------
+	#management_id = fields.Many2one(
+	#		'openhealth.management',
 			#ondelete='cascade',
-			required=True,
-		)
+	#		required=True,
+	#	)
+

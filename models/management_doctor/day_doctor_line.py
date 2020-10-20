@@ -2,34 +2,40 @@
 """
 	Day Doctor Line
 
+	Inherits  - day_line
+
 	Created: 			25 Jan 2019
 	Last up: 			25 Jan 2019
 """
 from __future__ import print_function
-
 import datetime
-
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.order import ord_vars
 
 class DayDoctorLine(models.Model):
 	"""
-	high level support for doing this and that.
+	DayDoctorLine
+		DayLine
+			ManagementLine
 	"""
-	_name = 'openhealth.management.day.doctor.line'
-
 	_inherit = 'openhealth.management.day.line'
-
+	_name = 'openhealth.management.day.doctor.line'
 	_order = 'date asc'
 
 
 
 # ----------------------------------------------------------- Relational --------------------------
+	# Doctor line
+	doctor_id = fields.Many2one(
+			'openhealth.management.doctor.line',
+			ondelete='cascade',
+		)
+
 	# Sales
-	#order_line = fields.One2many(
-	#		'openhealth.management.order.line',
-	#		'doctor_day_id',
-	#	)
+	order_line = fields.One2many(
+			'openhealth.management.order.line',
+			'doctor_day_id',
+		)
 
 
 

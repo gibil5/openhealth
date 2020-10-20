@@ -26,28 +26,6 @@ class Management(models.Model):
 	_inherit = 'openhealth.management'
 
 
-
-# ------------------------------------------------------------------ Vars ------
-	# For Update Productivity
-	#productivity_day = fields.One2many(
-	#		'productivity.day',
-	#		'management_id',
-	#	)
-
-	# Doctor
-	#doctor_line = fields.One2many(
-	#		'openhealth.management.doctor.line',
-	#		'management_id',
-	#	)
-	
-	# Doctor Day
-	#doctor_daily = fields.One2many(
-	#		'doctor.daily',
-	#		'management_id',
-	#	)
-
-
-
 # ---------------------------------------------------------------------------------------
 # 									Productivity
 # ---------------------------------------------------------------------------------------

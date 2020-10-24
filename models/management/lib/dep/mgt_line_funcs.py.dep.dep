@@ -1,0 +1,100 @@
+
+
+# ----------------------------------------------------------- Line Analysis ----
+def line_analysis_2018(self, line):
+	"""
+	Old - 2018
+	Analyses Line to update counters
+	"""
+	#print()
+	#print('Line Analysis - 2018')
+
+	# Init
+	prod = line.product_id
+
+	# Services
+	if prod.type in ['service']:
+		self.nr_services = self.nr_services + line.product_uom_qty
+		self.amo_services = self.amo_services + line.price_subtotal
+
+		# Consultations
+		if prod.x_treatment in ['consultation']:
+			self.nr_consultations = self.nr_consultations + line.product_uom_qty
+			self.amo_consultations = self.amo_consultations + line.price_subtotal
+			self.nr_sub_con_med = self.nr_sub_con_med + line.product_uom_qty
+			self.amo_sub_con_med = self.amo_sub_con_med + line.price_subtotal
+
+		# Procedures
+		else:
+			self.nr_procedures = self.nr_procedures + line.product_uom_qty
+			self.amo_procedures = self.amo_procedures + line.price_subtotal
+
+			# Co2
+			if prod.x_treatment in ['laser_co2']:
+				self.nr_co2 = self.nr_co2 + line.product_uom_qty
+				self.amo_co2 = self.amo_co2 + line.price_subtotal
+
+			# Exc
+			elif prod.x_treatment in ['laser_excilite']:
+				self.nr_exc = self.nr_exc + line.product_uom_qty
+				self.amo_exc = self.amo_exc + line.price_subtotal
+
+			# Ipl
+			elif prod.x_treatment in ['laser_ipl']:
+				self.nr_ipl = self.nr_ipl + line.product_uom_qty
+				self.amo_ipl = self.amo_ipl + line.price_subtotal
+
+			# Ndyag
+			elif prod.x_treatment in ['laser_ndyag']:
+				self.nr_ndyag = self.nr_ndyag + line.product_uom_qty
+				self.amo_ndyag = self.amo_ndyag + line.price_subtotal
+
+			# Quick
+			elif prod.x_treatment in ['laser_quick']:
+				self.nr_quick = self.nr_quick + line.product_uom_qty
+				self.amo_quick = self.amo_quick + line.price_subtotal
+
+			else:
+				# Medical
+				if prod.x_family in ['medical']:
+					self.nr_medical = self.nr_medical + line.product_uom_qty
+					self.amo_medical = self.amo_medical + line.price_subtotal
+
+				# Cosmeto
+				elif prod.x_family in ['cosmetology']:
+					self.nr_cosmetology = self.nr_cosmetology + line.product_uom_qty
+					self.amo_cosmetology = self.amo_cosmetology + line.price_subtotal
+
+	# Products
+	#else:
+	elif prod.type in ['product']:
+		self.nr_products = self.nr_products + line.product_uom_qty
+		self.amo_products = self.amo_products + line.price_subtotal
+
+		# Topical
+		if prod.x_family in ['topical']:
+			self.nr_topical = self.nr_topical + line.product_uom_qty
+			self.amo_topical = self.amo_topical + line.price_subtotal
+
+		# card
+		elif prod.x_family in ['card']:
+			self.nr_card = self.nr_card + line.product_uom_qty
+			self.amo_card = self.amo_card + line.price_subtotal
+
+		# kit
+		elif prod.x_family in ['kit']:
+			self.nr_kit = self.nr_kit + line.product_uom_qty
+			self.amo_kit = self.amo_kit + line.price_subtotal
+
+	# Consu
+	elif prod.type in ['consu']:
+		#print('Consu')
+		self.nr_other = self.nr_other + line.product_uom_qty
+		self.amo_other = self.amo_other + line.price_subtotal
+
+		#if prod.x_family in ['credit_note']:
+		#	self.nr_credit_notes = self.nr_credit_notes + line.product_uom_qty
+		#	self.amo_credit_notes = self.amo_credit_notes + line.price_subtotal
+	return False
+# line_analysis
+

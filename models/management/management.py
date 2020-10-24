@@ -5,7 +5,7 @@
 	** Only Data model. No functions **
 
 	Created: 			28 may 2018
-	Last up: 			19 oct 2020
+	Last up: 			23 oct 2020
 """
 from __future__ import print_function
 import os
@@ -17,115 +17,6 @@ from openerp.addons.openhealth.models.order import ord_vars
 from . import mgt_vars
 
 
-# ------------------------------------------------------------ Too complex -----
-	# Doctor
-	# For Update Daily
-	#doctor_line = fields.One2many(
-	#		'openhealth.management.doctor.line',
-	#		'management_id',
-	#	)
-
-
-# ------------------------------------------------------------------ Vars ------
-	# For Update Productivity
-	#productivity_day = fields.One2many(
-	#		'productivity.day',
-	#		'management_id',
-	#	)
-
-	
-# ------------------------------------------------------------------ Vars ------
-	# Doctor Day - Dep ?
-	#doctor_daily = fields.One2many(
-	#		'doctor.daily',
-	#		'management_id',
-	#	)
-
-
-
-
-# -------------------------------------------------------------------------------------------------
-# Dependencies
-# -------------------------------------------------------------------------------------------------
-
-# -------------------------------------------------------------------------------------------------
-#class ProductivityDay(models.Model):
-#	"""
-#	Productivity Day
-#	"""
-#	_name = 'productivity.day'
-
-#	management_id = fields.Many2one(
-#			'openhealth.management',
-#			ondelete='cascade',  	# When the management is deleted, the productivity_day is also deleted
-#			required=True,
-#		)
-
-# -------------------------------------------------------------------------------------------------
-#class DoctorLine(models.Model):
-#	"""
-#	Management doctor line
-#	"""
-	#_inherit = 'openhealth.management.line'
-#	_name = 'openhealth.management.doctor.line'
-
-#	management_id = fields.Many2one(
-#			'openhealth.management',
-#		)
-
-# -------------------------------------------------------------------------------------------------
-#class management_order_line(models.Model):
-#	"""
-#	Management Order Line
-#	"""
-#	_name = 'openhealth.management.order.line'
-
-#	management_id = fields.Many2one(
-#			'openhealth.management',
-#		)
-
-#	management_tkr_id = fields.Many2one(
-#			'openhealth.management',
-#		)
-
-# -------------------------------------------------------------------------------------------------
-#class FamilyLine(models.Model):
-#	"""
-#	Famliy line
-#	"""
-#	_name = 'openhealth.management.family.line'
-
-#	management_id = fields.Many2one(
-#			'openhealth.management',
-#		)
-
-# -------------------------------------------------------------------------------------------------
-#class SubFamilyLine(models.Model):	
-#	"""
-#	Sub Family Line
-#	"""
-#	_name = 'openhealth.management.sub_family.line'
-
-#	management_id = fields.Many2one(
-#			'openhealth.management',
-#		)
-
-# -------------------------------------------------------------------------------------------------
-#class DayLine(models.Model):
-#	"""
-#	Day Line
-#	"""
-	#_inherit = 'openhealth.management.line'
-#	_name = 'openhealth.management.day.line'
-
-#	management_id = fields.Many2one(
-#			'openhealth.management',
-#		)
-
-
-# -------------------------------------------------------------------------------------------------
-# Management class
-# -------------------------------------------------------------------------------------------------
 class Management(models.Model):
 	"""
 	Contains only the data model. No functions.
@@ -146,19 +37,25 @@ class Management(models.Model):
 			'management_id',
 		)
 
-	# Doctor Day - Dep ?
+	# Doctor Day
 	doctor_daily = fields.One2many(
 			'doctor.daily',
 			'management_id',
 		)
 
-
-# ----------------------------------------------------------- Prod -------------
-	# For Update Productivity
+	# Productivity
 	productivity_day = fields.One2many(
 			'productivity.day',
 			'management_id',
 		)
+
+	# Patient
+	patient_line = fields.One2many(
+			'openhealth.management.patient.line',
+			'management_id',
+		)
+
+
 
 # ----------------------------------------------------------- PL - Natives -----
 	mode = fields.Selection(
@@ -336,14 +233,6 @@ class Management(models.Model):
 			string='Mes',
 			required=True,
 		)
-
-# ----------------------------------------------------------- PL - Dummy -------
-	# patient
-	#patient_line = fields.One2many(
-	#		'openhealth.management.patient.line',
-	#		'management_id',
-	#)
-	patient_line = fields.Char()
 
 # ----------------------------------------------------------- QC ---------------
 	year = fields.Selection(

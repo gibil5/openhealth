@@ -3,9 +3,8 @@
 	Management - Methods
 
 	Created: 			28 may 2018
-	Last updated: 		18 oct 2020
+	Last updated: 		23 oct 2020
 """
-
 from __future__ import print_function
 from timeit import default_timer as timer
 import datetime
@@ -13,10 +12,9 @@ import collections
 from openerp import models, fields, api
 
 # Lib
-from lib import stats
+#from lib import stats
+#from lib import mgt_line_funcs
 from lib import mgt_funcs
-from lib import mgt_exc
-from lib import mgt_line_funcs
 from lib import prod_funcs
 
 class Management(models.Model):
@@ -26,78 +24,9 @@ class Management(models.Model):
 	_inherit = 'openhealth.management'
 
 
-# ---------------------------------------------------------------------------------------
-# 									Productivity
-# ---------------------------------------------------------------------------------------
-
-# ----------------------------------------------------------- Update Prod ------
-	# Update Productivity
-	@api.multi
-	def update_productivity(self):
-		"""
-		Update productivity
-		Used also by Django
-		"""
-		print()
-		print('X - Update Productivity')
-		
-		# Handle Exceptions - Dep !
-		#mgt_exc.handle_exceptions(self)
-
-		# Go
-		prod_funcs.create_days(self)
-		
-		# Update cumulative and average
-		prod_funcs.pl_update_day_cumulative(self)
-		prod_funcs.pl_update_day_avg(self)
-
-		print()
-
-		return 1	# For Django
-	# update_productivity
-
-
-# ---------------------------------------------------------------------------------------------------------------------
-# 																Daily                       
-# ---------------------------------------------------------------------------------------------------------------------
-
-# ----------------------------------------------------------- Update Daily -------------------------
-	# Update Daily
-	@api.multi
-	def update_daily(self):
-		"""
-		Update daily sales for each doctor
-
-		Used by Django. Last Test
-
-		self.doctor_line
-			'openhealth.management.doctor.line',
-		"""
-		print()
-		print('X - Update Daily Sales')
-
-
-		# Handle Exceptions - Dep !
-		#mgt_exc.handle_exceptions(self)
-
-
-		# For each doctor line
-		for doctor in self.doctor_line:
-			print(doctor.name)
-			
-			#doctor.update_daily() 	# Here !
-			doctor.update_daily(self.id) 	# Here !
-
-
-		print()
-
-
-		# For Django
-		self.date_test = datetime.datetime.now() 
-		return 1	
-	# update_daily
-
-# ------------------------------------------ First Level - Update Buttons ---------------
+# -------------------------------------------------------------------------------------------------
+# First Level - Update Buttons
+# -------------------------------------------------------------------------------------------------
 
 # ----------------------------------------------------------- Update Fast ------
 	@api.multi
@@ -107,10 +36,7 @@ class Management(models.Model):
 		Used also by Django
 		"""
 		print()
-		print('X - Update Fast')
-
-		# Handle Exceptions
-		mgt_exc.handle_exceptions(self)
+		print('Update Fast')
 
 		# Go
 		t0 = timer()
@@ -120,18 +46,13 @@ class Management(models.Model):
 		self.delta_fast = t1 - t0
 		#print self.delta_fast
 		#print
-
 		print()
 
 		return 1 	# For Django
 	# update_fast
 
 
-# ---------------------------------------------------------------------------------------------------------------------
-# 																Patients                       
-# ---------------------------------------------------------------------------------------------------------------------
-
-# ----------------------------------------------------------- Update Patients -------------------------
+# --------------------------------------------------------- Update Patients ----
 	# Update Patients
 	@api.multi
 	def update_patients(self):
@@ -139,12 +60,7 @@ class Management(models.Model):
 		Update Patients. 
 		"""
 		print()
-		print('X - Update Patients')
-
-
-		# Handle Exceptions
-		mgt_exc.handle_exceptions(self)
-
+		print('Update Patients')
 
 		# Go
 		orders, count = mgt_funcs.get_orders_filter_fast(self, self.date_begin, self.date_end)
@@ -153,16 +69,11 @@ class Management(models.Model):
 
 		# Create
 		for order in orders:
-
 			patient = order.patient
 			patient_id = order.patient.id
 
-
-			#if patient.name not in ['REVILLA RONDON JOSE JAVIER']:
-			
-			if self.mode in ['test']  	or  	self.mode in ['normal'] and patient.name not in ['REVILLA RONDON JOSE JAVIER']:
-
-
+			#if patient.name not in ['REVILLA RONDON JOSE JAVIER']:			
+			if self.mode in ['test'] or self.mode in ['normal'] and patient.name not in ['REVILLA RONDON JOSE JAVIER']:
 				#print(patient)
 				#print(patient_id)
 
@@ -176,10 +87,7 @@ class Management(models.Model):
 																				)
 				#print(pat_count)
 
-
 				if pat_count in [0]:
-
-					#self.report_sale_product = self.env['openhealth.report.sale.product'].create({
 					patient_line = self.patient_line.create({
 																'patient': patient_id,
 																'management_id': self.id,
@@ -189,22 +97,13 @@ class Management(models.Model):
 		for patient_line in self.patient_line:
 			patient_line.update()
 
-
 		print()
-
 
 		return 1	# For Django
 	# update_patients
 
 
-
-
-# ---------------------------------------------------------------------------------------------------------------------
-# 																Doctors                       
-# ---------------------------------------------------------------------------------------------------------------------
-
-
-# ----------------------------------------------------------- Update Doctors ----------------------
+# ---------------------------------------------------------- Update Doctors ----
 	@api.multi
 	def update_doctors(self):
 		"""
@@ -213,66 +112,95 @@ class Management(models.Model):
 		print()
 		print('X - Update Doctors')
 
-
-		# Handle Exceptions
-		mgt_exc.handle_exceptions(self)
-
-
 		# Go
 		t0 = timer()
 
-
 		# Sales by Doctor
 		self.pl_update_sales_by_doctor()
-
 
 		# Stats
 		#stax.update_stats(self)
 		self.update_stats()
 
-
 		t1 = timer()
 		self.delta_doctor = t1 - t0
 
-
 		print()
-
 
 		return 1	# For Django
 	# update_doctors
 
 
-
-# ----------------------------------------------------------- Relational Extension -------------------------
-	# patient
-	patient_line = fields.One2many(
-			'openhealth.management.patient.line',
-			'management_id',
-		)
-
-
-
-# ----------------------------------------------------------- Second Level ---------------------------------------------
-
-# ----------------------------------------------------------- Update Sales - Fast -----------------
-	def update_sales_fast(self):
+# ----------------------------------------------------------- Update Prod ------
+	# Update Productivity
+	@api.multi
+	def update_productivity(self):
 		"""
-		Update Sales - Fast
+		Update productivity
+		Used also by Django
 		"""
 		print()
-		print('X - Update Sales Fast')
+		print('X - Update Productivity')
+		
+		# Go
+		prod_funcs.create_days(self)
+		
+		# Update cumulative and average
+		prod_funcs.pl_update_day_cumulative(self)
+		prod_funcs.pl_update_day_avg(self)
+
+		print()
+
+		return 1	# For Django
+	# update_productivity
+
+# ---------------------------------------------------------- Update Daily ------
+	# Update Daily
+	@api.multi
+	def update_daily(self):
+		"""
+		Update daily sales for each doctor
+
+		Used by Django. Last Test
+
+		self.doctor_line
+			'openhealth.management.doctor.line',
+		"""
+		print()
+		print('Update Daily Sales')
+
+		# For each doctor line
+		for doctor in self.doctor_line:
+			print(doctor.name)
+			
+			#doctor.update_daily() 	# Here !
+			doctor.update_daily(self.id) 	# Here !
+		print()
+
+		# For Django
+		self.date_test = datetime.datetime.now() 
+		return 1	
+	# update_daily
 
 
-		# Init
-		#self.statistics.initialize(self.name)
-		#self.statistics = stats.Statistics(self.name)
-		statistics = stats.Statistics(self.name)
+# -------------------------------------------------------------------------------------------------
+# Second Level - Update Buttons
+# -------------------------------------------------------------------------------------------------
 
-
+	def update_sales_fast(self):
+		"""
+		Update Sales
+			Steps
+				Clean
+				Get orders
+				Loop 
+					Line analysis
+		"""
+		print()
+		print('Update Sales Fast')
 
 		# Clean
 		self.reset_macro()
-
 
 		# Get Orders
 		if self.type_arr in ['all']:
@@ -280,43 +208,24 @@ class Management(models.Model):
 		else:
 			orders, count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end, self.state_arr, self.type_arr)
 
-		
 # Loop
 		tickets = 0
-
 		for order in orders:
 			tickets = tickets + 1
 
 			# Filter Block
 			if not order.x_block_flow:
 
-				# Sale
-				if order.state in ['sale']:  	# Sale - Do Line Analysis
-
-					# Lines
+				# If sale
+				if order.state in ['sale']:  	
+					# Line Analysis
 					for line in order.order_line:
+						self.line_analysis(line)
 
-						# Line Analysis - Here !
-						
-						#if line.product_id.pl_price_list in ['2019']:			# Train Wreck of size 3 - Violates the LOD !
-						if line.is_current_price_list():						# Respects the LOD !
-
-							mgt_line_funcs.line_analysis_2019(self, line)
-
-						else:
-							mgt_line_funcs.line_analysis_2018(self, line)
-
-
-					# Object Oriented - Stats
-					#self.statistics.update(line)
-					statistics.update(line)
-
-
-				# Credit Note
-				elif order.state in ['credit_note']:  									# CN - Do Amount Flow
+				# If credit Note - Do Amount Flow
+				elif order.state in ['credit_note']:
 					self.nr_credit_notes = self.nr_credit_notes + 1
 					self.amo_credit_notes = self.amo_credit_notes + order.x_amount_flow
-
 
 
 # Analysis - Setters
@@ -334,32 +243,17 @@ class Management(models.Model):
 		# Set Percentages
 		mgt_funcs.set_percentages(self)
 
-
-
-		# Object Oriented - Stats
-		#statistics.set_stats()
-		
-
-		# Print
-		#print(statistics)
-		#print(statistics.name)
-		#print(statistics.nr_products)
-		#print(statistics.nr_consultations)
-		#print(statistics.nr_procedures)
-		
 	# update_sales_fast
 
 
-
-
-# ----------------------------------------------------------- Update Year -----------------------
+# ----------------------------------------------------------- Update Year ------
 	@api.multi
 	def update_year(self):
 		"""
 		Update Year
 		"""
 		print()
-		print('X - Update Year')
+		print('Update Year')
 
 		# Mgts
 		mgts = self.env['openhealth.management'].search([
@@ -388,16 +282,10 @@ class Management(models.Model):
 
 		if self.total_amount_year != 0:
 			self.per_amo_total = self.total_amount / self.total_amount_year
-
 	# update_year
 
 
-
-
-
-
-
-# ----------------------------------------------------------- Validate Internal -------------------------
+# ------------------------------------------------------- Validate Internal ----
 	# Validate
 	@api.multi
 	def validate(self):
@@ -408,27 +296,18 @@ class Management(models.Model):
 		print()
 		print('X - Validate the content !')
 
-
-		# Handle Exceptions
-		mgt_exc.handle_exceptions(self)
-
-
 		# Internal
 		out = self.pl_validate_internal()
 
-
 		# External
 		#self.pl_validate_external()  	# Dep !
-
 
 		# Django
 		return out
 	# validate
 
 
-
-
-# ----------------------------------------------------------- Validate Internal -------------------------
+# ------------------------------------------------------- Validate Internal ----
 	# Validate
 	@api.multi
 	def pl_validate_internal(self):
@@ -436,9 +315,7 @@ class Management(models.Model):
 		Validates Data Coherency - internal. 
 		"""
 		print()
-		print('X - Validate Internal')
-
-
+		print('Validate Internal')
 
 		# Families
 		self.per_amo_families = self.per_amo_products + self.per_amo_consultations + self.per_amo_procedures + self.per_amo_other + self.per_amo_credit_notes
@@ -453,13 +330,7 @@ class Management(models.Model):
 									self.per_amo_credit_notes
 		print(self.per_amo_subfamilies)
 
-
-
 		return self.per_amo_families, self.per_amo_subfamilies
-
-
-
-
 
 
 # ----------------------------------------------------------- Validate external -------------------------
@@ -894,9 +765,6 @@ class Management(models.Model):
 		#print()
 		print('X - Reset')
 
-		# Handle Exceptions
-		#mgt_exc.handle_exceptions(self)
-
 		# Go
 		self.reset_macro()
 		self.reset_relationals()
@@ -1173,3 +1041,122 @@ class Management(models.Model):
 	# update_stats
 
 
+# ----------------------------------------------------------- Line Analysis ----
+	def line_analysis(self, line, verbose=False):
+		"""
+		Analyses order lines 
+		Updates counters
+		"""
+
+		# Init
+		prod = line.product_id
+		if verbose:
+			print(prod.name)
+			print(prod.pl_treatment)
+			print(prod.pl_family)
+			print(prod.pl_subfamily)
+
+		# Services
+		if prod.type in ['service']:
+			self.nr_services = self.nr_services + line.product_uom_qty
+			self.amo_services = self.amo_services + line.price_subtotal
+
+			# Consultations
+			if prod.pl_subfamily in ['consultation']:
+				self.nr_consultations = self.nr_consultations + line.product_uom_qty
+				self.amo_consultations = self.amo_consultations + line.price_subtotal
+
+				if prod.pl_treatment in ['CONSULTA MEDICA']:
+					self.nr_sub_con_med = self.nr_sub_con_med + line.product_uom_qty
+					self.amo_sub_con_med = self.amo_sub_con_med + line.price_subtotal
+					
+				elif prod.pl_treatment in ['CONSULTA GINECOLOGICA']:
+					self.nr_sub_con_gyn = self.nr_sub_con_gyn + line.product_uom_qty
+					self.amo_sub_con_gyn = self.amo_sub_con_gyn + line.price_subtotal
+
+				elif prod.pl_treatment in ['CONSULTA MEDICA DR. CHAVARRI']:
+					self.nr_sub_con_cha = self.nr_sub_con_cha + line.product_uom_qty
+					self.amo_sub_con_cha = self.amo_sub_con_cha + line.price_subtotal
+
+			# Procedures
+			else:
+				self.nr_procedures = self.nr_procedures + line.product_uom_qty
+				self.amo_procedures = self.amo_procedures + line.price_subtotal
+
+				# By Family
+				# Echo
+				if prod.pl_family in ['echography']:
+					self.nr_echo = self.nr_echo + line.product_uom_qty
+					self.amo_echo = self.amo_echo + line.price_subtotal
+
+				# Gyn
+				elif prod.pl_family in ['gynecology']:
+					self.nr_gyn = self.nr_gyn + line.product_uom_qty
+					self.amo_gyn = self.amo_gyn + line.price_subtotal
+
+				# Prom
+				elif prod.pl_family in ['promotion']:
+					self.nr_prom = self.nr_prom + line.product_uom_qty
+					self.amo_prom = self.amo_prom + line.price_subtotal
+
+				# By Sub Family
+				# Co2
+				elif prod.pl_subfamily in ['co2']:
+					self.nr_co2 = self.nr_co2 + line.product_uom_qty
+					self.amo_co2 = self.amo_co2 + line.price_subtotal
+
+				# Exc
+				elif prod.pl_subfamily in ['excilite']:
+					self.nr_exc = self.nr_exc + line.product_uom_qty
+					self.amo_exc = self.amo_exc + line.price_subtotal
+
+				# Quick
+				elif prod.pl_subfamily in ['quick']:
+					self.nr_quick = self.nr_quick + line.product_uom_qty
+					self.amo_quick = self.amo_quick + line.price_subtotal
+
+
+				# By Treatment
+				# Ipl
+				elif prod.pl_treatment in ['LASER M22 IPL']:
+					self.nr_ipl = self.nr_ipl + line.product_uom_qty
+					self.amo_ipl = self.amo_ipl + line.price_subtotal
+
+				# Ndyag
+				elif prod.pl_treatment in ['LASER M22 ND YAG']:
+					self.nr_ndyag = self.nr_ndyag + line.product_uom_qty
+					self.amo_ndyag = self.amo_ndyag + line.price_subtotal
+
+				else:
+					# Medical
+					if prod.pl_family in ['medical']:
+						self.nr_medical = self.nr_medical + line.product_uom_qty
+						self.amo_medical = self.amo_medical + line.price_subtotal
+
+					# Cosmeto
+					elif prod.pl_family in ['cosmetology']:
+						self.nr_cosmetology = self.nr_cosmetology + line.product_uom_qty
+						self.amo_cosmetology = self.amo_cosmetology + line.price_subtotal
+
+		# Products
+		elif prod.type in ['product']:
+			self.nr_products = self.nr_products + line.product_uom_qty
+			self.amo_products = self.amo_products + line.price_subtotal
+
+			# Topical
+			if prod.pl_family in ['topical']:
+				self.nr_topical = self.nr_topical + line.product_uom_qty
+				self.amo_topical = self.amo_topical + line.price_subtotal
+
+			# Card
+			elif prod.pl_family in ['card']:
+				self.nr_card = self.nr_card + line.product_uom_qty
+				self.amo_card = self.amo_card + line.price_subtotal
+
+			# kit
+			elif prod.pl_family in ['kit']:
+				self.nr_kit = self.nr_kit + line.product_uom_qty
+				self.amo_kit = self.amo_kit + line.price_subtotal
+
+		return False
+	# line_analysis

@@ -1,78 +1,21 @@
 # -*- coding: utf-8 -*-
 """
 	Mgt Funcs
+	Should be unit testable - independent from openerp
 
 	Created: 			28 May 2018
-	Last updated: 		23 oct 2020
+	Last updated: 		24 oct 2020
 
-	- The goal of functions is to hide Implementation.
+	- Use functional programming - ie functions.
+	- Use lambda funcs, map, filter, reduce, decorators, generators, etc.
 """
 from __future__ import print_function
 import datetime
-from openerp.addons.price_list.models.lib import test_funcs
 
+# ------------------------------------------------------------- Constants ------
 _DATE_FORMAT = "%Y-%m-%d"
 _DATE_HOUR_FORMAT = "%Y-%m-%d %H:%M"
 _MODEL_SALE = "sale.order"
-
-# ------------------------------------------------------------- Set Ratios -----
-def set_ratios(self):
-	"""
-	Set Ratios
-	"""
-	if self.nr_consultations != 0:
-		self.ratio_pro_con = (float(self.nr_procedures) / float(self.nr_consultations))
-# set_ratios
-
-# ----------------------------------------------------------- Set Totals -------
-def set_totals(self, tickets):
-	"""
-	Set Totals
-	"""
-	self.total_amount = self.amo_products + self.amo_services + self.amo_other + self.amo_credit_notes
-	self.total_count = self.nr_products + self.nr_services
-	self.total_tickets = tickets
-# set_totals
-
-
-# --------------------------------------------------------- Set Percentages ----
-def set_percentages(self):
-	"""
-	Set Percentages
-	"""
-	# By Month
-	if self.total_amount != 0:
-		self.per_amo_other = (self.amo_other / self.total_amount)
-
-		# Families
-		self.per_amo_credit_notes = (self.amo_credit_notes / self.total_amount)
-		self.per_amo_products = (self.amo_products / self.total_amount)
-		self.per_amo_consultations = (self.amo_consultations / self.total_amount)
-		self.per_amo_procedures = (self.amo_procedures / self.total_amount)
-
-		# Sub Families
-		self.per_amo_sub_con_med = (self.amo_sub_con_med / self.total_amount)
-		self.per_amo_sub_con_gyn = (self.amo_sub_con_gyn / self.total_amount)
-		self.per_amo_sub_con_cha = (self.amo_sub_con_cha / self.total_amount)
-
-		self.per_amo_echo = (self.amo_echo / self.total_amount)
-		self.per_amo_gyn = (self.amo_gyn / self.total_amount)
-		self.per_amo_prom = (self.amo_prom / self.total_amount)
-
-		self.per_amo_topical = (self.amo_topical / self.total_amount)
-		self.per_amo_card = (self.amo_card / self.total_amount)
-		self.per_amo_kit = (self.amo_kit / self.total_amount)
-
-		self.per_amo_co2 = (self.amo_co2 / self.total_amount)
-		self.per_amo_exc = (self.amo_exc / self.total_amount)
-		self.per_amo_ipl = (self.amo_ipl / self.total_amount)
-		self.per_amo_ndyag = (self.amo_ndyag / self.total_amount)
-		self.per_amo_quick = (self.amo_quick / self.total_amount)
-
-		self.per_amo_medical = (self.amo_medical / self.total_amount)
-		self.per_amo_cosmetology = (self.amo_cosmetology / self.total_amount)
-
-# set_percentages
 
 
 # --------------------------------------------------------------- Division -----
@@ -80,14 +23,32 @@ def division(amo, nr):
     return amo / nr if nr else 0
 
 # ----------------------------------------------------------- Set Averages -----
+def set_averages_pure(data):
+	"""
+	Set Averages Pure 
+	Using functional programming
+	Used by: Management
+	"""
+	print("\n")
+	print(set_averages_pure)
+
+	amo_products = data[0][0]
+	nr_products = data[0][1]
+	ave_products = division(amo_products, nr_products)
+
+	print(amo_products, nr_products, ave_products)
+
+	return ave_products
+
+# ----------------------------------------------------------- Set Averages -----
 def set_averages(self):
 	"""
 	Set Averages
+	Used by 
+		Management
 	"""
-	#print()
-	#print('Set Averages')
 
-# Families
+	# Families
 	self.avg_other = division(self.amo_other, self.nr_other)
 	self.avg_products = division(self.amo_products, self.nr_products)
 	self.avg_services = division(self.amo_services, self.nr_services)
@@ -95,7 +56,7 @@ def set_averages(self):
 	self.avg_procedures = division(self.amo_procedures, self.nr_procedures)
 
 
-# Subfamilies
+	# Subfamilies
 	if self.nr_topical != 0:
 		self.avg_topical = self.amo_topical / self.nr_topical
 
@@ -135,6 +96,73 @@ def set_averages(self):
 	if self.nr_prom != 0:
 		self.avg_prom = self.amo_prom / self.nr_prom
 # set_averages
+
+
+# ------------------------------------------------------------- Set Ratios -----
+def set_ratios(self):
+	"""
+	Set Ratios
+	Used by 
+		Management
+	"""
+	if self.nr_consultations != 0:
+		self.ratio_pro_con = (float(self.nr_procedures) / float(self.nr_consultations))
+# set_ratios
+
+# ----------------------------------------------------------- Set Totals -------
+def set_totals(self, tickets):
+	"""
+	Set Totals
+	Used by 
+		Management
+	"""
+	self.total_amount = self.amo_products + self.amo_services + self.amo_other + self.amo_credit_notes
+	self.total_count = self.nr_products + self.nr_services
+	self.total_tickets = tickets
+# set_totals
+
+
+# --------------------------------------------------------- Set Percentages ----
+def set_percentages(self):
+	"""
+	Set Percentages
+	Used by 
+		Management
+	"""
+	# By Month
+	if self.total_amount != 0:
+		self.per_amo_other = (self.amo_other / self.total_amount)
+
+		# Families
+		self.per_amo_credit_notes = (self.amo_credit_notes / self.total_amount)
+		self.per_amo_products = (self.amo_products / self.total_amount)
+		self.per_amo_consultations = (self.amo_consultations / self.total_amount)
+		self.per_amo_procedures = (self.amo_procedures / self.total_amount)
+
+		# Sub Families
+		self.per_amo_sub_con_med = (self.amo_sub_con_med / self.total_amount)
+		self.per_amo_sub_con_gyn = (self.amo_sub_con_gyn / self.total_amount)
+		self.per_amo_sub_con_cha = (self.amo_sub_con_cha / self.total_amount)
+
+		self.per_amo_echo = (self.amo_echo / self.total_amount)
+		self.per_amo_gyn = (self.amo_gyn / self.total_amount)
+		self.per_amo_prom = (self.amo_prom / self.total_amount)
+
+		self.per_amo_topical = (self.amo_topical / self.total_amount)
+		self.per_amo_card = (self.amo_card / self.total_amount)
+		self.per_amo_kit = (self.amo_kit / self.total_amount)
+
+		self.per_amo_co2 = (self.amo_co2 / self.total_amount)
+		self.per_amo_exc = (self.amo_exc / self.total_amount)
+		self.per_amo_ipl = (self.amo_ipl / self.total_amount)
+		self.per_amo_ndyag = (self.amo_ndyag / self.total_amount)
+		self.per_amo_quick = (self.amo_quick / self.total_amount)
+
+		self.per_amo_medical = (self.amo_medical / self.total_amount)
+		self.per_amo_cosmetology = (self.amo_cosmetology / self.total_amount)
+# set_percentages
+
+
 
 
 # -------------------------------------------------------- Get Orders Fast -----

@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 """
- 	test_order.py
-
  	Test - Order
+	Explore treatment
+	Renamed - To avoid conflict with nose2. 
 
 	Created: 			20 Nov 2018
-	Last up: 	 		20 Nov 2018
+	Last up: 	 		23 oct 2020
 """
 from __future__ import print_function
 

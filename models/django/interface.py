@@ -6,47 +6,34 @@
 	Data model. And functions.
 
  	Created: 				10 Dec 2019
- 	Last up: 				11 Dec 2019
+	Last up: 	 		23 oct 2020
 """
 from openerp import models, fields, api
 
 class DjangoInterface(models.Model):
-	
 	_name = 'openhealth.django.interface'
-	
 	#_inherit=''
-	
 	#_order = 'name'
 
-
-# ----------------------------------------------------------- Django ------------------------------------------------------
-
+# ----------------------------------------------------------- Django -----------
 	# Date Test
 	date_test = fields.Datetime(
 			string="Fecha Test", 
 		)
 
-
-
 	# State
-	state = fields.Selection(
-			
+	state = fields.Selection(			
 			selection=[
 							('stable', 'Estable'),
 							('unstable', 'Inestable'),
 			],
-
 			string='Estado',
 			#readonly=False,
 			default='unstable',
 			#index=True,
 		)
 
-
-
-
-# ----------------------------------------------------------- Configurator ------------------------
-
+# ----------------------------------------------------------- Configurator -----
 	# Default Configurator
 	def _get_default_configurator(self):
 		configurator = self.env['openhealth.configurator.emr'].search([
@@ -66,7 +53,7 @@ class DjangoInterface(models.Model):
 		)
 
 
-# ----------------------------------------------------------- Repo ------------------------------------------------------
+# ----------------------------------------------------------- Repo -------------
 	# Name 
 	name = fields.Char(
 			string="Nombre", 		
@@ -88,18 +75,14 @@ class DjangoInterface(models.Model):
 			required=True, 
 		)
 
-
-
 	# Amount
 	total_amount = fields.Float(
 			#'Total Monto',
 			#'Total',
 			'Monto Total',
 			readonly=True,
-
 			default=0,
 		)
-
 
 	# Count
 	total_count = fields.Integer(
@@ -108,12 +91,7 @@ class DjangoInterface(models.Model):
 			readonly=True, 
 		)
 
-
-
-
-
-# ----------------------------------------------------- Django Interface --------------------------
-
+# ----------------------------------------------------- Django Interface -------
 	@api.multi
 	def get_configurator(self):
 		"""
@@ -122,9 +100,6 @@ class DjangoInterface(models.Model):
 		print()
 		print('Get state')
 		return self.configurator.name
-
-
-
 
 	@api.multi
 	def set_state(self, state):
@@ -136,8 +111,6 @@ class DjangoInterface(models.Model):
 		print('Set State')
 		self.state = state
 
-
-
 	@api.multi
 	def get_name(self):
 		"""
@@ -146,9 +119,6 @@ class DjangoInterface(models.Model):
 		print()
 		print('Get name')
 		return self.name
-
-
-
 
 	# Dates
 	#@api.multi
@@ -160,7 +130,6 @@ class DjangoInterface(models.Model):
 	#	print('Get date')
 	#	return self.date
 
-
 	@api.multi
 	def get_date_begin(self):
 		"""
@@ -169,7 +138,6 @@ class DjangoInterface(models.Model):
 		print()
 		print('Get date begin')
 		return self.date_begin
-
 
 	@api.multi
 	def get_date_end(self):
@@ -180,8 +148,6 @@ class DjangoInterface(models.Model):
 		print('Get date end')
 		return self.date_end
 
-
-
 	@api.multi
 	def get_date_test(self):
 		"""
@@ -190,9 +156,6 @@ class DjangoInterface(models.Model):
 		print()
 		print('Get date test')
 		return self.date_test
-
-
-
 
 	@api.multi
 	def get_total(self):
@@ -206,8 +169,6 @@ class DjangoInterface(models.Model):
 		else:
 			return 0
 
-
-
 	@api.multi
 	def get_count(self):
 		"""
@@ -220,8 +181,6 @@ class DjangoInterface(models.Model):
 		else:
 			return 0
 
-
-
 	@api.multi
 	def get_state(self):
 		"""
@@ -230,5 +189,3 @@ class DjangoInterface(models.Model):
 		print()
 		print('Get state')
 		return self.state
-
-

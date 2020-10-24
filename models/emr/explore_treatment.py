@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-		Test treatment - Openhealth
-
-		Used by:			Treatment
-		Created: 			14 aug 2018
-		Last up: 	 		11 oct 2020
+	Ex Test treatment
+	Explore treatment
+	Renamed - To avoid conflict with nose2. 
+	
+	Used by:			Treatment
+	Created: 			14 aug 2018
+	Last up: 	 		23 oct 2020
 """
 from __future__ import print_function
 from openerp.addons.price_list.models.lib import test_funcs

@@ -297,6 +297,13 @@ class Management(models.Model):
 					('ipl', self.amo_ipl, self.nr_ipl),
 					('ndy', self.amo_ndyag, self.nr_ndyag),
 					('qui', self.amo_quick, self.nr_quick),
+
+					# Medical
+					('med', self.amo_medical, self.nr_medical),
+					('cos', self.amo_cosmetology, self.nr_cosmetology),
+					('gyn', self.amo_gyn, self.nr_gyn),
+					('ech', self.amo_echo, self.nr_echo),
+					('pro', self.amo_prom, self.nr_prom),
 		]
 
 		# Functional - call to pure function
@@ -350,6 +357,31 @@ class Management(models.Model):
 
 		if tag == 'qui':
 			self.avg_quick = value
+
+
+		# Medical
+		if tag == 'med':
+			self.avg_medical = value
+
+		if tag == 'cos':
+			self.avg_cosmetology = value
+
+		if tag == 'ech':
+			self.avg_echo = value
+
+		if tag == 'gyn':
+			self.avg_gyn = value
+
+		if tag == 'pro':
+			self.avg_prom = value
+
+
+
+		#self.avg_medical = 
+		#self.avg_cosmetology = 
+		#self.avg_echo = 
+		#self.avg_gyn = 
+		#self.avg_prom = 
 
 
 		

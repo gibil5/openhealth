@@ -14,12 +14,9 @@ from openerp import _
 from openerp.exceptions import Warning as UserError
 
 # --------------------------------------------------------------- Constants ----
-_model_ser_pro = "openhealth.service_product'"
-
-_model_ser_med = "openhealth.service_all" 
-
-_model_ser_cos = "openhealth.service_all"
-
+#_model_ser_pro = "openhealth.service_product'"
+#_model_ser_med = "openhealth.service_all" 
+#_model_ser_cos = "openhealth.service_all"
 _model_service = "openhealth.service_all"
 
 # ----------------------------------------------------------- Exceptions -------
@@ -141,11 +138,11 @@ def create_recommendations(self, test_case):
 					'prod_4':		'COMISION DE ENVIO',			# Comission
 
 					# Lasers
-					'co2': 		'LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento - Grado 1 - 1 sesion',	# Co2
-					'exc':		'LASER EXCILITE - Abdomen - Alopecias - 1 sesion - 15 min',					# Excilite
-					'ipl':		'LASER M22 IPL - Abdomen - Depilacion - 1 sesion - 15 min',					# Ipl
-					'ndy':		'LASER M22 ND YAG - Localizado Cuerpo - Hemangiomas - 1 sesion - 15 min',	# Ndyag
-					'qui':		'QUICKLASER - Cuello - Rejuvenecimiento - Grado 1 - 1 sesion',				# Quick
+					'co2': 			'LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento - Grado 1 - 1 sesion',	# Co2
+					'exc':			'LASER EXCILITE - Abdomen - Alopecias - 1 sesion - 15 min',					# Excilite
+					'ipl':			'LASER M22 IPL - Abdomen - Depilacion - 1 sesion - 15 min',					# Ipl
+					'ndy':			'LASER M22 ND YAG - Localizado Cuerpo - Hemangiomas - 1 sesion - 15 min',	# Ndyag
+					'qui':			'QUICKLASER - Cuello - Rejuvenecimiento - Grado 1 - 1 sesion',				# Quick
 
 					# Cosmetology
 					'cos_0':		'CARBOXITERAPIA - Cuerpo - Rejuvenecimiento - 1 sesion - 30 min',				# Carboxitherapy
@@ -166,57 +163,12 @@ def create_recommendations(self, test_case):
 					#'med_8':		'VICTAMINA C ENDOVENOSA',																	# Vitamin
 
 					# New Services
-					'gyn':		'LASER CO2 FRACCIONAL - Monalisa Touch / Revitalizacion',
-					'echo':		'ECOGRAFIAS ESPECIALES - Cadera Pediatrica (Bilateral) - 1 sesion',
-					'prom':		'CARBOXITERAPIA - Localizado Cuerpo - Rejuvenecimiento Facial - 6 sesiones',
-					#'gyn':		'ANALISIS - Vagina - Biopsias',
+					'gyn':			'LASER CO2 FRACCIONAL - Monalisa Touch / Revitalizacion',
+					'echo':			'ECOGRAFIAS ESPECIALES - Cadera Pediatrica (Bilateral) - 1 sesion',
+					'prom':			'CARBOXITERAPIA - Localizado Cuerpo - Rejuvenecimiento Facial - 6 sesiones',
+					#'gyn':			'ANALISIS - Vagina - Biopsias',
 		}
 
-	model_dic = {
-					# Laser
-					#'co2': 		'openhealth.service_co2',
-					#'exc': 		'openhealth.service_excilite',
-					#'ipl': 		'openhealth.service_ipl',
-					#'ndy': 		'openhealth.service_ndyag',
-					#'qui': 		'openhealth.service_quick',
-					'co2': 		'openhealth.service_all',
-					'exc': 		'openhealth.service_all',
-					'ipl': 		'openhealth.service_all',
-					'ndy': 		'openhealth.service_all',
-					'qui': 		'openhealth.service_all',
-
-					#'prod_0': 	_model_ser_pro,
-					#'prod_1': 	_model_ser_pro,
-					#'prod_2': 	_model_ser_pro,
-					#'prod_3': 	_model_ser_pro,
-					#'prod_4': 	_model_ser_pro,
-					'prod_0': 	'openhealth.service_all',
-					'prod_1': 	'openhealth.service_all',
-					'prod_2': 	'openhealth.service_all',
-					'prod_3': 	'openhealth.service_all',
-					'prod_4': 	'openhealth.service_all',
-
-					'med_0': 	_model_ser_med,
-					'med_1': 	_model_ser_med,
-					'med_2': 	_model_ser_med,
-					'med_3': 	_model_ser_med,
-					'med_4': 	_model_ser_med,
-					'med_5': 	_model_ser_med,
-					'med_6': 	_model_ser_med,
-					'med_7': 	_model_ser_med,
-					'med_8': 	_model_ser_med,
-
-					'cos_0': 	_model_ser_cos,
-					'cos_1': 	_model_ser_cos,
-					'cos_2': 	_model_ser_cos,
-
-					#'gyn': 	'openhealth.service_gynecology',
-					#'echo': 	'openhealth.service_echography',
-					#'prom': 	'openhealth.service_promotion',
-					'gyn': 		_model_service,
-					'echo': 	_model_service,
-					'prom': 	_model_service,
-		}
 
 	tst_list_all = [
 					'prod_0',
@@ -250,8 +202,6 @@ def create_recommendations(self, test_case):
 					'prom',
 	]
 
-
-
 	tst_list_product = [
 					'prod_0',
 					'prod_1',
@@ -269,7 +219,6 @@ def create_recommendations(self, test_case):
 	]
 
 	tst_list_cosmetology = [
-					#'cos',
 					'cos_0',
 					'cos_1',
 					'cos_2',
@@ -295,6 +244,8 @@ def create_recommendations(self, test_case):
 
 	tst_list_empty = []
 
+
+	# Test cases
 	if test_case in ['all']:
 		tst_list = tst_list_all
 
@@ -310,9 +261,6 @@ def create_recommendations(self, test_case):
 	elif test_case in ['cosmetology']:
 		tst_list = tst_list_cosmetology
 
-
-
-
 	elif test_case in ['new']:
 		tst_list = tst_list_new
 
@@ -326,8 +274,6 @@ def create_recommendations(self, test_case):
 		# Init
 		name = name_dic[tst]
 		
-		model = model_dic[tst]
-
 		# Search
 		product = self.env['product.template'].search([
 															('name', '=', name),
@@ -353,19 +299,19 @@ def create_recommendations(self, test_case):
 
 
 		# Create
-		service = self.env[model].create({
-											'service': 			product_id,
-											'family': 			product.pl_family,
-											'subfamily': 		product.pl_subfamily,
-											'zone': 			product.pl_zone,
-											'pathology': 		product.pl_pathology,
-											'sessions': 		product.pl_sessions,
-											'level': 			product.pl_level,
-											'time': 			product.pl_time,
-											'price_applied': 	product.list_price,
-											'sel_zone': 		product.pl_zone,
-											'pl_treatment': 	product.pl_treatment,
-											'treatment': 		self.id,
+		service = self.env[_model_service].create({
+													'service': 			product_id,
+													'family': 			product.pl_family,
+													'subfamily': 		product.pl_subfamily,
+													'zone': 			product.pl_zone,
+													'pathology': 		product.pl_pathology,
+													'sessions': 		product.pl_sessions,
+													'level': 			product.pl_level,
+													'time': 			product.pl_time,
+													'price_applied': 	product.list_price,
+													'sel_zone': 		product.pl_zone,
+													'pl_treatment': 	product.pl_treatment,
+													'treatment': 		self.id,
 										})
 # create_recommendations
 
@@ -384,17 +330,18 @@ def test_reset_treatment(self):
 	# Recos
 	self.service_all_ids.unlink()
 
-	self.service_co2_ids.unlink()
-	self.service_excilite_ids.unlink()
-	self.service_ipl_ids.unlink()
-	self.service_ndyag_ids.unlink()
-	self.service_quick_ids.unlink()
-	self.service_product_ids.unlink()
+	# Dep
+	#self.service_co2_ids.unlink()
+	#self.service_excilite_ids.unlink()
+	#self.service_ipl_ids.unlink()
+	#self.service_ndyag_ids.unlink()
+	#self.service_quick_ids.unlink()
+	#self.service_product_ids.unlink()
 	#self.service_medical_ids.unlink()
-	self.service_cosmetology_ids.unlink()
-	self.service_gynecology_ids.unlink()
-	self.service_echography_ids.unlink()
-	self.service_promotion_ids.unlink()
+	#self.service_cosmetology_ids.unlink()
+	#self.service_gynecology_ids.unlink()
+	#self.service_echography_ids.unlink()
+	#self.service_promotion_ids.unlink()
 
 	# Procedures
 	self.procedure_ids.unlink()

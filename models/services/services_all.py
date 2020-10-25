@@ -5,12 +5,11 @@ Services All
 Created: 			28 Jul 2020
 Last mod: 			28 Jul 2020
 
-class ServiceLaser
+class ServiceAll
 """
 from openerp import models, fields, api
 
-# --------------------------------------- Laser --------------------------------
-#class ServiceLaser(models.Model):
+# --------------------------------------- All --------------------------------
 class ServiceAll(models.Model):
 	"""
 	Service All

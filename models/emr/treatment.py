@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-		Treatment
-		Created: 			26 aug 2016
-		Last up: 	 		11 oct 2020
+	Treatment
+	Created: 			26 aug 2016
+	Last up: 	 		25 oct 2020
 
-		From PgAdmin
-		-------------
-		SELECT * FROM public.sale_order;
-		DELETE FROM public.sale_order WHERE partner_id = 391;
+	From PgAdmin
+	-------------
+	SELECT * FROM public.sale_order;
+	DELETE FROM public.sale_order WHERE partner_id = 391;
 """
 from __future__ import print_function
 import datetime
@@ -28,12 +28,16 @@ from . import search_objects
 
 from . import tre_funcs
 
+# --------------------------------------------------------------- Constants ----
 _model_treatment = "openhealth.treatment"
-_model_ser_co2 = "openhealth.service_co2"
 _model_sale = "sale.order"
 _model_consultation = "openhealth.consultation"
 _model_action = "ir.actions.act_window"
 
+#_model_ser_co2 = "openhealth.service_co2"
+_model_service = "openhealth.service_all"
+
+# ------------------------------------------------------------------- Class ----
 class Treatment(models.Model):
 	"""
 	Treatment class
@@ -61,74 +65,75 @@ class Treatment(models.Model):
 
 
 	# co2
-	service_co2_ids = fields.One2many(
-		'openhealth.service_co2',
-		'treatment',
-		string="Servicios Co2"
-	)
+	#service_co2_ids = fields.One2many(
+	#	'openhealth.service_co2',
+	#	'treatment',
+	#	string="Servicios Co2"
+	#)
 
 	# excilite
-	service_excilite_ids = fields.One2many(
-		'openhealth.service_excilite',
-		'treatment',
-		string="Servicios excilite"
-	)
+	#service_excilite_ids = fields.One2many(
+	#	'openhealth.service_excilite',
+	#	'treatment',
+	#	string="Servicios excilite"
+	#)
 
   	# cosmetology
-	service_cosmetology_ids = fields.One2many(
-		'openhealth.service_cosmetology',
-		'treatment',
-		string="Servicios cosmetology"
-	)
+	#service_cosmetology_ids = fields.One2many(
+	#	'openhealth.service_cosmetology',
+	#	'treatment',
+	#	string="Servicios cosmetology"
+	#)
 
   	# echography
-	service_echography_ids = fields.One2many(
-		'openhealth.service_echography',
-		'treatment',
-		string="Servicios Ecografia"
-	)
+	#service_echography_ids = fields.One2many(
+	#	'openhealth.service_echography',
+	#	'treatment',
+	#	string="Servicios Ecografia"
+	#)
 
 	# ipl
-	service_ipl_ids = fields.One2many(
-	    'openhealth.service_ipl',
-	    'treatment',
-	    string="Servicios ipl"
-    )
+	#service_ipl_ids = fields.One2many(
+	#    'openhealth.service_ipl',
+	#    'treatment',
+	#    string="Servicios ipl"
+    #)
 
 	# ndyag
-	service_ndyag_ids = fields.One2many(
-	    'openhealth.service_ndyag',
-	    'treatment',
-	    string="Servicios ndyag"
-    )
+	#service_ndyag_ids = fields.One2many(
+	#    'openhealth.service_ndyag',
+	#    'treatment',
+	#    string="Servicios ndyag"
+    #)
 
 	# quick
-	service_quick_ids = fields.One2many(
-	    'openhealth.service_quick',
-	    'treatment',
-	    string="Servicios quick"
-	)
+	#service_quick_ids = fields.One2many(
+	#    'openhealth.service_quick',
+	#    'treatment',
+	#    string="Servicios quick"
+	#)
 
 	# product
-	service_product_ids = fields.One2many(
-	    'openhealth.service_product',
-	    'treatment',
-	    string="Servicios product"
-	)
+	#service_product_ids = fields.One2many(
+	#    'openhealth.service_product',
+	#    'treatment',
+	#    string="Servicios product"
+	#)
 
 	# gynecology
-	service_gynecology_ids = fields.One2many(
-	    'openhealth.service_gynecology',
-	    'treatment',
-	    string="Servicios Ginecologia"
-	)
+	#service_gynecology_ids = fields.One2many(
+	#    'openhealth.service_gynecology',
+	#    'treatment',
+	#    string="Servicios Ginecologia"
+	#)
 
 	# promotion
-	service_promotion_ids = fields.One2many(
-	    'openhealth.service_promotion',
-	    'treatment',
-	    string="Servicios Promocion"
-	)
+	#service_promotion_ids = fields.One2many(
+	#    'openhealth.service_promotion',
+	#    'treatment',
+	#    string="Servicios Promocion"
+	#)
+
 
 # ----------------------------------------------------------- Primitive ---------------------------
 
@@ -515,8 +520,11 @@ class Treatment(models.Model):
 			#vip = self.env['openhealth.service.vip'].search_count([('treatment', '=', record.id),])
 			#product = self.env['openhealth.service.product'].search_count([('treatment', '=', record.id),])
 			#record.nr_services = quick + co2 + exc + ipl + ndyag + medical + vip + product
-			co2 = self.env[_model_ser_co2].search_count([('treatment', '=', record.id),])
-			record.nr_services = co2
+			#co2 = self.env[_model_ser_co2].search_count([('treatment', '=', record.id),])
+
+			all = self.env[_model_service].search_count([('treatment', '=', record.id),])
+
+			record.nr_services = all
 
 # ----------------------------------------------------------- Create Buttons  ----------
 	@api.multi
@@ -673,17 +681,19 @@ class Treatment(models.Model):
 		#price_list = '2019'
 
 		service_list = [
-							self.service_product_ids,
-							self.service_co2_ids,
-							self.service_excilite_ids,
-							self.service_ipl_ids,
-							self.service_ndyag_ids,
-							self.service_quick_ids,
+							self.service_all_ids,
+
+							#self.service_product_ids,
+							#self.service_co2_ids,
+							#self.service_excilite_ids,
+							#self.service_ipl_ids,
+							#self.service_ndyag_ids,
+							#self.service_quick_ids,
 							#self.service_medical_ids,
-							self.service_cosmetology_ids,
-							self.service_gynecology_ids,
-							self.service_echography_ids,
-							self.service_promotion_ids,
+							#self.service_cosmetology_ids,
+							#self.service_gynecology_ids,
+							#self.service_echography_ids,
+							#self.service_promotion_ids,
 		]
 		
 		# Create Cart

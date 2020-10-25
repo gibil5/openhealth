@@ -3,7 +3,7 @@
 	Management - Methods
 
 	Created: 			28 may 2018
-	Last updated: 		23 oct 2020
+	Last updated: 		25 oct 2020
 """
 from __future__ import print_function
 from timeit import default_timer as timer
@@ -218,7 +218,7 @@ class Management(models.Model):
 				if order.state in ['sale']:  	
 					# Line Analysis
 					for line in order.order_line:
-						self.line_analysis(line)
+						self.line_analysis(line, True)
 
 				# If credit Note - Do Amount Flow
 				elif order.state in ['credit_note']:
@@ -229,8 +229,10 @@ class Management(models.Model):
 # Analysis - Setters
 # Must be Abstract - To Hide Implementation
 
+
 		# Set Averages
 		self.get_averages()
+
 
 		# Set Ratios
 		mgt_funcs.set_ratios(self)
@@ -246,35 +248,6 @@ class Management(models.Model):
 
 # ---------------------------------------------------------- Get Averages ------
 	def get_averages(self):
-
-		vector_pre = [	
-					# Families
-					(self.amo_products, self.nr_products),
-					(self.amo_services, self.nr_services),
-					(self.amo_consultations, self.nr_consultations),
-					(self.amo_procedures, self.nr_procedures),
-					(self.amo_other, self.nr_other),
-
-					# Sub families
-					# Prod
-					(self.amo_topical, self.nr_topical),
-					(self.amo_card, self.nr_card),
-					(self.amo_kit, self.nr_kit),
-
-					# Laser
-					(self.amo_co2, self.nr_co2),
-					(self.amo_exc, self.nr_exc),
-					(self.amo_ipl, self.nr_ipl),
-					(self.amo_ndyag, self.nr_ndyag),
-					(self.amo_quick, self.nr_quick),
-
-					# Medical
-					(self.amo_medical, self.nr_medical),
-					(self.amo_cosmetology, self.nr_cosmetology),
-					(self.amo_gyn, self.nr_gyn),
-					(self.amo_echo, self.nr_echo),
-					(self.amo_prom, self.nr_prom),
-				]
 
 		vector = [	
 					# Families
@@ -313,7 +286,25 @@ class Management(models.Model):
 
 		
 # ---------------------------------------------------------- Set Averages ------
-	def set_field(self, tag, value):
+	def set_averages(self, result):
+		for avg in result: 
+			tag = avg[0]
+			value = avg[1]
+
+			self.bridge_avg(tag, value)
+
+
+# ------------------------------------------------------- Bridge Averages ------
+	def bridge_avg(self, tag, value):
+
+		#dic = {
+		#		'prod': 	self.avg_products,
+		#		'ser': 		self.avg_services,
+		#		'con': 		self.avg_consultations,
+		#		'proc': 	self.avg_procedures,
+		#		'oth': 		self.avg_other,
+		#	}
+
 		# Families
 		if tag == 'prod':
 			self.avg_products  = value
@@ -328,7 +319,6 @@ class Management(models.Model):
 		
 		if tag == 'othe':
 			self.avg_other = value
-
 
 		# Sub Families
 
@@ -358,7 +348,6 @@ class Management(models.Model):
 		if tag == 'qui':
 			self.avg_quick = value
 
-
 		# Medical
 		if tag == 'med':
 			self.avg_medical = value
@@ -374,81 +363,6 @@ class Management(models.Model):
 
 		if tag == 'pro':
 			self.avg_prom = value
-
-
-
-		#self.avg_medical = 
-		#self.avg_cosmetology = 
-		#self.avg_echo = 
-		#self.avg_gyn = 
-		#self.avg_prom = 
-
-
-		
-
-	def set_averages(self, result):
-		for avg in result: 
-			tag = avg[0]
-			value = avg[1]
-			self.set_field(tag, value)
-
-
-
-		# Families
-		#self.avg_products = result[0]
-		#self.avg_services = result[1]
-		#self.avg_consultations = result[2]
-		#self.avg_procedures = result[3]
-		#self.avg_other =result[4]
-
-		#self.avg_products = result[0][1]
-		#self.avg_services = result[1][1]
-		#self.avg_consultations = result[2][1]
-		#self.avg_procedures = result[3][1]
-		#self.avg_other =result[4][1]
-
-		#dic = {
-		#		'prod': 	self.avg_products,
-		#		'ser': 		self.avg_services,
-		#		'con': 		self.avg_consultations,
-		#		'proc': 	self.avg_procedures,
-		#		'oth': 		self.avg_other,
-		#	}
-
-
-		#self.avg_products = 
-		#self.avg_services = 
-		#self.avg_consultations = 
-		#self.avg_procedures = 
-		#self.avg_other =
-
-		#self.avg_topical
-		#self.avg_card 
-		#self.avg_kit 
-
-		#self.avg_co2 
-		#self.avg_exc 
-		#self.avg_ipl 
-		#self.avg_ndyag = 
-		#self.avg_quick = 
-
-		#self.avg_medical = 
-		#self.avg_cosmetology = 
-		#self.avg_echo = 
-		#self.avg_gyn = 
-		#self.avg_prom = 
-
-
-		#vector = [	self.avg_products,
-		#			self.avg_services,
-		#			self.avg_consultations,
-		#			self.avg_procedures,
-		#			self.avg_other
-		#		]
-		#idx = 0
-		#for ave in vector:
-		#	ave = result[idx]
-		#	idx += 1
 
 
 # ----------------------------------------------------------- Update Year ------
@@ -1252,76 +1166,58 @@ class Management(models.Model):
 		Analyses order lines 
 		Updates counters
 		"""
+		print('Line analysis')
 
 		# Init
 		prod = line.product_id
 		if verbose:
-			print(prod.name)
-			print(prod.pl_treatment)
-			print(prod.pl_family)
-			print(prod.pl_subfamily)
+			print('name: ', prod.name)
+			print('treatment: ', prod.pl_treatment)
+			print('family: ', prod.pl_family)
+			print('sub_family: ', prod.pl_subfamily)
+			print()
+
 
 		# Services
 		if prod.type in ['service']:
 			self.nr_services = self.nr_services + line.product_uom_qty
 			self.amo_services = self.amo_services + line.price_subtotal
 
+
+
 			# Consultations
-			if prod.pl_subfamily in ['consultation']:
-				self.nr_consultations = self.nr_consultations + line.product_uom_qty
-				self.amo_consultations = self.amo_consultations + line.price_subtotal
-
-				if prod.pl_treatment in ['CONSULTA MEDICA']:
-					self.nr_sub_con_med = self.nr_sub_con_med + line.product_uom_qty
-					self.amo_sub_con_med = self.amo_sub_con_med + line.price_subtotal
+			if prod.pl_treatment in ['CONSULTA MEDICA']:
+				self.nr_sub_con_med = self.nr_sub_con_med + line.product_uom_qty
+				self.amo_sub_con_med = self.amo_sub_con_med + line.price_subtotal
 					
-				elif prod.pl_treatment in ['CONSULTA GINECOLOGICA']:
-					self.nr_sub_con_gyn = self.nr_sub_con_gyn + line.product_uom_qty
-					self.amo_sub_con_gyn = self.amo_sub_con_gyn + line.price_subtotal
 
-				elif prod.pl_treatment in ['CONSULTA MEDICA DR. CHAVARRI']:
-					self.nr_sub_con_cha = self.nr_sub_con_cha + line.product_uom_qty
-					self.amo_sub_con_cha = self.amo_sub_con_cha + line.price_subtotal
 
 			# Procedures
 			else:
 				self.nr_procedures = self.nr_procedures + line.product_uom_qty
 				self.amo_procedures = self.amo_procedures + line.price_subtotal
 
+
 				# By Family
-				# Echo
-				if prod.pl_family in ['echography']:
-					self.nr_echo = self.nr_echo + line.product_uom_qty
-					self.amo_echo = self.amo_echo + line.price_subtotal
 
-				# Gyn
-				elif prod.pl_family in ['gynecology']:
-					self.nr_gyn = self.nr_gyn + line.product_uom_qty
-					self.amo_gyn = self.amo_gyn + line.price_subtotal
 
-				# Prom
-				elif prod.pl_family in ['promotion']:
-					self.nr_prom = self.nr_prom + line.product_uom_qty
-					self.amo_prom = self.amo_prom + line.price_subtotal
-
-				# By Sub Family
+				# By Treatment
 				# Co2
-				elif prod.pl_subfamily in ['co2']:
+				if prod.pl_treatment in ['LASER CO2 FRACCIONAL']:
 					self.nr_co2 = self.nr_co2 + line.product_uom_qty
 					self.amo_co2 = self.amo_co2 + line.price_subtotal
 
+
 				# Exc
-				elif prod.pl_subfamily in ['excilite']:
+				elif prod.pl_treatment in ['LASER EXCILITE']:
 					self.nr_exc = self.nr_exc + line.product_uom_qty
 					self.amo_exc = self.amo_exc + line.price_subtotal
 
 				# Quick
-				elif prod.pl_subfamily in ['quick']:
+				elif prod.pl_treatment in ['QUICKLASER']:
 					self.nr_quick = self.nr_quick + line.product_uom_qty
 					self.amo_quick = self.amo_quick + line.price_subtotal
 
-
-				# By Treatment
 				# Ipl
 				elif prod.pl_treatment in ['LASER M22 IPL']:
 					self.nr_ipl = self.nr_ipl + line.product_uom_qty
@@ -1331,6 +1227,24 @@ class Management(models.Model):
 				elif prod.pl_treatment in ['LASER M22 ND YAG']:
 					self.nr_ndyag = self.nr_ndyag + line.product_uom_qty
 					self.amo_ndyag = self.amo_ndyag + line.price_subtotal
+
+
+				# Echo
+				#if prod.pl_family in ['echography']:
+				#	self.nr_echo = self.nr_echo + line.product_uom_qty
+				#	self.amo_echo = self.amo_echo + line.price_subtotal
+
+				# Gyn
+				#elif prod.pl_family in ['gynecology']:
+				#	self.nr_gyn = self.nr_gyn + line.product_uom_qty
+				#	self.amo_gyn = self.amo_gyn + line.price_subtotal
+
+				# Prom
+				#elif prod.pl_family in ['promotion']:
+				#	self.nr_prom = self.nr_prom + line.product_uom_qty
+				#	self.amo_prom = self.amo_prom + line.price_subtotal
+
+
 
 				else:
 					# Medical

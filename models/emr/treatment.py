@@ -20,6 +20,7 @@ from . import treatment_state
 from . import pl_creates
 
 from . import test_treatment
+
 from . import reco_funcs
 from . import action_funcs
 from . import counter_objects
@@ -808,7 +809,13 @@ class Treatment(models.Model):
 		print(value)
 		if self.patient.x_test:
 			if value == 'test_integration':
-					test_treatment.test_integration_treatment(self)
+					#test_treatment.test_integration_treatment(self)
+
+					#test_case = 'laser'
+					#test_case = 'product'
+					test_case = 'medical'
+
+					test_treatment.test_integration_treatment(self, test_case)
 
 			elif value == 'test_reset':
 				test_treatment.test_reset_treatment(self)

@@ -4,7 +4,7 @@
 	Should be unit testable - independent from openerp
 
 	Created: 			28 May 2018
-	Last updated: 		24 oct 2020
+	Last updated: 		25 oct 2020
 
 	- Use functional programming - ie pure functions.
 	- Use lambda funcs, map, filter, reduce, decorators, generators, etc.
@@ -45,66 +45,9 @@ def averages_pure(vector, func=division):
 		print(amo, nr)
 	
 	print(ave)
+
 	return ave
-
-
-# ----------------------------------------------------------- Set Averages -----
-def set_averages(self):
-	"""
-	Set Averages
-	Used by 
-		Management
-	"""
-
-	# Families
-	self.avg_other = division(self.amo_other, self.nr_other)
-	self.avg_products = division(self.amo_products, self.nr_products)
-	self.avg_services = division(self.amo_services, self.nr_services)
-	self.avg_consultations = division(self.amo_consultations, self.nr_consultations)
-	self.avg_procedures = division(self.amo_procedures, self.nr_procedures)
-
-
-	# Subfamilies
-	if self.nr_topical != 0:
-		self.avg_topical = self.amo_topical / self.nr_topical
-
-	if self.nr_card != 0:
-		self.avg_card = self.amo_card / self.nr_card
-
-	if self.nr_kit != 0:
-		self.avg_kit = self.amo_kit / self.nr_kit
-
-	if self.nr_co2 != 0:
-		self.avg_co2 = self.amo_co2 / self.nr_co2
-
-	if self.nr_exc != 0:
-		self.avg_exc = self.amo_exc / self.nr_exc
-
-	if self.nr_ipl != 0:
-		self.avg_ipl = self.amo_ipl / self.nr_ipl
-
-	if self.nr_ndyag != 0:
-		self.avg_ndyag = self.amo_ndyag / self.nr_ndyag
-
-	if self.nr_quick != 0:
-		self.avg_quick = self.amo_quick / self.nr_quick
-
-	if self.nr_medical != 0:
-		self.avg_medical = self.amo_medical / self.nr_medical
-
-	if self.nr_cosmetology != 0:
-		self.avg_cosmetology = self.amo_cosmetology / self.nr_cosmetology
-
-	if self.nr_echo != 0:
-		self.avg_echo = self.amo_echo / self.nr_echo
-
-	if self.nr_gyn != 0:
-		self.avg_gyn = self.amo_gyn / self.nr_gyn
-
-	if self.nr_prom != 0:
-		self.avg_prom = self.amo_prom / self.nr_prom
-# set_averages
-
+# averages_pure
 
 # ------------------------------------------------------------- Set Ratios -----
 def set_ratios(self):

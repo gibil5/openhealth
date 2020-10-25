@@ -236,8 +236,11 @@
 											<field name="avg_ipl"   string="Ipl"/>
 											<field name="avg_ndyag" string="Ndyag"/>
 											<field name="avg_quick"         string="Quick"/>
+
+											<field name="vspace"/>
 											<field name="avg_medical"       string="TM"/>
 											<field name="avg_cosmetology"   string="Cosmeatria"/>
+
 											<field name="vspace"/>
 											<field name="avg_echo"   string="Eco"/>
 											<field name="avg_gyn"   string="Gin"/>

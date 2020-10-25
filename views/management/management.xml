@@ -205,6 +205,49 @@
 							</group>
 						</group>
 
+
+<!-- Notebook --> 
+						<notebook>  
+							<!-- Stats --> 
+							<page string="Stats" groups='openhealth.roots'>
+
+								<!-- Families --> 
+								<group string="Familias"   col="3">
+									<group>
+										<field name="avg_products"      string="Productos"/>
+										<field name="avg_services"      string="Servicios"/>
+									</group>
+									<group>
+										<field name="avg_consultations" string="Consultas"/>
+										<field name="avg_procedures"    string="Procedimientos"/>
+										<field name="avg_other"         string="Otros"/>
+									</group>
+								</group>
+
+								<!-- Sub-Families --> 
+								<group  string="Sub Familias"   col="3" >
+										<group>
+											<field name="avg_topical"   string="Cremas"/>
+											<field name="avg_card"      string="Vip"/>
+											<field name="avg_kit"       string="Kits"/>
+											<field name="vspace"/>
+											<field name="avg_co2"   string="Co2"/>
+											<field name="avg_exc"   string="Exc"/>
+											<field name="avg_ipl"   string="Ipl"/>
+											<field name="avg_ndyag" string="Ndyag"/>
+											<field name="avg_quick"         string="Quick"/>
+											<field name="avg_medical"       string="TM"/>
+											<field name="avg_cosmetology"   string="Cosmeatria"/>
+											<field name="vspace"/>
+											<field name="avg_echo"   string="Eco"/>
+											<field name="avg_gyn"   string="Gin"/>
+											<field name="avg_prom"   string="Prom"/>
+										</group>
+									</group>
+
+							</page>
+						</notebook>  
+
 						<!-- Families --> 
 						<group  string="Familias"   col="3">
 							<group>
@@ -355,8 +398,8 @@
 						<notebook>  
 
 							<!-- Stats --> 
+<!--
 							<page string="Statistics" groups='openhealth.roots'>
-
 								<group string="Familias - Precios Promedio"   col="3">
 									<group>
 										<field name="avg_products"      string="Productos"/>
@@ -368,7 +411,6 @@
 										<field name="avg_other"         string="Otros"/>
 									</group>
 								</group>
-
 
 								<group  string="Sub Familias - Precios Promedio"   col="3" >
 									<group>
@@ -390,6 +432,7 @@
 									</group>
 								</group>
 							</page>
+-->
 
 
 							<!-- Doctores --> 

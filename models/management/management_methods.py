@@ -230,7 +230,6 @@ class Management(models.Model):
 # Must be Abstract - To Hide Implementation
 
 		# Set Averages
-		#mgt_funcs.set_averages(self)
 		self.get_averages()
 
 		# Set Ratios
@@ -248,7 +247,7 @@ class Management(models.Model):
 # ---------------------------------------------------------- Get Averages ------
 	def get_averages(self):
 
-		vector = [	
+		vector_pre = [	
 					# Families
 					(self.amo_products, self.nr_products),
 					(self.amo_services, self.nr_services),
@@ -277,6 +276,29 @@ class Management(models.Model):
 					(self.amo_prom, self.nr_prom),
 				]
 
+		vector = [	
+					# Families
+					('prod', self.amo_products, self.nr_products),
+					('serv', self.amo_services, self.nr_services),
+					('cons', self.amo_consultations, self.nr_consultations),
+					('proc', self.amo_procedures, self.nr_procedures),
+					('othe', self.amo_other, self.nr_other),
+
+					# Sub families
+
+					# Prod
+					('top', self.amo_topical, self.nr_topical),
+					('car', self.amo_card, self.nr_card),
+					('kit', self.amo_kit, self.nr_kit),
+
+					# Laser
+					('co2', self.amo_co2, self.nr_co2),
+					('exc', self.amo_exc, self.nr_exc),
+					('ipl', self.amo_ipl, self.nr_ipl),
+					('ndy', self.amo_ndyag, self.nr_ndyag),
+					('qui', self.amo_quick, self.nr_quick),
+		]
+
 		# Functional - call to pure function
 		result = mgt_funcs.averages_pure(vector)
 
@@ -284,14 +306,82 @@ class Management(models.Model):
 
 		
 # ---------------------------------------------------------- Set Averages ------
+	def set_field(self, tag, value):
+		# Families
+		if tag == 'prod':
+			self.avg_products  = value
+		
+		if tag == 'serv':
+			self.avg_services = value
+		
+		if tag == 'cons':
+			self.avg_consultations = value
+		if tag == 'proc':
+			self.avg_procedures = value
+		
+		if tag == 'othe':
+			self.avg_other = value
+
+
+		# Sub Families
+
+		# Prod
+		if tag == 'top':
+			self.avg_topical = value
+
+		if tag == 'car':
+			self.avg_card = value
+
+		if tag == 'kit':
+			self.avg_kit = value
+
+		# Laser
+		if tag == 'co2':
+			self.avg_co2 = value
+
+		if tag == 'exc':
+			self.avg_exc = value
+
+		if tag == 'ipl':
+			self.avg_ipl = value
+
+		if tag == 'ndy':
+			self.avg_ndyag = value
+
+		if tag == 'qui':
+			self.avg_quick = value
+
+
+		
+
 	def set_averages(self, result):
+		for avg in result: 
+			tag = avg[0]
+			value = avg[1]
+			self.set_field(tag, value)
+
+
 
 		# Families
-		self.avg_products = result[0]
-		self.avg_services = result[1]
-		self.avg_consultations = result[2]
-		self.avg_procedures = result[3]
-		self.avg_other =result[4]
+		#self.avg_products = result[0]
+		#self.avg_services = result[1]
+		#self.avg_consultations = result[2]
+		#self.avg_procedures = result[3]
+		#self.avg_other =result[4]
+
+		#self.avg_products = result[0][1]
+		#self.avg_services = result[1][1]
+		#self.avg_consultations = result[2][1]
+		#self.avg_procedures = result[3][1]
+		#self.avg_other =result[4][1]
+
+		#dic = {
+		#		'prod': 	self.avg_products,
+		#		'ser': 		self.avg_services,
+		#		'con': 		self.avg_consultations,
+		#		'proc': 	self.avg_procedures,
+		#		'oth': 		self.avg_other,
+		#	}
 
 
 		#self.avg_products = 

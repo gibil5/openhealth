@@ -35,9 +35,12 @@ def averages_pure(vector, func=division):
 	ave = []
 
 	for data in vector: 
-		amo = data[0]
-		nr = data[1]
-		ave.append(func(amo, nr))
+		tag = data[0]
+		amo = data[1]
+		nr = data[2]
+
+		#ave.append(func(amo, nr))
+		ave.append((tag, func(amo, nr)))
 
 		print(amo, nr)
 	

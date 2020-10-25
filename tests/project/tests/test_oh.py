@@ -23,6 +23,9 @@ func = lambda a, b : round(float(a) / float(b), 2)
 # ------------------------------------------------------------------- Test -----
 class TestSum(unittest.TestCase):
 
+    #def __init__(self):
+    #    print('init')
+
     @unittest.skip("skipping test")
     def test_vector_one_element(self):
         """
@@ -51,6 +54,7 @@ class TestSum(unittest.TestCase):
         self.assertEqual(result, [150])
 
 
+    @unittest.skip("skipping test")
     def test_vector_two_elements(self):
         """
         Test a vector, two elements
@@ -60,7 +64,32 @@ class TestSum(unittest.TestCase):
         self.assertEqual(result, [675, 59])
 
 
+    def test_vector_tags(self):
+        """
+        Test a vector, with tags
+        """
+        data = [('tag_0', 1350, 2), ('tag_1', 2950, 50)]
+        result = averages_pure(data)
+
+        self.assertEqual(result, [('tag_0', 675), ('tag_1',59)])
+        
+        self.tag_0 = result[0][1]
+        self.tag_1 = result[1][1]
+        
+        print(self.tag_0)
+        print(self.tag_1)
+
+
+    #def test_self_vars(self):
+        #print(self.tag_0)
+        #self.assertEqual(self.tag_0, 675)
+        #self.assertEqual(self.tag_1, 59)
+
+
 
 if __name__ == '__main__':
+
     unittest.main()
+
+
 

@@ -10,16 +10,39 @@
             <field name="arch" type="xml">
                 <notebook position="inside">
                     <page string="Recomendaciones">
-                        <notebook>
+<!--
+                              <field name="service_all_ids"/> 
+-->
+                              <field name="service_all_ids">
+                                  <tree string="Services all">
 
-                          <!-- Co2 --> 
+                                      <field name="service"/>
+
+                                      <field name="family"/>
+
+                                      <field  name="subfamily"/>
+
+                                      <field  name="pl_treatment"/>
+
+                                      <field name="treatment"/>
+                                  </tree>
+                              </field>
+                          </page>
+
+<!--
+                          <notebook>
+                            <page string="All">
+-->
+
+                        <!-- Co2 --> 
                           <!--
                           <page string="CO2"          attrs="{'invisible':[('nr_services_co2', '=', 0)]}"  >
                           -->
+<!--
                           <page string="CO2">
                               <field name="service_co2_ids"/> 
                           </page>
-
+-->
 
                             <!-- Recom -->                          
 <!--
@@ -76,8 +99,10 @@
                                 <field name="service_cosmetology_ids"/>                     
                             </page>
 -->                            
+<!--
                         </notebook>
                     </page>
+-->
                 </notebook>
             </field>
         </record>

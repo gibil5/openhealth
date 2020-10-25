@@ -38,3 +38,19 @@ class ProductProduct(models.Model):
 		#print 'Get Code'
 		code = '5555555555'
 		return code
+
+
+# ----------------------------------------------------------- Is Vip Card -------------------------
+	def is_vip_card(self):					
+		"""
+		Introspection compliant
+		"""
+		#print()
+		#print('Is Vip Card')
+
+		if self.pl_family in ['card']:
+			is_vip_card = True
+		else:
+			is_vip_card = False
+
+		return is_vip_card

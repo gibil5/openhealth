@@ -15,9 +15,12 @@ from openerp.exceptions import Warning as UserError
 
 # --------------------------------------------------------------- Constants ----
 _model_ser_pro = "openhealth.service_product'"
-_model_ser_cos = "openhealth.service_cosmetology"
-_model_ser_med = "openhealth.service_medical" 
 
+_model_ser_med = "openhealth.service_all" 
+
+_model_ser_cos = "openhealth.service_all"
+
+_model_service = "openhealth.service_all"
 
 # ----------------------------------------------------------- Exceptions -------
 class OrderErrorException(Exception):
@@ -113,7 +116,6 @@ def create_recommentations_and_procedure_sale(self, test_case):
 
 
 
-
 # ----------------------------------------------------------- Second Level ------------------------
 
 # -------------------------------------------------- Create Recommendations ----
@@ -171,22 +173,28 @@ def create_recommendations(self, test_case):
 		}
 
 	model_dic = {
-					'prod_0': 	_model_ser_pro,
-					'prod_1': 	_model_ser_pro,
-					'prod_2': 	_model_ser_pro,
-					'prod_3': 	_model_ser_pro,
-					'prod_4': 	_model_ser_pro,
+					# Laser
+					#'co2': 		'openhealth.service_co2',
+					#'exc': 		'openhealth.service_excilite',
+					#'ipl': 		'openhealth.service_ipl',
+					#'ndy': 		'openhealth.service_ndyag',
+					#'qui': 		'openhealth.service_quick',
+					'co2': 		'openhealth.service_all',
+					'exc': 		'openhealth.service_all',
+					'ipl': 		'openhealth.service_all',
+					'ndy': 		'openhealth.service_all',
+					'qui': 		'openhealth.service_all',
 
-					'co2': 		'openhealth.service_co2',
-
-					'exc': 		'openhealth.service_excilite',
-					'ipl': 		'openhealth.service_ipl',
-					'ndy': 		'openhealth.service_ndyag',
-					'qui': 		'openhealth.service_quick',
-
-					'cos_0': 	_model_ser_cos,
-					'cos_1': 	_model_ser_cos,
-					'cos_2': 	_model_ser_cos,
+					#'prod_0': 	_model_ser_pro,
+					#'prod_1': 	_model_ser_pro,
+					#'prod_2': 	_model_ser_pro,
+					#'prod_3': 	_model_ser_pro,
+					#'prod_4': 	_model_ser_pro,
+					'prod_0': 	'openhealth.service_all',
+					'prod_1': 	'openhealth.service_all',
+					'prod_2': 	'openhealth.service_all',
+					'prod_3': 	'openhealth.service_all',
+					'prod_4': 	'openhealth.service_all',
 
 					'med_0': 	_model_ser_med,
 					'med_1': 	_model_ser_med,
@@ -198,9 +206,16 @@ def create_recommendations(self, test_case):
 					'med_7': 	_model_ser_med,
 					'med_8': 	_model_ser_med,
 
-					'gyn': 		'openhealth.service_gynecology',
-					'echo': 	'openhealth.service_echography',
-					'prom': 	'openhealth.service_promotion',
+					'cos_0': 	_model_ser_cos,
+					'cos_1': 	_model_ser_cos,
+					'cos_2': 	_model_ser_cos,
+
+					#'gyn': 	'openhealth.service_gynecology',
+					#'echo': 	'openhealth.service_echography',
+					#'prom': 	'openhealth.service_promotion',
+					'gyn': 		_model_service,
+					'echo': 	_model_service,
+					'prom': 	_model_service,
 		}
 
 	tst_list_all = [
@@ -289,13 +304,14 @@ def create_recommendations(self, test_case):
 	elif test_case in ['product']:
 		tst_list = tst_list_product
 
-
+	elif test_case in ['medical']:
+		tst_list = tst_list_medical
 
 	elif test_case in ['cosmetology']:
 		tst_list = tst_list_cosmetology
 
-	elif test_case in ['medical']:
-		tst_list = tst_list_medical
+
+
 
 	elif test_case in ['new']:
 		tst_list = tst_list_new
@@ -306,8 +322,10 @@ def create_recommendations(self, test_case):
 
 	# Loop
 	for tst in tst_list:
+		
 		# Init
 		name = name_dic[tst]
+		
 		model = model_dic[tst]
 
 		# Search
@@ -332,6 +350,7 @@ def create_recommendations(self, test_case):
 		print()
 		print(product)
 		print(product.name)
+
 
 		# Create
 		service = self.env[model].create({
@@ -363,6 +382,8 @@ def test_reset_treatment(self):
 	self.consultation_ids.unlink()
 
 	# Recos
+	self.service_all_ids.unlink()
+
 	self.service_co2_ids.unlink()
 	self.service_excilite_ids.unlink()
 	self.service_ipl_ids.unlink()

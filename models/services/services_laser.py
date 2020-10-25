@@ -19,8 +19,6 @@ class ServiceCo2(models.Model):
 	"""
 	Service Co2
 	"""
-	#_name = 'price_list.service_co2'
-	#_inherit = 'price_list.service'
 	_name = 'openhealth.service_co2'
 	_inherit = 'openhealth.service'
 
@@ -68,9 +66,7 @@ class ServiceCo2(models.Model):
 		)
 
 
-
 # ---------------------------------------------- Exc -------------------------------------
-
 class ServiceExcilite(models.Model):
 	"""
 	Service Excilite
@@ -121,6 +117,7 @@ class ServiceExcilite(models.Model):
 			string='Level',
 			required=False,
 		)
+
 
 # ---------------------------------------------- Ipl -------------------------------------
 class ServiceIpl(models.Model):

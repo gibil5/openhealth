@@ -51,6 +51,15 @@ class Treatment(models.Model):
 	)
 
 # ------------------------------------------------------------ Services --------
+	# all
+	service_all_ids = fields.One2many(
+		#'openhealth.service_laser',
+		'openhealth.service_all',
+		'treatment',
+		string="Servicios All"
+	)
+
+
 	# co2
 	service_co2_ids = fields.One2many(
 		'openhealth.service_co2',
@@ -813,7 +822,10 @@ class Treatment(models.Model):
 
 					#test_case = 'laser'
 					#test_case = 'product'
-					test_case = 'medical'
+					#test_case = 'medical'
+					#test_case = 'cosmetology'
+					#test_case = 'new'
+					test_case = 'all'
 
 					test_treatment.test_integration_treatment(self, test_case)
 

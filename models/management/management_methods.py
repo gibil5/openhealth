@@ -12,8 +12,6 @@ import collections
 from openerp import models, fields, api
 
 # Lib
-#from lib import stats
-#from lib import mgt_line_funcs
 from lib import mgt_funcs
 from lib import prod_funcs
 
@@ -232,7 +230,8 @@ class Management(models.Model):
 # Must be Abstract - To Hide Implementation
 
 		# Set Averages
-		mgt_funcs.set_averages(self)
+		#mgt_funcs.set_averages(self)
+		self.get_averages()
 
 		# Set Ratios
 		mgt_funcs.set_ratios(self)
@@ -244,6 +243,90 @@ class Management(models.Model):
 		mgt_funcs.set_percentages(self)
 
 	# update_sales_fast
+
+
+# ---------------------------------------------------------- Get Averages ------
+	def get_averages(self):
+
+		vector = [	
+					# Families
+					(self.amo_products, self.nr_products),
+					(self.amo_services, self.nr_services),
+					(self.amo_consultations, self.nr_consultations),
+					(self.amo_procedures, self.nr_procedures),
+					(self.amo_other, self.nr_other),
+
+					# Sub families
+					# Prod
+					(self.amo_topical, self.nr_topical),
+					(self.amo_card, self.nr_card),
+					(self.amo_kit, self.nr_kit),
+
+					# Laser
+					(self.amo_co2, self.nr_co2),
+					(self.amo_exc, self.nr_exc),
+					(self.amo_ipl, self.nr_ipl),
+					(self.amo_ndyag, self.nr_ndyag),
+					(self.amo_quick, self.nr_quick),
+
+					# Medical
+					(self.amo_medical, self.nr_medical),
+					(self.amo_cosmetology, self.nr_cosmetology),
+					(self.amo_gyn, self.nr_gyn),
+					(self.amo_echo, self.nr_echo),
+					(self.amo_prom, self.nr_prom),
+				]
+
+		# Functional - call to pure function
+		result = mgt_funcs.averages_pure(vector)
+
+		self.set_averages(result)
+
+		
+# ---------------------------------------------------------- Set Averages ------
+	def set_averages(self, result):
+
+		# Families
+		self.avg_products = result[0]
+		self.avg_services = result[1]
+		self.avg_consultations = result[2]
+		self.avg_procedures = result[3]
+		self.avg_other =result[4]
+
+
+		#self.avg_products = 
+		#self.avg_services = 
+		#self.avg_consultations = 
+		#self.avg_procedures = 
+		#self.avg_other =
+
+		#self.avg_topical
+		#self.avg_card 
+		#self.avg_kit 
+
+		#self.avg_co2 
+		#self.avg_exc 
+		#self.avg_ipl 
+		#self.avg_ndyag = 
+		#self.avg_quick = 
+
+		#self.avg_medical = 
+		#self.avg_cosmetology = 
+		#self.avg_echo = 
+		#self.avg_gyn = 
+		#self.avg_prom = 
+
+
+		#vector = [	self.avg_products,
+		#			self.avg_services,
+		#			self.avg_consultations,
+		#			self.avg_procedures,
+		#			self.avg_other
+		#		]
+		#idx = 0
+		#for ave in vector:
+		#	ave = result[idx]
+		#	idx += 1
 
 
 # ----------------------------------------------------------- Update Year ------

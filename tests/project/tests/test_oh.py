@@ -11,23 +11,54 @@ Usage
 
 import unittest
 
-#from ../../../models/management/lib/mgt_funcs import set_averages
-#from models.management.lib.mgt_funcs import set_averages
-from mgt_funcs import set_averages_pure
+from mgt_funcs import averages_pure
+
+# ------------------------------------------------------------------ Funcs -----
+#def func(amo, nr):
+#    return round(float(amo) / float(nr), 2) if nr else 0
+
+func = lambda a, b : round(float(a) / float(b), 2)
 
 
+# ------------------------------------------------------------------- Test -----
 class TestSum(unittest.TestCase):
-    def test_list_int(self):
+
+    @unittest.skip("skipping test")
+    def test_vector_one_element(self):
         """
-        Test that it can average
+        Test a vector, one element
         """
-        #data = [(150, 1)]
-        #data = [(300, 2)]
         data = [(450, 3)]
+        result = averages_pure(data)
+        self.assertEqual(result, [150])
 
-        result = set_averages_pure(data)
+    @unittest.skip("skipping test")
+    def test_vector_decimals(self):
+        """
+        Test a vector, with decimals
+        """
+        data = [(100, 7)]
+        result = averages_pure(data)
+        self.assertEqual(result, [14.29])
 
-        self.assertEqual(result, 150)
+    @unittest.skip("skipping test")
+    def test_func_external_lambda(self):
+        """
+        Test a vector, one element
+        """
+        data = [(450, 3)]
+        result = averages_pure(data, func)
+        self.assertEqual(result, [150])
+
+
+    def test_vector_two_elements(self):
+        """
+        Test a vector, two elements
+        """
+        data = [(1350, 2), (2950, 50)]
+        result = averages_pure(data)
+        self.assertEqual(result, [675, 59])
+
 
 
 if __name__ == '__main__':

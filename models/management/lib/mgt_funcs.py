@@ -6,7 +6,7 @@
 	Created: 			28 May 2018
 	Last updated: 		24 oct 2020
 
-	- Use functional programming - ie functions.
+	- Use functional programming - ie pure functions.
 	- Use lambda funcs, map, filter, reduce, decorators, generators, etc.
 """
 from __future__ import print_function
@@ -20,25 +20,30 @@ _MODEL_SALE = "sale.order"
 
 # --------------------------------------------------------------- Division -----
 def division(amo, nr):
-    return amo / nr if nr else 0
+    return round(float(amo) / float(nr), 2) if nr else 0
+
 
 # ----------------------------------------------------------- Set Averages -----
-def set_averages_pure(data):
+def averages_pure(vector, func=division):
 	"""
 	Set Averages Pure 
 	Using functional programming
 	Used by: Management
 	"""
 	print("\n")
-	print(set_averages_pure)
+	print(averages_pure)
+	ave = []
 
-	amo_products = data[0][0]
-	nr_products = data[0][1]
-	ave_products = division(amo_products, nr_products)
+	for data in vector: 
+		amo = data[0]
+		nr = data[1]
+		ave.append(func(amo, nr))
 
-	print(amo_products, nr_products, ave_products)
+		print(amo, nr)
+	
+	print(ave)
+	return ave
 
-	return ave_products
 
 # ----------------------------------------------------------- Set Averages -----
 def set_averages(self):

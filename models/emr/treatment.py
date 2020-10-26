@@ -33,8 +33,6 @@ _model_treatment = "openhealth.treatment"
 _model_sale = "sale.order"
 _model_consultation = "openhealth.consultation"
 _model_action = "ir.actions.act_window"
-
-#_model_ser_co2 = "openhealth.service_co2"
 _model_service = "openhealth.service_all"
 
 # ------------------------------------------------------------------- Class ----
@@ -57,82 +55,10 @@ class Treatment(models.Model):
 # ------------------------------------------------------------ Services --------
 	# all
 	service_all_ids = fields.One2many(
-		#'openhealth.service_laser',
 		'openhealth.service_all',
 		'treatment',
 		string="Servicios All"
 	)
-
-
-	# co2
-	#service_co2_ids = fields.One2many(
-	#	'openhealth.service_co2',
-	#	'treatment',
-	#	string="Servicios Co2"
-	#)
-
-	# excilite
-	#service_excilite_ids = fields.One2many(
-	#	'openhealth.service_excilite',
-	#	'treatment',
-	#	string="Servicios excilite"
-	#)
-
-  	# cosmetology
-	#service_cosmetology_ids = fields.One2many(
-	#	'openhealth.service_cosmetology',
-	#	'treatment',
-	#	string="Servicios cosmetology"
-	#)
-
-  	# echography
-	#service_echography_ids = fields.One2many(
-	#	'openhealth.service_echography',
-	#	'treatment',
-	#	string="Servicios Ecografia"
-	#)
-
-	# ipl
-	#service_ipl_ids = fields.One2many(
-	#    'openhealth.service_ipl',
-	#    'treatment',
-	#    string="Servicios ipl"
-    #)
-
-	# ndyag
-	#service_ndyag_ids = fields.One2many(
-	#    'openhealth.service_ndyag',
-	#    'treatment',
-	#    string="Servicios ndyag"
-    #)
-
-	# quick
-	#service_quick_ids = fields.One2many(
-	#    'openhealth.service_quick',
-	#    'treatment',
-	#    string="Servicios quick"
-	#)
-
-	# product
-	#service_product_ids = fields.One2many(
-	#    'openhealth.service_product',
-	#    'treatment',
-	#    string="Servicios product"
-	#)
-
-	# gynecology
-	#service_gynecology_ids = fields.One2many(
-	#    'openhealth.service_gynecology',
-	#    'treatment',
-	#    string="Servicios Ginecologia"
-	#)
-
-	# promotion
-	#service_promotion_ids = fields.One2many(
-	#    'openhealth.service_promotion',
-	#    'treatment',
-	#    string="Servicios Promocion"
-	#)
 
 
 # ----------------------------------------------------------- Primitive ---------------------------
@@ -175,7 +101,6 @@ class Treatment(models.Model):
 		readonly=True,
 		states=READONLY_STATES,
 	)
-
 
 # ----------------------------------------------------------- Card ------------
 	# Name
@@ -236,8 +161,7 @@ class Treatment(models.Model):
 			record.vip = True if card.get_name() else False
 
 
-# ----------------------------------------------------------- Number ofs --------------------------
-
+# ----------------------------------------------------------- Number ofs -------
 	# Budgets - Consultations
 	nr_budgets_cons = fields.Integer(
 		string="Presupuestos Consultas",
@@ -347,7 +271,6 @@ class Treatment(models.Model):
 	)
 
 # ----------------------------------------------------------- Pricelist Fields - Test --------------------------------
-
 	x_test_scenario = fields.Selection(
 		selection=treatment_vars._test_scenario_list,
 		string="Test Scenarios",
@@ -470,7 +393,6 @@ class Treatment(models.Model):
 	)
 
 # ----------------------------------------------------------- Consultation Progress ---------------
-
 	# Consultation progress
 	consultation_progress = fields.Float(
 		default=0,
@@ -510,21 +432,8 @@ class Treatment(models.Model):
 	@api.multi
 	def _compute_nr_services(self):
 		for record in self:
-			#record.nr_services = 0
-			#co2 = self.env['openhealth.service.co2'].search_count([('treatment', '=', record.id),])
-			#quick =	self.env['openhealth.service.quick'].search_count([('treatment', '=', record.id),])
-			#exc = self.env['openhealth.service.excilite'].search_count([('treatment', '=', record.id),])
-			#ipl = self.env['openhealth.service.ipl'].search_count([('treatment', '=', record.id),])
-			#ndyag = self.env['openhealth.service.ndyag'].search_count([('treatment', '=', record.id),])
-			#medical = self.env['openhealth.service.medical'].search_count([('treatment', '=', record.id),])
-			#vip = self.env['openhealth.service.vip'].search_count([('treatment', '=', record.id),])
-			#product = self.env['openhealth.service.product'].search_count([('treatment', '=', record.id),])
-			#record.nr_services = quick + co2 + exc + ipl + ndyag + medical + vip + product
-			#co2 = self.env[_model_ser_co2].search_count([('treatment', '=', record.id),])
+			record.nr_services = self.env[_model_service].search_count([('treatment', '=', record.id),])
 
-			all = self.env[_model_service].search_count([('treatment', '=', record.id),])
-
-			record.nr_services = all
 
 # ----------------------------------------------------------- Create Buttons  ----------
 	@api.multi
@@ -534,8 +443,7 @@ class Treatment(models.Model):
 		One mode
 		"""
 		print()
-		#print('PL - treatment - btn_create_order_con')
-		print('OH - btn_create_order_con')
+		print('btn_create_order_con')
 
 		# Init
 		price_list = '2019'
@@ -682,7 +590,6 @@ class Treatment(models.Model):
 
 		service_list = [
 							self.service_all_ids,
-
 							#self.service_product_ids,
 							#self.service_co2_ids,
 							#self.service_excilite_ids,
@@ -718,8 +625,6 @@ class Treatment(models.Model):
 
 # ----------------------------------------------------------- Create Procedure  -------------------
 	# Create Procedure
-	#@api.multi
-	#def create_procedure(self, product):
 	def create_procedure_auto(self, product):
 		"""
 		Used by: Order
@@ -734,7 +639,6 @@ class Treatment(models.Model):
 	# create_procedure
 
 # ----------------------------------------------------------- Create Procedure Manual  ------------
-	#jx
 	@api.multi
 	def btn_create_procedure_man(self):
 		"""
@@ -828,15 +732,12 @@ class Treatment(models.Model):
 		print(value)
 		if self.patient.x_test:
 			if value == 'test_integration':
-					#test_treatment.test_integration_treatment(self)
-
 					#test_case = 'laser'
 					#test_case = 'product'
 					#test_case = 'medical'
 					#test_case = 'cosmetology'
 					#test_case = 'new'
 					test_case = 'all'
-
 					test_treatment.test_integration_treatment(self, test_case)
 
 			elif value == 'test_reset':
@@ -855,7 +756,6 @@ class Treatment(models.Model):
 		print('test_cycle')
 		value = self.env.context.get('key')
 		print(value)
-
 		test_treatment.test_create(self, value)
 
 
@@ -917,5 +817,4 @@ class Treatment(models.Model):
 		"""
 		Used by - Procedure
 		"""
-		#treatment_id = self.id
 		return action_funcs.open_myself(_model_treatment, self.id)

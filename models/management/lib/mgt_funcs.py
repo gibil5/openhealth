@@ -49,6 +49,7 @@ def averages_pure(vector, func=division):
 	return ave
 # averages_pure
 
+
 # ------------------------------------------------------------- Set Ratios -----
 def set_ratios(self):
 	"""
@@ -59,6 +60,7 @@ def set_ratios(self):
 	if self.nr_consultations != 0:
 		self.ratio_pro_con = (float(self.nr_procedures) / float(self.nr_consultations))
 # set_ratios
+
 
 # ----------------------------------------------------------- Set Totals -------
 def set_totals(self, tickets):
@@ -114,8 +116,6 @@ def set_percentages(self):
 # set_percentages
 
 
-
-
 # -------------------------------------------------------- Get Orders Fast -----
 # States: In State Array
 def get_orders_filter_fast(self, date_bx, date_ex):
@@ -142,7 +142,6 @@ def get_orders_filter_fast(self, date_bx, date_ex):
 	# Orders
 	orders = self.env[_MODEL_SALE].search([
 													('state', 'in', ['sale', 'credit_note']),
-
 													('date_order', '>=', date_begin),
 													('date_order', '<', date_end),
 													('x_legacy', '=', False),
@@ -153,7 +152,6 @@ def get_orders_filter_fast(self, date_bx, date_ex):
 	# Count
 	count = self.env[_MODEL_SALE].search_count([
 													('state', 'in', ['sale', 'credit_note']),
-
 													('date_order', '>=', date_begin),
 													('date_order', '<', date_end),
 													('x_legacy', '=', False),
@@ -275,7 +273,6 @@ def get_orders_filter_by_doctor(self, date_bx, date_ex, doctor):
 	# Orders
 	orders = self.env[_MODEL_SALE].search([
 													('state', 'in', ['sale', 'credit_note']),
-
 													('date_order', '>=', date_begin),
 													('date_order', '<', date_end),
 													('x_doctor', '=', doctor),
@@ -287,7 +284,6 @@ def get_orders_filter_by_doctor(self, date_bx, date_ex, doctor):
 	# Count
 	count = self.env[_MODEL_SALE].search_count([
 													('state', 'in', ['sale', 'credit_note']),
-
 													('date_order', '>=', date_begin),
 													('date_order', '<', date_end),
 													('x_doctor', '=', doctor),
@@ -297,4 +293,5 @@ def get_orders_filter_by_doctor(self, date_bx, date_ex, doctor):
 												#limit=1,
 											)
 	return orders, count
+
 # get_orders_filter_by_doctor

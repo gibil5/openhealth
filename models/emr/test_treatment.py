@@ -14,9 +14,6 @@ from openerp import _
 from openerp.exceptions import Warning as UserError
 
 # --------------------------------------------------------------- Constants ----
-#_model_ser_pro = "openhealth.service_product'"
-#_model_ser_med = "openhealth.service_all" 
-#_model_ser_cos = "openhealth.service_all"
 _model_service = "openhealth.service_all"
 
 # ----------------------------------------------------------- Exceptions -------
@@ -37,19 +34,15 @@ def test_integration_treatment(self, test_case):
 	print()
 	print('OH - test_treatment.py - test_integration_treatment')
 
-
 	# Create Consultation
 	verbose = False
 	create_consultation(self, verbose) 
-
 
 	# Create Recommendations and Sale
 	create_recommentations_and_procedure_sale(self, test_case)
 	create_sessions(self, True)
 	create_controls(self, True)
-
 # test_integration_treatment
-
 
 
 # ----------------------------------------------- 2nd level ---------------------------------------
@@ -91,13 +84,11 @@ def create_recommentations_and_procedure_sale(self, test_case):
 	print()
 	print(msg)
 
-
 	# Create recommendation
 	create_recommendations(self, test_case)
 
 	# Create order
 	self.btn_create_order_pro()
-
 
 	# Pay
 	test_funcs.disablePrint()
@@ -148,7 +139,6 @@ def create_recommendations(self, test_case):
 					'cos_0':		'CARBOXITERAPIA - Cuerpo - Rejuvenecimiento - 1 sesion - 30 min',				# Carboxitherapy
 					'cos_1':		'PUNTA DE DIAMANTES - Rostro - Limpieza profunda - 1 sesion - 30 min',			# Diamond Tip
 					'cos_2':		'LASER TRIACTIVE + CARBOXITERAPIA - Rostro + Papada + Cuello - Reafirmacion - 10 sesiones - 30 min',	# Laser Triactive + Carbo
-					#'cos_1':		'',			# Carboxitherapy
 
 					# Medical
 					'med_0':		'BOTOX - 1 Zona - Rejuvenecimiento Zona - 1 sesion',										# Botox
@@ -160,13 +150,11 @@ def create_recommendations(self, test_case):
 					'med_6':		'REDUX - 1 Zona - Rejuvenecimiento Zona - 1 sesion',										# Redux
 					'med_7':		'ESCLEROTERAPIA - Piernas - Varices - 1 sesion',											# Sclero
 					'med_8':		'VITAMINA C ENDOVENOSA',																	# Vitamin
-					#'med_8':		'VICTAMINA C ENDOVENOSA',																	# Vitamin
 
 					# New Services
 					'gyn':			'LASER CO2 FRACCIONAL - Monalisa Touch / Revitalizacion',
 					'echo':			'ECOGRAFIAS ESPECIALES - Cadera Pediatrica (Bilateral) - 1 sesion',
 					'prom':			'CARBOXITERAPIA - Localizado Cuerpo - Rejuvenecimiento Facial - 6 sesiones',
-					#'gyn':			'ANALISIS - Vagina - Biopsias',
 		}
 
 
@@ -202,7 +190,7 @@ def create_recommendations(self, test_case):
 					'prom',
 	]
 
-	tst_list_product = [
+	tst_list_prod = [
 					'prod_0',
 					'prod_1',
 					'prod_2',
@@ -218,13 +206,13 @@ def create_recommendations(self, test_case):
 					'qui',
 	]
 
-	tst_list_cosmetology = [
+	tst_list_cos = [
 					'cos_0',
 					'cos_1',
 					'cos_2',
 	]
 
-	tst_list_medical = [
+	tst_list_med = [
 					'med_0',
 					'med_1',
 					'med_2',
@@ -253,13 +241,13 @@ def create_recommendations(self, test_case):
 		tst_list = tst_list_laser
 
 	elif test_case in ['product']:
-		tst_list = tst_list_product
+		tst_list = tst_list_prod
 
 	elif test_case in ['medical']:
-		tst_list = tst_list_medical
+		tst_list = tst_list_med
 
 	elif test_case in ['cosmetology']:
-		tst_list = tst_list_cosmetology
+		tst_list = tst_list_cos
 
 	elif test_case in ['new']:
 		tst_list = tst_list_new
@@ -330,26 +318,10 @@ def test_reset_treatment(self):
 	# Recos
 	self.service_all_ids.unlink()
 
-	# Dep
-	#self.service_co2_ids.unlink()
-	#self.service_excilite_ids.unlink()
-	#self.service_ipl_ids.unlink()
-	#self.service_ndyag_ids.unlink()
-	#self.service_quick_ids.unlink()
-	#self.service_product_ids.unlink()
-	#self.service_medical_ids.unlink()
-	#self.service_cosmetology_ids.unlink()
-	#self.service_gynecology_ids.unlink()
-	#self.service_echography_ids.unlink()
-	#self.service_promotion_ids.unlink()
-
 	# Procedures
 	self.procedure_ids.unlink()
 	self.session_ids.unlink()
 	self.control_ids.unlink()
-
-	# App
-	#self.appointment_ids.unlink()			# Dep !
 
 	# Alta
 	self.treatment_closed = False
@@ -459,7 +431,6 @@ def test_report_product(self):
 
 	# Print Enable
 	#test_funcs.enablePrint()
-
 
 
 # ------------------------------------------------------- Level 0 - Creates ----
@@ -604,7 +575,6 @@ def test_create_recommendations(self):
 					'co2': 		'LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento - Grado 1 - 1 sesion',	# Co2
 		}
 	model_dic = {
-					#'co2': 		'price_list.service_co2',
 					'co2': 		'openhealth.service_co2',
 		}
 	tst_list = [

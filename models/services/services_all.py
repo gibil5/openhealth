@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-Services All
+    Services All
 
-Created: 			28 Jul 2020
-Last mod: 			28 Jul 2020
+    Created: 			25 oct 2020
+    Last up: 			25 oct 2020
 
-class ServiceAll
+    class ServiceAll
 """
 from openerp import models, fields, api
 

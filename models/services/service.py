@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-		Service - 2019
-		Created: 			20 Sep 2016
-	    Last mod: 			28 Jul 2020
+	Service
+	Created: 			20 Sep 2016
+	Last up: 			25 oct 2020
 """
 from __future__ import print_function
 from openerp import models, fields, api

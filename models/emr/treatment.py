@@ -683,17 +683,18 @@ class Treatment(models.Model):
 		print('Create Service Generic - ', subfamily)
 		# init
 		model_dic = {
-						'co2': 			_model_ser_co2,
-						'excilite': 	'openhealth.service_excilite',					
-						'ipl': 			'openhealth.service_ipl',
-						'ndyag': 		'openhealth.service_ndyag',
-						'quick': 		'openhealth.service_quick',
-						'cosmetology': 	'openhealth.service_cosmetology',
-						'medical': 		'openhealth.service_medical',
-						'gynecology': 	'openhealth.service_gynecology',
-						'echography': 	'openhealth.service_echography',
-						'promotion': 	'openhealth.service_promotion',
-						'product': 		'openhealth.service_product',
+						'all': 			_model_service,
+						#'co2': 		_model_ser_co2,
+						#'excilite': 	'openhealth.service_excilite',					
+						#'ipl': 		'openhealth.service_ipl',
+						#'ndyag': 		'openhealth.service_ndyag',
+						#'quick': 		'openhealth.service_quick',
+						#'cosmetology': 'openhealth.service_cosmetology',
+						#'medical': 	'openhealth.service_medical',
+						#'gynecology': 	'openhealth.service_gynecology',
+						#'echography': 	'openhealth.service_echography',
+						#'promotion': 	'openhealth.service_promotion',
+						#'product': 	'openhealth.service_product',
 			}
 		model = model_dic[subfamily]
 

@@ -3,7 +3,7 @@
     Services All
 
     Created: 			25 oct 2020
-    Last up: 			25 oct 2020
+    Last up: 			26 oct 2020
 
     class ServiceAll
 """

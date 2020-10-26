@@ -15,11 +15,16 @@ from openerp import models, fields, api
 from lib import mgt_funcs
 from lib import prod_funcs
 
+# --------------------------------------------------------------- Constants ----
+_MODEL_MGT = "openhealth.management"
+
+
+# ------------------------------------------------------------------- Class ----
 class Management(models.Model):
 	"""
 	Contains only methods.
 	"""
-	_inherit = 'openhealth.management'
+	_inherit = _MODEL_MGT
 
 
 # -------------------------------------------------------------------------------------------------
@@ -30,23 +35,17 @@ class Management(models.Model):
 	@api.multi
 	def update_fast(self):
 		"""
-		Update Macros
-		Used also by Django
+		Update Macros values
+		Does not update:
+			patients, doctors, productivity, daily.
 		"""
 		print()
 		print('Update Fast')
 
 		# Go
-		t0 = timer()
-		self.update_sales_fast()
+		self.update_sales()
 		self.update_year()
-		t1 = timer()
-		self.delta_fast = t1 - t0
-		#print self.delta_fast
-		#print
-		print()
 
-		return 1 	# For Django
 	# update_fast
 
 
@@ -114,10 +113,9 @@ class Management(models.Model):
 		t0 = timer()
 
 		# Sales by Doctor
-		self.pl_update_sales_by_doctor()
+		self.update_sales_by_doctor()
 
 		# Stats
-		#stax.update_stats(self)
 		self.update_stats()
 
 		t1 = timer()
@@ -144,13 +142,14 @@ class Management(models.Model):
 		prod_funcs.create_days(self)
 		
 		# Update cumulative and average
-		prod_funcs.pl_update_day_cumulative(self)
-		prod_funcs.pl_update_day_avg(self)
+		prod_funcs.update_day_cumulative(self)
+		prod_funcs.update_day_avg(self)
 
 		print()
 
 		return 1	# For Django
 	# update_productivity
+
 
 # ---------------------------------------------------------- Update Daily ------
 	# Update Daily
@@ -184,10 +183,9 @@ class Management(models.Model):
 # -------------------------------------------------------------------------------------------------
 # Second Level - Update Buttons
 # -------------------------------------------------------------------------------------------------
-
-	def update_sales_fast(self):
+	def update_sales(self):
 		"""
-		Update Sales
+		Update Sales Macros
 			Steps
 				Clean
 				Get orders
@@ -218,36 +216,31 @@ class Management(models.Model):
 				if order.state in ['sale']:  	
 					# Line Analysis
 					for line in order.order_line:
-						self.line_analysis(line, True)
+						self.line_analysis(line)
 
 				# If credit Note - Do Amount Flow
 				elif order.state in ['credit_note']:
-					self.nr_credit_notes = self.nr_credit_notes + 1
-					self.amo_credit_notes = self.amo_credit_notes + order.x_amount_flow
-
+					self.credit_note_analysis()
 
 # Analysis - Setters
-# Must be Abstract - To Hide Implementation
-
 
 		# Set Averages
-		self.get_averages()
-
+		self.set_averages()
 
 		# Set Ratios
-		mgt_funcs.set_ratios(self)
+		self.set_ratios()
 
 		# Set Totals
-		mgt_funcs.set_totals(self, tickets)
+		total_amount = self.set_totals(tickets)
 
 		# Set Percentages
-		mgt_funcs.set_percentages(self)
+		mgt_funcs.set_percentages(self, total_amount)
 
-	# update_sales_fast
+	# update_sales
 
 
 # ---------------------------------------------------------- Get Averages ------
-	def get_averages(self):
+	def set_averages(self):
 
 		vector = [	
 					# Families
@@ -282,15 +275,14 @@ class Management(models.Model):
 		# Functional - call to pure function
 		result = mgt_funcs.averages_pure(vector)
 
-		self.set_averages(result)
+		self.upack_vector_avg(result)
 
 		
 # ---------------------------------------------------------- Set Averages ------
-	def set_averages(self, result):
+	def upack_vector_avg(self, result):
 		for avg in result: 
 			tag = avg[0]
 			value = avg[1]
-
 			self.bridge_avg(tag, value)
 
 
@@ -308,99 +300,117 @@ class Management(models.Model):
 		# Families
 		if tag == 'prod':
 			self.avg_products  = value
-		
+			return
+
 		if tag == 'serv':
 			self.avg_services = value
+			return
 		
 		if tag == 'cons':
 			self.avg_consultations = value
+			return
+
 		if tag == 'proc':
 			self.avg_procedures = value
+			return
 		
 		if tag == 'othe':
 			self.avg_other = value
+			return
 
 		# Sub Families
 
 		# Prod
 		if tag == 'top':
 			self.avg_topical = value
+			return
 
 		if tag == 'car':
 			self.avg_card = value
+			return
 
 		if tag == 'kit':
 			self.avg_kit = value
+			return
 
 		# Laser
 		if tag == 'co2':
 			self.avg_co2 = value
+			return
 
 		if tag == 'exc':
 			self.avg_exc = value
+			return
 
 		if tag == 'ipl':
 			self.avg_ipl = value
+			return
 
 		if tag == 'ndy':
 			self.avg_ndyag = value
+			return
 
 		if tag == 'qui':
 			self.avg_quick = value
+			return
 
 		# Medical
 		if tag == 'med':
 			self.avg_medical = value
+			return
 
 		if tag == 'cos':
 			self.avg_cosmetology = value
+			return
 
 		if tag == 'ech':
 			self.avg_echo = value
+			return
 
 		if tag == 'gyn':
 			self.avg_gyn = value
+			return
 
 		if tag == 'pro':
 			self.avg_prom = value
+			return
 
 
 # ----------------------------------------------------------- Update Year ------
 	@api.multi
 	def update_year(self):
 		"""
-		Update Year
+		Update Yearly total amounts
 		"""
 		print()
 		print('Update Year')
 
 		# Mgts
-		mgts = self.env['openhealth.management'].search([
-															('owner', 'in', ['month']),
-															('year', 'in', [self.year]),
+		mgts = self.env[_MODEL_MGT].search([
+												('owner', 'in', ['month']),
+												('year', 'in', [self.year]),
 											],
 												#order='x_serial_nr asc',
 												#limit=1,
 											)
 		# Count
-		count = self.env['openhealth.management'].search_count([
-															('owner', 'in', ['month']),
-															('year', 'in', [self.year]),
+		count = self.env[_MODEL_MGT].search_count([
+													('owner', 'in', ['month']),
+													('year', 'in', [self.year]),
 											],
 												#order='x_serial_nr asc',
 												#limit=1,
 											)
+
 		#print(mgts)
 		#print(count)
-
 		total = 0		
 		for mgt in mgts:
 			total = total + mgt.total_amount
-
 		self.total_amount_year = total
-
 		if self.total_amount_year != 0:
 			self.per_amo_total = self.total_amount / self.total_amount_year
+
 	# update_year
 
 
@@ -413,13 +423,13 @@ class Management(models.Model):
 		For internal Data Coherency - internal and external. 
 		"""
 		print()
-		print('X - Validate the content !')
+		print('Validate the content !')
 
 		# Internal
-		out = self.pl_validate_internal()
+		out = self.validate_internal()
 
 		# External
-		#self.pl_validate_external()  	# Dep !
+		#self.validate_external()  	# Dep !
 
 		# Django
 		return out
@@ -429,7 +439,7 @@ class Management(models.Model):
 # ------------------------------------------------------- Validate Internal ----
 	# Validate
 	@api.multi
-	def pl_validate_internal(self):
+	def validate_internal(self):
 		"""
 		Validates Data Coherency - internal. 
 		"""
@@ -452,32 +462,28 @@ class Management(models.Model):
 		return self.per_amo_families, self.per_amo_subfamilies
 
 
-# ----------------------------------------------------------- Validate external -------------------------
+# ------------------------------------------------------- Validate external ----
 	# Validate
 	@api.multi
-	def pl_validate_external(self):
+	def validate_external(self):
 		"""
 		Validates Data Coherency - External. 
+		Looks for data coherency between reports.
 		Builds a Report Sale Product for the month. 
 		Compares it to Products stats.
 		"""
-		print()
-		print('X - Validate External')
+		#print()
+		#print('Validate External')
 
 		if self.report_sale_product.name in [False]:
-
 			date_begin = self.date_begin
-
-
 			self.report_sale_product = self.env['openhealth.report.sale.product'].create({
 																							'name': date_begin,
 																							'management_id': self.id,
 																						})
-
 		rsp = self.report_sale_product
-		print(rsp)
-		print(rsp.name)
-
+		#print(rsp)
+		#print(rsp.name)
 
 		rsp.update()
 
@@ -487,14 +493,11 @@ class Management(models.Model):
 		self.rsp_total_delta = self.amo_products - self.rsp_total
 
 
-
-
-
 # ----------------------------------------------------------- Update -------------------------------
 
 # ----------------------------------------------- Update Sales - By Doctor -----
 
-	def pl_update_sales_by_doctor(self):
+	def update_sales_by_doctor(self):
 		"""
 		Pl - Update Sales
 		"""
@@ -559,8 +562,7 @@ class Management(models.Model):
 # ----------------------------------------------------------- Create Doctor Data ------------
 	def create_doctor_data(self, doctor_name, orders):
 		print()
-		print('X - Create Doctor Data')
-
+		print('Create Doctor Data')
 
 		# Init Loop
 		amount = 0
@@ -580,9 +582,7 @@ class Management(models.Model):
 			# Filter Block
 			if not order.x_block_flow:
 
-
 				# Parse Data
-
 
 				# Amount with State
 				if order.state in ['credit_note']:
@@ -590,7 +590,6 @@ class Management(models.Model):
 
 				elif order.state in ['sale']:
 					amount = amount + order.amount_total
-
 
 				# Id Doc
 				if order.x_type in ['ticket_invoice', 'invoice']:
@@ -611,10 +610,6 @@ class Management(models.Model):
 						id_doc_type_code = '1'
 
 
-
-
-
-
 				# State equal to Sale
 				if order.state in ['sale']:  	# Sale - Do Line Analysis
 
@@ -628,13 +623,9 @@ class Management(models.Model):
 						# Price
 						price_unit = line.price_unit						
 
-
-
 						# Families
 						family = line.product_id.get_family()
 						sub_family = line.product_id.get_subsubfamily()
-
-
 
 						# Create
 						order_line = doctor.order_line.create({
@@ -679,7 +670,6 @@ class Management(models.Model):
 						#print(line.product_id)
 						#print(line.product_id.name)
 
-
 						# Deprecated !
 						# Update Families
 						#if line.product_id.pl_price_list in ['2019']:
@@ -688,13 +678,9 @@ class Management(models.Model):
 						#elif line.product_id.pl_price_list in ['2018']:
 						#	order_line.update_fields()
 
-
-
 					# Line Analysis Sale - End
 
 				# Conditional State Sale - End
-
-
 
 
 				# State equal to Credit Note
@@ -702,14 +688,12 @@ class Management(models.Model):
 
 					#print('CREDIT NOTE')
 
-
 					# Order Lines
 					for line in order.order_line:
 
 						# Families
 						family = line.product_id.get_family()
 						sub_family = line.product_id.get_subsubfamily()
-
 
 						# Price
 						price_unit = order.x_amount_flow
@@ -747,18 +731,14 @@ class Management(models.Model):
 																# Price
 																'price_unit': 			price_unit,
 
-
 																# Families
 																'family': family, 
 																'sub_family': sub_family, 
 															})
 
-
 						#print(line)
 						#print(line.product_id)
 						#print(line.product_id.name)
-
-
 
 						# Deprecated !
 						#if line.product_id.pl_price_list in ['2019']:
@@ -767,17 +747,12 @@ class Management(models.Model):
 						#elif line.product_id.pl_price_list in ['2018']:
 						#	order_line.update_fields()
 
-
-
 					# Line Analysis Credit Note - End
 
 				# Conditional State - End
 
-
 			# Filter Block - End
 		# Loop - End
-
-
 
 		# Stats
 		doctor.amount = amount
@@ -790,9 +765,6 @@ class Management(models.Model):
 	# create_doctor_data
 
 
-
-
-
 # ----------------------------------------------------------- Update Max -----------------------
 	@api.multi
 	def update_max(self):
@@ -803,7 +775,7 @@ class Management(models.Model):
 		print('X - Update Max')
 
 		# Clear
-		mgts = self.env['openhealth.management'].search([
+		mgts = self.env[_MODEL_MGT].search([
 															('owner', 'in', ['month']),
 															('year', 'in', [self.year]),
 														],
@@ -817,7 +789,7 @@ class Management(models.Model):
 
 
 		# Max
-		mgt = self.env['openhealth.management'].search([
+		mgt = self.env[_MODEL_MGT].search([
 															('owner', 'in', ['month']),
 															('year', 'in', [self.year]),
 															('month', 'not in', [False]),
@@ -829,7 +801,7 @@ class Management(models.Model):
 
 
 		# Max
-		mgt = self.env['openhealth.management'].search([
+		mgt = self.env[_MODEL_MGT].search([
 															('owner', 'in', ['month']),
 															('year', 'in', [self.year]),
 															('month', 'not in', [False]),
@@ -851,7 +823,7 @@ class Management(models.Model):
 		print('X - Update Year All')
 
 		# Mgts
-		mgts = self.env['openhealth.management'].search([
+		mgts = self.env[_MODEL_MGT].search([
 															('owner', 'in', ['month']),
 															('year', 'in', [self.year]),
 														],
@@ -859,7 +831,7 @@ class Management(models.Model):
 														#limit=1,
 													)
 		# Count
-		count = self.env['openhealth.management'].search_count([
+		count = self.env[_MODEL_MGT].search_count([
 															('owner', 'in', ['month']),
 															('year', 'in', [self.year]),
 														],
@@ -1160,8 +1132,36 @@ class Management(models.Model):
 	# update_stats
 
 
+# ------------------------------------------------------------- Set Ratios -----
+	def set_ratios(self):
+		"""
+		Set Ratios
+		Used by 
+			Management
+		"""
+		if self.nr_consultations != 0:
+			self.ratio_pro_con = (float(self.nr_procedures) / float(self.nr_consultations))
+	# set_ratios
+
+
+# ----------------------------------------------------------- Set Totals -------
+	def set_totals(self, tickets):
+		"""
+		Set Totals
+		Used by 
+			Management
+		"""
+		self.total_amount = self.amo_products + self.amo_services + self.amo_other + self.amo_credit_notes
+		self.total_count = self.nr_products + self.nr_services
+		self.total_tickets = tickets
+
+		return self.total_amount
+	# set_totals
+
+
 # ----------------------------------------------------------- Line Analysis ----
-	def line_analysis(self, line, verbose=False):
+	#def line_analysis(self, line, verbose=False):
+	def line_analysis(self, line):
 		"""
 		Analyses order lines 
 		Updates counters
@@ -1170,95 +1170,17 @@ class Management(models.Model):
 
 		# Init
 		prod = line.product_id
-		if verbose:
-			print('name: ', prod.name)
-			print('treatment: ', prod.pl_treatment)
-			print('family: ', prod.pl_family)
-			print('sub_family: ', prod.pl_subfamily)
-			print()
 
+		#if verbose:
+		#	print('name: ', prod.name)
+		#	print('treatment: ', prod.pl_treatment)
+		#	print('family: ', prod.pl_family)
+		#	print('sub_family: ', prod.pl_subfamily)
+		#	print()
 
-		# Services
-		if prod.type in ['service']:
-			self.nr_services = self.nr_services + line.product_uom_qty
-			self.amo_services = self.amo_services + line.price_subtotal
-
-
-
-			# Consultations
-			if prod.pl_treatment in ['CONSULTA MEDICA']:
-				self.nr_sub_con_med = self.nr_sub_con_med + line.product_uom_qty
-				self.amo_sub_con_med = self.amo_sub_con_med + line.price_subtotal
-					
-
-
-			# Procedures
-			else:
-				self.nr_procedures = self.nr_procedures + line.product_uom_qty
-				self.amo_procedures = self.amo_procedures + line.price_subtotal
-
-
-				# By Family
-
-
-				# By Treatment
-				# Co2
-				if prod.pl_treatment in ['LASER CO2 FRACCIONAL']:
-					self.nr_co2 = self.nr_co2 + line.product_uom_qty
-					self.amo_co2 = self.amo_co2 + line.price_subtotal
-
-
-				# Exc
-				elif prod.pl_treatment in ['LASER EXCILITE']:
-					self.nr_exc = self.nr_exc + line.product_uom_qty
-					self.amo_exc = self.amo_exc + line.price_subtotal
-
-				# Quick
-				elif prod.pl_treatment in ['QUICKLASER']:
-					self.nr_quick = self.nr_quick + line.product_uom_qty
-					self.amo_quick = self.amo_quick + line.price_subtotal
-
-				# Ipl
-				elif prod.pl_treatment in ['LASER M22 IPL']:
-					self.nr_ipl = self.nr_ipl + line.product_uom_qty
-					self.amo_ipl = self.amo_ipl + line.price_subtotal
-
-				# Ndyag
-				elif prod.pl_treatment in ['LASER M22 ND YAG']:
-					self.nr_ndyag = self.nr_ndyag + line.product_uom_qty
-					self.amo_ndyag = self.amo_ndyag + line.price_subtotal
-
-
-				# Echo
-				#if prod.pl_family in ['echography']:
-				#	self.nr_echo = self.nr_echo + line.product_uom_qty
-				#	self.amo_echo = self.amo_echo + line.price_subtotal
-
-				# Gyn
-				#elif prod.pl_family in ['gynecology']:
-				#	self.nr_gyn = self.nr_gyn + line.product_uom_qty
-				#	self.amo_gyn = self.amo_gyn + line.price_subtotal
-
-				# Prom
-				#elif prod.pl_family in ['promotion']:
-				#	self.nr_prom = self.nr_prom + line.product_uom_qty
-				#	self.amo_prom = self.amo_prom + line.price_subtotal
-
-
-
-				else:
-					# Medical
-					if prod.pl_family in ['medical']:
-						self.nr_medical = self.nr_medical + line.product_uom_qty
-						self.amo_medical = self.amo_medical + line.price_subtotal
-
-					# Cosmeto
-					elif prod.pl_family in ['cosmetology']:
-						self.nr_cosmetology = self.nr_cosmetology + line.product_uom_qty
-						self.amo_cosmetology = self.amo_cosmetology + line.price_subtotal
 
 		# Products
-		elif prod.type in ['product']:
+		if prod.type in ['product']:
 			self.nr_products = self.nr_products + line.product_uom_qty
 			self.amo_products = self.amo_products + line.price_subtotal
 
@@ -1266,16 +1188,101 @@ class Management(models.Model):
 			if prod.pl_family in ['topical']:
 				self.nr_topical = self.nr_topical + line.product_uom_qty
 				self.amo_topical = self.amo_topical + line.price_subtotal
+				return
 
 			# Card
 			elif prod.pl_family in ['card']:
 				self.nr_card = self.nr_card + line.product_uom_qty
 				self.amo_card = self.amo_card + line.price_subtotal
+				return
 
 			# kit
 			elif prod.pl_family in ['kit']:
 				self.nr_kit = self.nr_kit + line.product_uom_qty
 				self.amo_kit = self.amo_kit + line.price_subtotal
+				return
 
-		return False
+		# Services
+		else:
+			self.nr_services = self.nr_services + line.product_uom_qty
+			self.amo_services = self.amo_services + line.price_subtotal
+
+			# Consultations
+			if prod.pl_treatment in ['CONSULTA MEDICA']:
+				self.nr_sub_con_med = self.nr_sub_con_med + line.product_uom_qty
+				self.amo_sub_con_med = self.amo_sub_con_med + line.price_subtotal
+				return
+
+			# Procedures
+			else:
+				self.nr_procedures = self.nr_procedures + line.product_uom_qty
+				self.amo_procedures = self.amo_procedures + line.price_subtotal
+
+				# By Treatment
+				# Co2
+				if prod.pl_treatment in ['LASER CO2 FRACCIONAL']:
+					self.nr_co2 = self.nr_co2 + line.product_uom_qty
+					self.amo_co2 = self.amo_co2 + line.price_subtotal
+					return
+
+				# Exc
+				elif prod.pl_treatment in ['LASER EXCILITE']:
+					self.nr_exc = self.nr_exc + line.product_uom_qty
+					self.amo_exc = self.amo_exc + line.price_subtotal
+					return
+
+				# Quick
+				elif prod.pl_treatment in ['QUICKLASER']:
+					self.nr_quick = self.nr_quick + line.product_uom_qty
+					self.amo_quick = self.amo_quick + line.price_subtotal
+					return
+
+				# Ipl
+				elif prod.pl_treatment in ['LASER M22 IPL']:
+					self.nr_ipl = self.nr_ipl + line.product_uom_qty
+					self.amo_ipl = self.amo_ipl + line.price_subtotal
+					return
+
+				# Ndyag
+				elif prod.pl_treatment in ['LASER M22 ND YAG']:
+					self.nr_ndyag = self.nr_ndyag + line.product_uom_qty
+					self.amo_ndyag = self.amo_ndyag + line.price_subtotal
+					return
+
+				# Medical
+				elif prod.pl_family in ['medical']:
+					self.nr_medical = self.nr_medical + line.product_uom_qty
+					self.amo_medical = self.amo_medical + line.price_subtotal
+					return
+
+				# Cosmeto
+				elif prod.pl_family in ['cosmetology']:
+					self.nr_cosmetology = self.nr_cosmetology + line.product_uom_qty
+					self.amo_cosmetology = self.amo_cosmetology + line.price_subtotal
+					return
+
+				# Echo
+				elif prod.pl_family in ['echography']:
+					self.nr_echo = self.nr_echo + line.product_uom_qty
+					self.amo_echo = self.amo_echo + line.price_subtotal
+					return
+
+				# Gyn
+				elif prod.pl_family in ['gynecology']:
+					self.nr_gyn = self.nr_gyn + line.product_uom_qty
+					self.amo_gyn = self.amo_gyn + line.price_subtotal
+					return
+
+				# Prom
+				elif prod.pl_family in ['promotion']:
+					self.nr_prom = self.nr_prom + line.product_uom_qty
+					self.amo_prom = self.amo_prom + line.price_subtotal
+					return
+
 	# line_analysis
+
+
+# ------------------------------------------------------------- CN Analysis ----
+	def credit_note_analysis(self):
+		self.nr_credit_notes = self.nr_credit_notes + 1
+		self.amo_credit_notes = self.amo_credit_notes + order.x_amount_flow

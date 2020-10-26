@@ -5,7 +5,7 @@
 """,
 'description': """
 
-	24 Oct 2020
+	26 Oct 2020
 
 	Classes: 
 		- Order
@@ -76,7 +76,7 @@
 'depends': ['base', 'oehealth', 'base_multi_image'],
 'data': [
 
-# ----------------------------------------------------------- Legacy - Products - Only for Lima ------------------------------------------------------
+# --------------------------------------------------------- Legacy - Products - Only for Lima -----
 	# Products
 	# Suppliers - Very Important - Account Invoice Dependance
 
@@ -93,7 +93,8 @@
 	#'data/prods/odoo_data_services_med_dep.xml',
 	#'data/suppliers.xml',
 
-# ----------------------------------------------------------- Users ------------------------------------------------------
+
+# --------------------------------------------------------- Users --------------
 	# Categs
 	'data/categs/base_data_categs_partners.xml',
 

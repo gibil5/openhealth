@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
 """
-	Day Line - Dep ?
+	Day Line
 
-	Only Data model. No functions.
+	Used by:
+		management
+		day doctor line
 
 	Created: 			15 Jan 2019
-	Last up: 			18 oct 2020
+	Last up: 			26 oct 2020
 """
+
 from __future__ import print_function
 import numpy as np
 from openerp import models, fields, api
@@ -22,6 +25,7 @@ class DayLine(models.Model):
 	_inherit = 'openhealth.management.line'
 	_name = 'openhealth.management.day.line'
 	_order = 'date asc'
+
 
 # ----------------------------------------------------------- Relational -------
 	configurator_emr_id = fields.Many2one(

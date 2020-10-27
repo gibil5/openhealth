@@ -269,10 +269,10 @@ class ConfiguratorEmr(models.Model):
 
 # ----------------------------------------------------------- Relational - Holidays ----------------
 	# Day Line
-	#day_line = fields.One2many(
-	#		'openhealth.management.day.line',
-	#		'configurator_emr_id',
-	#	)
+	day_line = fields.One2many(
+			'openhealth.management.day.line',
+			'configurator_emr_id',
+		)
 
 
 # ----------------------------------------------------------- Medical ------------------------------

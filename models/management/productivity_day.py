@@ -10,7 +10,7 @@ from openerp import models, fields, api
 from openerp.addons.openhealth.models.order import ord_vars
 from openerp.addons.openhealth.models.libs import lib
 
-from lib import mgt_funcs
+from lib import mgt_db
 
 # -------------------------------------------------------------------------------------------------
 class ProductivityDay(models.Model):
@@ -114,7 +114,7 @@ class ProductivityDay(models.Model):
 		data_amount = []
 
 		# Search
-		orders, count = mgt_funcs.get_orders_filter_fast(self, self.date, self.date)
+		orders, count = mgt_db.get_orders_filter_fast(self, self.date, self.date)
 		#print(orders)
 		#print(count)
 

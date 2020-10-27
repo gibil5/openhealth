@@ -3,7 +3,7 @@
 	Management - Methods
 
 	Created: 			28 may 2018
-	Last updated: 		25 oct 2020
+	Last updated: 		26 oct 2020
 """
 from __future__ import print_function
 from timeit import default_timer as timer
@@ -14,6 +14,7 @@ from openerp import models, fields, api
 # Lib
 from lib import mgt_funcs
 from lib import prod_funcs
+from lib import mgt_db
 
 # --------------------------------------------------------------- Constants ----
 _MODEL_MGT = "openhealth.management"
@@ -59,8 +60,8 @@ class Management(models.Model):
 		print()
 		print('Update Patients')
 
-		# Go
-		orders, count = mgt_funcs.get_orders_filter_fast(self, self.date_begin, self.date_end)
+		# Get orders
+		orders, count = mgt_db.get_orders_filter_fast(self, self.date_begin, self.date_end)
 		#print(orders)
 		#print(count)
 
@@ -70,8 +71,8 @@ class Management(models.Model):
 			patient_id = order.patient.id
 
 			#if patient.name not in ['REVILLA RONDON JOSE JAVIER']:			
-			if self.mode in ['test'] or self.mode in ['normal'] and patient.name not in ['REVILLA RONDON JOSE JAVIER']:
-				#print(patient)
+			#if self.mode in ['test'] or self.mode in ['normal'] and patient.name not in ['REVILLA RONDON JOSE JAVIER']:
+			if self.mode in ['normal']:
 				#print(patient_id)
 
 				# Count
@@ -83,7 +84,6 @@ class Management(models.Model):
 																					#limit=1,
 																				)
 				#print(pat_count)
-
 				if pat_count in [0]:
 					patient_line = self.patient_line.create({
 																'patient': patient_id,
@@ -93,10 +93,8 @@ class Management(models.Model):
 		# Update
 		for patient_line in self.patient_line:
 			patient_line.update()
-
 		print()
-
-		return 1	# For Django
+		#return 1	# For Django
 	# update_patients
 
 
@@ -110,7 +108,7 @@ class Management(models.Model):
 		print('X - Update Doctors')
 
 		# Go
-		t0 = timer()
+		#t0 = timer()
 
 		# Sales by Doctor
 		self.update_sales_by_doctor()
@@ -118,12 +116,12 @@ class Management(models.Model):
 		# Stats
 		self.update_stats()
 
-		t1 = timer()
-		self.delta_doctor = t1 - t0
+		#t1 = timer()
+		#self.delta_doctor = t1 - t0
 
 		print()
 
-		return 1	# For Django
+		#return 1	# For Django
 	# update_doctors
 
 
@@ -200,9 +198,9 @@ class Management(models.Model):
 
 		# Get Orders
 		if self.type_arr in ['all']:
-			orders, count = mgt_funcs.get_orders_filter_fast(self, self.date_begin, self.date_end)
+			orders, count = mgt_db.get_orders_filter_fast(self, self.date_begin, self.date_end)
 		else:
-			orders, count = mgt_funcs.get_orders_filter(self, self.date_begin, self.date_end, self.state_arr, self.type_arr)
+			orders, count = mgt_db.get_orders_filter(self, self.date_begin, self.date_end, self.state_arr, self.type_arr)
 
 # Loop
 		tickets = 0
@@ -499,10 +497,10 @@ class Management(models.Model):
 
 	def update_sales_by_doctor(self):
 		"""
-		Pl - Update Sales
+		Update Sales by Doctor
 		"""
 		print()
-		print('X - Update Sales - By Doctor')
+		print('Update Sales - By Doctor')
 
 		# Clean - Important 
 		self.doctor_line.unlink()
@@ -514,7 +512,6 @@ class Management(models.Model):
 
 		# Doctors Inactive
 		doctors_inactive = self.env['oeh.medical.physician'].search([
-																	#('x_type', 'in', ['emr']),
 																	('active', '=', False),
 															],
 															#order='date_begin,name asc',
@@ -539,21 +536,12 @@ class Management(models.Model):
 			#print(doctor.name)
 			#print(doctor.active)
 
-			# Clear
-			#doctor.order_line.unlink()
-
-			# Orders
-			# Must include Credit Notes
-			orders, count = mgt_funcs.get_orders_filter_by_doctor(self, self.date_begin, self.date_end, doctor.name)
+			# Get Orders - Must include Credit Notes
+			orders, count = mgt_db.get_orders_filter_by_doctor(self, self.date_begin, self.date_end, doctor.name)
 			#print(orders)
 			#print(count)
 
-
-			if count in [0]:
-				#print()
-				jx = 5
-			else:
-				#print('Gotcha')
+			if count > 0:
 				self.create_doctor_data(doctor.name, orders)
 
 			#print()
@@ -591,6 +579,7 @@ class Management(models.Model):
 				elif order.state in ['sale']:
 					amount = amount + order.amount_total
 
+
 				# Id Doc
 				if order.x_type in ['ticket_invoice', 'invoice']:
 					receptor = order.patient.x_firm.upper()
@@ -627,7 +616,9 @@ class Management(models.Model):
 						family = line.product_id.get_family()
 						sub_family = line.product_id.get_subsubfamily()
 
+
 						# Create
+						print('*** Create Doctor Order Line !')
 						order_line = doctor.order_line.create({
 																'date_order_date': order.date_order,
 																'x_date_created': order.date_order,
@@ -685,7 +676,6 @@ class Management(models.Model):
 
 				# State equal to Credit Note
 				elif order.state in ['credit_note']:
-
 					#print('CREDIT NOTE')
 
 					# Order Lines
@@ -748,9 +738,7 @@ class Management(models.Model):
 						#	order_line.update_fields()
 
 					# Line Analysis Credit Note - End
-
 				# Conditional State - End
-
 			# Filter Block - End
 		# Loop - End
 
@@ -868,8 +856,8 @@ class Management(models.Model):
 		Reset Macro
 			All self fields
 		"""
-		print()
-		print('X - Reset Macros')
+		#print()
+		#print('Reset Macros')
 
 		# Deltas
 		self.delta_fast = 0
@@ -1034,7 +1022,7 @@ class Management(models.Model):
 			update_doctors
 		"""
 		print()
-		print('X - Update Stats')
+		print('*** Update Stats !')
 
 		# Using collections - More Abstract !
 
@@ -1085,8 +1073,10 @@ class Management(models.Model):
 				else:
 					_h_sub[line.sub_family] = line.price_total
 
+
 			# Doctor Stats - openhealth.management.doctor.line
 			doctor.pl_stats()
+
 
 
 	# By Family
@@ -1166,7 +1156,7 @@ class Management(models.Model):
 		Analyses order lines 
 		Updates counters
 		"""
-		print('Line analysis')
+		#print('Line analysis')
 
 		# Init
 		prod = line.product_id

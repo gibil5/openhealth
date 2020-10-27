@@ -45,11 +45,11 @@ class DoctorLine(models.Model):
 		)
 
 
-	# Doctor daily - Dep ?
-	#doctor_daily = fields.One2many(
-	#		'doctor.daily',
-	#		'doctor_id',
-	#	)
+	# Doctor daily
+	doctor_daily = fields.One2many(
+			'doctor.daily',
+			'doctor_id',
+		)
 
 
 	# Sales - ok
@@ -191,7 +191,7 @@ class DoctorLine(models.Model):
 					pl_update_stats
 		"""
 		print()
-		print('X - Mgt Doctor Line - Stats')
+		print('** - Mgt Doctor Line - Stats')
 
 		# Using collections - More Abstract !
 
@@ -325,5 +325,7 @@ class DoctorLine(models.Model):
 			#print amount
 			#print
 
-		self.update()
+
+		#self.update() # Generates error !
+
 	# stats

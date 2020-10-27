@@ -1156,17 +1156,16 @@ class Management(models.Model):
 		Analyses order lines 
 		Updates counters
 		"""
-		#print('Line analysis')
+		print('Line analysis')
 
 		# Init
 		prod = line.product_id
 
-		#if verbose:
-		#	print('name: ', prod.name)
-		#	print('treatment: ', prod.pl_treatment)
-		#	print('family: ', prod.pl_family)
-		#	print('sub_family: ', prod.pl_subfamily)
-		#	print()
+		print('name: ', prod.name)
+		print('treatment: ', prod.pl_treatment)
+		print('family: ', prod.pl_family)
+		print('sub_family: ', prod.pl_subfamily)
+		print()
 
 
 		# Products

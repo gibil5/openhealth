@@ -1,21 +1,61 @@
 # -*- coding: utf-8 -*-
 """
-	patient Line
+	Management Patient Line
 
 	Created: 			20 Jun 2019
-	Last up: 			20 Jun 2019
+	Last up: 			27 oct 2020
 """
 from __future__ import print_function
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.patient import pat_vars
 from openerp.addons.price_list.models.management.lib import pl_mgt_funcs
 
-class PatientLine(models.Model):
+class MgtPatientLine(models.Model):
 	"""
 	Patient lines
 	"""
 	_name = 'openhealth.management.patient.line'
 	_order = 'amount_total desc'
+
+# ----------------------------------------------------- Const ------------------
+	_MODEL = "openhealth.management.patient.line"
+
+
+# ----------------------------------------------------- Class methods ----------
+	# Create
+	@classmethod
+	def create_oh(cls, patient_id, management_id, env):
+		#print('Class method - create')
+		#print(cls)
+		#print(patient_id, management_id)
+
+		# create
+		patient_line = env.create({
+									'patient': patient_id,
+									'management_id': management_id,
+		})
+
+		return patient_line
+
+
+	# Count
+	@classmethod
+	def count_oh(cls, patient_id, management_id, env):
+		#print('Class method - count')
+		#print(cls)
+		#print(patient_id, management_id)
+
+		# count
+		count = env.search_count([
+									('patient', '=', patient_id),
+									('management_id', '=', management_id),
+			],
+			#order='x_serial_nr asc',
+			#limit=1,
+		)
+
+		return count
+
 
 # ----------------------------------------------------------- Handles ----------
 	# Management 
@@ -53,8 +93,8 @@ class PatientLine(models.Model):
 		"""
 		Update 
 		"""
-		print()
-		print('X - Update')
+		#print()
+		#print('X - Update')
 
 		self.sex = self.patient.sex
 		self.age = self.patient.age

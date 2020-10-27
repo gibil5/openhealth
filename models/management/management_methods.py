@@ -3,18 +3,20 @@
 	Management - Methods
 
 	Created: 			28 may 2018
-	Last updated: 		26 oct 2020
+	Last up: 			27 oct 2020
 """
 from __future__ import print_function
 from timeit import default_timer as timer
 import datetime
 import collections
+
 from openerp import models, fields, api
 
-# Lib
 from lib import mgt_funcs
 from lib import prod_funcs
 from lib import mgt_db
+
+from mgt_patient_line import MgtPatientLine
 
 # --------------------------------------------------------------- Constants ----
 _MODEL_MGT = "openhealth.management"
@@ -41,7 +43,7 @@ class Management(models.Model):
 			patients, doctors, productivity, daily.
 		"""
 		print()
-		print('Update Fast')
+		print('*** Update Fast')
 
 		# Go
 		self.update_sales()
@@ -55,46 +57,41 @@ class Management(models.Model):
 	@api.multi
 	def update_patients(self):
 		"""
-		Update Patients. 
+		Update Patients
 		"""
 		print()
-		print('Update Patients')
+		print('*** Update Patients')
+
+		#  Init
+		env = self.env['openhealth.management.patient.line']
 
 		# Get orders
+		# Should be a class method
 		orders, count = mgt_db.get_orders_filter_fast(self, self.date_begin, self.date_end)
 		#print(orders)
 		#print(count)
-
+		
 		# Create
 		for order in orders:
-			patient = order.patient
+			
+			# Init
 			patient_id = order.patient.id
 
-			#if patient.name not in ['REVILLA RONDON JOSE JAVIER']:			
-			#if self.mode in ['test'] or self.mode in ['normal'] and patient.name not in ['REVILLA RONDON JOSE JAVIER']:
 			if self.mode in ['normal']:
-				#print(patient_id)
 
 				# Count
-				pat_count = self.env['openhealth.management.patient.line'].search_count([
-																						('patient', '=', patient_id),
-																						('management_id', '=', self.id),
-																				],
-																					#order='x_serial_nr asc',
-																					#limit=1,
-																				)
-				#print(pat_count)
-				if pat_count in [0]:
-					patient_line = self.patient_line.create({
-																'patient': patient_id,
-																'management_id': self.id,
-						})
+				count = MgtPatientLine.count_oh(patient_id, self.id, env)
+				
+				# Create
+				if count == 0:
+					self.patient_line = MgtPatientLine.create_oh(patient_id, self.id, env)
+					print(self.patient_line)
 
 		# Update
 		for patient_line in self.patient_line:
 			patient_line.update()
-		print()
-		#return 1	# For Django
+		#print()
+
 	# update_patients
 
 
@@ -105,7 +102,7 @@ class Management(models.Model):
 		Update Doctors
 		"""
 		print()
-		print('X - Update Doctors')
+		print('*** Update Doctors')
 
 		# Go
 		#t0 = timer()
@@ -134,7 +131,7 @@ class Management(models.Model):
 		Used also by Django
 		"""
 		print()
-		print('X - Update Productivity')
+		print('*** Update Productivity')
 		
 		# Go
 		prod_funcs.create_days(self)
@@ -162,7 +159,7 @@ class Management(models.Model):
 			'openhealth.management.doctor.line',
 		"""
 		print()
-		print('Update Daily Sales')
+		print('*** Update Daily Sales')
 
 		# For each doctor line
 		for doctor in self.doctor_line:
@@ -191,7 +188,7 @@ class Management(models.Model):
 					Line analysis
 		"""
 		print()
-		print('Update Sales Fast')
+		print('** Update Sales Fast')
 
 		# Clean
 		self.reset_macro()
@@ -381,7 +378,7 @@ class Management(models.Model):
 		Update Yearly total amounts
 		"""
 		print()
-		print('Update Year')
+		print('** Update Year')
 
 		# Mgts
 		mgts = self.env[_MODEL_MGT].search([
@@ -411,84 +408,6 @@ class Management(models.Model):
 
 	# update_year
 
-
-# ------------------------------------------------------- Validate Internal ----
-	# Validate
-	@api.multi
-	def validate(self):
-		"""
-		Validates the content. 
-		For internal Data Coherency - internal and external. 
-		"""
-		print()
-		print('Validate the content !')
-
-		# Internal
-		out = self.validate_internal()
-
-		# External
-		#self.validate_external()  	# Dep !
-
-		# Django
-		return out
-	# validate
-
-
-# ------------------------------------------------------- Validate Internal ----
-	# Validate
-	@api.multi
-	def validate_internal(self):
-		"""
-		Validates Data Coherency - internal. 
-		"""
-		print()
-		print('Validate Internal')
-
-		# Families
-		self.per_amo_families = self.per_amo_products + self.per_amo_consultations + self.per_amo_procedures + self.per_amo_other + self.per_amo_credit_notes
-		print(self.per_amo_families)
-
-		# Sub Families
-		self.per_amo_subfamilies = self.per_amo_sub_con_med + self.per_amo_sub_con_gyn + self.per_amo_sub_con_cha + \
-									self.per_amo_co2 + self.per_amo_exc + self.per_amo_quick + self.per_amo_ipl + self.per_amo_ndyag + \
-									self.per_amo_medical + self.per_amo_cosmetology + \
-									self.per_amo_echo + self.per_amo_gyn + self.per_amo_prom + \
-									self.per_amo_topical + self.per_amo_card + self.per_amo_kit + \
-									self.per_amo_credit_notes
-		print(self.per_amo_subfamilies)
-
-		return self.per_amo_families, self.per_amo_subfamilies
-
-
-# ------------------------------------------------------- Validate external ----
-	# Validate
-	@api.multi
-	def validate_external(self):
-		"""
-		Validates Data Coherency - External. 
-		Looks for data coherency between reports.
-		Builds a Report Sale Product for the month. 
-		Compares it to Products stats.
-		"""
-		#print()
-		#print('Validate External')
-
-		if self.report_sale_product.name in [False]:
-			date_begin = self.date_begin
-			self.report_sale_product = self.env['openhealth.report.sale.product'].create({
-																							'name': date_begin,
-																							'management_id': self.id,
-																						})
-		rsp = self.report_sale_product
-		#print(rsp)
-		#print(rsp.name)
-
-		rsp.update()
-
-		self.rsp_count = rsp.total_qty
-		self.rsp_total = rsp.total
-		self.rsp_count_delta = self.nr_products - self.rsp_count
-		self.rsp_total_delta = self.amo_products - self.rsp_total
 
 
 # ----------------------------------------------------------- Update -------------------------------
@@ -798,7 +717,6 @@ class Management(models.Model):
 														limit=1,
 													)
 		mgt.pl_max = True
-
 
 
 # ----------------------------------------------------------- Update Year all -----------------------
@@ -1156,16 +1074,16 @@ class Management(models.Model):
 		Analyses order lines 
 		Updates counters
 		"""
-		print('Line analysis')
+		#print('Line analysis')
 
 		# Init
 		prod = line.product_id
 
-		print('name: ', prod.name)
-		print('treatment: ', prod.pl_treatment)
-		print('family: ', prod.pl_family)
-		print('sub_family: ', prod.pl_subfamily)
-		print()
+		#print('name: ', prod.name)
+		#print('treatment: ', prod.pl_treatment)
+		#print('family: ', prod.pl_family)
+		#print('sub_family: ', prod.pl_subfamily)
+		#print()
 
 
 		# Products
@@ -1275,3 +1193,83 @@ class Management(models.Model):
 	def credit_note_analysis(self):
 		self.nr_credit_notes = self.nr_credit_notes + 1
 		self.amo_credit_notes = self.amo_credit_notes + order.x_amount_flow
+
+
+# ------------------------------------------------------- Validate Internal ----
+	# Validate
+	@api.multi
+	def validate(self):
+		"""
+		Validates the content. 
+		For internal Data Coherency - internal and external. 
+		"""
+		print()
+		print('Validate the content !')
+
+		# Internal
+		out = self.validate_internal()
+
+		# External
+		#self.validate_external()  	# Dep !
+
+		# Django
+		return out
+	# validate
+
+
+# ------------------------------------------------------- Validate Internal ----
+	# Validate
+	@api.multi
+	def validate_internal(self):
+		"""
+		Validates Data Coherency - internal. 
+		"""
+		print()
+		print('Validate Internal')
+
+		# Families
+		self.per_amo_families = self.per_amo_products + self.per_amo_consultations + self.per_amo_procedures + self.per_amo_other + self.per_amo_credit_notes
+		print(self.per_amo_families)
+
+		# Sub Families
+		self.per_amo_subfamilies = self.per_amo_sub_con_med + self.per_amo_sub_con_gyn + self.per_amo_sub_con_cha + \
+									self.per_amo_co2 + self.per_amo_exc + self.per_amo_quick + self.per_amo_ipl + self.per_amo_ndyag + \
+									self.per_amo_medical + self.per_amo_cosmetology + \
+									self.per_amo_echo + self.per_amo_gyn + self.per_amo_prom + \
+									self.per_amo_topical + self.per_amo_card + self.per_amo_kit + \
+									self.per_amo_credit_notes
+		print(self.per_amo_subfamilies)
+
+		return self.per_amo_families, self.per_amo_subfamilies
+
+
+# ------------------------------------------------------- Validate external ----
+	# Validate
+	@api.multi
+	def validate_external(self):
+		"""
+		Validates Data Coherency - External. 
+		Looks for data coherency between reports.
+		Builds a Report Sale Product for the month. 
+		Compares it to Products stats.
+		"""
+		#print()
+		#print('Validate External')
+
+		if self.report_sale_product.name in [False]:
+			date_begin = self.date_begin
+			self.report_sale_product = self.env['openhealth.report.sale.product'].create({
+																							'name': date_begin,
+																							'management_id': self.id,
+																						})
+		rsp = self.report_sale_product
+		#print(rsp)
+		#print(rsp.name)
+
+		rsp.update()
+
+		self.rsp_count = rsp.total_qty
+		self.rsp_total = rsp.total
+		self.rsp_count_delta = self.nr_products - self.rsp_count
+		self.rsp_total_delta = self.amo_products - self.rsp_total
+

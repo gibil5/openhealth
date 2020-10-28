@@ -187,3 +187,42 @@ def get_orders_filter_by_doctor(self, date_bx, date_ex, doctor):
 	return orders, count
 
 # get_orders_filter_by_doctor
+
+
+# ----------------------------------------------------------- Get orders - By patient --------------
+# Provides sales between begin date and end date. Filters: by patient.
+def get_orders_filter_by_patient_fast(self, patient):
+	"""
+	Sales.
+	Must include Credit Notes.
+	"""
+	#print()
+	#print('Get Orders Filter - By patient')
+
+
+	# Search
+
+	# Orders
+	orders = self.env['sale.order'].search([
+													#('state', '=', 'sale'),
+													('state', 'in', ['sale', 'credit_note']),
+
+													('patient', '=', patient),
+											],
+												order='x_serial_nr asc',
+												#limit=1,
+											)
+	# Count
+	count = self.env['sale.order'].search_count([
+													#('state', '=', 'sale'),
+													('state', 'in', ['sale', 'credit_note']),
+
+													('patient', '=', patient),
+											],
+												#order='x_serial_nr asc',
+												#limit=1,
+											)
+	return orders, count
+
+# get_orders_filter_by_patient_fast
+

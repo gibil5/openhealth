@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 	Management Patient Line
+	Should contain class methods
 
 	Created: 			20 Jun 2019
 	Last up: 			27 oct 2020
@@ -8,7 +9,9 @@
 from __future__ import print_function
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.patient import pat_vars
-from openerp.addons.price_list.models.management.lib import pl_mgt_funcs
+
+#from openerp.addons.price_list.models.management.lib import pl_mgt_funcs
+from lib import mgt_db
 
 class MgtPatientLine(models.Model):
 	"""
@@ -24,17 +27,18 @@ class MgtPatientLine(models.Model):
 # ----------------------------------------------------- Class methods ----------
 	# Create
 	@classmethod
-	def create_oh(cls, patient_id, management_id, env):
+	#def create_oh(cls, patient_id, management_id, env):
+	def create_oh(cls, patient, management_id, env):
 		#print('Class method - create')
 		#print(cls)
 		#print(patient_id, management_id)
-
 		# create
 		patient_line = env.create({
-									'patient': patient_id,
+									'patient': patient.id,
 									'management_id': management_id,
 		})
-
+		#cls.sex = patient.sex
+		#cls.age = patient.age
 		return patient_line
 
 
@@ -44,7 +48,6 @@ class MgtPatientLine(models.Model):
 		#print('Class method - count')
 		#print(cls)
 		#print(patient_id, management_id)
-
 		# count
 		count = env.search_count([
 									('patient', '=', patient_id),
@@ -53,7 +56,6 @@ class MgtPatientLine(models.Model):
 			#order='x_serial_nr asc',
 			#limit=1,
 		)
-
 		return count
 
 
@@ -70,16 +72,15 @@ class MgtPatientLine(models.Model):
 			#string='Paciente',
 		)
 
+# -------------------------------------------------------------- Vars ----------
 	amount_total = fields.Float()
 
 	count_total = fields.Integer()
 
-	# Age
 	age = fields.Char(
 			#string="Edad",
 		)
 
-	# Sex
 	sex = fields.Selection(
 			selection=pat_vars.get_sex_type_list(),
 			#string="Sexo",
@@ -93,18 +94,19 @@ class MgtPatientLine(models.Model):
 		"""
 		Update 
 		"""
-		#print()
-		#print('X - Update')
+		print()
+		print('** MgtPatientLine - Update')
 
+		# Update vars
 		self.sex = self.patient.sex
 		self.age = self.patient.age
+
+		# Calc Amount total - All sales ever
 		self.amount_total = 0
 		self.count_total = 0
 
 		# Get Orders
-		orders, count = pl_mgt_funcs.get_orders_filter_by_patient_fast(self, self.patient.id)
-		#print(orders)
-		#print(count)
+		orders, count = mgt_db.get_orders_filter_by_patient_fast(self, self.patient.id)
 
 		for order in orders:
 			self.amount_total = self.amount_total + order.x_amount_flow

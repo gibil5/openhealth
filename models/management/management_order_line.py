@@ -2,8 +2,8 @@
 """
 	Management Order Line - Clean This !
 
-	Created: 			28 May 2018
-	Last updated: 		18 oct 2020
+	Created: 			28 may 2018
+	Last updated: 		27 oct 2020
 """
 from openerp import models, fields, api
 import openerp.addons.decimal_precision as dp
@@ -12,7 +12,9 @@ from openerp.addons.openhealth.models.order import ord_vars
 from openerp.addons.openhealth.models.product import prodvars
 from openerp.addons.openhealth.models.libs import lib
 
-class management_order_line(models.Model):
+
+#class management_order_line(models.Model):
+class MgtOrderLine(models.Model):
 	"""
 	Used by 
 		Management 
@@ -20,13 +22,96 @@ class management_order_line(models.Model):
 		Account
 			For Txt generation
 	"""
-	_inherit='openhealth.line'
 	_name = 'openhealth.management.order.line'
+
+	_inherit='openhealth.line'
+
 	_description = "Openhealth Management Order Line"
 
 
-# ----------------------------------------------------------- View ----------
-	#price_total = fields.Char()
+# ----------------------------------------------------- Class methods ----------
+	# Create
+	@classmethod
+	#def create_oh(cls, patient_id, management_id, env):
+	def create_oh(cls, order, line, doctor, management, env):
+		#print('Class method - create')
+		#print(line)
+		#print(line.product_id)
+		#print(line.product_id.name)
+
+		# init 
+
+		# Receptor and id_doc
+
+		# invoice
+		if order.x_type in ['ticket_invoice', 'invoice']:
+			receptor = order.patient.x_firm.upper()
+			id_doc = order.patient.x_ruc
+			id_doc_type = 'ruc'
+			id_doc_type_code = '6'
+		# receipt
+		else:
+			receptor = order.patient.name
+			id_doc = order.patient.x_id_doc
+			id_doc_type = order.patient.x_id_doc_type
+			id_doc_type_code = order.patient.x_id_doc_type_code
+
+			# Pre-Electronic
+			#if id_doc_type is False or id_doc is False:
+			#	id_doc = order.patient.x_dni
+			#	id_doc_type = 'dni'
+			#	id_doc_type_code = '1'
+
+		# Price
+		price_unit = line.price_unit						
+
+		# Families
+		family = line.product_id.get_family()
+		sub_family = line.product_id.get_subsubfamily()
+
+
+		#order_line = doctor.order_line.create({
+		order_line = env.create({
+									# Receptor
+									'receptor': 	receptor,
+
+									# Id Doc
+									'id_doc': 				id_doc,
+									'id_doc_type': 			id_doc_type,
+									'id_doc_type_code': 	id_doc_type_code,
+
+									# Order
+									'name': order.name,
+									'patient': 		order.patient.id,
+									'doctor': order.x_doctor.id,
+									'serial_nr': order.x_serial_nr,
+									'date_order_date': order.date_order,
+									'x_date_created': order.date_order,
+
+									# Type of Sale
+									'type_code': 	order.x_type_code,
+									'x_type': 		order.x_type,
+
+									# State
+									'state': order.state,
+
+									# Handles
+									'doctor_id': doctor.id,
+									'management_id': management.id,
+
+									# Line
+									'product_id': 			line.product_id.id,
+									'product_uom_qty': 		line.product_uom_qty,
+
+									# Price
+									'price_unit': 			price_unit,
+
+									# Families
+									'family': family, 
+									'sub_family': sub_family, 
+		})
+		return order_line
+
 
 # ----------------------------------------------------------- Handles ----------
 	# Management 
@@ -58,6 +143,10 @@ class management_order_line(models.Model):
 			'openhealth.container', 
 			ondelete='cascade',
 		)
+
+
+# ----------------------------------------------------------- View ----------
+	#price_total = fields.Char()
 
 # -------------------------------------------------- Inherited from line.py ----
 	# Name 

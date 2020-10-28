@@ -38,6 +38,13 @@ class DoctorLine(models.Model):
 
 
 # ----------------------------------------------------------- One2many ---------
+	# Sales
+	order_line = fields.One2many(
+			'openhealth.management.order.line',
+			'doctor_id',
+		)
+
+
 	# Day doctor Line
 	day_line = fields.One2many(
 			'openhealth.management.day.doctor.line',
@@ -51,12 +58,6 @@ class DoctorLine(models.Model):
 			'doctor_id',
 		)
 
-
-	# Sales - ok
-	order_line = fields.One2many(
-			'openhealth.management.order.line',
-			'doctor_id',
-		)
 
 	# Family - ok
 	family_line = fields.One2many(

@@ -11,14 +11,17 @@ from . import mgt_vars
 
 from management import Management
 
-class FamilyLine(models.Model):
+#class FamilyLine(models.Model):
+class MgtFamilyLine(models.Model):
 	"""
 	Only Data model. No functions.
 
 	Should not be inherited
 	"""
 	_name = 'openhealth.management.family.line'
+
 	_inherit = 'openhealth.management.line'
+
 	_order = 'amount desc'
 
 # ----------------------------------------------------------- Update -----------

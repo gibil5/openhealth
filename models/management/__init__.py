@@ -17,19 +17,21 @@ from . import productivity_day
 
 # Lines
 from . import mgt_line
-from . import management_order_line
-from . import family_line
-from . import sub_family_line
-from . import day_line
+
+#from . import management_order_line
+from . import mgt_order_line
+
+#from . import family_line
+from . import mgt_family_line
+
+#from . import sub_family_line
+from . import mgt_subfamily_line
+
+#from . import day_line
+from . import mgt_day_line
 
 from . import management
 from . import management_methods
 
 # Patient
 from . import mgt_patient_line
-
-
-
-# Doctor Daily
-# Doctors
-

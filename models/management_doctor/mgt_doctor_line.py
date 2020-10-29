@@ -20,13 +20,14 @@ from __future__ import print_function
 import collections
 from openerp import models, fields, api
 
-class DoctorLine(models.Model):
+#class DoctorLine(models.Model):
+class MgtDoctorLine(models.Model):
 	"""
-    Doctor line
+    Mgt Doctor line
 	"""
-	_inherit = 'openhealth.management.line'
-
 	_name = 'openhealth.management.doctor.line'
+
+	_inherit = 'openhealth.management.line'
 
 	_order = 'amount desc'
 

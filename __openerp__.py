@@ -1,18 +1,20 @@
 # -*- coding: utf-8 -*-
 {
 'name': "Open Health - Odoo9 - Object oriented - Refactorized - CodeClimate - SonarQube - Management - Functional",
+
 'summary': """ ERP system for a Clinic. Inherits OeHealth. Contains ALL the Data Model. Business logic is in classes and libraries.
+
 """,
 'description': """
 
-	27 Oct 2020
+	28 Oct 2020
 
 	Classes: 
 		- Order
 		- Treatment
 		- Patient
 		- Management
-		- Management Doctor (in prog)
+		- Management Doctor
 		
 	Contains:
 		- All External Dependencies

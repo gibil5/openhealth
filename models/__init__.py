@@ -15,8 +15,6 @@ from configurator import *
 # Pricelist
 from pricelist import *
 
-
-
 # Management
 from management import *
 from management_doctor import *

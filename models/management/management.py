@@ -5,7 +5,7 @@
 	** Only Data model. No functions **
 
 	Created: 			28 may 2018
-	Last up: 			23 oct 2020
+	Last up: 			28 oct 2020
 """
 from __future__ import print_function
 import os
@@ -13,6 +13,7 @@ import collections
 import datetime
 from timeit import default_timer as timer
 from openerp import models, fields, api
+
 from openerp.addons.openhealth.models.order import ord_vars
 from . import mgt_vars
 

@@ -18,12 +18,15 @@ from openerp.addons.openhealth.models.order import ord_vars
 from . import mgt_funcs
 from openerp.addons.openhealth.models.libs import lib
 
-class DayLine(models.Model):
+#class DayLine(models.Model):
+class MgtDayLine(models.Model):
 	"""
 	Day Line
 	"""
-	_inherit = 'openhealth.management.line'
 	_name = 'openhealth.management.day.line'
+
+	_inherit = 'openhealth.management.line'
+
 	_order = 'date asc'
 
 

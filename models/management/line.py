@@ -16,7 +16,9 @@ import openerp.addons.decimal_precision as dp
 from openerp.addons.openhealth.models.libs import lib
 
 class Line(models.Model):	
+
 	_name = 'openhealth.line'
+
 	_order = 'x_date_created asc'
 
 # ----------------------------------------------------------- Dates ------------

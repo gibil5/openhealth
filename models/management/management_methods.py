@@ -3,13 +3,12 @@
 	Management - Methods
 
 	Created: 			28 may 2018
-	Last up: 			27 oct 2020
+	Last up: 			28 oct 2020
 """
 from __future__ import print_function
 from timeit import default_timer as timer
 import datetime
 import collections
-
 from openerp import models, fields, api
 
 from lib import mgt_funcs
@@ -17,9 +16,7 @@ from lib import prod_funcs
 from lib import mgt_db
 
 from mgt_patient_line import MgtPatientLine
-
 from management_order_line import MgtOrderLine
-
 
 
 # --------------------------------------------------------------- Constants ----

@@ -18,8 +18,9 @@ class DoctorDaily(models.Model):
 		DoctorLine
 			ManagementLine
 	"""
-	_inherit = 'openhealth.management.doctor.line'
 	_name = 'doctor.daily'
+
+	_inherit = 'openhealth.management.doctor.line'
 
 # ----------------------------------------------------------- Relationals -------
 	management_id = fields.Many2one(

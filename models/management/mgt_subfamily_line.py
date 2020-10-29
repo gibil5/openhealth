@@ -11,9 +11,10 @@ from __future__ import print_function
 from openerp import models, fields, api
 from . import mgt_vars
 
-class SubFamilyLine(models.Model):	
+#class SubFamilyLine(models.Model):	
+class MgtSubfamilyLine(models.Model):	
 	"""
-	Sub Family Line
+	Subfamily Line
 	"""	
 	_name = 'openhealth.management.sub_family.line'
 	_order = 'amount desc'

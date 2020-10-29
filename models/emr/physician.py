@@ -11,8 +11,45 @@ class Physician(models.Model):
 	"""
 	Overwrites the oh class
 	"""
-
 	_inherit = 'oeh.medical.physician'	
+
+
+# ---------------------------------------------------- Static methods ----------
+	# Get
+	@staticmethod
+	def get_doctors(env):
+		doctors_active = Physician.get_active(env)
+		doctors_inactive = Physician.get_inactive(env)
+		return doctors_active - doctors_inactive
+
+
+	# Get
+	@staticmethod
+	def get_active(env):
+		# Doctors Inactive
+		#doctors = self.env['oeh.medical.physician'].search([
+		doctors = env.search([
+																	('active', '=', True),
+															],
+															#order='date_begin,name asc',
+															#limit=1,
+		)
+		return 	doctors	
+
+	# Get
+	@staticmethod
+	def get_inactive(env):
+		# Doctors Inactive
+		#doctors = self.env['oeh.medical.physician'].search([
+		doctors = env.search([
+																	('active', '=', False),
+															],
+															#order='date_begin,name asc',
+															#limit=1,
+		)
+		return 	doctors	
+
+
 
 # ------------------------------------------------------ Getter ----------------
 	#@api.multi

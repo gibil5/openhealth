@@ -18,6 +18,7 @@ from lib import mgt_db
 from mgt_patient_line import MgtPatientLine
 from management_order_line import MgtOrderLine
 
+from openerp.addons.openhealth.models.emr.physician import Physician
 
 # --------------------------------------------------------------- Constants ----
 _MODEL_MGT = "openhealth.management"
@@ -433,26 +434,12 @@ class Management(models.Model):
 		total_count = 0
 		total_tickets = 0
 
-		# Doctors Inactive
-		doctors_inactive = self.env['oeh.medical.physician'].search([
-																	('active', '=', False),
-															],
-															#order='date_begin,name asc',
-															#limit=1,
-													)
-		#print(doctors_inactive)
 
-		# Doctors Active
-		doctors_active = self.env['oeh.medical.physician'].search([
-																	('active', '=', True),
-															],
-															#order='date_begin,name asc',
-															#limit=1,
-													)
-		#print(doctors_active)
-
-		doctors = doctors_inactive + doctors_active
+		# Get - Should be static method
+		env = self.env['oeh.medical.physician']
+		doctors = Physician.get_doctors(env)
 		#print(doctors)
+
 
 		# Create Sales - By Doctor - All 
 		for doctor in doctors:
@@ -528,87 +515,8 @@ class Management(models.Model):
 		# Percentage
 		if self.total_amount != 0: 
 			doctor.per_amo = (doctor.amount / self.total_amount)
+
 	# create_doctor_data
-
-
-# ----------------------------------------------------------- Update Max -----------------------
-	@api.multi
-	def update_max(self):
-		"""
-		Update Year All
-		"""
-		print()
-		print('X - Update Max')
-
-		# Clear
-		mgts = self.env[_MODEL_MGT].search([
-															('owner', 'in', ['month']),
-															('year', 'in', [self.year]),
-														],
-														order='date_begin asc',
-														#limit=1,
-													)
-		for mgt in mgts:
-			#print(mgt.name)
-			mgt.pl_max = False
-			mgt.pl_min = False
-
-
-		# Max
-		mgt = self.env[_MODEL_MGT].search([
-															('owner', 'in', ['month']),
-															('year', 'in', [self.year]),
-															('month', 'not in', [False]),
-														],
-														order='total_amount asc',
-														limit=1,
-													)
-		mgt.pl_min = True
-
-
-		# Max
-		mgt = self.env[_MODEL_MGT].search([
-															('owner', 'in', ['month']),
-															('year', 'in', [self.year]),
-															('month', 'not in', [False]),
-														],
-														order='total_amount desc',
-														limit=1,
-													)
-		mgt.pl_max = True
-
-
-# ----------------------------------------------------------- Update Year all -----------------------
-	@api.multi
-	def update_year_all(self):
-		"""
-		Update Year All
-		"""
-		print()
-		print('X - Update Year All')
-
-		# Mgts
-		mgts = self.env[_MODEL_MGT].search([
-															('owner', 'in', ['month']),
-															('year', 'in', [self.year]),
-														],
-														order='date_begin asc',
-														#limit=1,
-													)
-		# Count
-		count = self.env[_MODEL_MGT].search_count([
-															('owner', 'in', ['month']),
-															('year', 'in', [self.year]),
-														],
-															#order='x_serial_nr asc',
-															#limit=1,
-														)
-		print(mgts)
-		print(count)
-
-		for mgt in mgts:
-			print(mgt.name)
-			mgt.update_year()
 
 
 # ----------------------------------------------------------- Reset -------------------------------
@@ -618,10 +526,7 @@ class Management(models.Model):
 		"""
 		Reset Button.
 		"""
-		#print()
 		print('X - Reset')
-
-		# Go
 		self.reset_macro()
 		self.reset_relationals()
 	# reset
@@ -630,8 +535,7 @@ class Management(models.Model):
 	# Reset Macros
 	def reset_macro(self):
 		"""
-		Reset Macro
-			All self fields
+		Reset Macro - All self fields
 		"""
 		#print()
 		#print('Reset Macros')
@@ -641,10 +545,8 @@ class Management(models.Model):
 		self.delta_doctor = 0
 
 		# Relational
-		if self.patient_line not in [False]:
-			self.patient_line.unlink()
-
-		#self.report_sale_product = False
+		#if self.patient_line not in [False]:
+		self.patient_line.unlink()
 		self.report_sale_product.unlink()
 		self.rsp_count = 0
 		self.rsp_count_delta = 0
@@ -781,7 +683,7 @@ class Management(models.Model):
 		self.order_line.unlink()
 
 		# Doctor lines
-		#self.doctor_line.unlink()        # Too complex
+		self.doctor_line.unlink()        # Too complex
 
 		# Family lines
 		self.family_line.unlink()
@@ -850,7 +752,6 @@ class Management(models.Model):
 				else:
 					_h_sub[line.sub_family] = line.price_total
 
-
 			# Doctor Stats - openhealth.management.doctor.line
 			doctor.pl_stats()
 
@@ -903,8 +804,6 @@ class Management(models.Model):
 	def set_ratios(self):
 		"""
 		Set Ratios
-		Used by 
-			Management
 		"""
 		if self.nr_consultations != 0:
 			self.ratio_pro_con = (float(self.nr_procedures) / float(self.nr_consultations))
@@ -915,19 +814,15 @@ class Management(models.Model):
 	def set_totals(self, tickets):
 		"""
 		Set Totals
-		Used by 
-			Management
 		"""
 		self.total_amount = self.amo_products + self.amo_services + self.amo_other + self.amo_credit_notes
 		self.total_count = self.nr_products + self.nr_services
 		self.total_tickets = tickets
-
 		return self.total_amount
 	# set_totals
 
 
 # ----------------------------------------------------------- Line Analysis ----
-	#def line_analysis(self, line, verbose=False):
 	def line_analysis(self, line):
 		"""
 		Analyses order lines 
@@ -943,7 +838,6 @@ class Management(models.Model):
 		#print('family: ', prod.pl_family)
 		#print('sub_family: ', prod.pl_subfamily)
 		#print()
-
 
 		# Products
 		if prod.type in ['product']:
@@ -1044,9 +938,7 @@ class Management(models.Model):
 					self.nr_prom = self.nr_prom + line.product_uom_qty
 					self.amo_prom = self.amo_prom + line.price_subtotal
 					return
-
 	# line_analysis
-
 
 # ------------------------------------------------------------- CN Analysis ----
 	def credit_note_analysis(self):
@@ -1059,18 +951,16 @@ class Management(models.Model):
 	@api.multi
 	def validate(self):
 		"""
+		Button
 		Validates the content. 
 		For internal Data Coherency - internal and external. 
 		"""
 		print()
 		print('Validate the content !')
-
 		# Internal
 		out = self.validate_internal()
-
 		# External
 		#self.validate_external()  	# Dep !
-
 		# Django
 		return out
 	# validate
@@ -1100,35 +990,4 @@ class Management(models.Model):
 		print(self.per_amo_subfamilies)
 
 		return self.per_amo_families, self.per_amo_subfamilies
-
-
-# ------------------------------------------------------- Validate external ----
-	# Validate
-	@api.multi
-	def validate_external(self):
-		"""
-		Validates Data Coherency - External. 
-		Looks for data coherency between reports.
-		Builds a Report Sale Product for the month. 
-		Compares it to Products stats.
-		"""
-		#print()
-		#print('Validate External')
-
-		if self.report_sale_product.name in [False]:
-			date_begin = self.date_begin
-			self.report_sale_product = self.env['openhealth.report.sale.product'].create({
-																							'name': date_begin,
-																							'management_id': self.id,
-																						})
-		rsp = self.report_sale_product
-		#print(rsp)
-		#print(rsp.name)
-
-		rsp.update()
-
-		self.rsp_count = rsp.total_qty
-		self.rsp_total = rsp.total
-		self.rsp_count_delta = self.nr_products - self.rsp_count
-		self.rsp_total_delta = self.amo_products - self.rsp_total
 

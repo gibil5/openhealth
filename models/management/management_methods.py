@@ -179,6 +179,38 @@ class Management(models.Model):
 		return 1	
 	# update_daily
 
+# -------------------------------------------------------------- Validate ------
+	# Validate
+	@api.multi
+	def validate(self):
+		"""
+		Button
+		Validates the content. 
+		For internal Data Coherency - internal and external. 
+		"""
+		print()
+		print('*** Validate the content !')
+		# Internal
+		out = self.validate_internal()
+		# External
+		#self.validate_external()  	# Dep !
+		# Django
+		return out
+	# validate
+
+# ----------------------------------------------------------- Reset ------------
+	# Reset
+	@api.multi
+	def reset(self):
+		"""
+		Reset Button.
+		"""
+		print('*** Reset')
+		self.reset_macro()
+		self.reset_relationals()
+	# reset
+
+
 
 # -------------------------------------------------------------------------------------------------
 # Second Level - Update Buttons
@@ -415,7 +447,6 @@ class Management(models.Model):
 
 
 
-# ----------------------------------------------------------- Update -------------------------------
 
 # ----------------------------------------------- Update Sales - By Doctor -----
 
@@ -519,19 +550,8 @@ class Management(models.Model):
 	# create_doctor_data
 
 
-# ----------------------------------------------------------- Reset -------------------------------
-	# Reset
-	@api.multi
-	def reset(self):
-		"""
-		Reset Button.
-		"""
-		print('X - Reset')
-		self.reset_macro()
-		self.reset_relationals()
-	# reset
 
-# ----------------------------------------------------------- Reset -------------------------
+# ----------------------------------------------------------- Reset Macros -----
 	# Reset Macros
 	def reset_macro(self):
 		"""
@@ -949,32 +969,12 @@ class Management(models.Model):
 # ------------------------------------------------------- Validate Internal ----
 	# Validate
 	@api.multi
-	def validate(self):
-		"""
-		Button
-		Validates the content. 
-		For internal Data Coherency - internal and external. 
-		"""
-		print()
-		print('Validate the content !')
-		# Internal
-		out = self.validate_internal()
-		# External
-		#self.validate_external()  	# Dep !
-		# Django
-		return out
-	# validate
-
-
-# ------------------------------------------------------- Validate Internal ----
-	# Validate
-	@api.multi
 	def validate_internal(self):
 		"""
-		Validates Data Coherency - internal. 
+		Validates Data Coherency - Internal. 
 		"""
 		print()
-		print('Validate Internal')
+		print('** Validates internal')
 
 		# Families
 		self.per_amo_families = self.per_amo_products + self.per_amo_consultations + self.per_amo_procedures + self.per_amo_other + self.per_amo_credit_notes

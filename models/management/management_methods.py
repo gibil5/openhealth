@@ -3,7 +3,7 @@
 	Management - Methods
 
 	Created: 			28 may 2018
-	Last up: 			28 oct 2020
+	Last up: 			30 oct 2020
 """
 from __future__ import print_function
 from timeit import default_timer as timer
@@ -225,7 +225,7 @@ class Management(models.Model):
 					Line analysis
 		"""
 		print()
-		print('** Update Sales Fast')
+		print('** Update Sales')
 
 		# Clean
 		self.reset_macro()
@@ -246,6 +246,7 @@ class Management(models.Model):
 
 				# If sale
 				if order.state in ['sale']:  	
+
 					# Line Analysis
 					for line in order.order_line:
 						self.line_analysis(line)
@@ -263,6 +264,7 @@ class Management(models.Model):
 		self.set_ratios()
 
 		# Set Totals
+		total_amount = self.set_totals_pure()
 		total_amount = self.set_totals(tickets)
 
 		# Set Percentages
@@ -831,11 +833,25 @@ class Management(models.Model):
 
 
 # ----------------------------------------------------------- Set Totals -------
+	def set_totals_pure(self):
+		"""
+		Set Totals - Using reduce
+		"""
+		from functools import reduce
+
+		#product = reduce((lambda x, y: x * y), [1, 2, 3, 4])
+		#sum = reduce((lambda x, y: x + y), [1, 2, 3, 4])
+		sum = reduce((lambda x, y: x + y), [self.amo_products, self.amo_services, self.amo_other, self.amo_credit_notes])
+
+		self.total_amount = sum
+
+
+# ----------------------------------------------------------- Set Totals -------
 	def set_totals(self, tickets):
 		"""
 		Set Totals
 		"""
-		self.total_amount = self.amo_products + self.amo_services + self.amo_other + self.amo_credit_notes
+		#self.total_amount = self.amo_products + self.amo_services + self.amo_other + self.amo_credit_notes
 		self.total_count = self.nr_products + self.nr_services
 		self.total_tickets = tickets
 		return self.total_amount
@@ -845,7 +861,7 @@ class Management(models.Model):
 # ----------------------------------------------------------- Line Analysis ----
 	def line_analysis(self, line):
 		"""
-		Analyses order lines 
+		Parses order lines 
 		Updates counters
 		"""
 		#print('Line analysis')

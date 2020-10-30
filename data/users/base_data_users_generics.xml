@@ -2,29 +2,18 @@
 <openerp>
     <data noupdate='1'>
 
-
-<!-- Dep ? -->
-
-
 <!-- Plataforma -->
         <record id="plataforma_partner" model="res.partner">
             <field name="name">Plataforma</field>
             <field name="email">plataforma@clinicachavarri.com</field>
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
-
             <field name="function">reception</field>
         </record>
 
         <record id="plataforma_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">PLATAFORMA</field>
             <field name="login">plataforma@clinicachavarri.com</field>
-
-<!--
-            <field name="password">plataforma</field>
--->
             <field name="password">Q6m3a8jr</field>
-
-
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="active">True</field>
             <field name="lang">es_ES</field>
@@ -32,30 +21,18 @@
             <field name="partner_id" ref="plataforma_partner"/>
         </record>
 
-
-
-
 <!-- Caja -->
         <record id="caja_partner" model="res.partner">
             <field name="name">Caja</field>
             <field name="email">caja@clinicachavarri.com</field>
             <field eval="[(6, 0, [ref('cash')])]" name="category_id"/>
-
             <field name="function">caja</field>
         </record>
-
-
 
         <record id="caja_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">CAJA</field>
             <field name="login">caja@clinicachavarri.com</field>
-
-<!--
-            <field name="password">caja</field>
--->
-            <field name="password">bvR3VKUQ</field>
-
-            
+            <field name="password">bvR3VKUQ</field>            
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="lang">es_ES</field>
             <field name="tz">America/Lima</field>
@@ -63,31 +40,18 @@
             <field name="active">True</field>
         </record>
 
-
-
-
-
-
 <!-- Medico -->
         <record id="medico_partner" model="res.partner">
             <field name="name">Medico</field>
             <field name="email">medico@clinicachavarri.com</field>
             <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
-
             <field name="function">doctor</field>
         </record>
-
 
         <record id="medico_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">MEDICO</field>
             <field name="login">medico@clinicachavarri.com</field>
-            
-<!--
-            <field name="password">medico</field>
--->     
             <field name="password">jrVT35yR</field>
-
-
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="lang">es_ES</field>
             <field name="tz">America/Lima</field>
@@ -95,34 +59,17 @@
             <field name="active">True</field>
         </record>
 
-
-
-
-
-
-
-
-
-
 <!-- Archivo -->
         <record id="archivo_partner" model="res.partner">
             <field name="name">Archivo</field>
             <field name="email">archivo@clinicachavarri.com</field>
-
             <field name="function">archive</field>
         </record>
-
 
         <record id="archivo_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">ARCHIVO</field>
             <field name="login">archivo@clinicachavarri.com</field>
-
-<!--
-            <field name="password">archivo</field>
--->
             <field name="password">BU6xujxj</field>
-
-
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="lang">es_ES</field>
             <field name="tz">America/Lima</field>           
@@ -130,31 +77,18 @@
             <field name="active">True</field>
         </record>
 
-
-
-
-
 <!-- Almacen -->
         <record id="almacen_partner" model="res.partner">
             <field name="name">Almacen</field>
             <field name="email">almacen@clinicachavarri.com</field>
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
-
             <field name="function">inventory</field>
         </record>
-
 
         <record id="almacen_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">ALMACEN</field>
             <field name="login">almacen@clinicachavarri.com</field>
-            
-
-<!--
-            <field name="password">almacen</field>
--->     
             <field name="password">rag6j4NZ</field>
-
-
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="lang">es_ES</field>
             <field name="tz">America/Lima</field>
@@ -162,29 +96,18 @@
             <field name="active">True</field>
         </record>
 
-
-
 <!-- Asistente Medico -->
         <record id="asistente_partner" model="res.partner">
             <field name="name">Asistente Medico</field>
             <field name="email">asistente@clinicachavarri.com</field>
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
-
             <field name="function">assistant</field>
         </record>
-
-
 
         <record id="asistente_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">ASISTENTE</field>
             <field name="login">asistente@clinicachavarri.com</field>
-            
-<!--
-            <field name="password">asistente</field>
--->     
             <field name="password">aRb8BuQv</field>
-
-
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="lang">es_ES</field>
             <field name="tz">America/Lima</field>
@@ -192,35 +115,17 @@
             <field name="active">True</field>
         </record>
 
-
-
-
-
-
-
-
-
-
 <!-- Staff -->
         <record id="staff_partner" model="res.partner">
             <field name="name">staff</field>
             <field name="email">staff@clinicachavarri.com</field>
-
             <field name="function">staff</field>
         </record>
 
-
-
         <record id="staff_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">STAFF</field>
-            <field name="login">staff@clinicachavarri.com</field>
-            
-<!--
-            <field name="password">staff</field>
--->     
+            <field name="login">staff@clinicachavarri.com</field>            
             <field name="password">Smu49HXe</field>
-
-
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="lang">es_ES</field>
             <field name="tz">America/Lima</field>
@@ -228,32 +133,17 @@
             <field name="active">True</field>
         </record>
 
-
-
-
-
-
 <!-- Manager -->
         <record id="manager_partner" model="res.partner">
             <field name="name">Manager</field>
             <field name="email">manager@clinicachavarri.com</field>
-
             <field name="function">manager</field>
         </record>
-
-
 
         <record id="manager_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">MANAGER</field>
             <field name="login">manager@clinicachavarri.com</field>
-
-<!--
-            <field name="password">uq@dL_F=xs?_3yBR</field>
-            <field name="password">manager</field>
--->     
             <field name="password">P6J3paNK</field>
-
-
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="lang">es_ES</field>
             <field name="tz">America/Lima</field>
@@ -261,38 +151,22 @@
             <field name="active">True</field>
         </record>
 
-
-
-
-
 <!-- Director -->
         <record id="director_partner" model="res.partner">
             <field name="name">Director</field>
             <field name="email">director@clinicachavarri.com</field>
-
             <field name="function">director</field>
         </record>
-
 
         <record id="director_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">DIRECTOR</field>
             <field name="login">director@clinicachavarri.com</field>
-
-<!--
-            <field name="password">uq@dL_F=xs?_3yBR</field>
-            <field name="password">director</field>
--->     
             <field name="password">sFU6M7ER</field>
-
-
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="lang">es_ES</field>
             <field name="tz">America/Lima</field>
             <field name="partner_id" ref="director_partner"/>
             <field name="active">True</field>
         </record>
-
-
-
     </data>
 </openerp> 

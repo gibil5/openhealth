@@ -2,62 +2,46 @@
 <openerp>
     <data noupdate='1'>
     
-
-
 <!-- Renato Chavarri -->
         <record id="rchavarri" model="res.partner">
             <field name="name">Renato Chavarri</field>
             <field name="email">rchavarri@clinicachavarri.com</field>
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
-
             <field name="function">director</field>
         </record>
-
-
 
         <record id="rchavarri_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Renato Chavarri</field>
             <field name="login">rchavarri@clinicachavarri.com</field>
-
             <field name="password">RrpmT59D</field>
-
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="tz">America/Lima</field>
             <field name="lang">es_ES</field>
             <field name="partner_id" ref="rchavarri"/>
-
             <field name="active">True</field>
         </record>
-
-
-
 
 <!-- Fernando Chavarri -->
 <!--
 fchavarri@clinicachavarri.com
 A22H9pfv
 -->
-
         <record id="fchavarri" model="res.partner">
             <field name="name">Fernando Chavarri</field>
             <field name="email">fchavarri@clinicachavarri.com</field>
             <field eval="[(6, 0, [ref('doctor')])]" name="category_id"/>
-
             <field name="function">director</field>
         </record>
 
         <record id="fchavarri_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Fernando Chavarri</field>
             <field name="login">fchavarri@clinicachavarri.com</field>
-
             <field name="password">A22H9pfv</field>
-
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="tz">America/Lima</field>
             <field name="partner_id" ref="fchavarri"/>
             <field name="lang">es_ES</field>
             <field name="active">True</field>
         </record>
-
     </data>
 </openerp> 

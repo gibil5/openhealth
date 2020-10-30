@@ -18,18 +18,13 @@ afuentes@clinicachavarri.com
         <record id="afuentes_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Andrea Fuentes</field>
             <field name="login">afuentes@clinicachavarri.com</field>
-
             <field name="password">4evkcvb3dz</field>
-
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="active">True</field>
             <field name="tz">America/Lima</field>
             <field name="lang">es_ES</field>
-
             <field name="partner_id" ref="afuentes"/>
         </record>
-
-
 
 <!-- Asistentes -->
 
@@ -43,24 +38,17 @@ afuentes@clinicachavarri.com
         <record id="mostos_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Mirella Ostos</field>
             <field name="login">mostos@clinicachavarri.com</field>
-
             <field name="password">68vz9gpmtv</field>
-
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="active">True</field>
             <field name="tz">America/Lima</field>
             <field name="lang">es_ES</field>
-
             <field name="partner_id" ref="mostos"/>
         </record>
-
-
-
 
 <!-- Managers -->
 
 <!-- Maritza Mattos -->
-
         <record id="mmattos" model="res.partner">
             <field name="name">Maritza Mattos</field>
             <field name="email">mmattos@clinicachavarri.com</field>
@@ -70,16 +58,12 @@ afuentes@clinicachavarri.com
         <record id="mmattos_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Maritza Mattos</field>
             <field name="login">mmattos@clinicachavarri.com</field>
-
             <field name="password">85cnes3tj5</field>
-
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="active">True</field>
             <field name="tz">America/Lima</field>
             <field name="lang">es_ES</field>
-
             <field name="partner_id" ref="mmattos"/>
         </record>
-
     </data>
 </openerp> 

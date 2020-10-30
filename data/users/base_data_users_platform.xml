@@ -29,27 +29,19 @@ suv3bm7q
         <record id="ssaucedo_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Salvador Saucedo</field>
             <field name="login">ssaucedo@clinicachavarri.com</field>
-
             <field name="password">suv3bm7q</field>
-
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="active">True</field>
             <field name="tz">America/Lima</field>
             <field name="lang">es_ES</field>
-
             <field name="partner_id" ref="ssaucedo"/>
         </record>
 
-
-
 <!-- Daniela Urdanivia -->
         <record id="durdanivia" model="res.partner">
-            <field name="name">Daniela Urdanivia</field>
-            
+            <field name="name">Daniela Urdanivia</field>            
             <field name="email">durdanivia@clinicachavarri.com</field>
-
             <field name="function">reception</field>
-
             <field eval="[(6, 0, [ref('staff')])]" name="category_id"/>
         </record>
 
@@ -57,19 +49,12 @@ suv3bm7q
             <field name="name">Daniela Urdanivia</field>
             <field name="login">durdanivia@clinicachavarri.com</field>
             <field name="password">u6zhrxw9</field>
-
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-
             <field name="active">True</field>
             <field name="tz">America/Lima</field>
             <field name="lang">es_ES</field>
-
             <field name="partner_id" ref="durdanivia"/>
         </record>
-
-
-
-
 
 <!-- Nicolas Escobar -->
         <record id="nescobar" model="res.partner">
@@ -82,18 +67,13 @@ suv3bm7q
         <record id="nescobar_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Nicolas Escobar</field>
             <field name="login">nescobar@clinicachavarri.com</field>
-
             <field name="password">DnXZh7FW</field>
-
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="active">True</field>
             <field name="tz">America/Lima</field>
             <field name="lang">es_ES</field>
-
             <field name="partner_id" ref="nescobar"/>
         </record>
-
-
 
 <!-- Ivanna Michelot -->
         <record id="imichelot" model="res.partner">
@@ -106,18 +86,13 @@ suv3bm7q
         <record id="imichelot_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Ivanna Michelot</field>
             <field name="login">imichelot@clinicachavarri.com</field>
-
             <field name="password">Agt5afvb</field>
-
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="active">True</field>
             <field name="tz">America/Lima</field>
             <field name="lang">es_ES</field>
-
             <field name="partner_id" ref="imichelot"/>
         </record>
-
-
 
 <!-- Gilda Nuñez -->
         <record id="gnunhez_partner" model="res.partner">
@@ -130,19 +105,13 @@ suv3bm7q
         <record id="gnunhez_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Gilda Nuñez</field>
             <field name="login">gnunhez@clinicachavarri.com</field>
-
             <field name="password">RSZ8wxaj</field>
-            
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="active">True</field>
             <field name="lang">es_ES</field>
             <field name="tz">America/Lima</field>
-
             <field name="partner_id" ref="gnunhez_partner"/>
         </record>
-
-
-
 
 <!-- Karla Tejeda -->
         <record id="ktejada" model="res.partner">
@@ -155,16 +124,12 @@ suv3bm7q
         <record id="ktejada_clinicachavarri" model="res.users" context="{'no_reset_password': True}">
             <field name="name">Karla Tejeda</field>
             <field name="login">ktejeda@clinicachavarri.com</field>
-
             <field name="password">kE3LQPzA</field>
-
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="active">True</field>
             <field name="tz">America/Lima</field>
             <field name="lang">es_ES</field>
-
             <field name="partner_id" ref="ktejada"/>
         </record>
-
     </data>
 </openerp> 

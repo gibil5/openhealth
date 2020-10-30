@@ -6,7 +6,9 @@
 # 20 jul 2020
 z_TRASH/
 a_TRASH/
-travis/
+
+# jx - 30 oct 2020: travis/
+
 controllers/
 demo/
 depend/
@@ -15,7 +17,9 @@ CONTRIBUTING.md
 LICENSE
 oca_dependencies.txt
 readme.txt
-travis.yml
+
+# jx: travis.yml
+
 
 # Before
 openerp.TRASH.py

@@ -3,12 +3,13 @@
 	Management - Methods
 
 	Created: 			28 may 2018
-	Last up: 			30 oct 2020
+	Last up: 			31 oct 2020
 """
 from __future__ import print_function
 from timeit import default_timer as timer
 import datetime
 import collections
+
 from openerp import models, fields, api
 
 from lib import mgt_funcs
@@ -20,9 +21,35 @@ from management_order_line import MgtOrderLine
 
 from openerp.addons.openhealth.models.emr.physician import Physician
 
+from mgt_product_counter import MgtProductCounter
+
 # --------------------------------------------------------------- Constants ----
 _MODEL_MGT = "openhealth.management"
 
+TYPES = [
+
+		# Types
+		'products',
+		'services',
+]
+
+FAMILIES = [
+		# Families
+		#'consultations',
+		#'procedures',
+		#'credit_notes',
+		#'other',
+]
+
+SUBFAMILIES = [
+
+		# Sub Families
+		'co2',
+		'exc',
+		'ndy',
+		'ipl',
+		'qui',
+]
 
 # ------------------------------------------------------------------- Class ----
 class Management(models.Model):
@@ -33,26 +60,112 @@ class Management(models.Model):
 
 
 # -------------------------------------------------------------------------------------------------
+# Functional vars
+# -------------------------------------------------------------------------------------------------
+
+	vec_amount = fields.Float(
+		'Todos',
+	)
+	vec_count = fields.Integer(
+		'.',
+	)
+
+	vec_products_amount = fields.Float(
+		'Productos',
+	)
+	vec_products_count = fields.Integer(
+		'.',
+	)
+
+	vec_services_amount = fields.Float(
+		'Servicios',
+	)
+	vec_services_count = fields.Integer(
+		'.',
+	)
+
+
+	# Sub 
+	vec_co2_amount = fields.Float(
+		'Co2',
+	)
+	vec_co2_count = fields.Integer(
+		'.',
+	)
+
+	vec_exc_amount = fields.Float(
+		'Exc',
+	)
+	vec_exc_count = fields.Integer(
+		'.',
+	)
+
+	vec_ipl_amount = fields.Float(
+		'Ipl',
+	)
+	vec_ipl_count = fields.Integer(
+		'.',
+	)
+
+	vec_ndy_amount = fields.Float(
+		'Ndyag',
+	)
+	vec_ndy_count = fields.Integer(
+		'.',
+	)
+
+	vec_qui_amount = fields.Float(
+		'Quick',
+	)
+	vec_qui_count = fields.Integer(
+		'.',
+	)
+
+
+# -------------------------------------------------------------------------------------------------
 # First Level - Update Buttons
 # -------------------------------------------------------------------------------------------------
+
 
 # ----------------------------------------------------------- Update Fast ------
 	@api.multi
 	def update_fast(self):
 		"""
-		Update Macros values
-		Does not update:
-			patients, doctors, productivity, daily.
+		Updates Macro values
+		Does not update: patients, doctors, productivity, daily.
 		"""
 		print()
 		print('*** Update Fast')
 
-		# Go
-		self.update_sales()
-		self.update_year()
+		vector_obj = self.init_vector(TYPES)
+		print(vector_obj)
+
+		vector_sub = self.init_vector(SUBFAMILIES)
+		print(vector_sub)
+
+		# Update sales
+		#self.update_sales()
+		self.update_sales(vector_obj, vector_sub)
+		
+		#self.update_year()
 
 	# update_fast
 
+
+# ------------------------------------------------------------- Init vector ----
+	def init_vector(self, vector_type):
+		vector = []
+
+		for name in vector_type:
+
+			obj = MgtProductCounter(name)
+
+			vector.append(obj)
+
+		# Pure functional
+		results = mgt_funcs.obj_percentages_pure(vector, 0)
+
+		return vector
 
 # --------------------------------------------------------- Update Patients ----
 	# Update Patients
@@ -215,7 +328,7 @@ class Management(models.Model):
 # -------------------------------------------------------------------------------------------------
 # Second Level - Update Buttons
 # -------------------------------------------------------------------------------------------------
-	def update_sales(self):
+	def update_sales(self, vector_obj, vector_sub):
 		"""
 		Update Sales Macros
 			Steps
@@ -250,6 +363,9 @@ class Management(models.Model):
 					# Line Analysis
 					for line in order.order_line:
 						self.line_analysis(line)
+						self.line_analysis_obj(line, vector_obj)
+						self.line_analysis_sub(line, vector_sub)
+
 
 				# If credit Note - Do Amount Flow
 				elif order.state in ['credit_note']:
@@ -264,11 +380,100 @@ class Management(models.Model):
 		self.set_ratios()
 
 		# Set Totals
-		total_amount = self.set_totals_pure()
-		total_amount = self.set_totals(tickets)
+		vector = [self.amo_products, self.amo_services, self.amo_other, self.amo_credit_notes]
+		self.total_amount = mgt_funcs.get_sum_pure(vector)
+
+		vector = [self.nr_products, self.nr_services]
+		self.total_count = mgt_funcs.get_sum_pure(vector)
+
+		self.total_tickets = tickets
+
 
 		# Set Percentages
-		mgt_funcs.set_percentages(self, total_amount)
+
+		#mgt_funcs.set_percentages(self, total_amount)
+
+		vector = [
+
+			# Families
+			self.amo_products,
+			self.amo_consultations,
+			self.amo_procedures,
+			self.amo_credit_notes,
+			self.amo_other,
+
+			# Sub Families
+			self.amo_co2,
+			self.amo_exc,
+			self.amo_ipl,
+			self.amo_ndyag,
+			self.amo_quick,
+
+			self.amo_medical,
+			self.amo_cosmetology,
+
+			self.amo_sub_con_med,
+			self.amo_sub_con_gyn,
+			self.amo_sub_con_cha,
+
+			self.amo_echo,
+			self.amo_gyn,
+			self.amo_prom,
+
+			self.amo_topical,
+			self.amo_card,
+			self.amo_kit,
+
+		]
+
+		results = mgt_funcs.percentages_pure(vector, self.total_amount)
+
+		# Test 
+		print('Vector obj - Test')
+		for obj in vector_obj:
+			print(obj.name)
+			print(obj.amount)
+			print(obj.count)
+			print()
+
+		# Set macros
+
+		# Totals
+		self.vec_amount = mgt_funcs.obj_get_amount_total_pure(vector_obj)
+		self.vec_count = mgt_funcs.obj_get_count_total_pure(vector_obj)
+
+		# Types
+		obj = filter(lambda x: x.name == 'products', vector_obj)[0] 
+		self.vec_products_amount = obj.amount
+		self.vec_products_count = obj.count
+
+		obj = filter(lambda x: x.name == 'services', vector_obj)[0] 
+		self.vec_services_amount = obj.amount
+		self.vec_services_count = obj.count
+
+		# Families
+
+		# Sub families
+		obj = filter(lambda x: x.name == 'co2', vector_sub)[0] 
+		self.vec_co2_amount = obj.amount
+		self.vec_co2_count = obj.count
+
+		obj = filter(lambda x: x.name == 'exc', vector_sub)[0] 
+		self.vec_exc_amount = obj.amount
+		self.vec_exc_count = obj.count
+
+		obj = filter(lambda x: x.name == 'ndy', vector_sub)[0] 
+		self.vec_ndy_amount = obj.amount
+		self.vec_ndy_count = obj.count
+
+		obj = filter(lambda x: x.name == 'ipl', vector_sub)[0] 
+		self.vec_ipl_amount = obj.amount
+		self.vec_ipl_count = obj.count
+
+		obj = filter(lambda x: x.name == 'qui', vector_sub)[0] 
+		self.vec_qui_amount = obj.amount
+		self.vec_qui_count = obj.count
+
 
 	# update_sales
 
@@ -832,30 +1037,76 @@ class Management(models.Model):
 	# set_ratios
 
 
-# ----------------------------------------------------------- Set Totals -------
-	def set_totals_pure(self):
+# ----------------------------------------------------------- Line Analysis ----
+	def line_analysis_sub(self, line, vector_sub):
 		"""
-		Set Totals - Using reduce
+		vector sub
+		Parses order lines 
+		Updates counters
 		"""
-		from functools import reduce
+		print('Line line_analysis_sub')
 
-		#product = reduce((lambda x, y: x * y), [1, 2, 3, 4])
-		#sum = reduce((lambda x, y: x + y), [1, 2, 3, 4])
-		sum = reduce((lambda x, y: x + y), [self.amo_products, self.amo_services, self.amo_other, self.amo_credit_notes])
+		# Init
+		prod = line.product_id
+		sub = ''
 
-		self.total_amount = sum
+		# By Treatment
+		
+		# Co2
+		if prod.pl_treatment in ['LASER CO2 FRACCIONAL']:
+			sub = 'co2'
+
+		# Exc
+		elif prod.pl_treatment in ['LASER EXCILITE']:
+			sub = 'exc'
+
+		# Quick
+		elif prod.pl_treatment in ['QUICKLASER']:
+			sub = 'qui'
+
+		# Ipl
+		elif prod.pl_treatment in ['LASER M22 IPL']:
+			sub = 'ipl'
+
+		# Ndyag
+		elif prod.pl_treatment in ['LASER M22 ND YAG']:
+			sub = 'ndy'
+		
+
+		# Filter
+		vector = filter(lambda x: x.name == sub, vector_sub) 
+
+		# Inc
+		for obj in vector: 
+			obj.inc_amount(line.price_subtotal)
+			obj.inc_count(line.product_uom_qty)
 
 
-# ----------------------------------------------------------- Set Totals -------
-	def set_totals(self, tickets):
+
+# ----------------------------------------------------------- Line Analysis ----
+	def line_analysis_obj(self, line, vector_obj):
 		"""
-		Set Totals
+		Obj vector
+		Parses order lines 
+		Updates counters
 		"""
-		#self.total_amount = self.amo_products + self.amo_services + self.amo_other + self.amo_credit_notes
-		self.total_count = self.nr_products + self.nr_services
-		self.total_tickets = tickets
-		return self.total_amount
-	# set_totals
+		print('Line line_analysis_obj')
+
+		# Init
+		prod = line.product_id
+
+		# Products
+		if prod.type in ['product']:
+			vector = filter(lambda x: x.name == 'products', vector_obj) 
+
+		# Services
+		else:
+			vector = filter(lambda x: x.name == 'services', vector_obj) 
+
+		# Inc
+		for obj in vector: 
+			obj.inc_amount(line.price_subtotal)
+			obj.inc_count(line.product_uom_qty)
 
 
 # ----------------------------------------------------------- Line Analysis ----

@@ -3,7 +3,7 @@
 	<data>
 
 <!--
-18 oct 2020
+31 oct 2020
 -->
 		
 <!-- FORM --> 
@@ -180,16 +180,17 @@
 <!-- Sheet -->  
 					<sheet>
 
-
 						<!-- Totals --> 
 						<group  string="Totales"    col="3">
 							<group>
 								<field name="name"/>
 								<field name="date_begin"/>
 								<field name="date_end"/>
+<!--
 								<field name="write_date"    string="Actualizado"/>
 								<field name="month"/>
 								<field name="year"/>
+-->
 							</group>
 
 							<group>
@@ -204,6 +205,52 @@
 								<field name="per_amo_total"     widget="percentage"  />
 							</group>
 						</group>
+
+
+						<!--						
+						<group  string="Macros"    col="3">
+						-->				
+
+						<!-- Macros --> 
+						<group col="3">
+							<group>
+								<field name="vec_amount"/>
+								<field name="vec_products_amount"/>
+								<field name="vec_services_amount"/>
+							</group>
+
+							<group>
+								<field name="vec_count"/>
+								<field name="vec_products_count"/>
+								<field name="vec_services_count"/>
+							</group>
+
+							<group></group>
+						</group>
+
+
+						<!-- Sub --> 
+						<group col="3">
+							<group>
+								<field name="vec_co2_amount"/>
+								<field name="vec_exc_amount"/>
+								<field name="vec_ipl_amount"/>
+								<field name="vec_ndy_amount"/>
+								<field name="vec_qui_amount"/>
+							</group>
+
+							<group>
+								<field name="vec_co2_count"/>
+								<field name="vec_exc_count"/>
+								<field name="vec_ipl_count"/>
+								<field name="vec_ndy_count"/>
+								<field name="vec_qui_count"/>
+							</group>
+
+							<group></group>
+						</group>
+
+
 
 
 <!-- Notebook --> 

@@ -4,7 +4,7 @@
 	Should be unit testable - independent from openerp
 
 	Created: 			28 May 2018
-	Last updated: 		26 oct 2020
+	Last updated: 		31 oct 2020
 
 	- Use functional programming - ie pure functions.
 	- Use lambda funcs, map, filter, reduce, decorators, generators, etc.
@@ -16,11 +16,70 @@
 """
 from __future__ import print_function
 import datetime
+from functools import reduce
 
 # ------------------------------------------------------------- Constants ------
 _DATE_FORMAT = "%Y-%m-%d"
 _DATE_HOUR_FORMAT = "%Y-%m-%d %H:%M"
 _MODEL_SALE = "sale.order"
+
+
+# ----------------------------------------------------------- Get Totals -------
+def obj_get_amount_total_pure(vector):
+	"""
+	Get Totals - Using reduce
+	"""
+	return reduce((lambda x, y: x.amount + y.amount), vector)
+
+def obj_get_count_total_pure(vector):
+	"""
+	Get Totals - Using reduce
+	"""
+	return reduce((lambda x, y: x.count + y.count), vector)
+
+
+
+# -------------------------------------------------------- Percentages Pure ----
+def obj_percentages_pure(vector, total):
+	"""
+	Obj Percentages pure
+	"""
+	print()
+	print('**** obj percentages_pure')
+
+	print(vector)
+
+	if total > 0:
+		results = map((lambda x : round(100 * x.amount / total, 2)), vector)
+	else:
+		results = map((lambda x : 0), vector)		
+		
+	print(results)
+
+	return results
+
+
+# -------------------------------------------------------- Percentages Pure ----
+def percentages_pure(vector, total):
+	"""
+	Percentages pure
+	"""
+	print()
+	print('**** percentages_pure')
+
+	print(vector)
+	results = map((lambda x : round(100 * x / total, 2)), vector)
+	print(results)
+
+	return results
+
+
+# ----------------------------------------------------------- Set Totals -------
+def get_sum_pure(vector):
+	"""
+	Get Totals - Using reduce
+	"""
+	return reduce((lambda x, y: x + y), vector)
 
 
 # --------------------------------------------------------------- Division -----
@@ -53,6 +112,8 @@ def averages_pure(vector, func=division):
 
 	return ave
 # averages_pure
+
+
 
 
 # --------------------------------------------------------- Set Percentages ----

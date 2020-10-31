@@ -237,6 +237,20 @@
 								<field name="vec_ipl_amount"/>
 								<field name="vec_ndy_amount"/>
 								<field name="vec_qui_amount"/>
+
+								<field name="vspace"/>
+								<field name="vec_med_amount"/>
+								<field name="vec_cos_amount"/>
+
+								<field name="vspace"/>
+								<field name="vec_gyn_amount"/>
+								<field name="vec_echo_amount"/>
+								<field name="vec_pro_amount"/>
+
+								<field name="vspace"/>
+								<field name="vec_top_amount"/>
+								<field name="vec_vip_amount"/>
+								<field name="vec_kit_amount"/>
 							</group>
 
 							<group>
@@ -245,6 +259,20 @@
 								<field name="vec_ipl_count"/>
 								<field name="vec_ndy_count"/>
 								<field name="vec_qui_count"/>
+
+								<field name="vspace"/>
+								<field name="vec_med_count"/>
+								<field name="vec_cos_count"/>
+
+								<field name="vspace"/>
+								<field name="vec_gyn_count"/>
+								<field name="vec_echo_count"/>
+								<field name="vec_pro_count"/>
+
+								<field name="vspace"/>
+								<field name="vec_top_count"/>
+								<field name="vec_vip_count"/>
+								<field name="vec_kit_count"/>
 							</group>
 
 							<group></group>

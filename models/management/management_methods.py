@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 	Management - Methods
+	
+	Using: vectors and functional programming.
 
 	Created: 			28 may 2018
 	Last up: 			31 oct 2020
@@ -49,6 +51,17 @@ SUBFAMILIES = [
 		'ndy',
 		'ipl',
 		'qui',
+
+		'med', 
+		'cos',
+
+		'ech', 
+		'gyn',
+		'pro',
+
+		'top',
+		'vip',
+		'kit',
 ]
 
 # ------------------------------------------------------------------- Class ----
@@ -118,6 +131,67 @@ class Management(models.Model):
 		'Quick',
 	)
 	vec_qui_count = fields.Integer(
+		'.',
+	)
+
+
+	# Medical
+	vec_med_amount = fields.Float(
+		'Medical',
+	)
+	vec_med_count = fields.Integer(
+		'.',
+	)
+
+	vec_cos_amount = fields.Float(
+		'Cosmeto',
+	)
+	vec_cos_count = fields.Integer(
+		'.',
+	)
+
+
+	vec_gyn_amount = fields.Float(
+		'Gyn',
+	)
+	vec_gyn_count = fields.Integer(
+		'.',
+	)
+
+	vec_echo_amount = fields.Float(
+		'Echo',
+	)
+	vec_echo_count = fields.Integer(
+		'.',
+	)
+
+	vec_pro_amount = fields.Float(
+		'Promo',
+	)
+	vec_pro_count = fields.Integer(
+		'.',
+	)
+
+
+	# Prod
+	vec_top_amount = fields.Float(
+		'Topical',
+	)
+	vec_top_count = fields.Integer(
+		'.',
+	)
+
+	vec_vip_amount = fields.Float(
+		'Vip',
+	)
+	vec_vip_count = fields.Integer(
+		'.',
+	)
+
+	vec_kit_amount = fields.Float(
+		'Kit',
+	)
+	vec_kit_count = fields.Integer(
 		'.',
 	)
 
@@ -473,7 +547,6 @@ class Management(models.Model):
 		obj = filter(lambda x: x.name == 'qui', vector_sub)[0] 
 		self.vec_qui_amount = obj.amount
 		self.vec_qui_count = obj.count
-
 
 	# update_sales
 
@@ -1052,8 +1125,11 @@ class Management(models.Model):
 
 		# By Treatment
 		
+		if prod.pl_treatment in ['CONSULTA MEDICA']:
+			sub = 'con'
+
 		# Co2
-		if prod.pl_treatment in ['LASER CO2 FRACCIONAL']:
+		elif prod.pl_treatment in ['LASER CO2 FRACCIONAL']:
 			sub = 'co2'
 
 		# Exc
@@ -1071,6 +1147,39 @@ class Management(models.Model):
 		# Ndyag
 		elif prod.pl_treatment in ['LASER M22 ND YAG']:
 			sub = 'ndy'
+
+
+		elif prod.pl_family in ['medical']:
+			sub = 'med'
+
+		# Cosmeto
+		elif prod.pl_family in ['cosmetology']:
+			sub = 'cos'
+
+		# Echo
+		elif prod.pl_family in ['echography']:
+			sub = 'ech'
+
+		# Gyn
+		elif prod.pl_family in ['gynecology']:
+			sub = 'gyn'
+
+		# Prom
+		elif prod.pl_family in ['promotion']:
+			sub = 'pro'
+
+
+		# Topical
+		elif prod.pl_family in ['topical']:
+			sub = 'top'
+
+		# Card
+		elif prod.pl_family in ['card']:
+			sub = 'vip'
+
+		# kit
+		elif prod.pl_family in ['kit']:
+			sub = 'kit'
 		
 
 		# Filter

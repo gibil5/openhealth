@@ -10,7 +10,7 @@
 
 class MgtProductCounter():
     """
-    Used by Treatment
+    Used by Management
     """
 
     def __init__(self, name):

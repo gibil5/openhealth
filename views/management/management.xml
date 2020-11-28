@@ -244,7 +244,7 @@
 
 								<field name="vspace"/>
 								<field name="vec_gyn_amount"/>
-								<field name="vec_echo_amount"/>
+								<field name="vec_ech_amount"/>
 								<field name="vec_pro_amount"/>
 
 								<field name="vspace"/>
@@ -266,7 +266,7 @@
 
 								<field name="vspace"/>
 								<field name="vec_gyn_count"/>
-								<field name="vec_echo_count"/>
+								<field name="vec_ech_count"/>
 								<field name="vec_pro_count"/>
 
 								<field name="vspace"/>

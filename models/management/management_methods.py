@@ -25,6 +25,8 @@ from openerp.addons.openhealth.models.emr.physician import Physician
 
 from mgt_product_counter import MgtProductCounter
 
+from lib import mgt_bridge
+
 # --------------------------------------------------------------- Constants ----
 _MODEL_MGT = "openhealth.management"
 
@@ -35,13 +37,13 @@ TYPES = [
 		'services',
 ]
 
-FAMILIES = [
+#FAMILIES = [
 		# Families
 		#'consultations',
 		#'procedures',
 		#'credit_notes',
 		#'other',
-]
+#]
 
 SUBFAMILIES = [
 
@@ -158,10 +160,10 @@ class Management(models.Model):
 		'.',
 	)
 
-	vec_echo_amount = fields.Float(
+	vec_ech_amount = fields.Float(
 		'Echo',
 	)
-	vec_echo_count = fields.Integer(
+	vec_ech_count = fields.Integer(
 		'.',
 	)
 
@@ -211,14 +213,15 @@ class Management(models.Model):
 		print()
 		print('*** Update Fast')
 
-		vector_obj = self.init_vector(TYPES)
-		print(vector_obj)
 
+		#  Init vectors
+		vector_obj = self.init_vector(TYPES)
+		#print(vector_obj)
 		vector_sub = self.init_vector(SUBFAMILIES)
-		print(vector_sub)
+		#print(vector_sub)
+
 
 		# Update sales
-		#self.update_sales()
 		self.update_sales(vector_obj, vector_sub)
 		
 		#self.update_year()
@@ -231,9 +234,7 @@ class Management(models.Model):
 		vector = []
 
 		for name in vector_type:
-
 			obj = MgtProductCounter(name)
-
 			vector.append(obj)
 
 		# Pure functional
@@ -408,8 +409,8 @@ class Management(models.Model):
 			Steps
 				Clean
 				Get orders
-				Loop 
-					Line analysis
+				Loop - Line analysis
+				Stats
 		"""
 		print()
 		print('** Update Sales')
@@ -440,7 +441,6 @@ class Management(models.Model):
 						self.line_analysis_obj(line, vector_obj)
 						self.line_analysis_sub(line, vector_sub)
 
-
 				# If credit Note - Do Amount Flow
 				elif order.state in ['credit_note']:
 					self.credit_note_analysis()
@@ -450,8 +450,10 @@ class Management(models.Model):
 		# Set Averages
 		self.set_averages()
 
+
 		# Set Ratios
 		self.set_ratios()
+
 
 		# Set Totals
 		vector = [self.amo_products, self.amo_services, self.amo_other, self.amo_credit_notes]
@@ -464,89 +466,26 @@ class Management(models.Model):
 
 
 		# Set Percentages
-
 		#mgt_funcs.set_percentages(self, total_amount)
+		#results = mgt_funcs.percentages_pure(vector, self.total_amount)
 
-		vector = [
 
-			# Families
-			self.amo_products,
-			self.amo_consultations,
-			self.amo_procedures,
-			self.amo_credit_notes,
-			self.amo_other,
+		# Test
+		#print('Vector obj - Test')
+		#for obj in vector_obj:
+		#	print(obj.name)
+		#	print(obj.amount)
+		#	print(obj.count)
+		#	print()
 
-			# Sub Families
-			self.amo_co2,
-			self.amo_exc,
-			self.amo_ipl,
-			self.amo_ndyag,
-			self.amo_quick,
-
-			self.amo_medical,
-			self.amo_cosmetology,
-
-			self.amo_sub_con_med,
-			self.amo_sub_con_gyn,
-			self.amo_sub_con_cha,
-
-			self.amo_echo,
-			self.amo_gyn,
-			self.amo_prom,
-
-			self.amo_topical,
-			self.amo_card,
-			self.amo_kit,
-
-		]
-
-		results = mgt_funcs.percentages_pure(vector, self.total_amount)
-
-		# Test 
-		print('Vector obj - Test')
-		for obj in vector_obj:
-			print(obj.name)
-			print(obj.amount)
-			print(obj.count)
-			print()
 
 		# Set macros
+		# Bridges 
+		mgt_bridge.set_totals(self, vector_obj)
 
-		# Totals
-		self.vec_amount = mgt_funcs.obj_get_amount_total_pure(vector_obj)
-		self.vec_count = mgt_funcs.obj_get_count_total_pure(vector_obj)
+		mgt_bridge.set_types(self, vector_obj)
 
-		# Types
-		obj = filter(lambda x: x.name == 'products', vector_obj)[0] 
-		self.vec_products_amount = obj.amount
-		self.vec_products_count = obj.count
-
-		obj = filter(lambda x: x.name == 'services', vector_obj)[0] 
-		self.vec_services_amount = obj.amount
-		self.vec_services_count = obj.count
-
-		# Families
-
-		# Sub families
-		obj = filter(lambda x: x.name == 'co2', vector_sub)[0] 
-		self.vec_co2_amount = obj.amount
-		self.vec_co2_count = obj.count
-
-		obj = filter(lambda x: x.name == 'exc', vector_sub)[0] 
-		self.vec_exc_amount = obj.amount
-		self.vec_exc_count = obj.count
-
-		obj = filter(lambda x: x.name == 'ndy', vector_sub)[0] 
-		self.vec_ndy_amount = obj.amount
-		self.vec_ndy_count = obj.count
-
-		obj = filter(lambda x: x.name == 'ipl', vector_sub)[0] 
-		self.vec_ipl_amount = obj.amount
-		self.vec_ipl_count = obj.count
-
-		obj = filter(lambda x: x.name == 'qui', vector_sub)[0] 
-		self.vec_qui_amount = obj.amount
-		self.vec_qui_count = obj.count
+		mgt_bridge.set_subfamilies(self, vector_sub)
 
 	# update_sales
 
@@ -1168,7 +1107,6 @@ class Management(models.Model):
 		elif prod.pl_family in ['promotion']:
 			sub = 'pro'
 
-
 		# Topical
 		elif prod.pl_family in ['topical']:
 			sub = 'top'
@@ -1189,7 +1127,6 @@ class Management(models.Model):
 		for obj in vector: 
 			obj.inc_amount(line.price_subtotal)
 			obj.inc_count(line.product_uom_qty)
-
 
 
 # ----------------------------------------------------------- Line Analysis ----

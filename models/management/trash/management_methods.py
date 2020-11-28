@@ -1,3 +1,44 @@
+# 31 oct 2020 
+		vector = [
+
+			# Families
+			self.amo_products,
+			self.amo_consultations,
+			self.amo_procedures,
+			self.amo_credit_notes,
+			self.amo_other,
+
+			# Sub Families
+			self.amo_co2,
+			self.amo_exc,
+			self.amo_ipl,
+			self.amo_ndyag,
+			self.amo_quick,
+
+			self.amo_medical,
+			self.amo_cosmetology,
+
+			self.amo_sub_con_med,
+			self.amo_sub_con_gyn,
+			self.amo_sub_con_cha,
+
+			self.amo_echo,
+			self.amo_gyn,
+			self.amo_prom,
+
+			self.amo_topical,
+			self.amo_card,
+			self.amo_kit,
+
+		]
+
+		results = mgt_funcs.percentages_pure(vector, self.total_amount)
+
+
+
+
+
+
 def create_doctor_data(self, doctor_name, orders):
 
 

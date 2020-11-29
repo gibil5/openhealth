@@ -31,8 +31,9 @@ from . import mgt_subfamily_line
 from . import mgt_day_line
 
 
+from . import management_fields
 from . import management
-from . import management_methods
+#from . import management_methods
 #from . import management_extra
 
 

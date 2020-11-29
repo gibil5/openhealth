@@ -4,8 +4,8 @@
         Database search and count for the models:
             SaleOrder
 
-	Created: 		26 oct 2020
-	Last up: 		26 oct 2020
+	Created: 			26 oct 2020
+	Last up: 			28 nov 2020
 
 	Signature
 		get_orders_filter_fast
@@ -25,7 +25,7 @@ _MODEL_SALE = "sale.order"
 # States: In State Array
 def get_orders_filter_fast(self, date_bx, date_ex):
 	"""
-	Used by: 
+	Used by:
 		management
 		day_line
 		productivity
@@ -34,8 +34,7 @@ def get_orders_filter_fast(self, date_bx, date_ex):
 	#print('Get Orders - Fast')
 
 	# Init
-	DATETIME_FORMAT = _DATE_FORMAT
-	date_end_dt = datetime.datetime.strptime(date_ex, DATETIME_FORMAT) + \
+	date_end_dt = datetime.datetime.strptime(date_ex, _DATE_FORMAT) + \
 																		datetime.timedelta(hours=24) + datetime.timedelta(hours=5, minutes=0)
 	date_begin = date_bx + ' 05:00:00'
 	date_end = date_end_dt.strftime(_DATE_HOUR_FORMAT)
@@ -67,7 +66,7 @@ def get_orders_filter_fast(self, date_bx, date_ex):
 # ---------------------------------------------- Get orders - Filter -----------
 def get_orders_filter(self, date_bx, date_ex, state_arr, type_arr):
 	"""
-	Used by 
+	Used by
 		management
 	"""
 	#print()
@@ -78,8 +77,7 @@ def get_orders_filter(self, date_bx, date_ex, state_arr, type_arr):
 	#print(type_arr)
 
 	# Init
-	DATETIME_FORMAT = _DATE_FORMAT
-	date_end_dt = datetime.datetime.strptime(date_ex, DATETIME_FORMAT) + \
+	date_end_dt = datetime.datetime.strptime(date_ex, _DATE_FORMAT) + \
 																		datetime.timedelta(hours=24) + datetime.timedelta(hours=5, minutes=0)
 	date_begin = date_bx + ' 05:00:00'
 	date_end = date_end_dt.strftime(_DATE_HOUR_FORMAT)
@@ -152,10 +150,8 @@ def get_orders_filter_by_doctor(self, date_bx, date_ex, doctor):
 
 	# Init
 	# Dates
-	#DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
 	date_begin = date_bx + ' 05:00:00'
-	DATETIME_FORMAT = _DATE_FORMAT
-	date_end_dt = datetime.datetime.strptime(date_ex, DATETIME_FORMAT) + \
+	date_end_dt = datetime.datetime.strptime(date_ex, _DATE_FORMAT) + \
 																		datetime.timedelta(hours=24) + datetime.timedelta(hours=5, minutes=0)
 	date_end = date_end_dt.strftime(_DATE_HOUR_FORMAT)
 
@@ -191,10 +187,12 @@ def get_orders_filter_by_doctor(self, date_bx, date_ex, doctor):
 
 # ----------------------------------------------------------- Get orders - By patient --------------
 # Provides sales between begin date and end date. Filters: by patient.
-def get_orders_filter_by_patient_fast(self, patient):
+#def get_orders_filter_by_patient_fast(self, patient):
+def get_orders_filter_by_patient(self, patient):
 	"""
 	Sales.
 	Must include Credit Notes.
+	Used by - mgt_patient_line
 	"""
 	#print()
 	#print('Get Orders Filter - By patient')
@@ -225,4 +223,3 @@ def get_orders_filter_by_patient_fast(self, patient):
 	return orders, count
 
 # get_orders_filter_by_patient_fast
-

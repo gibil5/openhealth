@@ -2,28 +2,25 @@
 """
 	Productivity Funcs
 
-	Used by
-		update productivity
+	Used by - update productivity
 
-	Created: 		 7 Dec 2019
-	Last up: 		26 oct 2020
+	Created: 			 7 Dec 2019
+	Last up: 			28 nov 2020
 
 	Signature
 		create_days
 		update_day_cumulative
 		update_day_avg
 """
+from __future__ import print_function
 import datetime
-from openerp import models, fields, api
 
 
 # ----------------------------------------------------------- Create Days ------
 # Create Days
-@api.multi
 def create_days(self):
 	"""
-	Used by
-		Update productivity
+	Used by - Update productivity
 	"""
 	print()
 	print('Create Days')
@@ -49,7 +46,7 @@ def create_days(self):
 	print(days_inactive)
 	print()
 
-	# Get nr of days 
+	# Get nr of days
 	#date_format = "%Y-%m-%d %H:%M:%S"
 	date_format = "%Y-%m-%d"
 	date_end_dt = datetime.datetime.strptime(self.date_end, date_format)
@@ -62,7 +59,7 @@ def create_days(self):
 		#print(i)
 		date_dt = date_begin_dt + datetime.timedelta(i)
 		weekday = date_dt.weekday()
-		weekday_str = _dic_weekday[weekday]			
+		weekday_str = _dic_weekday[weekday]
 		#print(date_dt, weekday)
 
 		# Duration
@@ -73,7 +70,7 @@ def create_days(self):
 
 		# Not Sunday
 		if weekday in [0, 1, 2, 3, 4, 5]:
-			date_s = date_dt.strftime(date_format)				
+			date_s = date_dt.strftime(date_format)
 			#print(date_s)
 
 			# Not holiday
@@ -106,12 +103,10 @@ def create_days(self):
 
 # ------------------------------------------------------- Update Cumulative ----
 # Update Cumulative
-@api.multi
 def update_day_cumulative(self):
 	"""
 	Update Day Cumulative
-	Used by
-		Update productivity
+	Used by - Update productivity
 	"""
 	print()
 	print('Update - Cumulative')
@@ -138,7 +133,7 @@ def update_day_cumulative(self):
 
 	# Update Nr Days Total
 	#for day in self.day_line:
-	for day in self.productivity_day:	
+	for day in self.productivity_day:
 		day.nr_days_total = duration_total
 
 # update_day_cumulative
@@ -146,12 +141,10 @@ def update_day_cumulative(self):
 
 # --------------------------------------------------------- Update Averages ----
 # Update Averages
-@api.multi
 def update_day_avg(self):
 	"""
 	Update Day Average
-	Used by
-		Update productivity
+	Used by - Update productivity
 	"""
 	print()
 	print('X - Update - Average')

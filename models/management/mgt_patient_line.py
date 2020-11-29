@@ -106,7 +106,8 @@ class MgtPatientLine(models.Model):
 		self.count_total = 0
 
 		# Get Orders
-		orders, count = mgt_db.get_orders_filter_by_patient_fast(self, self.patient.id)
+		#orders, count = mgt_db.get_orders_filter_by_patient_fast(self, self.patient.id)
+		orders, count = mgt_db.get_orders_filter_by_patient(self, self.patient.id)
 
 		for order in orders:
 			self.amount_total = self.amount_total + order.x_amount_flow

@@ -4,7 +4,7 @@
 	Should be unit testable - independent from openerp
 
 	Created: 			28 May 2018
-	Last updated: 		31 oct 2020
+	Last up: 			28 nov 2020
 
 	- Use functional programming - ie pure functions.
 	- Use lambda funcs, map, filter, reduce, decorators, generators, etc.
@@ -15,13 +15,121 @@
 		set_percentages
 """
 from __future__ import print_function
-import datetime
 from functools import reduce
 
 # ------------------------------------------------------------- Constants ------
 _DATE_FORMAT = "%Y-%m-%d"
 _DATE_HOUR_FORMAT = "%Y-%m-%d %H:%M"
 _MODEL_SALE = "sale.order"
+
+
+# ----------------------------------------------------------- Line Analysis ----
+#def line_analysis_sub(self, line, vector_sub):
+def line_analysis_sub(line, vector_sub):
+	"""
+	vector sub
+	Parses order lines
+	Updates counters
+	"""
+	print('Line line_analysis_sub')
+
+	# Init
+	prod = line.product_id
+	sub = ''
+
+	# By Treatment
+
+	if prod.pl_treatment in ['CONSULTA MEDICA']:
+		sub = 'con'
+
+	# Co2
+	elif prod.pl_treatment in ['LASER CO2 FRACCIONAL']:
+		sub = 'co2'
+
+	# Exc
+	elif prod.pl_treatment in ['LASER EXCILITE']:
+		sub = 'exc'
+
+	# Quick
+	elif prod.pl_treatment in ['QUICKLASER']:
+		sub = 'qui'
+
+	# Ipl
+	elif prod.pl_treatment in ['LASER M22 IPL']:
+		sub = 'ipl'
+
+	# Ndyag
+	elif prod.pl_treatment in ['LASER M22 ND YAG']:
+		sub = 'ndy'
+
+
+	elif prod.pl_family in ['medical']:
+		sub = 'med'
+
+	# Cosmeto
+	elif prod.pl_family in ['cosmetology']:
+		sub = 'cos'
+
+	# Echo
+	elif prod.pl_family in ['echography']:
+		sub = 'ech'
+
+	# Gyn
+	elif prod.pl_family in ['gynecology']:
+		sub = 'gyn'
+
+	# Prom
+	elif prod.pl_family in ['promotion']:
+		sub = 'pro'
+
+	# Topical
+	elif prod.pl_family in ['topical']:
+		sub = 'top'
+
+	# Card
+	elif prod.pl_family in ['card']:
+		sub = 'vip'
+
+	# kit
+	elif prod.pl_family in ['kit']:
+		sub = 'kit'
+
+
+	# Filter
+	vector = filter(lambda x: x.name == sub, vector_sub)
+
+	# Inc
+	for obj in vector:
+		obj.inc_amount(line.price_subtotal)
+		obj.inc_count(line.product_uom_qty)
+
+
+# ----------------------------------------------------------- Line Analysis ----
+#def line_analysis_obj(self, line, vector_obj):
+def line_analysis_obj(line, vector_obj):
+	"""
+	Obj vector
+	Parses order lines
+	Updates counters
+	"""
+	print('Line line_analysis_obj')
+
+	# Init
+	prod = line.product_id
+
+	# Products
+	if prod.type in ['product']:
+		vector = filter(lambda x: x.name == 'products', vector_obj)
+
+	# Services
+	else:
+		vector = filter(lambda x: x.name == 'services', vector_obj)
+
+	# Inc
+	for obj in vector:
+		obj.inc_amount(line.price_subtotal)
+		obj.inc_count(line.product_uom_qty)
+
 
 
 # ----------------------------------------------------------- Get Totals -------
@@ -50,10 +158,10 @@ def obj_percentages_pure(vector, total):
 	print(vector)
 
 	if total > 0:
-		results = map((lambda x : round(100 * x.amount / total, 2)), vector)
+		results = map((lambda x: round(100 * x.amount / total, 2)), vector)
 	else:
-		results = map((lambda x : 0), vector)		
-		
+		results = map((lambda x: 0), vector)
+
 	print(results)
 
 	return results
@@ -68,7 +176,7 @@ def percentages_pure(vector, total):
 	print('**** percentages_pure')
 
 	print(vector)
-	results = map((lambda x : round(100 * x / total, 2)), vector)
+	results = map((lambda x: round(100 * x / total, 2)), vector)
 	print(results)
 
 	return results
@@ -83,14 +191,17 @@ def get_sum_pure(vector):
 
 
 # --------------------------------------------------------------- Division -----
-def division(amo, nr):
-    return round(float(amo) / float(nr), 2) if nr else 0
+def division(amo, number):
+	"""
+	Division
+	"""
+	return round(float(amo) / float(number), 2) if number else 0
 
 
 # ----------------------------------------------------------- Set Averages -----
 def averages_pure(vector, func=division):
 	"""
-	Set Averages Pure 
+	Set Averages Pure
 	Using functional programming
 	Used by: Management
 	"""
@@ -98,16 +209,13 @@ def averages_pure(vector, func=division):
 	print(averages_pure)
 	ave = []
 
-	for data in vector: 
+	for data in vector:
 		tag = data[0]
 		amo = data[1]
-		nr = data[2]
+		number = data[2]
+		ave.append((tag, func(amo, number)))
+		print(amo, number)
 
-		#ave.append(func(amo, nr))
-		ave.append((tag, func(amo, nr)))
-
-		print(amo, nr)
-	
 	print(ave)
 
 	return ave
@@ -120,7 +228,7 @@ def averages_pure(vector, func=division):
 def set_percentages(self, total_amount):
 	"""
 	Set Percentages
-	Used by 
+	Used by
 		Management
 	"""
 	# By Month

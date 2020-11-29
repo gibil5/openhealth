@@ -1,22 +1,16 @@
 # -*- coding: utf-8 -*-
 """
-	Management Report - Only Data model. No functions **
+	Management Fields
 
-	Created: 			28 may 2018
+	Created: 			28 nov 2020
 	Last up: 			28 nov 2020
 """
-#from __future__ import print_function
 from openerp import models, fields, api
 
-#class Management(models.Model):
 class ManagementFields(models.Model):
 	"""
-	Contains only the data model. No functions.
-		- Management Report (Gerencia)
-		- Reports Sales, for a time period. From a Star Date to an End Date.
-		- Allows several analysis like: Doctor Sale analysis, Patient Purchase analysis, Productivity analysis, Daily Sales, per Doctor, Statistics, Report Validation.
+	Contains the model fields.
 	"""
-	#_name = 'openhealth.management'
 	_name = 'openhealth.management_fields'
 	_inherit = 'openhealth.repo'
 	_order = 'date_begin desc'
@@ -308,15 +302,3 @@ class ManagementFields(models.Model):
 	avg_cosmetology = fields.Float(
 			'Precio Prom. Cosmiatria',
 		)
-
-# ----------------------------------------------------------- Class vars -------
-	# used by prod_funcs, doctor_daily
-	#_dic_weekday = {
-	#				0: 	'monday',
-	#				1: 	'tuesday',
-	#				2: 	'wednesday',
-	#				3: 	'thursday',
-	#				4: 	'friday',
-	#				5: 	'saturday',
-	#				6: 	'sunday',
-	#}

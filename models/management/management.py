@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-	Management - Methods
+	Management
 
 	Using: vectors and functional programming.
 
@@ -8,26 +8,20 @@
 	Last up: 			28 nov 2020
 """
 from __future__ import print_function
-from timeit import default_timer as timer
+#from timeit import default_timer as timer
 import datetime
 import collections
 
 from openerp import models, fields, api
-#from openerp.addons.openhealth.models.order import ord_vars
-
-#from management import Management
 
 from physician import Physician
 from mgt_order_line import MgtOrderLine
 from mgt_product_counter import MgtProductCounter
 from mgt_patient_line import MgtPatientLine
 from lib import mgt_funcs, prod_funcs, mgt_db, mgt_bridge
-
 from . import mgt_vars
 
 # --------------------------------------------------------------- Constants ----
-#_MODEL_MGT = "openhealth.management"
-
 TYPES = [
 
 		# Types
@@ -69,7 +63,6 @@ class Management(models.Model):
 	"""
 	Contains only methods.
 	"""
-	#_inherit = _MODEL_MGT
 	_name = 'openhealth.management'
 	_inherit = 'openhealth.management_fields'
 
@@ -132,32 +125,31 @@ class Management(models.Model):
 		)
 
 # ----------------------------------------------------------- Repo -------------
-	# Dates 
+	# Dates
 	date_begin = fields.Date(
-			string="Fecha Inicio", 
-			default = fields.Date.today, 
-			required=True, 
-		)
-
-	date_end = fields.Date(
-			string="Fecha Fin", 
-			default = fields.Date.today, 
-			required=True, 
-		)
-
-# ----------------------------------------------------------- PL - Natives -----
-	mode = fields.Selection(
-			[ 	('normal', 'Normal'),
-				('test', 'Test'),
-				#('legacy', 'Legacy'),
-			],
-			default='normal',
+			string="Fecha Inicio",
+			default=fields.Date.today,
 			required=True,
 		)
 
+	date_end = fields.Date(
+			string="Fecha Fin",
+			default=fields.Date.today,
+			required=True,
+		)
+
+# ----------------------------------------------------------- PL - Natives -----
+	mode = fields.Selection([('normal', 'Normal'),
+							('test', 'Test'),
+							#('legacy', 'Legacy'),
+							],
+		default='normal',
+		required=True,
+	)
+
 	# All Year Max and Min
 	pl_max = fields.Boolean('Max')
-	
+
 	pl_min = fields.Boolean('Min')
 
 # ----------------------------------------------------------- PL - Natives -----
@@ -218,7 +210,7 @@ class Management(models.Model):
 	amo_sub_con_med = fields.Float(
 			'Monto Cons Med',
 		)
-	
+
 	per_amo_sub_con_med = fields.Float(
 			'% Monto Cons Med',
 		)
@@ -231,7 +223,7 @@ class Management(models.Model):
 	amo_sub_con_gyn = fields.Float(
 			'Monto Cons Gin',
 		)
-	
+
 	per_amo_sub_con_gyn = fields.Float(
 			'% Monto Cons Gin',
 		)
@@ -244,7 +236,7 @@ class Management(models.Model):
 	amo_sub_con_cha = fields.Float(
 			'Monto Cons Dr. Chav',
 		)
-	
+
 	per_amo_sub_con_cha = fields.Float(
 			'% Monto Sub Cons Dr. Chav',
 		)
@@ -325,7 +317,7 @@ class Management(models.Model):
 		)
 
 	month = fields.Selection(
-			selection=mgt_vars._month_order_list,			
+			selection=mgt_vars._month_order_list,
 			string='Mes',
 			required=True,
 		)
@@ -485,13 +477,11 @@ class Management(models.Model):
 		print()
 		print('*** Update Fast')
 
-
 		#  Init vectors
 		vector_obj = self.init_vector(TYPES)
 		#print(vector_obj)
 		vector_sub = self.init_vector(SUBFAMILIES)
 		#print(vector_sub)
-
 
 		# Update sales
 		self.update_sales(vector_obj, vector_sub)
@@ -710,8 +700,10 @@ class Management(models.Model):
 					# Line Analysis
 					for line in order.order_line:
 						self.line_analysis(line)
-						self.line_analysis_obj(line, vector_obj)
-						self.line_analysis_sub(line, vector_sub)
+						#self.line_analysis_obj(line, vector_obj)
+						#self.line_analysis_sub(line, vector_sub)
+						mgt_funcs.line_analysis_obj(line, vector_obj)
+						mgt_funcs.line_analysis_sub(line, vector_sub)
 
 				# If credit Note - Do Amount Flow
 				elif order.state in ['credit_note']:
@@ -764,7 +756,9 @@ class Management(models.Model):
 
 # ---------------------------------------------------------- Get Averages ------
 	def set_averages(self):
-
+		"""
+		Set averages
+		"""
 		vector = [
 					# Families
 					('prod', self.amo_products, self.nr_products),
@@ -803,6 +797,9 @@ class Management(models.Model):
 
 # ---------------------------------------------------------- Set Averages ------
 	def upack_vector_avg(self, result):
+		"""
+		Unpack vecto average
+		"""
 		for avg in result:
 			tag = avg[0]
 			value = avg[1]
@@ -811,6 +808,9 @@ class Management(models.Model):
 
 # ------------------------------------------------------- Bridge Averages ------
 	def bridge_avg(self, tag, value):
+		"""
+		Bridge average
+		"""
 
 		#dic = {
 		#		'prod': 	self.avg_products,
@@ -909,7 +909,6 @@ class Management(models.Model):
 		print('** Update Year')
 
 		# Mgts
-		#mgts = self.env[_MODEL_MGT].search([
 		mgts = self.env["openhealth.management"].search([
 												('owner', 'in', ['month']),
 												('year', 'in', [self.year]),
@@ -918,7 +917,6 @@ class Management(models.Model):
 												#limit=1,
 											)
 		# Count
-		#count = self.env[_MODEL_MGT].search_count([
 		count = self.env["openhealth.management"].search_count([
 													('owner', 'in', ['month']),
 													('year', 'in', [self.year]),
@@ -1323,111 +1321,6 @@ class Management(models.Model):
 	# set_ratios
 
 
-# ----------------------------------------------------------- Line Analysis ----
-	def line_analysis_sub(self, line, vector_sub):
-		"""
-		vector sub
-		Parses order lines
-		Updates counters
-		"""
-		print('Line line_analysis_sub')
-
-		# Init
-		prod = line.product_id
-		sub = ''
-
-		# By Treatment
-
-		if prod.pl_treatment in ['CONSULTA MEDICA']:
-			sub = 'con'
-
-		# Co2
-		elif prod.pl_treatment in ['LASER CO2 FRACCIONAL']:
-			sub = 'co2'
-
-		# Exc
-		elif prod.pl_treatment in ['LASER EXCILITE']:
-			sub = 'exc'
-
-		# Quick
-		elif prod.pl_treatment in ['QUICKLASER']:
-			sub = 'qui'
-
-		# Ipl
-		elif prod.pl_treatment in ['LASER M22 IPL']:
-			sub = 'ipl'
-
-		# Ndyag
-		elif prod.pl_treatment in ['LASER M22 ND YAG']:
-			sub = 'ndy'
-
-
-		elif prod.pl_family in ['medical']:
-			sub = 'med'
-
-		# Cosmeto
-		elif prod.pl_family in ['cosmetology']:
-			sub = 'cos'
-
-		# Echo
-		elif prod.pl_family in ['echography']:
-			sub = 'ech'
-
-		# Gyn
-		elif prod.pl_family in ['gynecology']:
-			sub = 'gyn'
-
-		# Prom
-		elif prod.pl_family in ['promotion']:
-			sub = 'pro'
-
-		# Topical
-		elif prod.pl_family in ['topical']:
-			sub = 'top'
-
-		# Card
-		elif prod.pl_family in ['card']:
-			sub = 'vip'
-
-		# kit
-		elif prod.pl_family in ['kit']:
-			sub = 'kit'
-
-
-		# Filter
-		vector = filter(lambda x: x.name == sub, vector_sub)
-
-		# Inc
-		for obj in vector:
-			obj.inc_amount(line.price_subtotal)
-			obj.inc_count(line.product_uom_qty)
-
-
-# ----------------------------------------------------------- Line Analysis ----
-	def line_analysis_obj(self, line, vector_obj):
-		"""
-		Obj vector
-		Parses order lines
-		Updates counters
-		"""
-		print('Line line_analysis_obj')
-
-		# Init
-		prod = line.product_id
-
-		# Products
-		if prod.type in ['product']:
-			vector = filter(lambda x: x.name == 'products', vector_obj)
-
-		# Services
-		else:
-			vector = filter(lambda x: x.name == 'services', vector_obj)
-
-		# Inc
-		for obj in vector:
-			obj.inc_amount(line.price_subtotal)
-			obj.inc_count(line.product_uom_qty)
-
 
 # ----------------------------------------------------------- Line Analysis ----
 	def line_analysis(self, line):
@@ -1549,6 +1442,9 @@ class Management(models.Model):
 
 # ------------------------------------------------------------- CN Analysis ----
 	def credit_note_analysis(self, order):
+		"""
+		Credit note analysis
+		"""
 		self.nr_credit_notes = self.nr_credit_notes + 1
 		self.amo_credit_notes = self.amo_credit_notes + order.x_amount_flow
 

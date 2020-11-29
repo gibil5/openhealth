@@ -28,6 +28,16 @@ def create_days(self):
 	print()
 	print('Create Days')
 
+	_dic_weekday = {
+					0: 	'monday',
+					1: 	'tuesday',
+					2: 	'wednesday',
+					3: 	'thursday',
+					4: 	'friday',
+					5: 	'saturday',
+					6: 	'sunday',
+	}
+
 	# Clean
 	#self.day_line.unlink()
 	self.productivity_day.unlink()
@@ -52,7 +62,7 @@ def create_days(self):
 		#print(i)
 		date_dt = date_begin_dt + datetime.timedelta(i)
 		weekday = date_dt.weekday()
-		weekday_str = self._dic_weekday[weekday]			
+		weekday_str = _dic_weekday[weekday]			
 		#print(date_dt, weekday)
 
 		# Duration

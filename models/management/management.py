@@ -1,302 +1,31 @@
 # -*- coding: utf-8 -*-
 """
-	Management Report
-
-	** Only Data model. No functions **
+	Management Report - Only Data model. No functions **
 
 	Created: 			28 may 2018
-	Last up: 			28 oct 2020
+	Last up: 			28 nov 2020
 """
-from __future__ import print_function
-import os
-import collections
-import datetime
-from timeit import default_timer as timer
+#from __future__ import print_function
 from openerp import models, fields, api
 
-from openerp.addons.openhealth.models.order import ord_vars
-from . import mgt_vars
-
-
-class Management(models.Model):
+#class Management(models.Model):
+class ManagementFields(models.Model):
 	"""
 	Contains only the data model. No functions.
 		- Management Report (Gerencia)
 		- Reports Sales, for a time period. From a Star Date to an End Date.
 		- Allows several analysis like: Doctor Sale analysis, Patient Purchase analysis, Productivity analysis, Daily Sales, per Doctor, Statistics, Report Validation.
 	"""
-	_name = 'openhealth.management'
+	#_name = 'openhealth.management'
+	_name = 'openhealth.management_fields'
 	_inherit = 'openhealth.repo'
 	_order = 'date_begin desc'
-
-
-# ----------------------------------------------------------- Relations --------
-	# Doctor line
-	# For Update Daily
-	doctor_line = fields.One2many(
-			'openhealth.management.doctor.line',
-			'management_id',
-		)
-
-	# Doctor Day
-	doctor_daily = fields.One2many(
-			'doctor.daily',
-			'management_id',
-		)
-
-	# Productivity
-	productivity_day = fields.One2many(
-			'productivity.day',
-			'management_id',
-		)
-
-	# Patient
-	patient_line = fields.One2many(
-			'openhealth.management.patient.line',
-			'management_id',
-		)
-
-
-
-# ----------------------------------------------------------- PL - Natives -----
-	mode = fields.Selection(
-			[ 	('normal', 'Normal'),
-				('test', 'Test'),
-				#('legacy', 'Legacy'),
-			],
-			default='normal',
-			required=True,
-		)
-
-# ----------------------------------------------------------- PL - Natives -----
-	# All Year Max and Min
-	pl_max = fields.Boolean(
-			'Max',
-		)
-
-	pl_min = fields.Boolean(
-			'Min',
-		)
-
-
-
-# ----------------------------------------------------------- PL - Natives -----
-	# New Procedures
-
-	# Echography
-	nr_echo = fields.Integer(
-			'Nr Ecografia',
-		)
-	amo_echo = fields.Float(
-			'Monto Ecografia',
-		)
-	per_amo_echo = fields.Float(
-			'% Monto Ecografia',
-		)
-	avg_echo = fields.Float(
-			'Precio Prom. Ecografia',
-		)
-
-	# Gynecology
-	nr_gyn = fields.Integer(
-			'Nr Ginecologia',
-		)
-	amo_gyn = fields.Float(
-			'Monto Ginecologia',
-		)
-	per_amo_gyn = fields.Float(
-			'% Monto Ginecologia',
-		)
-	avg_gyn = fields.Float(
-			'Precio Prom. Ginecologia',
-		)
-
-	# Promotions
-	nr_prom = fields.Integer(
-			'Nr Promocion',
-		)
-	amo_prom = fields.Float(
-			'Monto Promocion',
-		)
-	per_amo_prom = fields.Float(
-			'% Monto Promocion',
-		)
-	avg_prom = fields.Float(
-			'Precio Prom. Promocion',
-		)
-
-# ----------------------------------------------------------- PL Natives -------
-	# Credit Notes
-	per_amo_credit_notes = fields.Float(
-		)
-
-	# Consultations
-	nr_sub_con_med = fields.Integer(
-			'Nr Cons Med',
-		)
-
-	amo_sub_con_med = fields.Float(
-			'Monto Cons Med',
-		)
-	
-	per_amo_sub_con_med = fields.Float(
-			'% Monto Cons Med',
-		)
-
-	# Gynecology
-	nr_sub_con_gyn = fields.Integer(
-			'Nr Cons Gin',
-		)
-
-	amo_sub_con_gyn = fields.Float(
-			'Monto Cons Gin',
-		)
-	
-	per_amo_sub_con_gyn = fields.Float(
-			'% Monto Cons Gin',
-		)
-
-	# Chavarri Brand
-	nr_sub_con_cha = fields.Integer(
-			'Nr Cons Dr. Chav',
-		)
-
-	amo_sub_con_cha = fields.Float(
-			'Monto Cons Dr. Chav',
-		)
-	
-	per_amo_sub_con_cha = fields.Float(
-			'% Monto Sub Cons Dr. Chav',
-		)
-
-	# Families and Sub Families
-	per_amo_families = fields.Float(
-			'% Monto Familias',
-		)
-
-	per_amo_subfamilies = fields.Float(
-			'% Monto Sub Familias',
-		)
-
-	#per_amo_subfamilies_products = fields.Float(
-	#		'% Monto Sub Familias Productos',
-	#	)
-
-	#per_amo_subfamilies_procedures = fields.Float(
-	#		'% Monto Sub Familias Procedimientos',
-	#	)
-
-	# Report Sale Product
-	report_sale_product = fields.Many2one(
-			'openhealth.report.sale.product'
-		)
-
-	rsp_count = fields.Integer(
-			'RSP Nr',
-		)
-
-	rsp_total = fields.Float(
-			'RSP Monto',
-		)
-
-	rsp_count_delta = fields.Integer(
-			'RSP Nr Delta',
-		)
-
-	rsp_total_delta = fields.Float(
-			'RSP Total Delta',
-		)
-
-# ----------------------------------------------------------- PL - Admin -------
-	admin_mode = fields.Boolean()
-
-	nr_products_stats = fields.Integer()
-
-	nr_consultations_stats = fields.Integer()
-
-	nr_procedures_stats = fields.Integer()
-
-# ----------------------------------------------------------- PL - Fields ------
-	# Owner
-	owner = fields.Selection(
-			[
-				('month', 'Month'),
-				('year', 'Year'),
-				('account', 'Account'),
-				('aggregate', 'Aggregate'),
-			],
-			default='month',
-			required=True,
-		)
-
-	month = fields.Selection(
-			selection=mgt_vars._month_order_list,			
-			string='Mes',
-			required=True,
-		)
-
-# ----------------------------------------------------------- QC ---------------
-	year = fields.Selection(
-			selection=ord_vars._year_order_list,
-			string='Año',
-			default='2020',
-			required=True,
-		)
-
-	delta_fast = fields.Float(
-			'Delta Fast',
-		)
-
-	delta_doctor = fields.Float(
-			'Delta Doctor',
-		)
-
-# ----------------------------------------------------------- Fields -----------
-	# Type Array
-	type_arr = fields.Selection(
-			selection=mgt_vars._type_arr_list,
-			string='Type Array',
-			required=True,
-			#default='ticket_receipt,ticket_invoice',
-			default='all',
-		)
-
-# ----------------------------------------------------------- Relational -------
-	# Sales
-	order_line = fields.One2many(
-			'openhealth.management.order.line',
-			'management_id',
-		)
-
-	# Sales
-	sale_line_tkr = fields.One2many(
-			'openhealth.management.order.line',
-			'management_tkr_id',
-		)
-
-	# Family
-	family_line = fields.One2many(
-			'openhealth.management.family.line',
-			'management_id',
-		)
-
-	# Sub_family
-	sub_family_line = fields.One2many(
-			'openhealth.management.sub_family.line',
-			'management_id',
-		)
-
-	# Daily
-	day_line = fields.One2many(
-			'openhealth.management.day.line',
-			'management_id',
-		)
 
 # ----------------------------------------------------------- Totals -----------
 	# Sales
 	total_count = fields.Integer(
 			'Nr Ventas',
-			readonly=True, 
+			readonly=True,
 		)
 
 	# Ticket
@@ -580,56 +309,14 @@ class Management(models.Model):
 			'Precio Prom. Cosmiatria',
 		)
 
-
-
-# ----------------------------------------------------------- From PL ----------
-	_dic_weekday = {
-					0: 	'monday',
-					1: 	'tuesday',
-					2: 	'wednesday',
-					3: 	'thursday',
-					4: 	'friday',
-					5: 	'saturday',
-					6: 	'sunday',
-	}
-
-	_h_name = {
-				# Families
-				'gynecology': 		'Ginecologia',
-				'echography': 		'Ecografia',
-				'promotion': 		'Promocion',
-
-				# 13 Jul 2018 
-				'other': 		'Otro',
-				'product': 		'Producto',
-				'consultation': 'Consulta', 		
-				'consultation_gyn': 'Consulta Ginecológica', 		
-				'consultation_100': 'Consulta 100', 		
-				'consultation_0': 'Consulta Gratuita', 		
-
-				'procedure': 	'Procedimiento Laser', 		
-				'laser': 		'Laser', 		
-
-				'medical': 		'Tratamiento Médico', 		
-				'cosmetology': 	'Cosmeatria', 	
-
-				'card': 		'Tarjeta Vip', 	
-				'kit': 			'Kits', 	
-				'topical': 		'Cremas', 	
-
-				# Subfamilies
-				'laser_co2' : 		'Laser Co2', 		
-				'laser_excilite' : 	'Laser Exc', 		
-				'laser_ipl' : 		'Laser Ipl', 		
-				'laser_ndyag' : 	'Laser Ndyag', 		
-				'laser_quick' : 	'Quick Laser', 		
-
-				'criosurgery' : 			'Criocirugía', 		
-				'intravenous_vitamin' : 	'Vitamina Intravenosa', 		
-				'botulinum_toxin' : 		'Toxina Botulínica', 		
-				'hyaluronic_acid' : 		'Acido Hialurónico', 		
-
-				'mesotherapy_nctf': 		'Mesoterapia NCTF', 
-				'infiltration_scar': 		'Infiltración Cicatriz', 
-				'infiltration_keloid': 		'Infiltración Queloide',
-	}
+# ----------------------------------------------------------- Class vars -------
+	# used by prod_funcs, doctor_daily
+	#_dic_weekday = {
+	#				0: 	'monday',
+	#				1: 	'tuesday',
+	#				2: 	'wednesday',
+	#				3: 	'thursday',
+	#				4: 	'friday',
+	#				5: 	'saturday',
+	#				6: 	'sunday',
+	#}

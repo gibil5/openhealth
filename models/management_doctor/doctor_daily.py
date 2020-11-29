@@ -67,9 +67,18 @@ class DoctorDaily(models.Model):
 		"""
 		print()
 		print('Y - Doctor Daily - Update')
-
 		print(self.date)
 		print()
+
+		_dic_weekday = {
+						0: 	'monday',
+						1: 	'tuesday',
+						2: 	'wednesday',
+						3: 	'thursday',
+						4: 	'friday',
+						5: 	'saturday',
+						6: 	'sunday',
+		}
 
 		#date_format_1 = "%Y-%m-%d %H:%M:%S"
 		date_format_1 = "%Y-%m-%d"
@@ -79,7 +88,7 @@ class DoctorDaily(models.Model):
 
 		# Weekday
 		weekday = date_dt.weekday()
-		self.weekday = ord_vars._dic_weekday[weekday]
+		self.weekday = _dic_weekday[weekday]
 
 		# Duration
 		if weekday in [5]:

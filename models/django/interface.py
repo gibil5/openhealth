@@ -5,15 +5,13 @@
 	
 	Data model. And functions.
 
- 	Created: 				10 Dec 2019
-	Last up: 	 		23 oct 2020
+ 	Created: 			10 Dec 2019
+	Last up: 	 		28 nov 2020
 """
 from openerp import models, fields, api
 
 class DjangoInterface(models.Model):
 	_name = 'openhealth.django.interface'
-	#_inherit=''
-	#_order = 'name'
 
 # ----------------------------------------------------------- Django -----------
 	# Date Test
@@ -64,14 +62,12 @@ class DjangoInterface(models.Model):
 	date_begin = fields.Date(
 			string="Fecha Inicio", 
 			default = fields.Date.today, 
-			#readonly=True,
 			required=True, 
 		)
 
 	date_end = fields.Date(
 			string="Fecha Fin", 
 			default = fields.Date.today, 
-			#readonly=True,
 			required=True, 
 		)
 

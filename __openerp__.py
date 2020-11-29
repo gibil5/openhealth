@@ -7,7 +7,7 @@
 """,
 'description': """
 
-	31 Oct 2020
+	28 nov 2020
 
 	Classes: 
 		- Order

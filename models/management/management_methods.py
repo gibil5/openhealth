@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 """
 	Management - Methods
-	
+
 	Using: vectors and functional programming.
 
 	Created: 			28 may 2018
-	Last up: 			31 oct 2020
+	Last up: 			28 nov 2020
 """
 from __future__ import print_function
 from timeit import default_timer as timer
@@ -13,22 +13,20 @@ import datetime
 import collections
 
 from openerp import models, fields, api
+#from openerp.addons.openhealth.models.order import ord_vars
 
-from lib import mgt_funcs
-from lib import prod_funcs
-from lib import mgt_db
+#from management import Management
 
-from mgt_patient_line import MgtPatientLine
-from management_order_line import MgtOrderLine
-
-from openerp.addons.openhealth.models.emr.physician import Physician
-
+from physician import Physician
+from mgt_order_line import MgtOrderLine
 from mgt_product_counter import MgtProductCounter
+from mgt_patient_line import MgtPatientLine
+from lib import mgt_funcs, prod_funcs, mgt_db, mgt_bridge
 
-from lib import mgt_bridge
+from . import mgt_vars
 
 # --------------------------------------------------------------- Constants ----
-_MODEL_MGT = "openhealth.management"
+#_MODEL_MGT = "openhealth.management"
 
 TYPES = [
 
@@ -54,10 +52,10 @@ SUBFAMILIES = [
 		'ipl',
 		'qui',
 
-		'med', 
+		'med',
 		'cos',
 
-		'ech', 
+		'ech',
 		'gyn',
 		'pro',
 
@@ -71,8 +69,282 @@ class Management(models.Model):
 	"""
 	Contains only methods.
 	"""
-	_inherit = _MODEL_MGT
+	#_inherit = _MODEL_MGT
+	_name = 'openhealth.management'
+	_inherit = 'openhealth.management_fields'
 
+
+# ----------------------------------------------------------- Relational -------
+	# Sales
+	order_line = fields.One2many(
+			'openhealth.management.order.line',
+			'management_id',
+		)
+
+	# Sales
+	sale_line_tkr = fields.One2many(
+			'openhealth.management.order.line',
+			'management_tkr_id',
+		)
+
+	# Family
+	family_line = fields.One2many(
+			'openhealth.management.family.line',
+			'management_id',
+		)
+
+	# Sub_family
+	sub_family_line = fields.One2many(
+			'openhealth.management.sub_family.line',
+			'management_id',
+		)
+
+	# Daily
+	day_line = fields.One2many(
+			'openhealth.management.day.line',
+			'management_id',
+		)
+
+
+# ----------------------------------------------------------- Relations --------
+	# Doctor line - For Update Daily
+	doctor_line = fields.One2many(
+			'openhealth.management.doctor.line',
+			'management_id',
+		)
+
+	# Doctor Day
+	doctor_daily = fields.One2many(
+			'doctor.daily',
+			'management_id',
+		)
+
+	# Productivity
+	productivity_day = fields.One2many(
+			'productivity.day',
+			'management_id',
+		)
+
+	# Patient
+	patient_line = fields.One2many(
+			'openhealth.management.patient.line',
+			'management_id',
+		)
+
+# ----------------------------------------------------------- Repo -------------
+	# Dates 
+	date_begin = fields.Date(
+			string="Fecha Inicio", 
+			default = fields.Date.today, 
+			required=True, 
+		)
+
+	date_end = fields.Date(
+			string="Fecha Fin", 
+			default = fields.Date.today, 
+			required=True, 
+		)
+
+# ----------------------------------------------------------- PL - Natives -----
+	mode = fields.Selection(
+			[ 	('normal', 'Normal'),
+				('test', 'Test'),
+				#('legacy', 'Legacy'),
+			],
+			default='normal',
+			required=True,
+		)
+
+	# All Year Max and Min
+	pl_max = fields.Boolean('Max')
+	
+	pl_min = fields.Boolean('Min')
+
+# ----------------------------------------------------------- PL - Natives -----
+	# New Procedures
+
+	# Echography
+	nr_echo = fields.Integer(
+			'Nr Ecografia',
+		)
+	amo_echo = fields.Float(
+			'Monto Ecografia',
+		)
+	per_amo_echo = fields.Float(
+			'% Monto Ecografia',
+		)
+	avg_echo = fields.Float(
+			'Precio Prom. Ecografia',
+		)
+
+	# Gynecology
+	nr_gyn = fields.Integer(
+			'Nr Ginecologia',
+		)
+	amo_gyn = fields.Float(
+			'Monto Ginecologia',
+		)
+	per_amo_gyn = fields.Float(
+			'% Monto Ginecologia',
+		)
+	avg_gyn = fields.Float(
+			'Precio Prom. Ginecologia',
+		)
+
+	# Promotions
+	nr_prom = fields.Integer(
+			'Nr Promocion',
+		)
+	amo_prom = fields.Float(
+			'Monto Promocion',
+		)
+	per_amo_prom = fields.Float(
+			'% Monto Promocion',
+		)
+	avg_prom = fields.Float(
+			'Precio Prom. Promocion',
+		)
+
+# ----------------------------------------------------------- PL Natives -------
+	# Credit Notes
+	per_amo_credit_notes = fields.Float(
+		)
+
+	# Consultations
+	nr_sub_con_med = fields.Integer(
+			'Nr Cons Med',
+		)
+
+	amo_sub_con_med = fields.Float(
+			'Monto Cons Med',
+		)
+	
+	per_amo_sub_con_med = fields.Float(
+			'% Monto Cons Med',
+		)
+
+	# Gynecology
+	nr_sub_con_gyn = fields.Integer(
+			'Nr Cons Gin',
+		)
+
+	amo_sub_con_gyn = fields.Float(
+			'Monto Cons Gin',
+		)
+	
+	per_amo_sub_con_gyn = fields.Float(
+			'% Monto Cons Gin',
+		)
+
+	# Chavarri Brand
+	nr_sub_con_cha = fields.Integer(
+			'Nr Cons Dr. Chav',
+		)
+
+	amo_sub_con_cha = fields.Float(
+			'Monto Cons Dr. Chav',
+		)
+	
+	per_amo_sub_con_cha = fields.Float(
+			'% Monto Sub Cons Dr. Chav',
+		)
+
+	# Families and Sub Families
+	per_amo_families = fields.Float(
+			'% Monto Familias',
+		)
+
+	per_amo_subfamilies = fields.Float(
+			'% Monto Sub Familias',
+		)
+
+	#per_amo_subfamilies_products = fields.Float(
+	#		'% Monto Sub Familias Productos',
+	#	)
+
+	#per_amo_subfamilies_procedures = fields.Float(
+	#		'% Monto Sub Familias Procedimientos',
+	#	)
+
+	# Report Sale Product
+	report_sale_product = fields.Many2one(
+			'openhealth.report.sale.product'
+		)
+
+	rsp_count = fields.Integer(
+			'RSP Nr',
+		)
+
+	rsp_total = fields.Float(
+			'RSP Monto',
+		)
+
+	rsp_count_delta = fields.Integer(
+			'RSP Nr Delta',
+		)
+
+	rsp_total_delta = fields.Float(
+			'RSP Total Delta',
+		)
+
+# ----------------------------------------------------------- PL - Admin -------
+	admin_mode = fields.Boolean()
+
+	nr_products_stats = fields.Integer()
+
+	nr_consultations_stats = fields.Integer()
+
+	nr_procedures_stats = fields.Integer()
+
+
+# ----------------------------------------------------------- Fields -----------
+	# Type Array
+	type_arr = fields.Selection(
+			selection=mgt_vars._type_arr_list,
+			string='Type Array',
+			required=True,
+			#default='ticket_receipt,ticket_invoice',
+			default='all',
+		)
+
+	state_arr = fields.Selection(
+			selection=mgt_vars._state_arr_list,
+		)
+
+# ----------------------------------------------------------- PL - Fields ------
+	# Owner
+	owner = fields.Selection(
+			[
+				('month', 'Month'),
+				('year', 'Year'),
+				('account', 'Account'),
+				('aggregate', 'Aggregate'),
+			],
+			default='month',
+			required=True,
+		)
+
+	month = fields.Selection(
+			selection=mgt_vars._month_order_list,			
+			string='Mes',
+			required=True,
+		)
+
+# ----------------------------------------------------------- QC ---------------
+	year = fields.Selection(
+			selection=mgt_vars._year_order_list,
+			string='Año',
+			default='2020',
+			required=True,
+		)
+
+	delta_fast = fields.Float(
+			'Delta Fast',
+		)
+
+	delta_doctor = fields.Float(
+			'Delta Doctor',
+		)
 
 # -------------------------------------------------------------------------------------------------
 # Functional vars
@@ -100,7 +372,7 @@ class Management(models.Model):
 	)
 
 
-	# Sub 
+	# Sub
 	vec_co2_amount = fields.Float(
 		'Co2',
 	)
@@ -223,7 +495,7 @@ class Management(models.Model):
 
 		# Update sales
 		self.update_sales(vector_obj, vector_sub)
-		
+
 		#self.update_year()
 
 	# update_fast
@@ -261,10 +533,10 @@ class Management(models.Model):
 		orders, count = mgt_db.get_orders_filter_fast(self, self.date_begin, self.date_end)
 		#print(orders)
 		#print(count)
-		
+
 		# Create
 		for order in orders:
-			
+
 			# Init
 			#patient_id = order.patient.id
 			patient = order.patient
@@ -273,7 +545,7 @@ class Management(models.Model):
 
 				# Count
 				count = MgtPatientLine.count_oh(patient.id, self.id, env)
-				
+
 				# Create
 				if count == 0:
 					#self.patient_line = MgtPatientLine.create_oh(patient_id, self.id, env)
@@ -325,10 +597,10 @@ class Management(models.Model):
 		"""
 		print()
 		print('*** Update Productivity')
-		
+
 		# Go
 		prod_funcs.create_days(self)
-		
+
 		# Update cumulative and average
 		prod_funcs.update_day_cumulative(self)
 		prod_funcs.update_day_avg(self)
@@ -357,14 +629,14 @@ class Management(models.Model):
 		# For each doctor line
 		for doctor in self.doctor_line:
 			print(doctor.name)
-			
+
 			#doctor.update_daily() 	# Here !
 			doctor.update_daily(self.id) 	# Here !
 		print()
 
 		# For Django
-		self.date_test = datetime.datetime.now() 
-		return 1	
+		self.date_test = datetime.datetime.now()
+		return 1
 	# update_daily
 
 # -------------------------------------------------------------- Validate ------
@@ -373,8 +645,8 @@ class Management(models.Model):
 	def validate(self):
 		"""
 		Button
-		Validates the content. 
-		For internal Data Coherency - internal and external. 
+		Validates the content.
+		For internal Data Coherency - internal and external.
 		"""
 		print()
 		print('*** Validate the content !')
@@ -433,7 +705,7 @@ class Management(models.Model):
 			if not order.x_block_flow:
 
 				# If sale
-				if order.state in ['sale']:  	
+				if order.state in ['sale']:
 
 					# Line Analysis
 					for line in order.order_line:
@@ -443,7 +715,7 @@ class Management(models.Model):
 
 				# If credit Note - Do Amount Flow
 				elif order.state in ['credit_note']:
-					self.credit_note_analysis()
+					self.credit_note_analysis(order)
 
 # Analysis - Setters
 
@@ -480,7 +752,7 @@ class Management(models.Model):
 
 
 		# Set macros
-		# Bridges 
+		# Bridges
 		mgt_bridge.set_totals(self, vector_obj)
 
 		mgt_bridge.set_types(self, vector_obj)
@@ -493,7 +765,7 @@ class Management(models.Model):
 # ---------------------------------------------------------- Get Averages ------
 	def set_averages(self):
 
-		vector = [	
+		vector = [
 					# Families
 					('prod', self.amo_products, self.nr_products),
 					('serv', self.amo_services, self.nr_services),
@@ -528,10 +800,10 @@ class Management(models.Model):
 
 		self.upack_vector_avg(result)
 
-		
+
 # ---------------------------------------------------------- Set Averages ------
 	def upack_vector_avg(self, result):
-		for avg in result: 
+		for avg in result:
 			tag = avg[0]
 			value = avg[1]
 			self.bridge_avg(tag, value)
@@ -550,13 +822,13 @@ class Management(models.Model):
 
 		# Families
 		if tag == 'prod':
-			self.avg_products  = value
+			self.avg_products = value
 			return
 
 		if tag == 'serv':
 			self.avg_services = value
 			return
-		
+
 		if tag == 'cons':
 			self.avg_consultations = value
 			return
@@ -564,7 +836,7 @@ class Management(models.Model):
 		if tag == 'proc':
 			self.avg_procedures = value
 			return
-		
+
 		if tag == 'othe':
 			self.avg_other = value
 			return
@@ -637,7 +909,8 @@ class Management(models.Model):
 		print('** Update Year')
 
 		# Mgts
-		mgts = self.env[_MODEL_MGT].search([
+		#mgts = self.env[_MODEL_MGT].search([
+		mgts = self.env["openhealth.management"].search([
 												('owner', 'in', ['month']),
 												('year', 'in', [self.year]),
 											],
@@ -645,7 +918,8 @@ class Management(models.Model):
 												#limit=1,
 											)
 		# Count
-		count = self.env[_MODEL_MGT].search_count([
+		#count = self.env[_MODEL_MGT].search_count([
+		count = self.env["openhealth.management"].search_count([
 													('owner', 'in', ['month']),
 													('year', 'in', [self.year]),
 											],
@@ -655,7 +929,7 @@ class Management(models.Model):
 
 		#print(mgts)
 		#print(count)
-		total = 0		
+		total = 0
 		for mgt in mgts:
 			total = total + mgt.total_amount
 		self.total_amount_year = total
@@ -676,7 +950,7 @@ class Management(models.Model):
 		print()
 		print('Update Sales - By Doctor')
 
-		# Clean - Important 
+		# Clean - Important
 		self.doctor_line.unlink()
 
 		# Init vars
@@ -691,7 +965,7 @@ class Management(models.Model):
 		#print(doctors)
 
 
-		# Create Sales - By Doctor - All 
+		# Create Sales - By Doctor - All
 		for doctor in doctors:
 			#print(doctor.name)
 			#print(doctor.active)
@@ -763,7 +1037,7 @@ class Management(models.Model):
 		doctor.x_count = count
 
 		# Percentage
-		if self.total_amount != 0: 
+		if self.total_amount != 0:
 			doctor.per_amo = (doctor.amount / self.total_amount)
 
 	# create_doctor_data
@@ -933,8 +1207,8 @@ class Management(models.Model):
 	def update_stats(self):
 		"""
 		Update Stats
-			Doctors, 
-			Families, 
+			Doctors,
+			Families,
 			Sub-families
 		Used by
 			update_doctors
@@ -1053,7 +1327,7 @@ class Management(models.Model):
 	def line_analysis_sub(self, line, vector_sub):
 		"""
 		vector sub
-		Parses order lines 
+		Parses order lines
 		Updates counters
 		"""
 		print('Line line_analysis_sub')
@@ -1063,7 +1337,7 @@ class Management(models.Model):
 		sub = ''
 
 		# By Treatment
-		
+
 		if prod.pl_treatment in ['CONSULTA MEDICA']:
 			sub = 'con'
 
@@ -1118,13 +1392,13 @@ class Management(models.Model):
 		# kit
 		elif prod.pl_family in ['kit']:
 			sub = 'kit'
-		
+
 
 		# Filter
-		vector = filter(lambda x: x.name == sub, vector_sub) 
+		vector = filter(lambda x: x.name == sub, vector_sub)
 
 		# Inc
-		for obj in vector: 
+		for obj in vector:
 			obj.inc_amount(line.price_subtotal)
 			obj.inc_count(line.product_uom_qty)
 
@@ -1133,7 +1407,7 @@ class Management(models.Model):
 	def line_analysis_obj(self, line, vector_obj):
 		"""
 		Obj vector
-		Parses order lines 
+		Parses order lines
 		Updates counters
 		"""
 		print('Line line_analysis_obj')
@@ -1143,14 +1417,14 @@ class Management(models.Model):
 
 		# Products
 		if prod.type in ['product']:
-			vector = filter(lambda x: x.name == 'products', vector_obj) 
+			vector = filter(lambda x: x.name == 'products', vector_obj)
 
 		# Services
 		else:
-			vector = filter(lambda x: x.name == 'services', vector_obj) 
+			vector = filter(lambda x: x.name == 'services', vector_obj)
 
 		# Inc
-		for obj in vector: 
+		for obj in vector:
 			obj.inc_amount(line.price_subtotal)
 			obj.inc_count(line.product_uom_qty)
 
@@ -1158,7 +1432,7 @@ class Management(models.Model):
 # ----------------------------------------------------------- Line Analysis ----
 	def line_analysis(self, line):
 		"""
-		Parses order lines 
+		Parses order lines
 		Updates counters
 		"""
 		#print('Line analysis')
@@ -1274,7 +1548,7 @@ class Management(models.Model):
 	# line_analysis
 
 # ------------------------------------------------------------- CN Analysis ----
-	def credit_note_analysis(self):
+	def credit_note_analysis(self, order):
 		self.nr_credit_notes = self.nr_credit_notes + 1
 		self.amo_credit_notes = self.amo_credit_notes + order.x_amount_flow
 
@@ -1284,7 +1558,7 @@ class Management(models.Model):
 	@api.multi
 	def validate_internal(self):
 		"""
-		Validates Data Coherency - Internal. 
+		Validates Data Coherency - Internal.
 		"""
 		print()
 		print('** Validates internal')
@@ -1303,4 +1577,3 @@ class Management(models.Model):
 		print(self.per_amo_subfamilies)
 
 		return self.per_amo_families, self.per_amo_subfamilies
-

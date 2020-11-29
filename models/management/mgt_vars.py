@@ -1,4 +1,12 @@
 # -*- coding: utf-8 -*-
+_year_order_list = [
+					('2020', 		'2020'),
+					('2019', 		'2019'),
+					('2018', 		'2018'),
+					('2017', 		'2017'),
+					('2016', 		'2016'),
+]
+
 _month_order_list = [
 					('01', 		'ENE'),
 					('02', 		'FEB'),
@@ -33,7 +41,49 @@ _type_arr_list = [
 				('ticket_invoice', 					'ticket_invoice'),
 ]
 
+
 _h_name = {
+			# Families
+			'gynecology': 		'Ginecologia',
+			'echography': 		'Ecografia',
+			'promotion': 		'Promocion',
+
+			# 13 Jul 2018
+			'other': 		'Otro',
+			'product': 		'Producto',
+			'consultation': 'Consulta',
+			'consultation_gyn': 'Consulta Ginecológica',
+			'consultation_100': 'Consulta 100',
+			'consultation_0': 'Consulta Gratuita',
+
+			'procedure': 	'Procedimiento Laser',
+			'laser': 		'Laser',
+
+			'medical': 		'Tratamiento Médico',
+			'cosmetology': 	'Cosmeatria',
+
+			'card': 		'Tarjeta Vip',
+			'kit': 			'Kits',
+			'topical': 		'Cremas',
+
+			# Subfamilies
+			'laser_co2' : 		'Laser Co2',
+			'laser_excilite' : 	'Laser Exc',
+			'laser_ipl' : 		'Laser Ipl',
+			'laser_ndyag' : 	'Laser Ndyag',
+			'laser_quick' : 	'Quick Laser',
+
+			'criosurgery' : 			'Criocirugía',
+			'intravenous_vitamin' : 	'Vitamina Intravenosa',
+			'botulinum_toxin' : 		'Toxina Botulínica',
+			'hyaluronic_acid' : 		'Acido Hialurónico',
+
+			'mesotherapy_nctf': 		'Mesoterapia NCTF',
+			'infiltration_scar': 		'Infiltración Cicatriz',
+			'infiltration_keloid': 		'Infiltración Queloide',
+}
+
+_h_name_dep = {
 				# 13 Jul 2018 
 				'other': 		'Otro',
 				'product': 		'Producto',

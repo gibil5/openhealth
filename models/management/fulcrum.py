@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
+"""
+Fulcrum module.
+- To test new features and protocols, in a fast, controlled context
+"""
 
-#from openerp import models, fields, api
-#from lib import mgt_funcs
-#from openhealth.models.management.lib import mgt_funcs
-#from openerp.addons.openhealth.models.management.lib import mgt_funcs
 from lib import mgt_funcs
+from typing import Sequence
+

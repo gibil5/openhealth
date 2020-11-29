@@ -16,6 +16,7 @@
 """
 from __future__ import print_function
 from functools import reduce
+#from typing import Sequence
 
 # ------------------------------------------------------------- Constants ------
 _DATE_FORMAT = "%Y-%m-%d"

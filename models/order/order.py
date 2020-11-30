@@ -1,32 +1,32 @@
 # -*- coding: utf-8 -*-
 """
-		Order - Openhealth
-		Created: 			26 Aug 2016
-		Last mod: 			09 Aug 2020
+	Order - Openhealth
+	Created: 			26 Aug 2016
+	Last up: 			29 nov 2020
 
-		Follow the LOD (Law of Demeter - Tell dont aks).
-			- Coupling is bad. 
-			- Cohesion is good. 
+	Follow the LOD (Law of Demeter - Tell dont aks).
+		- Coupling is bad. 
+		- Cohesion is good. 
 
-		That must be be:
-			- Anthropomorphic.
-			- With clear roles.
-			- Loosely coupled.
-			- ...
+	That must be be:
+		- Anthropomorphic.
+		- With clear roles.
+		- Loosely coupled.
+		- ...
 
-		Data should be injected into the loosely couple objs.
+	Data should be injected into the loosely couple objs.
 
-		Remember SOLID:
-			- Single responsiblity. 
-			- Open/closed.
-			- Liskov susbstitution. 
-			- Interface seggregation. 
-			- Dependency inversion. 
+	Remember SOLID:
+		- Single responsiblity. 
+		- Open/closed.
+		- Liskov susbstitution. 
+		- Interface seggregation. 
+		- Dependency inversion. 
 
-		From PgAdmin
-		-------------
-		SELECT * FROM public.sale_order;
-		DELETE FROM public.sale_order WHERE partner_id = 391;
+	From PgAdmin
+	-------------
+	SELECT * FROM public.sale_order;
+	DELETE FROM public.sale_order WHERE partner_id = 391;
 """
 from __future__ import print_function
 import datetime
@@ -36,17 +36,11 @@ from openerp.addons.openhealth.models.patient import pat_vars, chk_patient
 from openerp.addons.openhealth.models.emr import pl_creates, action_funcs
 
 from . import test_order
-#from . import chk_order
 from . import ord_vars
 from . import raw_funcs
 from . import qr
 from . import fix_treatment
 from . import ord_funcs
-
-#from openerp.exceptions import Warning as UserError
-#from . import check_order
-#from . import tick_funcs
-#from . import ticket_line
 
 class SaleOrder(models.Model):
 	"""

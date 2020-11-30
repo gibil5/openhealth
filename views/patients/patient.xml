@@ -54,21 +54,18 @@
 						<button 
 							type="object" 
 							class="oe_highlight"
-
-							name="update" 
-
 							string="Actualizar" 
+
+							name="update_nex" 
 						/>
 
 						<button 
 							type="object" 
 							class="oe_highlight"
-
-							name="update_all" 
-
-							string="Actualizar Todos" 
-
+							string="Actualizar todos" 
 							groups="openhealth.roots"
+
+							name="update_all"
 						/>
 
 
@@ -383,15 +380,16 @@
 
 
 <hr></hr>
+
 <!-- update -->
+<!--
 <button 
 		type="object" 
 		class="oe_highlight"
-
 		name="update"
-
 		string="Actualizar"                               
 />
+-->
 <hr></hr>
 
 

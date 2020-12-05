@@ -1,20 +1,26 @@
 # -*- coding: utf-8 -*-
 {
-'name': "Open Health - Odoo9 - Object oriented - Refactorized - CodeClimate - SonarQube - Management - Functional",
+'name': "Open Health - Odoo9 - Object oriented - Refactorized - CodeClimate - SonarQube - Management - Functional - No black boxes.",
 
 'summary': """ ERP system for a Clinic. Inherits OeHealth. Contains ALL the Data Model. Business logic is in classes and libraries.
 
 """,
 'description': """
 
-	28 nov 2020
+ 	5 dec 2020
+
+	Using patterns:
+		- Reduce inheritances.
+		- Reduce singletons.
+		- Introduce pubsubs.
+		- Introduce containers.
 
 	Classes: 
-		- Order
-		- Treatment
-		- Patient
-		- Management
-		- Management Doctor
+		- Order (depends oeHealth)
+		- Patient (free)
+		- Treatment (free)
+		- Management (free)
+		- Management Doctor (free)
 		
 	Contains:
 		- All External Dependencies

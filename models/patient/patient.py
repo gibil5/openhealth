@@ -2,13 +2,32 @@
 """
 	*** Patient
 
-	Created: 			26 Aug 2016
-	Last up: 			29 nov 2020
+	Created: 			26 aug 2016
+	Last up: 			 5 dec 2020
+
+	- Is this a singleton (1180 lines) ?
+	- Eliminate dependencies (oehealth).
+
+	Data flow:
+	- One2many (two way)
+		Sales
+		Treatments
+		Consultations
+		Procedures
+		Controls
+	
+	- Many2one (one way)
+		Configurator 
+		Vip card
+		User
+		Country
+		Physician
+		Origin (marketing)
+		Estado de cuenta
+		Allergies
 """
 from __future__ import print_function
 from openerp import models, fields, api
-from openerp import _
-from openerp.exceptions import Warning as UserError
 
 from . import pat_vars
 from . import pat_funcs
@@ -19,35 +38,26 @@ class Patient(models.Model):
 	"""
 	Patient Class
 	Does not inherit OeHealthPatient Class
+	- No black boxes (not depending on oehealth).
+	- Object oriented.
+	- Using pure functions in external libs.
+	- Unit testing, through validation buttons (checks presence and validity).
+	- Compatible with python3.
+	- Using quality checking (pylint).
 	"""
 	#_inherit = 'oeh.medical.patient'
-	_name='oeh.medical.patient'
-	_inherits={
-	    'res.partner': 'partner_id',
-	}
 
-	_description = 'Patient'
+	_name = 'oeh.medical.patient'
+
+	_inherits = {'res.partner': 'partner_id'}
+
+	_description = 'Patient class'
+
 	_order = 'x_id_code desc'
 
-
-# --------------------------------------------------------------------- Free ---
-	SEX = [
-		('Male', 'Male'),
-		('Female', 'Female'),
-	]
-
-	name = fields.Char()
-
-	identification_code = fields.Char('Patient ID',size=256, help='Patient Identifier provided by the Health Center',readonly=True)
-
-	dob = fields.Date ('Date of Birth')
-
-	#age = fields.function(_patient_age, method=True, type='char', size=32, string='Patient Age',help="It shows the age of the patient in years(y), months(m) and days(d).\nIf the patient has died, the age shown is the age at time of death, the age corresponding to the date on the death certificate. It will show also \"deceased\" on the field")
-	age = fields.Char()
-
-	sex = fields.Selection(SEX, 'Sex', select=True)
-
 # ------------------------------------------------------------- Relational -----
+
+# ------------------------------------------------------------- One2many -----
 	# Treatments
 	treatment_ids = fields.One2many(
 			'openhealth.treatment',
@@ -83,6 +93,7 @@ class Patient(models.Model):
 			string="Consultas",
 		)
 
+# ------------------------------------------------------------- Many2one -----
 	# User
 	user_id = fields.Many2one(
 		'res.users',
@@ -90,6 +101,76 @@ class Patient(models.Model):
 		track_visibility='onchange',
 		default=lambda self: self.env.user,
 	)
+
+	# Country
+	x_country_residence = fields.Many2one(
+			'res.country',
+			string='País de residencia',
+			default='',
+		)
+
+	# Physician
+	x_control_physician = fields.Many2one(
+			'oeh.medical.physician',
+			string="Médico responsable del control",
+			)
+
+	# Marketing
+	origin = fields.Many2one(
+			'openhealth.patient.origin',
+			string='Primer Contacto',
+		)
+
+	# Estado de cuenta
+	order_report_nex = fields.Many2one(
+			'openhealth.order.report.nex',
+			string="Estado de cuenta",
+		)
+
+	# Allergies
+	x_allergies = fields.Many2one(
+			'openhealth.allergy',
+			string="Alergias",
+			required=False,
+		)
+
+	# Configurator
+	def _get_default_configurator(self):
+		return self.env['openhealth.configurator.emr'].search([],limit=1,)
+
+	configurator = fields.Many2one(
+			'openhealth.configurator.emr',
+			string="Configuracion",
+			default=_get_default_configurator,
+		)
+
+	# Vip Card
+	x_card = fields.Many2one(
+			'openhealth.card',
+			string="Tarjeta VIP",
+			compute='_compute_x_card',
+		)
+	@api.depends('name')
+	def _compute_x_card(self):
+		for record in self:
+			record.x_card = record.env['openhealth.card'].search([('patient_name', '=', record.name),],limit=1,)
+
+# --------------------------------------------------------------------- Oehealth ---
+	SEX = [
+		('Male', 'Male'),
+		('Female', 'Female'),
+	]
+
+	name = fields.Char()
+
+	identification_code = fields.Char('Patient ID', size=256, help='Patient Identifier provided by the Health Center', readonly=True)
+
+	dob = fields.Date('Date of Birth')
+
+	#age = fields.function(_patient_age, method=True, type='char', size=32, string='Patient Age',help="It shows the age of the patient in years(y), months(m) and days(d).\nIf the patient has died, the age shown is the age at time of death, the age corresponding to the date on the death certificate. It will show also \"deceased\" on the field")
+	age = fields.Char()
+
+	sex = fields.Selection(SEX, 'Sex', select=True)
 
 # -------------------------------------------------------------- Primitives ----
 	# First
@@ -151,11 +232,6 @@ class Patient(models.Model):
 			required=True,
 			)
 
-	x_country_residence = fields.Many2one(
-			'res.country',
-			string='País de residencia',
-			default='',
-		)
 	x_education_level = fields.Selection(
 			selection=pat_vars.get_education_level_type(),
 			string='Grado de instrucción',
@@ -217,10 +293,6 @@ class Patient(models.Model):
 			default=False
 			)
 
-	x_control_physician = fields.Many2one(
-			'oeh.medical.physician',
-			string="Médico responsable del control",
-			)
 
 	x_date_consent = fields.Date(
 			string="Fecha de consentimiento informado",
@@ -299,28 +371,8 @@ class Patient(models.Model):
 			#if x_card.name != False:
 			#	record.x_vip = True
 
-	# Vip Card
-	x_card = fields.Many2one(
-			'openhealth.card',
-			string="Tarjeta VIP",
-			compute='_compute_x_card',
-		)
-	@api.depends('name')
-	def _compute_x_card(self):
-		for record in self:
-			x_card = record.env['openhealth.card'].search([
-															('patient_name', '=', record.name),
-														],
-														#order='appointment_date desc',
-														limit=1,)
-			record.x_card = x_card
 
 # ------------------------------------------------------------- Marketing ------
-	origin = fields.Many2one(
-			'openhealth.patient.origin',
-			string='Primer Contacto',
-		)
-
 	x_first_contact = fields.Selection(
 			selection=pat_vars._first_contact_list,
 			string='¿ Cómo se enteró ?',
@@ -366,6 +418,9 @@ class Patient(models.Model):
 
 # ---------------------------------------------------------- Get Name Code -----
 	def get_name_code(self):
+		"""
+		Get name code - used by
+		"""
 		words = self.name.upper().split()
 		code = words[0] + '_' + words[1]
 		code = code.replace('.', '')
@@ -406,28 +461,7 @@ class Patient(models.Model):
 			default=_get_default_id_code,
 		)
 
-# ----------------------------------------------------------- Configurator -----
-	def _get_default_configurator(self):
-		print()
-		print('Default Configurator')
 
-		# Search
-		configurator = self.env['openhealth.configurator.emr'].search([
-																		#('active', 'in', [True]),
-											],
-												#order='x_serial_nr asc',
-												limit=1,
-											)
-		print(configurator)
-		print(configurator.name)
-		return configurator
-
-	# Configurator
-	configurator = fields.Many2one(
-			'openhealth.configurator.emr',
-			string="Configuracion",
-			default=_get_default_configurator,
-		)
 
 # ----------------------------------------------------------- First Level - Buttons ---------------------------------------------
 
@@ -580,12 +614,6 @@ class Patient(models.Model):
 
 # ----------------------------------------------------------- Estado de Cuenta --------------------
 
-	# Relational
-	order_report_nex = fields.Many2one(
-			'openhealth.order.report.nex',
-			string="Estado de cuenta",
-		)
-
 
 	# Remove
 	@api.multi
@@ -704,10 +732,11 @@ class Patient(models.Model):
 	@api.multi
 	def _compute_x_legacy(self):
 		for record in self:
-			if (record.x_counter < 13963) and (record.configurator.name in ['Lima']):
-				record.x_legacy = True
-			else:
-				record.x_legacy = False
+			#if (record.x_counter < 13963) and (record.configurator.name in ['Lima']):
+			#	record.x_legacy = True
+			#else:
+			#	record.x_legacy = False
+			record.x_legacy = bool((record.x_counter < 13963) and (record.configurator.name in ['Lima']))
 
 	# Counter
 	x_counter = fields.Integer(
@@ -738,13 +767,6 @@ class Patient(models.Model):
 		)
 
 # ----------------------------------------------------------- Primitives - Redefined --------------
-
-	# Allergies
-	x_allergies = fields.Many2one(
-			'openhealth.allergy',
-			string="Alergias",
-			required=False,
-		)
 
 	# Stree2 Char - If Province
 	street2_char = fields.Char(
@@ -937,12 +959,39 @@ class Patient(models.Model):
 														)
 		counter.increase()		# Here !!!
 
-		# Date record
-		if not res.x_date_record:
-			res.x_date_record = res.create_date
+		# Date record - dep ?
+		#if not res.x_date_record:
+		#	res.x_date_record = res.create_date
 
 		return res
 	# CRUD - Create
+
+
+# ------------------------------------------------------- Update Name ------
+	@api.multi
+	def update_name(self):
+		"""
+		Update Name
+		"""
+		print()
+		print('Update name')
+
+		last_name = self.x_last_name
+
+		first_name = self.x_first_name
+
+		self.name = last_name.upper() + ' ' + first_name.upper()
+
+
+# ------------------------------------------------------- Update Age ------
+	@api.multi
+	def update_age(self):
+		"""
+		Update age
+		"""
+		print()
+		print('Update age')
+		self.age = pat_funcs.compute_age_from_dates(self.dob)
 
 # ------------------------------------------------------- Update Controls ------
 	@api.multi
@@ -961,16 +1010,16 @@ class Patient(models.Model):
 									])
 		# Create
 		for obj in objs:
-			control = self.control_ids.create({
+			self.control_ids.create({
 												'date': 		obj.evaluation_start_date,
 												'patient': 		obj.patient.id,
 												'doctor': 		obj.doctor.id,
 												'state': 		obj.state,
 												'product': 		obj.product.name,
 												'family': 		obj.laser,
+												'patient_id':	self.id,
 												'res_id': 		obj.id,
 												'res_model': 	obj._name,
-												'patient_id':	self.id,
 							})
 
 # ----------------------------------------------------------- Update Sales -----
@@ -993,18 +1042,18 @@ class Patient(models.Model):
 
 		# Create
 		for order in orders:
-			obj = self.sale_ids.create({
+			self.sale_ids.create({
 										'patient': 	order.patient.id,
 										'doctor': 	order.x_doctor.id,
 										'date': 	order.date_order,
 										'state': 	order.state,
 										'product': 	order.pl_product,
 										'family': 	order.pl_family,
-										'res_id': 	order.id,
-										'res_model': order._name,
 										'nr_lines': order.nr_lines,
 										'amount': 	order.amount_total,
 										'patient_id': self.id,
+										'res_id': 	order.id,
+										'res_model': order._name,
 										})
 
 # ---------------------------------------------------- Update Consultations ----
@@ -1026,14 +1075,14 @@ class Patient(models.Model):
 
 		# Create
 		for obj in objs:
-			consultation = self.consultation_ids.create({
+			 self.consultation_ids.create({
 												'patient': 		obj.patient.id,
 												'doctor': 		obj.doctor.id,
 												'date': 		obj.evaluation_start_date,
 												'state': 		obj.state,
+												'patient_id': self.id,
 												'res_id': 		obj.id,
 												'res_model': 	obj._name,
-												'patient_id': self.id,
 							})
 
 # ------------------------------------------------------ Update Procedures -----
@@ -1055,16 +1104,16 @@ class Patient(models.Model):
 
 		# Create
 		for obj in objs:
-			procedure = self.procedure_ids.create({
+			self.procedure_ids.create({
 													'patient': 		obj.patient.id,
 													'doctor': 		obj.doctor.id,
 													'date': 		obj.evaluation_start_date,
 													'state': 		obj.state,
 													'product': 		obj.product.name,
 													'family': 		obj.pl_laser,
+													'patient_id': self.id,
 													'res_id': 		obj.id,
 													'res_model': 	obj._name,
-													'patient_id': self.id,
 												})
 
 # -------------------------------------------------------------- Update Nr -----
@@ -1095,8 +1144,13 @@ class Patient(models.Model):
 # --------------------------------------------------------------- Update -------
 	@api.multi
 	def update_nex(self):
+		"""
+		Update all macros.
+		"""
 		print()
 		print('Update - nex')
+		self.update_name()
+		self.update_age()
 		self.update_controls('openhealth.control')
 		self.update_sales('sale.order')
 		self.update_consultations('openhealth.consultation')
@@ -1106,6 +1160,9 @@ class Patient(models.Model):
 # -------------------------------------------------------------- Update all ----
 	@api.multi
 	def update_all(self):
+		"""
+		Update all patients.
+		"""
 		print()
 		print('Update All')
 
@@ -1113,11 +1170,21 @@ class Patient(models.Model):
 		model = 'oeh.medical.patient'
 
 		# Search
-		patients = self.env[model].search([], order='x_date_record desc', limit=self.configurator.patient_limit)
+		#patients = self.env[model].search([], order='x_date_record desc', limit=self.configurator.patient_limit)
+		patients = self.env[model].search([], order='x_date_record desc')
 
 		# Count
 		count = 0
 		for patient in patients:
-			patient.update()
+			patient.update_nex()
 			count = count + 1
 		#print(count)
+
+# -------------------------------------------------------- Validate - Button ---
+	@api.multi
+	def validate(self):
+		"""
+		Validates presence and validity.
+		"""
+		print()
+		print('Validate')

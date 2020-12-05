@@ -7,16 +7,14 @@
 	All Fixers are Deprecated. Should be in the Clean Module.
 
 	Created: 			 01 Nov 2016
-	Last up: 	 		 10 Dec 2019
+	Last up: 			 05 dec 2020
 """
 
 from __future__ import print_function
-from openerp import models, fields, api
-from openerp.exceptions import ValidationError
-from openerp.addons.openhealth.models.libs import lib
-from . import prodvars
+from openerp import models, fields
+from . import prod_vars
 
-class Product(models.Model):
+class ProductTemplate(models.Model):
 	"""
 	Product Template
 	Inherited from OeHealth
@@ -25,10 +23,7 @@ class Product(models.Model):
 
 	_order = 'name'
 
-
-
 # ----------------------------------------------------------- Relational --------------------------
-
 	# Categ
 	categ_id = fields.Many2one(
 			'product.category',
@@ -46,9 +41,6 @@ class Product(models.Model):
 			required=False,
 		)
 
-
-
-
 # ----------------------------------------------------------- Price List - 2019 ------------------------
 	pl_price_list = fields.Selection(
 			[
@@ -58,30 +50,34 @@ class Product(models.Model):
 			string='Lista de Precios',
 		)
 
-
+	pl_treatment = fields.Char()
 
 # ----------------------------------------------------------- Canonical - 2018 -------------------------------
 	# Family
 	x_family = fields.Selection(
-			selection=prodvars._family_list,
+			#selection=prod_vars._family_list,
+			selection=prod_vars.get_family_list(),
 			required=False,
 		)
 
 	# Treatment
 	x_treatment = fields.Selection(
-			selection=prodvars._treatment_list,
+			#selection=prod_vars._treatment_list,
+			selection=prod_vars.get_treatment_list(),
 			required=False,
 		)
 
 	# Zone
 	x_zone = fields.Selection(
-			selection=prodvars._zone_list,
+			#selection=prod_vars._zone_list,
+			selection=prod_vars.get_zone_list(),
 			required=False,
 		)
 
 	# Pathology
 	x_pathology = fields.Selection(
-			selection=prodvars._pathology_list,
+			#selection=prod_vars._pathology_list,
+			selection=prod_vars.get_pathology_list(),
 			required=False,
 		)
 
@@ -93,16 +89,17 @@ class Product(models.Model):
 
 	# Level
 	x_level = fields.Selection(
-			selection=prodvars._level_list,
+			#selection=prod_vars._level_list,
+			selection=prod_vars.get_level_list(),
 			required=False,
 		)
 
 	# Time
 	x_time = fields.Char(
-			selection=prodvars._time_list,
+			#selection=prod_vars._time_list,
+			selection=prod_vars.get_time_list(),
 			required=False,
 		)
-
 
 	# Price Vip
 	x_price_vip = fields.Float(
@@ -114,14 +111,12 @@ class Product(models.Model):
 			required=False,
 		)
 
-
 # ----------------------------------------------------------- Test -------------------------------
 	x_test = fields.Boolean(
 			'Test',
 		)
 
 # ----------------------------------------------------------- Account -----------------------------
-
 	x_name_account = fields.Char(
 			'Name Account',
 		)
@@ -134,7 +129,6 @@ class Product(models.Model):
 			' ',
 			readonly=True
 		)
-
 
 # ----------------------------------------------------------- Codes -------------------------------
 	# Go Flag
@@ -160,7 +154,6 @@ class Product(models.Model):
 		)
 
 # ----------------------------------------------------------- Canonical ---------------------------
-
 	# Origin
 	x_origin = fields.Selection(
 		[
@@ -170,4 +163,3 @@ class Product(models.Model):
 		],
 			required=False,
 		)
-

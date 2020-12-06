@@ -6,7 +6,8 @@
 	Last up: 			 5 dec 2020
 
 	- Is this a singleton (1180 lines) ?
-	- Eliminate dependencies (oehealth).
+	- Reduce third party dependencies (oehealth).
+	- Eliminate crossed dependencies.
 
 	Data flow:
 	- One2many (two way)
@@ -37,7 +38,8 @@ from . import count_funcs
 class Patient(models.Model):
 	"""
 	Patient Class
-	Does not inherit OeHealthPatient Class
+	- Oehealth free.
+
 	- No black boxes (not depending on oehealth).
 	- Object oriented.
 	- Using pure functions in external libs.
@@ -46,13 +48,9 @@ class Patient(models.Model):
 	- Using quality checking (pylint).
 	"""
 	#_inherit = 'oeh.medical.patient'
-
 	_name = 'oeh.medical.patient'
-
 	_inherits = {'res.partner': 'partner_id'}
-
 	_description = 'Patient class'
-
 	_order = 'x_id_code desc'
 
 # ------------------------------------------------------------- Relational -----

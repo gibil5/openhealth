@@ -2,11 +2,15 @@
 """
 	Order - Openhealth
 	Created: 			26 Aug 2016
-	Last up: 			29 nov 2020
+	Last up: 			 5 dec 2020
+
+	- Is this a singleton (1048 lines) ?
+	- Reduce third party dependencies (oehealth).
+	- Eliminate crossed dependencies (patient, emr).
 
 	Follow the LOD (Law of Demeter - Tell dont aks).
-		- Coupling is bad. 
-		- Cohesion is good. 
+		- Coupling is bad.
+		- Cohesion is good.
 
 	That must be be:
 		- Anthropomorphic.
@@ -17,11 +21,11 @@
 	Data should be injected into the loosely couple objs.
 
 	Remember SOLID:
-		- Single responsiblity. 
+		- Single responsiblity.
 		- Open/closed.
-		- Liskov susbstitution. 
-		- Interface seggregation. 
-		- Dependency inversion. 
+		- Liskov susbstitution.
+		- Interface seggregation.
+		- Dependency inversion.
 
 	From PgAdmin
 	-------------
@@ -32,7 +36,10 @@ from __future__ import print_function
 import datetime
 
 from openerp import models, fields, api
-from openerp.addons.openhealth.models.patient import pat_vars, chk_patient
+
+#from openerp.addons.openhealth.models.patient import pat_vars, chk_patient
+#from openerp.addons.openhealth.models.patient import chk_patient
+
 from openerp.addons.openhealth.models.emr import pl_creates, action_funcs
 
 from . import test_order
@@ -44,10 +51,27 @@ from . import ord_funcs
 
 class SaleOrder(models.Model):
 	"""
-	Sale Class - Inherited from the medical Module OeHealth.
+	Sale Class
+	- Inherits from the base module Sale.
+	- Oehealth free.
 	"""
 	_inherit = 'sale.order'
+
 	_description = 'Order'
+
+# ----------------------------------------------------------- Dep ? -------
+	# Check Ruc
+	#@api.constrains('x_ruc')
+	#def _check_x_ruc(self):
+	#	if self.x_type in ['ticket_invoice', 'invoice']:
+	#		chk_patient.check_x_ruc(self)
+
+	# Check Id doc - Use Chk Patient
+	#@api.constrains('x_id_doc')
+	#def _check_x_id_doc(self):
+	#	if self.x_type in ['ticket_receipt', 'receipt']:
+	#		chk_patient.check_x_id_doc(self)
+
 
 # ----------------------------------------------------------- Relational -------------------------------
 	# Patient
@@ -58,7 +82,7 @@ class SaleOrder(models.Model):
 			default=lambda self: raw_funcs.get_ticket(self.env['openhealth.ticket']),
 		)
 
-# ----------------------------------------------------------- Relational -------------------------------
+# ----------------------------------------------------------- Relational -------
 	# Patient
 	patient_id = fields.Many2one(
 			'oeh.medical.patient',
@@ -171,20 +195,6 @@ class SaleOrder(models.Model):
 			for line in record.order_line:
 				products = products + line.get_product() + ', '
 			record.pl_product = products
-
-# ----------------------------------------- Constraints - From Patient ----------
-	# Check Ruc
-	@api.constrains('x_ruc')
-	def _check_x_ruc(self):
-		if self.x_type in ['ticket_invoice', 'invoice']:
-			chk_patient.check_x_ruc(self)
-
-	# Check Id doc - Use Chk Patient
-	@api.constrains('x_id_doc')
-	def _check_x_id_doc(self):
-		if self.x_type in ['ticket_receipt', 'receipt']:
-			chk_patient.check_x_id_doc(self)
-
 
 # ---------------------------------------------- Price List - Fields ------------------------
 
@@ -514,7 +524,7 @@ class SaleOrder(models.Model):
 											'state': state,
 											'amount_total': self.amount_total,
 											'amount_untaxed': self.amount_untaxed,
-								})
+										})
 		print(credit_note)
 
 		# Update Self
@@ -653,7 +663,8 @@ class SaleOrder(models.Model):
 
 	# Id Document Type
 	x_id_doc_type = fields.Selection(
-			selection=pat_vars._id_doc_type_list,
+			#selection=pat_vars._id_doc_type_list,
+			selection=ord_vars._id_doc_type_list,
 			string='Tipo de documento',
 			required=False,
 		)
@@ -989,17 +1000,18 @@ class SaleOrder(models.Model):
 		receptor_id_doc = self.x_id_doc
 		receptor_ruc = self.x_ruc
 
-		h = {}
-		h['ruc_company'] = str(ruc_company)
-		h['x_type'] = str(x_type)
-		h['serial_nr'] = str(serial_nr)
-		h['amount_total'] = str(amount_total)
-		h['total_tax'] = str(total_tax)
-		h['date'] = str(date)
-		h['receptor_id_doc_type'] = str(receptor_id_doc_type)
-		h['receptor_id_doc'] = str(receptor_id_doc)
-		h['receptor_ruc'] = str(receptor_ruc)
-		return h
+		h_qr = {}
+		h_qr['ruc_company'] = str(ruc_company)
+		h_qr['x_type'] = str(x_type)
+		h_qr['serial_nr'] = str(serial_nr)
+		h_qr['amount_total'] = str(amount_total)
+		h_qr['total_tax'] = str(total_tax)
+		h_qr['date'] = str(date)
+		h_qr['receptor_id_doc_type'] = str(receptor_id_doc_type)
+		h_qr['receptor_id_doc'] = str(receptor_id_doc)
+		h_qr['receptor_ruc'] = str(receptor_ruc)
+
+		return h_qr
 
 # ----------------------------------------------------- Test --------------------------
 	@api.multi
@@ -1019,12 +1031,12 @@ class SaleOrder(models.Model):
 		elif value == 'test_qr':
 			print('test_qr')
 			# Create loosely coupled object
-			h = self.get_hash_for_qr()
-			qr_obj = qr.QR(h)
+			h_qr = self.get_hash_for_qr()
+			qr_obj = qr.QR(h_qr)
 			# Get data
 			print(qr_obj.get_name())
 			print(qr_obj.get_img_str())
-			
+
 		elif value == 'test_ticket':
 			print('test_ticket')
 			name = 'openhealth.report_ticket_receipt_electronic'
@@ -1034,7 +1046,7 @@ class SaleOrder(models.Model):
 		elif value == 'test_validation':
 			print('test_validation')
 			self.validate_and_confirm()
-			
+
 		elif value == 'test_pm':
 			print('test_pm')
 			self.create_payment_method()

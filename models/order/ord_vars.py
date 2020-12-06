@@ -1,5 +1,22 @@
 # -*- coding: utf-8 -*-
+"""
+	Ord Vars
 
+	Created: 			26 Aug 2016
+	Last up: 			 5 dec 2020
+"""
+
+# Id Doc Type
+_id_doc_type_list = [
+					('dni', 			'DNI'),
+					('passport', 		'Pasaporte'),
+					('foreign_card', 	'CE'),
+					('ptp', 			'PTP'),
+					('other', 			'Otro'),
+					
+					# Dep
+					('foreigner_card', 	'CE - Antiguo'),
+]
 
 
 _year_order_list = [

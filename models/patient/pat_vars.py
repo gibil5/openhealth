@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-		Pat Vars - Should migrate to Patient. As Class Vars
+	Pat Vars - Should migrate to Patient. As Class Vars
 
-		Created: 			26 Aug 2016
-		Last updated: 	 	21 Nov 2019
+	Created: 			26 Aug 2016
+	Last updated: 	 	21 Nov 2019
 """
 
 

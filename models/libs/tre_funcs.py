@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 """
 	Tre Funcs
+	Used by Treatment
 
 	Created: 			22 aug 2020
-	Last up: 	 		22 aug 2020
+	Last up: 	 		05 dec 2020
 """
 from datetime import datetime,tzinfo,timedelta
 

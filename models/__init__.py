@@ -7,7 +7,7 @@
 from django import *
 
 # Base
-from libs import *
+#from libs import *
 
 # Configurator
 from configurator import *

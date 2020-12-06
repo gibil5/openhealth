@@ -34,13 +34,10 @@
 """
 from __future__ import print_function
 import datetime
-
 from openerp import models, fields, api
 
-#from openerp.addons.openhealth.models.patient import pat_vars, chk_patient
-#from openerp.addons.openhealth.models.patient import chk_patient
-
-from openerp.addons.openhealth.models.emr import pl_creates, action_funcs
+#from libs import pl_creates, eval_vars, tre_funcs, action_funcs
+from openerp.addons.openhealth.models.libs import pl_creates, action_funcs
 
 from . import test_order
 from . import ord_vars

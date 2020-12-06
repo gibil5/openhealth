@@ -2,7 +2,7 @@
 """
 	Treatment
 	Created: 			26 aug 2016
-	Last up: 	 		25 oct 2020
+	Last up: 			 5 dec 2020
 
 	From PgAdmin
 	-------------
@@ -12,21 +12,15 @@
 from __future__ import print_function
 import datetime
 from openerp import models, fields, api
-from openerp.addons.openhealth.models.libs import eval_vars
-from openerp.addons.price_list.models.lib import test_funcs
+
+#from libs import pl_creates, eval_vars, tre_funcs, action_funcs
+from openerp.addons.openhealth.models.libs import pl_creates, eval_vars, tre_funcs, action_funcs
 
 from . import treatment_vars
 from . import treatment_state
-from . import pl_creates
-
 from . import test_treatment
-
-from . import reco_funcs
-from . import action_funcs
 from . import counter_objects
 from . import search_objects
-
-from . import tre_funcs
 
 # --------------------------------------------------------------- Constants ----
 _model_treatment = "openhealth.treatment"
@@ -602,7 +596,7 @@ class Treatment(models.Model):
 							#self.service_echography_ids,
 							#self.service_promotion_ids,
 		]
-		
+
 		# Create Cart
 		for service_ids in service_list:
 			for service in service_ids:
@@ -676,8 +670,8 @@ class Treatment(models.Model):
 # ---------------------------------------------- Create Service ----------------
 	def create_service_for_me(self, treatment_id, family, subfamily, physician_id):
 		"""
-		Generic method for creating Services. 
-		Compact. And easy to maintain. 
+		Generic method for creating Services.
+		Compact. And easy to maintain.
 		"""
 		print()
 		print('Create Service Generic - ', subfamily)
@@ -685,7 +679,7 @@ class Treatment(models.Model):
 		model_dic = {
 						'all': 			_model_service,
 						#'co2': 		_model_ser_co2,
-						#'excilite': 	'openhealth.service_excilite',					
+						#'excilite': 	'openhealth.service_excilite',
 						#'ipl': 		'openhealth.service_ipl',
 						#'ndyag': 		'openhealth.service_ndyag',
 						#'quick': 		'openhealth.service_quick',
@@ -698,21 +692,21 @@ class Treatment(models.Model):
 			}
 		model = model_dic[subfamily]
 
-		# open 	
+		# open
 		return {
 				'type': _model_action,
-				'name': ' New Service Current', 
-				'res_model':  	model,			
+				'name': ' New Service Current',
+				'res_model':  	model,
 				#'res_id': consultation_id,
 				"views": [[False, "form"]],
 				#'view_type': 'form',
-				'view_mode': 'form',	
+				'view_mode': 'form',
 				'target': 'current',
 				'flags': 	{
 								'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
 								#'form': {'action_buttons': False, }
 							},
-				'context': {							
+				'context': {
 								'default_family': family,
 								'default_physician': physician_id,
 								#'default_pl_subfamily': subfamily,

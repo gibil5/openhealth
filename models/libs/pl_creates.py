@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 """
 	Pl Creates - Openhealth
-	
 	Used by Treatment
+
 	Created: 			27 Jul 2020
-	Last up: 	 		02 Aug 2020
+	Last up: 	 		05 dec 2020
 	
 	Encapsulates creation on database
-	...
 
 	Create Order
 		- create_order_con
@@ -17,7 +16,8 @@
 		- create_procedure
 """
 from __future__ import print_function
-from . import pl_user
+#from . import pl_user
+from . import tre_funcs
 
 # ----------------------------------------------------------- Create Shopping Cart -----------------
 def create_shopping_cart(treatment, env, service, treatment_id):
@@ -228,7 +228,9 @@ def create_procedure(self, product):
 
 
 	# Doctor
-	doctor = pl_user.get_actual_doctor(self)
+	#doctor = pl_user.get_actual_doctor(self)
+	doctor = tre_funcs.get_actual_doctor(self)
+
 	doctor_id = doctor.id
 	if doctor_id == False:
 		doctor_id = self.physician.id

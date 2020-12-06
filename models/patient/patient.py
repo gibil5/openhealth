@@ -5,8 +5,11 @@
 	Created: 			26 aug 2016
 	Last up: 			 5 dec 2020
 
+	This an independent component.
+
 	Design:
-		- Is this a singleton (1190 lines) ?
+		- This is a Data model. There should be NO Business logic.
+		- This is not a singleton (1190 lines).
 		- Reduce third party dependencies (oehealth).
 		- Eliminate crossed dependencies.
 		- All common services should be in the libs module.
@@ -56,7 +59,7 @@ class Patient(models.Model):
 	_description = 'Patient class'
 	_order = 'x_id_code desc'
 
-# ------------------------------------------------------------- Relational -----
+# ----------------------------------------------------------- Relations ---------------------------
 
 # ------------------------------------------------------------- One2many -----
 	# Treatments

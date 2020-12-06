@@ -7,7 +7,7 @@
 """,
 'description': """
 
- 	5 dec 2020
+ 	6 dec 2020
 
 	Using patterns:
 		- Reduce inheritances.

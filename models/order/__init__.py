@@ -13,6 +13,9 @@ from . import order_admin
 from . import ticket
 
 from . import order
+from . import order_business
+from . import order_controller
+from . import order_extra
 
 from . import order_line
 

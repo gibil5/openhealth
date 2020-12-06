@@ -6,7 +6,8 @@
 	Last up: 			 5 dec 2020
 
 	Design:
-		- Is this a singleton (820 lines) ?
+		- This is a Data model. There should be NO Business logic.
+		- This is not a singleton (1190 lines).
 		- Reduce third party dependencies (oehealth).
 		- Eliminate crossed dependencies.
 		- All common services should be in the libs module.

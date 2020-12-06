@@ -1,3 +1,20 @@
+# 6 dec 2020 
+
+# ----------------------------------------------------------- Dep ? -------
+	# Check Ruc
+	#@api.constrains('x_ruc')
+	#def _check_x_ruc(self):
+	#	if self.x_type in ['ticket_invoice', 'invoice']:
+	#		chk_patient.check_x_ruc(self)
+
+	# Check Id doc - Use Chk Patient
+	#@api.constrains('x_id_doc')
+	#def _check_x_id_doc(self):
+	#	if self.x_type in ['ticket_receipt', 'receipt']:
+	#		chk_patient.check_x_id_doc(self)
+
+
+
 # 8 Aug 2020 
 
 

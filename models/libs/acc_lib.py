@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-	AccFuncs
-	Used by 
+	Acc Lib
+	- Used by 
 		account contasis
 		account line
 		payment method line
 
 	Created: 			11 oct 2020
-	Last up: 	 		11 oct 2020
+	Last up: 			 5 dec 2020
 """
 import datetime
 

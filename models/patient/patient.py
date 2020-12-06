@@ -5,9 +5,12 @@
 	Created: 			26 aug 2016
 	Last up: 			 5 dec 2020
 
-	- Is this a singleton (1180 lines) ?
-	- Reduce third party dependencies (oehealth).
-	- Eliminate crossed dependencies.
+	Design:
+		- Is this a singleton (1190 lines) ?
+		- Reduce third party dependencies (oehealth).
+		- Eliminate crossed dependencies.
+		- All common services should be in the libs module.
+		- Use publish/subscribe communication pattern.
 
 	Data flow:
 	- One2many (two way)

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 	Pl Creates - Openhealth
-	Used by Treatment
+	- Used by Treatment
 
 	Created: 			27 Jul 2020
 	Last up: 	 		05 dec 2020
@@ -16,7 +16,6 @@
 		- create_procedure
 """
 from __future__ import print_function
-#from . import pl_user
 from . import tre_funcs
 
 # ----------------------------------------------------------- Create Shopping Cart -----------------

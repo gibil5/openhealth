@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 """
 	Tre Funcs
-	Used by Treatment
+	- Used by Treatment
 
 	Created: 			22 aug 2020
 	Last up: 	 		05 dec 2020
 """
-from datetime import datetime,tzinfo,timedelta
+from datetime import datetime, tzinfo, timedelta
 
 #------------------------------------------------ Get Actual Doctor ------------
 def get_actual_doctor(self):
@@ -22,7 +22,6 @@ def get_actual_doctor(self):
 													)
 	return doctor
 # get_actual_doctor
-
 
 #------------------------------------------------ Time -------------------------
 class Zone(tzinfo):

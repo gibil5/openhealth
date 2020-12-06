@@ -2,18 +2,17 @@
 """
     lib.py
 
-    Used by: 
+    - Used by:
         management_order_line
-
-    Abstract, general purpose. Can be Unit-tested.
-    Is completely standard. Gives service to all Users.
 
     Created: 			13 aug 2018
     Last up: 	 		18 oct 2020
+
+    Abstract, general purpose. Can be Unit-tested.
+    Is completely standard. Gives service to all Users.
 """
 from __future__ import print_function
 import datetime
-
 _date_format = "%Y-%m-%d %H:%M:%S"
 _date_format_day = "%Y-%m-%d"
 

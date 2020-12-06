@@ -1,8 +1,16 @@
 # -*- coding: utf-8 -*-
 """
 	Treatment
+
 	Created: 			26 aug 2016
 	Last up: 			 5 dec 2020
+
+	Design:
+		- Is this a singleton (820 lines) ?
+		- Reduce third party dependencies (oehealth).
+		- Eliminate crossed dependencies.
+		- All common services should be in the libs module.
+		- Use publish/subscribe communication pattern.
 
 	From PgAdmin
 	-------------

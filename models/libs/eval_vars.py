@@ -1,4 +1,11 @@
 # -*- coding: utf-8 -*-
+"""
+	Eval vars
+	- Used by
+	
+	Created: 			02 Aug 2020
+	Last up: 			 5 dec 2020
+"""
 
 # Consultation
 _state_list = [

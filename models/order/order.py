@@ -4,15 +4,18 @@
 	Created: 			26 Aug 2016
 	Last up: 			 5 dec 2020
 
-	- Is this a singleton (1048 lines) ?
-	- Reduce third party dependencies (oehealth).
-	- Eliminate crossed dependencies (patient, emr).
+	Design:
+		- Is this a singleton (1052 lines) ?
+		- Reduce third party dependencies (oehealth).
+		- Eliminate crossed dependencies.
+		- All common services should be in the libs module.
+		- Use publish/subscribe communication pattern.
 
 	Follow the LOD (Law of Demeter - Tell dont aks).
 		- Coupling is bad.
 		- Cohesion is good.
 
-	That must be be:
+	Objects must be be:
 		- Anthropomorphic.
 		- With clear roles.
 		- Loosely coupled.

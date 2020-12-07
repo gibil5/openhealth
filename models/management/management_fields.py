@@ -3,7 +3,7 @@
 	Management Fields
 
 	Created: 			28 nov 2020
-	Last up: 			28 nov 2020
+	Last up: 			 6 dec 2020
 """
 from openerp import models, fields, api
 
@@ -12,8 +12,8 @@ class ManagementFields(models.Model):
 	Contains the model fields.
 	"""
 	_name = 'openhealth.management_fields'
-	_inherit = 'openhealth.repo'
 	_order = 'date_begin desc'
+	#_inherit = 'openhealth.repo'  	# Dep !
 
 # ----------------------------------------------------------- Totals -----------
 	# Sales
@@ -302,3 +302,70 @@ class ManagementFields(models.Model):
 	avg_cosmetology = fields.Float(
 			'Precio Prom. Cosmiatria',
 		)
+
+
+# ----------------------------------------------------------- Repo -------------
+	# Name 
+	name = fields.Char(
+			string="Nombre", 		
+			required=True, 
+		)
+
+	# Amount Total Year
+	total_amount_year = fields.Float(
+			'Monto Total Año',
+			default=0,
+		)
+
+	# Dates
+	date_begin = fields.Date(
+			string="Fecha Inicio",
+			default=fields.Date.today,
+			required=True,
+		)
+
+	date_end = fields.Date(
+			string="Fecha Fin",
+			default=fields.Date.today,
+			required=True,
+		)
+
+	# Amount
+	total_amount = fields.Float(
+			#'Total Monto',
+			#'Total',
+			'Monto Total',
+			readonly=True,
+			default=0,
+		)
+
+	# Date Test
+	date_test = fields.Datetime(
+			string="Fecha Test", 
+		)
+
+	# Percentage Total Amount Year
+	per_amo_total = fields.Float(
+			'Porc Monto Año',
+		)
+
+	# State
+	state = fields.Selection(			
+			selection=[
+							('stable', 'Estable'),
+							('unstable', 'Inestable'),
+			],
+			string='Estado',
+			#readonly=False,
+			default='unstable',
+			#index=True,
+		)
+
+
+	# Spacing
+	vspace = fields.Char(
+			' ', 
+			readonly=True
+		)
+
+

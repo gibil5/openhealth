@@ -15,8 +15,8 @@ from . import mgt_family_line
 from . import mgt_subfamily_line
 from . import mgt_day_line
 
-from . import repo
-from . import management_fields
+from . import repo     # used by mkt
+#from . import management_fields
 from . import management
 from . import management_business
 

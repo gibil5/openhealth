@@ -4,7 +4,7 @@
 	Should be unit testable - independent from openerp
 
 	Created: 			28 May 2018
-	Last up: 			28 nov 2020
+	Last up: 			 8 dec 2020
 
 	- Use functional programming - ie pure functions.
 	- Use lambda funcs, map, filter, reduce, decorators, generators, etc.
@@ -16,12 +16,29 @@
 """
 from __future__ import print_function
 from functools import reduce
-#from typing import Sequence
+from mgt_product_counter import MgtProductCounter
 
 # ------------------------------------------------------------- Constants ------
 _DATE_FORMAT = "%Y-%m-%d"
 _DATE_HOUR_FORMAT = "%Y-%m-%d %H:%M"
 _MODEL_SALE = "sale.order"
+
+
+# ------------------------------------------------------------- Init vector ----
+def init_vector(vector_type):
+	"""
+	Init vector
+	"""
+	vector = []
+
+	for name in vector_type:
+		obj = MgtProductCounter(name)
+		vector.append(obj)
+
+	# Pure functional
+	obj_percentages_pure(vector, 0)
+
+	return vector
 
 
 # ----------------------------------------------------------- Line Analysis ----

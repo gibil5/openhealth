@@ -7,7 +7,7 @@
 		Provide service buttons to the UI.
 
 	Created: 			 6 dec 2020
-	Last up: 			 6 dec 2020
+	Last up: 			 8 dec 2020
 """
 from __future__ import print_function
 import datetime
@@ -39,14 +39,11 @@ SUBFAMILIES = [
 		'ndy',
 		'ipl',
 		'qui',
-
 		'med',
 		'cos',
-
 		'ech',
 		'gyn',
 		'pro',
-
 		'top',
 		'vip',
 		'kit',
@@ -76,8 +73,8 @@ class ManagementBusiness(models.Model):
 		print('*** Update Fast')
 
 		#  Init vectors
-		vector_obj = self.init_vector(TYPES)
-		vector_sub = self.init_vector(SUBFAMILIES)
+		vector_obj = mgt_funcs.init_vector(TYPES)
+		vector_sub = mgt_funcs.init_vector(SUBFAMILIES)
 
 		# Update sales
 		self.update_sales(vector_obj, vector_sub)

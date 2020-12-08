@@ -7,7 +7,7 @@
         Implement business logic.
 
 	Created: 			28 may 2018
-	Last up: 			 6 dec 2020
+	Last up: 			 8 dec 2020
 """
 from __future__ import print_function
 import collections
@@ -16,7 +16,6 @@ from openerp import models
 
 from physician import Physician
 from mgt_order_line import MgtOrderLine
-from mgt_product_counter import MgtProductCounter
 from lib import mgt_funcs, mgt_db, mgt_bridge
 
 # ------------------------------------------------------------------- Class -----------------------
@@ -24,31 +23,14 @@ class ManagementImplement(models.Model):
 	"""
 	Using vectors and functional programming.
 	"""
-	#_name = 'openhealth.management.implementation'
 	_inherit = 'openhealth.management'
+	#_name = 'openhealth.management.implementation'
 	#_order = 'date_begin desc'
 
 
 # -------------------------------------------------------------------------------------------------
 # Second Level - Update Buttons
 # -------------------------------------------------------------------------------------------------
-
-# ------------------------------------------------------------- Init vector ----
-	def init_vector(self, vector_type):
-		"""
-		Init vector
-		"""
-		vector = []
-
-		for name in vector_type:
-			obj = MgtProductCounter(name)
-			vector.append(obj)
-
-		# Pure functional
-		results = mgt_funcs.obj_percentages_pure(vector, 0)
-
-		return vector
-
 
 # ----------------------------------------------------------- Update Fast ------
 	def update_sales(self, vector_obj, vector_sub):

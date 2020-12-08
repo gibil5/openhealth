@@ -7,7 +7,7 @@
 		Create a data model for the Management report.
 
 	Created: 			28 may 2018
-	Last up: 			 6 dec 2020
+	Last up: 			 8 dec 2020
 """
 from __future__ import print_function
 from openerp import models, fields

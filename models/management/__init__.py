@@ -19,6 +19,7 @@ from . import repo     # used by mkt
 #from . import management_fields
 from . import management
 from . import management_business
+from . import management_implement
 
 # Patient
 from . import mgt_patient_line

@@ -7,72 +7,72 @@
 """,
 'description': """
 
- 	6 dec 2020
+8 dec 2020
 
-	Using patterns:
-		- Reduce inheritances.
-		- Reduce singletons.
-		- Introduce pubsubs.
-		- Introduce containers.
+Using patterns:
+	- Reduce inheritances.
+	- Reduce singletons.
+	- Introduce pubsubs.
+	- Introduce containers.
 
-	Classes: 
-		- Order (depends oeHealth)
-		- Patient (free)
-		- Treatment (free)
-		- Management (free)
-		- Management Doctor (free)
-		
-	Contains:
-		- All External Dependencies
-		- All Models
-		- All Users
-		- All Views
-		- All Security
-		- All Data
+Classes: 
+	- Order (depends oeHealth)
+	- Patient (free)
+	- Treatment (free)
+	- Management (free)
+	- Management Doctor (free)
+	
+Contains:
+	- All External Dependencies
+	- All Models
+	- All Users
+	- All Views
+	- All Security
+	- All Data
 
-	External modules:
-		- Spanish translation
-		- Oehealth
-		- Base multi image
-		- Web Export View
-		- Accounting and Finance. Adjust tax to zero
+External modules:
+	- Spanish translation
+	- Oehealth
+	- Base multi image
+	- Web Export View
+	- Accounting and Finance. Adjust tax to zero
 
-	Python Libs:
-		- Unidecode - dep
-		- pysftp - dep
-		- Numpy, Num2words, Pandas, QrCode
+Python Libs:
+	- Unidecode - dep
+	- pysftp - dep
+	- Numpy, Num2words, Pandas, QrCode
 
-	For PDF Reporting (tickets):
-		- Install wkhtmltopdf (0.12.2 v). Other versions will not work.
+For PDF Reporting (tickets):
+	- Install wkhtmltopdf (0.12.2 v). Other versions will not work.
 
-	For Tickets (right button printing):
-		- On Chrome, install extension: PDF Viewer. Link it to Adobe Reader.
+For Tickets (right button printing):
+	- On Chrome, install extension: PDF Viewer. Link it to Adobe Reader.
 
-	Deprecated services:
-		- Ooor,
-		- Testcafe,
-		- Auto-backup,
-		- Inventory.
+Deprecated services:
+	- Ooor,
+	- Testcafe,
+	- Auto-backup,
+	- Inventory.
 
-	Remember Robert C. Martin:
-		- Respect the Law of Demeter: avoid Train Wreckages. When you see more than two dots, this needs fixing.
-		- Do not mix the Data Model and Business Rules. Encapsulate Business Rules in a separate module.
-		- Use Three layered model: Odoo Active Data - Customized Class with BR - General purpose Library.
-		- Handle Exceptions.
-		- The Database should not contain Business rules. Remove computes.
+Remember Robert C. Martin:
+	- Respect the Law of Demeter: avoid Train Wreckages. When you see more than two dots, this needs fixing.
+	- Do not mix the Data Model and Business Rules. Encapsulate Business Rules in a separate module.
+	- Use Three layered model: Odoo Active Data - Customized Class with BR - General purpose Library.
+	- Handle Exceptions.
+	- The Database should not contain Business rules. Remove computes.
 
-	Always clean your System:
-		- Remove Procurement Orders,
-		- Remove Stock Moves,
-		- Remove Products Consumables,
-		- Remove Computes.
+Always clean your System:
+	- Remove Procurement Orders,
+	- Remove Stock Moves,
+	- Remove Products Consumables,
+	- Remove Computes.
 
-	Created:        11 Sep 2016
-	Last up:        22 Aug 2020
+Created:        11 Sep 2016
+Last up:        22 Aug 2020
 
-	(From 17 Mar 2018 - 13 963)
+(From 17 Mar 2018 - 13 963)
 
-	---
+---
 
 """,
 

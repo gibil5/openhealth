@@ -2,7 +2,9 @@
 """
 	Management - Data model
 
-	Using: vectors and functional programming.
+	SRP
+		Responsibility of this class: 
+		Create a data model for the Management report.
 
 	Created: 			28 may 2018
 	Last up: 			 6 dec 2020
@@ -17,6 +19,7 @@ class Management(models.Model):
 	Contains only methods.
 	"""
 	_name = 'openhealth.management'
+	_order = 'date_begin desc'
 	#_inherit = 'openhealth.management_fields'  # Dep !
 
 

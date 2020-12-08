@@ -2,7 +2,9 @@
 """
 	Management - Extra
 
-    Smart, but unused.
+	SRP
+		Responsibility of this class:
+		All methods that are smart but not used.
 
 	Created: 			28 oct 2020
 	Last up: 			28 oct 2020
@@ -10,14 +12,12 @@
 from __future__ import print_function
 from openerp import models, fields, api
 
-
-# ------------------------------------------------------------------- Class ----
-class Management(models.Model):
+# ------------------------------------------------------------------- Class -----------------------
+class ManagementExtra(models.Model):
 	"""
-    Extra. Not used.
+    Extra: smart but not used.
 	"""
 	_inherit = "openhealth.management"
-
 
 # ----------------------------------------------------------- Update Max -----------------------
 	@api.multi
@@ -127,4 +127,43 @@ class Management(models.Model):
 		self.rsp_total = rsp.total
 		self.rsp_count_delta = self.nr_products - self.rsp_count
 		self.rsp_total_delta = self.amo_products - self.rsp_total
+
+
+# ----------------------------------------------------------- Update Year ------
+	@api.multi
+	def update_year(self):
+		"""
+		Update Yearly total amounts
+		"""
+		print()
+		print('** Update Year')
+
+		# Mgts
+		mgts = self.env["openhealth.management"].search([
+												('owner', 'in', ['month']),
+												('year', 'in', [self.year]),
+											],
+												#order='x_serial_nr asc',
+												#limit=1,
+											)
+		# Count
+		count = self.env["openhealth.management"].search_count([
+													('owner', 'in', ['month']),
+													('year', 'in', [self.year]),
+											],
+												#order='x_serial_nr asc',
+												#limit=1,
+											)
+
+		#print(mgts)
+		#print(count)
+		total = 0
+		for mgt in mgts:
+			total = total + mgt.total_amount
+		self.total_amount_year = total
+		if self.total_amount_year != 0:
+			self.per_amo_total = self.total_amount / self.total_amount_year
+
+	# update_year
+
 

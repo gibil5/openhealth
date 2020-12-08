@@ -53,7 +53,7 @@ SUBFAMILIES = [
 ]
 
 
-
+# ------------------------------------------------------------------- Class -----------------------
 class ManagementBusiness(models.Model):
 	"""
     Management - Business logic.
@@ -107,7 +107,6 @@ class ManagementBusiness(models.Model):
 		for order in orders:
 
 			# Init
-			#patient_id = order.patient.id
 			patient = order.patient
 
 			if self.mode in ['normal']:
@@ -117,7 +116,6 @@ class ManagementBusiness(models.Model):
 
 				# Create
 				if count == 0:
-					#self.patient_line = MgtPatientLine.create_oh(patient_id, self.id, env)
 					self.patient_line = MgtPatientLine.create_oh(patient, self.id, env)
 					print(self.patient_line)
 
@@ -180,13 +178,8 @@ class ManagementBusiness(models.Model):
 		for doctor in self.doctor_line:
 			print(doctor.name)
 
-			#doctor.update_daily() 	# Here !
 			doctor.update_daily(self.id) 	# Here !
 		print()
-
-		# For Django
-		#self.date_test = datetime.datetime.now()
-		#return 1
 
 
 # -------------------------------------------------------------- Validate ------
@@ -204,7 +197,7 @@ class ManagementBusiness(models.Model):
 		out = self.validate_internal()
 
 		# External
-		#self.validate_external()  	# Dep ?
+		#self.validate_external()
 
 
 # ----------------------------------------------------------- Reset ------------

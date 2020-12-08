@@ -13,7 +13,7 @@ from __future__ import print_function
 from openerp import models, fields
 from . import mgt_vars
 
-# ------------------------------------------------------------------- Class ----
+# ------------------------------------------------------------------- Class -----------------------
 class Management(models.Model):
 	"""
 	Contains only methods.

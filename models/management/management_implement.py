@@ -5,22 +5,21 @@
 	SRP
 		Responsibility of this class:
         Implement business logic.
-        
+
 	Created: 			28 may 2018
 	Last up: 			 6 dec 2020
 """
 from __future__ import print_function
 import collections
 
-from openerp import models, api
+from openerp import models
 
 from physician import Physician
 from mgt_order_line import MgtOrderLine
 from mgt_product_counter import MgtProductCounter
-from mgt_patient_line import MgtPatientLine
-from lib import mgt_funcs, prod_funcs, mgt_db, mgt_bridge
+from lib import mgt_funcs, mgt_db, mgt_bridge
 
-# ------------------------------------------------------------------- Class ----
+# ------------------------------------------------------------------- Class -----------------------
 class ManagementImplement(models.Model):
 	"""
 	Using vectors and functional programming.
@@ -285,47 +284,7 @@ class ManagementImplement(models.Model):
 			self.avg_prom = value
 			return
 
-
-# ----------------------------------------------------------- Update Year ------
-	@api.multi
-	def update_year(self):
-		"""
-		Update Yearly total amounts
-		"""
-		print()
-		print('** Update Year')
-
-		# Mgts
-		mgts = self.env["openhealth.management"].search([
-												('owner', 'in', ['month']),
-												('year', 'in', [self.year]),
-											],
-												#order='x_serial_nr asc',
-												#limit=1,
-											)
-		# Count
-		count = self.env["openhealth.management"].search_count([
-													('owner', 'in', ['month']),
-													('year', 'in', [self.year]),
-											],
-												#order='x_serial_nr asc',
-												#limit=1,
-											)
-
-		#print(mgts)
-		#print(count)
-		total = 0
-		for mgt in mgts:
-			total = total + mgt.total_amount
-		self.total_amount_year = total
-		if self.total_amount_year != 0:
-			self.per_amo_total = self.total_amount / self.total_amount_year
-
-	# update_year
-
-
 # ----------------------------------------------- Update Sales - By Doctor -----
-
 	def update_sales_by_doctor(self):
 		"""
 		Update Sales by Doctor
@@ -839,7 +798,6 @@ class ManagementImplement(models.Model):
 
 # ------------------------------------------------------- Validate Internal ----
 	# Validate
-	@api.multi
 	def validate_internal(self):
 		"""
 		Validates Data Coherency - Internal.

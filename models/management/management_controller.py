@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-	Management - Business logic
+	Management - Controller 
 
 	SRP
 		Responsibility of this class:
-		Provide service buttons to the UI.
+		Controller - defines the way the user interface reacts to user input.
 
 	Created: 			 6 dec 2020
 	Last up: 			 8 dec 2020

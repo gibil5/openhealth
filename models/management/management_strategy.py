@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-	Management - implementation
+	Management - Strategy
 
 	SRP
 		Responsibility of this class:
-        Implement business logic.
+		Define a strategy for resolving a problem (business logic).
 
 	Created: 			28 may 2018
 	Last up: 			 8 dec 2020
@@ -19,7 +19,7 @@ from mgt_order_line import MgtOrderLine
 from lib import mgt_funcs, mgt_db, mgt_bridge
 
 # ------------------------------------------------------------------- Class -----------------------
-class ManagementImplement(models.Model):
+class ManagementStrategy(models.Model):
 	"""
 	Using vectors and functional programming.
 	"""
@@ -767,3 +767,27 @@ class ManagementImplement(models.Model):
 					self.amo_prom = self.amo_prom + line.price_subtotal
 					return
 	# line_analysis
+
+# ------------------------------------------------------- Validate Internal ----
+	# Validate
+	def validate_internal(self):
+		"""
+		Validates Data Coherency - Internal.
+		"""
+		print()
+		print('** Validates internal')
+
+		# Families
+		self.per_amo_families = self.per_amo_products + self.per_amo_consultations + self.per_amo_procedures + self.per_amo_other + self.per_amo_credit_notes
+		print(self.per_amo_families)
+
+		# Sub Families
+		self.per_amo_subfamilies = self.per_amo_sub_con_med + self.per_amo_sub_con_gyn + self.per_amo_sub_con_cha + \
+									self.per_amo_co2 + self.per_amo_exc + self.per_amo_quick + self.per_amo_ipl + self.per_amo_ndyag + \
+									self.per_amo_medical + self.per_amo_cosmetology + \
+									self.per_amo_echo + self.per_amo_gyn + self.per_amo_prom + \
+									self.per_amo_topical + self.per_amo_card + self.per_amo_kit + \
+									self.per_amo_credit_notes
+		print(self.per_amo_subfamilies)
+
+		return self.per_amo_families, self.per_amo_subfamilies

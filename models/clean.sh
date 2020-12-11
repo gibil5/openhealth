@@ -5,7 +5,7 @@
 #mv emr/*.pyc ./pyc/.
 #mv libs/*.pyc ./pyc/.
 
-mv management/*.pyc ./pyc/.
+#mv management/*.pyc ./pyc/.
 
 #mv marketing/*.pyc ./pyc/.
 #mv order/*.pyc ./pyc/.

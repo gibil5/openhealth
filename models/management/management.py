@@ -7,7 +7,7 @@
 		Create a data model for the Management report.
 
 	Created: 			28 may 2018
-	Last up: 			 8 dec 2020
+	Last up: 			11 dec 2020
 """
 from __future__ import print_function
 from openerp import models, fields
@@ -20,7 +20,6 @@ class Management(models.Model):
 	"""
 	_name = 'openhealth.management'
 	_order = 'date_begin desc'
-	#_inherit = 'openhealth.management_fields'  # Dep !
 
 
 # ----------------------------------------------------------- Relational --------------------------

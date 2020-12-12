@@ -3,7 +3,7 @@
 		*** Oeh Medical Physician
  
 		Created: 		 6 Mar 2017
-		Last up:		22 Aug 2020
+	Last up: 			11 dec 2020
 """
 from openerp import models, fields, api
 
@@ -13,42 +13,42 @@ class Physician(models.Model):
 	"""
 	_inherit = 'oeh.medical.physician'	
 
-
 # ---------------------------------------------------- Static methods ----------
 	# Get
 	@staticmethod
-	def get_doctors(env):
+	def get_doctors(obj):
+		
+		env = obj.env['oeh.medical.physician']
+
 		doctors_active = Physician.get_active(env)
 		doctors_inactive = Physician.get_inactive(env)
 		return doctors_active - doctors_inactive
 
-
 	# Get
-	@staticmethod
+	#@staticmethod
 	def get_active(env):
+
 		# Doctors Inactive
-		#doctors = self.env['oeh.medical.physician'].search([
 		doctors = env.search([
-																	('active', '=', True),
-															],
-															#order='date_begin,name asc',
-															#limit=1,
-		)
+								('active', '=', True),
+							],
+							#order='date_begin,name asc',
+							#limit=1,
+							)
 		return 	doctors	
 
 	# Get
-	@staticmethod
+	#@staticmethod
 	def get_inactive(env):
-		# Doctors Inactive
-		#doctors = self.env['oeh.medical.physician'].search([
-		doctors = env.search([
-																	('active', '=', False),
-															],
-															#order='date_begin,name asc',
-															#limit=1,
-		)
-		return 	doctors	
 
+		# Doctors Inactive
+		doctors = env.search([
+								('active', '=', False),
+							],
+							#order='date_begin,name asc',
+							#limit=1,
+							)
+		return 	doctors	
 
 
 # ------------------------------------------------------ Getter ----------------

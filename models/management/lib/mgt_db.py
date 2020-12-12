@@ -5,15 +5,16 @@
             SaleOrder
 
 	Created: 			26 oct 2020
-	Last up: 			28 nov 2020
+	Last up: 			11 dec 2020
 
-	Signature
+	Interface
 		get_orders_filter_fast
 		get_orders_filter
-		get_orders_filter_by_doctor
 """
 from __future__ import print_function
 import datetime
+
+from openerp import models
 
 # ------------------------------------------------------------- Constants ------
 _DATE_FORMAT = "%Y-%m-%d"
@@ -138,56 +139,8 @@ def get_orders_filter(self, date_bx, date_ex, state_arr, type_arr):
 # get_orders_filter
 
 
-# ----------------------------------------------------------- Get orders - By Doctor --------------
-def get_orders_filter_by_doctor(self, date_bx, date_ex, doctor):
-	"""
-	Provides sales between begin date and end date. Filters: by Doctor.
-	Used by
-		management
-	"""
-	#print()
-	#print('PL - Get Orders Filter - By Doctor')
-
-	# Init
-	# Dates
-	date_begin = date_bx + ' 05:00:00'
-	date_end_dt = datetime.datetime.strptime(date_ex, _DATE_FORMAT) + \
-																		datetime.timedelta(hours=24) + datetime.timedelta(hours=5, minutes=0)
-	date_end = date_end_dt.strftime(_DATE_HOUR_FORMAT)
-
-	# Prints
-	#print date_end_dt
-
-	# Search
-	orders = self.env[_MODEL_SALE].search([
-													('state', 'in', ['sale', 'credit_note']),
-													('date_order', '>=', date_begin),
-													('date_order', '<', date_end),
-													('x_doctor', '=', doctor),
-													('x_legacy', '=', False),
-											],
-												order='x_serial_nr asc',
-												#limit=1,
-											)
-	# Count
-	count = self.env[_MODEL_SALE].search_count([
-													('state', 'in', ['sale', 'credit_note']),
-													('date_order', '>=', date_begin),
-													('date_order', '<', date_end),
-													('x_doctor', '=', doctor),
-													('x_legacy', '=', False),
-											],
-												#order='x_serial_nr asc',
-												#limit=1,
-											)
-	return orders, count
-
-# get_orders_filter_by_doctor
-
-
 # ----------------------------------------------------------- Get orders - By patient --------------
 # Provides sales between begin date and end date. Filters: by patient.
-#def get_orders_filter_by_patient_fast(self, patient):
 def get_orders_filter_by_patient(self, patient):
 	"""
 	Sales.
@@ -196,7 +149,6 @@ def get_orders_filter_by_patient(self, patient):
 	"""
 	#print()
 	#print('Get Orders Filter - By patient')
-
 
 	# Search
 

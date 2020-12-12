@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-	Management - Controller 
+	Management - Controller
 
 	SRP
 		Responsibility of this class:
@@ -15,12 +15,14 @@
 	Last up: 			11 dec 2020
 """
 from __future__ import print_function
-import datetime
+#import datetime
 
 from openerp import models, api
 
-from lib import mgt_funcs, prod_funcs, mgt_db, mgt_bridge
+from lib import mgt_funcs, prod_funcs, mgt_db
 from mgt_patient_line import MgtPatientLine
+
+from sales_doctor import SalesDoctor
 
 # --------------------------------------------------------------- Constants ----
 TYPES = [
@@ -136,7 +138,10 @@ class ManagementBusiness(models.Model):
 		print('*** Update Doctors')
 
 		# Sales by Doctor
-		self.update_sales_by_doctor()
+		#self.update_sales_by_doctor()
+
+		obj = SalesDoctor(self, self.date_begin, self.date_end, self.doctor_line, self.total_amount)
+		obj.update()
 
 		# Stats
 		self.update_stats()

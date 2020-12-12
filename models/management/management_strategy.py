@@ -8,12 +8,9 @@
 
 	Interface
 		def update_sales(self, vector_obj, vector_sub):
-		def update_sales_by_doctor(self):
 		def update_stats(self):
 
 		def line_analysis(self, line):
-
-		def create_doctor_data(self, doctor_name, orders):
 
 		def set_averages(self):
 		def set_ratios(self):
@@ -272,112 +269,6 @@ class ManagementStrategy(models.Model):
 		if tag == 'pro':
 			self.avg_prom = value
 			return
-
-# ----------------------------------------------- Update Sales - By Doctor -----
-	def update_sales_by_doctor(self):
-		"""
-		Update Sales by Doctor
-		"""
-		print()
-		print('Update Sales - By Doctor')
-
-		# Clean - Important
-		self.doctor_line.unlink()
-
-		# Init vars
-		total_amount = 0
-		total_count = 0
-		total_tickets = 0
-
-
-		# Get - Should be static method
-		env = self.env['oeh.medical.physician']
-		doctors = Physician.get_doctors(env)
-		#print(doctors)
-
-
-		# Create Sales - By Doctor - All
-		for doctor in doctors:
-			#print(doctor.name)
-			#print(doctor.active)
-
-			# Get Orders - Must include Credit Notes
-			orders, count = mgt_db.get_orders_filter_by_doctor(self, self.date_begin, self.date_end, doctor.name)
-			#print(orders)
-			#print(count)
-
-			if count > 0:
-				self.create_doctor_data(doctor.name, orders)
-
-			#print()
-	# update_sales_by_doctor
-
-
-# ----------------------------------------------------------- Create Doctor Data ------------
-	def create_doctor_data(self, doctor_name, orders):
-		"""
-		Create doctor data
-		"""
-		print()
-		print('** Create Doctor Data')
-
-		#  Init
-		env = self.env['openhealth.management.order.line']
-
-		# Init Loop
-		amount = 0
-		count = 0
-		#tickets = 0
-
-		# Create
-		doctor = self.doctor_line.create({
-											'name': doctor_name,
-											'management_id': self.id,
-										})
-
-		# Loop
-		for order in orders:
-
-			# For loop
-			#tickets = tickets + 1
-
-			# Filter Block
-			if not order.x_block_flow:
-
-				# For loop
-				amount = amount + order.amount_total
-
-				# State equal to Sale
-				if order.state in ['sale']:
-
-					# Order Lines
-					for line in order.order_line:
-
-						# For loop
-						count = count + 1
-
-						# Create- Should be a class method
-						print('*** Create Doctor Order Line !')
-						order_line = MgtOrderLine.create_oh(order, line, doctor, self, env)
-
-					# Line Analysis Sale - End
-				# Conditional State Sale - End
-				# Conditional State - End
-			# Filter Block - End
-		# Loop - End
-
-		# Stats
-		doctor.amount = amount
-		doctor.x_count = count
-
-		# Percentage
-		if self.total_amount != 0:
-			doctor.per_amo = (doctor.amount / self.total_amount)
-
-	# create_doctor_data
-
-
-
 
 # ----------------------------------------------------------- Update Stats -----
 	def update_stats(self):

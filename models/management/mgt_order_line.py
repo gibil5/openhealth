@@ -3,7 +3,7 @@
 	Management Order Line - Clean This !
 
 	Created: 			28 may 2018
-	Last updated: 		27 oct 2020
+	Last up: 			11 dec 2020
 """
 from openerp import models, fields, api
 import openerp.addons.decimal_precision as dp
@@ -29,18 +29,18 @@ class MgtOrderLine(models.Model):
 
 # ----------------------------------------------------- Class methods ----------
 	# Create
-	@classmethod
-	#def create_oh(cls, patient_id, management_id, env):
-	def create_oh(cls, order, line, doctor, management, env):
+	#@classmethod
+	@staticmethod
+	def create_oh(order, line, doctor, management):
 		#print('Class method - create')
 		#print(line)
 		#print(line.product_id)
 		#print(line.product_id.name)
 
 		# init 
+		env = management.env['openhealth.management.order.line']
 
 		# Receptor and id_doc
-
 		# invoice
 		if order.x_type in ['ticket_invoice', 'invoice']:
 			receptor = order.patient.x_firm.upper()
@@ -67,8 +67,7 @@ class MgtOrderLine(models.Model):
 		family = line.product_id.get_family()
 		sub_family = line.product_id.get_subsubfamily()
 
-
-		#order_line = doctor.order_line.create({
+		# Create
 		order_line = env.create({
 									# Receptor
 									'receptor': 	receptor,

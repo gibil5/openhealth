@@ -4,11 +4,12 @@
 
     SRP
         Responsibility of this class:
+		Encapsulates a strategy for resolving a problem (business logic).
 
     Interface
 
     Created:             11 dec 2020
-    Last up:             11 dec 2020
+    Last up:             12 dec 2020
 """
 from __future__ import print_function
 from lib import mgt_funcs, prod_funcs, mgt_db

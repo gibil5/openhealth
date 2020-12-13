@@ -3,14 +3,16 @@
 	Productivity Day - Simplified version of Day Line - Just an empty shell
 
 	Created: 			 8 dec 2019
-	Last up: 			18 oct 2020
+	Last up: 			12 dec 2020
 """
+from __future__ import print_function
 import numpy as np
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.order import ord_vars
 from openerp.addons.openhealth.models.libs import lib
 
-from lib import mgt_db
+#from lib import mgt_db
+from management_db import ManagementDb
 
 # -------------------------------------------------------------------------------------------------
 class ProductivityDay(models.Model):
@@ -114,7 +116,8 @@ class ProductivityDay(models.Model):
 		data_amount = []
 
 		# Search
-		orders, count = mgt_db.get_orders_filter_fast(self, self.date, self.date)
+		#orders, count = mgt_db.get_orders_filter_fast(self, self.date, self.date)
+		orders, count = ManagementDb.get_orders_filter_fast(self, self.date, self.date)
 		#print(orders)
 		#print(count)
 

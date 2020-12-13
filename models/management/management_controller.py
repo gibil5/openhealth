@@ -12,17 +12,18 @@
 		def validate_internal(self):
 
 	Created: 			 6 dec 2020
-	Last up: 			11 dec 2020
+	Last up: 			12 dec 2020
 """
 from __future__ import print_function
 #import datetime
 
 from openerp import models, api
 
-from lib import mgt_funcs, prod_funcs, mgt_db
+from lib import mgt_funcs, prod_funcs
 from mgt_patient_line import MgtPatientLine
 
 from sales_doctor import SalesDoctor
+from management_db import ManagementDb
 
 # --------------------------------------------------------------- Constants ----
 TYPES = [
@@ -103,7 +104,8 @@ class ManagementBusiness(models.Model):
 
 		# Get orders
 		# Should be a class method
-		orders, count = mgt_db.get_orders_filter_fast(self, self.date_begin, self.date_end)
+		#orders, count = mgt_db.get_orders_filter_fast(self, self.date_begin, self.date_end)
+		orders, count = ManagementDb.get_orders_filter_fast(self, self.date_begin, self.date_end)
 		#print(orders)
 		#print(count)
 

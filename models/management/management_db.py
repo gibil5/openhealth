@@ -112,6 +112,11 @@ class ManagementDb(object):
 
         if state_arr in _dic_states and type_arr in _dic_types:
 
+            #implementor = OdooDbImpl(env, date_begin, date_end, doctor)
+
+            # Search
+            #orders = implementor.search_orders_doctor()
+
             # Search
             orders = env.search([
                                                         ('state', 'in', _dic_states[state_arr]),

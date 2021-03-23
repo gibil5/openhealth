@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 {
-'name': "Open Health - Odoo9 - Object oriented - Refactorized - CodeClimate - SonarQube - Management - Functional - No black boxes - Patterns",
+'name': "Open Health - Odoo9 - Object oriented - Refactorized - CodeClimate - SonarQube - Management - Functional - No black boxes - Patterns - Microservices",
 
 'summary': """ ERP system for a Clinic. Inherits OeHealth. Contains ALL the Data Model. Business logic is in classes and libraries.
 
 """,
 'description': """
 
-12 dec 2020
+23 mar 2021
 
 Using patterns:
 	- Reduce inheritances.
@@ -76,11 +76,10 @@ Last up:        22 Aug 2020
 
 """,
 
-'author': "DataMetrics",
+'author': "jrevilla55@gmail.com",
 'website': "http://jrevilla.com/",
-'category': 'Object Oriented',
-'version': '4.0',
-#'depends': ['base', 'oehealth', 'base_multi_image', 'account'],
+'category': 'Object Oriented, Microservices',
+'version': '5.0',
 'depends': ['base', 'oehealth', 'base_multi_image'],
 'data': [
 

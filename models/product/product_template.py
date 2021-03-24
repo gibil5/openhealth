@@ -3,16 +3,15 @@
 	*** Product Template
 
 	Only Data model. No functions.
-
 	All Fixers are Deprecated. Should be in the Clean Module.
 
-	Created: 			 01 Nov 2016
-	Last up: 			 05 dec 2020
+	Created: 			 01 nov 2016
+	Last up: 			 24 mar 2021
 """
-
 from __future__ import print_function
 from openerp import models, fields
 from . import prod_vars
+
 
 class ProductTemplate(models.Model):
 	"""
@@ -20,15 +19,14 @@ class ProductTemplate(models.Model):
 	Inherited from OeHealth
 	"""
 	_inherit = 'product.template'
-
 	_order = 'name'
+
 
 # ----------------------------------------------------------- Relational --------------------------
 	# Categ
 	categ_id = fields.Many2one(
 			'product.category',
 			'Internal Category',
-			#required=True,
 			required=False,
 			change_default=True,
 			domain="[('type','=','normal')]",

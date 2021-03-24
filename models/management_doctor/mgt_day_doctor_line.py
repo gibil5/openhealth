@@ -12,7 +12,6 @@ import datetime
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.order import ord_vars
 
-#class DayDoctorLine(models.Model):
 class MgtDayDoctorLine(models.Model):
 	"""
 	MgtDayDoctorLine
@@ -20,10 +19,8 @@ class MgtDayDoctorLine(models.Model):
 			ManagementLine
 	"""
 	_name = 'openhealth.management.day.doctor.line'
-
-	_inherit = 'openhealth.management.day.line'
-
 	_order = 'date asc'
+	_inherit = 'openhealth.management.day.line'
 
 
 

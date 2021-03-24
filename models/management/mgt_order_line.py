@@ -3,7 +3,7 @@
 	Management Order Line - Clean This !
 
 	Created: 			28 may 2018
-	Last up: 			23 mar 2021
+	Last up: 			24 mar 2021
 """
 from openerp import models, fields, api
 import openerp.addons.decimal_precision as dp

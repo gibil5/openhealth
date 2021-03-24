@@ -6,4 +6,3 @@ Fulcrum module.
 
 from lib import mgt_funcs
 from typing import Sequence
-

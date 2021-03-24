@@ -9,18 +9,14 @@ from __future__ import print_function
 from openerp import models, fields, api
 from . import mgt_vars
 
-#from management import Management
 
-#class FamilyLine(models.Model):
 class MgtFamilyLine(models.Model):
 	"""
-	Only Data model. No functions.
-
-	Should not be inherited
+    Family line
 	"""
 	_name = 'openhealth.management.family.line'
 	_order = 'amount desc'
-	#_inherit = 'openhealth.management.line'
+
 
 # ----------------------------------------------------------- Update -----------
 	def update(self):

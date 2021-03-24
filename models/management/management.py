@@ -1,66 +1,27 @@
 # -*- coding: utf-8 -*-
 """
-	Management - Data model
+	Management - Finance module
 
-	SRP
-		Responsibility of this class: 
-		Create a data model for the Management report.
-		Define a Controller - the way the user interface reacts to user input.
-		Define a Strategy - for resolving a problem (business logic).
+	Create a data model for the Management report.
+	Define a Controller - the way the user interface reacts to user input.
+	Define a Strategy - for resolving a problem (business logic).
 
 	Created: 			28 may 2018
 	Last up: 			24 mar 2021
 """
 from __future__ import print_function
 import collections
-
 from openerp import models, fields, api
-
-from . import mgt_vars
-from lib import mgt_funcs, prod_funcs, mgt_bridge
+from lib import mgt_funcs, prod_funcs, mgt_bridge, mgt_vars
 from mgt_patient_line import MgtPatientLine
 from sales_doctor import SalesDoctor
 from management_db import ManagementDb
 
 
-
-# --------------------------------------------------------------- Constants ----
-TYPES = [
-		# Types
-		'products',
-		'services',
-]
-
-#FAMILIES = [
-		# Families
-		#'consultations',
-		#'procedures',
-		#'credit_notes',
-		#'other',
-#]
-
-SUBFAMILIES = [
-		# Sub Families
-		'co2',
-		'exc',
-		'ndy',
-		'ipl',
-		'qui',
-		'med',
-		'cos',
-		'ech',
-		'gyn',
-		'pro',
-		'top',
-		'vip',
-		'kit',
-]
-
-
 # ------------------------------------------------------------------- Class -----------------------
 class Management(models.Model):
 	"""
-	Contains only methods.
+	Finance module
 	"""
 	_name = 'openhealth.management'
 	_order = 'date_begin desc'
@@ -836,8 +797,8 @@ class Management(models.Model):
 		print('*** Update Fast')
 
 		#  Init vectors
-		vector_obj = mgt_funcs.init_vector(TYPES)
-		vector_sub = mgt_funcs.init_vector(SUBFAMILIES)
+		vector_obj = mgt_funcs.init_vector(mgt_vars.TYPES)
+		vector_sub = mgt_funcs.init_vector(mgt_vars.SUBFAMILIES)
 
 		# Update sales
 		self.update_sales(vector_obj, vector_sub)

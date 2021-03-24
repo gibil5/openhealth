@@ -21,7 +21,7 @@ from management_db import ManagementDb
 # ------------------------------------------------------------------- Class -----------------------
 class SalesDoctor(object):
     """
-    SalesDoctor
+    Sales Doctor
     """
 
     def __init__(self, management, date_begin, date_end, doctor_line, total_amount):

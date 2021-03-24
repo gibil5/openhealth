@@ -13,10 +13,10 @@
 from __future__ import print_function
 import numpy as np
 from openerp import models, fields, api
-
 from openerp.addons.openhealth.models.order import ord_vars
 from . import mgt_funcs
 from openerp.addons.openhealth.models.libs import lib
+
 
 class MgtDayLine(models.Model):
 	"""
@@ -24,7 +24,6 @@ class MgtDayLine(models.Model):
 	"""
 	_name = 'openhealth.management.day.line'
 	_order = 'date asc'
-	#_inherit = 'openhealth.management.line'
 
 
 # ----------------------------------------------------------- Relational -------

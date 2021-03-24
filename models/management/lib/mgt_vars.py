@@ -1,4 +1,39 @@
 # -*- coding: utf-8 -*-
+
+# --------------------------------------------------------------- Constants ----
+TYPES = [
+		# Types
+		'products',
+		'services',
+]
+
+#FAMILIES = [
+		# Families
+		#'consultations',
+		#'procedures',
+		#'credit_notes',
+		#'other',
+#]
+
+SUBFAMILIES = [
+		# Sub Families
+		'co2',
+		'exc',
+		'ndy',
+		'ipl',
+		'qui',
+		'med',
+		'cos',
+		'ech',
+		'gyn',
+		'pro',
+		'top',
+		'vip',
+		'kit',
+]
+
+
+# --------------------------------------------------------------- Lists --------
 _year_order_list = [
 					('2020', 		'2020'),
 					('2019', 		'2019'),

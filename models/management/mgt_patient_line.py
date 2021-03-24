@@ -9,17 +9,16 @@
 from __future__ import print_function
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.patient import pat_vars
-
-#from openerp.addons.price_list.models.management.lib import pl_mgt_funcs
-#from lib import mgt_db
 from management_db import ManagementDb
+
 
 class MgtPatientLine(models.Model):
 	"""
-	Patient lines
+	Patient line
 	"""
 	_name = 'openhealth.management.patient.line'
 	_order = 'amount_total desc'
+
 
 # ----------------------------------------------------- Const ------------------
 	_MODEL = "openhealth.management.patient.line"

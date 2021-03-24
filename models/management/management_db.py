@@ -30,6 +30,7 @@ from odoo_db import OdooDbImpl
 _DATE_FORMAT = "%Y-%m-%d"
 _DATE_HOUR_FORMAT = "%Y-%m-%d %H:%M"
 
+
 # ------------------------------------------------------------------- Class -----------------------
 class ManagementDb(object):
     """
@@ -37,9 +38,9 @@ class ManagementDb(object):
     """
     _name = 'openhealth.management_db'
 
+
 # ---------------------------------------------- get_orders_filter_by_doctor ---
     # Get
-    #@classmethod
     @staticmethod
     def get_orders_filter_by_doctor(management, date_bx, date_ex, doctor):
         """

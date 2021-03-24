@@ -26,10 +26,8 @@ class MgtDoctorLine(models.Model):
     Mgt Doctor line
 	"""
 	_name = 'openhealth.management.doctor.line'
-
-	_inherit = 'openhealth.management.line'
-
 	_order = 'amount desc'
+	_inherit = 'openhealth.management.line'
 
 
 # ----------------------------------------------------------- Relations --------

@@ -24,10 +24,8 @@ class MgtDayLine(models.Model):
 	Day Line
 	"""
 	_name = 'openhealth.management.day.line'
-
-	_inherit = 'openhealth.management.line'
-
 	_order = 'date asc'
+	_inherit = 'openhealth.management.line'
 
 
 # ----------------------------------------------------------- Relational -------

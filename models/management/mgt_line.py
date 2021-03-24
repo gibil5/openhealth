@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-	Management Line
+	Management Line - Must disappear ! - Highly deprecated 
 
 	Only Data model. No functions.
 

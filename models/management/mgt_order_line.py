@@ -3,11 +3,10 @@
 	Management Order Line - Clean This !
 
 	Created: 			28 may 2018
-	Last up: 			11 dec 2020
+	Last up: 			23 mar 2021
 """
 from openerp import models, fields, api
 import openerp.addons.decimal_precision as dp
-
 from openerp.addons.openhealth.models.order import ord_vars
 from openerp.addons.openhealth.models.product import prodvars
 from openerp.addons.openhealth.models.libs import lib
@@ -17,19 +16,16 @@ class MgtOrderLine(models.Model):
 	Used by 
 		Management 
 			For Doctor Sales Report
-		Account
+
+		Account ?
 			For Txt generation
 	"""
 	_name = 'openhealth.management.order.line'
-
-	_inherit='openhealth.line'
-
 	_description = "Openhealth Management Order Line"
 
 
-# ----------------------------------------------------- Class methods ----------
+# ----------------------------------------------------- Static methods ----------
 	# Create
-	#@classmethod
 	@staticmethod
 	def create_oh(order, line, doctor, management):
 		#print('Class method - create')
@@ -53,12 +49,6 @@ class MgtOrderLine(models.Model):
 			id_doc = order.patient.x_id_doc
 			id_doc_type = order.patient.x_id_doc_type
 			id_doc_type_code = order.patient.x_id_doc_type_code
-
-			# Pre-Electronic
-			#if id_doc_type is False or id_doc is False:
-			#	id_doc = order.patient.x_dni
-			#	id_doc_type = 'dni'
-			#	id_doc_type_code = '1'
 
 		# Price
 		price_unit = line.price_unit						
@@ -142,8 +132,7 @@ class MgtOrderLine(models.Model):
 		)
 
 
-# ----------------------------------------------------------- View ----------
-	#price_total = fields.Char()
+# ----------------------------------------------------------- View -------------
 
 # -------------------------------------------------- Inherited from line.py ----
 	# Name 
@@ -175,8 +164,7 @@ class MgtOrderLine(models.Model):
 			string='Producto', 
 			domain=[('sale_ok', '=', True)], 
 			change_default=True, 
-			ondelete='restrict', 			
-			#required=True, 
+			ondelete='restrict',
 		)
 
 	# Total 
@@ -199,7 +187,6 @@ class MgtOrderLine(models.Model):
 				'price_net': net,
 				'price_tax': tax,
 				'price_unit_net': unit_net,
-				#'price_unit_tax': unit_tax,
 			})
 
 	# Subtotal 

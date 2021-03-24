@@ -2,14 +2,14 @@
 """
 	Line
 	Inherited by: 
-		- management_order_line, 
-
 		- marketing_order_line, 
 		- order_report_nex_line, 
 		- electronic_line 
+		
+		- management_order_line - Not any more 
 	
 	Created: 				26 May 2018
-	Last updated: 			18 oct 2020
+	Last updated: 			23 mar 2021
 """
 from openerp import models, fields, api
 import openerp.addons.decimal_precision as dp

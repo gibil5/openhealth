@@ -19,10 +19,8 @@ class MgtFamilyLine(models.Model):
 	Should not be inherited
 	"""
 	_name = 'openhealth.management.family.line'
-
-	_inherit = 'openhealth.management.line'
-
 	_order = 'amount desc'
+	_inherit = 'openhealth.management.line'
 
 # ----------------------------------------------------------- Update -----------
 	def update(self):

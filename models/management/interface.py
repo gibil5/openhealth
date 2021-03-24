@@ -1,23 +1,19 @@
 # -*- coding: utf-8 -*-
 """
-	Container
+	Django - Interface - Dep ! 
 
-	Created: 				30 Sep 2018
-	Last mod: 				 4 Nov 2018
+	Should be inherited by all Reports
+	Inheritance has been broken !
+	Can be empty 
+
+ 	Created: 			10 Dec 2019
+	Last up: 	 		24 mar 2021
 """
-from __future__ import print_function
-
 from openerp import models, fields, api
 
-class Container(models.Model):
-	"""
-	Electronic Containter
-	"""
-	_name = 'openhealth.container'
-	#_inherit='openhealth.django.interface'
 
-
-# -------------------------------------------------- Inherited from interface.py ----------------------------
+class DjangoInterface(models.Model):
+	_name = 'openhealth.django.interface'
 
 
 # ----------------------------------------------------------- Django -----------
@@ -192,5 +188,3 @@ class Container(models.Model):
 		print()
 		print('Get state')
 		return self.state
-
-

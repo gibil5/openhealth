@@ -603,7 +603,9 @@
 									<group>								
 									</group>					
 									<group>								
+										<!--
 										<field name="report_sale_product"/>
+										-->
 										<field name="rsp_count"/>
 										<field name="rsp_total"/>
 										<field name="rsp_count_delta"/>

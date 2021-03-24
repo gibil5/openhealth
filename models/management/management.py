@@ -88,9 +88,9 @@ class Management(models.Model):
 
 # ------------------------------------------------------------- Many2one -------
 	# Report Sale Product
-	report_sale_product = fields.Many2one(
-			'openhealth.report.sale.product'
-		)
+	#report_sale_product = fields.Many2one(
+	#		'openhealth.report.sale.product'
+	#	)
 
 # ----------------------------------------------------------- Configurator -----
 	# Default Configurator
@@ -978,7 +978,7 @@ class Management(models.Model):
 		# Relational
 		#if self.patient_line not in [False]:
 		self.patient_line.unlink()
-		self.report_sale_product.unlink()
+		#self.report_sale_product.unlink()
 		self.rsp_count = 0
 		self.rsp_count_delta = 0
 		self.rsp_total = 0

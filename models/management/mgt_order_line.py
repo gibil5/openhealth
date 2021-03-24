@@ -11,6 +11,7 @@ from openerp.addons.openhealth.models.order import ord_vars
 from openerp.addons.openhealth.models.product import prodvars
 from openerp.addons.openhealth.models.libs import lib
 
+
 class MgtOrderLine(models.Model):
 	"""
 	Used by 

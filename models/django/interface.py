@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-	Django - Interface
+	Django - Interface - Dep ! 
+
 	Should be inherited by all Reports
 	
 	Data model. And functions.

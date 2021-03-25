@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
 
+# Commons
+from commons import *
+
+
 # Management
 from management import *
 from management_doctor import *
@@ -11,8 +15,15 @@ from configurator import *
 from pricelist import *
 
 
+
+
+# Accounting
+from account import *
+
 # Electronic
-from electronic import *
+#from electronic import *
+from electronic_new import *
+
 
 
 # Marketing
@@ -32,6 +43,3 @@ from emr import *
 
 # Order 
 from order import *
-
-# Accounting
-from account import *

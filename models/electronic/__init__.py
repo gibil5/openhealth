@@ -5,7 +5,7 @@ from . import txt_line
 from . import texto
 from . import electronic_container
 
-from . import line
+#from . import line
 
 from . import electronic_order
 

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+
+
+<!-- TREE --> 
+        <record model="ir.ui.view" id="txt_line_tree_view">
+            
+            <field name="name">txt.line.tree</field>
+            
+            <field name="model">openhealth.account.txt.line</field>
+            
+            <field name="arch" type="xml">
+
+                <tree string="Texto Tree"  default_order='name asc'>
+
+
+                    <field name="name"  groups='openhealth.roots'/>
+
+                    <field name="order" groups='openhealth.roots'/>
+
+                    <field name="path"  groups='openhealth.roots'/>
+
+                    <field name="file_name" groups='openhealth.roots'/>
+
+                    <field name="serial_number" groups='openhealth.roots'/>
+
+                    <field name="container_id"  groups='openhealth.roots'/>
+
+
+                    <field name="content"/>
+
+                </tree>
+            </field>
+        </record>
+    </data>
+</openerp>

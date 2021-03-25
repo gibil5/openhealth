@@ -5,8 +5,10 @@
 	Separate Structure and Business Logic
 
 	Created: 				30 Sep 2018
-	Last mod: 				16 Dec 2019
+	Previous: 				16 Dec 2019
+	Last: 					25 mar 2021
 """
+
 from __future__ import print_function
 import base64
 import io
@@ -14,18 +16,12 @@ import os
 import shutil
 import datetime
 from openerp import models, fields, api
-
-from openerp.addons.openhealth.models.management import mgt_funcs
-
-from openerp.addons.openhealth.models.management import mgt_vars
-
+from openerp.addons.openhealth.models.management.lib import mgt_funcs, mgt_vars
+from openerp.addons.openhealth.models.management.management_db import ManagementDb
 #from openerp.addons.openhealth.models.containers import export
-
 from openerp import _
 from openerp.exceptions import Warning as UserError
-
 from . import pl_export
-
 
 
 class ElectronicContainer(models.Model):
@@ -36,16 +32,12 @@ class ElectronicContainer(models.Model):
 		TXT Lines
 	Migrated to PL
 	"""
+	_description = 'Electronic Container'
 
 	_inherit = 'openhealth.container'
 
-	_description = 'Electronic Container'
-
-
-
 
 # ----------------------------------------------------- Django Interface --------------------------
-
 	@api.multi
 	def get_date_begin(self):
 		"""
@@ -55,7 +47,6 @@ class ElectronicContainer(models.Model):
 		print('Get date begin')
 		return self.export_date_begin
 
-
 	@api.multi
 	def get_date_end(self):
 		"""
@@ -64,10 +55,6 @@ class ElectronicContainer(models.Model):
 		print()
 		print('Get date end')
 		return self.export_date_end
-
-
-
-
 
 	@api.multi
 	def get_total(self):
@@ -81,8 +68,6 @@ class ElectronicContainer(models.Model):
 		else:
 			return 0
 
-
-
 	@api.multi
 	def get_count(self):
 		"""
@@ -90,78 +75,54 @@ class ElectronicContainer(models.Model):
 		"""
 		print()
 		print('Get count')
-
 		if self.total_count not in [False]:
 			return self.total_count
-
 		else:
 			return 0
 
 
-
 # ----------------------------------------------------------- Relational - New --------------------------
-
 	# Txt Line - New
 	txt_line = fields.One2many(
-
 			'openhealth.account.txt.line',
-
 			'container_id',
 		)
-
-
 
 
 # ----------------------------------------------------------- Relational --------------------------
-
 	# Electronic Line
 	electronic_order_ids = fields.One2many(
 			'openhealth.electronic.order',
-
 			'container_id',
 		)
-
-
 
 	# Txt Line
 	txt_ids = fields.One2many(
 			'openhealth.texto',
-
 			'container_id',
 		)
 
 
-
-
-
 # ----------------------------------------------------------- Fields --------------------------
-
 	# Total count
 	total_count = fields.Integer(
 			'Total Nr',
 		)
-
 
 	# Receipt count
 	receipt_count = fields.Integer(
 			'Recibos Nr',
 		)
 
-
 	# Invoice count
 	invoice_count = fields.Integer(
 			'Facturas Nr',
 		)
 
-
-
 	export_date = fields.Char(
 			'Export Date',
 			readonly=True,
 		)
-
-
-
 
 	# Txt File Name
 	txt_pack_name = fields.Char(
@@ -169,13 +130,10 @@ class ElectronicContainer(models.Model):
 			'Nombre Archivo TXT',
 		)
 
-
 	# Download
 	txt_pack = fields.Binary(
 			'Descargar TXT',
 		)
-
-
 
 	# Total
 	amount_total = fields.Float(
@@ -184,15 +142,7 @@ class ElectronicContainer(models.Model):
 		)
 
 
-
-
-
-
-
-
-
 # ----------------------------------------------------------- Relational ---------------------------------------------
-
 
 
 # ----------------------------------------------------------- First Level - Buttons ---------------------------------------------
@@ -278,16 +228,13 @@ class ElectronicContainer(models.Model):
 		Create Electronic Orders - Button
 		"""
 		print()
-		print('X - Create - Electronic - Button')
-
+		print('Create - Electronic - Button')
 
 		# Init Configurator
 		self.init_configurator()
 
-
 		# Clean
 		self.electronic_order_ids.unlink()
-
 
 		# Init Dates
 		date_format = "%Y-%m-%d"
@@ -421,7 +368,12 @@ class ElectronicContainer(models.Model):
 		# Get Orders
 		print(self.state_arr)
 		print(self.type_arr)
-		orders, count = mgt_funcs.get_orders_filter(self, self.export_date_begin, self.export_date_end, self.state_arr, self.type_arr)
+
+		#jx
+		#orders, count = mgt_funcs.get_orders_filter(self, self.export_date_begin, self.export_date_end, self.state_arr, self.type_arr)
+		#orders, count = management_db.get_orders_filter(self, self.export_date_begin, self.export_date_end, self.state_arr, self.type_arr)
+		orders, count = ManagementDb.get_orders_filter_fast(self, self.date_begin, self.date_end)
+
 		print(orders)
 		print(count)
 

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+
+
+<!-- TREE --> 
+        <record model="ir.ui.view" id="texto_tree_view">
+            <field name="name">texto.tree</field>
+            <field name="model">openhealth.texto</field>
+            <field name="arch" type="xml">
+                <tree string="Texto Tree"  default_order='name asc'>
+                    
+                    <field name="content"/>
+<!--
+                    <field name="name"/>
+-->
+                </tree>
+            </field>
+        </record>
+    </data>
+</openerp>

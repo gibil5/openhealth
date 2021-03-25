@@ -1,0 +1,56 @@
+						<!-- Correct - DEP --> 
+<!--
+						<button 
+							type="object" 
+							class="oe_highlight oe_right"
+							name="correct"
+							string="Correct"
+							groups="openhealth.roots"
+						/>
+-->
+
+
+
+
+
+<!--
+						<button 
+								type="object" 
+								icon="gtk-ok" 
+								class="oe_highlight" 
+
+								name="export_file" 
+								
+								string="Download" 
+							/>
+-->
+
+
+
+
+
+<!--
+							string="Crear Electrónico"                              
+-->
+						<!-- Create Electronic --> 
+						<!-- Export Txt --> 
+<!--
+						<button 
+							type="object"
+							class="oe_highlight"
+							name="create_electronic"  
+							string="Facturación"                                
+						/>
+						<button 
+							type="object" 
+							class="oe_highlight"
+							name="export_txt"                         
+							string="Crear TXT"                              
+						/>
+
+							groups="openhealth.roots"
+							groups="openhealth.roots"
+
+							string="Pl - Facturación"
+							string="Pl - Crear TXT"                              
+-->

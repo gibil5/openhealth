@@ -1,0 +1,196 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        
+
+
+<!-- FORM --> 
+        <record model="ir.ui.view" id="account_contasis_form_view">
+            <field name="name">account.contasis.form</field>
+            <field name="model">openhealth.account.contasis</field>
+            <field name="arch" type="xml">
+                <form string="Account Contasis Form">
+
+                    <!-- Header -->
+                    <header>
+
+
+<!--
+                                attrs="{'invisible':[   
+                                                        ('x_type','not in',['order']), 
+                                            ]}"
+-->
+                        <!-- Orders -->
+                        <button 
+                                type="object" 
+                                class="oe_highlight"
+
+                                name="update"
+
+                                string="2019 - Actualizar Ventas"                              
+                        />
+
+
+
+<!--
+                                name="%(account_line_list_action)d" 
+-->
+
+                        <!-- Registro -->
+                        <button 
+                                class="oe_highlight"
+                                type="action"
+                                name="%(account_line_registro_action)d" 
+                                context="{
+                                            'search_default_account_id': active_id, 
+                                        }"                                          
+
+                                string="Registro de Ventas" 
+                        />
+
+
+
+                        <!-- Contasis -->
+                        <button 
+                                class="oe_highlight"
+                                type="action" 
+                                name="%(account_line_contasis_action)d" 
+                                context="{
+                                            'search_default_account_id': active_id, 
+                                        }"                                          
+
+                                string="Contasis"                               
+                        />
+
+
+                        <!-- Tarjetas -->
+                        <button 
+                                class="oe_highlight"
+                                type="action" 
+                                context="{
+                                            'search_default_account_id': active_id, 
+                                        }"
+                                
+                                name="%(payment_line_form_action)d" 
+                                
+                                string="Tarjetas"                               
+                        />
+
+                    </header>
+
+
+
+
+
+                    <!-- Sheet -->  
+                    <sheet>
+
+                        <group  string="Total"  >
+                            <group>
+                                <field name="name"/>
+                                <field name="date_begin"/>
+                                <field name="date_end"/>
+                            </group>
+                            <group>
+                                <field name="owner"/>
+                                <field name="total_amount"/>
+                                <field name="total_count"/>
+                            </group>
+                        </group>
+<!--
+                                <field name="date"/>
+                                <field name="test_target"/>
+                                <field name="x_type"/>
+-->
+
+
+
+
+
+                        <!-- Notebook --> 
+                        <notebook>  
+                            <page string="Ventas">
+
+
+                                <field name="account_line">
+                                    <tree string="Ventas"   limit="1000">
+
+
+                                        <field name="serial_nr"/>
+                                        <field name="state"/>
+                                        <field name="x_type"/>
+
+
+                                        <field name="date_time"/>
+                                        <field name="date_char"/>
+                                        <field name="time_char"/>
+
+
+                                        <field name="patient"/>
+                                        <field name="document"/>
+                                        <field name="document_type"/>
+
+
+                                        <field name="qty"/>
+                                        <field name="product"/>
+                                        <field name="product_type"/>
+                                        
+
+                                        <field name="amount_net"/>                                      
+                                        <field name="amount_tax"/>
+                                        <field name="amount"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+<!--
+                                        <field name="date"/>
+                                        <field name="date_time_corr"/>
+
+                                        <field name="date"/>
+                                        <field name="name"/>
+                                        <field name="document"/>
+                                        <field name="numdoc"/>
+-->
+
+
+
+
+
+<!-- TREE --> 
+        <record model="ir.ui.view" id="account_contasis_view_order_tree">
+            <field name="name">openhealth.account.contasis.tree</field>
+            <field name="model">openhealth.account.contasis</field>
+            <field name="arch" type="xml">
+
+                <tree string="Account Contasis Tree">
+                    
+
+                    <field name="name"/>
+
+                    <field name="date_begin"    string="Fecha Inicio"/>
+
+                    <field name="date_end"      string="Fecha Fin"/>
+
+                    <field name="owner"/>
+
+                    <field name="x_type"/>
+
+                    <field name="total_amount"/>
+
+                    <field name="total_count"/>
+                </tree>
+            </field>
+        </record>
+<!--
+                    <field name="test_target"/>
+                    <field name="date"          string="Fecha"  />
+-->
+
+
+    </data>
+</openerp>

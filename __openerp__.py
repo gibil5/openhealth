@@ -150,9 +150,22 @@ Last up:        22 Aug 2020
 
 
 	# Electronic
-	'views/electronic/electronic_order.xml',
-	'views/electronic/electronic_line.xml',
+	'views/electronic_old/electronic_order.xml',
+	'views/electronic_old/electronic_line.xml',
 	'views/containers/container.xml',
+
+	# Electronic - From PL
+	'views/electronic/account_line.xml',               # Min
+	'views/electronic/account_contasis_actions.xml',   # Min
+	'views/electronic/account_contasis.xml',           # Min
+	'views/electronic/electronic_order.xml',           # Min
+	'views/electronic/texto.xml',
+	'views/electronic/electronic_actions.xml',
+	'views/electronic/txt_line.xml',
+	'views/electronic/electronic_container.xml',       # Min
+
+
+
 
 
 

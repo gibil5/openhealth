@@ -7,7 +7,7 @@
 """,
 'description': """
 
-24 mar 2021
+25 mar 2021
 
 Using patterns:
 	- Reduce inheritances.
@@ -148,9 +148,12 @@ Last up:        22 Aug 2020
 	'views/account/account_contasis_actions.xml',
 	'views/account/account_contasis.xml',
 
+
 	# Electronic
-	#'views/electronic/electronic_order.xml',
-	#'views/electronic/electronic_line.xml',
+	'views/electronic/electronic_order.xml',
+	'views/electronic/electronic_line.xml',
+	'views/containers/container.xml',
+
 
 
 	# Dep - Done In PL
@@ -323,9 +326,9 @@ Last up:        22 Aug 2020
 	'views/menus/menus_caja.xml',
 	'views/menus/menus_products.xml',
 	'views/menus/menus_oeh.xml',
-
 	'views/menus/menus_management.xml',
 
+	'views/menus/menus_account.xml',
 
 # ----------------------------------------------------------- Security - Models - Last ------------------------------------------------------
 	'security/ir.model.access.csv',

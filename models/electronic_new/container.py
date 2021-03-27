@@ -20,6 +20,44 @@ class Container(models.Model):
 # -------------------------------------------------- Inherited from interface.py ----------------------------
 
 
+# -------------------------------------------------- Fields -------------------------------------------------
+
+# ----------------------------------------------------------- Repo -------------
+	# Name 
+	name = fields.Char(
+			string="Nombre", 		
+			required=True, 
+		)
+
+	# Dates 
+	date_begin = fields.Date(
+			string="Fecha Inicio", 
+			default = fields.Date.today, 
+			required=True, 
+		)
+
+	date_end = fields.Date(
+			string="Fecha Fin", 
+			default = fields.Date.today, 
+			required=True, 
+		)
+
+	# Amount
+	total_amount = fields.Float(
+			#'Total Monto',
+			#'Total',
+			'Monto Total',
+			readonly=True,
+			default=0,
+		)
+
+	# Count
+	total_count = fields.Integer(
+			#'Total Ventas',
+			'Nr Ventas',
+			readonly=True, 
+		)
+
 # ----------------------------------------------------------- Django -----------
 	# Date Test
 	date_test = fields.Datetime(
@@ -58,41 +96,9 @@ class Container(models.Model):
 		)
 
 
-# ----------------------------------------------------------- Repo -------------
-	# Name 
-	name = fields.Char(
-			string="Nombre", 		
-			required=True, 
-		)
 
-	# Dates 
-	date_begin = fields.Date(
-			string="Fecha Inicio", 
-			default = fields.Date.today, 
-			required=True, 
-		)
 
-	date_end = fields.Date(
-			string="Fecha Fin", 
-			default = fields.Date.today, 
-			required=True, 
-		)
-
-	# Amount
-	total_amount = fields.Float(
-			#'Total Monto',
-			#'Total',
-			'Monto Total',
-			readonly=True,
-			default=0,
-		)
-
-	# Count
-	total_count = fields.Integer(
-			#'Total Ventas',
-			'Nr Ventas',
-			readonly=True, 
-		)
+# -------------------------------------------------- Methods ------------------------------------------------
 
 # ----------------------------------------------------- Django Interface -------
 	@api.multi
@@ -124,15 +130,6 @@ class Container(models.Model):
 		return self.name
 
 	# Dates
-	#@api.multi
-	#def get_date(self):
-	#	"""
-	#	Django interface
-	#	"""
-	#	print()
-	#	print('Get date')
-	#	return self.date
-
 	@api.multi
 	def get_date_begin(self):
 		"""
@@ -192,5 +189,3 @@ class Container(models.Model):
 		print()
 		print('Get state')
 		return self.state
-
-

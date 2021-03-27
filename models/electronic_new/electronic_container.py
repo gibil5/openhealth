@@ -6,7 +6,7 @@
 
 	Created: 				30 Sep 2018
 	Previous: 				16 Dec 2019
-	Last: 					25 mar 2021
+	Last: 					26 mar 2021
 """
 
 from __future__ import print_function
@@ -15,7 +15,9 @@ import io
 import os
 import shutil
 import datetime
+
 from openerp import models, fields, api
+
 from openerp.addons.openhealth.models.management.lib import mgt_funcs, mgt_vars
 from openerp.addons.openhealth.models.management.management_db import ManagementDb
 #from openerp.addons.openhealth.models.containers import export
@@ -33,9 +35,89 @@ class ElectronicContainer(models.Model):
 	Migrated to PL
 	"""
 	_description = 'Electronic Container'
+	#_inherit = 'openhealth.container'
+	_name = 'openhealth.container'
 
-	_inherit = 'openhealth.container'
 
+# -------------------------------------------------- Inherited from container.py ----------------------------
+
+
+# -------------------------------------------------- Fields -------------------------------------------------
+
+# ----------------------------------------------------------- Repo -------------
+	# Name 
+	name = fields.Char(
+			string="Nombre", 		
+			required=True, 
+		)
+
+	# Dates 
+	date_begin = fields.Date(
+			string="Fecha Inicio", 
+			default = fields.Date.today, 
+			required=True, 
+		)
+
+	date_end = fields.Date(
+			string="Fecha Fin", 
+			default = fields.Date.today, 
+			required=True, 
+		)
+
+	# Amount
+	total_amount = fields.Float(
+			#'Total Monto',
+			#'Total',
+			'Monto Total',
+			readonly=True,
+			default=0,
+		)
+
+	# Count
+	total_count = fields.Integer(
+			#'Total Ventas',
+			'Nr Ventas',
+			readonly=True, 
+		)
+
+# ----------------------------------------------------------- Django -----------
+	# Date Test
+	date_test = fields.Datetime(
+			string="Fecha Test", 
+		)
+
+	# State
+	state = fields.Selection(			
+			selection=[
+							('stable', 'Estable'),
+							('unstable', 'Inestable'),
+			],
+			string='Estado',
+			#readonly=False,
+			default='unstable',
+			#index=True,
+		)
+
+# ----------------------------------------------------------- Configurator -----
+	# Default Configurator
+	def _get_default_configurator(self):
+		configurator = self.env['openhealth.configurator.emr'].search([
+																			('x_type', 'in', ['emr']),
+																		],
+																			#order='date_begin,name asc',
+																			limit=1,
+			)
+		return configurator
+
+	# Configurator
+	configurator = fields.Many2one(
+			'openhealth.configurator.emr',
+			string="Configuracion",
+			
+			default=_get_default_configurator,
+		)
+
+# -------------------------------------------------- Inherited from container.py - End ----------------------
 
 
 # ----------------------------------------------------------- Relational --------------------------
@@ -98,12 +180,12 @@ class ElectronicContainer(models.Model):
 
 # ----------------------------------------------------------- Configurator -----
 	# Configurator
-	configurator = fields.Many2one(
-			'openhealth.configurator.emr',
-			string="Configuracion",
-			required=True,
+	#configurator = fields.Many2one(
+	#		'openhealth.configurator.emr',
+	#		string="Configuracion",
+	#		required=True,
 			#required=False,
-		)
+	#	)
 
 # ----------------------------------------------------------------- Dates ------
 	# Dates

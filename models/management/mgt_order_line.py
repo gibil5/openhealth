@@ -64,11 +64,11 @@ class MgtOrderLine(models.Model):
 			ondelete='restrict',
 		)
 
-	# Account - Txt
-	container_id = fields.Many2one(
-			'openhealth.container',
-			ondelete='cascade',
-		)
+	# Account - Txt - Dep !
+	#container_id = fields.Many2one(
+	#		'openhealth.container',
+	#		ondelete='cascade',
+	#	)
 
 
 

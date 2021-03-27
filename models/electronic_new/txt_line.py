@@ -10,27 +10,20 @@
 	Last up: 				13 Dec 2019
 """
 from __future__ import print_function
-from openerp import models, fields, api
-
-import pl_lib_exp
-
 import io
+from openerp import models, fields, api
+import pl_lib_exp
 
 class TxtLine(models.Model):
 	"""
 	Used by Account
 	"""
-
 	_name = 'openhealth.account.txt.line'
-
 	_description = 'Openhealth Account Txt Line'
-
 	#_order = 'date_create asc'
 
 
-
 # ----------------------------------------------------------- Methods ------------------------------
-
 	def get_file_name(self):
 		"""
 		Get File Name

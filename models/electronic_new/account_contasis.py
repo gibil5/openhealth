@@ -13,10 +13,9 @@ class AccountContasis(models.Model):
 	"""
 	high level support for doing this and that.
 	"""
-	_inherit = 'openhealth.account.contasis'
-
 	_order = 'date_begin asc,name asc'
 
+	_inherit = 'openhealth.account.contasis'
 
 
 # ----------------------------------------------------------- Update ------------------------------

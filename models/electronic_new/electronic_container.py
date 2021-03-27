@@ -13,15 +13,12 @@ import io
 import os
 import shutil
 import datetime
-
 from openerp import models, fields, api
-
 from openerp.addons.openhealth.models.management.lib import mgt_vars
 from openerp.addons.openhealth.models.management import mgt_funcs_core
 #from openerp import _
 #from openerp.exceptions import Warning as UserError
 from . import pl_export
-
 
 class ElectronicContainer(models.Model):
 	"""

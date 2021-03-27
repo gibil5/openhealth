@@ -16,16 +16,8 @@ class Texto(models.Model):
 	TXT Lines
 	"""
 	_name = 'openhealth.texto'
-
 	_order = 'name asc'
-
 	_description = 'TXT Lines for the Electronic Container'
-
-
-
-
-
-
 
 
 # ----------------------------------------------------------- Fields ------------------------------

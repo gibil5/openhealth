@@ -8,14 +8,13 @@
 """
 
 from __future__ import print_function  # Only needed for Python 2
+import io
 
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.libs import lib
 from openerp.addons.openhealth.models.order import ord_vars
 from . import chk_electronic
 from . import lib_coeffs
-
-import io
 from . import pl_lib_exp
 
 

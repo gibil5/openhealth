@@ -8,17 +8,15 @@
 from openerp import models, fields, api
 from . import acc_lib
 from . import acc_vars
-
 from . import pl_acc_lib
 
 class AccountLine(models.Model):
 	"""
 	high level support for doing this and that.
 	"""
-	_inherit = 'openhealth.account.line'
-
 	_order = 'date_time asc'
 
+	_inherit = 'openhealth.account.line'
 
 
 # ----------------------------------------------------------- Relational -----------------------------

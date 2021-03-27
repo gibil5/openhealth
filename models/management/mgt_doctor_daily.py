@@ -5,14 +5,15 @@
 	Inherits - doctor_line
 
 	Created: 			 8 Dec 2019
-	Last up: 			 8 Dec 2019
+	Last: 				27 mar 2021
 """
 import datetime
 from openerp import models, fields, api
 
 from openerp.addons.openhealth.models.order import ord_vars
 
-class DoctorDaily(models.Model):
+#class DoctorDaily(models.Model):
+class MgtDoctorDaily(models.Model):
 	"""
 	DoctorDaily
 		DoctorLine

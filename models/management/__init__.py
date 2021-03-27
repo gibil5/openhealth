@@ -21,6 +21,8 @@ from . import mgt_patient_line
 
 # Doctor - Too complex 
 # Isolate and Reduce inheritance
-from . import mgt_day_doctor_line   # For doctor_line
+#from . import mgt_day_doctor_line
+from . import mgt_doctor_day_line   # For doctor_line
 from . import mgt_doctor_line      # Too complex 
-from . import doctor_daily
+#from . import doctor_daily
+from . import mgt_doctor_daily

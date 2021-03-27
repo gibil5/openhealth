@@ -5,14 +5,15 @@
 	Inherits  - day_line
 
 	Created: 			25 Jan 2019
-	Last up: 			25 Jan 2019
+	Last: 				27 mar 2021
 """
 from __future__ import print_function
 import datetime
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.order import ord_vars
 
-class MgtDayDoctorLine(models.Model):
+#class MgtDayDoctorLine(models.Model):
+class MgtDoctorDayLine(models.Model):
 	"""
 	MgtDayDoctorLine
 		DayLine

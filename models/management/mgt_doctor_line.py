@@ -11,7 +11,7 @@
 		- Refactor into a completely independent new model. Follow Marketing approach. 
 
 	Created: 			18 may 2018
-	Last up: 			24 mar 2021
+	Last: 				27 mar 2021
 """
 from __future__ import print_function
 import collections

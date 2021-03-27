@@ -3,10 +3,8 @@
 # Commons
 from commons import *
 
-
 # Management
 from management import *
-#from management_doctor import *
 
 # Configurator
 from configurator import *

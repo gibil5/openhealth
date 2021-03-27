@@ -18,8 +18,9 @@ import datetime
 
 from openerp import models, fields, api
 
-from openerp.addons.openhealth.models.management.lib import mgt_funcs, mgt_vars
-from openerp.addons.openhealth.models.management.management_db import ManagementDb
+from openerp.addons.openhealth.models.management.lib import mgt_vars
+from openerp.addons.openhealth.models.management import mgt_funcs_core
+#from openerp.addons.openhealth.models.management.management_db import ManagementDb
 #from openerp.addons.openhealth.models.containers import export
 from openerp import _
 from openerp.exceptions import Warning as UserError
@@ -399,7 +400,6 @@ class ElectronicContainer(models.Model):
 		Used by create_electronic
 		"""
 		print()
-		#print('Pl - Update - Electronic')
 		print('Update - Electronic')
 
 		# Clean
@@ -413,12 +413,14 @@ class ElectronicContainer(models.Model):
 		print(self.state_arr)
 		print(self.type_arr)
 
+
 		#jx
 		#orders, count = mgt_funcs.get_orders_filter(self, self.export_date_begin, self.export_date_end, self.state_arr, self.type_arr)
-		#orders, count = management_db.get_orders_filter(self, self.export_date_begin, self.export_date_end, self.state_arr, self.type_arr)
-		orders, count = ManagementDb.get_orders_filter_fast(self, self.date_begin, self.date_end)
+		#orders, count = ManagementDb.get_orders_filter_fast(self, self.date_begin, self.date_end)
+		orders, count = mgt_funcs_core.get_orders_filter(self, self.export_date_begin, self.export_date_end, self.state_arr, self.type_arr)
 		print(orders)
 		print(count)
+
 
 		# Init
 		amount_total = 0
@@ -468,9 +470,11 @@ class ElectronicContainer(models.Model):
 					order.validate_patient_for_invoice()							# Good - Respects the LOD
 
 
+
 				# Validate Order 	
-				order.validate_electronic()							# Good - Respects the LOD
-				#error, msg = order.validate_electronic()   		# # Train Wreck !
+				#order.validate_electronic()							# Good - Respects the LOD
+				#error, msg = order.validate_electronic()   			# # Train Wreck !
+
 
 			# Create Electronic Order
 			electronic_order = self.electronic_order_ids.create({
@@ -559,8 +563,6 @@ class ElectronicContainer(models.Model):
 			#print(self.configurator)
 			#print(self.configurator.name)
 	# init_configurator
-
-
 
 
 

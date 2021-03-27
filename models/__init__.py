@@ -12,13 +12,8 @@ from configurator import *
 # Pricelist
 from pricelist import *
 
-
-
 # Accounting,  Electronic
-#from electronic import *
 from electronic_new import *
-
-
 
 # Marketing
 from marketing import *

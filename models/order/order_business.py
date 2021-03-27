@@ -3,15 +3,18 @@
 	Order Business logic
 
 	Created: 			 6 dec 2020
-	Last up: 			 6 dec 2020
+	Previous: 			 6 dec 2020
+	Last: 			 	26 mar 2021
 """
 from __future__ import print_function
+import datetime
+
 from openerp import models, fields, api
 
 from . import ord_funcs
 from . import qr
 from . import raw_funcs
-import datetime
+from . import exc_ord
 
 class OrderBusiness(models.Model):
 	"""
@@ -309,3 +312,19 @@ class OrderBusiness(models.Model):
 		h_qr['receptor_ruc'] = str(receptor_ruc)
 
 		return h_qr
+
+
+# ----------------------------------------------------------- Validate Electronic ----------------------------
+	@api.multi
+	def validate_electronic(self):
+		"""
+		Validate Electronic
+		Used by Electronic Container (Txt Generation).
+		"""
+		print()
+		print('Order Validate Electronic')
+
+		# Handle Exceptions
+		exc_ord.handle_exceptions_electronic(self)
+
+	# validate_electronic

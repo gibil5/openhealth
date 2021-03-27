@@ -472,7 +472,7 @@ class ElectronicContainer(models.Model):
 
 
 				# Validate Order 	
-				#order.validate_electronic()							# Good - Respects the LOD
+				order.validate_electronic()							# Good - Respects the LOD
 				#error, msg = order.validate_electronic()   			# # Train Wreck !
 
 

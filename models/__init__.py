@@ -16,11 +16,7 @@ from pricelist import *
 
 
 
-
-# Accounting
-from account import *
-
-# Electronic
+# Accounting,  Electronic
 #from electronic import *
 from electronic_new import *
 

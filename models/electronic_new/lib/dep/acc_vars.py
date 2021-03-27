@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 
+"""
+	
+	Acc vars - From account - Dep !
+	
+"""
 
-
-#_h_type = {
 _sale_type = {
-				#'ticket_invoice': 	'12',
-				#'ticket_receipt': 	'12',
 				'ticket_invoice': 	'01',
 				'ticket_receipt': 	'03',
-
 				'invoice':			'01',
 				'receipt': 			'03',
 				'advertisement': 	'14',

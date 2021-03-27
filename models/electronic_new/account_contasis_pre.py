@@ -7,7 +7,9 @@
 """
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.libs import acc_lib
-from . import acc_vars
+
+#from . import acc_vars
+from lib import acc_vars
 
 class AccountContasis(models.Model):
 	"""

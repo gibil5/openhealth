@@ -1,18 +1,17 @@
 # -*- coding: utf-8 -*-
 """
- 	Account Line
+ 	Account Line - Is an idenpendent module ?
 
  	Created: 				23 April 2019
  	Last up: 				23 April 2019
 """
 from openerp import models, fields, api
-from . import acc_lib
-from . import acc_vars
-from . import pl_acc_lib
+
+from lib import acc_vars, acc_lib, pl_acc_lib
 
 class AccountLine(models.Model):
 	"""
-	high level support for doing this and that.
+    Registro de ventas    
 	"""
 	_order = 'date_time asc'
 

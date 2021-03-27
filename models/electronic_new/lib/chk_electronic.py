@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-		chk_electronic.py
 
-		Check Electronic Order fields
+	Check Electronic Order fields
 
-		Created: 			 4 Nov 2018
-		Last up: 	 		 4 Nov 2018
+	Used by 
+		ElectronicOrder
+
+	Created: 			 4 Nov 2018
+ 	Last:             	27 mar 2021
 """
 from openerp.exceptions import ValidationError
 

@@ -12,7 +12,8 @@
 from __future__ import print_function
 import io
 from openerp import models, fields, api
-import pl_lib_exp
+
+from lib import pl_lib_exp
 
 class TxtLine(models.Model):
 	"""

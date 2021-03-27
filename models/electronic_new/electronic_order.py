@@ -13,12 +13,10 @@ import io
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.libs import lib
 from openerp.addons.openhealth.models.order import ord_vars
-from . import chk_electronic
-from . import lib_coeffs
-from . import pl_lib_exp
 
+from lib import chk_electronic, lib_coeffs, pl_lib_exp
 
-class electronic_order(models.Model):
+class ElectronicOrder(models.Model):
 	"""
 	Electronic Order used by Accounting TXT generator
 	"""

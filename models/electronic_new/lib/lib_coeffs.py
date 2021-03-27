@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
-#
-# 		lib_coeffs.py
-# 
-# 		Created: 			15 Apr 2019
-# 		Last up: 	 		15 Apr 2019
-#
+"""
 
+	Lib coeffs 
+
+	Used by 
+		ElectronicOrder
+
+	Created: 			15 Apr 2019
+ 	Last:             	27 mar 2021
+"""
 
 #------------------------------------------------ Get Coeff -------------------
 # Get Coeff

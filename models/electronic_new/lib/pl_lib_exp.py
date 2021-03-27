@@ -1,8 +1,18 @@
 # -*- coding: utf-8 -*-
+"""
 
-#from openerp.addons.openhealth.models.containers import lib_account_codes as acc
+	PL Lib export
+
+	Used by 
+		TxtLine
+		ElectronicOrder
+		ElectronicContainer
+
+ 	Created:          27 mar 2021
+ 	Last:             27 mar 2021
+"""
+
 from . import lib_account_codes as acc
-
 
 #------------------------------------------------ Const -------------------------------------------
 _DIC_PREFIX = {
@@ -12,7 +22,6 @@ _DIC_PREFIX = {
 	'13': 'BB01',   # Receipt               # Not Sunat Compliant !
 }
 
-
 #------------------------------------------------ Format Txt --------------------------------------
 def get_file_content(order):
 	"""
@@ -20,7 +29,6 @@ def get_file_content(order):
 	"""
 	#print()
 	#print('pl - Get File Content')
-
 
 	# Init - Company - From Configurator
 	configurator = order.configurator
@@ -30,7 +38,6 @@ def get_file_content(order):
 	company_country = configurator.company_country
 	company_ruc = configurator.company_ruc
 	company_account_id = configurator.company_account
-
 
 	# Init
 	ret = "\r\n"

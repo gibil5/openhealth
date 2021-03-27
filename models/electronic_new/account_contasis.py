@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
 """
- 	Account Contasis
+ 	Account Contasis - Is an idenpendent module ?
 
  	Created: 				18 Apr 2018
  	Last up: 				10 Dec 2018
 """
 from openerp import models, fields, api
-from . import acc_lib
-from . import acc_vars
+
+from lib import acc_vars, acc_lib
 
 class AccountContasis(models.Model):
 	"""
-	high level support for doing this and that.
+    Registro de ventas
 	"""
 	_order = 'date_begin asc,name asc'
 

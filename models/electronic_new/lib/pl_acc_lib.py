@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-		pl_acc_lib.py
+	PL Acc Lib
 
- 		Created: 				12 April 2019
- 		Last up: 	 		 	12 April 2019
+	Used by
+		AccountLine
+
+	Created: 				12 April 2019
+	Last up: 	 		 	12 April 2019
 """
 
 # ----------------------------------------------------------- Get Cuentab ---------------------

@@ -1,4 +1,18 @@
 # -*- coding: utf-8 -*-
+
+"""
+
+	Acc Lib - Dep ? - Why use static and class methods. If you can use function libraries ? 
+	Needs revision. Maybe integration with pl_acc_lib.
+
+	Used by 
+		AccountContasis
+		AccountLine
+
+ 	Created:          27 mar 2021
+ 	Last:             27 mar 2021
+"""
+
 import datetime
 from . import acc_vars
 
@@ -21,8 +35,6 @@ class AccFuncs:
 	def instance_method(self):
 		# An instance method gets passed the instance of ModClass
 		return "I am an instance method"
-
-
 
 
 #------------------------------------------------ Correct Time ------------------------------------

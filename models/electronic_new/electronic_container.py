@@ -2,11 +2,9 @@
 """
 	Container
 
-	Separate Structure and Business Logic
-
 	Created: 				30 Sep 2018
-	Previous: 				16 Dec 2019
-	Last: 					26 mar 2021
+	Previous: 				26 mar 2021
+	Last: 					27 mar 2021
 """
 
 from __future__ import print_function
@@ -20,24 +18,66 @@ from openerp import models, fields, api
 
 from openerp.addons.openhealth.models.management.lib import mgt_vars
 from openerp.addons.openhealth.models.management import mgt_funcs_core
-#from openerp.addons.openhealth.models.management.management_db import ManagementDb
-#from openerp.addons.openhealth.models.containers import export
-from openerp import _
-from openerp.exceptions import Warning as UserError
+#from openerp import _
+#from openerp.exceptions import Warning as UserError
 from . import pl_export
 
 
 class ElectronicContainer(models.Model):
 	"""
 	Electronic Container
-	Uses
+	One2many
 		Electronic Orders
+		Txt
 		TXT Lines
-	Migrated to PL
+	Many2one
+		Configurator 	# Dep - Create a module configurator
 	"""
 	_description = 'Electronic Container'
-	#_inherit = 'openhealth.container'
 	_name = 'openhealth.container'
+
+
+# ----------------------------------------------------------- Relational --------------------------
+
+# ----------------------------------------------------------- Configurator -----
+	# Default Configurator
+	def _get_default_configurator(self):
+		configurator = self.env['openhealth.configurator.emr'].search([
+																			('x_type', 'in', ['emr']),
+																		],
+																			#order='date_begin,name asc',
+																			limit=1,
+			)
+		return configurator
+
+	# Configurator
+	configurator = fields.Many2one(
+			'openhealth.configurator.emr',
+			string="Configuracion",
+			
+			default=_get_default_configurator,
+		)
+
+
+# ----------------------------------------------------------- One2many ---------
+	# Electronic Line
+	electronic_order_ids = fields.One2many(
+			'openhealth.electronic.order',
+			'container_id',
+		)
+
+	# Txt Line - Dep ?
+	txt_ids = fields.One2many(
+			'openhealth.texto',
+			'container_id',
+		)
+
+	# Txt Line - New
+	txt_line = fields.One2many(
+			'openhealth.account.txt.line',
+			'container_id',
+		)
+
 
 
 # -------------------------------------------------- Inherited from container.py ----------------------------
@@ -99,46 +139,8 @@ class ElectronicContainer(models.Model):
 			#index=True,
 		)
 
-# ----------------------------------------------------------- Configurator -----
-	# Default Configurator
-	def _get_default_configurator(self):
-		configurator = self.env['openhealth.configurator.emr'].search([
-																			('x_type', 'in', ['emr']),
-																		],
-																			#order='date_begin,name asc',
-																			limit=1,
-			)
-		return configurator
-
-	# Configurator
-	configurator = fields.Many2one(
-			'openhealth.configurator.emr',
-			string="Configuracion",
-			
-			default=_get_default_configurator,
-		)
 
 # -------------------------------------------------- Inherited from container.py - End ----------------------
-
-
-# ----------------------------------------------------------- Relational --------------------------
-	# Electronic Line
-	electronic_order_ids = fields.One2many(
-			'openhealth.electronic.order',
-			'container_id',
-		)
-
-	# Txt Line
-	txt_ids = fields.One2many(
-			'openhealth.texto',
-			'container_id',
-		)
-
-	# Txt Line - New
-	txt_line = fields.One2many(
-			'openhealth.account.txt.line',
-			'container_id',
-		)
 
 
 # ----------------------------------------------------------- Third Level - Fields ---------------------------------------------

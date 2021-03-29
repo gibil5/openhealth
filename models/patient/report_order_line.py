@@ -10,7 +10,8 @@ from openerp.addons.openhealth.models.order import ord_vars
 import openerp.addons.decimal_precision as dp
 
 #from openerp.addons.openhealth.models.libs import lib
-from openerp.addons.openhealth.models.commons.libs import lib
+#from openerp.addons.openhealth.models.commons.libs import lib
+from openerp.addons.openhealth.models.commons.libs import commons_lib as lib
 
 #class order_report_nex_line(models.Model):
 class PatientOrderReport(models.Model):

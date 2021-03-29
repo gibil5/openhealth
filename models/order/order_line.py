@@ -9,7 +9,8 @@ from openerp import models, fields, api
 import openerp.addons.decimal_precision as dp
 
 #from openerp.addons.openhealth.models.libs import lib
-from openerp.addons.openhealth.models.commons.libs import lib
+#from openerp.addons.openhealth.models.commons.libs import lib
+from openerp.addons.openhealth.models.commons.libs import commons_lib as lib
 
 class SaleOrderLine(models.Model):
 	"""

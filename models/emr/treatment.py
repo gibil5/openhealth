@@ -31,8 +31,10 @@ from . import search_objects
 #from libs import pl_creates, eval_vars, tre_funcs, action_funcs
 #from openerp.addons.openhealth.models.libs import pl_creates, eval_vars, tre_funcs, action_funcs
 #from openerp.addons.openhealth.models.commons.libs import pl_creates, eval_vars, tre_funcs, action_funcs
-from openerp.addons.openhealth.models.commons.libs import pl_creates, tre_funcs, action_funcs
 from . import eval_vars
+
+#from openerp.addons.openhealth.models.commons.libs import pl_creates, tre_funcs, action_funcs
+from commons import pl_creates, tre_funcs, action_funcs
 
 
 # --------------------------------------------------------------- Constants ----

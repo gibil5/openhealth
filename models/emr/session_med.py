@@ -9,7 +9,8 @@ from datetime import datetime
 from . import session_vars
 
 #from openerp.addons.openhealth.models.libs import lib
-from openerp.addons.openhealth.models.commons.libs import lib
+#from openerp.addons.openhealth.models.commons.libs import lib
+from openerp.addons.openhealth.models.commons.libs import commons_lib as lib
 
 _fluency = "Fluencia (J/cm2)"
 _frequency = "Frecuencia (Hz)"

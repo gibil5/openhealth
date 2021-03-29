@@ -15,8 +15,8 @@ from openerp.addons.openhealth.models.order import ord_vars
 from lib import chk_electronic, lib_coeffs, pl_lib_exp
 
 #from openerp.addons.openhealth.models.libs import lib
-from openerp.addons.openhealth.models.commons.libs import lib
-
+#from openerp.addons.openhealth.models.commons.libs import lib
+from openerp.addons.openhealth.models.commons.libs import commons_lib as lib
 
 class ElectronicOrder(models.Model):
 	"""

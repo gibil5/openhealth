@@ -16,7 +16,8 @@ from openerp.addons.openhealth.models.order import ord_vars
 from . import mgt_funcs
 
 #from openerp.addons.openhealth.models.libs import lib
-from openerp.addons.openhealth.models.commons.libs import lib
+#from openerp.addons.openhealth.models.commons.libs import lib
+from openerp.addons.openhealth.models.commons.libs import commons_lib as lib
 
 class MgtDayLine(models.Model):
 	"""

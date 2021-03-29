@@ -10,7 +10,8 @@ from openerp import models, fields, api
 from . import time_funcs
 
 #from openerp.addons.openhealth.models.libs import user, lib
-from openerp.addons.openhealth.models.commons.libs import user, lib
+#from openerp.addons.openhealth.models.commons.libs import user, lib
+from openerp.addons.openhealth.models.commons.libs import commons_user, commons_lib
 
 _model_control = "openhealth.control"
 _model_session = "openhealth.session.med"

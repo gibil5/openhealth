@@ -11,7 +11,8 @@ from openerp.exceptions import Warning as OrderError
 from . import ord_vars
 
 #from openerp.addons.openhealth.models.libs import lib
-from openerp.addons.openhealth.models.commons.libs import lib
+#from openerp.addons.openhealth.models.commons.libs import lib
+from openerp.addons.openhealth.models.commons.libs import commons_lib as lib
 
 # ----------------------------------------------------------- Ticket - Get Raw Line ----------------
 # Raw Line

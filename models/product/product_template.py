@@ -10,7 +10,9 @@
 """
 from __future__ import print_function
 from openerp import models, fields
-from . import prod_vars
+
+#from . import prod_vars
+from openerp.addons.openhealth.models.commons import prodvars as prod_vars
 
 
 class ProductTemplate(models.Model):

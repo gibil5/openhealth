@@ -30,7 +30,8 @@ from . import procedure
 from . import control
 from . import session 
 from . import session_med
-from . import physician
+
+#from . import physician
 #from . import doctor
 
 

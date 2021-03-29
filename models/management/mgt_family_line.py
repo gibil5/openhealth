@@ -7,7 +7,9 @@
 """
 from __future__ import print_function
 from openerp import models, fields, api
-from . import mgt_vars
+
+#from . import mgt_vars
+from lib import mgt_vars
 
 
 class MgtFamilyLine(models.Model):

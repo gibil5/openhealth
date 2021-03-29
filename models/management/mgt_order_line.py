@@ -8,12 +8,16 @@
 """
 from openerp import models, fields, api
 import openerp.addons.decimal_precision as dp
+
+
 from openerp.addons.openhealth.models.order import ord_vars
-from openerp.addons.openhealth.models.product import prodvars
 
 #from openerp.addons.openhealth.models.libs import lib
 #from openerp.addons.openhealth.models.commons.libs import lib
 from openerp.addons.openhealth.models.commons.libs import commons_lib as lib
+
+from openerp.addons.openhealth.models.commons import prodvars
+
 
 class MgtOrderLine(models.Model):
 	"""
@@ -26,8 +30,6 @@ class MgtOrderLine(models.Model):
 	"""
 	_name = 'openhealth.management.order.line' 
 	_description = "Openhealth Management Order Line"
-
-
 
 
 # -------------------------------------------------- Handles internal ----------

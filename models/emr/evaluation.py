@@ -9,11 +9,13 @@ from __future__ import print_function
 import datetime
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.patient import pat_vars
-from openerp.addons.openhealth.models.product import prodvars
 
 #from openerp.addons.openhealth.models.libs import eval_vars
 #from openerp.addons.openhealth.models.commons.libs import eval_vars
 from . import eval_vars
+
+from openerp.addons.openhealth.models.commons import prodvars
+
 
 class Evaluation(models.Model):
 	"""

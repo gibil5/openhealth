@@ -2,6 +2,8 @@
 
 # Import modules
 
+#from . import mgt_prodvars
+
 # Django
 from . import interface    # Dep ! - Generates key error 
 

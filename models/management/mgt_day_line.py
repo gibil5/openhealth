@@ -7,16 +7,16 @@
 		day doctor line
 
 	Created: 			15 Jan 2019
-	Last up: 			24 mar 2021
+	Last up: 	 		29 mar 2021
 """
-
 from __future__ import print_function
 import numpy as np
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.order import ord_vars
 from . import mgt_funcs
-from openerp.addons.openhealth.models.libs import lib
 
+#from openerp.addons.openhealth.models.libs import lib
+from openerp.addons.openhealth.models.commons.libs import lib
 
 class MgtDayLine(models.Model):
 	"""

@@ -5,15 +5,18 @@
  	Only Data model. No functions.
 
 	Created: 				16 May 2018
- 	Last up: 	 			29 Jun 2019
+ 	Last up: 	 			29 mar 2021
 """
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.patient import pat_vars
-from openerp.addons.openhealth.models.libs import eval_vars
-
 from openerp.addons.openhealth.models.product import prodvars
 
-class PatientLine(models.Model):
+#from openerp.addons.openhealth.models.libs import eval_vars
+#from openerp.addons.openhealth.models.commons.libs import eval_vars
+from commons import eval_vars
+
+#class PatientLine(models.Model):
+class MktPatientLine(models.Model):
 	
 	_name = 'openhealth.patient.line'
 

@@ -4,17 +4,19 @@
  	Electronic Order - Sunat compatible
 
  	Created:          13 sep 2018
- 	Last:             27 mar 2021
+	Last up: 	 		29 mar 2021
 """
 
 from __future__ import print_function  # Only needed for Python 2
 import io
 
 from openerp import models, fields, api
-from openerp.addons.openhealth.models.libs import lib
 from openerp.addons.openhealth.models.order import ord_vars
-
 from lib import chk_electronic, lib_coeffs, pl_lib_exp
+
+#from openerp.addons.openhealth.models.libs import lib
+from openerp.addons.openhealth.models.commons.libs import lib
+
 
 class ElectronicOrder(models.Model):
 	"""

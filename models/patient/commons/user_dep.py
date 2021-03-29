@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 """
 		user.py - Dep ?
-			Who is using this ?
+		Used by 
+			Counter
 
  			Bussiness oriented. Can not be Unit-tested (depends on a third-party library: Odoo).
 
- 		Created: 			13 aug 2018
- 		Last up: 	 		11 oct 2020
+ 	Created: 			13 aug 2018
+	Last up: 			29 mar 2021
 """
 import datetime
 from openerp.addons.openhealth.models.order import ord_vars

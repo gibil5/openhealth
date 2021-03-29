@@ -3,19 +3,22 @@
 	Productivity Day - Simplified version of Day Line - Just an empty shell
 
 	Created: 			 8 dec 2019
-	Last up: 			12 dec 2020
+	Last up: 	 		29 mar 2021
 """
 from __future__ import print_function
 import numpy as np
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.order import ord_vars
-from openerp.addons.openhealth.models.libs import lib
+
+#from openerp.addons.openhealth.models.libs import lib
+from openerp.addons.openhealth.models.commons.libs import lib
 
 #from lib import mgt_db
 from management_db import ManagementDb
 
 # -------------------------------------------------------------------------------------------------
-class ProductivityDay(models.Model):
+#class ProductivityDay(models.Model):
+class MgtProductivityDay(models.Model):
 	"""
 	Productivity Day
 	"""

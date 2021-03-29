@@ -3,17 +3,20 @@
  	Account Line
 
  	Created: 				18 April 2018
- 	Last up: 				10 Dec 2018
+ 	Last up: 	 			29 mar 2021
 
  	Be sure to include one patient with: passporte, cancelled sale. For complete coverage.
 """
 from openerp import models, fields, api
-from openerp.addons.openhealth.models.libs import acc_lib
-
 #from . import acc_vars
 from lib import acc_vars
 
-class AccountLine(models.Model):
+#from openerp.addons.openhealth.models.libs import acc_lib
+#from openerp.addons.openhealth.models.commons.libs import acc_lib
+from commons import acc_lib
+
+#class AccountLine(models.Model):
+class AccountLinePre(models.Model):
 	"""
 	high level support for doing this and that.
 	"""

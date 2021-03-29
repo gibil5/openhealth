@@ -2,12 +2,11 @@
 """
 	Acc Lib
 	- Used by 
-		account contasis
-		account line
-		payment method line
+		account contasis pre
+		account line pre
 
 	Created: 			11 oct 2020
-	Last up: 			 5 dec 2020
+	Last up: 			29 mar 2021
 """
 import datetime
 

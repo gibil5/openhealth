@@ -3,7 +3,7 @@
 	Order - Data model
 
 	Created: 			26 Aug 2016
-	Last up: 			 6 dec 2020
+ 	Last up: 	 			29 mar 2021
 
 	Design:
 		- This is a Data model. There should be NO Business logic.
@@ -38,7 +38,9 @@ import datetime
 from openerp import models, fields, api
 
 #from libs import pl_creates, eval_vars, tre_funcs, action_funcs
-from openerp.addons.openhealth.models.libs import pl_creates, action_funcs
+#from openerp.addons.openhealth.models.libs import pl_creates, action_funcs
+#from openerp.addons.openhealth.models.commons.libs import pl_creates, action_funcs
+from commons import pl_creates, action_funcs
 
 from . import test_order
 from . import ord_vars

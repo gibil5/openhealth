@@ -4,13 +4,15 @@
 	Added pylint validation in Atom
 
 	Created: 			28 may 2018
-	Last up: 			24 mar 2021
+	Last up: 	 		29 mar 2021
 """
 from openerp import models, fields, api
 import openerp.addons.decimal_precision as dp
 from openerp.addons.openhealth.models.order import ord_vars
 from openerp.addons.openhealth.models.product import prodvars
-from openerp.addons.openhealth.models.libs import lib
+
+#from openerp.addons.openhealth.models.libs import lib
+from openerp.addons.openhealth.models.commons.libs import lib
 
 
 class MgtOrderLine(models.Model):

@@ -2,12 +2,14 @@
 """
 	*** Session Med
 	Created: 			24 Feb 2017
-	Last up: 	 		 4 oct 2020
+	Last up: 	 		29 mar 2021
 """
 from openerp import models, fields, api
 from datetime import datetime
 from . import session_vars
-from openerp.addons.openhealth.models.libs import lib
+
+#from openerp.addons.openhealth.models.libs import lib
+from openerp.addons.openhealth.models.commons.libs import lib
 
 _fluency = "Fluencia (J/cm2)"
 _frequency = "Frecuencia (Hz)"
@@ -18,7 +20,8 @@ _pulse_duration = "Duración de pulso"
 _time_bet = "Tiempo entre pulsos"
 
 
-class SessionMed(models.Model):	
+#class SessionMed(models.Model):	
+class EmrSessionMed(models.Model):	
 	"""
 	Class Session Med
 	Defines the Data Model.

@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 """
 	Action Funcs 
-	- Used by Treatment
+	- Used by
+		Order
 	
 	Created: 			02 Aug 2020
-	Last up: 			 5 dec 2020
+	Last up: 			29 mar 2021
 """
 _action_window = "ir.actions.act_window"
 

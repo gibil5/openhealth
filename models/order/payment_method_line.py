@@ -1,15 +1,18 @@
 # -*- coding: utf-8 -*-
 """
-		payment method line
+	Payment method line
 
-	 	Created: 			 2016
-		Last up: 	 		 2 Sep 2019
+	Created: 			 2016
+	Last up: 	 		29 mar 2021
 """
 from openerp import models, fields, api
 from . import pm_vars
-from openerp.addons.openhealth.models.libs import acc_lib
 
-class payment_method_line(models.Model):
+#from openerp.addons.openhealth.models.libs import acc_lib
+from openerp.addons.openhealth.models.commons.libs import lib
+
+#class payment_method_line(models.Model):
+class PaymentMethodLine(models.Model):
 	"""
 	Payment Method Line
 	Allow different forms of payment.

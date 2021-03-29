@@ -2,7 +2,7 @@
 """
     lib.py
 
-    - Used by:
+    - Used by many:
         management_order_line
 
     Created: 			13 aug 2018

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-	Acc Funcs
+	Acc Funcs - Dep ?
 	- Used by account_contasis
 
 	Created: 			11 oct 2020

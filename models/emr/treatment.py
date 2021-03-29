@@ -22,14 +22,18 @@ from __future__ import print_function
 import datetime
 from openerp import models, fields, api
 
-#from libs import pl_creates, eval_vars, tre_funcs, action_funcs
-from openerp.addons.openhealth.models.libs import pl_creates, eval_vars, tre_funcs, action_funcs
-
 from . import treatment_vars
 from . import treatment_state
 from . import test_treatment
 from . import counter_objects
 from . import search_objects
+
+#from libs import pl_creates, eval_vars, tre_funcs, action_funcs
+#from openerp.addons.openhealth.models.libs import pl_creates, eval_vars, tre_funcs, action_funcs
+#from openerp.addons.openhealth.models.commons.libs import pl_creates, eval_vars, tre_funcs, action_funcs
+from openerp.addons.openhealth.models.commons.libs import pl_creates, tre_funcs, action_funcs
+from . import eval_vars
+
 
 # --------------------------------------------------------------- Constants ----
 _model_treatment = "openhealth.treatment"

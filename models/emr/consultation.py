@@ -7,7 +7,10 @@
 """
 from datetime import datetime,tzinfo,timedelta
 from openerp import models, fields, api
-from openerp.addons.openhealth.models.libs import eval_vars
+
+#from openerp.addons.openhealth.models.libs import eval_vars
+#from openerp.addons.openhealth.models.commons.libs import eval_vars
+from . import eval_vars
 
 class Consultation(models.Model):
 	_name = 'openhealth.consultation'

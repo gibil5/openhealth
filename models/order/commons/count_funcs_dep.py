@@ -1,4 +1,11 @@
 # -*- coding: utf-8 -*-
+"""
+	Used by 
+		card 
+
+	Last up: 			29 mar 2021
+		
+"""
 #
 from openerp import models, fields, api
 #import datetime

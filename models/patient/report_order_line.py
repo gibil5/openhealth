@@ -3,14 +3,17 @@
 	Order Line Report
 
 	Created: 			28 May 2018
-	Last updated: 	 		30 Apr 2019
+	Last up: 	 		29 mar 2021
 """
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.order import ord_vars
 import openerp.addons.decimal_precision as dp
-from openerp.addons.openhealth.models.libs import lib
 
-class order_report_nex_line(models.Model):
+#from openerp.addons.openhealth.models.libs import lib
+from openerp.addons.openhealth.models.commons.libs import lib
+
+#class order_report_nex_line(models.Model):
+class PatientOrderReport(models.Model):
 	"""
 	Used by:
 		- Patient - Estado de Cuenta

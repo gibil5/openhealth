@@ -2,22 +2,23 @@
 """
 	Sub Family Line 
 
-	Only Data model. No functions.
-
 	Created: 			20 Aug 2018
-	Last up: 			18 Dec 2020
+	Last up: 			24 mar 2021
 """
 from __future__ import print_function
 from openerp import models, fields, api
-from . import mgt_vars
 
-#class SubFamilyLine(models.Model):	
+#from . import mgt_vars
+from lib import mgt_vars
+
+
 class MgtSubfamilyLine(models.Model):	
 	"""
 	Subfamily Line
 	"""	
 	_name = 'openhealth.management.sub_family.line'
 	_order = 'amount desc'
+
 
 # ----------------------------------------------------------- Relational -------
 	management_id = fields.Many2one(
@@ -137,7 +138,7 @@ class MgtSubfamilyLine(models.Model):
 			self.meta_sp = 'Otros'
 	# update
 
-#-------------------------------------------------------- Open Line Current ----
+#----------------------------------------------------------- Method ------------
 	@api.multi
 	def open_line_current(self):
 		"""
@@ -153,7 +154,6 @@ class MgtSubfamilyLine(models.Model):
 				'res_id': res_id,
 				'target': 'current',
 				'flags': {
-						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
 						'form': {'action_buttons': True, }
 						},
 				'context': {}

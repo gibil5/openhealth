@@ -1,6 +1,12 @@
-# Open Health - Odoo 9 Module - Python
+# Open Health - Odoo 9 Module - Python - Microservices (in progress...)
 
-## Version 7.0
+## Version 8.0
+
+## History
+```
+Created: 11 Sep 2016
+Last updated: 29 March 2021
+```
 
 ### Howto
 
@@ -67,10 +73,6 @@ jrevilla55@gmail.com
 - Linux
 - Centos7
 
-
-## History
-- Created: 11 Sep 2016
-- Last updated: 15 Dec 2019
 
 ## Database
 Postgres

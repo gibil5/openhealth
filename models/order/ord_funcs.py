@@ -3,13 +3,16 @@
 	Order Funcs
 	Encapsulate Order Business Rules
 	Created: 			29 Aug 2019
-	Last up: 	 		08 Aug 2020 
+	Last up: 	 		29 mar 2021
 """
 from __future__ import print_function
-from openerp.addons.openhealth.models.libs import lib
 from openerp import _
 from openerp.exceptions import Warning as OrderError
 from . import ord_vars
+
+#from openerp.addons.openhealth.models.libs import lib
+#from openerp.addons.openhealth.models.commons.libs import lib
+from openerp.addons.openhealth.models.commons.libs import commons_lib as lib
 
 # ----------------------------------------------------------- Ticket - Get Raw Line ----------------
 # Raw Line

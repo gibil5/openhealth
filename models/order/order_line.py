@@ -2,12 +2,15 @@
 """
 	Sale Order Line
 	Created: 			26 Aug 2016
-	Last mod: 			02 Aug 2020
+	Last up: 	 		29 mar 2021
 """
 from __future__ import print_function
 from openerp import models, fields, api
 import openerp.addons.decimal_precision as dp
-from openerp.addons.openhealth.models.libs import lib
+
+#from openerp.addons.openhealth.models.libs import lib
+#from openerp.addons.openhealth.models.commons.libs import lib
+from openerp.addons.openhealth.models.commons.libs import commons_lib as lib
 
 class SaleOrderLine(models.Model):
 	"""

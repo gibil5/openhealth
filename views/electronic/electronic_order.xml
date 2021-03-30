@@ -5,13 +5,10 @@
 
 
 <!-- TREE --> 
-        <record model="ir.ui.view" id="electronic_order_view_tree">
+        <record model="ir.ui.view" id="openhealth.electronic_order_view_tree">
             <field name="name">openhealth.electronic.order.tree</field>
-
             <field name="model">openhealth.electronic.order</field>
-            
             <field name="arch" type="xml">
-
 <!--
                         colors="
                         red:delta not in ('1')
@@ -20,33 +17,41 @@
 
                 <tree string="electronic order Tree">
 
+                    <field name="container_id"/>
+
+
+                    <!-- Company -->
+                    <field name="firm"/>
+                    <field name="ruc"/>
+                    <field name="address"/>
+                    <field name="ubigeo"/>
+                    <field name="country"/>
+
+
+
+
+                    <field name="id_serial_nr"/>
+                    <field name="path"/>
+                    <field name="file_name"/>
+
+
 
                     <field name="serial_nr"/>
-
                     <field name="state"/>
-
                     <field name="credit_note_type"/>
-
-
                     <field name="credit_note_owner"/>
 
 
-
-
                     <field name="counter_value"/>
-
                     <field name="delta"/>
 
 
-
                     <field name="x_date_created"/>
-
                     <field name="export_date"/>
 
 
 
                     <field name="x_type"/>
-                    
                     <field name="type_code"/>
 
 
@@ -56,9 +61,7 @@
 
 
                     <field name="id_doc_type"/>
-
                     <field name="id_doc_type_code"/>
-
                     <field name="id_doc"/>
 
                     
@@ -66,11 +69,8 @@
 
 
                     <field name="amount_total_net"/>
-
                     <field name="amount_total_tax"/>
-
                     <field name="amount_total"/>
-
                     <field name="electronic_line_ids"/>
 
 <!--

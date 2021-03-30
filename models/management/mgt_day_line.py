@@ -7,26 +7,25 @@
 		day doctor line
 
 	Created: 			15 Jan 2019
-	Last up: 			26 oct 2020
+	Last up: 	 		29 mar 2021
 """
-
 from __future__ import print_function
 import numpy as np
 from openerp import models, fields, api
-
 from openerp.addons.openhealth.models.order import ord_vars
-from . import mgt_funcs
-from openerp.addons.openhealth.models.libs import lib
 
-#class DayLine(models.Model):
+#from . import mgt_funcs
+from lib import mgt_funcs
+
+#from openerp.addons.openhealth.models.libs import lib
+#from openerp.addons.openhealth.models.commons.libs import lib
+from openerp.addons.openhealth.models.commons.libs import commons_lib as lib
+
 class MgtDayLine(models.Model):
 	"""
 	Day Line
 	"""
 	_name = 'openhealth.management.day.line'
-
-	_inherit = 'openhealth.management.line'
-
 	_order = 'date asc'
 
 
@@ -162,3 +161,78 @@ class MgtDayLine(models.Model):
 			#self.avg_amount = np.mean(data_amount)			# Not correct !
 
 	# update_amount
+
+
+# Begin ----------------------------------- Inherited from mgt_line.py ----------------------------
+
+# ----------------------------------------------------------- Interface --------
+	management_id = fields.Many2one(
+			'openhealth.management',
+		)
+
+	doctor_id = fields.Many2one(
+			'openhealth.management.doctor.line',
+			ondelete='cascade',
+		)
+
+# ----------------------------------------------------------- Primitive --------
+	name = fields.Char(
+			'Name',
+		)
+
+	name_sp = fields.Char(
+			'Nombre',
+		)
+
+	meta = fields.Char(
+			'Meta',
+		)
+
+	meta_sp = fields.Char(
+			'Meta',
+		)
+
+	idx = fields.Integer(
+			'Idx',
+		)
+
+	x_count = fields.Integer(
+			'Nr',
+		)
+
+	amount = fields.Float(
+			'Monto',
+			digits=(16, 1),
+		)
+
+	per_amo = fields.Float(
+			'% Monto',
+		)
+
+	per_nr = fields.Float(
+			'% Nr',
+		)
+
+#----------------------------------------------------------- Method ------------
+	@api.multi
+	def open_line_current(self):
+		"""
+		Open line current
+		"""
+		res_id = self.id
+		return {
+				'type': 'ir.actions.act_window',
+				'name': ' Edit Order Current',
+				'view_type': 'form',
+				'view_mode': 'form',
+				'res_model': self._name,
+				'res_id': res_id,
+				'target': 'current',
+				'flags': {
+						'form': {'action_buttons': True, }
+						},
+				'context': {}
+		}
+	# open_line_current
+
+# End ----------------------------------- Inherited from mgt_line.py ------------------------------

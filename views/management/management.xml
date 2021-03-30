@@ -1,11 +1,9 @@
 <?xml version="1.0"?>
 <openerp>
 	<data>
-
 <!--
-31 oct 2020
+29 mar 2021
 -->
-		
 <!-- FORM --> 
 		<record model="ir.ui.view" id="management_form_view">
 			<field name="name">management.form</field>
@@ -13,11 +11,19 @@
 			<field name="arch" type="xml">
 				<form string="Management Form">
 
-
 <!-- Header -->  
 					<header>
 
-						<!-- Update -->
+						<!-- Update all -->
+						<button 
+								type="object"
+								class="oe_highlight"
+								name="update"
+								string="UPDATE"
+						/>
+
+
+						<!-- Update fast -->
 						<button 
 								type="object"
 								class="oe_highlight"
@@ -603,7 +609,9 @@
 									<group>								
 									</group>					
 									<group>								
+										<!--
 										<field name="report_sale_product"/>
+										-->
 										<field name="rsp_count"/>
 										<field name="rsp_total"/>
 										<field name="rsp_count_delta"/>

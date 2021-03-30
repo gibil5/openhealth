@@ -6,8 +6,14 @@
 """
 from openerp import models, fields, api
 from datetime import datetime
-from . import time_funcs
-from openerp.addons.openhealth.models.libs import eval_vars
+
+#from openerp.addons.openhealth.models.libs import eval_vars
+#from openerp.addons.openhealth.models.commons.libs import eval_vars
+from . import eval_vars
+
+#from . import time_funcs
+from commons import tre_funcs as time_funcs
+
 
 class Session(models.Model):
 	"""

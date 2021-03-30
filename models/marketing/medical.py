@@ -7,13 +7,13 @@
 from openerp import models, fields, api
 
 #from emr import prodvars
-from openerp.addons.openhealth.models.product import prodvars
+#from openerp.addons.openhealth.models.product import prodvars
+from openerp.addons.openhealth.models.commons import prodvars
 
 
 class Medical(models.Model):	
 	_name = 'openhealth.medical'
 	#_order = 'date_create asc'
-
 
 
 # ----------------------------------------------------------- Primitive ------------------------------------------------------

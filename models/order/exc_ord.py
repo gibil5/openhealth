@@ -1,86 +1,64 @@
 # -*- coding: utf-8 -*-
+"""
+	Order Exceptions
+
+	Created: 			26 mar 2021
+	Previous: 			26 mar 2021
+	Last: 			 	26 mar 2021
+"""
 
 from __future__ import print_function
 from openerp import _
 from openerp.exceptions import Warning as UserError
 
-
 # ----------------------------------------------------------- Exceptions -------------------------
-class CompanyRucValueException(Exception):
-	pass
+class OrderRequiredParameterException(Exception):
+    pass
 
-class CompanyNameValueException(Exception):
-	pass
+
+# ----------------------------------------------------------- Handle Exceptions Electronic -------------------------
+def handle_exceptions_electronic(self):
+	"""
+	Handle Exceptions Electronic
+	"""
+	print()
+	print('ORD - Handle Exceptions Electronic')
+
+
+	# Required parameters
+	try:
+		#if self.x_type in [False] or self.x_type_code in [False]		or self.x_serial_nr in [False]   	or self.pl_receptor in [False, '']:
+
+		if self.x_serial_nr in [False]:
+			msg = "ERROR 1: Venta - Falta Numero de Serie"
+			raise OrderRequiredParameterException
+
+
+		if self.x_type in [False] or self.x_type_code in [False]:
+			msg = "ERROR 2: Venta - Paciente falta Documento de Identidad"
+			raise OrderRequiredParameterException
+
+
+		if self.pl_receptor in [False, '']:
+			msg = "ERROR 3: Venta Falta Nombre de cliente"
+			raise OrderRequiredParameterException
+
+
+	except OrderRequiredParameterException:
+		raise UserError(_(msg))
+
+# handle_exceptions_electronic
 
 
 
 # ----------------------------------------------------------- Handle Exceptions -------------------------
-
-def handle_exceptions(self):
-	"""
-	Handle Exceptions
-	Try
-		- Company's data is (RUC)
-	"""
-	print()
-	print('ORD - Handle Exceptions')
-
-
-	# Try several things
-
-	try:
-		self.configurator.ensure_one()
-
-	except:
-		msg_name = "ERROR: Configurator not existant"
-		class_name = type(self.configurator).__name__
-		#obj_name = self.configurator.name
-		#msg =  msg_name
-		#msg =  msg_name + '\n' + class_name + '\n' + obj_name
-		msg =  msg_name + '\n' + class_name
-
-		raise UserError(_(msg))
+#@api.multi
+#def handle_exceptions(self):
+#	"""
+#	Handle Exceptions
+#	"""
+#	print()
+#	print('ORD - Handle Exceptions Electronic')
+# handle_exceptions_electronic
 
 
-	try:
-		#if self.x_my_company.name in (False, ''):
-		if self.configurator.name in (False, ''):
-
-			msg = "ERROR: Clínica no es válida"
-
-			raise CompanyNameValueException
-
-
-		#if self.x_my_company.x_ruc in (False, ''):
-		if self.configurator.company_ruc in (False, ''):
-
-			msg = "ERROR: RUC Clínica no es válido"
-
-			raise CompanyRucValueException
-
-
-	# Raise Exceptions
-	except CompanyNameValueException:
-
-		raise UserError(_(msg))
-
-
-	except CompanyRucValueException:
-
-		raise UserError(_(msg))
-
-
-
-
-	# Other
-	#except:
-		#msg_name = "ERROR: Configurator not existant"
-		#class_name = type(self.configurator).__name__
-		#obj_name = self.configurator.name
-		#msg =  msg_name
-		#msg =  msg_name + '\n' + class_name + '\n' + obj_name
-		#msg =  msg_name + '\n' + class_name
-
-
-
-# handle_exceptions

@@ -1,0 +1,40 @@
+
+
+In Commons 
+-----------
+from openerp.addons.openhealth.models.commons.libs import user
+OrderAdmin
+
+from openerp.addons.openhealth.models.commons.libs import user, lib
+EmrProcedure
+
+from openerp.addons.openhealth.models.commons.libs import count_funcs
+Patient
+
+from openerp.addons.openhealth.models.commons.libs import lib
+ord_funcs
+SaleOrderLine
+PaymentMethodLine
+
+MgtProductivityDay
+MgtOrderLine
+MgtDayLine
+
+PatientOrderReport
+ElectronicOrder
+EmrSessionMed
+
+
+
+
+Extracted from commons, now localized 
+-------------------------------------
+from commons import eval_vars
+
+MktPatientLine
+SaleOrder
+OrderCard
+
+PatientCounter
+AccountLinePre
+AccountContasisPre

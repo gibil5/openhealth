@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 {
-'name': "Open Health - Odoo9 - Object oriented - Refactorized - CodeClimate - SonarQube - Management - Functional - No black boxes - Patterns",
+'name': "Open Health - Odoo9 - Object oriented - Refactorized - CodeClimate - SonarQube - Management - Functional - No black boxes - Patterns - Microservices",
 
 'summary': """ ERP system for a Clinic. Inherits OeHealth. Contains ALL the Data Model. Business logic is in classes and libraries.
 
 """,
 'description': """
 
-11 dec 2020
+29 mar 2021
 
 Using patterns:
 	- Reduce inheritances.
@@ -76,11 +76,10 @@ Last up:        22 Aug 2020
 
 """,
 
-'author': "DataMetrics",
+'author': "jrevilla55@gmail.com",
 'website': "http://jrevilla.com/",
-'category': 'Object Oriented',
-'version': '4.0',
-#'depends': ['base', 'oehealth', 'base_multi_image', 'account'],
+'category': 'Object Oriented, Microservices',
+'version': '5.0',
 'depends': ['base', 'oehealth', 'base_multi_image'],
 'data': [
 
@@ -143,15 +142,32 @@ Last up:        22 Aug 2020
 	# Account - Payments
 	'views/orders/payment_method/payment_method_line.xml',
 
-	# Account
-	'views/account/account_line.xml',
-	'views/account/account_line_actions.xml',
-	'views/account/account_contasis_actions.xml',
-	'views/account/account_contasis.xml',
+
+	# Account - Dep 
+	#'views/account/account_line.xml',
+	#'views/account/account_line_actions.xml',
+	#'views/account/account_contasis_actions.xml',
+	#'views/account/account_contasis.xml',
+
 
 	# Electronic
-	#'views/electronic/electronic_order.xml',
-	#'views/electronic/electronic_line.xml',
+	'views/electronic_old/electronic_order.xml',
+	'views/electronic_old/electronic_line.xml',
+	'views/containers/container.xml',
+
+	# Electronic - From PL
+	'views/electronic/account_line.xml',               # Min
+	'views/electronic/account_contasis_actions.xml',   # Min
+	'views/electronic/account_contasis.xml',           # Min
+	'views/electronic/electronic_order.xml',           # Min
+	'views/electronic/texto.xml',
+	'views/electronic/electronic_actions.xml',
+	'views/electronic/txt_line.xml',
+	'views/electronic/electronic_container.xml',       # Min
+
+
+
+
 
 
 	# Dep - Done In PL
@@ -324,9 +340,9 @@ Last up:        22 Aug 2020
 	'views/menus/menus_caja.xml',
 	'views/menus/menus_products.xml',
 	'views/menus/menus_oeh.xml',
-
 	'views/menus/menus_management.xml',
 
+	'views/menus/menus_account.xml',
 
 # ----------------------------------------------------------- Security - Models - Last ------------------------------------------------------
 	'security/ir.model.access.csv',

@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+
+
+<!-- TREE --> 
+        <record model="ir.ui.view" id="electronic_order_view_tree">
+            <field name="name">openhealth.electronic.order.tree</field>
+
+            <field name="model">openhealth.electronic.order</field>
+            
+            <field name="arch" type="xml">
+
+<!--
+                        colors="
+                        red:delta not in ('1')
+                        "
+-->
+
+                <tree string="electronic order Tree">
+
+
+                    <field name="serial_nr"/>
+
+                    <field name="state"/>
+
+                    <field name="credit_note_type"/>
+
+
+                    <field name="credit_note_owner"/>
+
+
+
+
+                    <field name="counter_value"/>
+
+                    <field name="delta"/>
+
+
+
+                    <field name="x_date_created"/>
+
+                    <field name="export_date"/>
+
+
+
+                    <field name="x_type"/>
+                    
+                    <field name="type_code"/>
+
+
+
+                    <field name="receptor"/>
+
+
+
+                    <field name="id_doc_type"/>
+
+                    <field name="id_doc_type_code"/>
+
+                    <field name="id_doc"/>
+
+                    
+
+
+
+                    <field name="amount_total_net"/>
+
+                    <field name="amount_total_tax"/>
+
+                    <field name="amount_total"/>
+
+                    <field name="electronic_line_ids"/>
+
+<!--
+                    <field name="price_net"/>
+                    <field name="price_tax"/>
+                    <field name="price_total"/>
+                    <field name="patient"/>
+                    <field name="ruc"/>
+                    <field name="doctor"/>
+                    <field name="family"/>
+                    <field name="sub_family"/>
+                    <field name="product_id"/>
+                    <field name="product_uom_qty"/>
+                    <field name="price_subtotal"/>
+-->
+                </tree>
+            </field>
+        </record>
+
+
+
+
+<!-- ACTION -->
+        <record model="ir.actions.act_window" id="electronic_order_form_action">    
+            <field name="name">Ventas</field>
+
+            <field name="res_model">openhealth.electronic.order</field>
+            
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="limit">1000</field>
+            <!--
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+            <field name="view_id" eval="False"/>            
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first order
+                </p>
+            </field>
+            -->
+        </record>
+        
+    </data>
+</openerp>

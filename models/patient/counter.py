@@ -3,18 +3,19 @@
 		Counter
 		Still very useful
 
-		Created: 			26 Aug 2016
-		Last up: 	 		 2 Sep 2019
+	Created: 			26 Aug 2016
+ 	Last up: 	 			29 mar 2021
 """
 from openerp import models, fields, api
 from . import count_vars
 
-from openerp.addons.openhealth.models.libs import user
+#from openerp.addons.openhealth.models.libs import user
+#from openerp.addons.openhealth.models.commons.libs import user
+from commons import user_dep
 
-class Counter(models.Model):
-	
+#class Counter(models.Model):
+class PatientCounter(models.Model):
 	_name = 'openhealth.counter'
-
 
 
 # ----------------------------------------------------------- Primitives ------------------------------------------------------

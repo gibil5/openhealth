@@ -2,20 +2,26 @@
 """
 	Procedure
 	Created: 			 1 Nov 2016
-	Last up: 	 		 4 oct 2020
+	Last up: 	 		29 mar 2021
 """
 from __future__ import print_function
 from datetime import datetime
 from openerp import models, fields, api
-from openerp.addons.openhealth.models.libs import user, lib
-from . import time_funcs
+
+#from openerp.addons.openhealth.models.libs import user, lib
+#from openerp.addons.openhealth.models.commons.libs import user, lib
+from openerp.addons.openhealth.models.commons.libs import commons_user, commons_lib
+
+#from . import time_funcs
+from commons import tre_funcs as time_funcs
 
 _model_control = "openhealth.control"
 _model_session = "openhealth.session.med"
 _model_app = "oeh.medical.appointment"
 
 
-class Procedure(models.Model):
+#class Procedure(models.Model):
+class EmrProcedure(models.Model):
 	"""
 	Procedure class
 	Used by

@@ -5,10 +5,6 @@
 #
 from openerp import models, fields, api
 
-#from emr import prodvars
-from openerp.addons.openhealth.models.product import prodvars
-
-
 class marketing_recommendation_line(models.Model):
 	_inherit='openhealth.medical'
 	_name = 'openhealth.marketing.recom.line'

@@ -9,16 +9,16 @@
 from __future__ import print_function
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.patient import pat_vars
+from management_db import ManagementDb
 
-#from openerp.addons.price_list.models.management.lib import pl_mgt_funcs
-from lib import mgt_db
 
 class MgtPatientLine(models.Model):
 	"""
-	Patient lines
+	Patient line
 	"""
 	_name = 'openhealth.management.patient.line'
 	_order = 'amount_total desc'
+
 
 # ----------------------------------------------------- Const ------------------
 	_MODEL = "openhealth.management.patient.line"
@@ -107,7 +107,7 @@ class MgtPatientLine(models.Model):
 
 		# Get Orders
 		#orders, count = mgt_db.get_orders_filter_by_patient_fast(self, self.patient.id)
-		orders, count = mgt_db.get_orders_filter_by_patient(self, self.patient.id)
+		orders, count = ManagementDb.get_orders_filter_by_patient(self, self.patient.id)
 
 		for order in orders:
 			self.amount_total = self.amount_total + order.x_amount_flow

@@ -2,13 +2,17 @@
 """
 	*** OPEN HEALTH - Card 
 	Created: 			25 Aug 2017
-	Last mod: 			08 Aug 2020
+ 	Last up: 	 			29 mar 2021
 """
 from datetime import datetime
 from openerp import models, fields, api
-from openerp.addons.openhealth.models.libs import count_funcs
 
-class Card(models.Model):
+#from openerp.addons.openhealth.models.libs import count_funcs
+#from openerp.addons.openhealth.models.commons.libs import count_funcs
+from commons import count_funcs_dep
+
+#class Card(models.Model):
+class OrderCard(models.Model):
 	"""
 	Vip Card
 	"""

@@ -3,134 +3,38 @@
  	Account Line - Is an idenpendent module ?
 
  	Created: 				23 April 2019
- 	Last up: 				23 April 2019
+ 	Last up: 	 			29 mar 2021
 """
 from openerp import models, fields, api
-
 from lib import acc_vars, acc_lib, pl_acc_lib
 
 class AccountLine(models.Model):
 	"""
     Registro de ventas    
 	"""
+	_name = 'openhealth.account.line'
 	_order = 'date_time asc'
+	#_inherit = 'openhealth.account.line'
 
-	_inherit = 'openhealth.account.line'
 
+# ----------------------------------------------------------- Fields ----------------------------------------
 
-# ----------------------------------------------------------- Relational -----------------------------
-
+# ----------------------------------------------------------- Relational -------
 	product = fields.Many2one(
-
 			'product.product',
-		
 			string="Producto",
 		)
-
 
 	account_id = fields.Many2one(
 			'openhealth.account.contasis'
 		)
-
 
 	patient = fields.Many2one(
 			'oeh.medical.patient',
 			string="Nombre",
 		)
 
-
-
-# ----------------------------------------------------------- Update -----------------------------
-
-	# Update Fields
-	@api.multi
-	def update_fields(self):
-		"""
-		high level support for doing this and that.
-		"""
-		#print
-		#print 'Update Contasis'
-
-
-		# Product
-		self.product_type = self.product.type
-
-		# Type Doc
-		self.tipodocumento = acc_vars._sale_type[self.x_type]
-
-		# Cuentab
-		#self.cuentab = acc_vars._cuentab[self.product_type]
-		self.cuentab = pl_acc_lib.get_cuentab(self, self.product_type)
-
-
-
-
-
-
-		# Dates
-		#self.date_time_corr, date_time_str = acc_funcs.correct_time(self, self.date_time, -5)
-		self.date_time_corr, date_time_str = acc_lib.AccFuncs.correct_time(self.date_time, -5)
-		self.date_char = date_time_str.split()[0]
-		self.time_char = date_time_str.split()[1]
-		self.fecha = self.date_char
-		self.fechavencimiento = self.date_char
-		self.fechavencimiento2 = self.date_char
-
-
-		# Name
-		if self.x_type in ['invoice', 'ticket_invoice']:			# Ruc
-			self.nombre = self.patient.x_firm
-		else: 														# Other
-			self.nombre = self.patient.name
-
-
-		# Id Doc
-		self.tipodoc = self.document_type
-		self.numdoc = self.document
-
-
-
-		# Serial number
-		#if self.serial_nr != False:
-		if self.serial_nr != False and len(self.serial_nr.split('-')) == 2:
-			self.numeroserie = self.serial_nr.split('-')[0]
-			self.numerofactura = self.serial_nr.split('-')[1]
-			self.glosa = self.glosa + self.serial_nr
-
-
-
-
-
-		# Actual amount
-		if self.state == 'cancel':
-			self.amount = 0
-			self.amount_net = 0
-			self.amount_tax = 0
-
-		else:
-			# Net
-			net = self.amount/1.18
-			self.amount_net = round(net, 2)
-
-			# Tax
-			tax = net * 0.18
-			self.amount_tax = round(tax, 2)
-
-
-		# Other
-		self.total = self.amount
-		self.neto = self.amount_net
-		self.igv = self.amount_tax
-		self.porigv = self.igv
-
-	# update_fields
-
-
-
-
-
-# ----------------------------------------------------------- Dates -------------------------------
-
+# ----------------------------------------------------------- Dates ------------
 	# Date
 	date = fields.Date(
 			#string="Fecha",
@@ -157,17 +61,11 @@ class AccountLine(models.Model):
 		)
 
 
-
-
-
-
-# ----------------------------------------------------------- Contasis - 1 ------------------------
-
+# ----------------------------------------------------------- Contasis - 1 -----
 	# Name
 	nombre = fields.Char(
 			'nombre',
 		)
-
 
 	# Fechas
 	fecha = fields.Char(
@@ -177,7 +75,6 @@ class AccountLine(models.Model):
 	fechavencimiento = fields.Char(
 			'fechavencimiento',
 		)
-
 
 	# Comprobante de pago
 	tipodocumento = fields.Char(
@@ -192,7 +89,6 @@ class AccountLine(models.Model):
 			'numerofactura',
 		)
 
-
 	# Documento de identidad
 	tipodoc = fields.Char(
 			'tipodoc',
@@ -202,16 +98,12 @@ class AccountLine(models.Model):
 			'numdoc',
 		)
 
-
-
-# ----------------------------------------------------------- Contasis - 2 ------------------------
-
+# ----------------------------------------------------------- Contasis - 2 -----
 	# Exportacion
 	EXPortacion = fields.Char(
 			'EXPortacion',
 			default='0',
 		)
-
 
 	# Importe
 	neto = fields.Char(
@@ -242,7 +134,6 @@ class AccountLine(models.Model):
 			default='0',
 		)
 
-
 	# Total
 	total = fields.Char(
 			'total',
@@ -253,9 +144,7 @@ class AccountLine(models.Model):
 			default='3.3',
 		)
 
-
-# ----------------------------------------------------------- Contasis - 3 ------------------------
-
+# ----------------------------------------------------------- Contasis - 3 -----
 	# Referencia modificada
 	fechar = fields.Char(
 			'fechar',
@@ -272,7 +161,6 @@ class AccountLine(models.Model):
 	numr = fields.Char(
 			'numr',
 		)
-
 
 	moneda = fields.Char(
 			'moneda',
@@ -301,8 +189,7 @@ class AccountLine(models.Model):
 			'ccosto2',
 		)
 
-
-# ----------------------------------------------------------- Contasis - 4 ------------------------
+# ----------------------------------------------------------- Contasis - 4 -----
 	cuentab = fields.Char(
 			'cuentab',
 			#default='701101001',
@@ -334,9 +221,7 @@ class AccountLine(models.Model):
 			default='0',
 		)
 
-
-# ----------------------------------------------------------- Contasis - 5 ------------------------
-
+# ----------------------------------------------------------- Contasis - 5 -----
 	seried = fields.Char(
 			'seried',
 			#default='0',
@@ -382,18 +267,13 @@ class AccountLine(models.Model):
 			default='0',
 		)
 
-
-
-
-# ----------------------------------------------------------- Meta --------------------------------
-
+# ----------------------------------------------------------- Meta -------------
 	# Id Document
 	document = fields.Char(
 			string="Documento",
 		)
 
 	document_type = fields.Char(
-			#string="Tipo Documento",
 			string="Tipo Doc",
 		)
 
@@ -401,11 +281,9 @@ class AccountLine(models.Model):
 			'Nr',
 		)
 
-
 	qty = fields.Integer(
 			string="Cantidad",
 		)
-
 
 	product_type = fields.Selection(
 			[
@@ -414,7 +292,6 @@ class AccountLine(models.Model):
 				('consu', 'Consumible'),
 			],
 			string='Tipo Prod',
-			#required=False,
 		)
 
 	state = fields.Selection(
@@ -423,7 +300,6 @@ class AccountLine(models.Model):
 				('cancel', 'Anulado'),
 			],
 			string='Estado',
-			#required=False,
 		)
 
 	serial_nr = fields.Char(
@@ -440,9 +316,7 @@ class AccountLine(models.Model):
 				('ticket_invoice', 'Ticket Factura'),
 			],
 			string='Tipo',
-			#required=False,
 		)
-
 
 	# Amount
 	amount = fields.Float(
@@ -456,3 +330,75 @@ class AccountLine(models.Model):
 	amount_tax = fields.Float(
 			string="Impuesto",
 		)
+
+
+# ----------------------------------------------------------- Methods ---------------------------------------
+
+# ----------------------------------------------------------- Update fields ----
+	# Update Fields
+	@api.multi
+	def update_fields(self):
+		"""
+        Update fields
+        Used by 
+            account_contasis
+		"""
+		print()
+		print('update_fields')
+
+		# Product
+		self.product_type = self.product.type
+
+		# Type Doc
+		self.tipodocumento = acc_vars._sale_type[self.x_type]
+
+		# Cuentab
+		#self.cuentab = acc_vars._cuentab[self.product_type]
+		self.cuentab = pl_acc_lib.get_cuentab(self, self.product_type)
+
+		# Dates
+		#self.date_time_corr, date_time_str = acc_funcs.correct_time(self, self.date_time, -5)
+		self.date_time_corr, date_time_str = acc_lib.AccFuncs.correct_time(self.date_time, -5)
+		self.date_char = date_time_str.split()[0]
+		self.time_char = date_time_str.split()[1]
+		self.fecha = self.date_char
+		self.fechavencimiento = self.date_char
+		self.fechavencimiento2 = self.date_char
+
+		# Name
+		if self.x_type in ['invoice', 'ticket_invoice']:			# Ruc
+			self.nombre = self.patient.x_firm
+		else: 														# Other
+			self.nombre = self.patient.name
+
+		# Id Doc
+		self.tipodoc = self.document_type
+		self.numdoc = self.document
+
+		# Serial number
+		#if self.serial_nr != False:
+		if self.serial_nr != False and len(self.serial_nr.split('-')) == 2:
+			self.numeroserie = self.serial_nr.split('-')[0]
+			self.numerofactura = self.serial_nr.split('-')[1]
+			self.glosa = self.glosa + self.serial_nr
+
+		# Actual amount
+		if self.state == 'cancel':
+			self.amount = 0
+			self.amount_net = 0
+			self.amount_tax = 0
+		else:
+			# Net
+			net = self.amount/1.18
+			self.amount_net = round(net, 2)
+			# Tax
+			tax = net * 0.18
+			self.amount_tax = round(tax, 2)
+
+		# Other
+		self.total = self.amount
+		self.neto = self.amount_net
+		self.igv = self.amount_tax
+		self.porigv = self.igv
+
+	# update_fields

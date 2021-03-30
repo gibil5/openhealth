@@ -3,31 +3,126 @@
  	Account Contasis - Is an idenpendent module ?
 
  	Created: 				18 Apr 2018
- 	Last up: 				10 Dec 2018
+ 	Last up: 	 			29 mar 2021
 """
 from openerp import models, fields, api
-
 from lib import acc_vars, acc_lib
 
 class AccountContasis(models.Model):
 	"""
     Registro de ventas
 	"""
+	_name = 'openhealth.account.contasis'
 	_order = 'date_begin asc,name asc'
+	#_inherit = 'openhealth.account.contasis'
 
-	_inherit = 'openhealth.account.contasis'
+# ----------------------------------------------------------- Fields ----------------------------------------
+
+# ----------------------------------------------------------- Relational -------
+	# Account Lines
+	account_line = fields.One2many(
+			'openhealth.account.line',
+			'account_id',
+		)
+
+	# Payment Lines
+	payment_line = fields.One2many(
+			'openhealth.payment_method_line',
+			'account_id',
+		)
+
+# ----------------------------------------------------------- Primitives -------
+	# Name
+	name = fields.Char(
+			string="Nombre",
+			required=True,
+		)
+
+	# Type
+	x_type = fields.Selection(
+			selection=[
+						('order', 'Ventas'),
+						('patient', 'Pacientes'),
+			],
+			string="Tipo",
+			required=False,
+		)
+
+	# Owner
+	owner = fields.Selection(
+			selection=[
+						('accounting', 'Contabilidad'),
+						('cash', 'Caja'),
+			],
+			string="Hecho por",
+			required=False,
+		)
+
+	# Dates
+	date = fields.Date(
+			string="Fecha",
+			default=fields.Date.today,
+			required=True,
+		)
+
+	date_begin = fields.Date(
+			string="Fecha Inicio",
+			default=fields.Date.today,
+			required=True,
+		)
+
+	date_end = fields.Date(
+			string="Fecha Fin",
+			default=fields.Date.today,
+			required=True,
+		)
+
+	# Vspace
+	vspace = fields.Char(
+			' ',
+			readonly=True
+		)
+
+	# Totals
+	total_amount = fields.Float(
+			'Total',
+			readonly=True,
+		)
+
+	# Totals Count
+	total_count = fields.Integer(
+			'Nr Ventas',
+			readonly=True,
+		)
 
 
-# ----------------------------------------------------------- Update ------------------------------
 
-	# Update
+# ----------------------------------------------------------- Methods ---------------------------------------
+
+# -------------------------------------------------------------------------------------------------
+# 	Level Zero - Update all
+# -------------------------------------------------------------------------------------------------
+
+# ----------------------------------------------------------- Update All ------
 	@api.multi
 	def update(self):
 		"""
+		Updates All
+        update_account
+		"""
+		print()
+		print('*** Update')
+		self.update_account()
+
+
+# ----------------------------------------------------------- Update account ---
+	@api.multi
+	def update_account(self):
+		"""
 		Update Account
 		"""
-		#print()
-		#print('Pl - Account - Update')
+		print()
+		print('Update account')
 
 		# Clean
 		self.account_line.unlink()
@@ -39,14 +134,12 @@ class AccountContasis(models.Model):
 		count = 0
 		amount_sum = 0
 
-
 		# Loop
 		for order in orders:
 
 			# Stats
 			amount_sum = amount_sum + order.amount_untaxed
 			count = count + 1
-
 
 			# Init - From Order
 			serial_nr = order.x_serial_nr
@@ -55,25 +148,17 @@ class AccountContasis(models.Model):
 			x_type = order.x_type
 			state = order.state
 
-
 			# Document and Document type
 			if x_type in ['invoice', 'ticket_invoice']: 		# Ruc
 				document = order.patient.x_ruc
 				document_type = '6'
-				#print('mark 1')
-
 			else:
 				if order.patient.x_dni != False: 				# Dni
 					document = order.patient.x_dni
 					document_type = '1'
-					#print('mark 2')
-
 				else: 											# Other
 					document = order.patient.x_id_doc
 					document_type = acc_vars._doc_type[order.patient.x_id_doc_type]
-					#print('mark 3')
-
-
 
 
 			# Account Lines - Registro de Ventas and Contasis
@@ -102,20 +187,13 @@ class AccountContasis(models.Model):
 														'amount_net': amount_net,
 														'amount_tax': amount_tax,
 														'x_type': x_type,
-
-
 														'document': document, 					# Id Doc  		-> Here !
-
 														'document_type': document_type, 		# Id Doc Type
-
 
 														'account_id': self.id,
 					})
 
 				acc_line.update_fields()
-
-
-
 
 			# Payment Method Lines - Tarjetas
 			for line in order.x_payment_method.pm_line_ids:
@@ -140,11 +218,5 @@ class AccountContasis(models.Model):
 		# Stats
 		self.total_amount = amount_sum
 		self.total_count = count
-	# update
 
-
-
-# ----------------------------------------------------------- Dep --------------------------------
-	#test_target = fields.Boolean(
-	#		string="Test Target",
-	#	)
+	# update_account

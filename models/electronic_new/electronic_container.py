@@ -238,6 +238,24 @@ class ElectronicContainer(models.Model):
 # ----------------------------------------------------------- Methods ---------------------------------------------
 
 
+# -------------------------------------------------------------------------------------------------
+# 	Level Zero - Update all
+# -------------------------------------------------------------------------------------------------
+
+# ----------------------------------------------------------- Update All ------
+	@api.multi
+	def update(self):
+		"""
+		Updates All
+		create_electronic, create_txt, create_txt_line.
+		"""
+		print()
+		print('*** Update')
+		self.create_electronic()
+		self.create_txt()
+		self.create_txt_line()
+
+
 # --------------------------------------------------- First Level - Buttons -----------------------
 
 # --------------------------------------- Button - Create Electronic Step 1 ----

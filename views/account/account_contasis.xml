@@ -104,10 +104,7 @@
                                 <field name="date"/>
 -->
                                 <field name="date_begin"/>
-
                                 <field name="date_end"/>
-
-                                <field name="test_target"/>
                             </group>
 
                             

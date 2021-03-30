@@ -1,87 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
 	<data>
-
-
-
 <!-- FORM --> 
 		<record model="ir.ui.view" id="openhealth.container_form_view">
 			<field name="name">container.form</field>
-
 			<field name="model">openhealth.container</field>
-
 			<field name="priority" eval="1"/>
 			<field name="arch" type="xml">
 				<form string="container Form">
 
-
 					<!-- Header -->  
 					<header>
 
+						<!-- Update all --> 
+						<button 
+							type="object" 
+							class="oe_highlight"
+							name="update" 
+							string="UPDATE"
+						/>
 
 						<!-- Create Electronic --> 
 						<button 
 							type="object" 
 							class="oe_highlight"
-
 							name="create_electronic" 
-							
 							string="Facturación"
 						/>
-
-
 
 						<!-- Create Txt --> 
 						<button 
 							type="object" 
 							class="oe_highlight"
-
 							name="create_txt" 
-
 							string="Crear TXT"                              
 						/>
-
-
 
 						<!-- Create Txt Line --> 
 						<button 
 							type="object" 
 							class="oe_highlight"
-
 							name="create_txt_line" 
-
 							string="Crear TXT Line"                              
-
 							groups='openhealth.roots'
 						/>
-
 
 						<!-- Clear --> 
 						<button 
 							type="object" 
 							class="oe_highlight oe_right"
 							name="clear"
-
 							string="Clear"
-
 							groups="openhealth.roots"
 						/>
 					</header>
 
-
-
-
 					<!-- Sheet -->  
 					<sheet>
-
 						<group>
 							<group>                             
 								<field name="name"/>
-
 								<field name="export_date_begin"/>
-
 								<field name="export_date_end"    attrs="{'invisible':[('several_dates', 'in', [False, ''])]}"/>
-
 								<field name="txt_pack"      filename="txt_pack_name"/>
 <!--
 								<field name="txt_pack_name"     string="Archivo TXT"/>
@@ -92,7 +72,6 @@
 								<field name="amount_total"/>
 								<field name="receipt_count"/>
 								<field name="invoice_count"/>
-
 								<field name="vspace"/>
 								<field name="several_dates"/>
 <!--
@@ -101,8 +80,6 @@
 								<field name="configurator"/>
 							</group>
 						</group>
-
-
 
 						<group groups="openhealth.roots">
 							<group>                             
@@ -117,15 +94,11 @@
 							</group>
 						</group>
 
-
-
 						<!-- Padding -->
 						<group>
 							<group></group>
 							<group></group>
 						</group>
-
-
 
 						<!-- Notebook --> 
 						<notebook>

@@ -142,11 +142,12 @@ Last up:        22 Aug 2020
 	# Account - Payments
 	'views/orders/payment_method/payment_method_line.xml',
 
-	# Account
-	'views/account/account_line.xml',
-	'views/account/account_line_actions.xml',
-	'views/account/account_contasis_actions.xml',
-	'views/account/account_contasis.xml',
+
+	# Account - Dep 
+	#'views/account/account_line.xml',
+	#'views/account/account_line_actions.xml',
+	#'views/account/account_contasis_actions.xml',
+	#'views/account/account_contasis.xml',
 
 
 	# Electronic

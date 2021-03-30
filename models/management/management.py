@@ -7,7 +7,7 @@
 	Define a Strategy - for resolving a problem (business logic).
 
 	Created: 			28 may 2018
-	Last up: 			24 mar 2021
+	Last up: 			29 mar 2021
 """
 from __future__ import print_function
 import collections
@@ -16,7 +16,6 @@ from lib import mgt_funcs, prod_funcs, mgt_bridge, mgt_vars
 from mgt_patient_line import MgtPatientLine
 from sales_doctor import SalesDoctor
 from management_db import ManagementDb
-
 
 # ------------------------------------------------------------------- Class -----------------------
 class Management(models.Model):
@@ -781,6 +780,26 @@ class Management(models.Model):
 # -----------------------------------------------------------------------------------------------------------
 # 	Controller - defines the way the user interface reacts to user input.
 # -----------------------------------------------------------------------------------------------------------
+
+# -------------------------------------------------------------------------------------------------
+# 	Level Zero - Update all
+# -------------------------------------------------------------------------------------------------
+
+# ----------------------------------------------------------- Update All ------
+	@api.multi
+	def update(self):
+		"""
+		Updates All
+		fast, patients, doctors, productivity, daily.
+		"""
+		print()
+		print('*** Update')
+		self.update_fast()
+		self.update_patients()
+		self.update_doctors()
+		self.update_productivity()
+		self.update_daily()
+
 
 # -------------------------------------------------------------------------------------------------
 # 	First Level - Update Buttons

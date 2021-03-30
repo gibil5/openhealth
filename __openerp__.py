@@ -1,13 +1,17 @@
 # -*- coding: utf-8 -*-
 {
-'name': "Open Health - Odoo9 - Object oriented - Refactorized - CodeClimate - SonarQube - Management - Functional - No black boxes - Patterns - Microservices",
+'name': "Open Health - Odoo9 - Object oriented - Refactorized - CodeClimate - SonarQube - Management - Functional - No black boxes - Patterns - Microservices - Testing",
 
 'summary': """ ERP system for a Clinic. Inherits OeHealth. Contains ALL the Data Model. Business logic is in classes and libraries.
 
 """,
 'description': """
 
-29 mar 2021
+30 mar 2021
+
+Created:        11 Sep 2016
+Last up:        30 Mar 2021
+(From 17 Mar 2018 - 13 963)
 
 Using patterns:
 	- Reduce inheritances.
@@ -66,11 +70,6 @@ Always clean your System:
 	- Remove Stock Moves,
 	- Remove Products Consumables,
 	- Remove Computes.
-
-Created:        11 Sep 2016
-Last up:        22 Aug 2020
-
-(From 17 Mar 2018 - 13 963)
 
 ---
 

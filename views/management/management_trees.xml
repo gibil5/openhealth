@@ -17,8 +17,9 @@
 
 					<field name="name"/>
 
+					<!--
 					<field name="configurator"  string="Config"/>
-
+					-->
 
 					<field name="state" 	groups='openhealth.roots'/>
 

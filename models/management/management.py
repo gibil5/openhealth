@@ -7,7 +7,7 @@
 	Define a Strategy - for resolving a problem (business logic).
 
 	Created: 			28 may 2018
-	Last up: 			29 mar 2021
+	Last up: 			30 mar 2021
 """
 from __future__ import print_function
 import collections
@@ -26,6 +26,37 @@ class Management(models.Model):
 	_order = 'date_begin desc'
 
 
+# ----------------------------------------------------------- Getters --------------------------
+	def get_name(self):
+		return self.name
+
+	def get_date_begin(self):
+		return self.date_begin
+
+	def get_date_end(self):
+		return self.date_end
+
+	def get_total_amount(self):
+		return str(self.total_amount)
+
+	def get_total_count(self):
+		return str(self.total_count)
+
+
+
+# ----------------------------------------------------------- Serializer --------------------------
+	# Contains the Finance report serialized in json or xml 
+	# name, date_begin, date_end, total_amount, total_count, total_tickets
+	report_serial = fields.Char()
+
+	@api.multi
+	def serialize(self):
+		self.report_serial = "{	'name': " + self.get_name() + \
+								", 'date_begin': " + self.get_date_begin() + \
+								", 'date_end': " + self.get_date_end() + \
+								", 'total_amount': " + self.get_total_amount() + \
+							"}"
+
 # ----------------------------------------------------------- Relational --------------------------
 
 # ------------------------------------------------------------- One2many -------
@@ -36,12 +67,10 @@ class Management(models.Model):
 		)
 
 	# Sales
-	sale_line_tkr = fields.One2many(
-			'openhealth.management.order.line',
-			'management_tkr_id',
-		)
-
-
+	#sale_line_tkr = fields.One2many(
+	#		'openhealth.management.order.line',
+	#		'management_tkr_id',
+	#	)
 
 	# Family
 	family_line = fields.One2many(
@@ -91,7 +120,8 @@ class Management(models.Model):
 	#		'openhealth.report.sale.product'
 	#	)
 
-# ----------------------------------------------------------- Configurator -----
+
+# ----------------------------------------------------------- Configurator - Dep -----
 	# Default Configurator
 	def _get_default_configurator(self):
 		return self.env['openhealth.configurator.emr'].search([('x_type', 'in', ['emr']),], limit=1,)
@@ -896,7 +926,15 @@ class Management(models.Model):
 		print('*** Update Productivity')
 
 		# Go
-		prod_funcs.create_days(self)
+		#prod_funcs.create_days(self)
+
+		# Get Holidays - From config
+		self.productivity_day.unlink()
+		days_inactive = self.configurator.get_inactive_days()					# Respects the LOD !
+
+		#prod_funcs.create_days(self, days_inactive)
+		#prod_funcs.create_productive_days(self, self.date_begin, self.date_end, days_inactive)
+		prod_funcs.create_productive_days(self.date_begin, self.date_end, days_inactive, self.productivity_day, self.id)
 
 		# Update cumulative and average
 		prod_funcs.update_day_cumulative(self)

@@ -1,0 +1,63 @@
+
+
+Doc - Names
+------------
+
+
+Models and db tables 
+----------------------
+
+Management
+openhealth.management
+
+MgtProductivityDay
+productivity.day          # change 
+
+MgtOrderLine
+openhealth.management.order.line
+
+MgtFamilyLine
+openhealth.management.family.line
+
+MgtSubfamilyLine
+openhealth.management.sub_family.line
+
+
+MgtPatientLine
+openhealth.management.patient.line
+
+
+MgtDoctorDayLine
+openhealth.management.day.doctor.line
+
+MgtDoctorLine
+openhealth.management.doctor.line
+
+MgtDoctorDaily
+openhealth.management.doctor.line
+
+
+
+
+Files
+-------
+
+# Management
+mgt_productivity_day
+mgt_order_line
+mgt_family_line
+mgt_subfamily_line
+mgt_day_line
+management
+
+# Patient
+mgt_patient_line
+
+# Doctor
+mgt_doctor_day_line   
+mgt_doctor_line
+mgt_doctor_daily
+
+
+Calls 
+------

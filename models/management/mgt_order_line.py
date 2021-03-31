@@ -52,10 +52,10 @@ class MgtOrderLine(models.Model):
 		)
 
 	# Mgt Sales TKR
-	management_tkr_id = fields.Many2one(
-			'openhealth.management',
-			ondelete='cascade',
-		)
+	#management_tkr_id = fields.Many2one(
+	#		'openhealth.management',
+	#		ondelete='cascade',
+	#	)
 
 
 # -------------------------------------------------- Handles external ----------

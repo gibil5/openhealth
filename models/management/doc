@@ -59,5 +59,26 @@ mgt_doctor_line
 mgt_doctor_daily
 
 
+
 Calls 
 ------
+
+update_fast()
+  update_sales()
+    ManagementDb.get_orders_filter_fast
+    Loop orders 
+      Loops lines 
+        mgt_funcs.line_analysis_obj
+        mgt_funcs.line_analysis_sub
+        
+        
+update_patients()
+
+update_doctors()
+
+update_productivity()
+
+update_daily()
+
+
+

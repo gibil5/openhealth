@@ -1,24 +1,15 @@
 # -*- coding: utf-8 -*-
 """
 	Mgt Funcs
-
 	Should be unit testable - independent from openerp
-	
-	Very important !
-	Every error should be caught, using an exception. 
 
 	Created: 			28 May 2018
-	Last up: 			 1 apr 2021
+	Last up: 			 8 dec 2020
 
-	- Use functional programming - ie pure functions. 	# Dep !
-	- Use lambda funcs, map, filter, reduce, decorators, generators, etc.  # Dep !
+	- Use functional programming - ie pure functions.
+	- Use lambda funcs, map, filter, reduce, decorators, generators, etc.
 
 	Signature
-		reset_vector(vector)
-		init_vector(vector_type)
-		line_analysis_vector_type(line, vector_obj)
-		line_analysis_vector_sub(line, vector_sub)
-		
 		division
 		averages_pure
 		set_percentages
@@ -33,103 +24,129 @@ _DATE_HOUR_FORMAT = "%Y-%m-%d %H:%M"
 _MODEL_SALE = "sale.order"
 
 
-# ------------------------------------------------------------- Reset var ----
-def reset_vector(vector):
-	"""
-	Reset vector
-	"""
-	for var in vector:
-		var = 0.
-
 # ------------------------------------------------------------- Init vector ----
 def init_vector(vector_type):
 	"""
 	Init vector
 	"""
 	vector = []
+
 	for name in vector_type:
 		obj = MgtProductCounter(name)
 		vector.append(obj)
+
 	# Pure functional
 	obj_percentages_pure(vector, 0)
+
 	return vector
 
 
 # ----------------------------------------------------------- Line Analysis ----
-def line_analysis_type(line, vector):
+#def line_analysis_sub(self, line, vector_sub):
+def line_analysis_sub(line, vector_sub):
 	"""
-	Obj vector
-	Parses an order line
-	Updates a vector of object counters
+	vector sub
+	Parses order lines
+	Updates counters
 	"""
-	print('Line analysis type')
-
-	_dic = { 'product': 'products',
-			 'service': 'services',
-			}
-
-	# Init
-	_type = line.product_id.type
-	total = line.price_subtotal 
-	qty = line.product_uom_qty
-	
-	# Inc using Product counter, which is completely decoupled from Mgt 
-	for obj in vector:
-		obj.line_analysis(_dic[_type], total, qty)
-
-
-# ----------------------------------------------------------- Line Analysis ----
-def line_analysis_sub(line, vector):
-	"""
-	Obj vector
-	Parses an order line
-	Updates a vector of counters
-	"""
-	print('Line analysis sub')
-
-	_dic_tre = { 
-			 'CONSULTA MEDICA': 'con', 
-			 'LASER CO2 FRACCIONAL': 'co2', 
-			 'LASER EXCILITE': 'exc', 
-			 'QUICKLASER': 'qui', 
-			 'LASER M22 IPL': 'ipl', 
-			 'LASER M22 ND YAG': 'ndy', 
-	}
-	
-	_dic_fam = { 
-			'medical': 'med', 
-			'cosmetology': 'cos', 
-			'echography': 'ech', 
-			'gynecology': 'gyn', 
-			'promotion': 'pro', 
-			'topical': 'top', 
-			'card': 'vip', 
-			'kit': 'kit', 
-	}
+	print('Line line_analysis_sub')
 
 	# Init
 	prod = line.product_id
-	treatment = prod.pl_treatment
-	family = prod.pl_family
-	total = line.price_subtotal
-	qty = line.product_uom_qty
-	
-	if treatment in _dic_tre:
-		name = _dic_tre[treatment]
+	sub = ''
 
-	elif family in _dic_fam:
-		name = _dic_fam[family]
+	# By Treatment
 
-	else: 
-		print('This should not happen !')
-		name = 'x'
-		print(line)
-		print(treatment)
-		print(family)
+	if prod.pl_treatment in ['CONSULTA MEDICA']:
+		sub = 'con'
+
+	# Co2
+	elif prod.pl_treatment in ['LASER CO2 FRACCIONAL']:
+		sub = 'co2'
+
+	# Exc
+	elif prod.pl_treatment in ['LASER EXCILITE']:
+		sub = 'exc'
+
+	# Quick
+	elif prod.pl_treatment in ['QUICKLASER']:
+		sub = 'qui'
+
+	# Ipl
+	elif prod.pl_treatment in ['LASER M22 IPL']:
+		sub = 'ipl'
+
+	# Ndyag
+	elif prod.pl_treatment in ['LASER M22 ND YAG']:
+		sub = 'ndy'
+
+
+	elif prod.pl_family in ['medical']:
+		sub = 'med'
+
+	# Cosmeto
+	elif prod.pl_family in ['cosmetology']:
+		sub = 'cos'
+
+	# Echo
+	elif prod.pl_family in ['echography']:
+		sub = 'ech'
+
+	# Gyn
+	elif prod.pl_family in ['gynecology']:
+		sub = 'gyn'
+
+	# Prom
+	elif prod.pl_family in ['promotion']:
+		sub = 'pro'
+
+	# Topical
+	elif prod.pl_family in ['topical']:
+		sub = 'top'
+
+	# Card
+	elif prod.pl_family in ['card']:
+		sub = 'vip'
+
+	# kit
+	elif prod.pl_family in ['kit']:
+		sub = 'kit'
+
+
+	# Filter
+	vector = filter(lambda x: x.name == sub, vector_sub)
 
 	# Inc
 	for obj in vector:
-		obj.line_analysis(name, total, qty)
+		obj.inc_amount(line.price_subtotal)
+		obj.inc_count(line.product_uom_qty)
+
+
+# ----------------------------------------------------------- Line Analysis ----
+#def line_analysis_obj(self, line, vector_obj):
+def line_analysis_obj(line, vector_obj):
+	"""
+	Obj vector
+	Parses order lines
+	Updates counters
+	"""
+	print('Line line_analysis_obj')
+
+	# Init
+	prod = line.product_id
+
+	# Products
+	if prod.type in ['product']:
+		vector = filter(lambda x: x.name == 'products', vector_obj)
+
+	# Services
+	else:
+		vector = filter(lambda x: x.name == 'services', vector_obj)
+
+	# Inc
+	for obj in vector:
+		obj.inc_amount(line.price_subtotal)
+		obj.inc_count(line.product_uom_qty)
 
 
 
@@ -175,9 +192,11 @@ def percentages_pure(vector, total):
 	"""
 	print()
 	print('**** percentages_pure')
+
 	print(vector)
 	results = map((lambda x: round(100 * x / total, 2)), vector)
 	print(results)
+
 	return results
 
 
@@ -189,8 +208,7 @@ def get_sum_pure(vector):
 	return reduce((lambda x, y: x + y), vector)
 
 
-
-# ----------------------------------------------------------- Calc Averages -----
+# --------------------------------------------------------------- Division -----
 def division(amo, number):
 	"""
 	Division
@@ -198,56 +216,30 @@ def division(amo, number):
 	return round(float(amo) / float(number), 2) if number else 0
 
 
+# ----------------------------------------------------------- Set Averages -----
 def averages_pure(vector, func=division):
 	"""
-	*** Unit tested 
-
-	Input: 
-		Vector of tuples 
-		[ (total, count), (), () ]
-		Ex: [ (1350, 2), (2950, 50) ]
-	
-	Averages Pure
+	Set Averages Pure
 	Using functional programming
 	Used by: Management
 	"""
-	print("averages_pure")
+	print("averages_pure\n")
+	print(averages_pure)
 	ave = []
-	for data in vector:
-		amo = data[0]
-		number = data[1]
-		ave.append((func(amo, number)))
-		#print(amo, number)
-	#print(ave)
 
-	return ave
-# averages_pure
-
-
-def averages_pure_tag(vector, func=division):
-	"""
-	*** Unit tested 
-
-	Input: 
-		Tagged vector of tuples 
-		[ (tag, total, count), (), () ]
-		Ex: [ ('tag_0', 1350, 2), ('tag_1', 2950, 50) ]
-	
-	Averages Pure Tag
-	Using functional programming
-	Used by: Management
-	"""
-	print("averages_pure_tag")
-	ave = []
 	for data in vector:
 		tag = data[0]
 		amo = data[1]
 		number = data[2]
 		ave.append((tag, func(amo, number)))
-		#print(amo, number)
-	#print(ave)
+		print(amo, number)
+
+	print(ave)
+
 	return ave
-# averages_pure_tag
+# averages_pure
+
+
 
 
 # --------------------------------------------------------- Set Percentages ----

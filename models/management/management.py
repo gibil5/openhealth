@@ -7,15 +7,16 @@
 	Define a Strategy - for resolving a problem (business logic).
 
 	Created: 			28 may 2018
-	Last up: 			30 mar 2021
+	Last up: 			 3 apr 2021
 """
 from __future__ import print_function
 import collections
 from openerp import models, fields, api
-from lib import mgt_funcs, prod_funcs, mgt_bridge, mgt_vars
 from mgt_patient_line import MgtPatientLine
 from sales_doctor import SalesDoctor
 from management_db import ManagementDb
+
+from lib import mgt_funcs, prod_funcs, mgt_bridge, mgt_vars
 
 # ------------------------------------------------------------------- Class -----------------------
 class Management(models.Model):
@@ -841,14 +842,22 @@ class Management(models.Model):
 		"""
 		Updates Macro values
 		Does not update: patients, doctors, productivity, daily.
+		Uses vectors. 
+			The content of vectors is dynamic. 
+			They can change if there is a new typologie (type, familiy or sub-family). 
 		"""
 		print()
 		print('*** Update Fast')
 
 		#  Init vectors
+		
+		# Vector of types (products, services)
 		vector_obj = mgt_funcs.init_vector(mgt_vars.TYPES)
+		
+		# Vector of sub-families (co2, exc, pro...)
 		vector_sub = mgt_funcs.init_vector(mgt_vars.SUBFAMILIES)
 
+		
 		# Update sales
 		self.update_sales(vector_obj, vector_sub)
 
@@ -1015,9 +1024,73 @@ class Management(models.Model):
 		Reset Button.
 		"""
 		print('*** Reset')
+		self.reset_vector()
 		self.reset_macro()
 		self.reset_micro()
 	# reset
+
+# ----------------------------------------------------------- Reset Vector -----
+	# Reset Vector
+	def reset_vector(self):
+		"""
+		Reset Vector - All self fields
+		"""
+		print('reset_vector')
+
+		# Macros 
+		self.vec_amount = 0
+		self.vec_count = 0
+		self.vec_products_amount = 0
+		self.vec_products_count = 0
+		self.vec_services_amount = 0
+		self.vec_services_count = 0
+
+		# Reset vector 
+		vec = [
+			# Totals 
+			self.vec_amount,
+			self.vec_count,
+			self.vec_products_amount,
+			self.vec_products_count,
+			self.vec_services_amount,
+			self.vec_services_count,
+
+			# Laser 
+			self.vec_co2_amount,
+			self.vec_co2_count,
+			self.vec_exc_amount,
+			self.vec_exc_count,
+			self.vec_ipl_amount,
+			self.vec_ipl_count,
+			self.vec_ndy_amount,
+			self.vec_ndy_count,
+			self.vec_qui_amount,
+			self.vec_qui_count,
+
+			# Med
+			self.vec_med_amount,
+			self.vec_med_count,
+			self.vec_cos_amount,
+			self.vec_cos_count,
+			self.vec_gyn_amount,
+			self.vec_gyn_count,
+			self.vec_ech_amount,
+			self.vec_ech_count,
+			self.vec_pro_amount,
+			self.vec_pro_count,
+
+			# Prod
+			self.vec_top_amount,
+			self.vec_top_count,
+			self.vec_vip_amount,
+			self.vec_vip_count,
+			self.vec_kit_amount,
+			self.vec_kit_count,
+		]
+		
+		#mgt_funcs.reset_vector(vec)
+
+
 
 # ----------------------------------------------------------- Reset Macros -----
 	# Reset Macros
@@ -1235,15 +1308,19 @@ class Management(models.Model):
 					# Line Analysis
 					for line in order.order_line:
 						self.line_analysis(line)
-						#self.line_analysis_obj(line, vector_obj)
-						#self.line_analysis_sub(line, vector_sub)
-						mgt_funcs.line_analysis_obj(line, vector_obj)
+
+						#mgt_funcs.line_analysis_vector_type(line, vector_obj)
+						#mgt_funcs.line_analysis_vector_sub(line, vector_sub)
+
+						mgt_funcs.line_analysis_type(line, vector_obj)
 						mgt_funcs.line_analysis_sub(line, vector_sub)
+
 
 				# If credit Note - Do Amount Flow
 				elif order.state in ['credit_note']:
 					self.credit_note_analysis(order)
 
+# After the loop
 # Analysis - Setters
 
 		# Set Averages
@@ -1318,7 +1395,7 @@ class Management(models.Model):
 		]
 
 		# Functional - call to pure function
-		result = mgt_funcs.averages_pure(vector)
+		result = mgt_funcs.averages_pure_tag(vector)
 
 		self.upack_vector_avg(result)
 
@@ -1552,7 +1629,7 @@ class Management(models.Model):
 		Parses order lines
 		Updates counters
 		"""
-		#print('Line analysis')
+		print('Line analysis')
 
 		# Init
 		prod = line.product_id

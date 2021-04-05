@@ -1,0 +1,156 @@
+
+
+
+<!-- Excilite --> 
+<menuitem   id="pricelist_product_template_2019_exc_menu"
+      parent="parent_pricelist_product_template_2019_menu"
+      sequence="5"
+      action="product_template_2019_exc_list_action"
+    />
+
+
+<!-- Ipl --> 
+<menuitem   id="pricelist_product_template_2019_ipl_menu"
+      parent="parent_pricelist_product_template_2019_menu"
+      sequence="7"
+      action="product_template_2019_ipl_list_action"
+    />
+
+
+<!-- Ndyag --> 
+<menuitem   id="pricelist_product_template_2019_ndyag_menu"
+      parent="parent_pricelist_product_template_2019_menu"
+      sequence="9"
+      action="product_template_2019_ndyag_list_action"
+    />
+
+
+<!-- Quick --> 
+<menuitem   id="pricelist_product_template_2019_quick_menu"
+      parent="parent_pricelist_product_template_2019_menu"
+      sequence="11"
+      action="product_template_2019_quick_list_action"
+    />
+
+
+<!-- Cosmetology --> 
+<menuitem   id="pricelist_product_template_2019_cos_menu"
+      parent="parent_pricelist_product_template_2019_menu"
+      sequence="15"
+      action="product_template_2019_cos_list_action"
+    />
+
+
+<!-- Medical --> 
+<menuitem   id="pricelist_product_template_2019_med_menu"
+      parent="parent_pricelist_product_template_2019_menu"
+      sequence="13"
+      action="product_template_2019_med_list_action"
+    />
+
+
+<!-- Gynecology --> 
+<menuitem   id="pricelist_product_template_2019_gyn_menu"
+      parent="parent_pricelist_product_template_2019_menu"
+      sequence="17"
+      action="product_template_2019_gyn_list_action"
+    />
+
+
+<!-- Echography --> 
+<menuitem   id="pricelist_product_template_2019_echo_menu"
+      parent="parent_pricelist_product_template_2019_menu"
+      sequence="19"
+      action="product_template_2019_echo_list_action"
+    />
+
+
+<!-- Promotion --> 
+<menuitem   id="pricelist_product_template_2019_promo_menu"
+      parent="parent_pricelist_product_template_2019_menu"
+      sequence="21"
+      action="product_template_2019_promo_list_action"
+    />
+
+
+<!-- Services --> 
+<menuitem   id="pricelist_product_template_2019_menu"
+      parent="parent_pricelist_product_template_2019_menu"
+      sequence="31"
+      action="product_template_2019_services_list_action"
+    />
+
+
+
+
+
+
+
+
+<!-- Pricelist 2018 --> 
+<menuitem   id="parent_pricelist_product_template_2018_menu" 
+      name="Lista de Precios - 2018"
+      parent="main_pricelist_menu"
+      sequence="2"
+    />
+
+<!-- Product Templates - 2018 --> 
+<menuitem   id="pricelist_product_template_2018_menu"
+      name="2018" 
+      parent="parent_pricelist_product_template_2018_menu"
+      sequence="3"
+      action="product_template_2018_list_action"
+    />
+
+
+
+
+<!-- Pricelist All --> 
+<menuitem   id="parent_pricelist_product_template_all_menu"
+      name="Lista de Precios - Todos"
+      parent="main_pricelist_menu"
+      sequence="3"
+    />
+
+<!-- Product Templates - All --> 
+<menuitem   id="pricelist_product_template_menu"
+      name="Todos" 
+      parent="parent_pricelist_product_template_all_menu"
+      sequence="10"
+      action="product_template_list_action"
+    />
+
+
+
+
+
+<!-- Configuration --> 
+<menuitem   id="parent_pricelist_config_menu" 
+      name="Configuration"
+      parent="main_pricelist_menu"
+      sequence="10"
+
+      groups="openhealth.roots,openhealth.directors"
+    />
+
+<!-- Containers --> 
+<menuitem   id="pricelist_containers_menu"
+      name="Containers"
+      parent="parent_pricelist_config_menu"
+      sequence="1"
+
+      action="container_list_action"
+
+      groups="openhealth.roots,openhealth.directors"
+    />
+
+<!-- Pricelist Products --> 
+<menuitem   id="pricelist_products_menu"
+      name="Pricelist Products" 
+      parent="parent_pricelist_config_menu"
+      sequence="2"
+
+      action="product_list_action"
+
+      groups="openhealth.roots,openhealth.directors"
+    />

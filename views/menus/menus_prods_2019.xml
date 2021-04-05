@@ -1,0 +1,486 @@
+<?xml version="1.0"?>
+<openerp>
+	<data>
+
+
+
+<!-- TREE - SERVICES -->
+				<record model="ir.ui.view" id="product_template_list">
+					<field name="name">price_list product template list</field>
+					<field name="model">product.template</field>
+					<field name="arch" type="xml">
+						<tree>
+							<field name="name"/>
+							<field name="pl_price_list"/>
+							<field name="sale_ok"/>
+							<field name="purchase_ok"/>
+							<!--
+							<field name="configurator"/>
+							<field name="pl_prefix"/>
+							<field name="pl_idx_int"/>
+							<field name="pl_name_short"		groups='openhealth.roots'/>
+							<field name="list_price"/>
+							<field name="pl_price_vip"/>
+							<field name="pl_price_company"/>
+							<field name="type"				string="Tipo"	groups='openhealth.roots'/>
+							<field name="pl_family"			groups='openhealth.roots'/>
+							<field name="pl_subfamily"		groups='openhealth.roots'/>
+							<field name="pl_treatment"		groups='openhealth.roots'/>
+							<field name="pl_zone"			groups='openhealth.roots'/>
+							<field name="pl_pathology"		groups='openhealth.roots'/>
+							<field name="pl_level"			groups='openhealth.roots'/>
+							<field name="pl_sessions"		groups='openhealth.roots'/>
+							<field name="pl_time"			groups='openhealth.roots'/>
+						-->
+						</tree>
+					</field>
+				</record>
+
+				<!-- TREE - PRODUCTS -->
+						<record model="ir.ui.view" id="product_template_stockable_list">
+							<field name="name">price_list product template list</field>
+							<field name="model">product.template</field>
+							<field name="arch" type="xml">
+								<tree>
+									<field name="name"/>
+									<field name="pl_price_list"/>
+									<field name="sale_ok"/>
+									<field name="purchase_ok"/>
+									<!--
+									<field name="configurator"/>
+									<field name="pl_prefix"			groups='openhealth.roots'/>
+									<field name="pl_idx_int"/>
+									<field name="pl_name_short"		groups='openhealth.roots'/>
+									<field name="pl_manufacturer"/>
+									<field name="pl_brand"/>
+									<field name="list_price"/>
+									<field name="pl_price_company"/>
+									<field name="pl_account"/>
+									<field name="type"				string="Tipo"	groups='openhealth.roots'/>
+									<field name="pl_family"			groups='openhealth.roots'/>
+									<field name="pl_subfamily"		groups='openhealth.roots'/>
+								-->
+								</tree>
+							</field>
+						</record>
+
+
+
+<!-- ACTIONS -->
+
+
+<!-- 2018 -->
+<record model="ir.actions.act_window" id="product_template_2018_list_action">
+	<field name="name">product template 2018</field>
+	<field name="res_model">product.template</field>
+	<field name="view_mode">tree,form</field>
+
+	<field name="domain">[
+							('pl_price_list', '=', '2018'),
+						]
+	</field>
+</record>
+
+
+<!-- Action - 2019 - Services -->
+<record model="ir.actions.act_window" id="product_template_2019_services_list_action">
+	<field name="name">SERVICIOS</field>
+	<field name="res_model">product.template</field>
+	<field name="view_mode">tree,form</field>
+
+	<field name="domain">[
+							('pl_price_list', '=', '2019'),
+							('type', '=', 'service'),
+						]
+	</field>
+	<field name="limit">700</field>
+</record>
+
+
+
+
+
+
+
+<!-- Action - 2019 - prod -->
+<record model="ir.actions.act_window" id="product_template_2019_prod_list_action">
+	<field name="name">PRODUCTOS</field>
+	<field name="res_model">product.template</field>
+	<field name="view_mode">tree,form</field>
+
+	<field name="view_id" ref="product_template_stockable_list"/> 
+
+	<field name="domain">[
+							('pl_price_list', '=', '2019'),
+							('type', '=', 'product'),
+						]
+	</field>
+	<field name="limit">700</field>
+</record>
+
+<!-- Action - 2019 - Consultation -->
+<record model="ir.actions.act_window" id="product_template_2019_consultation_list_action">
+	<field name="name">CONSULTAS</field>
+	<field name="res_model">product.template</field>
+	<field name="view_mode">tree,form</field>
+
+	<field name="view_id" ref="product_template_list"/> 
+
+	<field name="domain">[
+							('pl_price_list', '=', '2019'),
+							('pl_subfamily', '=', 'consultation'),
+						]
+	</field>
+
+	<field name="limit">700</field>
+</record>
+
+
+<!-- Action - 2019 - Co2 -->
+<record model="ir.actions.act_window" id="product_template_2019_co2_list_action">
+	<field name="name">LASER CO2</field>
+	<field name="res_model">product.template</field>
+	<field name="view_mode">tree,form</field>
+
+	<field name="view_id" ref="product_template_list"/> 
+
+	<field name="domain">[
+							('pl_price_list', '=', '2019'),
+							('pl_prefix', '=', '101'),
+						]
+	</field>
+	<field name="limit">700</field>
+</record>
+
+
+
+
+
+
+<!-- Action - 2019 - exc -->
+<record model="ir.actions.act_window" id="product_template_2019_exc_list_action">
+	<field name="name">LASER EXCILITE</field>
+	<field name="res_model">product.template</field>
+	<field name="view_mode">tree,form</field>
+
+	<field name="view_id" ref="product_template_list"/> 
+
+	<field name="domain">[
+							('pl_price_list', '=', '2019'),
+							('pl_treatment', '=', 'LASER EXCILITE'),
+						]
+	</field>
+	<field name="limit">700</field>
+</record>
+
+<!-- Action - 2019 - ipl -->
+<record model="ir.actions.act_window" id="product_template_2019_ipl_list_action">			
+	<field name="name">LASER M22 IPL</field>
+	<field name="res_model">product.template</field>
+	<field name="view_mode">tree,form</field>
+
+	<field name="domain">[
+							('pl_price_list', '=', '2019'),
+							('pl_treatment', '=', 'LASER M22 IPL'),
+						]
+	</field>
+	<field name="limit">700</field>
+</record>
+
+
+<!-- Action - 2019 - ndy -->
+<record model="ir.actions.act_window" id="product_template_2019_ndyag_list_action">
+	<field name="name">LASER M22 ND YAG</field>
+	<field name="res_model">product.template</field>
+	<field name="view_mode">tree,form</field>
+
+	<field name="domain">[
+							('pl_price_list', '=', '2019'),
+							('pl_treatment', '=', 'LASER M22 ND YAG'),
+						]
+	</field>
+	<field name="limit">700</field>
+</record>
+
+
+<!-- Action - 2019 - quick -->
+<record model="ir.actions.act_window" id="product_template_2019_quick_list_action">
+	<field name="name">QUICKLASER</field>
+	<field name="res_model">product.template</field>
+	<field name="view_mode">tree,form</field>
+	
+	<field name="domain">[
+							('pl_price_list', '=', '2019'),
+							('pl_treatment', '=', 'QUICKLASER'),
+						]
+	</field>
+	<field name="limit">700</field>
+</record>
+
+
+<!-- Action - 2019 - cosmetology -->
+<record model="ir.actions.act_window" id="product_template_2019_cos_list_action">			
+	<field name="name">COSMEATRIA</field>
+	<field name="res_model">product.template</field>
+	<field name="view_mode">tree,form</field>
+	<field name="domain">[
+							('pl_price_list', '=', '2019'),
+							('pl_family', '=', 'cosmetology'),
+						]
+	</field>
+	<field name="limit">700</field>
+</record>
+
+<!-- Action - 2019 - medical -->
+<record model="ir.actions.act_window" id="product_template_2019_med_list_action">			
+	<field name="name">T. MEDICOS</field>
+	<field name="res_model">product.template</field>
+	<field name="view_mode">tree,form</field>
+
+
+	<field name="domain">[
+							('pl_price_list', '=', '2019'),
+							('pl_family', '=', 'medical'),
+						]
+	</field>
+	<field name="limit">700</field>
+</record>
+
+
+<!-- Action - 2019 - gyn -->
+<record model="ir.actions.act_window" id="product_template_2019_gyn_list_action">
+	<field name="name">GINECOLOGIA</field>
+	<field name="res_model">product.template</field>
+	<field name="view_mode">tree,form</field>
+
+
+	<field name="domain">[
+							('pl_price_list', '=', '2019'),
+							('pl_family', '=', 'gynecology'),
+						]
+	</field>
+	<field name="limit">700</field>
+</record>
+
+
+<!-- Action - 2019 - echo -->
+<record model="ir.actions.act_window" id="product_template_2019_echo_list_action">			
+	<field name="name">ECOGRAFIA</field>
+	<field name="res_model">product.template</field>
+	<field name="view_mode">tree,form</field>
+
+
+	<field name="domain">[
+							('pl_price_list', '=', '2019'),
+							('pl_family', '=', 'echography'),
+						]
+	</field>
+	<field name="limit">700</field>
+</record>
+
+<!-- Action - 2019 - promo -->
+<record model="ir.actions.act_window" id="product_template_2019_promo_list_action">
+	<field name="name">PROMOCIONES</field>
+	<field name="res_model">product.template</field>
+	<field name="view_mode">tree,form</field>
+
+
+	<field name="domain">[
+							('pl_price_list', '=', '2019'),
+							('pl_family', '=', 'promotion'),
+						]
+	</field>
+	<field name="limit">700</field>
+</record>
+
+
+
+
+
+
+
+<!-- MENUS -->
+
+<!-- Main - Price List -->
+<menuitem   id="main_pricelist_menu"
+			sequence="-7"
+			name="Lista de Precios - 2019"
+/>
+
+<!-- Pricelist 2019 --> 
+<menuitem   id="parent_pricelist_product_template_2019_menu"
+					name="Lista de Precios - 2019"
+					parent="main_pricelist_menu"
+					sequence="1"
+/>
+
+
+		<!-- Products --> 
+		<menuitem   id="pricelist_product_template_2019_prod_menu"
+					parent="parent_pricelist_product_template_2019_menu"
+					sequence="1"
+					action="product_template_2019_prod_list_action"
+				/>
+
+		<!-- Consultations --> 
+		<menuitem   id="pricelist_product_template_2019_consultation_menu"
+					parent="parent_pricelist_product_template_2019_menu"			
+					sequence="2"
+					action="product_template_2019_consultation_list_action"
+				/>
+
+		<!-- Co2 --> 
+		<menuitem   id="pricelist_product_template_2019_co2_menu"
+					parent="parent_pricelist_product_template_2019_menu"
+					sequence="3"
+					action="product_template_2019_co2_list_action"
+				/>
+
+
+
+
+
+				<!-- Excilite --> 
+				<menuitem   id="pricelist_product_template_2019_exc_menu"
+				      parent="parent_pricelist_product_template_2019_menu"
+				      sequence="5"
+				      action="product_template_2019_exc_list_action"
+				    />
+
+
+				<!-- Ipl --> 
+				<menuitem   id="pricelist_product_template_2019_ipl_menu"
+				      parent="parent_pricelist_product_template_2019_menu"
+				      sequence="7"
+				      action="product_template_2019_ipl_list_action"
+				    />
+
+
+				<!-- Ndyag --> 
+				<menuitem   id="pricelist_product_template_2019_ndyag_menu"
+				      parent="parent_pricelist_product_template_2019_menu"
+				      sequence="9"
+				      action="product_template_2019_ndyag_list_action"
+				    />
+
+
+				<!-- Quick --> 
+				<menuitem   id="pricelist_product_template_2019_quick_menu"
+				      parent="parent_pricelist_product_template_2019_menu"
+				      sequence="11"
+				      action="product_template_2019_quick_list_action"
+				    />
+
+
+				<!-- Cosmetology --> 
+				<menuitem   id="pricelist_product_template_2019_cos_menu"
+				      parent="parent_pricelist_product_template_2019_menu"
+				      sequence="15"
+				      action="product_template_2019_cos_list_action"
+				    />
+
+
+				<!-- Medical --> 
+				<menuitem   id="pricelist_product_template_2019_med_menu"
+				      parent="parent_pricelist_product_template_2019_menu"
+				      sequence="13"
+				      action="product_template_2019_med_list_action"
+				    />
+
+
+				<!-- Gynecology --> 
+				<menuitem   id="pricelist_product_template_2019_gyn_menu"
+				      parent="parent_pricelist_product_template_2019_menu"
+				      sequence="17"
+				      action="product_template_2019_gyn_list_action"
+				    />
+
+
+				<!-- Echography --> 
+				<menuitem   id="pricelist_product_template_2019_echo_menu"
+				      parent="parent_pricelist_product_template_2019_menu"
+				      sequence="19"
+				      action="product_template_2019_echo_list_action"
+				    />
+
+
+				<!-- Promotion --> 
+				<menuitem   id="pricelist_product_template_2019_promo_menu"
+				      parent="parent_pricelist_product_template_2019_menu"
+				      sequence="21"
+				      action="product_template_2019_promo_list_action"
+				    />
+
+
+				<!-- Services --> 
+				<menuitem   id="pricelist_product_template_2019_menu"
+				      parent="parent_pricelist_product_template_2019_menu"
+				      sequence="31"
+				      action="product_template_2019_services_list_action"
+				    />
+
+
+
+
+
+				<!-- Pricelist 2018 --> 
+				<!-- Product Templates - 2018 --> 
+				<!-- Pricelist All --> 
+				<!-- Product Templates - All --> 
+				<!-- Configuration --> 
+				<!-- Containers --> 
+				<!-- Pricelist Products --> 
+
+<!--
+				<menuitem   id="parent_pricelist_product_template_2018_menu" 
+				      name="Lista de Precios - 2018"
+				      parent="main_pricelist_menu"
+				      sequence="2"
+				    />
+
+				<menuitem   id="pricelist_product_template_2018_menu"
+				      name="2018" 
+				      parent="parent_pricelist_product_template_2018_menu"
+				      sequence="3"
+				      action="product_template_2018_list_action"
+				    />
+						
+				<menuitem   id="parent_pricelist_product_template_all_menu"
+				      name="Lista de Precios - Todos"
+				      parent="main_pricelist_menu"
+				      sequence="3"
+				    />
+
+				<menuitem   id="pricelist_product_template_menu"
+				      name="Todos" 
+				      parent="parent_pricelist_product_template_all_menu"
+				      sequence="10"
+				      action="product_template_list_action"
+				    />
+
+				<menuitem   id="parent_pricelist_config_menu" 
+				      name="Configuration"
+				      parent="main_pricelist_menu"
+				      sequence="10"
+				      groups="openhealth.roots,openhealth.directors"
+				    />
+
+				<menuitem   id="pricelist_containers_menu"
+				      name="Containers"
+				      parent="parent_pricelist_config_menu"
+				      sequence="1"
+				      action="container_list_action"
+				      groups="openhealth.roots,openhealth.directors"
+				    />
+
+				<menuitem   id="pricelist_products_menu"
+				      name="Pricelist Products" 
+				      parent="parent_pricelist_config_menu"
+				      sequence="2"
+				      action="product_list_action"
+				      groups="openhealth.roots,openhealth.directors"
+				    />
+-->
+
+	</data>
+</openerp>

@@ -6,7 +6,7 @@
 	
 	Used by:			Treatment
 	Created: 			14 aug 2018
-	Last up: 	 		25 oct 2020
+	Last up: 	 		 4 apr 2021
 """
 from __future__ import print_function
 from openerp.addons.price_list.models.lib import test_funcs
@@ -14,7 +14,7 @@ from openerp import _
 from openerp.exceptions import Warning as UserError
 
 # --------------------------------------------------------------- Constants ----
-_model_service = "openhealth.service_all"
+#_model_service = "openhealth.service_all"
 
 # ----------------------------------------------------------- Exceptions -------
 class OrderErrorException(Exception):
@@ -35,13 +35,19 @@ def test_integration_treatment(self, test_case):
 	print('OH - test_treatment.py - test_integration_treatment')
 
 	# Create Consultation
-	verbose = False
+	#verbose = False
+	verbose = True
+
 	create_consultation(self, verbose) 
 
 	# Create Recommendations and Sale
 	create_recommentations_and_procedure_sale(self, test_case)
-	create_sessions(self, True)
-	create_controls(self, True)
+
+
+	# Create sessions and controls
+	#create_sessions(self, True)
+	#create_controls(self, True)
+
 # test_integration_treatment
 
 
@@ -61,18 +67,23 @@ def create_consultation(self, verbose=False):
 	else:
 		test_funcs.disablePrint()
 
-	# Create Consultation Sale
+
+	# Create Consultation Order
 	self.btn_create_order_con()			# Actual Button
 	for order in self.order_ids:
 		if order.state in ['draft']:
 			order.pay_myself()
 
-	# Create and Fill Consultation
+
+	# Create and fill Consultation object
 	self.btn_create_consultation()			# Actual Button
 	for consultation in self.consultation_ids:
 		consultation.autofill()
 
 	#test_funcs.enablePrint()
+
+
+
 
 
 # -------------------------------------------------- Procedure -----------------
@@ -84,11 +95,20 @@ def create_recommentations_and_procedure_sale(self, test_case):
 	print()
 	print(msg)
 
+
+	test_funcs.enablePrint()
+
 	# Create recommendation
 	create_recommendations(self, test_case)
 
+
 	# Create order
 	self.btn_create_order_pro()
+
+
+	test_funcs.disablePrint()
+
+
 
 	# Pay
 	test_funcs.disablePrint()
@@ -116,6 +136,7 @@ def create_recommendations(self, test_case):
 		- All Sub Families.
 		- All Sub sub Families.
 	"""
+
 	print()
 	print('Create Recommendations')
 
@@ -128,12 +149,14 @@ def create_recommendations(self, test_case):
 					'prod_3':		'OTROS',						# Other
 					'prod_4':		'COMISION DE ENVIO',			# Comission
 
+
 					# Lasers
 					'co2': 			'LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento - Grado 1 - 1 sesion',	# Co2
 					'exc':			'LASER EXCILITE - Abdomen - Alopecias - 1 sesion - 15 min',					# Excilite
 					'ipl':			'LASER M22 IPL - Abdomen - Depilacion - 1 sesion - 15 min',					# Ipl
 					'ndy':			'LASER M22 ND YAG - Localizado Cuerpo - Hemangiomas - 1 sesion - 15 min',	# Ndyag
 					'qui':			'QUICKLASER - Cuello - Rejuvenecimiento - Grado 1 - 1 sesion',				# Quick
+
 
 					# Cosmetology
 					'cos_0':		'CARBOXITERAPIA - Cuerpo - Rejuvenecimiento - 1 sesion - 30 min',				# Carboxitherapy
@@ -200,10 +223,10 @@ def create_recommendations(self, test_case):
 
 	tst_list_laser = [
 					'co2',
-					'exc',
-					'ipl',
-					'ndy',
-					'qui',
+					#'exc',
+					#'ipl',
+					#'ndy',
+					#'qui',
 	]
 
 	tst_list_cos = [
@@ -257,7 +280,8 @@ def create_recommendations(self, test_case):
 
 
 	# Loop
-	for tst in tst_list:
+	#for tst in tst_list:
+	for tst in tst_list_laser:
 		
 		# Init
 		name = name_dic[tst]
@@ -270,9 +294,11 @@ def create_recommendations(self, test_case):
 												#order='date_order desc',
 												limit=1,
 									)
-		# Manage Exception
+
+		# Check Exceptions
 		try:
 			product.ensure_one()
+
 		except ProductErrorException:
 			msg_name = "ERROR: Record Must be One Only."
 			class_name = type(product).__name__
@@ -280,27 +306,74 @@ def create_recommendations(self, test_case):
 			msg = msg_name + '\n' + class_name + '\n' + obj_name
 			raise ProductErrorException('msg')
 
+
 		product_id = product.id
+
+		# Check if product complete 
 		print()
+		print('Check product_template complete')
 		print(product)
 		print(product.name)
 
+		#print(product.list_price)
+		print(product.pl_price_list)
+
+		print(product.pl_family)
+		print(product.pl_subfamily)
+		print(product.pl_zone)
+		print(product.pl_pathology)
+		print(product.pl_sessions)
+		print(product.pl_level)
+		print(product.pl_time)
+		print(product.pl_zone)
+		print(product.pl_treatment)
+		print()
 
 		# Create
-		service = self.env[_model_service].create({
-													'service': 			product_id,
-													'family': 			product.pl_family,
-													'subfamily': 		product.pl_subfamily,
-													'zone': 			product.pl_zone,
-													'pathology': 		product.pl_pathology,
-													'sessions': 		product.pl_sessions,
-													'level': 			product.pl_level,
-													'time': 			product.pl_time,
-													'price_applied': 	product.list_price,
-													'sel_zone': 		product.pl_zone,
-													'pl_treatment': 	product.pl_treatment,
-													'treatment': 		self.id,
-										})
+		#service = self.env[_model_service].create({
+		service = self.env['openhealth.service_all'].create({
+
+			'service': 			product_id,
+
+			'family': 			product.pl_family,
+			'subfamily': 		product.pl_subfamily,
+			'zone': 			product.pl_zone,
+			'pathology': 		product.pl_pathology,
+			'sessions': 		product.pl_sessions,
+			'level': 			product.pl_level,
+			'time': 			product.pl_time,
+
+			#'price_applied': 	product.list_price,
+			'price_applied': 	product.pl_price_list,
+
+			'sel_zone': 		product.pl_zone,
+			'pl_treatment': 	product.pl_treatment,
+			'treatment': 		self.id,
+		})
+	
+	
+		# Check if service complete 
+		print()
+		print(service)
+		#print(service.name)
+		print(service.pl_treatment)
+
+		print(service.family)
+		print(service.subfamily)
+		print(service.zone)
+		print(service.pathology)
+		print(service.sessions)
+		print(service.level)
+		print(service.time)
+
+		print(service.price_applied)
+		print(service.sel_zone)
+
+		print(service.treatment)
+
+		print()
+
+	
 # create_recommendations
 
 

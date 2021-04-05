@@ -16,6 +16,17 @@
 from __future__ import print_function
 
 
+# ------------------------------------------------------------- Reset var ----
+def reset_vector(vec):
+	"""
+	Reset vector
+	"""
+	#for var in vector:
+	for var in vec:
+		var = 0.
+
+
+
 # ----------------------------------------------------------- Line Analysis ----
 def line_analysis_vector_type(line, vector_obj):
 	"""

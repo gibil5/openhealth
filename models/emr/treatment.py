@@ -449,19 +449,130 @@ class Treatment(models.Model):
 	def btn_create_order_con(self):
 		"""
 		Create Order Consultation Standard - Medical
-		One mode
+
+		This should be rewritten
+			Inject dependencies
+			Searches should be reusable, in a library 
+			Do validation 
+			Order creation should be unique 
 		"""
 		print()
 		print('btn_create_order_con')
 
 		# Init
-		price_list = '2019'
-		target = 'medical'
+		#price_list = '2019'
+		#target = 'medical'
+		#order = pl_creates.create_order_con(self, target, price_list)
 
-		order = pl_creates.create_order_con(self, target, price_list)
+		
+		# Search Partner
+		print()
+		print('Search partner')
+		partner = self.env['res.partner'].search([
+													('name', '=', self.patient.name),
+												],
+												limit=1,
+		)
+		print('Check res.partner complete')
+		print(partner.name)
+
+
+		# Search pricelist
+		print()
+		print('Search pricelist')
+		pricelist = self.env['product.pricelist'].search([
+												],
+												limit=1,
+											)
+		print('Check product.pricelist complete')
+		print(pricelist.name)
+
+
+		# Search product
+		name = 'CONSULTA MEDICA'
+		price_list = '2019'
+
+		print()
+		print('Search product')
+		product = self.env['product.product'].search([
+														('name', '=', name),
+														('pl_price_list', '=', price_list),
+													],
+													#order='date_begin asc',
+													#limit=1,
+													)
+
+
+		# Check if product complete 
+		print()
+		print('Check product_product complete')
+		print(product)
+		print(product.name)
+
+
+
+		# Create order 
+		order = pl_creates.create_order_con(self, partner.id, pricelist.id, product)
+		
+		# Open Order
+		return action_funcs.open_order(order)
+
+
+# -----------------------------------------------------------  Create Order Procedure - 2019 -------------
+	@api.multi
+	def btn_create_order_pro(self):
+		"""
+		Create Order Procedure - 2019
+		From Recommendations
+
+		This should be rewritten
+			Inject dependencies
+			Searches should be reusable, in a library 
+			Do validation 
+			Order creation should be unique 
+		"""
+		print('treatment - btn_create_order_pro')
+
+		# Clear cart
+		self.shopping_cart_ids.unlink()
+
+		# Init
+		#price_list = '2019'
+
+		service_list = [
+							self.service_all_ids,
+							#self.service_product_ids,
+							#self.service_co2_ids,
+							#self.service_excilite_ids,
+							#self.service_ipl_ids,
+							#self.service_ndyag_ids,
+							#self.service_quick_ids,
+							#self.service_medical_ids,
+							#self.service_cosmetology_ids,
+							#self.service_gynecology_ids,
+							#self.service_echography_ids,
+							#self.service_promotion_ids,
+		]
+
+		# Create Cart
+		for service_ids in service_list:
+			for service in service_ids:
+				print()
+				print('Create cart')
+				pl_creates.create_shopping_cart(self, self.env['product.product'], service, self.id)
+
+
+		# Create Order
+		print()
+		print('Create order')
+		#order = pl_creates.pl_create_order(self)
+		order = pl_creates.create_order(self)
+		#print(order)
 
 		# Open Order
 		return action_funcs.open_order(order)
+
+	# btn_create_order_pro
 
 
 # ----------------------------------------------------- Create Consultations ---------------------------------------------
@@ -582,55 +693,6 @@ class Treatment(models.Model):
 		}
 	# btn_create_reco
 
-# -----------------------------------------------------------  Create Order Procedure - 2019 -------------
-	@api.multi
-	def btn_create_order_pro(self):
-		"""
-		Create Order Procedure - 2019
-		From Recommendations
-		"""
-		print('treatment - btn_create_order_pro')
-
-		# Clear cart
-		self.shopping_cart_ids.unlink()
-
-		# Init
-		#price_list = '2019'
-
-		service_list = [
-							self.service_all_ids,
-							#self.service_product_ids,
-							#self.service_co2_ids,
-							#self.service_excilite_ids,
-							#self.service_ipl_ids,
-							#self.service_ndyag_ids,
-							#self.service_quick_ids,
-							#self.service_medical_ids,
-							#self.service_cosmetology_ids,
-							#self.service_gynecology_ids,
-							#self.service_echography_ids,
-							#self.service_promotion_ids,
-		]
-
-		# Create Cart
-		for service_ids in service_list:
-			for service in service_ids:
-				print()
-				print('Create cart')
-				pl_creates.create_shopping_cart(self, self.env['product.product'], service, self.id)
-
-
-		# Create Order
-		print()
-		print('Create order')
-		#order = pl_creates.pl_create_order(self)
-		order = pl_creates.create_order(self)
-		#print(order)
-
-		# Open Order
-		return action_funcs.open_order(order)
-
-	# btn_create_order_pro
 
 # ----------------------------------------------------------- Create Procedure  -------------------
 	# Create Procedure

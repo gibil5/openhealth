@@ -7,7 +7,7 @@
 """,
 'description': """
 
-31 mar 2021
+5 apr 2021
 
 Created:        11 Sep 2016
 Last up:        30 Mar 2021
@@ -137,6 +137,7 @@ Always clean your System:
 	# Product Selector  - RSP
 	'views/rsp/report_sale_product.xml',
 	'views/rsp/item_counter.xml',
+
 
 	# Account - Payments
 	'views/orders/payment_method/payment_method_line.xml',
@@ -289,10 +290,18 @@ Always clean your System:
 	'views/patients/partners/partner_actions.xml',
 	'views/patients/partners/partner.xml',
 
+
+
 	# Products
 	'views/products/product_actions.xml',
+	
 	'views/products/product_product.xml',
+	'views/products/product_product_pl.xml',
+	
 	'views/products/product_template.xml',
+	'views/products/product_template_2019.xml',
+
+
 
 	# Cards
 	'views/cards/card.xml',
@@ -338,9 +347,14 @@ Always clean your System:
 	'views/menus/menus_dev.xml',
 	'views/menus/menus_caja.xml',
 	'views/menus/menus_products.xml',
+
+
+	#'views/menus/prod_2019_actions.xml',
+	'views/menus/menus_prods_2019.xml',
+
+
 	'views/menus/menus_oeh.xml',
 	'views/menus/menus_management.xml',
-
 	'views/menus/menus_account.xml',
 
 # ----------------------------------------------------------- Security - Models - Last ------------------------------------------------------

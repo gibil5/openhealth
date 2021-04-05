@@ -32,29 +32,6 @@ _DATE_FORMAT = "%Y-%m-%d"
 _DATE_HOUR_FORMAT = "%Y-%m-%d %H:%M"
 _MODEL_SALE = "sale.order"
 
-
-# ------------------------------------------------------------- Reset var ----
-def reset_vector(vector):
-	"""
-	Reset vector
-	"""
-	for var in vector:
-		var = 0.
-
-# ------------------------------------------------------------- Init vector ----
-def init_vector(vector_type):
-	"""
-	Init vector
-	"""
-	vector = []
-	for name in vector_type:
-		obj = MgtProductCounter(name)
-		vector.append(obj)
-	# Pure functional
-	obj_percentages_pure(vector, 0)
-	return vector
-
-
 # ----------------------------------------------------------- Line Analysis ----
 def line_analysis_type(line, vector):
 	"""
@@ -76,6 +53,7 @@ def line_analysis_type(line, vector):
 	# Inc using Product counter, which is completely decoupled from Mgt 
 	for obj in vector:
 		obj.line_analysis(_dic[_type], total, qty)
+
 
 
 # ----------------------------------------------------------- Line Analysis ----
@@ -109,27 +87,106 @@ def line_analysis_sub(line, vector):
 
 	# Init
 	prod = line.product_id
+
+	pricelist = prod.pl_price_list
 	treatment = prod.pl_treatment
 	family = prod.pl_family
+
 	total = line.price_subtotal
 	qty = line.product_uom_qty
-	
-	if treatment in _dic_tre:
-		name = _dic_tre[treatment]
 
+
+
+	# Product
+	if prod.type in ['product']:
+		name = 'top'
+
+	# Service
+	elif treatment in _dic_tre:
+		name = _dic_tre[treatment]
 	elif family in _dic_fam:
 		name = _dic_fam[family]
 
+	# Exc 
 	else: 
-		print('This should not happen !')
-		name = 'x'
-		print(line)
+		print('\n\nThis should not happen !')
+		name = 'error'
+		#print(line)
+		print(prod)
+		print(prod.name)
+		print(pricelist)
 		print(treatment)
 		print(family)
+
 
 	# Inc
 	for obj in vector:
 		obj.line_analysis(name, total, qty)
+
+
+# ----------------------------------------------------------- Averages Vector -----
+def get_totals(vector):
+	"""
+	Get totals from vector
+	"""
+	amount = 0.
+	count = 0
+	# Avg using Product counter, which is completely decoupled from Mgt 
+	for obj in vector:
+		amount += obj.amount
+		count += obj.count
+
+	return amount, count
+
+
+
+# ----------------------------------------------------------- Averages Vector -----
+def set_averages_vector(vector):
+	"""
+	Set averages in vector
+	"""
+	# Avg using Product counter, which is completely decoupled from Mgt 
+	for obj in vector:
+		obj.set_average()
+
+
+# ----------------------------------------------------------- Averages Vector -----
+def set_percentages_vector(vector, amount):
+	"""
+	Set percentages in vector
+	"""
+	# Avg using Product counter, which is completely decoupled from Mgt 
+	for obj in vector:
+		obj.set_percentage(amount)
+
+
+# ----------------------------------------------------------- Averages Vector -----
+#def set_ratios_vector(nr_consultations, nr_procedures):
+def set_ratios_vector(vector):
+	"""
+	Set ratios in vector ?
+	"""
+	nr_consultations = 0
+	nr_procedures = 0 
+	ratio_pro_con = 0 
+
+	# Using counters
+	for obj in vector:
+		if obj.name == 'consultations':
+			nr_consultations = obj.count
+		if obj.name == 'procedures':
+			nr_procedures = 0
+	
+		if nr_consultations != 0:
+			ratio_pro_con = (float(nr_procedures) / float(nr_consultations))
+
+	return ratio_pro_con
+	# set_ratios_vector
+
+
+
+
+
 
 
 
@@ -289,3 +346,18 @@ def set_percentages(self, total_amount):
 		self.per_amo_medical = (self.amo_medical / total_amount)
 		self.per_amo_cosmetology = (self.amo_cosmetology / total_amount)
 # set_percentages
+
+
+
+# ------------------------------------------------------------- Init vector ----
+def init_vector(vector_type):
+	"""
+	Init vector
+	"""
+	vector = []
+	for name in vector_type:
+		obj = MgtProductCounter(name)
+		vector.append(obj)
+	# Pure functional
+	obj_percentages_pure(vector, 0)
+	return vector

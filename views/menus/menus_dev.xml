@@ -4,6 +4,17 @@
 <!-- 8 Aug 2D20 -->
 
 
+<!-- ACTION -->
+        <!-- Product Product --> 
+        <record model="ir.actions.act_window" id="product_product_list_action">
+            <field name="name">Productos Productos</field>
+            <field name="res_model">product.product</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+        </record>
+
+
 <!-- Main - DEV -->
 <menuitem id="main_dev_menu"
 				sequence="-20"

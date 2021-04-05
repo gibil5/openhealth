@@ -28,6 +28,8 @@ class MgtProductCounter():
 		self.name = name
 		self.amount = 0.
 		self.count = 0.
+		self.average = 0.
+		self.percentage = 0.
 
 	def inc_amount(self, amount):
 		self.amount += amount
@@ -42,11 +44,29 @@ class MgtProductCounter():
 		If it belongs to the counter. 
 		Increase total and qty.
 		"""
-		print('line_analysis')
+		#print('line_analysis')
 		if name == self.name:
 			print('Gotcha !')
 			print(name)
 			self.inc_amount(total)
 			self.inc_count(qty)
 
-			
+	def set_average(self):
+		"""
+		Average
+		"""
+		#print('set_average')
+		if self.amount != 0:
+			self.average = self.amount / self.count
+
+	def set_percentage(self, total):
+		"""
+		Percentage
+		"""
+		#print('set_percentage')
+		if total != 0:
+			self.percentage = (self.amount / total) * 100
+
+
+
+

@@ -15,7 +15,7 @@ class Service(models.Model):
 	"""
 	_name = 'openhealth.service'
 
-# ----------------------------------------------------------- Relationals ------
+# ----------------------------------------------------------- Many2one ------
 	# Treatement
 	treatment = fields.Many2one('openhealth.treatment',
 			ondelete='cascade',
@@ -25,7 +25,15 @@ class Service(models.Model):
 			required = True,
 		)
 
-# ----------------------------------------------------------- Relationals ------
+	# Physician
+	physician = fields.Many2one(
+			'oeh.medical.physician',
+			string="Médico",
+			index=True,
+		)
+
+
+
 	# Service
 	service = fields.Many2one(
 			'product.template',
@@ -34,21 +42,73 @@ class Service(models.Model):
 						('pl_price_list', '=', '2019'),
 					],
 
-			#string="Seleccionar Producto",
 			string="Producto",
-
 			required=True,
 		)
 
 
-	# Physician
-	physician = fields.Many2one(
-			'oeh.medical.physician',
-			string="Médico",
-			index=True,
-			#readonly=False,
+# ----------------------------------------------------------- Select -----------
+	family = fields.Selection(
+			selection=px_vars._family_list,
+			string='Familia',
+			required=True,
 		)
 
+	subfamily = fields.Selection(
+			selection=px_vars._subfamily_list,
+			string='Subfamilia',
+			required=True,
+		)
+
+	zone = fields.Selection(
+			selection=px_vars._zone_list,
+			string='Zona',
+			#required=True,
+			required=False,
+		)
+
+	pathology = fields.Selection(
+			selection=px_vars._pathology_list,
+			string='Pathology',
+			#required=True,
+			required=False,
+		)
+
+	sessions = fields.Selection(
+			selection=px_vars._sessions_list,
+			string='Sessions',
+			#required=True,
+			required=False,
+		)
+
+	level = fields.Selection(
+			selection=px_vars._level_list,
+			string='Level',
+			#required=True,
+			required=False,
+		)
+
+	time = fields.Selection(
+			selection=px_vars._time_list,
+			string='Time',
+			#required=True,
+			required=False,
+		)
+
+
+	# Zone
+	sel_zone = fields.Selection(
+			selection=px_vars._zone_list,
+			string='Seleccionar Zona',
+			#required=True,
+		)
+
+	pl_treatment = fields.Selection(
+			selection=px_vars._treatment_list,
+			string='Tratamiento',
+			#required=True,
+			required=False,
+		)
 
 
 
@@ -118,67 +178,6 @@ class Service(models.Model):
 		)
 
 
-# ----------------------------------------------------------- Select -----------
-	family = fields.Selection(
-			selection=px_vars._family_list,
-			string='Familia',
-			required=True,
-		)
-
-	subfamily = fields.Selection(
-			selection=px_vars._subfamily_list,
-			string='Subfamilia',
-			required=True,
-		)
-
-	pl_treatment = fields.Selection(
-			selection=px_vars._treatment_list,
-			string='Tratamiento',
-			#required=True,
-			required=False,
-		)
-
-	zone = fields.Selection(
-			selection=px_vars._zone_list,
-			string='Zona',
-			#required=True,
-			required=False,
-		)
-
-	pathology = fields.Selection(
-			selection=px_vars._pathology_list,
-			string='Pathology',
-			#required=True,
-			required=False,
-		)
-
-	level = fields.Selection(
-			selection=px_vars._level_list,
-			string='Level',
-			#required=True,
-			required=False,
-		)
-
-	sessions = fields.Selection(
-			selection=px_vars._sessions_list,
-			string='Sessions',
-			#required=True,
-			required=False,
-		)
-
-	time = fields.Selection(
-			selection=px_vars._time_list,
-			string='Time',
-			#required=True,
-			required=False,
-		)
-
-	# Zone
-	sel_zone = fields.Selection(
-			selection=px_vars._zone_list,
-			string='Seleccionar Zona',
-			#required=True,
-		)
 
 # ----------------------------------------------------------- On changes -------
 	# Price policy

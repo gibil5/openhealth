@@ -200,8 +200,10 @@
 
 							<group>
 								<field name="total_amount"/>
+								<!--
 								<field name="total_amount_year"/>
 								<field name="per_amo_total"     widget="percentage"  />
+								-->
 							</group>
 						</group>
 

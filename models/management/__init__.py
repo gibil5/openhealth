@@ -8,7 +8,13 @@ from . import mgt_order_line
 from . import mgt_family_line
 from . import mgt_subfamily_line
 from . import mgt_day_line
-from . import management
+
+#from . import management
+from . import management_view
+from . import management_controller
+from . import management_tools
+#from . import management_bridge
+
 
 # Patient
 from . import mgt_patient_line

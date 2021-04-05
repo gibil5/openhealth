@@ -21,122 +21,59 @@
 from __future__ import print_function
 from . import tre_funcs
 
-# ----------------------------------------------------------- Create Shopping Cart -----------------
-def create_shopping_cart(treatment, env, service, treatment_id):
-	"""
-	Used by Treatment - create_order_pro
-	"""
-	print()
-	print('pl_creates - create_shopping_cart')
-
-	# init 
-	service_name = service.service.name
-	price = service.price_applied
-	qty = service.qty
-
-	# Search product
-	print()
-	print('Search product ')
-	product_id = env.search([	('name', '=', service_name),
-								('sale_ok', '=', True),
-								('pl_price_list', '=', '2019')]).id
-	#print(product)
-
-	# Create cart
-	#if product.name:
-	cart_line = treatment.shopping_cart_ids.create({	'product': 		product_id,
-														'price': 		price,
-														'qty': 			qty,
-														'treatment': 	treatment_id})
-# create_shopping_cart
 
 
-# ----------------------------------------------------------- Create Order Target -----------------
-def create_order_con(self, target, price_list):
+
+# ----------------------------------------------- Create order consultation ----
+#def create_order_con(self, target, price_list):
+def create_order_con(self, partner_id, pricelist_id, product):
 	"""
 	Used by Treatment - create_order_con
 	Create order - consultation
 	"""
 	print()
 	print('OH - pl_create_order_con')
-	print(self)
-	print(target)
-	print(price_list)
-
-	# Search Partner
-	print()
-	print('Search partner')
-	partner = self.env['res.partner'].search([
-												('name', '=', self.patient.name),
-											],
-											limit=1,)
-	print(partner)
-
-	# Search
-	print()
-	print('Search pricelist')
-	pricelist = self.env['product.pricelist'].search([
-											#('active', 'in', [True]),
-											],
-											#order='x_serial_nr asc',
-											limit=1,
-										)
-	print(pricelist)
-
+	print(partner_id)
+	print(pricelist_id)
+	print(product)
 
 	# Create Order
 	print()
 	print('Create order')
-	print(partner.id)
-	print(self.patient.id)
-	print(self.patient.x_id_doc)
-	print(self.patient.x_id_doc_type)
-	print(self.physician.id)
+	#print(self.patient.id)
+	#print(self.patient.x_id_doc)
+	#print(self.patient.x_id_doc_type)
+	#print(self.physician.id)
+
 	order = self.env['sale.order'].create({
+											'partner_id': partner_id,
+											'pricelist_id': pricelist_id,
+
 											'patient': self.patient.id,
 											'x_id_doc': self.patient.x_id_doc,
 											'x_id_doc_type': self.patient.x_id_doc_type,
 											'x_doctor': self.physician.id,
 											'state':'draft',
-											'partner_id': partner.id,
 											'x_family': 'consultation',
-											'treatment': self.id,
 
-											'pricelist_id': pricelist.id,
+											'treatment': self.id,
 										})
 	print(order)
 
-	# Init
-	_dic_con = {
-					'medical':		'CONSULTA MEDICA',
-					'gynecology':	'CONSULTA GINECOLOGICA',
-					'premium':		'CONSULTA MEDICA DR. CHAVARRI',
-	}
-	name = _dic_con[target]
-
-	# Search
-	print()
-	print('Search product')
-	product = self.env['product.product'].search([
-														('name', 'in', [name]),
-														('pl_price_list', 'in', [price_list]),
-													],
-														#order='date_begin asc',
-														#limit=1,
-												)
-	print(product)
-	print(product.name)
 
 	# Create Order Line
 	print()
 	print('Create order line')
 	ol = order.order_line.create({
-									'name': 			product.name,
 									'product_id': 		product.id,
+									'name': 			product.name,
 									'order_id': 		order.id,
 								})
 	return order
 # create_order_con
+
+
+
 
 # ----------------------------------------------------------- Create Order Target -----------------
 def create_order(self):
@@ -155,6 +92,8 @@ def create_order(self):
 												],
 												#order='appointment_date desc',
 												limit=1,)
+	print(partner.name)
+
 
 	# Search Pl
 	print()
@@ -167,24 +106,19 @@ def create_order(self):
 										)
 	print(pricelist)
 
+
 	# Create Order
 	order = self.env['sale.order'].create({
 													'state':'draft',
 													'x_doctor': self.physician.id,
-
-													#'partner_id': self.partner_id.id,
 													'partner_id': partner.id,
-													#'x_ruc': self.partner_id.x_ruc,
-													#'x_dni': self.partner_id.x_dni,
-
 													'patient': self.patient.id,
 													'x_id_doc': self.patient.x_id_doc,
 													'x_id_doc_type': self.patient.x_id_doc_type,
 													'x_family': 'procedure',
-
-													'treatment': self.id,
-
 													'pricelist_id': pricelist.id,
+													
+													'treatment': self.id,
 												})
 	#print(order)
 
@@ -198,14 +132,35 @@ def create_order(self):
 		#print(product)
 		#print(product.name)
 
+		# Check if product complete 
+		print()
+		print('Check product_product complete')
+		print(product)
+		print(product.name)
+		print(product.pl_price_list)
+		print(product.pl_treatment)
+		print(product.pl_family)
+
+		#print(product.pl_subfamily)
+		#print(product.pl_zone)
+		#print(product.pl_pathology)
+		#print(product.pl_sessions)
+		#print(product.pl_level)
+		#print(product.pl_time)
+		#print(product.pl_zone)
+		
+		print()
+
 		# Create Order Line
 		ol = order.order_line.create({
-										'name': 		product.name,
 										'product_id': 	product.id,
+
+										'name': 		product.name,
 										'price_unit': 	cart_line.price,
 										'product_uom_qty': cart_line.qty,
 										'order_id': 	order.id,
 									})
+
 	return order
 #create_order
 
@@ -255,3 +210,34 @@ def create_procedure(self, product):
 	print(procedure.name)
 
 # create_procedure_go
+
+
+# ----------------------------------------------------------- Create Shopping Cart -----------------
+def create_shopping_cart(treatment, env, service, treatment_id):
+	"""
+	Used by Treatment - create_order_pro
+	"""
+	print()
+	print('pl_creates - create_shopping_cart')
+
+	# init 
+	service_name = service.service.name
+	price = service.price_applied
+	qty = service.qty
+
+	# Search product
+	print()
+	print('Search product ')
+
+	product_id = env.search([	('name', '=', service_name),
+								('sale_ok', '=', True),
+								('pl_price_list', '=', '2019')]).id
+	#print(product)
+
+	# Create cart
+	#if product.name:
+	cart_line = treatment.shopping_cart_ids.create({	'product': 		product_id,
+														'price': 		price,
+														'qty': 			qty,
+														'treatment': 	treatment_id})
+# create_shopping_cart

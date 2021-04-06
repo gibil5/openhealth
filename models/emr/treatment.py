@@ -28,12 +28,7 @@ from . import test_treatment
 from . import counter_objects
 from . import search_objects
 
-#from libs import pl_creates, eval_vars, tre_funcs, action_funcs
-#from openerp.addons.openhealth.models.libs import pl_creates, eval_vars, tre_funcs, action_funcs
-#from openerp.addons.openhealth.models.commons.libs import pl_creates, eval_vars, tre_funcs, action_funcs
 from . import eval_vars
-
-#from openerp.addons.openhealth.models.commons.libs import pl_creates, tre_funcs, action_funcs
 from commons import pl_creates, tre_funcs, action_funcs
 
 
@@ -57,6 +52,9 @@ class Treatment(models.Model):
 	_name = _model_treatment
 	_order = 'write_date desc'
 	_description = 'Treatment'
+
+
+# ----------------------------------------------------------- Relational --------------------------
 
 # ------------------------------------------------------------------------------
 	# Shopping cart
@@ -420,6 +418,7 @@ class Treatment(models.Model):
 			for con in record.consultation_ids:
 				record.consultation_progress = con.progress
 
+
 # ----------------------------------------------------------- State -------------------------------
 	# State
 	state = fields.Selection(
@@ -437,29 +436,28 @@ class Treatment(models.Model):
 			record.state = obj.get_state()
 
 
-# ----------------------------------------------------------- Number ofs - Services - Dep ? ---------------
+# ---------------------------------------------------- Number ofs - Services ---
 	# Number of Services
 	nr_services = fields.Integer(
 		string="Servicios",
 		compute="_compute_nr_services",
 	)
+	
 	@api.multi
 	def _compute_nr_services(self):
 		for record in self:
 			record.nr_services = self.env[_model_service].search_count([('treatment', '=', record.id),])
 
 
-# ----------------------------------------------------------- Create Buttons  ----------
+
+
+# ----------------------------------------------------------- Methods ---------------------------------------
+
+# ---------------------------------------------------------- Create Buttons  ---
 	@api.multi
 	def btn_create_order_con(self):
 		"""
 		Create Order Consultation Standard - Medical
-
-		This should be rewritten
-			Inject dependencies
-			Searches should be reusable, in a library 
-			Do validation 
-			Order creation should be unique 
 		"""
 		print()
 		print('btn_create_order_con')
@@ -494,27 +492,8 @@ class Treatment(models.Model):
 		"""
 		Create Order Procedure - 2019
 		From Recommendations
-
-		This should be rewritten
-			Inject dependencies
-			Searches should be reusable, in a library 
-			Do validation 
-			Order creation should be unique 
 		"""
 		print('treatment - btn_create_order_pro')
-
-		# Clear cart - Dep !
-		#self.shopping_cart_ids.unlink()
-		#service_list = [
-		#					self.service_all_ids,
-		#]
-		# Create Cart
-		#for service_ids in service_list:
-		#	for service in service_ids:
-		#		print()
-		#		print('Create cart')
-		#		pl_creates.create_shopping_cart(self, self.env['product.product'], service, self.id)
-
 
 		# Create Order
 		print()
@@ -538,11 +517,7 @@ class Treatment(models.Model):
 			print(service.qty)
 			print(service.service.list_price)
 			
-
-			#pl_creates.create_shopping_cart(self, self.env['product.product'], service, self.id)
-			#product = service.service
-			#price = service.price_applied
-
+			# Init
 			product_template = service.service
 			name = service.service.name
 			qty = service.qty
@@ -564,7 +539,6 @@ class Treatment(models.Model):
 					product = tre_funcs.get_product(self, name, price_list)
 					print(product)
 					product_tup.append((product, qty, price))
-					#tre_funcs.check_product(self, '2019', product, product_template)
 
 				except Exception:
 					print('ERROR - Treatment - Product Not Available at all !!!!!')
@@ -572,7 +546,6 @@ class Treatment(models.Model):
 			else:
 				print('jx - Else !')
 				#pass
-
 
 			#  Check 
 			tre_funcs.check_product(self, '2019', product, product_template)
@@ -587,9 +560,9 @@ class Treatment(models.Model):
 	# btn_create_order_pro
 
 
-# ----------------------------------------------------- Create Consultations ---------------------------------------------
+# ----------------------------------------------------- Create Consultations --------------------------------
 
-# ----------------------------------------------------- Create Consultation -----------------------
+# ----------------------------------------------------- Create Consultation ----
 	# Create Consultation
 	@api.multi
 	def btn_create_consultation(self):
@@ -736,6 +709,7 @@ class Treatment(models.Model):
 			if order.proc_is_not_created_and_state_is_sale() or self.override:
 				order.create_procedure_man(self)
 	# btn_create_procedure_man
+
 
 # ----------------------------------------------------------- Create Services  ------------
 	# co2
@@ -902,3 +876,4 @@ class Treatment(models.Model):
 		Used by - Procedure
 		"""
 		return action_funcs.open_myself(_model_treatment, self.id)
+

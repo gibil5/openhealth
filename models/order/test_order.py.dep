@@ -1,0 +1,25 @@
+# -*- coding: utf-8 -*-
+"""
+ 	Test - Order - Dep !
+	Explore treatment
+	Renamed - To avoid conflict with nose2. 
+
+	Created: 			20 Nov 2018
+	Last up: 	 		23 oct 2020
+"""
+from __future__ import print_function
+
+
+# ----------------------------------------------------------- Test ---------------------------------
+def test(self):
+	"""
+	high level support for doing this and that.
+	"""
+	print('')
+	print('Test')
+	self.test_actions()
+	self.test_computes()
+
+
+
+

@@ -7,7 +7,7 @@
 	Used by:			Treatment
 
 	Created: 			14 aug 2018
-	Last up: 	 		 4 apr 2021
+	Last up: 	 		 5 apr 2021
 """
 from __future__ import print_function
 from openerp.addons.price_list.models.lib import test_funcs
@@ -28,21 +28,18 @@ class ProductErrorException(Exception):
 # ----------------------------------------------- Test Integration -------------
 def test_integration_treatment(self, test_case):
 	"""
- 	Integration Tests for the Treatment Class.
+	End to end Tests
+ 	Integration Testing for the Treatment Class.
 	"""
 	print()
-	print('OH - test_treatment.py - test_integration_treatment')
+	print('test_treatment.py - test_integration_treatment')
 
 	# Create Consultation
 	verbose = False
-	#verbose = True
-
 	create_consultation(self, verbose) 
-
 
 	# Create Recommendations and Sale
 	create_recommentations_and_procedure_sale(self, test_case)
-
 
 	# Create sessions and controls
 	#create_sessions(self, True)
@@ -71,8 +68,6 @@ def create_recommentations_and_procedure_sale(self, test_case):
 	self.btn_create_order_pro()
 
 	test_funcs.disablePrint()
-
-
 
 	# Pay
 	test_funcs.disablePrint()
@@ -743,17 +738,13 @@ def create_consultation(self, verbose=False):
 	else:
 		test_funcs.disablePrint()
 
-
 	# Create Consultation Order
 	self.btn_create_order_con()			# Actual Button
 	for order in self.order_ids:
 		if order.state in ['draft']:
 			order.pay_myself()
 
-
 	# Create and fill Consultation object
 	self.btn_create_consultation()			# Actual Button
 	for consultation in self.consultation_ids:
 		consultation.autofill()
-
-	#test_funcs.enablePrint()

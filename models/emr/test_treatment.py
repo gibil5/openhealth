@@ -5,16 +5,14 @@
 	Renamed - To avoid conflict with nose2. 
 	
 	Used by:			Treatment
+
 	Created: 			14 aug 2018
 	Last up: 	 		 4 apr 2021
 """
 from __future__ import print_function
 from openerp.addons.price_list.models.lib import test_funcs
-from openerp import _
-from openerp.exceptions import Warning as UserError
-
-# --------------------------------------------------------------- Constants ----
-#_model_service = "openhealth.service_all"
+#from openerp import _
+#from openerp.exceptions import Warning as UserError
 
 # ----------------------------------------------------------- Exceptions -------
 class OrderErrorException(Exception):
@@ -22,6 +20,7 @@ class OrderErrorException(Exception):
 
 class ProductErrorException(Exception):
 	print('This is my first management of product exceptions')
+
 
 
 # ------------------------------------------------------- First Level - Buttons -------------------
@@ -35,10 +34,11 @@ def test_integration_treatment(self, test_case):
 	print('OH - test_treatment.py - test_integration_treatment')
 
 	# Create Consultation
-	#verbose = False
-	verbose = True
+	verbose = False
+	#verbose = True
 
 	create_consultation(self, verbose) 
+
 
 	# Create Recommendations and Sale
 	create_recommentations_and_procedure_sale(self, test_case)
@@ -53,39 +53,6 @@ def test_integration_treatment(self, test_case):
 
 # ----------------------------------------------- 2nd level ---------------------------------------
 
-# ----------------------------------------------- Consultation -----------------
-def create_consultation(self, verbose=False):
-	"""
-	Create Consultation
-	"""
-	msg = 'test_treatment - create_consultation'
-	print()
-	print(msg)
-
-	if verbose:
-		test_funcs.enablePrint()
-	else:
-		test_funcs.disablePrint()
-
-
-	# Create Consultation Order
-	self.btn_create_order_con()			# Actual Button
-	for order in self.order_ids:
-		if order.state in ['draft']:
-			order.pay_myself()
-
-
-	# Create and fill Consultation object
-	self.btn_create_consultation()			# Actual Button
-	for consultation in self.consultation_ids:
-		consultation.autofill()
-
-	#test_funcs.enablePrint()
-
-
-
-
-
 # -------------------------------------------------- Procedure -----------------
 def create_recommentations_and_procedure_sale(self, test_case):
 	"""
@@ -95,16 +62,13 @@ def create_recommentations_and_procedure_sale(self, test_case):
 	print()
 	print(msg)
 
-
 	test_funcs.enablePrint()
 
 	# Create recommendation
 	create_recommendations(self, test_case)
 
-
 	# Create order
 	self.btn_create_order_pro()
-
 
 	test_funcs.disablePrint()
 
@@ -120,7 +84,6 @@ def create_recommentations_and_procedure_sale(self, test_case):
 			except OrderErrorException:
 				raise OrderErrorException('jx - Pay myself exception')
 	test_funcs.enablePrint()
-
 
 
 
@@ -175,7 +138,7 @@ def create_recommendations(self, test_case):
 					'med_8':		'VITAMINA C ENDOVENOSA',																	# Vitamin
 
 					# New Services
-					'gyn':			'LASER CO2 FRACCIONAL - Monalisa Touch / Revitalizacion',
+					#'gyn':			'LASER CO2 FRACCIONAL - Monalisa Touch / Revitalizacion',
 					'echo':			'ECOGRAFIAS ESPECIALES - Cadera Pediatrica (Bilateral) - 1 sesion',
 					'prom':			'CARBOXITERAPIA - Localizado Cuerpo - Rejuvenecimiento Facial - 6 sesiones',
 		}
@@ -208,7 +171,7 @@ def create_recommendations(self, test_case):
 					'med_7',
 					'med_8',
 
-					'gyn',
+					#'gyn',
 					'echo',
 					'prom',
 	]
@@ -223,10 +186,10 @@ def create_recommendations(self, test_case):
 
 	tst_list_laser = [
 					'co2',
-					#'exc',
-					#'ipl',
-					#'ndy',
-					#'qui',
+					'exc',
+					'ipl',
+					'ndy',
+					'qui',
 	]
 
 	tst_list_cos = [
@@ -280,8 +243,12 @@ def create_recommendations(self, test_case):
 
 
 	# Loop
-	#for tst in tst_list:
-	for tst in tst_list_laser:
+	#for tst in tst_list_laser:
+	#for tst in tst_list_med:
+	#for tst in tst_list_cos:
+	#for tst in tst_list_new:
+	#for tst in tst_list_prod:
+	for tst in tst_list:
 		
 		# Init
 		name = name_dic[tst]
@@ -759,3 +726,34 @@ def test_create_controls(self):
 		for _ in range(6):
 			print('create control')
 			procedure.btn_create_controls_manual()	# Button
+
+
+
+# ----------------------------------------------- Consultation -----------------
+def create_consultation(self, verbose=False):
+	"""
+	Create Consultation
+	"""
+	msg = 'test_treatment - create_consultation'
+	print()
+	print(msg)
+
+	if verbose:
+		test_funcs.enablePrint()
+	else:
+		test_funcs.disablePrint()
+
+
+	# Create Consultation Order
+	self.btn_create_order_con()			# Actual Button
+	for order in self.order_ids:
+		if order.state in ['draft']:
+			order.pay_myself()
+
+
+	# Create and fill Consultation object
+	self.btn_create_consultation()			# Actual Button
+	for consultation in self.consultation_ids:
+		consultation.autofill()
+
+	#test_funcs.enablePrint()

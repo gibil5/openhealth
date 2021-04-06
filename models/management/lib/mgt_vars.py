@@ -17,6 +17,8 @@ TYPES = [
 
 SUBFAMILIES = [
 		# Sub Families
+		'con',
+
 		'co2',
 		'exc',
 		'ndy',
@@ -26,7 +28,7 @@ SUBFAMILIES = [
 		'med',
 		'cos',
 		'ech',
-		'gyn',
+		#'gyn',
 		'pro',
 
 		'top',

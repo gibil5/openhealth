@@ -235,6 +235,7 @@ Always clean your System:
 	# Groups
 	'views/users/group.xml',
 
+
 	# Orders
 	'views/orders/order_administrator.xml',
 	'views/orders/order.xml',
@@ -244,6 +245,9 @@ Always clean your System:
 	'views/orders/order_admin.xml',
 	'views/orders/order_account.xml',
 	'views/orders/order_report_nex.xml',                # Estado de Cuenta New
+
+	'views/orders/order_line.xml',
+
 
 	# Payment methods
 	'views/orders/payment_method/payment_methods.xml',

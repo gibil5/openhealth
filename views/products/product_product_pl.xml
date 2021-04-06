@@ -23,9 +23,48 @@
 				<!-- Notebook --> 
 				<xpath expr="//notebook" position="inside">
 
+					<!-- Price List 2019 -->
+					<page string="2019">
+						<group>
+							<field name="pl_price_list"/>
+							<field name="pl_family"/>
+							<field name="pl_subfamily"/>
+							<field name="pl_treatment"/>             
+							<field name="pl_zone"/>              
+							<field name="pl_pathology"/>             
+							<field name="pl_level"/>             
+							<field name="pl_sessions"/>  
+							<field name="pl_time"/>      
+						</group>
+					</page>
+
+
+					<page string="Prices">
+						<group>
+							<!--
+							<field name="list_price"/>
+							-->
+							<field name="pl_price_vip"/>
+							<field name="pl_price_company"/>
+							<field name="pl_price_session"/>
+							<field name="pl_price_session_next"/>
+							<field name="pl_price_max"/>
+						</group>
+					</page>
+
+
+					<page string="Other">
+							<group>
+								<field name="pl_name_short"/>
+								<field name="pl_prefix"/>
+								<field name="pl_idx"/>
+								<field name="pl_code"/>
+							</group>
+					</page>
 
 
 					<!-- Price List 2018 -->
+					<!--
 					<page string="Precios 2018">
                         <group>
                             <field name="active"/>
@@ -50,45 +89,9 @@
                             <field name="x_time"/>
                         </group>
 					</page>
+					-->
 
 
-
-					<!-- Price List 2019 -->
-					<page string="Lista de Precios 2019">
-
-						<group>
-
-							<field name="pl_price_list"/>
-
-							<field name="pl_name_short"/>
-
-							<field name="pl_prefix"/>
-							<field name="pl_idx"/>
-							<field name="pl_code"/>
-
-
-							<field name="pl_family"/>
-							<field name="pl_subfamily"/>
-							<field name="pl_treatment"/>             
-							<field name="pl_zone"/>              
-							<field name="pl_pathology"/>             
-							<field name="pl_level"/>             
-							<field name="pl_sessions"/>  
-							<field name="pl_time"/>      
-						</group>
-
-						<group>
-<!--
-							<field name="list_price"/>
--->
-							<field name="pl_price_vip"/>
-							<field name="pl_price_company"/>
-							<field name="pl_price_session"/>
-							<field name="pl_price_session_next"/>
-							<field name="pl_price_max"/>
-
-						</group>
-					</page>
 
 
 				</xpath>

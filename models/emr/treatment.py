@@ -44,6 +44,11 @@ _model_consultation = "openhealth.consultation"
 _model_action = "ir.actions.act_window"
 _model_service = "openhealth.service_all"
 
+# ----------------------------------------------------------- Exceptions -------
+class ProductErrorException(Exception):
+	print('This is my first management of product exceptions')
+
+
 # ------------------------------------------------------------------- Class ----
 class Treatment(models.Model):
 	"""
@@ -460,56 +465,21 @@ class Treatment(models.Model):
 		print('btn_create_order_con')
 
 		# Init
-		#price_list = '2019'
-		#target = 'medical'
-		#order = pl_creates.create_order_con(self, target, price_list)
-
 		
 		# Search Partner
-		print()
-		print('Search partner')
-		partner = self.env['res.partner'].search([
-													('name', '=', self.patient.name),
-												],
-												limit=1,
-		)
-		print('Check res.partner complete')
-		print(partner.name)
-
+		partner = tre_funcs.get_partner(self, self.patient.name)
 
 		# Search pricelist
-		print()
-		print('Search pricelist')
-		pricelist = self.env['product.pricelist'].search([
-												],
-												limit=1,
-											)
-		print('Check product.pricelist complete')
-		print(pricelist.name)
-
+		pricelist = tre_funcs.get_pricelist(self)
 
 		# Search product
 		name = 'CONSULTA MEDICA'
 		price_list = '2019'
+		product = tre_funcs.get_product(self, name, price_list)
 
-		print()
-		print('Search product')
-		product = self.env['product.product'].search([
-														('name', '=', name),
-														('pl_price_list', '=', price_list),
-													],
-													#order='date_begin asc',
-													#limit=1,
-													)
-
-
-		# Check if product complete 
-		print()
-		print('Check product_product complete')
-		print(product)
-		print(product.name)
-
-
+		#  Check 
+		product_template = tre_funcs.get_product_template(self, name, price_list)
+		tre_funcs.check_product(self, '2019', product, product_template)
 
 		# Create order 
 		order = pl_creates.create_order_con(self, partner.id, pricelist.id, product)
@@ -533,41 +503,83 @@ class Treatment(models.Model):
 		"""
 		print('treatment - btn_create_order_pro')
 
-		# Clear cart
-		self.shopping_cart_ids.unlink()
-
-		# Init
-		#price_list = '2019'
-
-		service_list = [
-							self.service_all_ids,
-							#self.service_product_ids,
-							#self.service_co2_ids,
-							#self.service_excilite_ids,
-							#self.service_ipl_ids,
-							#self.service_ndyag_ids,
-							#self.service_quick_ids,
-							#self.service_medical_ids,
-							#self.service_cosmetology_ids,
-							#self.service_gynecology_ids,
-							#self.service_echography_ids,
-							#self.service_promotion_ids,
-		]
-
+		# Clear cart - Dep !
+		#self.shopping_cart_ids.unlink()
+		#service_list = [
+		#					self.service_all_ids,
+		#]
 		# Create Cart
-		for service_ids in service_list:
-			for service in service_ids:
-				print()
-				print('Create cart')
-				pl_creates.create_shopping_cart(self, self.env['product.product'], service, self.id)
+		#for service_ids in service_list:
+		#	for service in service_ids:
+		#		print()
+		#		print('Create cart')
+		#		pl_creates.create_shopping_cart(self, self.env['product.product'], service, self.id)
 
 
 		# Create Order
 		print()
 		print('Create order')
-		#order = pl_creates.pl_create_order(self)
-		order = pl_creates.create_order(self)
-		#print(order)
+
+		# Search Partner
+		partner = tre_funcs.get_partner(self, self.patient.name)
+
+		# Search pricelist
+		pricelist = tre_funcs.get_pricelist(self)
+
+		# Search product
+		# Create Product tuple
+		product_tup = []
+		for service in self.service_all_ids:
+			print()
+			print('* Create Product tuple')
+			print(service)
+			print(service.service)
+			print(service.service.name)
+			print(service.qty)
+			print(service.service.list_price)
+			
+
+			#pl_creates.create_shopping_cart(self, self.env['product.product'], service, self.id)
+			#product = service.service
+			#price = service.price_applied
+
+			product_template = service.service
+			name = service.service.name
+			qty = service.qty
+			price = service.service.list_price
+			
+			# Check Exceptions
+			try:
+				price_list = '2019'
+				product = tre_funcs.get_product(self, name, price_list)
+				product_tup.append((product, qty, price))
+
+			#except ProductErrorException:
+			except Exception:
+				print('ERROR - Treatment - Product not in 2019 price_list !')
+				print('Search in other price_lists')
+
+				try:
+					price_list = False
+					product = tre_funcs.get_product(self, name, price_list)
+					print(product)
+					product_tup.append((product, qty, price))
+					#tre_funcs.check_product(self, '2019', product, product_template)
+
+				except Exception:
+					print('ERROR - Treatment - Product Not Available at all !!!!!')
+
+			else:
+				print('jx - Else !')
+				#pass
+
+
+			#  Check 
+			tre_funcs.check_product(self, '2019', product, product_template)
+		
+		# Create order 
+		order = pl_creates.create_order(self, partner.id, pricelist.id, product_tup)
+		print(order)
 
 		# Open Order
 		return action_funcs.open_order(order)

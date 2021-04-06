@@ -67,6 +67,7 @@ def line_analysis_sub(line, vector):
 
 	_dic_tre = { 
 			 'CONSULTA MEDICA': 'con', 
+
 			 'LASER CO2 FRACCIONAL': 'co2', 
 			 'LASER EXCILITE': 'exc', 
 			 'QUICKLASER': 'qui', 
@@ -75,6 +76,7 @@ def line_analysis_sub(line, vector):
 	}
 	
 	_dic_fam = { 
+			#'consultation': 'con', 
 			'medical': 'med', 
 			'cosmetology': 'cos', 
 			'echography': 'ech', 
@@ -89,6 +91,7 @@ def line_analysis_sub(line, vector):
 	prod = line.product_id
 
 	pricelist = prod.pl_price_list
+
 	treatment = prod.pl_treatment
 	family = prod.pl_family
 
@@ -104,6 +107,7 @@ def line_analysis_sub(line, vector):
 	# Service
 	elif treatment in _dic_tre:
 		name = _dic_tre[treatment]
+
 	elif family in _dic_fam:
 		name = _dic_fam[family]
 

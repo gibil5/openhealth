@@ -16,6 +16,25 @@ class Service(models.Model):
 	_name = 'openhealth.service'
 
 # ----------------------------------------------------------- Many2one ------
+	# Service
+	service = fields.Many2one(
+			'product.template',
+			domain = [
+						('type', '=', 'service'),
+						('pl_price_list', '=', '2019'),
+					],
+
+			string="Producto",
+			required=True,
+		)
+
+	qty = fields.Integer(
+			default=1,
+		)
+
+
+
+
 	# Treatement
 	treatment = fields.Many2one('openhealth.treatment',
 			ondelete='cascade',
@@ -34,17 +53,6 @@ class Service(models.Model):
 
 
 
-	# Service
-	service = fields.Many2one(
-			'product.template',
-			domain = [
-						('type', '=', 'service'),
-						('pl_price_list', '=', '2019'),
-					],
-
-			string="Producto",
-			required=True,
-		)
 
 
 # ----------------------------------------------------------- Select -----------
@@ -123,9 +131,6 @@ class Service(models.Model):
 			required=True,
 		)
 
-	qty = fields.Integer(
-			default=1,
-		)
 
 # ---------------------------------------------- Fields - Floats ---------------
 	price = fields.Float(

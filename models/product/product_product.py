@@ -6,7 +6,6 @@
  	Last up: 	 		24 mar 2021
 """
 from openerp import models, fields, api
-
 from . import px_vars
 
 class ProductProduct(models.Model):
@@ -15,9 +14,8 @@ class ProductProduct(models.Model):
 
 # ----------------------------------------------------------- Members ----------
 	pl_subfamily = fields.Char()
+
 	x_name_ticket = fields.Char()
-
-
 
 	pl_price_list = fields.Selection(
 			[
@@ -44,15 +42,14 @@ class ProductProduct(models.Model):
 			required=False,
 		)
 
-
 	#company_id = fields.Char()
 
 
-
-
+# ----------------------------------------------------------- Methods - Dep ! ----------------------------------
 
 # ----------------------------------------------------------- Print Ticket -----
-	def get_name_ticket(self):
+	#def get_name_ticket(self):
+	def get_name_ticket_dep(self):
 		"""
 		Used by Print Ticket
 		"""
@@ -60,7 +57,8 @@ class ProductProduct(models.Model):
 
 # ----------------------------------------------------------- Electronic - Get Code ----------------------------
 	#@api.constrains('name') - Commented because of Warning
-	def get_code(self):
+	#def get_code(self):
+	def get_code_dep(self):
 		"""
 		Get code
 		Used by Electronic
@@ -69,7 +67,8 @@ class ProductProduct(models.Model):
 		return code
 
 # ----------------------------------------------------------- Is Vip Card -------------------------
-	def is_vip_card(self):					
+	#def is_vip_card(self):					
+	def is_vip_card_dep(self):					
 		"""
 		Introspection compliant
 		"""

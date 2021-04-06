@@ -7,7 +7,7 @@
 """,
 'description': """
 
-5 apr 2021
+6 apr 2021
 
 Created:        11 Sep 2016
 Last up:        30 Mar 2021
@@ -342,7 +342,9 @@ Always clean your System:
 	'views/reports/report_sale_pivots.xml',
 	'views/reports/report_sale_graphs.xml',
 	'views/reports/report_sale_favorites.xml',
-	'views/reports/report_sale_search.xml',
+
+	#'views/reports/report_sale_search.xml',
+
 	'views/reports/report_sale.xml',
 	'views/rsp/report_sale_actions.xml',
 

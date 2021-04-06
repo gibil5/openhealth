@@ -35,7 +35,7 @@
             <field name="password">D435MTtV</field>
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="tz">America/Lima</field>
-            <field name="lang">es_ES</field>
+            <field name="lang">en_US</field>
             <field name="partner_id" ref="vmori"/>
             <field name="active" eval="False" />
         </record>
@@ -53,7 +53,7 @@
             <field name="password">eVxgVY2G</field>
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="tz">America/Lima</field>
-            <field name="lang">es_ES</field>
+            <field name="lang">en_US</field>
             <field name="partner_id" ref="jessenwanger"/>
             <field name="active" eval="False" />
         </record>
@@ -72,7 +72,7 @@
             <field name="password">jVP4Q2tt</field>
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="tz">America/Lima</field>
-            <field name="lang">es_ES</field>
+            <field name="lang">en_US</field>
             <field name="partner_id" ref="ipuga"/>
             <field name="active" eval="False" />
         </record>
@@ -91,7 +91,7 @@
             <field name="password">TS4e3CLr</field>
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="tz">America/Lima</field>
-            <field name="lang">es_ES</field>
+            <field name="lang">en_US</field>
             <field name="partner_id" ref="lmasias"/>            
             <field name="active" eval="False" />
         </record>
@@ -110,7 +110,7 @@
             <field name="password">dv7cr64k</field>
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="tz">America/Lima</field>
-            <field name="lang">es_ES</field>
+            <field name="lang">en_US</field>
             <field name="partner_id" ref="dchumpitaz"/>
             <field name="active" eval="False" />
         </record>
@@ -129,7 +129,7 @@
             <field name="password">XpC7CA3j</field>
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="tz">America/Lima</field>
-            <field name="lang">es_ES</field>
+            <field name="lang">en_US</field>
             <field name="partner_id" ref="ctorrealba"/>
             <field name="active" eval="False" />
         </record>
@@ -148,7 +148,7 @@
             <field name="password">UjQmL4rp</field>
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="tz">America/Lima</field>
-            <field name="lang">es_ES</field>
+            <field name="lang">en_US</field>
             <field name="partner_id" ref="mgrieve"/>
             <field name="active" eval="False" />
         </record>
@@ -168,7 +168,7 @@
             <field name="password">4YgDw9wq</field>
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="tz">America/Lima</field>           
-            <field name="lang">es_ES</field>
+            <field name="lang">en_US</field>
             <field name="partner_id" ref="pramirez"/>
             <field name="active" eval="False" />
         </record>
@@ -188,7 +188,7 @@
             <field name="password">4trBYrvB</field>
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="tz">America/Lima</field>
-            <field name="lang">es_ES</field>
+            <field name="lang">en_US</field>
             <field name="partner_id" ref="jlopez"/>
             <field name="active" eval="False" />
         </record>
@@ -207,7 +207,7 @@
             <field name="password">Q6m3a8jr</field>
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="tz">America/Lima</field>
-            <field name="lang">es_ES</field>
+            <field name="lang">en_US</field>
             <field name="partner_id" ref="cramirez"/>
             <field name="active" eval="False" />
         </record>
@@ -225,7 +225,7 @@
             <field name="login">yramirez@clinicachavarri.com</field>
             <field name="password">YHtk47UL</field>
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-            <field name="lang">es_ES</field>
+            <field name="lang">en_US</field>
             <field name="tz">America/Lima</field>
             <field name="partner_id" ref="yramirez_partner"/>
             <field name="active" eval="False" />
@@ -246,7 +246,7 @@
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="tz">America/Lima</field>
             <field name="partner_id" ref="cescudero"/>
-            <field name="lang">es_ES</field>
+            <field name="lang">en_US</field>
             <field name="active" eval="False" />
         </record>
 
@@ -265,7 +265,7 @@
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="tz">America/Lima</field>
             <field name="partner_id" ref="rloayza"/>
-            <field name="lang">es_ES</field>
+            <field name="lang">en_US</field>
             <field name="active" eval="False" />
         </record>
 
@@ -284,7 +284,7 @@
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="tz">America/Lima</field>
             <field name="partner_id" ref="lcastillo"/>
-            <field name="lang">es_ES</field>
+            <field name="lang">en_US</field>
             <field name="active" eval="False" />
         </record>
 
@@ -303,7 +303,7 @@
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="tz">America/Lima</field>
             <field name="partner_id" ref="lache"/>
-            <field name="lang">es_ES</field>
+            <field name="lang">en_US</field>
             <field name="active" eval="False" />
         </record>
 
@@ -322,7 +322,7 @@
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="tz">America/Lima</field>
             <field name="partner_id" ref="apereira"/>
-            <field name="lang">es_ES</field>
+            <field name="lang">en_US</field>
             <field name="active" eval="False" />
         </record>
     </data>

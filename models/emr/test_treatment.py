@@ -16,10 +16,12 @@ from openerp.addons.price_list.models.lib import test_funcs
 
 # ----------------------------------------------------------- Exceptions -------
 class OrderErrorException(Exception):
-	print('This is my first management of order exceptions')
+	#print('This is my first management of order exceptions')
+	pass
 
 class ProductErrorException(Exception):
-	print('This is my first management of product exceptions')
+	#print('This is my first management of product exceptions')
+	pass
 
 
 

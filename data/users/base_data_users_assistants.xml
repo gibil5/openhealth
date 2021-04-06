@@ -23,7 +23,7 @@
             <field name="login">eruiz@clinicachavarri.com</field>            
             <field name="password">emkat9ue</field>
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-            <field name="lang">es_ES</field>
+            <field name="lang">en_US</field>
             <field name="tz">America/Lima</field>
             <field name="partner_id" ref="eruiz_partner"/>
             <field name="active">True</field>
@@ -42,7 +42,7 @@
             <field name="login">eochante@clinicachavarri.com</field>            
             <field name="password">e7vxut</field>
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-            <field name="lang">es_ES</field>
+            <field name="lang">en_US</field>
             <field name="tz">America/Lima</field>
             <field name="partner_id" ref="yochante_partner"/>
             <field name="active">True</field>
@@ -61,7 +61,7 @@
             <field name="login">mtirado@clinicachavarri.com</field>            
             <field name="password">m8ec7f</field>
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-            <field name="lang">es_ES</field>
+            <field name="lang">en_US</field>
             <field name="tz">America/Lima</field>
             <field name="partner_id" ref="mtirado_partner"/>
             <field name="active">True</field>
@@ -80,7 +80,7 @@
             <field name="login">nmendoza@clinicachavarri.com</field>            
             <field name="password">ntu7ax</field>
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-            <field name="lang">es_ES</field>
+            <field name="lang">en_US</field>
             <field name="tz">America/Lima</field>
             <field name="partner_id" ref="nmendoza_partner"/>
             <field name="active">True</field>
@@ -103,7 +103,7 @@ yc5tgc
             <field name="login">rmendoza@clinicachavarri.com</field>            
             <field name="password">yc5tgc</field>
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-            <field name="lang">es_ES</field>
+            <field name="lang">en_US</field>
             <field name="tz">America/Lima</field>
             <field name="partner_id" ref="rmendoza_partner"/>
             <field name="active">True</field>
@@ -122,7 +122,7 @@ yc5tgc
             <field name="login">rgarcia@clinicachavarri.com</field>            
             <field name="password">r2pb4y</field>
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
-            <field name="lang">es_ES</field>
+            <field name="lang">en_US</field>
             <field name="tz">America/Lima</field>
             <field name="partner_id" ref="rgarcia_partner"/>
             <field name="active">True</field>

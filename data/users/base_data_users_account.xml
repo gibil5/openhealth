@@ -16,7 +16,7 @@
             <field name="password">kPh2C52W</field>
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="tz">America/Lima</field>
-            <field name="lang">es_ES</field>
+            <field name="lang">en_US</field>
             <field name="partner_id" ref="pbalboa"/>            
             <field name="active">True</field>
         </record>
@@ -35,7 +35,7 @@
             <field name="password">HH3PXus4</field>
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="tz">America/Lima</field>
-            <field name="lang">es_ES</field>
+            <field name="lang">en_US</field>
             <field name="partner_id" ref="achaponan"/>            
             <field name="active">True</field>
         </record>
@@ -58,7 +58,7 @@ Capd6qDN
             <field name="password">Capd6qDN</field>
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="tz">America/Lima</field>
-            <field name="lang">es_ES</field>
+            <field name="lang">en_US</field>
             <field name="partner_id" ref="fcatpo"/>            
             <field name="active">True</field>
         </record>

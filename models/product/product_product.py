@@ -57,11 +57,10 @@ class ProductProduct(models.Model):
 
 # ----------------------------------------------------------- Electronic - Get Code ----------------------------
 	#@api.constrains('name') - Commented because of Warning
-	#def get_code(self):
-	def get_code_dep(self):
+	def get_code(self):
 		"""
 		Get code
-		Used by Electronic
+		Used by Electronic new - pl_lib_exp
 		"""
 		code = '5555555555'
 		return code

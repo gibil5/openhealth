@@ -13,6 +13,7 @@ class Physician(models.Model):
 	"""
 	_inherit = 'oeh.medical.physician'	
 
+
 # ---------------------------------------------------- Static methods ----------
 	# Get
 	@staticmethod

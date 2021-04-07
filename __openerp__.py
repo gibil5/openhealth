@@ -8,6 +8,7 @@
 'description': """
 
 7 apr 2021
+18:17
 
 Created:        11 Sep 2016
 Last up:        30 Mar 2021
@@ -79,7 +80,10 @@ Always clean your System:
 'website': "http://jrevilla.com/",
 'category': 'Object Oriented, Microservices',
 'version': '5.0',
+
 'depends': ['base', 'oehealth', 'base_multi_image'],
+#'depends': ['base', 'base_multi_image', 'sale', 'purchase', 'account', 'product', 'document', 'hr', 'web'],
+
 'data': [
 
 # --------------------------------------------------------- Legacy - Products - Only for Lima -----

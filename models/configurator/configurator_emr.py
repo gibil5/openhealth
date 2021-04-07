@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 """
 	Configurator - EMR
-	Created: 			25 jan 2019
-	Last updated: 		11 oct  2020
+	Created: 		25 jan 2019
+	Previous: 		11 oct 2020
+	Last: 			 7 apr 2021
 """
 from __future__ import print_function
 from openerp import models, fields, api
@@ -145,10 +146,11 @@ class ConfiguratorEmr(models.Model):
 			default='/Users/gibil/mssoft/ventas/'
 		)
 
-	path_csv_pricelist = fields.Char(
-			required=True,
-			default='/Users/gibil/cellar/github/price_list/csv/',
-		)
+	# Dep
+	#path_csv_pricelist = fields.Char(
+	#		required=True,
+	#		default='/Users/gibil/cellar/github/price_list/csv/',
+	#	)
 
 # ----------------------------------------------------------- Patients ---------
 	# Patient Limit

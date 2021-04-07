@@ -28,12 +28,7 @@ from . import test_treatment
 from . import counter_objects
 from . import search_objects
 
-#from libs import pl_creates, eval_vars, tre_funcs, action_funcs
-#from openerp.addons.openhealth.models.libs import pl_creates, eval_vars, tre_funcs, action_funcs
-#from openerp.addons.openhealth.models.commons.libs import pl_creates, eval_vars, tre_funcs, action_funcs
 from . import eval_vars
-
-#from openerp.addons.openhealth.models.commons.libs import pl_creates, tre_funcs, action_funcs
 from commons import pl_creates, tre_funcs, action_funcs
 
 
@@ -44,6 +39,12 @@ _model_consultation = "openhealth.consultation"
 _model_action = "ir.actions.act_window"
 _model_service = "openhealth.service_all"
 
+# ----------------------------------------------------------- Exceptions -------
+class ProductErrorException(Exception):
+	#print('This is my first management of product exceptions')
+	pass
+
+
 # ------------------------------------------------------------------- Class ----
 class Treatment(models.Model):
 	"""
@@ -52,6 +53,9 @@ class Treatment(models.Model):
 	_name = _model_treatment
 	_order = 'write_date desc'
 	_description = 'Treatment'
+
+
+# ----------------------------------------------------------- Relational --------------------------
 
 # ------------------------------------------------------------------------------
 	# Shopping cart
@@ -415,6 +419,7 @@ class Treatment(models.Model):
 			for con in record.consultation_ids:
 				record.consultation_progress = con.progress
 
+
 # ----------------------------------------------------------- State -------------------------------
 	# State
 	state = fields.Selection(
@@ -432,41 +437,133 @@ class Treatment(models.Model):
 			record.state = obj.get_state()
 
 
-# ----------------------------------------------------------- Number ofs - Services - Dep ? ---------------
+# ---------------------------------------------------- Number ofs - Services ---
 	# Number of Services
 	nr_services = fields.Integer(
 		string="Servicios",
 		compute="_compute_nr_services",
 	)
+	
 	@api.multi
 	def _compute_nr_services(self):
 		for record in self:
 			record.nr_services = self.env[_model_service].search_count([('treatment', '=', record.id),])
 
 
-# ----------------------------------------------------------- Create Buttons  ----------
+
+
+# ----------------------------------------------------------- Methods ---------------------------------------
+
+# ---------------------------------------------------------- Create Buttons  ---
 	@api.multi
 	def btn_create_order_con(self):
 		"""
 		Create Order Consultation Standard - Medical
-		One mode
 		"""
 		print()
 		print('btn_create_order_con')
 
 		# Init
+		
+		# Search Partner
+		partner = tre_funcs.get_partner(self, self.patient.name)
+
+		# Search pricelist
+		pricelist = tre_funcs.get_pricelist(self)
+
+		# Search product
+		name = 'CONSULTA MEDICA'
 		price_list = '2019'
-		target = 'medical'
+		product = tre_funcs.get_product(self, name, price_list)
 
-		order = pl_creates.create_order_con(self, target, price_list)
+		#  Check 
+		product_template = tre_funcs.get_product_template(self, name, price_list)
+		tre_funcs.check_product(self, '2019', product, product_template)
 
+		# Create order 
+		order = pl_creates.create_order_con(self, partner.id, pricelist.id, product)
+		
 		# Open Order
 		return action_funcs.open_order(order)
 
 
-# ----------------------------------------------------- Create Consultations ---------------------------------------------
+# -----------------------------------------------------------  Create Order Procedure - 2019 -------------
+	@api.multi
+	def btn_create_order_pro(self):
+		"""
+		Create Order Procedure - 2019
+		From Recommendations
+		"""
+		print('treatment - btn_create_order_pro')
 
-# ----------------------------------------------------- Create Consultation -----------------------
+		# Create Order
+		print()
+		print('Create order')
+
+		# Search Partner
+		partner = tre_funcs.get_partner(self, self.patient.name)
+
+		# Search pricelist
+		pricelist = tre_funcs.get_pricelist(self)
+
+		# Search product
+		# Create Product tuple
+		product_tup = []
+		for service in self.service_all_ids:
+			print()
+			print('* Create Product tuple')
+			print(service)
+			print(service.service)
+			print(service.service.name)
+			print(service.qty)
+			print(service.service.list_price)
+			
+			# Init
+			product_template = service.service
+			name = service.service.name
+			qty = service.qty
+			price = service.service.list_price
+			
+			# Check Exceptions
+			try:
+				price_list = '2019'
+				product = tre_funcs.get_product(self, name, price_list)
+				product_tup.append((product, qty, price))
+
+			#except ProductErrorException:
+			except Exception:
+				print('ERROR - Treatment - Product not in 2019 price_list !')
+				print('Search in other price_lists')
+
+				try:
+					price_list = False
+					product = tre_funcs.get_product(self, name, price_list)
+					print(product)
+					product_tup.append((product, qty, price))
+
+				except Exception:
+					print('ERROR - Treatment - Product Not Available at all !!!!!')
+
+			else:
+				print('jx - Else !')
+				#pass
+
+			#  Check 
+			tre_funcs.check_product(self, '2019', product, product_template)
+		
+		# Create order 
+		order = pl_creates.create_order(self, partner.id, pricelist.id, product_tup)
+		print(order)
+
+		# Open Order
+		return action_funcs.open_order(order)
+
+	# btn_create_order_pro
+
+
+# ----------------------------------------------------- Create Consultations --------------------------------
+
+# ----------------------------------------------------- Create Consultation ----
 	# Create Consultation
 	@api.multi
 	def btn_create_consultation(self):
@@ -582,55 +679,6 @@ class Treatment(models.Model):
 		}
 	# btn_create_reco
 
-# -----------------------------------------------------------  Create Order Procedure - 2019 -------------
-	@api.multi
-	def btn_create_order_pro(self):
-		"""
-		Create Order Procedure - 2019
-		From Recommendations
-		"""
-		print('treatment - btn_create_order_pro')
-
-		# Clear cart
-		self.shopping_cart_ids.unlink()
-
-		# Init
-		#price_list = '2019'
-
-		service_list = [
-							self.service_all_ids,
-							#self.service_product_ids,
-							#self.service_co2_ids,
-							#self.service_excilite_ids,
-							#self.service_ipl_ids,
-							#self.service_ndyag_ids,
-							#self.service_quick_ids,
-							#self.service_medical_ids,
-							#self.service_cosmetology_ids,
-							#self.service_gynecology_ids,
-							#self.service_echography_ids,
-							#self.service_promotion_ids,
-		]
-
-		# Create Cart
-		for service_ids in service_list:
-			for service in service_ids:
-				print()
-				print('Create cart')
-				pl_creates.create_shopping_cart(self, self.env['product.product'], service, self.id)
-
-
-		# Create Order
-		print()
-		print('Create order')
-		#order = pl_creates.pl_create_order(self)
-		order = pl_creates.create_order(self)
-		#print(order)
-
-		# Open Order
-		return action_funcs.open_order(order)
-
-	# btn_create_order_pro
 
 # ----------------------------------------------------------- Create Procedure  -------------------
 	# Create Procedure
@@ -662,6 +710,7 @@ class Treatment(models.Model):
 			if order.proc_is_not_created_and_state_is_sale() or self.override:
 				order.create_procedure_man(self)
 	# btn_create_procedure_man
+
 
 # ----------------------------------------------------------- Create Services  ------------
 	# co2
@@ -828,3 +877,4 @@ class Treatment(models.Model):
 		Used by - Procedure
 		"""
 		return action_funcs.open_myself(_model_treatment, self.id)
+

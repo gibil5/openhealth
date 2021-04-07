@@ -3,15 +3,10 @@
 	Order - Controller
 
 	Created: 			 6 dec 2020
-	Last up: 			 6 dec 2020
+	Last up: 			 5 apr 2021
 """
 from __future__ import print_function
 from openerp import models, fields, api
-
-from . import ord_funcs
-from . import qr
-from . import raw_funcs
-from . import test_order
 
 class OrderBl(models.Model):
 	"""
@@ -19,6 +14,7 @@ class OrderBl(models.Model):
     Directs flow between Order and other models (Treatment).
 	"""
 	_inherit = 'sale.order'
+
 
 # ---------------------------------------------------- Used by Treatment - Create Proc -------
 	def create_procedure_man(self, treatment):
@@ -44,15 +40,22 @@ class OrderBl(models.Model):
 		print('order - proc_is_not_created_and_state_is_sale')
 		return not self.x_procedure_created and self.state == 'sale'
 
-# ----------------------------------------------------------- Test aux --------------------------------
+
+# ----------------------------------------------------------- Test - Pay myself --------------
 	def pay_myself(self):
 		"""
 		Pay Myself
-		Used by Treatment Test
+		Used by: Treatment Test
 		"""
 		print()
 		print('Order - Pay myself')
-		test_order.pay_myself(self)
+		if self.state == 'draft':
+			self.create_payment_method()
+			self.x_payment_method.saledoc = 'ticket_receipt'
+			self.x_payment_method.state = 'done'
+			self.state = 'sent'
+			self.validate_and_confirm()
+
 
 #----------------------------------------------------------- Quick Button - For Treatment ---------
 	@api.multi
@@ -69,9 +72,11 @@ class OrderBl(models.Model):
 	@api.multi
 	def open_myself(self):
 		"""
-		Open myself - Used by Payment Method comeback
+		Open myself
+		Used by Payment Method comeback
 		"""
 		print('open_myself')
 		res_model = self._name
 		res_id = self.id
 		return action_funcs.open_myself(res_model, res_id)
+

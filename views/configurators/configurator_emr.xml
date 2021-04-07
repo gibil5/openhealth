@@ -3,14 +3,12 @@
 	<data>
 		
 
-
 <!-- FORM --> 
 		<record model="ir.ui.view" id="configurator_emr_form_view">
 			<field name="name">configurator.emr.form</field>
 			<field name="model">openhealth.configurator.emr</field>
 			<field name="arch" type="xml">
 				<form string="configurator EMR Form">
-
 
 <!-- Header -->
 					<header>
@@ -63,8 +61,11 @@
 
 							<!-- CSV Pricelist 2019 -->
 							<group string="Pricelist 2019 CSV">
+<!--
 								<field name="path_csv_pricelist"/>
+-->
 							</group>
+
 						</group>
 
 
@@ -236,12 +237,11 @@
 
 
 
+<!-- MENU -->
 <!-- Config -->
 		<menuitem   id="main_config_menu" 
 					sequence="-16"
-
-					name="Config"
-
+					name="Configurator"
 					groups="openhealth.roots,openhealth.directors,openhealth.managers"
 			/>
 
@@ -257,12 +257,8 @@
 					name="Clinicas" 
 					parent="openhealth_config_menu"
 					sequence="1"
-
 					action="configurator_emr_list_action"
 			/>
-
-
-
 
 	</data>
 </openerp>

@@ -62,8 +62,7 @@
                 <xpath expr="//field[@name='website']" position="before">
 
                     <field name="x_address"/>
-
-                    <field name="company_id"/>
+                    <!-- <field name="company_id"/> -->
                 </xpath>
 
 

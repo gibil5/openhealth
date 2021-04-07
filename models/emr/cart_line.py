@@ -22,6 +22,7 @@ class CartLine(models.Model):
 
 	qty = fields.Integer()
 
+
 # ----------------------------------------------------------- Product ----------
 	product = fields.Many2one(		
 		'product.product',
@@ -29,6 +30,7 @@ class CartLine(models.Model):
 		domain=[],
 		required=False,
 	)
+
 
 	# Treatment
 	treatment = fields.Many2one(

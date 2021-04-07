@@ -57,6 +57,7 @@
                             </group>
 
                             <group>
+<!--                              
                                 <field name="service_product_id" />
                                 <field name="service_vip_id" />
 
@@ -71,6 +72,7 @@
 
                                 <field name="service_medical_id" />
                                 <field name="service_cosmetology_id" />
+-->
                             </group>
                         </group>
 

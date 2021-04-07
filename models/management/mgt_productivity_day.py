@@ -113,8 +113,8 @@ class MgtProductivityDay(models.Model):
 		"""
 		Update Amount
 		"""
-		print()
-		print('X - Update - amount')
+		#print()
+		#print('MgtProductivityDay - Update amount')
 
 		# Init
 		data_amount = []

@@ -18,12 +18,17 @@ import datetime
 
 # ----------------------------------------------------------- Create Days ------
 # Create Days
-def create_days(self):
+#def create_days(self):
+#def create_days(self, days_inactive):
+#def create_days(self, date_begin, date_end, days_inactive):
+#def create_productive_days(self, date_begin, date_end, days_inactive):
+def create_productive_days(date_begin, date_end, days_inactive, productivity_day, management_id):
 	"""
-	Used by - Update productivity
+	Create productive days 
+	Used by - Management - update_productivity
 	"""
 	print()
-	print('Create Days')
+	print('Create Productive Days')
 
 	_dic_weekday = {
 					0: 	'monday',
@@ -37,10 +42,11 @@ def create_days(self):
 
 	# Clean
 	#self.day_line.unlink()
-	self.productivity_day.unlink()
+	#self.productivity_day.unlink()
 
 	# Get Holidays - Fro config
-	days_inactive = self.configurator.get_inactive_days()					# Respects the LOD !
+	#days_inactive = self.configurator.get_inactive_days()					# Respects the LOD !
+
 	print()
 	print('Holidays')
 	print(days_inactive)
@@ -49,8 +55,10 @@ def create_days(self):
 	# Get nr of days
 	#date_format = "%Y-%m-%d %H:%M:%S"
 	date_format = "%Y-%m-%d"
-	date_end_dt = datetime.datetime.strptime(self.date_end, date_format)
-	date_begin_dt = datetime.datetime.strptime(self.date_begin, date_format)
+	#date_end_dt = datetime.datetime.strptime(self.date_end, date_format)
+	#date_begin_dt = datetime.datetime.strptime(self.date_begin, date_format)
+	date_end_dt = datetime.datetime.strptime(date_end, date_format)
+	date_begin_dt = datetime.datetime.strptime(date_begin, date_format)
 	delta = date_end_dt - date_begin_dt
 	#print(delta)
 
@@ -75,29 +83,31 @@ def create_days(self):
 
 			# Not holiday
 			if date_s not in days_inactive:
-
-				# Create Productivity Days
-				#day = self.day_line.create({
+				#print('Not holiday')
 				# Create
-				day = self.productivity_day.create({
-														'name': weekday_str,
-														'date': date_dt,
-														'weekday': weekday_str,
-														'duration': duration,
-														'management_id': self.id,
+				#day = self.productivity_day.create({
+				day = productivity_day.create({
+												'name': weekday_str,
+												'date': date_dt,
+												'weekday': weekday_str,
+												'duration': duration,
+
+												#'management_id': self.id,
+												'management_id': management_id,
 								})
-				print(day)
-
+				print(day.name, day.date)
 				day.update_amount()		# Update total amount
-
 				#print(day)
 				#print(date_dt, weekday, weekday_str)
 				#print(date_dt)
 				#print(date_s)
+			else:
+				print('Holiday')
+				
 		else:
-			#print('Sunday, not counted')
+			print('Sunday, not counted')
+			print()
 			pass
-
 # create_days
 
 
@@ -147,7 +157,7 @@ def update_day_avg(self):
 	Used by - Update productivity
 	"""
 	print()
-	print('X - Update - Average')
+	print('Update - Average')
 
 	# Update
 	#for day in self.day_line:

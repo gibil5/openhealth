@@ -17,19 +17,25 @@ TYPES = [
 
 SUBFAMILIES = [
 		# Sub Families
+		'con',
+
 		'co2',
 		'exc',
 		'ndy',
 		'ipl',
 		'qui',
+
 		'med',
 		'cos',
 		'ech',
-		'gyn',
+		#'gyn',
 		'pro',
+
 		'top',
 		'vip',
 		'kit',
+
+		'error',
 ]
 
 

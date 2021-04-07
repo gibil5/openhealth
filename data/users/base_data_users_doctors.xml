@@ -17,7 +17,7 @@
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="tz">America/Lima</field>
             <field name="partner_id" ref="cabriojo"/>
-            <field name="lang">es_ES</field>
+            <field name="lang">en_US</field>
             <field name="active">True</field>
         </record>
 
@@ -36,7 +36,7 @@
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="tz">America/Lima</field>
             <field name="partner_id" ref="lgonzales"/>
-            <field name="lang">es_ES</field>
+            <field name="lang">en_US</field>
             <field name="active">True</field>
         </record>
 
@@ -55,7 +55,7 @@
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="tz">America/Lima</field>
             <field name="partner_id" ref="pmonteverde"/>
-            <field name="lang">es_ES</field>
+            <field name="lang">en_US</field>
             <field name="active">True</field>
         </record>
 
@@ -74,7 +74,7 @@
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="tz">America/Lima</field>
             <field name="partner_id" ref="pcanales"/>
-            <field name="lang">es_ES</field>
+            <field name="lang">en_US</field>
             <field name="active">True</field>
         </record>
     </data>

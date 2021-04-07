@@ -18,6 +18,7 @@ from . import order_controller
 from . import order_extra
 
 from . import order_line
+from . import order_line_pl
 
 from . import payment_method
 

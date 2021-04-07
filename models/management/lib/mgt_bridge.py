@@ -73,9 +73,10 @@ def set_subfamilies(self, vector):
 
 
 
-	obj = filter(lambda x: x.name == 'gyn', vector)[0]
-	self.vec_gyn_amount = obj.amount
-	self.vec_gyn_count = obj.count
+	#obj = filter(lambda x: x.name == 'gyn', vector)[0]
+	#self.vec_gyn_amount = obj.amount
+	#self.vec_gyn_count = obj.count
+
 
 	obj = filter(lambda x: x.name == 'ech', vector)[0]
 	self.vec_ech_amount = obj.amount

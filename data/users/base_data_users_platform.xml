@@ -33,7 +33,7 @@ suv3bm7q
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="active">True</field>
             <field name="tz">America/Lima</field>
-            <field name="lang">es_ES</field>
+            <field name="lang">en_US</field>
             <field name="partner_id" ref="ssaucedo"/>
         </record>
 
@@ -52,7 +52,7 @@ suv3bm7q
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="active">True</field>
             <field name="tz">America/Lima</field>
-            <field name="lang">es_ES</field>
+            <field name="lang">en_US</field>
             <field name="partner_id" ref="durdanivia"/>
         </record>
 
@@ -71,7 +71,7 @@ suv3bm7q
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="active">True</field>
             <field name="tz">America/Lima</field>
-            <field name="lang">es_ES</field>
+            <field name="lang">en_US</field>
             <field name="partner_id" ref="nescobar"/>
         </record>
 
@@ -90,7 +90,7 @@ suv3bm7q
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="active">True</field>
             <field name="tz">America/Lima</field>
-            <field name="lang">es_ES</field>
+            <field name="lang">en_US</field>
             <field name="partner_id" ref="imichelot"/>
         </record>
 
@@ -108,7 +108,7 @@ suv3bm7q
             <field name="password">RSZ8wxaj</field>
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="active">True</field>
-            <field name="lang">es_ES</field>
+            <field name="lang">en_US</field>
             <field name="tz">America/Lima</field>
             <field name="partner_id" ref="gnunhez_partner"/>
         </record>
@@ -128,7 +128,7 @@ suv3bm7q
             <field name="image" type="base64" file="openhealth/static/img/res_users-6-image.jpg"/>
             <field name="active">True</field>
             <field name="tz">America/Lima</field>
-            <field name="lang">es_ES</field>
+            <field name="lang">en_US</field>
             <field name="partner_id" ref="ktejada"/>
         </record>
     </data>

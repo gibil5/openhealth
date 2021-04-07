@@ -1,0 +1,177 @@
+<openerp>
+	<data>
+
+<!-- FORM -->
+		<record model="ir.ui.view" id="product_product_form">
+			<field name="name">product.product.form</field>
+			<field name="model">product.product</field>
+			<field name="inherit_id" ref="oehealth.view_product_product_form"/>
+<!--
+			<field name="inherit_id" ref="product.product_normal_form_view"/>
+-->
+			<field name="mode">primary</field>
+			<field name="priority" eval="1"/>
+			<field name="arch" type="xml">
+
+				<!-- Xpaths --> 
+				<!--
+				<xpath expr="//field[@name='invoice_policy']" position="after">
+						<field name="default_code"/>
+				</xpath>
+				-->
+
+				<!-- Notebook --> 
+				<xpath expr="//notebook" position="inside">
+
+					<!-- Price List 2019 -->
+					<page string="2019">
+						<group>
+							<field name="pl_price_list"/>
+							<field name="pl_family"/>
+							<field name="pl_subfamily"/>
+							<field name="pl_treatment"/>             
+							<field name="pl_zone"/>              
+							<field name="pl_pathology"/>             
+							<field name="pl_level"/>             
+							<field name="pl_sessions"/>  
+							<field name="pl_time"/>      
+						</group>
+					</page>
+
+
+					<page string="Prices">
+						<group>
+							<!--
+							<field name="list_price"/>
+							-->
+							<field name="pl_price_vip"/>
+							<field name="pl_price_company"/>
+							<field name="pl_price_session"/>
+							<field name="pl_price_session_next"/>
+							<field name="pl_price_max"/>
+						</group>
+					</page>
+
+
+					<page string="Other">
+							<group>
+								<field name="pl_name_short"/>
+								<field name="pl_prefix"/>
+								<field name="pl_idx"/>
+								<field name="pl_code"/>
+							</group>
+					</page>
+
+
+					<!-- Price List 2018 -->
+					<!--
+					<page string="Precios 2018">
+                        <group>
+                            <field name="active"/>
+                            <field name="vspace"/>
+                            <field name="x_test"/>
+                            <field name="vspace"/>
+                            <field name="x_name_account"/>
+                            <field name="x_code_account"/>
+                            <field name="vspace"/>
+                            <field name="x_code"/>
+                            <field name="description"/>
+                            <field name="x_name_short"/>                            
+                            <field name="x_price_vip"/>
+                            <field name="x_price_vip_return"/>
+                            <field name="x_origin"/>                            
+                            <field name="x_family"/>
+                            <field name="x_treatment"/>             
+                            <field name="x_zone"/>              
+                            <field name="x_pathology"/>             
+                            <field name="x_level"/>             
+                            <field name="x_sessions"/>  
+                            <field name="x_time"/>
+                        </group>
+					</page>
+					-->
+
+
+
+
+				</xpath>
+
+
+			</field>
+		</record>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- explicit list view definition -->
+<!--		
+		<record model="ir.ui.view" id="price_list.product_product_list">
+
+			<field name="name">price_list product product list</field>
+			
+			<field name="model">product.product</field>
+			
+			<field name="arch" type="xml">
+				<tree>
+
+					<field name="pl_time_stamp"/>
+
+
+					<field name="pl_price_list"/>
+
+					<field name="type"				string="Tipo"/>
+
+
+					<field name="name"/>
+					<field name="pl_manufacturer"/>
+					<field name="pl_brand"/>
+
+					<field name="list_price"/>
+					<field name="pl_price_vip"/>
+					<field name="pl_price_company"/>
+
+
+
+
+					<field name="pl_name_short"		groups='openhealth.roots'/>
+
+					<field name="pl_prefix"			groups='openhealth.roots'/>
+					<field name="pl_idx"			groups='openhealth.roots'/>
+					<field name="pl_code"			groups='openhealth.roots'/>
+					
+					<field name="pl_family"			groups='openhealth.roots'/>
+					<field name="pl_subfamily"		groups='openhealth.roots'/>
+					<field name="pl_treatment"		groups='openhealth.roots'/>
+					<field name="pl_zone"			groups='openhealth.roots'/>
+					<field name="pl_pathology"		groups='openhealth.roots'/>
+
+					<field name="pl_level"			groups='openhealth.roots'/>
+					<field name="pl_sessions"		groups='openhealth.roots'/>
+					<field name="pl_time"			groups='openhealth.roots'/>
+
+
+					<field name="pl_price_session"	groups='openhealth.roots'/>
+					<field name="pl_price_session_next"	groups='openhealth.roots'/>
+					<field name="pl_price_max"	groups='openhealth.roots'/>
+
+				</tree>
+			</field>
+		</record>
+-->
+<!--
+					<field name="pl_price"/>
+-->
+
+
+	</data>
+</openerp>

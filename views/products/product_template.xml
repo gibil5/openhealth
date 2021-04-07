@@ -2,8 +2,6 @@
 <openerp>
 	<data>
 
-
-
 <!-- TREE -->
 		<record model="ir.ui.view" id="product.product_template_tree_view">
 			<field name="name">product.template.product.tree</field>
@@ -11,27 +9,17 @@
 			<field name="type">tree</field>
 			<field name="priority" eval="1"/>
 			<field name="arch" type="xml">
-
 				<tree string="Product Tree - Mod">
-
-
 					<field name="name"              string="Nombre actual"/>
 					<field name="pl_price_list"/>
 					<field name="sale_ok"/>
 					<field name="purchase_ok"/>
 
-
-
 					<field name="x_test"/>
-
 					<field name="x_name_account"    string="Nombre antiguo"/>
-
 					<field name="x_code_account"    string="Cuenta"/>
-
 					<field name="list_price"/>
-
 					<field name="x_price_vip"/>
-
 					<field name="type"/>
 
 					<field name="categ_id"/>
@@ -53,8 +41,6 @@
 				</tree>
 			</field>
 		</record>
-
-
 
 
 <!-- FILTER --> 

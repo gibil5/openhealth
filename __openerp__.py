@@ -1,13 +1,18 @@
 # -*- coding: utf-8 -*-
 {
-'name': "Open Health - Odoo9 - Object oriented - Refactorized - CodeClimate - SonarQube - Management - Functional - No black boxes - Patterns - Microservices",
+'name': "Open Health - Odoo9 - Object oriented - Refactorized - CodeClimate - SonarQube - Management - Functional - No black boxes - Patterns - Microservices - Testing",
 
 'summary': """ ERP system for a Clinic. Inherits OeHealth. Contains ALL the Data Model. Business logic is in classes and libraries.
 
 """,
 'description': """
 
-29 mar 2021
+7 apr 2021
+18:17
+
+Created:        11 Sep 2016
+Last up:        30 Mar 2021
+(From 17 Mar 2018 - 13 963)
 
 Using patterns:
 	- Reduce inheritances.
@@ -67,11 +72,6 @@ Always clean your System:
 	- Remove Products Consumables,
 	- Remove Computes.
 
-Created:        11 Sep 2016
-Last up:        22 Aug 2020
-
-(From 17 Mar 2018 - 13 963)
-
 ---
 
 """,
@@ -80,7 +80,10 @@ Last up:        22 Aug 2020
 'website': "http://jrevilla.com/",
 'category': 'Object Oriented, Microservices',
 'version': '5.0',
+
 'depends': ['base', 'oehealth', 'base_multi_image'],
+#'depends': ['base', 'base_multi_image', 'sale', 'purchase', 'account', 'product', 'document', 'hr', 'web'],
+
 'data': [
 
 # --------------------------------------------------------- Legacy - Products - Only for Lima -----
@@ -128,8 +131,10 @@ Last up:        22 Aug 2020
 	'security/openhealth_security_readers.xml',   	# Important
 	'security/openhealth_security_managers.xml',
 
+
 # ----------------------------------------------------------- Configurator ------------------------------------------------------
-	#'views/configurators/configurator_emr.xml',         # Includes Menu
+	'views/configurators/configurator_emr.xml',         # Includes Menu
+
 
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 	'views/patients/patient_actions.xml',
@@ -138,6 +143,7 @@ Last up:        22 Aug 2020
 	# Product Selector  - RSP
 	'views/rsp/report_sale_product.xml',
 	'views/rsp/item_counter.xml',
+
 
 	# Account - Payments
 	'views/orders/payment_method/payment_method_line.xml',
@@ -235,6 +241,7 @@ Last up:        22 Aug 2020
 	# Groups
 	'views/users/group.xml',
 
+
 	# Orders
 	'views/orders/order_administrator.xml',
 	'views/orders/order.xml',
@@ -244,6 +251,9 @@ Last up:        22 Aug 2020
 	'views/orders/order_admin.xml',
 	'views/orders/order_account.xml',
 	'views/orders/order_report_nex.xml',                # Estado de Cuenta New
+
+	'views/orders/order_line.xml',
+
 
 	# Payment methods
 	'views/orders/payment_method/payment_methods.xml',
@@ -290,10 +300,24 @@ Last up:        22 Aug 2020
 	'views/patients/partners/partner_actions.xml',
 	'views/patients/partners/partner.xml',
 
+
+
+
+	# Product - 2019
+	'views/pricelist/pricelist_container.xml',
+	'views/pricelist/product_pricelist.xml',
+
 	# Products
 	'views/products/product_actions.xml',
+	
 	'views/products/product_product.xml',
+	'views/products/product_product_pl.xml',
+	
 	'views/products/product_template.xml',
+	'views/products/product_template_2019.xml',
+
+
+
 
 	# Cards
 	'views/cards/card.xml',
@@ -330,7 +354,9 @@ Last up:        22 Aug 2020
 	'views/reports/report_sale_pivots.xml',
 	'views/reports/report_sale_graphs.xml',
 	'views/reports/report_sale_favorites.xml',
-	'views/reports/report_sale_search.xml',
+
+	#'views/reports/report_sale_search.xml',
+
 	'views/reports/report_sale.xml',
 	'views/rsp/report_sale_actions.xml',
 
@@ -339,9 +365,14 @@ Last up:        22 Aug 2020
 	'views/menus/menus_dev.xml',
 	'views/menus/menus_caja.xml',
 	'views/menus/menus_products.xml',
+
+
+	#'views/menus/prod_2019_actions.xml',
+	'views/menus/menus_prods_2019.xml',
+
+
 	'views/menus/menus_oeh.xml',
 	'views/menus/menus_management.xml',
-
 	'views/menus/menus_account.xml',
 
 # ----------------------------------------------------------- Security - Models - Last ------------------------------------------------------

@@ -7,15 +7,16 @@
 	Define a Strategy - for resolving a problem (business logic).
 
 	Created: 			28 may 2018
-	Last up: 			29 mar 2021
+	Last up: 			 4 apr 2021
 """
 from __future__ import print_function
 import collections
 from openerp import models, fields, api
-from lib import mgt_funcs, prod_funcs, mgt_bridge, mgt_vars
 from mgt_patient_line import MgtPatientLine
 from sales_doctor import SalesDoctor
 from management_db import ManagementDb
+
+from lib import mgt_funcs, prod_funcs, mgt_bridge, mgt_vars
 
 # ------------------------------------------------------------------- Class -----------------------
 class Management(models.Model):
@@ -25,6 +26,37 @@ class Management(models.Model):
 	_name = 'openhealth.management'
 	_order = 'date_begin desc'
 
+
+# ----------------------------------------------------------- Getters --------------------------
+	def get_name(self):
+		return self.name
+
+	def get_date_begin(self):
+		return self.date_begin
+
+	def get_date_end(self):
+		return self.date_end
+
+	def get_total_amount(self):
+		return str(self.total_amount)
+
+	def get_total_count(self):
+		return str(self.total_count)
+
+
+
+# ----------------------------------------------------------- Serializer --------------------------
+	# Contains the Finance report serialized in json or xml 
+	# name, date_begin, date_end, total_amount, total_count, total_tickets
+	report_serial = fields.Char()
+
+	@api.multi
+	def serialize(self):
+		self.report_serial = "{	'name': " + self.get_name() + \
+								", 'date_begin': " + self.get_date_begin() + \
+								", 'date_end': " + self.get_date_end() + \
+								", 'total_amount': " + self.get_total_amount() + \
+							"}"
 
 # ----------------------------------------------------------- Relational --------------------------
 
@@ -36,12 +68,10 @@ class Management(models.Model):
 		)
 
 	# Sales
-	sale_line_tkr = fields.One2many(
-			'openhealth.management.order.line',
-			'management_tkr_id',
-		)
-
-
+	#sale_line_tkr = fields.One2many(
+	#		'openhealth.management.order.line',
+	#		'management_tkr_id',
+	#	)
 
 	# Family
 	family_line = fields.One2many(
@@ -91,7 +121,8 @@ class Management(models.Model):
 	#		'openhealth.report.sale.product'
 	#	)
 
-# ----------------------------------------------------------- Configurator -----
+
+# ----------------------------------------------------------- Configurator - Dep -----
 	# Default Configurator
 	def _get_default_configurator(self):
 		return self.env['openhealth.configurator.emr'].search([('x_type', 'in', ['emr']),], limit=1,)
@@ -811,16 +842,24 @@ class Management(models.Model):
 		"""
 		Updates Macro values
 		Does not update: patients, doctors, productivity, daily.
+		Uses vectors. 
+			The content of vectors is dynamic. 
+			They can change if there is a new typologie (type, familiy or sub-family). 
 		"""
 		print()
 		print('*** Update Fast')
 
 		#  Init vectors
+		
+		# Vector of types (products, services)
 		vector_obj = mgt_funcs.init_vector(mgt_vars.TYPES)
+		
+		# Vector of sub-families (co2, exc, pro...)
 		vector_sub = mgt_funcs.init_vector(mgt_vars.SUBFAMILIES)
 
 		# Update sales
 		self.update_sales(vector_obj, vector_sub)
+
 
 
 # --------------------------------------------------------- Update Patients ----
@@ -896,7 +935,15 @@ class Management(models.Model):
 		print('*** Update Productivity')
 
 		# Go
-		prod_funcs.create_days(self)
+		#prod_funcs.create_days(self)
+
+		# Get Holidays - From config
+		self.productivity_day.unlink()
+		days_inactive = self.configurator.get_inactive_days()					# Respects the LOD !
+
+		#prod_funcs.create_days(self, days_inactive)
+		#prod_funcs.create_productive_days(self, self.date_begin, self.date_end, days_inactive)
+		prod_funcs.create_productive_days(self.date_begin, self.date_end, days_inactive, self.productivity_day, self.id)
 
 		# Update cumulative and average
 		prod_funcs.update_day_cumulative(self)
@@ -977,9 +1024,105 @@ class Management(models.Model):
 		Reset Button.
 		"""
 		print('*** Reset')
+		self.reset_vector()
 		self.reset_macro()
 		self.reset_micro()
 	# reset
+
+# ----------------------------------------------------------- Reset Vector -----
+	# Reset Vector
+	def reset_vector(self):
+		"""
+		Reset Vector - All self fields
+		"""
+		print('reset_vector')
+
+		# Macros 
+		self.vec_amount = 0
+		self.vec_count = 0
+		self.vec_products_amount = 0
+		self.vec_products_count = 0
+		self.vec_services_amount = 0
+		self.vec_services_count = 0
+
+		# Laser 
+		self.vec_co2_amount = 0.
+		self.vec_co2_count = 0.
+		self.vec_exc_amount = 0.
+		self.vec_exc_count = 0.
+		self.vec_ipl_amount = 0.
+		self.vec_ipl_count = 0.
+		self.vec_ndy_amount = 0.
+		self.vec_ndy_count = 0.
+		self.vec_qui_amount = 0.
+		self.vec_qui_count = 0.
+
+		# Med
+		self.vec_med_amount = 0.
+		self.vec_med_count = 0.
+		self.vec_cos_amount = 0.
+		self.vec_cos_count = 0.
+		self.vec_gyn_amount = 0.
+		self.vec_gyn_count = 0.
+		self.vec_ech_amount = 0.
+		self.vec_ech_count = 0.
+		self.vec_pro_amount = 0.
+		self.vec_pro_count = 0.
+
+		# Prod
+		self.vec_top_amount = 0.
+		self.vec_top_count = 0.
+		self.vec_vip_amount = 0.
+		self.vec_vip_count = 0.
+		self.vec_kit_amount = 0.
+		self.vec_kit_count = 0.
+
+		# Reset vector 
+		vec = [
+			# Totals 
+			self.vec_amount,
+			self.vec_count,
+			self.vec_products_amount,
+			self.vec_products_count,
+			self.vec_services_amount,
+			self.vec_services_count,
+
+			# Laser 
+			self.vec_co2_amount,
+			self.vec_co2_count,
+			self.vec_exc_amount,
+			self.vec_exc_count,
+			self.vec_ipl_amount,
+			self.vec_ipl_count,
+			self.vec_ndy_amount,
+			self.vec_ndy_count,
+			self.vec_qui_amount,
+			self.vec_qui_count,
+
+			# Med
+			self.vec_med_amount,
+			self.vec_med_count,
+			self.vec_cos_amount,
+			self.vec_cos_count,
+			self.vec_gyn_amount,
+			self.vec_gyn_count,
+			self.vec_ech_amount,
+			self.vec_ech_count,
+			self.vec_pro_amount,
+			self.vec_pro_count,
+
+			# Prod
+			self.vec_top_amount,
+			self.vec_top_count,
+			self.vec_vip_amount,
+			self.vec_vip_count,
+			self.vec_kit_amount,
+			self.vec_kit_count,
+		]
+		
+		#mgt_funcs.reset_vector(vec)
+
+
 
 # ----------------------------------------------------------- Reset Macros -----
 	# Reset Macros
@@ -1138,490 +1281,6 @@ class Management(models.Model):
 		# Family lines
 		self.family_line.unlink()
 		self.sub_family_line.unlink()
+
 	# reset_micro
 
-
-	# -----------------------------------------------------------------------------------------------------------
-	# 	Strategy - Define a strategy for resolving a problem (business logic).
-	#
-	#   Interface
-	#   ----------
-	#	def update_sales(self, vector_obj, vector_sub):
-	#	def update_stats(self):
-	#	def line_analysis(self, line):
-	#	def set_averages(self):
-	#	def set_ratios(self):
-	#	def upack_vector_avg(self, result):
-	#	def bridge_avg(self, tag, value):
-	# -----------------------------------------------------------------------------------------------------------
-
-	# -------------------------------------------------------------------------------------------------
-	# Second Level - Update Buttons
-	# -------------------------------------------------------------------------------------------------
-
-	# ----------------------------------------------------------- Update Fast ------
-	def update_sales(self, vector_obj, vector_sub):
-		"""
-		Update Sales Macros
-		Responsibilites:
-			- Clean
-			- Get orders
-			- Loop on sales - Line analysis
-			- Update stats
-		"""
-		print()
-		print('** Update Sales')
-
-		# Clean
-		self.reset_macro()
-
-		# Get Orders
-		if self.type_arr in ['all']:
-			#orders, count = mgt_db.get_orders_filter_fast(self, self.date_begin, self.date_end)
-			orders, count = ManagementDb.get_orders_filter_fast(self, self.date_begin, self.date_end)
-		else:
-			#orders, count = mgt_db.get_orders_filter(self, self.date_begin, self.date_end, self.state_arr, self.type_arr)
-			orders, count = ManagementDb.get_orders_filter(self, self.date_begin, self.date_end, self.state_arr, self.type_arr)
-
-		# Loop on sales
-		tickets = 0
-		for order in orders:
-			tickets = tickets + 1
-
-			# Filter Block
-			if not order.x_block_flow:
-
-				# If sale
-				if order.state in ['sale']:
-
-					# Line Analysis
-					for line in order.order_line:
-						self.line_analysis(line)
-						#self.line_analysis_obj(line, vector_obj)
-						#self.line_analysis_sub(line, vector_sub)
-						mgt_funcs.line_analysis_obj(line, vector_obj)
-						mgt_funcs.line_analysis_sub(line, vector_sub)
-
-				# If credit Note - Do Amount Flow
-				elif order.state in ['credit_note']:
-					self.credit_note_analysis(order)
-
-# Analysis - Setters
-
-		# Set Averages
-		self.set_averages()
-
-		# Set Ratios
-		self.set_ratios()
-
-		# Set Totals
-		vector = [self.amo_products, self.amo_services, self.amo_other, self.amo_credit_notes]
-		self.total_amount = mgt_funcs.get_sum_pure(vector)
-
-		vector = [self.nr_products, self.nr_services]
-		self.total_count = mgt_funcs.get_sum_pure(vector)
-
-		self.total_tickets = tickets
-
-		# Set Percentages
-		#mgt_funcs.set_percentages(self, total_amount)
-		#results = mgt_funcs.percentages_pure(vector, self.total_amount)
-
-		# Test
-		#print('Vector obj - Test')
-		#for obj in vector_obj:
-		#    print(obj.name)
-		#    print(obj.amount)
-		#    print(obj.count)
-		#    print()
-
-		# Set macros
-		# Bridges
-		mgt_bridge.set_totals(self, vector_obj)
-		mgt_bridge.set_types(self, vector_obj)
-		mgt_bridge.set_subfamilies(self, vector_sub)
-
-	# update_sales
-
-
-# ---------------------------------------------------------- Get Averages ------
-	def set_averages(self):
-		"""
-		Set averages
-		"""
-		vector = [
-					# Families
-					('prod', self.amo_products, self.nr_products),
-					('serv', self.amo_services, self.nr_services),
-					('cons', self.amo_consultations, self.nr_consultations),
-					('proc', self.amo_procedures, self.nr_procedures),
-					('othe', self.amo_other, self.nr_other),
-
-					# Sub families
-
-					# Prod
-					('top', self.amo_topical, self.nr_topical),
-					('car', self.amo_card, self.nr_card),
-					('kit', self.amo_kit, self.nr_kit),
-
-					# Laser
-					('co2', self.amo_co2, self.nr_co2),
-					('exc', self.amo_exc, self.nr_exc),
-					('ipl', self.amo_ipl, self.nr_ipl),
-					('ndy', self.amo_ndyag, self.nr_ndyag),
-					('qui', self.amo_quick, self.nr_quick),
-
-					# Medical
-					('med', self.amo_medical, self.nr_medical),
-					('cos', self.amo_cosmetology, self.nr_cosmetology),
-					('gyn', self.amo_gyn, self.nr_gyn),
-					('ech', self.amo_echo, self.nr_echo),
-					('pro', self.amo_prom, self.nr_prom),
-		]
-
-		# Functional - call to pure function
-		result = mgt_funcs.averages_pure(vector)
-
-		self.upack_vector_avg(result)
-
-
-# ---------------------------------------------------------- Set Averages ------
-	def upack_vector_avg(self, result):
-		"""
-		Unpack vecto average
-		"""
-		for avg in result:
-			tag = avg[0]
-			value = avg[1]
-			self.bridge_avg(tag, value)
-
-
-# ------------------------------------------------------- Bridge Averages ------
-	def bridge_avg(self, tag, value):
-		"""
-		Bridge average
-		"""
-
-		#dic = {
-		#        'prod':     self.avg_products,
-		#        'ser':         self.avg_services,
-		#        'con':         self.avg_consultations,
-		#        'proc':     self.avg_procedures,
-		#        'oth':         self.avg_other,
-		#    }
-
-		# Families
-		if tag == 'prod':
-			self.avg_products = value
-			return
-
-		if tag == 'serv':
-			self.avg_services = value
-			return
-
-		if tag == 'cons':
-			self.avg_consultations = value
-			return
-
-		if tag == 'proc':
-			self.avg_procedures = value
-			return
-
-		if tag == 'othe':
-			self.avg_other = value
-			return
-
-		# Sub Families
-
-		# Prod
-		if tag == 'top':
-			self.avg_topical = value
-			return
-
-		if tag == 'car':
-			self.avg_card = value
-			return
-
-		if tag == 'kit':
-			self.avg_kit = value
-			return
-
-		# Laser
-		if tag == 'co2':
-			self.avg_co2 = value
-			return
-
-		if tag == 'exc':
-			self.avg_exc = value
-			return
-
-		if tag == 'ipl':
-			self.avg_ipl = value
-			return
-
-		if tag == 'ndy':
-			self.avg_ndyag = value
-			return
-
-		if tag == 'qui':
-			self.avg_quick = value
-			return
-
-		# Medical
-		if tag == 'med':
-			self.avg_medical = value
-			return
-
-		if tag == 'cos':
-			self.avg_cosmetology = value
-			return
-
-		if tag == 'ech':
-			self.avg_echo = value
-			return
-
-		if tag == 'gyn':
-			self.avg_gyn = value
-			return
-
-		if tag == 'pro':
-			self.avg_prom = value
-			return
-
-# ----------------------------------------------------------- Update Stats -----
-	def update_stats(self):
-		"""
-		Update Stats
-			Doctors,
-			Families,
-			Sub-families
-		Used by
-			update_doctors
-		"""
-		print()
-		print('*** Update Stats !')
-
-		# Using collections - More Abstract !
-
-		# Clean
-		self.family_line.unlink()
-		self.sub_family_line.unlink()
-
-		# Init
-		family_arr = []
-		sub_family_arr = []
-		_h_amount = {}
-		_h_sub = {}
-
-	# All
-		# Loop - Doctors
-		for doctor in self.doctor_line:
-
-			# Loop - Order Lines
-			for line in doctor.order_line:
-
-				# Family
-				family_arr.append(line.family)
-
-				if line.family in [False, '']:
-					print()
-					print('Error: Family')
-					print(line.product_id.name)
-
-				# Sub family
-				sub_family_arr.append(line.sub_family)
-
-				if line.sub_family in [False, '']:
-					print()
-					print('Error: Subfamily')
-					print(line.product_id.name)
-
-				# Amount - Family
-				if line.family in _h_amount:
-					_h_amount[line.family] = _h_amount[line.family] + line.price_total
-
-				else:
-					_h_amount[line.family] = line.price_total
-
-				# Amount - Sub Family
-				if line.sub_family in _h_sub:
-					_h_sub[line.sub_family] = _h_sub[line.sub_family] + line.price_total
-
-				else:
-					_h_sub[line.sub_family] = line.price_total
-
-			# Doctor Stats - openhealth.management.doctor.line
-			doctor.pl_stats()
-
-
-
-	# By Family
-		# Count
-		counter_family = collections.Counter(family_arr)
-
-		# Create
-		for name in counter_family:
-			print(name)
-			count = counter_family[name]
-			amount = _h_amount[name]
-			family = self.family_line.create({
-													'name': name,
-													'x_count': count,
-													'amount': amount,
-													'management_id': self.id,
-												})
-			family.update()
-
-			# Percentage
-			if self.total_amount != 0:
-				family.per_amo = family.amount / self.total_amount
-
-
-	# Subfamily
-		# Count
-		counter_sub_family = collections.Counter(sub_family_arr)
-
-		# Create
-		for name in counter_sub_family:
-			count = counter_sub_family[name]
-			amount = _h_sub[name]
-			sub_family = self.sub_family_line.create({
-														'name': name,
-														'name_sp': name,
-														'x_count': count,
-														'amount': amount,
-														'management_id': self.id,
-												})
-			# Percentage
-			if self.total_amount != 0:
-				sub_family.per_amo = sub_family.amount / self.total_amount
-	# update_stats
-
-
-# ------------------------------------------------------------- Set Ratios -----
-	def set_ratios(self):
-		"""
-		Set Ratios
-		"""
-		if self.nr_consultations != 0:
-			self.ratio_pro_con = (float(self.nr_procedures) / float(self.nr_consultations))
-	# set_ratios
-
-
-# ----------------------------------------------------------- Line Analysis ----
-	def line_analysis(self, line):
-		"""
-		Parses order lines
-		Updates counters
-		"""
-		#print('Line analysis')
-
-		# Init
-		prod = line.product_id
-
-		#print('name: ', prod.name)
-		#print('treatment: ', prod.pl_treatment)
-		#print('family: ', prod.pl_family)
-		#print('sub_family: ', prod.pl_subfamily)
-		#print()
-
-		# Products
-		if prod.type in ['product']:
-			self.nr_products = self.nr_products + line.product_uom_qty
-			self.amo_products = self.amo_products + line.price_subtotal
-
-			# Topical
-			if prod.pl_family in ['topical']:
-				self.nr_topical = self.nr_topical + line.product_uom_qty
-				self.amo_topical = self.amo_topical + line.price_subtotal
-				return
-
-			# Card
-			elif prod.pl_family in ['card']:
-				self.nr_card = self.nr_card + line.product_uom_qty
-				self.amo_card = self.amo_card + line.price_subtotal
-				return
-
-			# kit
-			elif prod.pl_family in ['kit']:
-				self.nr_kit = self.nr_kit + line.product_uom_qty
-				self.amo_kit = self.amo_kit + line.price_subtotal
-				return
-
-		# Services
-		else:
-			self.nr_services = self.nr_services + line.product_uom_qty
-			self.amo_services = self.amo_services + line.price_subtotal
-
-			# Consultations
-			if prod.pl_treatment in ['CONSULTA MEDICA']:
-				self.nr_sub_con_med = self.nr_sub_con_med + line.product_uom_qty
-				self.amo_sub_con_med = self.amo_sub_con_med + line.price_subtotal
-				return
-
-			# Procedures
-			else:
-				self.nr_procedures = self.nr_procedures + line.product_uom_qty
-				self.amo_procedures = self.amo_procedures + line.price_subtotal
-
-				# By Treatment
-				# Co2
-				if prod.pl_treatment in ['LASER CO2 FRACCIONAL']:
-					self.nr_co2 = self.nr_co2 + line.product_uom_qty
-					self.amo_co2 = self.amo_co2 + line.price_subtotal
-					return
-
-				# Exc
-				elif prod.pl_treatment in ['LASER EXCILITE']:
-					self.nr_exc = self.nr_exc + line.product_uom_qty
-					self.amo_exc = self.amo_exc + line.price_subtotal
-					return
-
-				# Quick
-				elif prod.pl_treatment in ['QUICKLASER']:
-					self.nr_quick = self.nr_quick + line.product_uom_qty
-					self.amo_quick = self.amo_quick + line.price_subtotal
-					return
-
-				# Ipl
-				elif prod.pl_treatment in ['LASER M22 IPL']:
-					self.nr_ipl = self.nr_ipl + line.product_uom_qty
-					self.amo_ipl = self.amo_ipl + line.price_subtotal
-					return
-
-				# Ndyag
-				elif prod.pl_treatment in ['LASER M22 ND YAG']:
-					self.nr_ndyag = self.nr_ndyag + line.product_uom_qty
-					self.amo_ndyag = self.amo_ndyag + line.price_subtotal
-					return
-
-				# Medical
-				elif prod.pl_family in ['medical']:
-					self.nr_medical = self.nr_medical + line.product_uom_qty
-					self.amo_medical = self.amo_medical + line.price_subtotal
-					return
-
-				# Cosmeto
-				elif prod.pl_family in ['cosmetology']:
-					self.nr_cosmetology = self.nr_cosmetology + line.product_uom_qty
-					self.amo_cosmetology = self.amo_cosmetology + line.price_subtotal
-					return
-
-				# Echo
-				elif prod.pl_family in ['echography']:
-					self.nr_echo = self.nr_echo + line.product_uom_qty
-					self.amo_echo = self.amo_echo + line.price_subtotal
-					return
-
-				# Gyn
-				elif prod.pl_family in ['gynecology']:
-					self.nr_gyn = self.nr_gyn + line.product_uom_qty
-					self.amo_gyn = self.amo_gyn + line.price_subtotal
-					return
-
-				# Prom
-				elif prod.pl_family in ['promotion']:
-					self.nr_prom = self.nr_prom + line.product_uom_qty
-					self.amo_prom = self.amo_prom + line.price_subtotal
-					return
-	# line_analysis

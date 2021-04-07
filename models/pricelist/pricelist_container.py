@@ -1,0 +1,60 @@
+# -*- coding: utf-8 -*-
+"""
+	Pricelist Container
+
+	Created: 		23 Apr 2019
+	Previous: 		10 Aug 2019
+	Last: 			 7 apr 2021
+"""
+from __future__ import print_function
+from openerp import models, fields, api
+
+from . import px_vars
+
+class PricelistContainer(models.Model):
+	"""
+	Pricelist Container 2019
+	Creates, updates and manages Products
+	"""
+	_name = 'openhealth.container.pricelist'
+	_description = 'Openhealth Container Pricelist'
+
+
+# ------------------------------------------------------ Fields --------------------------------------------------
+
+# ----------------------------------------------------------- Relational -------
+	product_ids = fields.One2many(
+		'openhealth.product.pricelist',
+		'container_id',
+	)
+
+
+# ------------------------------------------------------------- Fields ---------
+	name = fields.Char(
+		required=True,
+	)
+
+	family = fields.Selection(
+		selection=px_vars._family_file_list,
+		required=True,
+	)
+
+	path_csv_pricelist = fields.Char(
+		required=True,
+		default='/Users/gibil/cellar/github/price_list/csv/',
+	)
+
+	search_pattern = fields.Char()
+	
+	fix_flag = fields.Boolean(default=False)
+	
+
+# ------------------------------------------------------------- Dep ---------
+	#file_name = fields.Selection(
+	#		selection=px_vars._file_name_list,
+	#		required=True,
+	#	)
+
+	#caps_name = fields.Boolean(
+	#		default=False,
+	#	)

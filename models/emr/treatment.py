@@ -41,7 +41,8 @@ _model_service = "openhealth.service_all"
 
 # ----------------------------------------------------------- Exceptions -------
 class ProductErrorException(Exception):
-	print('This is my first management of product exceptions')
+	#print('This is my first management of product exceptions')
+	pass
 
 
 # ------------------------------------------------------------------- Class ----

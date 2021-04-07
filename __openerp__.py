@@ -7,7 +7,7 @@
 """,
 'description': """
 
-6 apr 2021
+7 apr 2021
 
 Created:        11 Sep 2016
 Last up:        30 Mar 2021
@@ -127,8 +127,10 @@ Always clean your System:
 	'security/openhealth_security_readers.xml',   	# Important
 	'security/openhealth_security_managers.xml',
 
+
 # ----------------------------------------------------------- Configurator ------------------------------------------------------
-	#'views/configurators/configurator_emr.xml',         # Includes Menu
+	'views/configurators/configurator_emr.xml',         # Includes Menu
+
 
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 	'views/patients/patient_actions.xml',
@@ -296,6 +298,11 @@ Always clean your System:
 
 
 
+
+	# Product - 2019
+	'views/pricelist/pricelist_container.xml',
+	'views/pricelist/product_pricelist.xml',
+
 	# Products
 	'views/products/product_actions.xml',
 	
@@ -304,6 +311,7 @@ Always clean your System:
 	
 	'views/products/product_template.xml',
 	'views/products/product_template_2019.xml',
+
 
 
 

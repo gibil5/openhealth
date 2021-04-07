@@ -1,0 +1,147 @@
+<openerp>
+	<data>
+
+
+
+
+<!-- FORM --> 
+<!--
+			<field name="model">price_list.product</field>
+-->
+		<record model="ir.ui.view" id="product_pricelist_form_view">
+			<field name="name">product.form</field>
+
+			<field name="model">openhealth.product.pricelist</field>
+			
+			<field name="arch" type="xml">
+				<form string="product Form">
+
+					<!-- Header -->
+					<header>
+					</header>
+
+
+					<!-- Sheet -->  
+					<sheet>
+<!--								
+								<field name="name"/>
+-->
+
+						<!-- Padding -->
+						<group>
+							<group>
+								<field name="name"/>
+								<field name="x_type"/>
+								<field name="family"/>
+								<field name="subfamily"/>
+							</group>
+							<group>
+								<field name="treatment"/>
+								<field name="zone"/>
+								<field name="pathology"/>
+
+								<field name="level"/>
+								<field name="sessions"/>
+								<field name="time"/>
+<!--
+-->                        
+							</group>
+						</group>
+
+
+
+						<!-- Padding -->
+						<group>
+							<group>
+								<field name="price"/>
+								<field name="price_vip"/>
+								<field name="price_company"/>
+								<field name="price_session"/>
+								<field name="price_session_next"/>
+								<field name="price_max"/>
+							</group>
+							<group>
+								<field name="name_short"/>
+								<field name="prefix"/>
+								<field name="idx"/>
+								<field name="code"/>
+							</group>
+						</group>
+
+
+
+
+						<!-- Padding -->
+						<group>
+							<group>
+							</group>
+							<group>
+							</group>
+						</group>
+
+
+						<!-- Notebook --> 
+						<notebook>  
+							<page string="">
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+
+
+<!--
+			<field name="model">price_list.product</field>
+-->
+<!-- TREE -->
+		<record model="ir.ui.view" id="product_list">
+			<field name="name">price_list product list</field>
+			<field name="model">openhealth.product.pricelist</field>
+			<field name="arch" type="xml">
+				<tree>			
+					<field name="time_stamp"/>
+					<field name="price_list"/>
+					<field name="x_type"/>
+					<field name="name"/>
+					<field name="name_short"/>
+					<field name="manufacturer"/>
+					<field name="brand"/>
+					<field name="prefix"/>
+					<field name="idx"/>
+					<field name="idx_int"/>
+					<field name="code"/>
+					<field name="family"/>
+					<field name="subfamily"/>
+					<field name="treatment"/>
+					<field name="zone"/>
+					<field name="pathology"/>
+					<field name="level"/>
+					<field name="sessions"/>
+					<field name="time"/>
+					<field name="price"/>
+					<field name="price_vip"/>
+					<field name="price_company"/>
+					<field name="price_session"/>
+					<field name="price_session_next"/>
+					<field name="price_max"/>
+				</tree>
+			</field>
+		</record>
+
+
+<!-- ACTION -->
+<!--
+			<field name="res_model">price_list.product</field>
+-->
+		<record model="ir.actions.act_window" id="product_list_action">			
+			<field name="name">price_list window</field>
+			<field name="res_model">openhealth.product.pricelist</field>
+			<field name="view_mode">tree,form</field>
+			<field name="limit">700</field>
+		</record>
+
+	</data>
+</openerp>

@@ -12,7 +12,8 @@ from datetime import datetime, tzinfo, timedelta
 
 # ----------------------------------------------------------- Exceptions -------
 class ProductErrorException(Exception):
-	print('This is my first management of product exceptions')
+	#print('This is my first management of product exceptions')
+	pass
 
 
 #------------------------------------------------ Getters ------------

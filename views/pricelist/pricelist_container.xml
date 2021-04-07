@@ -1,0 +1,176 @@
+<openerp>
+	<data>
+
+<!-- 6 apr 2021 -->
+
+<!-- FORM --> 
+		<record model="ir.ui.view" id="container_form_view">
+			<field name="name">container.form</field>
+			<field name="model">openhealth.container.pricelist</field>
+			<field name="arch" type="xml">
+				<form string="container Form">
+
+
+<!-- Header -->
+					<header>
+
+							<!-- Left -->
+
+              <!-- Load CSV -->
+              <button 
+                  type="object"
+                  class="oe_highlight"                                
+                  groups="openhealth.roots"
+                  help="Important: Loads CSV !"
+									string="Load CSV"
+									name="load_csv"
+              />
+
+              <!-- Create Products -->
+              <button 
+                      type="object"
+                      class="oe_highlight"
+                      groups="openhealth.roots"
+                      help="Important: Creates Products !"
+											string="Create Products 2019"
+											name="create_products_2019"
+              />
+
+
+              <!-- Example Remove --> 
+<!--
+              <button
+                      name="remove_myself"    
+                      type="object" 
+                      class="oe_highlight"
+                      groups="openhealth.roots,openhealth.managers"
+                      states="sale"
+                      string="ELIMINAR"
+                      help="Importante: Esta operación es REVERSIBLE !"
+                      confirm="Importante: La Venta va a ser convertida en Presupuesto. Desea continuar ?"
+              />
+-->
+
+
+<!-- Right -->
+              <!-- Clear -->
+              <button 
+                      type="object"
+                      class="oe_highlight oe_right"
+                      string="Clear"
+
+											name="clear"
+              />
+
+              <!-- Update -->
+              <button 
+                      type="object"
+                      class="oe_highlight oe_right"
+                      string="Update"
+                      confirm="Are you sure ?"
+
+											name="update"
+              />
+
+							<!-- Validate -->
+              <button 
+                      type="object"
+                      class="oe_highlight"
+                      string="Validate all"
+
+											name="validate_product_templates"
+              />
+
+
+
+              <!-- Clean Procurements -->
+              <!-- Clean Stock Moves -->
+<!--
+              <button 
+                      type="object"
+                      class="oe_highlight oe_right"
+                      name="clean_procurements"
+                      string="Clean Procurements"
+                      confirm="Are you sure ?"
+              />
+
+              <button 
+                      type="object"
+                      class="oe_highlight oe_right"      
+                      name="clean_stock_moves"
+                      string="Clean Stock Moves"
+                      confirm="Are you sure ?"
+              />
+-->                        
+					</header>
+
+
+
+<!-- Sheet -->  
+					<sheet>
+                <group>
+                    <group>
+											<field name="name"/>
+											<field name="path_csv_pricelist"/>
+                    </group>
+                    <group>
+											<field name="family"/>
+											<field name="search_pattern"/>
+											<field name="fix_flag"/>
+<!--
+												<field name="file_name"/>
+												<field name="configurator"/>
+												<field name="caps_name"/>
+-->
+                    </group>
+                </group>
+
+                <!-- Padding -->
+<!--
+                <group>
+                    <group>
+                    </group>
+                    <group>
+                    </group>
+                </group>
+-->
+
+                <!-- Notebook --> 
+                <notebook>  
+                    <page string="Products">
+                        <field name="product_ids"/>
+                    </page>
+                </notebook>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+
+<!-- TREE -->
+<record model="ir.ui.view" id="container_pricelist_tree">
+	<field name="name">container.pricelist.tree</field>
+	<field name="model">openhealth.container.pricelist</field>
+	<field name="arch" type="xml">
+		<tree>			
+			<field name="name"/>
+<!--
+-->
+			<field name="path_csv_pricelist"/>
+			<field name="family"/>
+			<field name="product_ids"/>
+		</tree>
+	</field>
+</record>
+
+
+<!-- ACTION --> 
+		<!-- actions opening views on models -->
+		<record model="ir.actions.act_window" id="container_list_action">			
+			<field name="name">price_list window</field>			
+      <field name="res_model">openhealth.container.pricelist</field>
+      <field name="view_mode">tree,form</field>
+		</record>
+
+	</data>
+</openerp>

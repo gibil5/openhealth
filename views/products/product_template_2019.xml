@@ -5,7 +5,9 @@
 		<record model="ir.ui.view" id="product_template_form">			
 			<field name="name">product.template.product.form</field>
 			<field name="model">product.template</field>
+
 			<field name="inherit_id" ref="product.product_template_form_view"/>
+
 			<field name="mode">primary</field>
 			<field name="priority" eval="1"/>
 			<field name="arch" type="xml">

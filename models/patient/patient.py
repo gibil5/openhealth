@@ -3,7 +3,8 @@
 	*** Patient
 
 	Created: 			26 aug 2016
-	Last up: 			 5 dec 2020
+	Previous: 			 5 dec 2020
+	Last up: 			 8 apr 2021
 
 	This an independent component.
 
@@ -41,6 +42,23 @@ from . import pat_funcs
 from . import chk_patient
 from . import count_funcs
 
+class CounterErrorException(Exception):
+	#print('This is my first management of product exceptions')
+	pass
+
+class ZerroError(Exception):
+	#print('This is my first management of product exceptions')
+	#pass
+	print('jx - ZerroError')
+
+class MoreThanOneError(Exception):
+	#print('This is my first management of product exceptions')
+	#pass
+	print('jx - MoreThanOneError')
+
+
+
+
 class Patient(models.Model):
 	"""
 	Patient Class
@@ -53,11 +71,31 @@ class Patient(models.Model):
 	- Compatible with python3.
 	- Using quality checking (pylint).
 	"""
-	#_inherit = 'oeh.medical.patient'
-	_name = 'oeh.medical.patient'
+	#_name = 'oeh.medical.patient'
+	_inherit = 'oeh.medical.patient'
 	_inherits = {'res.partner': 'partner_id'}
 	_description = 'Patient class'
 	_order = 'x_id_code desc'
+
+
+# --------------------------------------------------------------------- Oehealth - Dep ---
+	#SEX = [
+	#	('Male', 'Male'),
+	#	('Female', 'Female'),
+	#]
+
+	#name = fields.Char()
+
+	#identification_code = fields.Char('Patient ID', size=256, help='Patient Identifier provided by the Health Center', readonly=True)
+
+	#dob = fields.Date('Date of Birth')
+
+	#age = fields.function(_patient_age, method=True, type='char', size=32, string='Patient Age',help="It shows the age of the patient in years(y), months(m) and days(d).\nIf the patient has died, the age shown is the age at time of death, the age corresponding to the date on the death certificate. It will show also \"deceased\" on the field")
+	#age = fields.Char()
+
+	#sex = fields.Selection(SEX, 'Sex', select=True)
+
+
 
 # ----------------------------------------------------------- Relations ---------------------------
 
@@ -159,22 +197,8 @@ class Patient(models.Model):
 		for record in self:
 			record.x_card = record.env['openhealth.card'].search([('patient_name', '=', record.name),],limit=1,)
 
-# --------------------------------------------------------------------- Oehealth ---
-	SEX = [
-		('Male', 'Male'),
-		('Female', 'Female'),
-	]
 
-	name = fields.Char()
 
-	identification_code = fields.Char('Patient ID', size=256, help='Patient Identifier provided by the Health Center', readonly=True)
-
-	dob = fields.Date('Date of Birth')
-
-	#age = fields.function(_patient_age, method=True, type='char', size=32, string='Patient Age',help="It shows the age of the patient in years(y), months(m) and days(d).\nIf the patient has died, the age shown is the age at time of death, the age corresponding to the date on the death certificate. It will show also \"deceased\" on the field")
-	age = fields.Char()
-
-	sex = fields.Selection(SEX, 'Sex', select=True)
 
 # -------------------------------------------------------------- Primitives ----
 	# First
@@ -438,25 +462,40 @@ class Patient(models.Model):
 		print()
 		print('Get Default Id Code')
 
-		name_ctr = 'emr'
+		# Check if valid
+		try:
+			nr = self.env['openhealth.counter'].search_count([('name', '=', 'emr'),])
+			if nr == 0:
+				raise ZerroError
+			elif nr > 1:
+				raise MoreThanOneError
 
+		# Recover and Create 
+		except ZerroError:
+			msg = "ZerroError: No counters where found !"
+			print(msg)
+			print('Counter is created !')
+			counter = self.env['openhealth.counter'].create({})
+
+		# Do nothing but Stop
+		except MoreThanOneError:
+			print('MoreThanOneError')
+			msg = "ERROR: There is more than one Counter !"
+			raise MoreThanOneError(msg)
+
+		# Validation ok
+		print('*** Counter is OK')				
+
+		# Get
 		counter = self.env['openhealth.counter'].search([
-																('name', '=', name_ctr),
-														],
-															#order='write_date desc',
-															#limit=1,
-														)
+															('name', '=', 'emr'),
+												],
+													#order='write_date desc',
+													#limit=1,
+		)
 
-		if counter.name not in [False]:
-
-			# Init
-			prefix = counter.prefix
-			separator = counter.separator
-			padding = counter.padding
-			value = counter.value
-			#name = count_funcs.get_name(self, prefix, separator, padding, value)
-			name = count_funcs.get_name(prefix, separator, padding, value)
-			return name
+		# Init
+		return count_funcs.get_name(counter.prefix, counter.separator, counter.padding, counter.value)
 
 	# NC Number
 	x_id_code = fields.Char(
@@ -815,7 +854,11 @@ class Patient(models.Model):
 		"""
 		Autofill
 		"""
+
 		# Personal
+		self.x_last_name = 'REVILLA RONDON'
+		self.x_first_name = 'JOSE JAVIER'
+
 		self.sex = 'Male'
 		self.dob = '1965-05-26'
 		self.email = 'jrevilla55@gmail.com'
@@ -825,7 +868,7 @@ class Patient(models.Model):
 		self.x_ruc = '09817194123'
 		self.x_firm = 'Revilla y Asociados'
 		self.mobile = '991960734'
-		self.function = 'Ingeniero'
+		#self.function = 'Ingeniero'
 		self.x_education_level = 'university'
 		self.x_first_impression = 'normal'
 		self.sex = 'Male'
@@ -902,7 +945,8 @@ class Patient(models.Model):
 	# Must have two or more last names
 	@api.onchange('x_last_name')
 	def _onchange_x_last_name_test(self):
-		return pat_funcs.test_for_one_last_name(self, self.x_last_name) if self.x_last_name else 'don'
+		#return pat_funcs.test_for_one_last_name(self, self.x_last_name) if self.x_last_name else 'don'
+		return pat_funcs.test_for_one_last_name(self.x_last_name) if self.x_last_name else 'don'
 
 	# Name
 	@api.onchange('x_last_name', 'x_first_name')
@@ -940,6 +984,10 @@ class Patient(models.Model):
 	# Create
 	@api.model
 	def create(self, vals):
+		"""
+		CRUD method 
+		Permits adding your logic before and after a CRUD method
+		"""
 		# Init
 		if 'name' in vals and 'x_first_name' in vals and 'x_last_name' in vals:
 			name = vals['name']
@@ -949,23 +997,44 @@ class Patient(models.Model):
 				name = last_name.upper() + ' ' + first_name.upper()
 				vals['name'] = name
 
-		# Put your logic before
+
+		# *** Put your logic before ***
 		res = super(Patient, self).create(vals)
-		# Put your logic after
+		# *** Put your logic after ***
+
 
 		# Serial Number. Increase must be AFTER creation
-		name_ctr = 'emr'
-		counter = self.env['openhealth.counter'].search([
-															('name', '=', name_ctr),
-														],
-														#order='write_date desc',
-														limit=1,
-														)
-		counter.increase()		# Here !!!
+		# Catch Exceptions
+		try:
+			# Count
+			nr_counters = self.env['openhealth.counter'].search_count([('name', '=', 'emr'),])
 
-		# Date record - dep ?
-		#if not res.x_date_record:
-		#	res.x_date_record = res.create_date
+			if nr_counters == 0:
+				raise ZerroError
+
+			if nr_counters > 1:
+				raise MoreThanOneError
+
+			print('*** Counter is ok')
+			print('Counter is increased !')
+
+			counter = self.env['openhealth.counter'].search([
+																('name', '=', 'emr'),
+															],
+															#order='write_date desc',
+															limit=1,
+															)
+			counter.increase()		# Here !!!
+
+		except ZerroError:
+			print('ZerroError')
+			msg = "ERROR: No counters where found."
+			raise ZerroError(msg)
+
+		except MoreThanOneError:
+			print('MoreThanOneError')
+			msg = "ERROR: Counter Must be One Only."
+			raise MoreThanOneError(msg)
 
 		return res
 	# CRUD - Create

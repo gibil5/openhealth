@@ -474,7 +474,11 @@ class Treatment(models.Model):
 		# Search product
 		name = 'CONSULTA MEDICA'
 		price_list = '2019'
-		product = tre_funcs.get_product(self, name, price_list)
+
+
+		#product = tre_funcs.get_product(self, name, price_list)
+		product = tre_funcs.get_product_product(self, name, price_list)
+
 
 		#  Check 
 		product_template = tre_funcs.get_product_template(self, name, price_list)
@@ -527,7 +531,10 @@ class Treatment(models.Model):
 			# Check Exceptions
 			try:
 				price_list = '2019'
-				product = tre_funcs.get_product(self, name, price_list)
+
+				#product = tre_funcs.get_product(self, name, price_list)
+				product = tre_funcs.get_product_product(self, name, price_list)
+
 				product_tup.append((product, qty, price))
 
 			#except ProductErrorException:
@@ -789,18 +796,22 @@ class Treatment(models.Model):
 		print('OH - treatment.py - test_integration')
 		value = self.env.context.get('key')
 		print(value)
-		if self.patient.x_test:
-			if value == 'test_integration':
-					#test_case = 'laser'
-					#test_case = 'product'
-					#test_case = 'medical'
-					#test_case = 'cosmetology'
-					#test_case = 'new'
-					test_case = 'all'
-					test_treatment.test_integration_treatment(self, test_case)
 
-			elif value == 'test_reset':
-				test_treatment.test_reset_treatment(self)
+		#if self.patient.x_test:
+		#if value == 'test_integration':
+		#test_case = 'laser'
+		#test_case = 'product'
+		#test_case = 'medical'
+		#test_case = 'cosmetology'
+		#test_case = 'new'
+		
+		test_case = 'all'
+		test_treatment.test_integration_treatment(self, test_case)
+
+		#elif value == 'test_reset':
+		if value == 'test_reset':
+			test_treatment.test_reset_treatment(self)
+
 		print()
 		print()
 		print('SUCCESS !')

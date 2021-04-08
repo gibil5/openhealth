@@ -318,7 +318,7 @@ Always clean your System:
 	'views/products/product_actions.xml',
 	
 	'views/products/product_product.xml',
-	#'views/products/product_product_pl.xml',
+	'views/products/product_product_pl.xml',
 	
 	'views/products/product_template.xml',
 	'views/products/product_template_2019.xml',
@@ -346,10 +346,12 @@ Always clean your System:
 	'views/treatments/treatment_procedures.xml',
 	'views/treatments/treatment_controls.xml', 	# Sab
 
+
 	# Patients - 2
 	'views/patients/patient_personal.xml',
 	'views/patients/patient_control_docs.xml',
 	'views/patients/patient_admin.xml',
+
 
 # ----------------------------------------------------------- Closings ----------------------------
 	# Closing

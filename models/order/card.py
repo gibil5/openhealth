@@ -9,7 +9,20 @@ from openerp import models, fields, api
 
 #from openerp.addons.openhealth.models.libs import count_funcs
 #from openerp.addons.openhealth.models.commons.libs import count_funcs
-from commons import count_funcs_dep
+#from commons import count_funcs_dep
+
+from commons import count_funcs
+
+
+class ZerroError(Exception):
+	#pass
+	print('jx - ZerroError')
+
+class MoreThanOneError(Exception):
+	#pass
+	print('jx - MoreThanOneError')
+
+
 
 #class Card(models.Model):
 class OrderCard(models.Model):
@@ -68,6 +81,34 @@ class OrderCard(models.Model):
 	# Default name 
 	@api.model
 	def _get_default_name(self):
+
+		# Check if valid
+		try:
+			nr = self.env['openhealth.counter'].search_count([('name', '=', 'vip'),])
+
+			if nr == 0:
+				raise ZerroError
+			elif nr > 1:
+				raise MoreThanOneError
+
+		# Recover and Create 
+		except ZerroError:
+			msg = "ZerroError: No counters where found !"
+			print(msg)
+			print('Counter is created !')
+
+			counter = self.env['openhealth.counter'].create({
+																'name': 'vip'
+															})
+
+		# Do nothing but Stop
+		except MoreThanOneError:
+			print('MoreThanOneError')
+			msg = "ERROR: There is more than one Counter !"
+			raise MoreThanOneError(msg)
+
+
+
 		name_ctr = 'vip'
  		counter = self.env['openhealth.counter'].search([
 																('name', '=', name_ctr), 
@@ -75,6 +116,7 @@ class OrderCard(models.Model):
 																#order='write_date desc',
 																limit=1,
 															)
+
 		name = count_funcs.get_name(self, counter.prefix, counter.separator, counter.padding, counter.value)
 		counter.increase()
 		return name

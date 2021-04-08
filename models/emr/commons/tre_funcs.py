@@ -15,6 +15,11 @@ class ProductErrorException(Exception):
 	#print('This is my first management of product exceptions')
 	pass
 
+class ProductProductError(Exception):
+	#print('This is my first management of product exceptions')
+	print('jx - ProductProductError')
+	#pass
+
 
 #------------------------------------------------ Getters ------------
 def check_product(self, price_list, product, product_template):
@@ -62,7 +67,8 @@ def get_product_template(self, name, price_list):
 
 
 
-def get_product(self, name, price_list):
+#def get_product(self, name, price_list):
+def get_product_product(self, name, price_list):
 	print()
 	print('Search product')
 	print(name)
@@ -76,8 +82,10 @@ def get_product(self, name, price_list):
 												)
 
 	if not product.name:
-		raise Exception('Product not existant !!!')
+		msg = 'ProductProduct not found !!!'
+		#raise Exception('Product not existant !!!')
 		#raise ProductErrorException('x')
+		raise ProductProductError(msg)
 
 	return product
 

@@ -34,6 +34,7 @@ def test_integration_treatment(self, test_case):
  	Integration Testing for the Treatment Class.
 	"""
 	print()
+	print('*** TESTING')
 	print('test_treatment.py - test_integration_treatment')
 
 	# Create Consultation

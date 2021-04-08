@@ -1,10 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-		Counter
-		Still very useful
+	Counter
+	Still very useful
+
+	Used by 
+		Patient 
 
 	Created: 			26 Aug 2016
- 	Last up: 	 			29 mar 2021
+ 	Last up: 	 		29 mar 2021
 """
 from openerp import models, fields, api
 from . import count_vars
@@ -13,36 +16,26 @@ from . import count_vars
 #from openerp.addons.openhealth.models.commons.libs import user
 from commons import user_dep
 
-#class Counter(models.Model):
 class PatientCounter(models.Model):
 	_name = 'openhealth.counter'
 
 
-# ----------------------------------------------------------- Primitives ------------------------------------------------------
-
+# ----------------------------------------------------------- Primitives -------
 	# Name
 	name = fields.Selection(
-
-			#selection=count_vars._counter_name_list,		
 			selection=count_vars._name_list,		
-
 			string="Nombre", 
 			default="emr",
 			required=True,
 		)
 
-
 	# Type
 	x_type = fields.Selection(
-
-			#selection=count_vars._counter_type_list, 			
 			selection=count_vars._type_list, 			
-		
 			string="Tipo", 
 			default="medical",
 			required=True,
 		)
-
 
 	# Value 
 	value = fields.Integer(
@@ -51,14 +44,12 @@ class PatientCounter(models.Model):
 			required=True,
 		)
 
-
 	# Separator 
 	separator = fields.Char(
 			string="Separador",
 			default="",
 			#required=True,
 		)
-
 
 	# Prefix 
 	prefix = fields.Char(
@@ -67,16 +58,12 @@ class PatientCounter(models.Model):
 			required=True,
 		)
 
-
 	# Padding
 	padding = fields.Integer(
 			string="Padding",
 			default=5,
 			required=True,
 		)
-
-
-
 
 	# Date created 
 	date_created = fields.Datetime(
@@ -98,27 +85,7 @@ class PatientCounter(models.Model):
 			readonly=True
 		)
 
-# ----------------------------------------------------------- Actions ------------------------------------------------------
-
-	# Synchro
-	@api.multi 
-	def synchro(self):
-		print()
-		print('Synchro')
-
-		#patient = self.env['oeh.medical.patient'].search([
-															#('active', '=', 'emr'),
-		#													('active', 'in', [True]),
-		#												],
-														#order='x_counter desc',
-		#												order='x_id_code desc',
-		#												limit=1,)
-		#print(patient)
-		#print(patient.name)
-	# synchro
-
-
-
+# ----------------------------------------------------------- Methods ---------------------------------------
 	# Increase
 	@api.multi 
 	def increase(self):
@@ -127,7 +94,6 @@ class PatientCounter(models.Model):
 		self.value = self.value + 1
 		self.date_modified = fields.datetime.now()
 	# increase
-
 
 	# Decrease
 	@api.multi 
@@ -139,6 +105,21 @@ class PatientCounter(models.Model):
 	# decrease
 
 
+	# Synchro - Dep 
+	#@api.multi 
+	#def synchro(self):
+	#	print()
+	#	print('Synchro')
+		#patient = self.env['oeh.medical.patient'].search([
+															#('active', '=', 'emr'),
+		#													('active', 'in', [True]),
+		#												],
+														#order='x_counter desc',
+		#												order='x_id_code desc',
+		#												limit=1,)
+		#print(patient)
+		#print(patient.name)
+	# synchro
 
 # ----------------------------------------------------------- Computes - Delta ------------------------------------------------------
 

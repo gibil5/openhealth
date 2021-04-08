@@ -84,8 +84,9 @@ class SaleOrder(models.Model):
 	ticket = fields.Many2one(
 			'openhealth.ticket',
 			#string="Ticket",
-			required=True,
 			default=lambda self: raw_funcs.get_ticket(self.env['openhealth.ticket']),
+			#required=True,
+			required=False,
 		)
 
 	# Patient
@@ -126,8 +127,9 @@ class SaleOrder(models.Model):
 	configurator = fields.Many2one(
 			'openhealth.configurator.emr',
 			string="Config",
-			required=True,
 			default=lambda self: raw_funcs.get_configurator(self.env['openhealth.configurator.emr']),
+			#required=True,
+			required=False,
 		)
 
 	# Doctor

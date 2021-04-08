@@ -31,10 +31,21 @@
                       type="object"
                       class="oe_highlight"
                       groups="openhealth.roots"
-                      help="Important: Creates Products !"
-											string="Create Products 2019"
-											name="create_products_2019"
+
+											string="Create Product Templates"
+											name="create_product_templates"
               />
+
+							<!-- Create Products -->
+              <button 
+                      type="object"
+                      class="oe_highlight"
+                      groups="openhealth.roots"
+
+											string="Create Product Products"
+											name="create_product_products"
+              />
+
 
 
               <!-- Example Remove --> 

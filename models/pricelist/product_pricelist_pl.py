@@ -21,8 +21,6 @@ class PriceListProduct(models.Model):
 	_inherit = 'openhealth.product.pricelist'
 
 
-
-
 # ---------------------------------------------- Fields - Chars -----------------------
 	family = fields.Selection(
 			selection=px_vars._family_list,

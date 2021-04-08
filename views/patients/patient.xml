@@ -310,11 +310,11 @@
 							</group>
 
 							<group>
+								<field name="x_autofill"    groups="openhealth.roots"/>
+
 								<field name="configurator"/>
 
 								<field name="x_admin_mode"  groups="openhealth.roots"/>
-
-								<field name="x_autofill"    groups="openhealth.roots"/>
 
 								<field name="x_legacy"                  groups="openhealth.roots"/>
 

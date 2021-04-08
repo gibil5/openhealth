@@ -6,15 +6,13 @@
 
 <!-- FORM -->
         <record model="ir.ui.view" id="view_physicia_form">
-
             <field name="name">physician.form</field>
             <field name="model">oeh.medical.physician</field>
 
             <field name="inherit_id" ref="oehealth.oeh_medical_physician_view"/>            
-            
+
             <field name="mode">primary</field>
             <field name="priority" eval="1"/>
-
             <field name="arch" type="xml">
 
 

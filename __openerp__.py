@@ -7,11 +7,10 @@
 """,
 'description': """
 
-7 apr 2021
-18:17
+8 apr 2021
 
 Created:        11 Sep 2016
-Last up:        30 Mar 2021
+Last up:         8 April 2021
 (From 17 Mar 2018 - 13 963)
 
 Using patterns:
@@ -78,11 +77,11 @@ Always clean your System:
 
 'author': "jrevilla55@gmail.com",
 'website': "http://jrevilla.com/",
-'category': 'Object Oriented, Microservices',
-'version': '5.0',
+'category': 'Object Oriented',
+'version': '7.0',
 
-'depends': ['base', 'oehealth', 'base_multi_image'],
-#'depends': ['base', 'base_multi_image', 'sale', 'purchase', 'account', 'product', 'document', 'hr', 'web'],
+#'depends': ['base', 'oehealth', 'base_multi_image'],
+'depends': ['base', 'base_multi_image', 'sale', 'purchase', 'account', 'product', 'document', 'hr', 'web'],
 
 'data': [
 
@@ -126,10 +125,14 @@ Always clean your System:
 	# Users Tacna
 	'data/users/base_data_users_tacna.xml',
 
+
+
 # ----------------------------------------------------------- Security - Users - First ------------------------------------------------------
 	'security/openhealth_security.xml',             # Groups
 	'security/openhealth_security_readers.xml',   	# Important
 	'security/openhealth_security_managers.xml',
+
+
 
 
 # ----------------------------------------------------------- Configurator ------------------------------------------------------
@@ -137,7 +140,9 @@ Always clean your System:
 
 
 # ----------------------------------------------------------- Actions ------------------------------------------------------
+	#'models/oeh_medical/oeh_medical_view.xml',
 	'views/patients/patient_actions.xml',
+
 
 # ----------------------------------------------------------- Recent ------------------------------------------------------
 	# Product Selector  - RSP
@@ -287,8 +292,10 @@ Always clean your System:
 	'views/treatments/treatment.xml',
 	'views/treatments/treatment_actions.xml',
 
+
 	# Physicians
-	'views/physicians/physician.xml',
+	#'views/physicians/physician.xml',
+
 
 	# Patients
 	'views/patients/patient_origin.xml',
@@ -311,7 +318,7 @@ Always clean your System:
 	'views/products/product_actions.xml',
 	
 	'views/products/product_product.xml',
-	'views/products/product_product_pl.xml',
+	#'views/products/product_product_pl.xml',
 	
 	'views/products/product_template.xml',
 	'views/products/product_template_2019.xml',
@@ -371,13 +378,13 @@ Always clean your System:
 	'views/menus/menus_prods_2019.xml',
 
 
-	'views/menus/menus_oeh.xml',
+	#'views/menus/menus_oeh.xml',
 	'views/menus/menus_management.xml',
 	'views/menus/menus_account.xml',
 
 # ----------------------------------------------------------- Security - Models - Last ------------------------------------------------------
-	'security/ir.model.access.csv',
-	'security/ir.rule.xml',                # Dep ?
+	#'security/ir.model.access.csv',
+	#'security/ir.rule.xml',                # Dep ?
 ],
 'demo': [],
 # Static - Style Css

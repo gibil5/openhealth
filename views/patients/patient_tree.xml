@@ -5,7 +5,10 @@
 
 
 <!-- TREE -->
+<!--
 		<record model="ir.ui.view" id="oehealth.oeh_medical_patient_tree">
+-->
+		<record model="ir.ui.view" id="oeh_medical_patient_tree">
 			<field name="name">patient.tree</field>
 			<field name="model">oeh.medical.patient</field>
 			<field name="arch" type="xml">          

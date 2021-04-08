@@ -23,39 +23,6 @@ class ConfiguratorEmr(models.Model):
 	_name = 'openhealth.configurator.emr'
 	_description = 'Configurator Emr'
 
-# ----------------------------------------------------------- Getters ----------
-	def get_number(self, laser, evaluation):
-		"""
-		Get nr controls, for controls and sessions.
-		Used by procedure.
-		"""
-
-		dic_control = {	
-				'laser_co2': self.nr_controls_co2, 
-				'laser_quick': self.nr_controls_quick, 
-				'laser_exc': self.nr_controls_exc, 
-				'laser_ipl': self.nr_controls_ipl, 
-				'laser_ndyag': self.nr_controls_ndyag 
-				}
-		dic_session = {	
-				'laser_co2': self.nr_sessions_co2, 
-				'laser_quick': self.nr_sessions_quick, 
-				'laser_exc': self.nr_sessions_exc, 
-				'laser_ipl': self.nr_sessions_ipl, 
-				'laser_ndyag': self.nr_sessions_ndyag 
-				}
-
-		number = 0
-		
-		if evaluation == 'control':
-			if laser in dic_control:
-				number = dic_control[laser]
-
-		elif evaluation == 'session':
-			if laser in dic_session:
-				number = dic_session[laser]
-
-		return number
 
 # --------------------------------------------- Companuy - Ticket and TXT ------
 	# Company
@@ -357,3 +324,38 @@ class ConfiguratorEmr(models.Model):
 				if day.holiday:
 					days_inactive.append(day.date)
 		return days_inactive
+
+
+# ----------------------------------------------------------- Getters ----------
+	def get_number(self, laser, evaluation):
+		"""
+		Get nr controls, for controls and sessions.
+		Used by procedure.
+		"""
+
+		dic_control = {	
+				'laser_co2': self.nr_controls_co2, 
+				'laser_quick': self.nr_controls_quick, 
+				'laser_exc': self.nr_controls_exc, 
+				'laser_ipl': self.nr_controls_ipl, 
+				'laser_ndyag': self.nr_controls_ndyag 
+				}
+		dic_session = {	
+				'laser_co2': self.nr_sessions_co2, 
+				'laser_quick': self.nr_sessions_quick, 
+				'laser_exc': self.nr_sessions_exc, 
+				'laser_ipl': self.nr_sessions_ipl, 
+				'laser_ndyag': self.nr_sessions_ndyag 
+				}
+
+		number = 0
+		
+		if evaluation == 'control':
+			if laser in dic_control:
+				number = dic_control[laser]
+
+		elif evaluation == 'session':
+			if laser in dic_session:
+				number = dic_session[laser]
+
+		return number

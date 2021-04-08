@@ -3,8 +3,13 @@
 # Commons
 from commons import *
 
+
+# Oeh Medical
+from oeh_medical import *
+
 # Management
 from management import *
+
 
 # Configurator
 from configurator import *

@@ -90,43 +90,25 @@ Groups and Categories
 
 
 <!-- Directors --> 
-<!--
 		<record id="directors" model="res.groups">
 			<field name="name">Directores</field>
 			<field name="category_id" ref="module_openhealth_category"/>
 			<field name="comment">cc</field>
+
 			<field name="implied_ids" eval="[       
 													(4, ref('purchase.group_purchase_manager')),
 													(4, ref('stock.group_stock_manager')),
 													(4, ref('base.group_hr_manager')),
 													(4, ref('oehealth.group_oeh_medical_manager')),
 												]"/>
+
 			<field name="users" eval="[
 													(4, ref('openhealth.director_clinicachavarri')),
+
 													(4, ref('openhealth.rchavarri_clinicachavarri')),
 													(4, ref('openhealth.fchavarri_clinicachavarri')),
 									]"/>
 		</record>
--->
-
-<!-- Directors --> 
-		<record id="directors" model="res.groups">
-			<field name="name">Directores</field>
-			<field name="category_id" ref="module_openhealth_category"/>
-			<field name="comment">cc</field>
-			<field name="implied_ids" eval="[       
-													(4, ref('purchase.group_purchase_manager')),
-													(4, ref('stock.group_stock_manager')),
-													(4, ref('base.group_hr_manager')),
-												]"/>
-			<field name="users" eval="[
-													(4, ref('openhealth.director_clinicachavarri')),
-													(4, ref('openhealth.rchavarri_clinicachavarri')),
-													(4, ref('openhealth.fchavarri_clinicachavarri')),
-									]"/>
-		</record>
-
-
 
 
 
@@ -135,14 +117,17 @@ Groups and Categories
 			<field name="name">Managers</field>
 			<field name="category_id" ref="module_openhealth_category"/>
 			<field name="comment">cc</field>
-			<!--
 			<field name="implied_ids" eval="[(4, ref('oehealth.group_oeh_medical_physician'))]"/>
-			-->
+
 			<field name="users" eval="[ 
 													(4, ref('openhealth.manager_clinicachavarri')),
+
+
 													(4, ref('openhealth.eruiz_clinicachavarri')),
+
 													(4, ref('openhealth.mmattos_clinicachavarri')),
 													(4, ref('openhealth.svargas_clinicachavarri')),
+
 													(4, ref('openhealth.lloli_clinicachavarri')),
 													(4, ref('openhealth.pbalboa_clinicachavarri')),
 													(4, ref('openhealth.achaponan_clinicachavarri')),
@@ -158,9 +143,8 @@ Groups and Categories
 			<field name="name">Archivadores</field>
 			<field name="category_id" ref="module_openhealth_category"/>
 			<field name="comment">cc</field>
-			<!--
 			<field name="implied_ids" eval="[(4, ref('oehealth.group_oeh_medical_physician'))]"/>
-			-->
+
 			<field name="users" eval="[ 
 													(4, ref('openhealth.archivo_clinicachavarri')),
 									]"/>
@@ -173,9 +157,8 @@ Groups and Categories
 			<field name="name">Medicos</field>
 			<field name="category_id" ref="module_openhealth_category"/>
 			<field name="comment">cc</field>
-			<!--
 			<field name="implied_ids" eval="[(4, ref('oehealth.group_oeh_medical_physician'))]"/>
-			-->
+
 			<field name="users" eval="[ 
 													(4, ref('openhealth.medico_clinicachavarri')),
 													(4, ref('openhealth.nescobar_clinicachavarri')),
@@ -195,9 +178,8 @@ Groups and Categories
 			<field name="name">Asistentes</field>
 			<field name="category_id" ref="module_openhealth_category"/>
 			<field name="comment">cc</field>
-			<!--
 			<field name="implied_ids" eval="[(4, ref('oehealth.group_oeh_medical_physician'))]"/>
-			-->
+
 			<field name="users" eval="[ 
 													(4, ref('openhealth.asistente_clinicachavarri')),
 

@@ -168,8 +168,9 @@
                 <tree string="Partner Tree">
 
                     <field name="name"/>
+                    <!--
                     <field name="is_patient"/>
-
+                    -->
                     <field name="write_date"/>
                     <field name="lang"/>
                     <field name="property_supplier_payment_term_id"/>

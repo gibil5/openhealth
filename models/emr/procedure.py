@@ -175,7 +175,7 @@ class EmrProcedure(models.Model):
 		#print 'Get Default App - 2'
 		patient = self.treatment.patient
 		doctor = self.treatment.physician
- 		app = self.env[_model_app].search([
+		app = self.env[_model_app].search([
 																('patient', '=', patient),
 																('doctor', '=', doctor),
 														],
@@ -184,7 +184,7 @@ class EmrProcedure(models.Model):
 														)
 		#print patient
 		#print doctor
- 		#print app
+		#print app
 		return app
 
 
@@ -193,7 +193,7 @@ class EmrProcedure(models.Model):
 		#print 'Get Default App'
 		patient = self.patient
 		doctor = self.doctor
- 		app = self.env[_model_app].search([
+		app = self.env[_model_app].search([
 																('patient', '=', patient),
 																('doctor', '=', doctor),
 														],
@@ -202,7 +202,7 @@ class EmrProcedure(models.Model):
 														)
 		#print self.patient
 		#print self.doctor
- 		#print app
+		#print app
 		return app
 	# _get_default_appointment
 
@@ -216,7 +216,7 @@ class EmrProcedure(models.Model):
 		patient = self.patient
 		doctor = self.doctor
 		x_type = 'procedure'
- 		app = self.env[_model_app].search([
+		app = self.env[_model_app].search([
 																('patient', '=', patient.name),
 																('doctor', '=', doctor.name),
 																('x_type', '=', x_type),
@@ -225,8 +225,8 @@ class EmrProcedure(models.Model):
 															order='appointment_date desc',
 															limit=1,
 														)
- 		#print app
- 		self.appointment = app
+		#print app
+		self.appointment = app
 
 
 

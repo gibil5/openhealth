@@ -18,7 +18,7 @@ from .lib import mgt_funcs, prod_funcs, mgt_db
 from .mgt_order_line import MgtOrderLine
 from .management_db import ManagementDb
 
-from physician import Physician
+#from physician import Physician
 
 # ------------------------------------------------------------------- Class -----------------------
 class SalesDoctor(object):

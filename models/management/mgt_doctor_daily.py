@@ -7,6 +7,8 @@
 	Created: 			 8 Dec 2019
 	Last: 				27 mar 2021
 """
+from __future__ import absolute_import
+
 import datetime
 from openerp import models, fields, api
 

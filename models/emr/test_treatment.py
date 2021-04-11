@@ -10,7 +10,10 @@
 	Last up: 	 		 5 apr 2021
 """
 from __future__ import print_function
-from openerp.addons.price_list.models.lib import test_funcs
+
+#from openerp.addons.price_list.models.lib import test_funcs
+from . import test_funcs
+
 #from openerp import _
 #from openerp.exceptions import Warning as UserError
 

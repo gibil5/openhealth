@@ -6,6 +6,8 @@
 	Created: 			28 may 2018
 	Last up: 	 		29 mar 2021
 """
+from __future__ import absolute_import
+
 from openerp import models, fields, api
 import openerp.addons.decimal_precision as dp
 

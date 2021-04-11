@@ -10,6 +10,8 @@
 	Last up: 	 		29 mar 2021
 """
 from __future__ import print_function
+from __future__ import absolute_import
+
 import numpy as np
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.order import ord_vars

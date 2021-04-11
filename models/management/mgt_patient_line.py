@@ -7,6 +7,8 @@
 	Last up: 			27 oct 2020
 """
 from __future__ import print_function
+from __future__ import absolute_import
+
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.patient import pat_vars
 from .management_db import ManagementDb

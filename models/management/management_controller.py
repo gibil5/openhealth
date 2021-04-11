@@ -9,11 +9,14 @@
 	Last up: 			 4 apr 2021
 """
 from __future__ import print_function
+from __future__ import absolute_import
+
 import collections
 from openerp import models, fields, api
 from .mgt_patient_line import MgtPatientLine
-from sales_doctor import SalesDoctor
 from .management_db import ManagementDb
+
+#from sales_doctor import SalesDoctor
 
 from .lib import mgt_funcs, prod_funcs, mgt_bridge, mgt_vars
 

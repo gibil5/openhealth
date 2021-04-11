@@ -13,8 +13,8 @@ from openerp import models, fields, api
 import openerp.addons.decimal_precision as dp
 
 #from openerp.addons.openhealth.models.libs import lib
-#from libs import lib
-from libs import commons_lib as lib
+#from .libs import lib
+from .libs import commons_lib as lib
 
 class Line(models.Model):	
 

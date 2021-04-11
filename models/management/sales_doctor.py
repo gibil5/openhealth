@@ -12,11 +12,13 @@
     Last up:             12 dec 2020
 """
 from __future__ import print_function
-from lib import mgt_funcs, prod_funcs, mgt_db
-from physician import Physician
-from mgt_order_line import MgtOrderLine
+from __future__ import absolute_import
 
-from management_db import ManagementDb
+from .lib import mgt_funcs, prod_funcs, mgt_db
+from .mgt_order_line import MgtOrderLine
+from .management_db import ManagementDb
+
+from physician import Physician
 
 # ------------------------------------------------------------------- Class -----------------------
 class SalesDoctor(object):

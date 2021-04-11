@@ -7,7 +7,10 @@
 """
 import datetime
 import base64
-import cStringIO
+
+#import cStringIO
+from io import StringIO ## for Python 3
+
 import qrcode
 
 #------------------------------------------------ Get QR Data -------------------------------------
@@ -114,7 +117,8 @@ def get_qr_img(qr_data):
 
 	img = qr.make_image()
 
-	buffer = cStringIO.StringIO()
+	#buffer = cStringIO.StringIO()
+	buffer = io.StringIO()
 
 	img.save(buffer, format="PNG")
 

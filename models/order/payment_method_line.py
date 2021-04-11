@@ -12,7 +12,7 @@ from . import pm_vars
 from openerp.addons.openhealth.models.commons.libs import commons_lib as lib
 
 #from openerp.addons.openhealth.models.libs import acc_lib
-from commons import acc_lib
+from .commons import acc_lib
 
 #class payment_method_line(models.Model):
 class PaymentMethodLine(models.Model):

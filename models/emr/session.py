@@ -12,7 +12,7 @@ from datetime import datetime
 from . import eval_vars
 
 #from . import time_funcs
-from commons import tre_funcs as time_funcs
+from .commons import tre_funcs as time_funcs
 
 
 class Session(models.Model):

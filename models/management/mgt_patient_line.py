@@ -9,7 +9,7 @@
 from __future__ import print_function
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.patient import pat_vars
-from management_db import ManagementDb
+from .management_db import ManagementDb
 
 
 class MgtPatientLine(models.Model):

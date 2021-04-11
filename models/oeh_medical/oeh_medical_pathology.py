@@ -5,7 +5,8 @@
 
 import openerp
 from openerp import SUPERUSER_ID
-from openerp import pooler, tools, api
+#from openerp import pooler, tools, api
+from openerp import tools, api
 from openerp.osv import osv, fields
 from openerp.tools.translate import _
 

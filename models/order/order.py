@@ -37,14 +37,14 @@ from __future__ import print_function
 import datetime
 from openerp import models, fields, api
 
-from commons import pl_creates, action_funcs
+from .commons import pl_creates, action_funcs
 from . import ord_vars
 from . import raw_funcs
 from . import qr
 from . import fix_treatment
 from . import ord_funcs
 
-#from libs import pl_creates, eval_vars, tre_funcs, action_funcs
+#from .libs import pl_creates, eval_vars, tre_funcs, action_funcs
 #from openerp.addons.openhealth.models.libs import pl_creates, action_funcs
 #from openerp.addons.openhealth.models.commons.libs import pl_creates, action_funcs
 #from . import test_order

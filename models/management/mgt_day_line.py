@@ -15,7 +15,7 @@ from openerp import models, fields, api
 from openerp.addons.openhealth.models.order import ord_vars
 
 #from . import mgt_funcs
-from lib import mgt_funcs
+from .lib import mgt_funcs
 
 #from openerp.addons.openhealth.models.libs import lib
 #from openerp.addons.openhealth.models.commons.libs import lib

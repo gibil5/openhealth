@@ -2,16 +2,16 @@
 """
 	*** OPEN HEALTH - Card 
 	Created: 			25 Aug 2017
- 	Last up: 	 			29 mar 2021
+	Last up: 	 			29 mar 2021
 """
 from datetime import datetime
 from openerp import models, fields, api
 
 #from openerp.addons.openhealth.models.libs import count_funcs
 #from openerp.addons.openhealth.models.commons.libs import count_funcs
-#from commons import count_funcs_dep
+#from .commons import count_funcs_dep
 
-from commons import count_funcs
+from .commons import count_funcs
 
 
 class ZerroError(Exception):
@@ -110,7 +110,7 @@ class OrderCard(models.Model):
 
 
 		name_ctr = 'vip'
- 		counter = self.env['openhealth.counter'].search([
+		counter = self.env['openhealth.counter'].search([
 																('name', '=', name_ctr), 
 															],
 																#order='write_date desc',

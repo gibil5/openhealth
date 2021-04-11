@@ -14,7 +14,7 @@ from . import count_vars
 
 #from openerp.addons.openhealth.models.libs import user
 #from openerp.addons.openhealth.models.commons.libs import user
-from commons import user_dep
+from .commons import user_dep
 
 class PatientCounter(models.Model):
 	_name = 'openhealth.counter'

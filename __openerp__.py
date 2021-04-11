@@ -7,7 +7,7 @@
 """,
 'description': """
 
-8 apr 2021
+11 apr 2021
 
 Created:        11 Sep 2016
 Last up:         8 April 2021
@@ -384,9 +384,11 @@ Always clean your System:
 	'views/menus/menus_management.xml',
 	'views/menus/menus_account.xml',
 
+
 # ----------------------------------------------------------- Security - Models - Last ------------------------------------------------------
-	#'security/ir.model.access.csv',
-	#'security/ir.rule.xml',                # Dep ?
+	'security/ir.model.access.csv',
+	'security/ir.rule.xml',
+
 ],
 'demo': [],
 # Static - Style Css

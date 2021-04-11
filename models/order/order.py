@@ -189,7 +189,7 @@ class SaleOrder(models.Model):
 	pl_family = fields.Char(
 			string="Pl - Familia",
 
-			compute='_compute_pl_family',
+			#compute='_compute_pl_family',
 		)
 	@api.multi
 	def _compute_pl_family(self):
@@ -198,6 +198,7 @@ class SaleOrder(models.Model):
 			for line in record.order_line:
 				families = families + line.get_family() + ', '
 			record.pl_family = families[0:-2]
+
 
 	# Descriptor - Product
 	pl_product = fields.Char(

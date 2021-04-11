@@ -11,7 +11,7 @@ access_openhealth_patient_control,openhealth.patient.control,model_openhealth_pa
 access_openhealth_patient_sale,openhealth.patient.sale,model_openhealth_patient_sale,,1,1,1,1
 
 
-access_oeh_medical_physician,oeh.medical.physician,oehealth.model_oeh_medical_physician,,1,1,1,0
+access_oeh_medical_physician,oeh.medical.physician,model_oeh_medical_physician,,1,1,1,0
 
 
 access_stock_move,stock.move,stock.model_stock_move,,1,1,1,1
@@ -21,10 +21,10 @@ access_account_invoice,account.invoice,account.model_account_invoice,,1,1,1,1
 access_sale_order,sale.order,model_sale_order,,1,1,1,0
 
 
-access_oeh_medical_appointment,oeh.medical.appointment,oehealth.model_oeh_medical_appointment,oehealth.group_oeh_medical_physician,1,1,1,1
-access_oeh_medical_appointment_caja,oeh.medical.appointment caja,oehealth.model_oeh_medical_appointment,openhealth.caja,1,1,1,0
-access_oeh_medical_appointment_reception,oeh.medical.appointment reception,oehealth.model_oeh_medical_appointment,openhealth.reception,1,1,1,1
-access_oeh_medical_appointment_manager,oeh.medical.appointment manager,oehealth.model_oeh_medical_appointment,openhealth.managers,1,1,1,1
+access_oeh_medical_appointment,oeh.medical.appointment,model_oeh_medical_appointment,group_oeh_medical_physician,1,1,1,1
+access_oeh_medical_appointment_caja,oeh.medical.appointment caja,model_oeh_medical_appointment,openhealth.caja,1,1,1,0
+access_oeh_medical_appointment_reception,oeh.medical.appointment reception,model_oeh_medical_appointment,openhealth.reception,1,1,1,1
+access_oeh_medical_appointment_manager,oeh.medical.appointment manager,model_oeh_medical_appointment,openhealth.managers,1,1,1,1
 
 
 access_openhealth_doctor,access_openhealth_doctor,model_openhealth_doctor,,1,1,1,1
@@ -167,10 +167,10 @@ access_openhealth_procedure_readers,openhealth.procedure.readers,model_openhealt
 access_openhealth_procedure_caja,openhealth.procedure.caja,model_openhealth_procedure,openhealth.caja,1,1,1,0
 
 
-access_oeh_medical_patient_directors,oeh.medical.patient directors,oehealth.model_oeh_medical_patient,openhealth.directors,1,1,1,1
-access_oeh_medical_patient_caja,oeh.medical.patient caja,oehealth.model_oeh_medical_patient,openhealth.caja,1,1,1,0
-access_oeh_medical_patient_reception,oeh.medical.patient reception,oehealth.model_oeh_medical_patient,openhealth.reception,1,1,1,0
-access_oeh_medical_patient_archivers,oeh.medical.patient archivers,oehealth.model_oeh_medical_patient,openhealth.archivers,1,1,1,0
+access_oeh_medical_patient_directors,oeh.medical.patient directors,model_oeh_medical_patient,openhealth.directors,1,1,1,1
+access_oeh_medical_patient_caja,oeh.medical.patient caja,model_oeh_medical_patient,openhealth.caja,1,1,1,0
+access_oeh_medical_patient_reception,oeh.medical.patient reception,model_oeh_medical_patient,openhealth.reception,1,1,1,0
+access_oeh_medical_patient_archivers,oeh.medical.patient archivers,model_oeh_medical_patient,openhealth.archivers,1,1,1,0
 
 access_product_product_stock_user,product_product_stock_user,product.model_product_product,stock.group_stock_user,1,0,0,0
 access_product_template_stock_user,product.template stock user,product.model_product_template,stock.group_stock_user,1,0,0,0

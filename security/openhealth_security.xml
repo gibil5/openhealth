@@ -5,6 +5,29 @@
 <!--
 Groups and Categories
 -->
+<record model="ir.module.category" id="module_oeh_medical_category">
+				<field name="name">oeHealth</field>
+				<field name="sequence">0</field>
+				<field name="visible" eval="0" />
+</record>
+
+<record id="group_oeh_medical_patient" model="res.groups">
+		<field name="name">Patient</field>
+		<field name="category_id" ref="module_oeh_medical_category"/>
+</record>
+
+<record id="group_oeh_medical_physician" model="res.groups">
+		<field name="name">Physician</field>
+		<field name="category_id" ref="module_oeh_medical_category"/>
+</record>
+
+<record id="group_oeh_medical_manager" model="res.groups">
+		<field name="name">Health Center Admin</field>
+		<field name="category_id" ref="module_oeh_medical_category"/>
+		<field name="users" eval="[(4, ref('base.user_root'))]"/>
+</record>
+
+
 
 
 
@@ -138,6 +161,7 @@ Groups and Categories
 			<!--
 			<field name="implied_ids" eval="[(4, ref('oehealth.group_oeh_medical_physician'))]"/>
 			-->
+			<field name="implied_ids" eval="[(4, ref('group_oeh_medical_physician'))]"/>
 			<field name="users" eval="[ 
 													(4, ref('openhealth.manager_clinicachavarri')),
 													(4, ref('openhealth.eruiz_clinicachavarri')),
@@ -161,6 +185,7 @@ Groups and Categories
 			<!--
 			<field name="implied_ids" eval="[(4, ref('oehealth.group_oeh_medical_physician'))]"/>
 			-->
+			<field name="implied_ids" eval="[(4, ref('group_oeh_medical_physician'))]"/>
 			<field name="users" eval="[ 
 													(4, ref('openhealth.archivo_clinicachavarri')),
 									]"/>
@@ -176,6 +201,8 @@ Groups and Categories
 			<!--
 			<field name="implied_ids" eval="[(4, ref('oehealth.group_oeh_medical_physician'))]"/>
 			-->
+			<field name="implied_ids" eval="[(4, ref('group_oeh_medical_physician'))]"/>
+
 			<field name="users" eval="[ 
 													(4, ref('openhealth.medico_clinicachavarri')),
 													(4, ref('openhealth.nescobar_clinicachavarri')),
@@ -195,9 +222,13 @@ Groups and Categories
 			<field name="name">Asistentes</field>
 			<field name="category_id" ref="module_openhealth_category"/>
 			<field name="comment">cc</field>
+			
 			<!--
 			<field name="implied_ids" eval="[(4, ref('oehealth.group_oeh_medical_physician'))]"/>
 			-->
+
+			<field name="implied_ids" eval="[(4, ref('group_oeh_medical_physician'))]"/>
+
 			<field name="users" eval="[ 
 													(4, ref('openhealth.asistente_clinicachavarri')),
 

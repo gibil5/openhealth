@@ -1,0 +1,16 @@
+"""
+Rutter 
+Created:  8 apr 2021 
+Last:  8 apr 2021 
+"""
+
+
+oeh.medical.patient.current_insurance with unknown comodel_name 'oeh.medical.insurance'
+
+oeh.medical.patient.ethnic_group with unknown comodel_name 'oeh.medical.ethnicity'
+
+oeh.medical.patient.genetic_risks with unknown comodel_name 'oeh.medical.genetics'
+
+oeh.medical.patient.x_allergies with unknown comodel_name 'openhealth.allergy'
+
+Non-stored field sale.order.pl_family cannot be searched.

@@ -12,7 +12,8 @@ from __future__ import absolute_import
 import datetime
 from openerp import models, fields, api
 
-from openerp.addons.openhealth.models.order import ord_vars
+#from openerp.addons.openhealth.models.order import ord_vars
+from ..order import ord_vars
 
 #class DoctorDaily(models.Model):
 class MgtDoctorDaily(models.Model):

@@ -1,9 +1,6 @@
 class ProductSubFamilyValueException(Exception):
 	pass
 
-
-
-
 # --------------------------------------------- Handle Exceptions subfamily ----
 #@api.multi
 def handle_exceptions_subfamily(self):
@@ -20,17 +17,14 @@ def handle_exceptions_subfamily(self):
 	# subfamily
 	try:
 		if self.pl_subfamily not in subfamily_arr:
-		msg = "ERROR: Producto Sub Familia Incorrecta"
-		raise ProductSubFamilyValueException
+			msg = "ERROR: Producto Sub Familia Incorrecta"
+			raise ProductSubFamilyValueException
 
 	except ProductSubFamilyValueException:
 		class_name = type(self).__name__
 		obj_name = self.name
 		msg =  msg + '\n' + class_name + '\n' + obj_name
 		raise UserError(_(msg))
-
-
-
 
 
 # ----------------------------------------------------------- Handle Exceptions -------------------------

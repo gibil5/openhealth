@@ -5,7 +5,7 @@ from __future__ import absolute_import
 from .commons import *
 
 # Oeh Medical
-#from .oeh_medical import *
+from .oeh_medical import *
 
 # Management
 from .management import *

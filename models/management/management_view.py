@@ -16,7 +16,7 @@ from .mgt_patient_line import MgtPatientLine
 from .management_db import ManagementDb
 from .lib import mgt_funcs, prod_funcs, mgt_bridge, mgt_vars
 
-#from .sales_doctor import SalesDoctor
+from .sales_doctor import SalesDoctor
 
 # ------------------------------------------------------------------- Class -----------------------
 class Management(models.Model):
@@ -917,7 +917,7 @@ class Management(models.Model):
 		#self.update_sales_by_doctor()
 
 
-		#obj = SalesDoctor(self, self.date_begin, self.date_end, self.doctor_line, self.total_amount)
+		obj = SalesDoctor(self, self.date_begin, self.date_end, self.doctor_line, self.total_amount)
 		obj.update()
 
 		# Stats

@@ -6,9 +6,106 @@
 		pricelist_container.py
 
 	Created: 			 7 apr 2021
-	Last up: 	 		 7 apr 2021
+	Last up: 	 		12 apr 2021
 """
 from __future__ import print_function
+
+
+# -------------------------------------------------------------- Count Product Product ----
+def count_product_pricelistt(self):
+	"""
+	count_product_pricelistt
+	"""
+	print()
+	print('count_product_pricelistt')
+	count = self.env['openhealth.product.pricelist'].search_count([])
+	return count
+
+
+# -------------------------------------------------------------- Create Product Product ----
+def create_product(self, pro, model):
+	"""
+	create_product_product
+	"""
+	print()
+	print('create_product_product')
+
+	#product_product = self.env['product.product'].create({
+	product = self.env[model].create({
+		'name': 			pro.name,
+		'sale_ok': 			True,
+		'purchase_ok': 		False,
+		'pl_price_list': 	'2019',
+		'pl_time_stamp': 	pro.time_stamp,
+		'type': 			pro.x_type,
+		'pl_name_short': 	pro.name_short,
+		'pl_prefix': 		pro.prefix,
+		'pl_idx': 			pro.idx,
+		'pl_idx_int': 		pro.idx_int,
+		'pl_family': 		pro.family,
+		'pl_subfamily':		pro.subfamily,
+		'pl_treatment': 	pro.treatment,
+		'pl_zone': 			pro.zone,
+		'pl_pathology': 	pro.pathology,
+		'pl_level': 		pro.level,
+		'pl_sessions': 		pro.sessions,
+		'pl_time': 			pro.time,
+		'list_price': 				pro.price,
+		'pl_price_vip': 			pro.price_vip,
+		'pl_price_company': 		pro.price_company,
+		'pl_price_session': 		pro.price_session,
+		'pl_price_session_next': 	pro.price_session_next,
+		'pl_price_max': 			pro.price_max,
+
+		# Only Prods
+		'pl_manufacturer': 			pro.manufacturer,
+		'pl_brand': 				pro.brand,
+	})
+
+	return product
+
+
+
+# -------------------------------------------------------------- Write Product Product ----
+def write_product(pro, product_product):
+	"""
+	create_product_product
+	"""
+	print()
+	print('create_product_product')
+
+	product_product.write({
+		'name': 			pro.name,
+		'sale_ok': 			True,
+		'purchase_ok': 		False,
+		'pl_price_list': 	'2019',
+		'pl_time_stamp': 	pro.time_stamp,
+		'type': 			pro.x_type,
+		'pl_name_short': 	pro.name_short,
+		'pl_prefix': 		pro.prefix,
+		'pl_idx': 			pro.idx,
+		'pl_idx_int': 		pro.idx_int,
+		'pl_family': 		pro.family,
+		'pl_subfamily':		pro.subfamily,
+		'pl_treatment': 	pro.treatment,
+		'pl_zone': 			pro.zone,
+		'pl_pathology': 	pro.pathology,
+		'pl_level': 		pro.level,
+		'pl_sessions': 		pro.sessions,
+		'pl_time': 			pro.time,
+		'list_price': 				pro.price,
+		'pl_price_vip': 			pro.price_vip,
+		'pl_price_company': 		pro.price_company,
+		'pl_price_session': 		pro.price_session,
+		'pl_price_session_next': 	pro.price_session_next,
+		'pl_price_max': 			pro.price_max,
+
+		# Only Prods
+		'pl_manufacturer': 			pro.manufacturer,
+		'pl_brand': 				pro.brand,
+	})
+
+	return product_product
 
 
 # -------------------------------------------------------------- Create Pl products ----

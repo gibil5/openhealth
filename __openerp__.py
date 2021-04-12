@@ -376,7 +376,7 @@ Always clean your System:
 	'views/menus/menus_products.xml',
 
 
-	#'views/menus/prod_2019_actions.xml',
+	'views/menus/prod_2019_actions.xml',
 	'views/menus/menus_prods_2019.xml',
 
 
@@ -388,9 +388,11 @@ Always clean your System:
 # ----------------------------------------------------------- Security - Models - Last ------------------------------------------------------
 	'security/ir.model.access.csv',
 	'security/ir.rule.xml',
-
 ],
+
+# Demo
 'demo': [],
+
 # Static - Style Css
 'css': ['static/src/css/jx.css'],
 'js': [],

@@ -19,6 +19,7 @@ from .mgt_order_line import MgtOrderLine
 from .management_db import ManagementDb
 
 #from physician import Physician
+#from oeh.medical.physician import Physician
 
 # ------------------------------------------------------------------- Class -----------------------
 class SalesDoctor(object):
@@ -56,7 +57,8 @@ class SalesDoctor(object):
         total_tickets = 0
 
         # Get - Should be static method
-        doctors = Physician.get_doctors(self.management)
+        #doctors = Physician.get_doctors(self.management)
+        doctors = []
         print(doctors)
 
 

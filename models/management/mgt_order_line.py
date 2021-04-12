@@ -9,17 +9,17 @@
 from __future__ import absolute_import
 
 from openerp import models, fields, api
-import openerp.addons.decimal_precision as dp
+#import openerp.addons.decimal_precision as dp
 
 
-from openerp.addons.openhealth.models.order import ord_vars
 
-#from openerp.addons.openhealth.models.libs import lib
-#from openerp.addons.openhealth.models.commons.libs import lib
-from openerp.addons.openhealth.models.commons.libs import commons_lib as lib
+#from openerp.addons.openhealth.models.commons.libs import commons_lib as lib
+#from openerp.addons.openhealth.models.commons import prodvars
+from ..commons.libs import commons_lib as lib
+from ..commons import prodvars
 
-from openerp.addons.openhealth.models.commons import prodvars
-
+#from openerp.addons.openhealth.models.order import ord_vars
+from ..order import ord_vars
 
 class MgtOrderLine(models.Model):
 	"""
@@ -100,7 +100,7 @@ class MgtOrderLine(models.Model):
 	# Qty
 	product_uom_qty = fields.Float(
 			string='Cantidad',
-			digits=dp.get_precision('Product Unit of Measure'),
+			#digits=dp.get_precision('Product Unit of Measure'),
 			default=1.0,
 			required=True,
 		)
@@ -110,7 +110,7 @@ class MgtOrderLine(models.Model):
 	# Unit
 	price_unit = fields.Float(
 			'Precio Unit.',
-			digits=dp.get_precision('Product Price'),
+			#digits=dp.get_precision('Product Price'),
 			default=0.0,
 			required=True,
 		)

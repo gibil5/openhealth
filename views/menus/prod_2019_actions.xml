@@ -1,10 +1,33 @@
 <openerp>
 	<data>
 
-
+<!-- TREE 2 -->
+<record model="ir.ui.view" id="product_template_list_2">
+	<field name="name">price_list product template list</field>
+	<field name="model">product.template</field>
+	<field name="arch" type="xml">
+		<tree>
+			<field name="name"/>
+			<field name="pl_treatment"/>
+            <field name="create_date"/>
+            <field name="__last_update"/>
+		</tree>
+	</field>
+</record>
 
 
 <!-- ACTIONS -->
+<!-- 2018 -->
+<record model="ir.actions.act_window" id="product_template_2018_list_action">
+    <field name="name">product template 2018</field>
+    <field name="res_model">product.template</field>
+    <field name="view_mode">tree,form</field>
+    <field name="view_id" ref="product_template_list"/> 
+    <field name="domain">[
+                            ('pl_price_list', '=', '2018'),
+                        ]
+    </field>
+</record>
 
 		<!-- All -->
 		<record model="ir.actions.act_window" id="product_template_list_action">
@@ -18,12 +41,12 @@
 
 
 		<!-- 2018 -->
-		<record model="ir.actions.act_window" id="price_list.product_template_2018_list_action">
+		<record model="ir.actions.act_window" id="product_template_2018_list_action">
 			<field name="name">product template 2018</field>
 			<field name="res_model">product.template</field>
 			<field name="view_mode">tree,form</field>
 
-			<field name="view_id" ref="price_list.product_template_list"/> 
+			<field name="view_id" ref="product_template_list"/> 
 
 			<field name="domain">[
 									('pl_price_list', '=', '2018'),
@@ -32,12 +55,12 @@
 		</record>
 
 		<!-- All -->
-		<record model="ir.actions.act_window" id="price_list.product_template_list_action">
+		<record model="ir.actions.act_window" id="product_template_list_action">
 			<field name="name">product template window</field>
 			<field name="res_model">product.template</field>
 			<field name="view_mode">tree,form</field>
 
-			<field name="view_id" ref="price_list.product_template_list"/> 
+			<field name="view_id" ref="product_template_list"/> 
 
 		</record>
 
@@ -47,13 +70,13 @@
 
 <!-- ACTIONS -->
 		<!-- Action - 2019 - All -->
-		<record model="ir.actions.act_window" id="price_list.product_template_2019_list_action">
+		<record model="ir.actions.act_window" id="product_template_2019_list_action">
 			
 			<field name="name">TODOS</field>
 
 			<field name="res_model">product.template</field>
 			<field name="view_mode">tree,form</field>
-			<field name="view_id" ref="price_list.product_template_list"/> 
+			<field name="view_id" ref="product_template_list"/> 
 
 			<field name="domain">[
 									('pl_price_list', '=', '2019'),
@@ -66,13 +89,13 @@
 
 
 		<!-- Action - 2019 - Services -->
-		<record model="ir.actions.act_window" id="price_list.product_template_2019_services_list_action">
+		<record model="ir.actions.act_window" id="product_template_2019_services_list_action">
 			
 			<field name="name">SERVICIOS</field>
 
 			<field name="res_model">product.template</field>
 			<field name="view_mode">tree,form</field>
-			<field name="view_id" ref="price_list.product_template_list"/>
+			<field name="view_id" ref="product_template_list"/>
 			<field name="domain">[
 									('pl_price_list', '=', '2019'),
 									('type', '=', 'service'),
@@ -88,11 +111,11 @@
 
 
 		<!-- Action - 2019 - prod -->
-		<record model="ir.actions.act_window" id="price_list.product_template_2019_prod_list_action">
+		<record model="ir.actions.act_window" id="product_template_2019_prod_list_action">
 			<field name="name">PRODUCTOS</field>
 			<field name="res_model">product.template</field>
 			<field name="view_mode">tree,form</field>
-			<field name="view_id" ref="price_list.product_template_stockable_list"/> 
+			<field name="view_id" ref="product_template_stockable_list"/> 
 			<field name="domain">[
 									('pl_price_list', '=', '2019'),
 									('type', '=', 'product'),
@@ -105,13 +128,13 @@
 
 
 		<!-- Action - 2019 - Consultation -->
-		<record model="ir.actions.act_window" id="price_list.product_template_2019_consultation_list_action">
+		<record model="ir.actions.act_window" id="product_template_2019_consultation_list_action">
 			
 			<field name="name">CONSULTAS</field>
 			
 			<field name="res_model">product.template</field>
 			<field name="view_mode">tree,form</field>
-			<field name="view_id" ref="price_list.product_template_list"/> 
+			<field name="view_id" ref="product_template_list"/> 
 
 			<field name="domain">[
 									('pl_price_list', '=', '2019'),
@@ -126,13 +149,13 @@
 
 
 		<!-- Action - 2019 - Co2 -->
-		<record model="ir.actions.act_window" id="price_list.product_template_2019_co2_list_action">
+		<record model="ir.actions.act_window" id="product_template_2019_co2_list_action">
 			
 			<field name="name">LASER CO2</field>
 			
 			<field name="res_model">product.template</field>
 			<field name="view_mode">tree,form</field>
-			<field name="view_id" ref="price_list.product_template_list"/> 
+			<field name="view_id" ref="product_template_list"/> 
 
 <!--
 									('pl_treatment', '=', 'LASER CO2 FRACCIONAL'),
@@ -150,12 +173,12 @@
 
 
 		<!-- Action - 2019 - exc -->
-		<record model="ir.actions.act_window" id="price_list.product_template_2019_exc_list_action">
+		<record model="ir.actions.act_window" id="product_template_2019_exc_list_action">
 			<field name="name">LASER EXCILITE</field>
 			<field name="res_model">product.template</field>
 			<field name="view_mode">tree,form</field>
 
-			<field name="view_id" ref="price_list.product_template_list"/> 
+			<field name="view_id" ref="product_template_list"/> 
 
 			<field name="domain">[
 									('pl_price_list', '=', '2019'),
@@ -166,12 +189,12 @@
 		</record>
 
 		<!-- Action - 2019 - ipl -->
-		<record model="ir.actions.act_window" id="price_list.product_template_2019_ipl_list_action">			
+		<record model="ir.actions.act_window" id="product_template_2019_ipl_list_action">			
 			<field name="name">LASER M22 IPL</field>
 			<field name="res_model">product.template</field>
 			<field name="view_mode">tree,form</field>
 
-			<field name="view_id" ref="price_list.product_template_list"/> 
+			<field name="view_id" ref="product_template_list"/> 
 
 			<field name="domain">[
 									('pl_price_list', '=', '2019'),
@@ -183,12 +206,12 @@
 
 
 		<!-- Action - 2019 - ndy -->
-		<record model="ir.actions.act_window" id="price_list.product_template_2019_ndyag_list_action">
+		<record model="ir.actions.act_window" id="product_template_2019_ndyag_list_action">
 			<field name="name">LASER M22 ND YAG</field>
 			<field name="res_model">product.template</field>
 			<field name="view_mode">tree,form</field>
 
-			<field name="view_id" ref="price_list.product_template_list"/> 
+			<field name="view_id" ref="product_template_list"/> 
 
 			<field name="domain">[
 									('pl_price_list', '=', '2019'),
@@ -201,11 +224,11 @@
 
 
 		<!-- Action - 2019 - quick -->
-		<record model="ir.actions.act_window" id="price_list.product_template_2019_quick_list_action">
+		<record model="ir.actions.act_window" id="product_template_2019_quick_list_action">
 			<field name="name">QUICKLASER</field>
 			<field name="res_model">product.template</field>
 			<field name="view_mode">tree,form</field>
-			<field name="view_id" ref="price_list.product_template_list"/> 
+			<field name="view_id" ref="product_template_list"/> 
 			<field name="domain">[
 									('pl_price_list', '=', '2019'),
 									('pl_treatment', '=', 'QUICKLASER'),
@@ -220,11 +243,11 @@
 
 
 		<!-- Action - 2019 - cosmetology -->
-		<record model="ir.actions.act_window" id="price_list.product_template_2019_cos_list_action">			
+		<record model="ir.actions.act_window" id="product_template_2019_cos_list_action">			
 			<field name="name">COSMEATRIA</field>
 			<field name="res_model">product.template</field>
 			<field name="view_mode">tree,form</field>
-			<field name="view_id" ref="price_list.product_template_list"/> 
+			<field name="view_id" ref="product_template_list"/> 
 			<field name="domain">[
 									('pl_price_list', '=', '2019'),
 									('pl_family', '=', 'cosmetology'),
@@ -234,12 +257,12 @@
 		</record>
 
 		<!-- Action - 2019 - medical -->
-		<record model="ir.actions.act_window" id="price_list.product_template_2019_med_list_action">			
+		<record model="ir.actions.act_window" id="product_template_2019_med_list_action">			
 			<field name="name">T. MEDICOS</field>
 			<field name="res_model">product.template</field>
 			<field name="view_mode">tree,form</field>
 
-			<field name="view_id" ref="price_list.product_template_list"/> 
+			<field name="view_id" ref="product_template_list"/> 
 
 			<field name="domain">[
 									('pl_price_list', '=', '2019'),
@@ -251,12 +274,12 @@
 
 
 		<!-- Action - 2019 - gyn -->
-		<record model="ir.actions.act_window" id="price_list.product_template_2019_gyn_list_action">
+		<record model="ir.actions.act_window" id="product_template_2019_gyn_list_action">
 			<field name="name">GINECOLOGIA</field>
 			<field name="res_model">product.template</field>
 			<field name="view_mode">tree,form</field>
 
-			<field name="view_id" ref="price_list.product_template_list"/> 
+			<field name="view_id" ref="product_template_list"/> 
 
 			<field name="domain">[
 									('pl_price_list', '=', '2019'),
@@ -268,12 +291,12 @@
 
 
 		<!-- Action - 2019 - echo -->
-		<record model="ir.actions.act_window" id="price_list.product_template_2019_echo_list_action">			
+		<record model="ir.actions.act_window" id="product_template_2019_echo_list_action">			
 			<field name="name">ECOGRAFIA</field>
 			<field name="res_model">product.template</field>
 			<field name="view_mode">tree,form</field>
 
-			<field name="view_id" ref="price_list.product_template_list"/> 
+			<field name="view_id" ref="product_template_list"/> 
 
 			<field name="domain">[
 									('pl_price_list', '=', '2019'),
@@ -284,12 +307,12 @@
 		</record>
 
 		<!-- Action - 2019 - promo -->
-		<record model="ir.actions.act_window" id="price_list.product_template_2019_promo_list_action">
+		<record model="ir.actions.act_window" id="product_template_2019_promo_list_action">
 			<field name="name">PROMOCIONES</field>
 			<field name="res_model">product.template</field>
 			<field name="view_mode">tree,form</field>
 
-			<field name="view_id" ref="price_list.product_template_list"/> 
+			<field name="view_id" ref="product_template_list"/> 
 
 			<field name="domain">[
 									('pl_price_list', '=', '2019'),

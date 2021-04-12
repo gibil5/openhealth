@@ -7,7 +7,6 @@
 """
 from __future__ import print_function
 from openerp import models, fields, api
-
 from . import px_vars
 
 class PriceListProduct(models.Model):

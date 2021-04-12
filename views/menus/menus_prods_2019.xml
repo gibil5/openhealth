@@ -10,6 +10,9 @@
 					<field name="arch" type="xml">
 						<tree>
 							<field name="name"/>
+
+                            <field name="write_date"/>
+
 							<field name="pl_price_list"/>
 							<field name="type"				string="Tipo"	groups='openhealth.roots'/>
 							<field name="pl_treatment"		groups='openhealth.roots'/>

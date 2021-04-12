@@ -70,12 +70,11 @@
 
 <!-- ACTIONS -->
 		<!-- Action - 2019 - All -->
-		<record model="ir.actions.act_window" id="product_template_2019_list_action">
-			
+		<record model="ir.actions.act_window" id="product_template_2019_list_action">			
 			<field name="name">TODOS</field>
-
 			<field name="res_model">product.template</field>
 			<field name="view_mode">tree,form</field>
+
 			<field name="view_id" ref="product_template_list"/> 
 
 			<field name="domain">[
@@ -90,12 +89,12 @@
 
 		<!-- Action - 2019 - Services -->
 		<record model="ir.actions.act_window" id="product_template_2019_services_list_action">
-			
 			<field name="name">SERVICIOS</field>
-
 			<field name="res_model">product.template</field>
 			<field name="view_mode">tree,form</field>
+
 			<field name="view_id" ref="product_template_list"/>
+
 			<field name="domain">[
 									('pl_price_list', '=', '2019'),
 									('type', '=', 'service'),

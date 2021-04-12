@@ -22,11 +22,12 @@
                   class="oe_highlight"                                
                   groups="openhealth.roots"
                   help="Important: Loads CSV !"
-									string="Load CSV"
-									name="load_csv"
+				              string="Load CSV"
+							  name="load_csv"
               />
 
               <!-- Create Products -->
+<!--
               <button 
                       type="object"
                       class="oe_highlight"
@@ -35,15 +36,16 @@
 											string="Create Product Templates"
 											name="create_product_templates"
               />
-
-							<!-- Create Products -->
+-->
+			
+            <!-- Create Products -->
               <button 
                       type="object"
                       class="oe_highlight"
                       groups="openhealth.roots"
 
-											string="Create Product Products"
-											name="create_product_products"
+                      string="Create Product Products"
+                      name="create_product_products"
               />
 
 
@@ -75,23 +77,23 @@
 
               <!-- Update -->
               <button 
-                      type="object"
-                      class="oe_highlight oe_right"
-                      string="Update"
-                      confirm="Are you sure ?"
+                    type="object"
+                    class="oe_highlight oe_right"
+                    string="Update"
+                    confirm="Are you sure ?"
 
-											name="update"
+					name="update"
               />
 
-							<!-- Validate -->
-              <button 
-                      type="object"
-                      class="oe_highlight"
-                      string="Validate all"
-
-											name="validate_product_templates"
-              />
-
+<!-- Validate -->
+<!--
+<button 
+type="object"
+class="oe_highlight"
+string="Validate all"
+name="validate_product_templates"
+/>
+-->
 
 
               <!-- Clean Procurements -->

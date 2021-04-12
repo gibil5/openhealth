@@ -8,8 +8,9 @@
 import datetime
 import base64
 
-#import cStringIO
-from io import StringIO ## for Python 3
+#import io 
+import cStringIO
+#from io import StringIO ## for Python 3
 
 import qrcode
 
@@ -117,8 +118,8 @@ def get_qr_img(qr_data):
 
 	img = qr.make_image()
 
-	#buffer = cStringIO.StringIO()
-	buffer = io.StringIO()
+	buffer = cStringIO.StringIO()
+	#buffer = io.StringIO()
 
 	img.save(buffer, format="PNG")
 

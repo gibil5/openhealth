@@ -7,7 +7,7 @@
 """,
 'description': """
 
-11 apr 2021
+12 apr 2021
 
 Created:        11 Sep 2016
 Last up:         8 April 2021
@@ -376,7 +376,7 @@ Always clean your System:
 	'views/menus/menus_products.xml',
 
 
-	'views/menus/prod_2019_actions.xml',
+	'views/products/prod_2019_actions.xml',
 	'views/menus/menus_prods_2019.xml',
 
 

@@ -43,6 +43,7 @@ class OeHealthFamily(osv.osv):
         'patient_id': fields.many2one('oeh.medical.patient', 'Patient', required=True, ondelete='cascade', select=True),
     }
 
+
 # Patient Management
 
 class OeHealthPatient(osv.osv):
@@ -218,6 +219,8 @@ class OeHealthPatient(osv.osv):
         '''
         assert len(ids) == 1, 'This option should only be used for a single id at a time'
         return self.pool['report'].get_action(cr, uid, ids, 'oehealth.report_patient_label', context=context)
+
+
 
 # Physician Management
 

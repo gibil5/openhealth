@@ -294,7 +294,7 @@ Always clean your System:
 
 
 	# Physicians
-	#'views/physicians/physician.xml',
+	'views/physicians/physician.xml',
 
 
 	# Patients

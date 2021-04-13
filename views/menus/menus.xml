@@ -56,7 +56,6 @@
 
 
 <!-- Physicians -->
-<!--
 <menuitem   id="physician_menu" 
             name="Médicos"
             parent="main_emr_menu"
@@ -75,7 +74,7 @@
                     name="Cosmeatras"
                     action="therapeut_list_action"
                     />
--->
+
 
 <!-- Inactives --> 
 <menuitem   id="emr_inactive_menu" 

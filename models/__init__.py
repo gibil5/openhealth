@@ -4,8 +4,11 @@ from __future__ import absolute_import
 # Commons
 from .commons import *
 
+
 # Oeh Medical
+from .open_medical import *
 from .oeh_medical import *
+
 
 # Management
 from .management import *

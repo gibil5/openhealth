@@ -394,6 +394,8 @@ Always clean your System:
 'demo': [],
 
 # Static - Style Css
-'css': ['static/src/css/jx.css'],
+#'css': ['static/src/css/jx.css'],
+'css': [],
+
 'js': [],
 }

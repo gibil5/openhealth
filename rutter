@@ -1,16 +1,34 @@
 """
-Rutter 
-Created:  8 apr 2021 
-Last:  8 apr 2021 
+    Rutter 
+
+    Created:    8 apr 2021 
+    Last:      13 apr 2021 
 """
 
 
-oeh.medical.patient.current_insurance with unknown comodel_name 'oeh.medical.insurance'
+# ------------------------------------------------------------------------------
+    Warnings
+# ------------------------------------------------------------------------------
 
-oeh.medical.patient.ethnic_group with unknown comodel_name 'oeh.medical.ethnicity'
 
-oeh.medical.patient.genetic_risks with unknown comodel_name 'oeh.medical.genetics'
+WARNING MICRO openerp.models: openhealth.payment_method.create() includes unknown fields: method, subtotal
 
-oeh.medical.patient.x_allergies with unknown comodel_name 'openhealth.allergy'
 
-Non-stored field sale.order.pl_family cannot be searched.
+
+WARNING MICRO openerp.fields: Field oeh.medical.patient.ethnic_group with unknown comodel_name 'oeh.medical.ethnicity'
+WARNING MICRO openerp.fields: Field oeh.medical.patient.genetic_risks with unknown comodel_name 'oeh.medical.genetics'
+WARNING MICRO openerp.fields: Field oeh.medical.patient.x_allergies with unknown comodel_name 'openhealth.allergy'
+
+WARNING MICRO openerp.fields: Field oeh.medical.physician.degree_id with unknown comodel_name 'oeh.medical.degrees'
+WARNING MICRO openerp.fields: Field oeh.medical.physician.speciality with unknown comodel_name 'oeh.medical.speciality'
+
+WARNING MICRO openerp.fields: Field oeh.medical.prescription.line.common_dosage with unknown comodel_name 'oeh.medical.dosage'
+WARNING MICRO openerp.fields: Field oeh.medical.prescription.line.dose_form with unknown comodel_name 'oeh.medical.drug.form'
+WARNING MICRO openerp.fields: Field oeh.medical.prescription.line.dose_route with unknown comodel_name 'oeh.medical.drug.route'
+WARNING MICRO openerp.fields: Field oeh.medical.prescription.line.dose_unit with unknown comodel_name 'oeh.medical.dose.unit'
+
+
+
+
+
+

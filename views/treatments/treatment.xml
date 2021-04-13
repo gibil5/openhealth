@@ -318,7 +318,6 @@ Last up: 	 		22 Jul 2020
 										string="Integration"
 
 										name="test_integration"
-										context="{'key': 'test_integration'}"
 									/>
 
 									<!-- Reset -->
@@ -329,8 +328,7 @@ Last up: 	 		22 Jul 2020
 										help='Tests: Reset'
 										string="Reset"
 
-										name="test_integration"
-										context="{'key': 'test_reset'}"
+										name="test_reset"
 									/>
 							</group>
 

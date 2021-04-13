@@ -8,6 +8,30 @@ from openerp import models, fields, api
 
 
 
+# Physician Management
+
+class OeHealthPhysicianSpeciality(models.Model):
+    _name = "oeh.medical.speciality"
+    _order = 'name'
+    #_sql_constraints = [
+    #    ('code_uniq', 'unique (name)', 'The Medical Speciality code must be unique')]
+    
+    name = fields.Char('Description', size=128, help="ie, Addiction Psychiatry", required=True)
+    code = fields.Char('Code', size=128, help="ie, ADP")
+
+
+
+class OeHealthPhysicianDegree(models.Model):
+    _name = "oeh.medical.degrees"
+    #_sql_constraints = [
+    #    ('full_name_uniq', 'unique (name)', 'The Medical Degree must be unique')]
+    
+    name = fields.Char('Degree', size=128, required=True)
+    full_name =  fields.Char('Full Name', size=128)
+    physician_ids = fields.Many2many('oeh.medical.physician', id1='degree_id', id2='physician_id', string='Physicians')
+
+
+
 class OeHealthPhysicianLine(models.Model):
     _name = "oeh.medical.physician.line"
     _description = "Information about doctor availability"
@@ -72,7 +96,7 @@ class OeHealthPhysician(models.Model):
         required=True
     )
 
-    #'info' : fields.text ('Extra info')
+    #'info =  fields.text ('Extra info')
 
     degree_id = fields.Many2many(
         'oeh.medical.degrees', 
@@ -250,7 +274,6 @@ class OeHealthPrescriptions(models.Model):
 
 
 
-
 class OeHealthPrescriptionLines(models.Model):
     _name = 'oeh.medical.prescription.line'
     _description = 'Prescription Lines'
@@ -281,11 +304,24 @@ class OeHealthPrescriptionLines(models.Model):
     name = fields.Many2one('oeh.medical.medicines','Medicines',help="Prescribed Medicines",domain=[('medicament_type','=','Medicine')], required=True)
     indication = fields.Many2one('oeh.medical.pathology','Indication',help="Choose a disease for this medicament from the disease list. It can be an existing disease of the patient or a prophylactic.")
     dose = fields.Integer('Dose',help="Amount of medicines (eg, 250 mg ) each time the patient takes it")
-    dose_unit = fields.Many2one('oeh.medical.dose.unit','Dose Unit', help="Unit of measure for the medication to be taken")
+    qty = fields.Integer('x',help="Quantity of units (eg, 2 capsules) of the medicament")
+
+    # Orphans
+    common_dosage = fields.Many2one(
+        'oeh.medical.dosage',
+        'Frequency',
+        help="Common / standard dosage frequency for this medicines", 
+        required=True
+    )
+    dose_unit = fields.Many2one(
+        'oeh.medical.dose.unit',
+        'Dose Unit', 
+        help="Unit of measure for the medication to be taken",
+        required=True
+    )
     dose_route = fields.Many2one('oeh.medical.drug.route','Administration Route',help="HL7 or other standard drug administration route code.")
     dose_form = fields.Many2one('oeh.medical.drug.form','Form',help="Drug form, such as tablet or gel")
-    qty = fields.Integer('x',help="Quantity of units (eg, 2 capsules) of the medicament")
-    common_dosage = fields.Many2one('oeh.medical.dosage','Frequency',help="Common / standard dosage frequency for this medicines")
+    
     frequency = fields.Integer('Frequency')
     frequency_unit = fields.Selection(FREQUENCY_UNIT, 'Unit', select=True)
     admin_times = fields.Char('Admin hours', size=128, help='Suggested administration hours. For example, at 08:00, 13:00 and 18:00 can be encoded like 08 13 18')
@@ -302,6 +338,35 @@ class OeHealthPrescriptionLines(models.Model):
 
 # -------------------------------------------------------------------------------------------------
 # Patient Management
+#jx
+
+class OeHealthGenetics(models.Model):
+    _name = 'oeh.medical.genetics'
+    _description = "Information about the genetics risks"
+
+    DOMINANCE = [
+        ('Dominant','Dominant'),
+        ('Recessive','Recessive'),
+    ]
+    
+    name = fields.Char('Official Symbol', size=16)
+    long_name = fields.Char('Official Long Name', size=256)
+    gene_id = fields.Char('Gene ID', size=8, help="Default code from NCBI Entrez database.")
+    chromosome = fields.Char('Affected Chromosome', size=2, help="Name of the affected chromosome")
+    location = fields.Char('Location', size=32, help="Locus of the chromosome")
+    dominance = fields.Selection(DOMINANCE, 'Dominance', select=True)
+    info = fields.Text('Information', size=128, help="Name of the protein(s) affected")
+
+    
+class OeHealthEthnicGroups(models.Model):
+    _name = 'oeh.medical.ethnicity'
+    _description = "Ethnic Groups"
+    #_sql_constraints = [
+    #        ('name_uniq', 'unique (name)', 'The ethnic group must be unique !')]
+
+    name = fields.Char('Ethnic Groups', size=256,required=True)
+
+
 
 class OeHealthFamily(models.Model):
     _name = 'oeh.medical.patient.family'

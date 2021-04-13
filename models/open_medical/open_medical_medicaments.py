@@ -1,11 +1,48 @@
 """
     Open Pathology
+
     Created:    12 apr 2021 
-    Last:       12 apr 2021     
+    Last:       13 apr 2021     
 """
 
 from __future__ import print_function
 from openerp import models, fields, api
+
+
+
+# Medicaments Configuration
+
+class OeHealthDoseUnit(models.Model):
+    _name = "oeh.medical.dose.unit"
+    _description = "Medical Dose Unit"
+
+    name = fields.Char('Unit', size=32, required=True)
+    desc = fields.Char('Description', size=64)
+
+
+class OeHealthDrugRoute(models.Model):
+    _name = "oeh.medical.drug.route"
+    _description = "Medical Drug Route"
+
+    name = fields.Char('Route', size=64, required=True)
+    code = fields.Char('Code', size=32)
+
+
+class OeHealthDrugForm(models.Model):
+    _name = "oeh.medical.drug.form"
+    _description = "Medical Dose Form"
+
+    name = fields.Char('Form', size=64, required=True)
+    code = fields.Char('Code', size=32)
+
+
+class OeHealthDosage (models.Model):
+    _name = "oeh.medical.dosage"
+    _description = "Medicines Dosage"
+
+    name = fields.Char('Frequency', size=256, help='Common dosage frequency')
+    code = fields.Char('Code', size=64, help='Dosage Code, such as SNOMED, 229798009 = 3 times per day')
+    abbreviation = fields.Char('Abbreviation', size=64, help='Dosage abbreviation, such as tid in the US or tds in the UK')
 
 
 # Medicines

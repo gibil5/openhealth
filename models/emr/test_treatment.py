@@ -31,7 +31,8 @@ class ProductErrorException(Exception):
 # ------------------------------------------------------- First Level - Buttons -------------------
 
 # ----------------------------------------------- Test Integration -------------
-def test_integration_treatment(self, test_case):
+#def test_integration_treatment(self, test_case):
+def test_integration_treatment(self):
 	"""
 	End to end Tests
  	Integration Testing for the Treatment Class.
@@ -45,7 +46,8 @@ def test_integration_treatment(self, test_case):
 	create_consultation(self, verbose) 
 
 	# Create Recommendations and Sale
-	create_recommentations_and_procedure_sale(self, test_case)
+	#create_recommentations_and_procedure_sale(self, test_case)
+	create_recommentations_and_procedure_sale(self)
 
 	# Create sessions and controls
 	#create_sessions(self, True)
@@ -57,7 +59,8 @@ def test_integration_treatment(self, test_case):
 # ----------------------------------------------- 2nd level ---------------------------------------
 
 # -------------------------------------------------- Procedure -----------------
-def create_recommentations_and_procedure_sale(self, test_case):
+#def create_recommentations_and_procedure_sale(self, test_case):
+def create_recommentations_and_procedure_sale(self):
 	"""
 	Create Recommendations and Procedure Sale
 	"""
@@ -68,7 +71,8 @@ def create_recommentations_and_procedure_sale(self, test_case):
 	test_funcs.enablePrint()
 
 	# Create recommendation
-	create_recommendations(self, test_case)
+	#create_recommendations(self, test_case)
+	create_recommendations(self)
 
 	# Create order
 	self.btn_create_order_pro()
@@ -91,7 +95,8 @@ def create_recommentations_and_procedure_sale(self, test_case):
 # ----------------------------------------------------------- Second Level ------------------------
 
 # -------------------------------------------------- Create Recommendations ----
-def create_recommendations(self, test_case):
+#def create_recommendations(self, test_case):
+def create_recommendations(self):
 	"""
 	Create Recommendations
 	Test Cases
@@ -219,28 +224,31 @@ def create_recommendations(self, test_case):
 
 	tst_list_empty = []
 
+	
+	tst_list = tst_list_all
+	
 
 	# Test cases
-	if test_case in ['all']:
-		tst_list = tst_list_all
+	#if test_case in ['all']:
+	#	tst_list = tst_list_all
 
-	elif test_case in ['laser']:
-		tst_list = tst_list_laser
+	#elif test_case in ['laser']:
+	#	tst_list = tst_list_laser
 
-	elif test_case in ['product']:
-		tst_list = tst_list_prod
+	#elif test_case in ['product']:
+	#	tst_list = tst_list_prod
 
-	elif test_case in ['medical']:
-		tst_list = tst_list_med
+	#elif test_case in ['medical']:
+	#	tst_list = tst_list_med
 
-	elif test_case in ['cosmetology']:
-		tst_list = tst_list_cos
+	#elif test_case in ['cosmetology']:
+	#	tst_list = tst_list_cos
 
-	elif test_case in ['new']:
-		tst_list = tst_list_new
+	#elif test_case in ['new']:
+	#	tst_list = tst_list_new
 
-	elif test_case in [False]:
-		tst_list = tst_list_empty
+	#elif test_case in [False]:
+	#	tst_list = tst_list_empty
 
 
 	# Loop
@@ -351,7 +359,7 @@ def test_reset_treatment(self):
 	Test Reset - Used by Treatment
 	"""
 	print()
-	print('Test Reset Function')
+	print('*** TEST TRE - test_reset_treatment')
 
 	# Consultation
 	self.consultation_ids.unlink()

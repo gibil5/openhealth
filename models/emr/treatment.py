@@ -793,9 +793,7 @@ class Treatment(models.Model):
 		Integration Test
 		"""
 		print()
-		print('OH - treatment.py - test_integration')
-		value = self.env.context.get('key')
-		print(value)
+		print('***** TRE - test_integration')
 
 		#if self.patient.x_test:
 		#if value == 'test_integration':
@@ -805,16 +803,27 @@ class Treatment(models.Model):
 		#test_case = 'cosmetology'
 		#test_case = 'new'
 		
-		test_case = 'all'
-		test_treatment.test_integration_treatment(self, test_case)
-
-		#elif value == 'test_reset':
-		if value == 'test_reset':
-			test_treatment.test_reset_treatment(self)
+		#test_treatment.test_integration_treatment(self, test_case)
+		test_treatment.test_integration_treatment(self)
 
 		print()
 		print()
 		print('SUCCESS !')
+
+
+
+# -------------------------------------------------- Test Cycle ----------------
+	@api.multi
+	def test_reset(self):
+		"""
+		Test Reset
+		"""
+		print()
+		print('***** TRE - test_reset')
+
+		test_treatment.test_reset_treatment(self)
+
+
 
 # -------------------------------------------------- Test Cycle ----------------
 	@api.multi

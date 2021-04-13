@@ -169,12 +169,15 @@ class Patient(models.Model):
 			string="Estado de cuenta",
 		)
 
-	# Allergies
-	x_allergies = fields.Many2one(
-			'openhealth.allergy',
-			string="Alergias",
-			required=False,
-		)
+	# Allergies - Dep
+	#x_allergies = fields.Many2one(
+	#		'openhealth.allergy',
+
+	# Allergies - ok
+	x_allergies = fields.Char(
+		string="Alergias",
+		required=False,
+	)
 
 	# Configurator
 	def _get_default_configurator(self):

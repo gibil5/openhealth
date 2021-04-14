@@ -338,6 +338,9 @@ Last up: 	 		22 Jul 2020
 							<group string="Reports">
 
 								<field name="report_management"/>
+								<field name="report_product"/>
+								<field name="report_contasis"/>
+								<field name="report_marketing"/>
 
 								<group>
 <!--
@@ -350,8 +353,7 @@ name="test_report_product"
 											class="oe_highlight"
 											string="MGT"
 
-											name="test_report"
-											context="{'key': 'test_report_management'}"
+											name="test_report_management"
 									/>
 
 									<!-- Rsp -->
@@ -360,8 +362,7 @@ name="test_report_product"
 											class="oe_highlight"
 											string="PROD"
 
-											name="test_report"
-											context="{'key': 'test_report_product'}"
+											name="test_report_product"
 									/>
 								</group>
 						</group>

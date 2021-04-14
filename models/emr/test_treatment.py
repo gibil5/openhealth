@@ -388,7 +388,7 @@ def test_report_management(self):
 	print('Test Report Management')
 
 	# Print Disable
-	test_funcs.disablePrint()
+	#test_funcs.disablePrint()
 
 	# Test
 	report = self.report_management
@@ -400,7 +400,21 @@ def test_report_management(self):
 	report.update_daily()
 
 	# Print Enable
-	test_funcs.enablePrint()
+	#test_funcs.enablePrint()
+
+
+# ----------------------------------------------- Test Report product -----------------------------------------------
+def test_report_product(self):
+	"""
+	Test Report product
+	"""
+	print()
+	print('Test Report product')
+
+	# Test
+	report = self.report_product
+	report.validate()
+
 
 
 # ----------------------------------------------- Test Report Marketing -----------------------------------------------
@@ -460,25 +474,6 @@ def test_report_contasis(self):
 
 	# Print Enable
 	#test_funcs.enablePrint()
-
-# ----------------------------------------------- Test Report product -----------------------------------------------
-def test_report_product(self):
-	"""
-	Test Report product
-	"""
-	print()
-	print('Test Report product')
-
-	# Print Disable
-	#test_funcs.disablePrint()
-
-	# Test
-	report = self.report_product
-	report.validate()
-
-	# Print Enable
-	#test_funcs.enablePrint()
-
 
 # ------------------------------------------------------- Level 0 - Creates ----
 def test_create(self, value):
@@ -619,62 +614,48 @@ def test_create_recommendations(self):
 	print()
 	print('Test Create Recommendations')
 
-	name_dic = {
-					# Lasers
-					'co2': 		'LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento - Grado 1 - 1 sesion',	# Co2
-		}
-	model_dic = {
-					'co2': 		'openhealth.service_co2',
-		}
-	tst_list = [
-					'co2',
-	]
+	# Init
+	name_list = ['LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento - Grado 1 - 1 sesion']
 
 	# Loop
-	for tst in tst_list:
-
-		# Init
-		name = name_dic[tst]
-		model = model_dic[tst]
+	for name in name_list:
 
 		# Search
 		print()
 		print('Search Product')
 		product = self.env['product.template'].search([
-															('name', '=', name),
-															('pl_price_list', 'in', ['2019']),
-											],
-												#order='date_order desc',
-												limit=1,
-									)
+														('name', '=', name),
+														('pl_price_list', 'in', ['2019']),
+													],
+													#order='date_order desc',
+													limit=1,
+		)
 		product_id = product.id
 
 		print()
 		print(product)
 		print(product.name)
 
-		# Create
+
+		# Create service
 		print()
 		print('Create Service')
-		print(model)
+		service = self.env['openhealth.service'].create({
+															'service': 			product_id,
+															'family': 			product.pl_family,
+															'subfamily': 		product.pl_subfamily,
+															'zone': 			product.pl_zone,
+															'pathology': 		product.pl_pathology,
+															'sessions': 		product.pl_sessions,
+															'level': 			product.pl_level,
+															'time': 			product.pl_time,
+															'price_applied': 	product.list_price,
+															'sel_zone': 		product.pl_zone,
+															'pl_treatment': 	product.pl_treatment,
 
-		service = self.env[model].create({
-														'service': 			product_id,
-														'family': 			product.pl_family,
-														'subfamily': 		product.pl_subfamily,
-														'zone': 			product.pl_zone,
-														'pathology': 		product.pl_pathology,
-														'sessions': 		product.pl_sessions,
-														'level': 			product.pl_level,
-														'time': 			product.pl_time,
-														'price_applied': 	product.list_price,
-														'sel_zone': 		product.pl_zone,
-														'pl_treatment': 	product.pl_treatment,
-
-														'treatment': 		self.id,
-											})
+															'treatment': 		self.id,
+		})
 		print(service)
-
 # test_create_recommendations
 
 

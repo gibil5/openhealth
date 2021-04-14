@@ -280,10 +280,6 @@ class Treatment(models.Model):
 	)
 
 # ----------------------------------------------------------- Pricelist Fields - Dummy --------------------------------
-	report_product = fields.Many2one(
-		'openhealth.container.pricelist',
-		string="PROD",
-	)
 
 # ----------------------------------------------------------- Pricelist Fields - Test --------------------------------
 	x_test_scenario = fields.Selection(
@@ -838,19 +834,26 @@ class Treatment(models.Model):
 	# Management
 	report_management = fields.Many2one(
 		'openhealth.management',
-		string="MGT",
+		string="Name repo Mgt",
+		required=True,
+	)
+
+	# Product - inprog
+	report_product = fields.Many2one(
+		'openhealth.container.pricelist',
+		string="Prod",
 	)
 
 	# Marketing
 	report_marketing = fields.Many2one(
 		'openhealth.marketing',
-		string="MKT",
+		string="Mkt",
 	)
 
 	# Contasis
 	report_contasis = fields.Many2one(
 		'openhealth.account.contasis',
-		string="ACC",
+		string="Conta",
 	)
 
 	# Txt
@@ -861,29 +864,46 @@ class Treatment(models.Model):
 
 # ----------------------------------------------------- Test Report --------------------------
 	@api.multi
+	def test_report_management(self):
+		"""
+		Test Report
+		"""
+		print()
+		print('test_report_management')
+		test_treatment.test_report_management(self)
+		print()
+		print('SUCCESS !')
+
+
+	@api.multi
+	def test_report_product(self):
+		"""
+		Test Report
+		"""
+		print()
+		print('test_report_product')
+		test_treatment.test_report_product(self)
+		print()
+		print('SUCCESS !')
+
+
+
+	#@api.multi
 	def test_report(self):
 		"""
 		Test Report
 		"""
 		print()
 		print('test_report')
-		value = self.env.context.get('key')
-		print(value)
+	#	value = self.env.context.get('key')
+	#	print(value)
+	#	if value == 'test_report_account':
+	#		test_treatment.test_report_account(self)
 
-		if value == 'test_report_management':
-			test_treatment.test_report_management(self)
-
-		elif value == 'test_report_product':
-			test_treatment.test_report_product(self)
-
-		elif value == 'test_report_account':
-			test_treatment.test_report_account(self)
-
-		elif value == 'test_report_contasis':
-			test_treatment.test_report_contasis(self)
-
-		print()
-		print('SUCCESS !')
+	#	elif value == 'test_report_contasis':
+	#		test_treatment.test_report_contasis(self)
+	#	print()
+	#	print('SUCCESS !')
 
 # -------------------------------------------------------- Open Myself ---------
 	# Open Myself

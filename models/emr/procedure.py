@@ -10,15 +10,23 @@ from __future__ import absolute_import
 from datetime import datetime
 from openerp import models, fields, api
 
-from openerp.addons.openhealth.models.commons.libs import commons_user, commons_lib
+#from openerp.addons.openhealth.models.commons.libs import commons_user, commons_lib
+from ..commons.libs import commons_user, commons_lib
 
-from .commons import tre_funcs as time_funcs
+#from .commons import tre_funcs as time_funcs
+from .lib import tre_funcs as time_funcs
 
-_model_control = "openhealth.control"
-_model_session = "openhealth.session.med"
-_model_app = "oeh.medical.appointment"
+from . import eval_vars
 
 
+# ----------------------------------------------------------- Constsants -------
+#_model_control = "openhealth.control"
+#_model_session = "openhealth.session.med"
+#_model_app = "oeh.medical.appointment"
+
+
+
+# ----------------------------------------------------------- Class -------
 class Procedure(models.Model):
 	"""
 	Procedure class
@@ -28,6 +36,53 @@ class Procedure(models.Model):
 	_description = 'Procedure'
 	_inherit = 'oeh.medical.evaluation'
 	#_order = 'write_date desc'
+
+
+# ----------------------------------------------------------- Descriptors -------
+	# Redefinition
+
+	# Name 
+	#name = fields.Char(
+	#		string='Proc #',
+	#	)
+	name = fields.Char(
+		string='Proc #',
+		required=True,
+		default='PRO',
+	)
+
+	# Evaluation type
+	#evaluation_type = fields.Selection(
+	#		default='Ambulatory',
+	#		)
+	evaluation_type = fields.Selection(
+		selection=eval_vars.EVALUATION_TYPE,
+		string='Tipo',
+		required=True,
+		default='procedure',
+	)
+
+
+
+# ----------------------------------------------------------- Relational --------------------------
+	session_ids = fields.One2many(
+			'openhealth.session.med',
+			'procedure',
+			string="sessiones",
+			)
+
+	control_ids = fields.One2many(
+			'openhealth.control',
+			'procedure',
+			string="Controles",
+			)
+
+	treatment = fields.Many2one(
+			'openhealth.treatment',
+			string="Tratamiento",
+			ondelete='cascade',
+			)
+
 
 
 # ----------------------------------------------------------- Creates control Man -------------------------
@@ -40,7 +95,7 @@ class Procedure(models.Model):
 		print()
 		print('oh - procedure - btn_create_controls_manual')
 
-		nr_ctl_created = self.env[_model_control].search_count([
+		nr_ctl_created = self.env['openhealth.control'].search_count([
 																		('procedure', '=', self.id),
 																	])
 		# Create
@@ -61,7 +116,7 @@ class Procedure(models.Model):
 
 		self.number_controls = self.configurator.get_number(self.laser, 'control')
 
-		already_created = self.env[_model_control].search_count([
+		already_created = self.env['openhealth.control'].search_count([
 																		('procedure', '=', self.id),
 																	])
 		# Create
@@ -80,7 +135,7 @@ class Procedure(models.Model):
 		print()
 		print('oh - procedure - btn_create_sessions_manual')
 
-		nr_ses_created = self.env[_model_session].search_count([
+		nr_ses_created = self.env['openhealth.session.med'].search_count([
 																			('procedure', '=', self.id),
 																	])
 		# Create
@@ -100,7 +155,7 @@ class Procedure(models.Model):
 
 		self.number_sessions = self.configurator.get_number(self.laser, 'session')
 
-		already_created = self.env[_model_session].search_count([
+		already_created = self.env['openhealth.session.med'].search_count([
 																			('procedure', '=', self.id),
 																	])
 		# Create
@@ -124,24 +179,6 @@ class Procedure(models.Model):
 			record.pl_laser = record.product.pl_treatment
 
 
-# ----------------------------------------------------------- Relational --------------------------
-	session_ids = fields.One2many(
-			'openhealth.session.med',
-			'procedure',
-			string="sessiones",
-			)
-
-	control_ids = fields.One2many(
-			'openhealth.control',
-			'procedure',
-			string="Controles",
-			)
-
-	treatment = fields.Many2one(
-			'openhealth.treatment',
-			string="Tratamiento",
-			ondelete='cascade',
-			)
 
 # ----------------------------------------------------------- Dates ------------
 	# Date
@@ -175,7 +212,7 @@ class Procedure(models.Model):
 		#print 'Get Default App - 2'
 		patient = self.treatment.patient
 		doctor = self.treatment.physician
-		app = self.env[_model_app].search([
+		app = self.env['oeh.medical.appointment'].search([
 																('patient', '=', patient),
 																('doctor', '=', doctor),
 														],
@@ -193,7 +230,7 @@ class Procedure(models.Model):
 		#print 'Get Default App'
 		patient = self.patient
 		doctor = self.doctor
-		app = self.env[_model_app].search([
+		app = self.env['oeh.medical.appointment'].search([
 																('patient', '=', patient),
 																('doctor', '=', doctor),
 														],
@@ -216,7 +253,7 @@ class Procedure(models.Model):
 		patient = self.patient
 		doctor = self.doctor
 		x_type = 'procedure'
-		app = self.env[_model_app].search([
+		app = self.env['oeh.medical.appointment'].search([
 																('patient', '=', patient.name),
 																('doctor', '=', doctor.name),
 																('x_type', '=', x_type),
@@ -241,21 +278,10 @@ class Procedure(models.Model):
 			#default=_get_default_id_code,
 		)
 
-
-	# Name
-	name = fields.Char(
-			string='Proc #',
-		)
-
 	# Owner
 	owner_type = fields.Char(
 			default='procedure',
 		)
-
-	# Redefinition
-	evaluation_type = fields.Selection(
-			default='Ambulatory',
-			)
 
 	# Sessions - Number
 	nr_sessions = fields.Integer(
@@ -515,7 +541,7 @@ class Procedure(models.Model):
 
 			# Create Session
 			appointment_id = False
-			self.env[_model_session].create({
+			self.env['openhealth.session.med'].create({
 																	'evaluation_start_date':session_date,
 																	'patient': patient_id,
 																	'doctor': doctor_id,

@@ -7,9 +7,10 @@
 	Used by:			Treatment
 
 	Created: 			14 aug 2018
-	Last up: 	 		13 apr 2021
+	Last up: 	 		14 apr 2021
 """
 from __future__ import print_function
+import json
 from . import test_funcs
 
 # ----------------------------------------------------------- Exceptions -------
@@ -20,11 +21,11 @@ class ProductErrorException(Exception):
 	pass
 
 TEST_CASES = [
-	#'product',
+	'product',
 	'laser', 
-	#'medical',
-	#'cosmetology',
-	#'new',
+	'medical',
+	'cosmetology',
+	'new',
 ]
 
 # ------------------------------------------------------- First Level - Buttons -------------------
@@ -39,14 +40,32 @@ def test_integration_treatment(self):
 	print('*** TESTING')
 	print('test_treatment.py - test_integration_treatment')
 
+	test_array = []
+
+	# Init 
+	fname = '/Users/gibil/cellar/github/openhealth/config/data.txt'
+	with open(fname) as json_file:
+		data = json.load(json_file)
+		#print(data)
+		#print(data['test'])
+		for tc in TEST_CASES:
+			go = int(data['test'][tc])
+			if go:
+				test_array.append(tc)
+		#for p in data['test']:
+		#	print(p)
+	print(test_array)
+
+
+
 	# Create Consultation
 	verbose = False
 	create_consultation(self, verbose) 
 
-
 	# Loop
 	# Create Recommendations and Sale
-	for test_case in TEST_CASES:
+	#for test_case in TEST_CASES:
+	for test_case in test_array:
 		create_recommentations_and_procedure_sale(self, test_case)
 
 
@@ -143,7 +162,7 @@ def create_recommendations(self, test_case='all'):
 					'med_8':		'VITAMINA C ENDOVENOSA',																	# Vitamin
 
 					# New Services
-					#'gyn':			'LASER CO2 FRACCIONAL - Monalisa Touch / Revitalizacion',
+					'gyn':			'LASER CO2 FRACCIONAL - Monalisa Touch / Revitalizacion',
 					'echo':			'ECOGRAFIAS ESPECIALES - Cadera Pediatrica (Bilateral) - 1 sesion',
 					'prom':			'CARBOXITERAPIA - Localizado Cuerpo - Rejuvenecimiento Facial - 6 sesiones',
 		}
@@ -175,7 +194,7 @@ def create_recommendations(self, test_case='all'):
 					'med_7',
 					'med_8',
 
-					#'gyn',
+					'gyn',
 					'echo',
 					'prom',
 	]
@@ -291,10 +310,7 @@ def create_recommendations(self, test_case='all'):
 		print('Check product_template complete')
 		print(product)
 		print(product.name)
-
-		#print(product.list_price)
 		print(product.pl_price_list)
-
 		print(product.pl_family)
 		print(product.pl_subfamily)
 		print(product.pl_zone)
@@ -307,11 +323,8 @@ def create_recommendations(self, test_case='all'):
 		print()
 
 		# Create
-		#service = self.env[_model_service].create({
 		service = self.env['openhealth.service_all'].create({
-
 			'service': 			product_id,
-
 			'family': 			product.pl_family,
 			'subfamily': 		product.pl_subfamily,
 			'zone': 			product.pl_zone,
@@ -319,10 +332,7 @@ def create_recommendations(self, test_case='all'):
 			'sessions': 		product.pl_sessions,
 			'level': 			product.pl_level,
 			'time': 			product.pl_time,
-
-			#'price_applied': 	product.list_price,
 			'price_applied': 	product.pl_price_list,
-
 			'sel_zone': 		product.pl_zone,
 			'pl_treatment': 	product.pl_treatment,
 			'treatment': 		self.id,
@@ -330,25 +340,21 @@ def create_recommendations(self, test_case='all'):
 	
 	
 		# Check if service complete 
-		print()
-		print(service)
+		#print()
+		#pint(service)
 		#print(service.name)
-		print(service.pl_treatment)
-
-		print(service.family)
-		print(service.subfamily)
-		print(service.zone)
-		print(service.pathology)
-		print(service.sessions)
-		print(service.level)
-		print(service.time)
-
-		print(service.price_applied)
-		print(service.sel_zone)
-
-		print(service.treatment)
-
-		print()
+		#print(service.pl_treatment)
+		#print(service.family)
+		#print(service.subfamily)
+		#print(service.zone)
+		#print(service.pathology)
+		#print(service.sessions)
+		#print(service.level)
+		#print(service.time)
+		#print(service.price_applied)
+		#print(service.sel_zone)
+		#print(service.treatment)
+		#print()
 	
 # create_recommendations
 
@@ -557,6 +563,7 @@ def create_sessions(self, verbose=False):
 	for procedure in self.procedure_ids:
 		for _ in range(1):
 			procedure.create_sessions()
+
 
 # ----------------------------------------------- Controls ---------------------
 def create_controls(self, verbose=False):

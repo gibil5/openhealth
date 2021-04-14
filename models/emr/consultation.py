@@ -3,25 +3,49 @@
 		Consultation 
 
 		Created: 			 1 nov 2016
-		Last updated: 	 	10 oct 2020
+		Last updated: 	 	13 apr 2021
 """
 from datetime import datetime,tzinfo,timedelta
 from openerp import models, fields, api
-
-#from openerp.addons.openhealth.models.libs import eval_vars
-#from openerp.addons.openhealth.models.commons.libs import eval_vars
 from . import eval_vars
 
 class Consultation(models.Model):
 	_name = 'openhealth.consultation'
 	_inherit = 'oeh.medical.evaluation'
 	
-# ----------------------------------------------------------- Primitives -------
+# ----------------------------------------------------------- Descriptors -------
 	# Name 
 	name = fields.Char(
-			string = 'Consulta #',
-			)
+		string='Consulta #',
+		default='CON',
+	)
 
+	# Evaluation type
+	evaluation_type = fields.Selection(
+		selection=eval_vars.EVALUATION_TYPE,
+		string='Tipo',
+		required=True,
+		default='consultation',
+	)
+
+	# Complaint
+	chief_complaint = fields.Selection(			# Necessary 
+		string = 'Motivo de consulta', 
+		selection = eval_vars._chief_complaint_list, 
+		required=False, 
+	)
+
+
+# ----------------------------------------------------------- Relational -------
+	treatment = fields.Many2one(
+		'openhealth.treatment',
+		ondelete='cascade', 
+		string="Tratamiento",
+		#required=True, 
+	)
+
+
+# ----------------------------------------------------------- Fields -----------
 	# Profile 
 	x_profile = fields.Selection(
 			[
@@ -36,12 +60,6 @@ class Consultation(models.Model):
 			string="Perfil psicológico", 
 		)
 
-	# Complaint
-	chief_complaint = fields.Selection(			# Necessary 
-			string = 'Motivo de consulta', 
-			selection = eval_vars._chief_complaint_list, 
-			required=False, 
-		)
 
 	# State 
 	state = fields.Selection(
@@ -86,16 +104,6 @@ class Consultation(models.Model):
 			record.progress = eval_vars._hash_progress[record.state]
 
 
-
-
-# ----------------------------------------------------------- Relational -------
-	treatment = fields.Many2one(
-			'openhealth.treatment',
-			ondelete='cascade', 
-			string="Tratamiento",
-			#required=True, 
-		)
-
 # --------------------------------------------- Consultation Fundamentals ------
 	x_reason_consultation = fields.Text(
 			string = 'Motivo de consulta (detalle)', 
@@ -124,8 +132,7 @@ class Consultation(models.Model):
 			)
 
 
-	# --------------------------------------------------------- Consultation First ------------------------------------------------------
-
+	# --------------------------------------------------------- inherited - Consultation First ------------------------------------------------------
 	#x_diagnosis = fields.Text(
 	#		string = 'Diagnóstico', 
 	#		required=False, 
@@ -156,29 +163,13 @@ class Consultation(models.Model):
 	#		default=False, 
 	#	)
 
-
-
-
-
-# ----------------------------------------------------------- Autofill ------------------------------------------------------
-
+# ----------------------------------------------------------- Autofill ---------
 	# Autofill 
 	@api.onchange('x_autofill')
 	def _onchange_x_autofill(self):
 		if self.x_autofill == True:
-			#self.x_fitzpatrick = 'two'	
-			#self.x_photo_aging = 'three'
-			#self.x_diagnosis = '1. Acné activo. 2. Secuelas de acné.'
-			#self.x_antecedents = 'Demostración con Punta de Diamante. Niega enfermedades y cirugías.'
-			#self.x_allergies_medication = 'Niega AMs.'
-			#self.x_observations = 'Cicatriz plana hiperpigmentada en pómulo derecho. Pápulas en pómulos.'
-			#self.x_indications = 'Láser Co2 Fraccional.'
-			
 			self.autofill()
-
 	# _onchange_x_autofill
-
-
 
 	# Autofill 
 	@api.multi
@@ -192,27 +183,21 @@ class Consultation(models.Model):
 		self.x_indications = 'Láser Co2 Fraccional.'
 
 
-
-
-	#----------------------------------------------------------- Open Line ------------------------------------------------------------
-
+#----------------------------------------------------------- Open Line ---------
 	@api.multi
 	def open_line_current(self):  
 		consultation_id = self.id 
 		return {
-				'type': 'ir.actions.act_window',
-				'name': ' Edit Consultation Current', 
-				'view_type': 'form',
-				'view_mode': 'form',
-				'res_model': self._name,
-				'res_id': consultation_id,
-				'target': 'current',
-				'flags': {
-						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
-						'form': {'action_buttons': True, }
-						},
-				'context': {}
+			'type': 'ir.actions.act_window',
+			'name': ' Edit Consultation Current', 
+			'view_type': 'form',
+			'view_mode': 'form',
+			'res_model': self._name,
+			'res_id': consultation_id,
+			'target': 'current',
+			'flags': {
+					'form': {'action_buttons': True, }
+					},
+			'context': {}
 		}
 	# open_line_current
-
-

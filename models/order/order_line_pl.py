@@ -1,22 +1,34 @@
 # -*- coding: utf-8 -*-
 """
-	Sale Order Line	
+	Sale Order Line	- PL
 	Created:            26 Aug 2016
-	Last mod:            3 Jun 2019
+	Previous:            3 Jun 2019
+	Last:            	13 apr 2021
 
 	- Respect the Law of Demeter. Avoid Train Wrecks.
 """
 from __future__ import print_function
 from openerp import models, fields, api
-from . import chk_order_line
-				
+
+#from . import chk_order_line 	# Dep				
 #from . import px_vars  		# Dep
 
 class SaleOrderLine(models.Model):
 	""" 
 	Sale Order Line
+	From the PL plugin
 	""" 
 	_inherit = 'sale.order.line'
+
+
+# ---------------------------------------- Constraints Python - Dep ------------
+	# Check Price List
+	#@api.constrains('pl_price_list')
+	#def check_pl_price_list(self):
+	#	"""
+	#	Check Pl Price List
+	#	"""
+	#	chk_order_line.check_pl_price_list(self)
 
 
 
@@ -25,10 +37,7 @@ class SaleOrderLine(models.Model):
 		return self.product_id.name
 
 
-
-
-# ----------------------------------------------------------- Is Current Price List -------------------------------
-
+# --------------------------------------------------- Is Current Price List ----
 	def is_current_price_list(self):
 		#print()
 		#print('Order Line - Is Current Price List')
@@ -36,15 +45,12 @@ class SaleOrderLine(models.Model):
 		#if self.product_id.pl_price_list in ['2019']:		# Train Wreck of Size 2
 		if self.product_id.is_current_price_list():			# Respects the LOD
 			is_current = True
-
 		else:		
 			is_current = False
-
 		return is_current
 
 
 # ----------------------------------------------------------- Remove Myself -------------------------------
-
 	@api.multi
 	def remove_myself(self):
 		"""
@@ -52,15 +58,11 @@ class SaleOrderLine(models.Model):
 		"""
 		print()
 		print('Remove Myself')
-
 		self.state = 'draft'
 		self.unlink()
 
 
-
-
 # ----------------------------------------------------------- Print Ticket -------------------------------
-
 	def get_price_unit(self):
 		"""
 		Used by Print Ticket.
@@ -72,11 +74,9 @@ class SaleOrderLine(models.Model):
 		value = self.price_unit
 		return value
 
-
-
 	def get_price_subtotal(self):
 		"""
-		Used by Print Ticket.
+		Used by Print Ticket
 		"""
 		#if self.pl_transfer_free:
 		if self.order_id.pl_transfer_free:
@@ -85,9 +85,6 @@ class SaleOrderLine(models.Model):
 			value = self.price_subtotal
 		return value
 
-
-
-
 	def get_quantity(self):
 		"""
 		Used by Print Ticket.
@@ -95,25 +92,7 @@ class SaleOrderLine(models.Model):
 		return int(self.product_uom_qty)
 
 
-
-
-
-# ---------------------------------------- Constraints Python - Important -------------------------
-
-	# Check Price List
-	@api.constrains('pl_price_list')
-	def check_pl_price_list(self):
-		"""
-		Check Pl Price List
-		"""
-		chk_order_line.check_pl_price_list(self)
-
-
-
-
-
 # ---------------------------------------------- Fields - Categorized -----------------------------
-	
 	#pl_price_list = fields.Selection(
 	pl_price_list = fields.Char(
 			#selection=px_vars._price_list_list,		# Dep
@@ -129,27 +108,20 @@ class SaleOrderLine(models.Model):
 		high level support for doing this and that.
 		"""
 		for record in self:
-
 			record.pl_price_list = record.product_id.pl_price_list
-
-
 
 
 # ----------------------------------------------------------- Product ----------
 	product_id = fields.Many2one(
 		'product.product',
 		string='Product',
-
 		
 		#domain=[('sale_ok', '=', True)],
 		domain=[
 					('sale_ok', '=', True),
 					('pl_price_list', '=', '2019'),
 				],
-
-
 		change_default=True,
 		ondelete='restrict',
 		required=True
 		)
-

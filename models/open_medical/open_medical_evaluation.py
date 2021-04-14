@@ -39,7 +39,9 @@ class OeHealthPatientEvaluation(models.Model):
         ('Flat', 'Flat'),
     ]
 
-    name = fields.Char('Evaluation #',size=64, readonly=True, required=True)
+    name = fields.Char('Evaluation #', size=64, readonly=True, required=True)
+    evaluation_type = fields.Selection(EVALUATION_TYPE, 'Evaluation Type', required=True, select=True)
+
     patient = fields.Many2one('oeh.medical.patient','Patient', help="Patient Name", required=True)
     doctor = fields.Many2one('oeh.medical.physician','Physician', help="Current primary care / family doctor", domain=[('is_pharmacist','=',False)], required=True)
     appointment = fields.Many2one('oeh.medical.appointment','Appointment #')
@@ -47,7 +49,6 @@ class OeHealthPatientEvaluation(models.Model):
     evaluation_end_date = fields.Datetime('Evalution End Date')
     derived_from = fields.Many2one('oeh.medical.physician','Physician who escalated the case')
     derived_to = fields.Many2one('oeh.medical.physician','Physician to whom escalated')
-    evaluation_type = fields.Selection(EVALUATION_TYPE, 'Evaluation Type', required=True, select=True)
     chief_complaint = fields.Char('Chief Complaint', size=128, help='Chief Complaint')
     notes_complaint = fields.Text('Complaint details')
     glycemia = fields.Float('Glycemia', help="Last blood glucose level. It can be approximative.")

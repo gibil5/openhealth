@@ -3,7 +3,7 @@
 	Treatment
 
 	Created: 			26 aug 2016
-	Last up: 			 5 dec 2020
+	Last up: 			13 apr 2021
 
 	Design:
 		- This is a Data model. There should be NO Business logic.
@@ -31,18 +31,12 @@ from . import search_objects
 from . import eval_vars
 from .commons import pl_creates, tre_funcs, action_funcs
 
-
 # --------------------------------------------------------------- Constants ----
 _model_treatment = "openhealth.treatment"
 _model_sale = "sale.order"
 _model_consultation = "openhealth.consultation"
 _model_action = "ir.actions.act_window"
 _model_service = "openhealth.service_all"
-
-# ----------------------------------------------------------- Exceptions -------
-class ProductErrorException(Exception):
-	#print('This is my first management of product exceptions')
-	pass
 
 
 # ------------------------------------------------------------------- Class ----
@@ -474,11 +468,7 @@ class Treatment(models.Model):
 		# Search product
 		name = 'CONSULTA MEDICA'
 		price_list = '2019'
-
-
-		#product = tre_funcs.get_product(self, name, price_list)
 		product = tre_funcs.get_product_product(self, name, price_list)
-
 
 		#  Check 
 		product_template = tre_funcs.get_product_template(self, name, price_list)
@@ -498,11 +488,8 @@ class Treatment(models.Model):
 		Create Order Procedure - 2019
 		From Recommendations
 		"""
-		print('treatment - btn_create_order_pro')
-
-		# Create Order
 		print()
-		print('Create order')
+		print('treatment - btn_create_order_pro')
 
 		# Search Partner
 		partner = tre_funcs.get_partner(self, self.patient.name)
@@ -514,13 +501,13 @@ class Treatment(models.Model):
 		# Create Product tuple
 		product_tup = []
 		for service in self.service_all_ids:
-			print()
-			print('* Create Product tuple')
-			print(service)
-			print(service.service)
-			print(service.service.name)
-			print(service.qty)
-			print(service.service.list_price)
+			#print()
+			#print('* Create Product tuple')
+			#print(service)
+			#print(service.service)
+			#print(service.service.name)
+			#print(service.qty)
+			#print(service.service.list_price)
 			
 			# Init
 			product_template = service.service
@@ -531,13 +518,9 @@ class Treatment(models.Model):
 			# Check Exceptions
 			try:
 				price_list = '2019'
-
-				#product = tre_funcs.get_product(self, name, price_list)
 				product = tre_funcs.get_product_product(self, name, price_list)
-
 				product_tup.append((product, qty, price))
 
-			#except ProductErrorException:
 			except Exception:
 				print('ERROR - Treatment - Product not in 2019 price_list !')
 				print('Search in other price_lists')
@@ -551,9 +534,10 @@ class Treatment(models.Model):
 				except Exception:
 					print('ERROR - Treatment - Product Not Available at all !!!!!')
 
-			else:
-				print('jx - Else !')
+			#else:
+			#	print('jx - Else !')
 				#pass
+
 
 			#  Check 
 			tre_funcs.check_product(self, '2019', product, product_template)
@@ -604,6 +588,8 @@ class Treatment(models.Model):
 
 		# If Consultation not exist
 		if not consultation.name:
+			print('*** Create')
+
 			# Create
 			consultation = self.env[_model_consultation].create({
 																		'patient': patient_id,
@@ -612,6 +598,7 @@ class Treatment(models.Model):
 																		'chief_complaint': chief_complaint,
 																		'doctor': doctor_id,
 													})
+			print(consultation)
 
 		return {
 				# Mandatory

@@ -3,7 +3,7 @@
 	Order - Data model
 
 	Created: 			26 Aug 2016
- 	Last up: 	 			29 mar 2021
+ 	Last: 	 			29 mar 2021
 
 	Design:
 		- This is a Data model. There should be NO Business logic.
@@ -116,11 +116,12 @@ class SaleOrder(models.Model):
 	pricelist_id = fields.Many2one(
 			'product.pricelist',
 			string='Pricelist',
-			readonly=False,
 			#default=_get_default_pricelist_id,
 			#default=lambda self: self._get_default_pricelist(),
+
 			default=lambda self: raw_funcs.get_pricelist(self.env['product.pricelist']),
 			required=True,
+			readonly=True,
 		)
 
 	# Configurator
@@ -277,14 +278,6 @@ class SaleOrder(models.Model):
 
 
 # ----------------------------------------------------------- On Changes --------------------------
-	# Patient
-	@api.onchange('patient')
-	def _onchange_patient(self):
-		print('_onchange_patient')
-		if self.patient.name:
-			self.partner_id, self.x_dni, self.x_ruc, self.x_id_doc, self.x_id_doc_type = raw_funcs.get_patient_ids(self.patient)
-			self.pricelist_id = raw_funcs.get_pricelist(self.env['product.pricelist'])
-
 	# Doctor
 	@api.onchange('x_doctor')
 	def _onchange_x_doctor(self):
@@ -292,19 +285,28 @@ class SaleOrder(models.Model):
 			self.treatment = raw_funcs.get_treatment(self.env['openhealth.treatment'], self.patient.name, self.x_doctor.name)
 
 
+	# Patient
+	@api.onchange('patient')
+	def _onchange_patient(self):
+		print('_onchange_patient')
+		if self.patient.name:
+			self.partner_id, self.x_dni, self.x_ruc, self.x_id_doc, self.x_id_doc_type = raw_funcs.get_patient_ids(self.patient)
+			#self.pricelist_id = raw_funcs.get_pricelist(self.env['product.pricelist'])
+
 	# Partner
 	@api.onchange('partner_id')
 	def _onchange_partner_id(self):
 		print('_onchange_partner_id')
-		print(self.pricelist_id)
+		#print(self.pricelist_id)
 		if self.partner_id.name != False:
 			self.x_partner_dni = self.partner_id.x_dni
-		print(self.pricelist_id)
+		#print(self.pricelist_id)
 
 	# On Change Partner Dni
 	@api.onchange('x_partner_dni')
 	def _onchange_x_partner_dni(self):
 		self.patient = ord_funcs.search_patient_by_id_document(self)
+
 
 
 # ----------------------------------------------------------- Legacy ------------------------------

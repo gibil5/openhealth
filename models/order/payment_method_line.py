@@ -6,7 +6,9 @@
 	Last up: 	 		29 mar 2021
 """
 from openerp import models, fields, api
+
 from . import pm_vars
+from . import pl_pm_vars
 
 #from openerp.addons.openhealth.models.commons.libs import lib
 from openerp.addons.openhealth.models.commons.libs import commons_lib as lib
@@ -50,15 +52,19 @@ class PaymentMethodLine(models.Model):
 
 # ----------------------------------------------------------- Method --------------------------------
 	# Method
+	#method = fields.Selection(
+	#		selection=pm_vars._payment_method_list,
+	#		string="Forma de Pago",
+	#		default="cash",
+	#		required=True,
+	#	)
+
 	method = fields.Selection(
-
-			selection=pm_vars._payment_method_list,
-
+			selection=pl_pm_vars._payment_method_list,
 			string="Forma de Pago",
 			default="cash",
 			required=True,
 		)
-
 
 
 

@@ -7,31 +7,29 @@
 	Used by:			Treatment
 
 	Created: 			14 aug 2018
-	Last up: 	 		 5 apr 2021
+	Last up: 	 		13 apr 2021
 """
 from __future__ import print_function
-
-#from openerp.addons.price_list.models.lib import test_funcs
 from . import test_funcs
-
-#from openerp import _
-#from openerp.exceptions import Warning as UserError
 
 # ----------------------------------------------------------- Exceptions -------
 class OrderErrorException(Exception):
-	#print('This is my first management of order exceptions')
 	pass
 
 class ProductErrorException(Exception):
-	#print('This is my first management of product exceptions')
 	pass
 
-
+TEST_CASES = [
+	#'product',
+	'laser', 
+	#'medical',
+	#'cosmetology',
+	#'new',
+]
 
 # ------------------------------------------------------- First Level - Buttons -------------------
 
 # ----------------------------------------------- Test Integration -------------
-#def test_integration_treatment(self, test_case):
 def test_integration_treatment(self):
 	"""
 	End to end Tests
@@ -45,9 +43,12 @@ def test_integration_treatment(self):
 	verbose = False
 	create_consultation(self, verbose) 
 
+
+	# Loop
 	# Create Recommendations and Sale
-	#create_recommentations_and_procedure_sale(self, test_case)
-	create_recommentations_and_procedure_sale(self)
+	for test_case in TEST_CASES:
+		create_recommentations_and_procedure_sale(self, test_case)
+
 
 	# Create sessions and controls
 	#create_sessions(self, True)
@@ -59,8 +60,7 @@ def test_integration_treatment(self):
 # ----------------------------------------------- 2nd level ---------------------------------------
 
 # -------------------------------------------------- Procedure -----------------
-#def create_recommentations_and_procedure_sale(self, test_case):
-def create_recommentations_and_procedure_sale(self):
+def create_recommentations_and_procedure_sale(self, test_case):
 	"""
 	Create Recommendations and Procedure Sale
 	"""
@@ -70,9 +70,10 @@ def create_recommentations_and_procedure_sale(self):
 
 	test_funcs.enablePrint()
 
+
 	# Create recommendation
-	#create_recommendations(self, test_case)
-	create_recommendations(self)
+	create_recommendations(self, test_case)
+
 
 	# Create order
 	self.btn_create_order_pro()
@@ -95,8 +96,7 @@ def create_recommentations_and_procedure_sale(self):
 # ----------------------------------------------------------- Second Level ------------------------
 
 # -------------------------------------------------- Create Recommendations ----
-#def create_recommendations(self, test_case):
-def create_recommendations(self):
+def create_recommendations(self, test_case='all'):
 	"""
 	Create Recommendations
 	Test Cases
@@ -107,7 +107,8 @@ def create_recommendations(self):
 	"""
 
 	print()
-	print('Create Recommendations')
+	print('TEST - Create Recommendations')
+	print(test_case)
 
 	# Init
 	name_dic = {
@@ -118,14 +119,12 @@ def create_recommendations(self):
 					'prod_3':		'OTROS',						# Other
 					'prod_4':		'COMISION DE ENVIO',			# Comission
 
-
 					# Lasers
 					'co2': 			'LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento - Grado 1 - 1 sesion',	# Co2
 					'exc':			'LASER EXCILITE - Abdomen - Alopecias - 1 sesion - 15 min',					# Excilite
 					'ipl':			'LASER M22 IPL - Abdomen - Depilacion - 1 sesion - 15 min',					# Ipl
 					'ndy':			'LASER M22 ND YAG - Localizado Cuerpo - Hemangiomas - 1 sesion - 15 min',	# Ndyag
 					'qui':			'QUICKLASER - Cuello - Rejuvenecimiento - Grado 1 - 1 sesion',				# Quick
-
 
 					# Cosmetology
 					'cos_0':		'CARBOXITERAPIA - Cuerpo - Rejuvenecimiento - 1 sesion - 30 min',				# Carboxitherapy
@@ -148,7 +147,6 @@ def create_recommendations(self):
 					'echo':			'ECOGRAFIAS ESPECIALES - Cadera Pediatrica (Bilateral) - 1 sesion',
 					'prom':			'CARBOXITERAPIA - Localizado Cuerpo - Rejuvenecimiento Facial - 6 sesiones',
 		}
-
 
 	tst_list_all = [
 					'prod_0',
@@ -224,31 +222,34 @@ def create_recommendations(self):
 
 	tst_list_empty = []
 
+	#tst_list = tst_list_all
 	
-	tst_list = tst_list_all
-	
+
 
 	# Test cases
-	#if test_case in ['all']:
-	#	tst_list = tst_list_all
+	if test_case in ['all']:
+		tst_list = tst_list_all
 
-	#elif test_case in ['laser']:
-	#	tst_list = tst_list_laser
+	elif test_case in ['laser']:
+		tst_list = tst_list_laser
 
-	#elif test_case in ['product']:
-	#	tst_list = tst_list_prod
+	elif test_case in ['product']:
+		tst_list = tst_list_prod
 
-	#elif test_case in ['medical']:
-	#	tst_list = tst_list_med
+	elif test_case in ['medical']:
+		tst_list = tst_list_med
 
-	#elif test_case in ['cosmetology']:
-	#	tst_list = tst_list_cos
+	elif test_case in ['cosmetology']:
+		tst_list = tst_list_cos
 
-	#elif test_case in ['new']:
-	#	tst_list = tst_list_new
+	elif test_case in ['new']:
+		tst_list = tst_list_new
 
-	#elif test_case in [False]:
-	#	tst_list = tst_list_empty
+	elif test_case in [False]:
+		tst_list = tst_list_empty
+
+	else:
+		print('This should not happen !!!')
 
 
 	# Loop
@@ -348,7 +349,6 @@ def create_recommendations(self):
 		print(service.treatment)
 
 		print()
-
 	
 # create_recommendations
 
@@ -743,7 +743,7 @@ def create_consultation(self, verbose=False):
 	"""
 	Create Consultation
 	"""
-	msg = 'test_treatment - create_consultation'
+	msg = '** test_treatment - create_consultation'
 	print()
 	print(msg)
 

@@ -6,14 +6,13 @@
 		Last updated: 	 	02 Aug 2020
 """
 from __future__ import print_function
+from __future__ import absolute_import
+
 import datetime
 from openerp import models, fields, api
-from openerp.addons.openhealth.models.patient import pat_vars
-
-#from openerp.addons.openhealth.models.libs import eval_vars
-#from openerp.addons.openhealth.models.commons.libs import eval_vars
 from . import eval_vars
 
+from openerp.addons.openhealth.models.patient import pat_vars
 from openerp.addons.openhealth.models.commons import prodvars
 
 
@@ -24,6 +23,23 @@ class Evaluation(models.Model):
 	Used by: Consultation, Procedure, Session and Control
 	"""
 	_inherit = 'oeh.medical.evaluation'
+
+# ----------------------------------------------------------- Primitive ---------------------------
+	# Evaluation type
+	evaluation_type = fields.Selection(
+		selection=eval_vars.EVALUATION_TYPE,
+		string='Tipo',
+		required=True,
+	)
+
+	# Chief complaint
+	chief_complaint = fields.Selection(
+			string='Motivo de consulta',
+			selection=eval_vars._chief_complaint_list,
+			required=True,
+		)
+
+
 
 # ----------------------------------------------------------- Inactive Bug -------------------------
 	# Doctor
@@ -133,8 +149,7 @@ class Evaluation(models.Model):
 					],
 		)
 
-# --------------------------------------------------------- Consultation First --------------------
-
+# --------------------------------------------------------- From Consultation --------------------
 	x_diagnosis = fields.Text(
 			string='Diagnóstico',
 			required=False,
@@ -340,21 +355,6 @@ class Evaluation(models.Model):
 
 
 
-# ----------------------------------------------------------- Primitive ---------------------------
-
-	# Chief complaint
-	chief_complaint = fields.Selection(
-			string='Motivo de consulta',
-			selection=eval_vars._chief_complaint_list,
-			required=True,
-		)
-
-	# Evaluation type
-	evaluation_type = fields.Selection(
-			selection=eval_vars.EVALUATION_TYPE,
-			string='Tipo',
-			required=True,
-		)
 
 
 # ----------------------------------------------------------- Actions -----------------------------

@@ -2,17 +2,16 @@
 """
 	Procedure
 	Created: 			 1 Nov 2016
-	Last up: 	 		29 mar 2021
+	Last: 	 			13 apr 2021
 """
 from __future__ import print_function
+from __future__ import absolute_import
+
 from datetime import datetime
 from openerp import models, fields, api
 
-#from openerp.addons.openhealth.models.libs import user, lib
-#from openerp.addons.openhealth.models.commons.libs import user, lib
 from openerp.addons.openhealth.models.commons.libs import commons_user, commons_lib
 
-#from . import time_funcs
 from .commons import tre_funcs as time_funcs
 
 _model_control = "openhealth.control"
@@ -20,8 +19,7 @@ _model_session = "openhealth.session.med"
 _model_app = "oeh.medical.appointment"
 
 
-#class Procedure(models.Model):
-class EmrProcedure(models.Model):
+class Procedure(models.Model):
 	"""
 	Procedure class
 	Used by
@@ -30,6 +28,7 @@ class EmrProcedure(models.Model):
 	_description = 'Procedure'
 	_inherit = 'oeh.medical.evaluation'
 	#_order = 'write_date desc'
+
 
 # ----------------------------------------------------------- Creates control Man -------------------------
 	# Create Controls Manual
@@ -48,6 +47,7 @@ class EmrProcedure(models.Model):
 		nr_controls = 1
 		#ret = pro_con_funcs.create_controls(self, nr_controls, nr_ctl_created)
 		self.create_controls_for_me(nr_controls, nr_ctl_created)
+
 
 # ---------------------------------------------------- Create controls ---------
 	# Create Controls

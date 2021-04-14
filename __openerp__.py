@@ -287,6 +287,7 @@ Always clean your System:
 	'views/consultations/consultation_actions.xml',
 	'views/consultations/consultation.xml',
 
+
 	# Treatments
 	'views/treatments/service_actions.xml',  	# Just a dummy
 	'views/treatments/treatment.xml',
@@ -339,10 +340,11 @@ Always clean your System:
 	# Consultation - 2
 	'views/consultations/consultation_diagnosis.xml',
 
+
 	# Treatments - 2
 	'views/treatments/treatment_orders.xml',
 	'views/treatments/treatment_consultations.xml',
-	'views/treatments/treatment_services.xml',
+	#'views/treatments/treatment_services.xml',	# Dep
 	'views/treatments/treatment_procedures.xml',
 	'views/treatments/treatment_controls.xml', 	# Sab
 

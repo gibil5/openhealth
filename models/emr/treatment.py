@@ -51,7 +51,22 @@ class Treatment(models.Model):
 
 # ----------------------------------------------------------- Relational --------------------------
 
-# ------------------------------------------------------------------------------
+	# Services
+	service_ids = fields.One2many(
+		'openhealth.service',
+		'treatment',
+		string="Servicios"
+	)
+
+	# Dep
+	service_all_ids = fields.One2many(
+		'openhealth.service_all',
+		'treatment',
+		string="Servicios All"
+	)
+
+
+
 	# Shopping cart
 	shopping_cart_ids = fields.One2many(
 		'price_list.cart_line',
@@ -59,13 +74,6 @@ class Treatment(models.Model):
 		string="Shopping Cart"
 	)
 
-# ------------------------------------------------------------ Services --------
-	# all
-	service_all_ids = fields.One2many(
-		'openhealth.service_all',
-		'treatment',
-		string="Servicios All"
-	)
 
 
 # ----------------------------------------------------------- Primitive ---------------------------
@@ -500,7 +508,8 @@ class Treatment(models.Model):
 		# Search product
 		# Create Product tuple
 		product_tup = []
-		for service in self.service_all_ids:
+		#for service in self.service_all_ids:
+		for service in self.service_ids:
 			#print()
 			#print('* Create Product tuple')
 			#print(service)

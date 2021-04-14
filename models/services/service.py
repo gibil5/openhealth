@@ -15,7 +15,19 @@ class Service(models.Model):
 	"""
 	_name = 'openhealth.service'
 
+
 # ----------------------------------------------------------- Many2one ------
+	# Treatement
+	treatment = fields.Many2one('openhealth.treatment',
+			ondelete='cascade',
+			#string="Tratamiento",
+			string="Acta",
+			readonly=True,
+			required = True,
+		)
+
+
+
 	# Service
 	service = fields.Many2one(
 			'product.template',
@@ -34,15 +46,6 @@ class Service(models.Model):
 
 
 
-
-	# Treatement
-	treatment = fields.Many2one('openhealth.treatment',
-			ondelete='cascade',
-			#string="Tratamiento",
-			string="Acta",
-			readonly=True,
-			required = True,
-		)
 
 	# Physician
 	physician = fields.Many2one(

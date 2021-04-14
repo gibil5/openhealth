@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-    Services All
+    Services All - Dep !
 
-    Created: 			25 oct 2020
-    Last up: 			26 oct 2020
+    Created: 		   25 oct 2020
+    Last: 			   26 oct 2020
 
     class ServiceAll
 """

@@ -64,14 +64,12 @@ def test_integration_treatment(self):
 
 	# Loop
 	# Create Recommendations and Sale
-	#for test_case in TEST_CASES:
 	for test_case in test_array:
-		create_recommentations_and_procedure_sale(self, test_case)
-
+		create_reco_and_procedure_sale(self, test_case)
 
 	# Create sessions and controls
-	#create_sessions(self, True)
-	#create_controls(self, True)
+	create_sessions(self, True)
+	create_controls(self, True)
 
 # test_integration_treatment
 
@@ -79,7 +77,7 @@ def test_integration_treatment(self):
 # ----------------------------------------------- 2nd level ---------------------------------------
 
 # -------------------------------------------------- Procedure -----------------
-def create_recommentations_and_procedure_sale(self, test_case):
+def create_reco_and_procedure_sale(self, test_case):
 	"""
 	Create Recommendations and Procedure Sale
 	"""
@@ -87,17 +85,11 @@ def create_recommentations_and_procedure_sale(self, test_case):
 	print()
 	print(msg)
 
-	test_funcs.enablePrint()
-
-
 	# Create recommendation
 	create_recommendations(self, test_case)
 
-
 	# Create order
 	self.btn_create_order_pro()
-
-	test_funcs.disablePrint()
 
 	# Pay
 	test_funcs.disablePrint()
@@ -107,9 +99,12 @@ def create_recommentations_and_procedure_sale(self, test_case):
 			try:
 				order.pay_myself()
 			except OrderErrorException:
-				raise OrderErrorException('jx - Pay myself exception')
-	test_funcs.enablePrint()
+				raise OrderErrorException('TEST TREATMENT - ERROR - pay_myself')
 
+	# Reset recos
+	self.service_ids.unlink()
+
+	test_funcs.enablePrint()
 
 
 # ----------------------------------------------------------- Second Level ------------------------
@@ -241,9 +236,6 @@ def create_recommendations(self, test_case='all'):
 
 	tst_list_empty = []
 
-	#tst_list = tst_list_all
-	
-
 
 	# Test cases
 	if test_case in ['all']:
@@ -272,11 +264,6 @@ def create_recommendations(self, test_case='all'):
 
 
 	# Loop
-	#for tst in tst_list_laser:
-	#for tst in tst_list_med:
-	#for tst in tst_list_cos:
-	#for tst in tst_list_new:
-	#for tst in tst_list_prod:
 	for tst in tst_list:
 		
 		# Init
@@ -322,8 +309,9 @@ def create_recommendations(self, test_case='all'):
 		print(product.pl_treatment)
 		print()
 
-		# Create
-		service = self.env['openhealth.service_all'].create({
+
+		# *** Create recommendation
+		service = self.env['openhealth.service'].create({
 			'service': 			product_id,
 			'family': 			product.pl_family,
 			'subfamily': 		product.pl_subfamily,
@@ -335,6 +323,7 @@ def create_recommendations(self, test_case='all'):
 			'price_applied': 	product.pl_price_list,
 			'sel_zone': 		product.pl_zone,
 			'pl_treatment': 	product.pl_treatment,
+
 			'treatment': 		self.id,
 		})
 	
@@ -371,7 +360,8 @@ def test_reset_treatment(self):
 	self.consultation_ids.unlink()
 
 	# Recos
-	self.service_all_ids.unlink()
+	self.service_ids.unlink()
+	#self.service_all_ids.unlink()	# Dep
 
 	# Procedures
 	self.procedure_ids.unlink()

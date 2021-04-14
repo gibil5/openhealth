@@ -6,6 +6,7 @@ Last up: 	 		22 Jul 2020
 <openerp>
 	<data>
 
+
 <!-- FORM -->
 		<record model="ir.ui.view" id="treatment_form_view">
 			<field name="name">treatment.form</field>

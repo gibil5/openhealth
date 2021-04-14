@@ -67,9 +67,11 @@ def test_integration_treatment(self):
 	for test_case in test_array:
 		create_reco_and_procedure_sale(self, test_case)
 
-	# Create sessions and controls
-	create_sessions(self, True)
-	create_controls(self, True)
+	# Create sessions
+	create_sessions(self, True, 1)
+
+	# Create controls
+	create_controls(self, True, 1)
 
 # test_integration_treatment
 
@@ -540,7 +542,7 @@ def create_block_flow(self):
 
 
 # ----------------------------------------------- Sessions ---------------------
-def create_sessions(self, verbose=False):
+def create_sessions(self, verbose, nr_sessions):
 	"""
 	Create Sessions
 	"""
@@ -552,24 +554,25 @@ def create_sessions(self, verbose=False):
 		test_funcs.disablePrint()
 	for procedure in self.procedure_ids:
 		for _ in range(1):
-			procedure.create_sessions()
+			procedure.create_sessions(nr_sessions)
 
 
 # ----------------------------------------------- Controls ---------------------
-def create_controls(self, verbose=False):
+def create_controls(self, verbose, nr_controls):
 	"""
 	Create Controls
 	"""
 	print()
-	print('test_treatment - create_controls')
+	print('TEST TREATMENT - create_controls')
+
 	if verbose:
 		test_funcs.enablePrint()
 	else:
 		test_funcs.disablePrint()
+
 	for procedure in self.procedure_ids:
 		for _ in range(6):
-			procedure.create_controls()
-
+			procedure.create_controls(nr_controls)
 
 
 

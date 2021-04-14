@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
 """
-Control
+	Control
 
-Created: 			01 Nov 2016
-Last updated: 	 	19 Sep 2019
+	Created: 			01 Nov 2016
+	Previous: 	 		19 Sep 2019
+	Last: 	 			14 apr 2021
 """
 import datetime
 from openerp import models, fields, api
+
+from . import eval_vars, control_vars
 
 class Control(models.Model):
 	"""
@@ -19,33 +22,63 @@ class Control(models.Model):
 	_inherit = ['oeh.medical.evaluation', 'base_multi_image.owner']
 
 
-# ----------------------------------------------------------- Dep ------------------------------------------------------
+# ----------------------------------------------------------- Relationals ------
+	# Treatment 
+	treatment = fields.Many2one(
+		'openhealth.treatment',
+		ondelete='cascade',
+		readonly=False,
+		required=True,
+	)
 
-	maturity = fields.Integer()
+	# Procedure  
+	procedure = fields.Many2one('openhealth.procedure',
+		string="Procedimiento",
+		readonly=True,
+		ondelete='cascade', 
+	)
 
-	nr_days = fields.Integer()
+	# Patient 
+	patient = fields.Many2one(
+		'oeh.medical.patient',
+		string = "Paciente", 	
+		ondelete='cascade', 
+		readonly=False, 
+		required=True, 
+	)
 
-	control_date = fields.Datetime()
+	# Product
+	product = fields.Many2one(
+		'product.template',
+		string="Producto",
+		required=False, 			
+	)
 
-	first_date = fields.Datetime()
 
-	real_date = fields.Datetime()
+# ----------------------------------------------------------- Descriptors -------
+	# Name 
+	name = fields.Char(
+		string = 'Control #',
+		default='CONTR',
+		required=True,
+	)
 
-	evaluation_next_date = fields.Date()
+	# Evaluation type
+	evaluation_type = fields.Selection(
+		selection=eval_vars.EVALUATION_TYPE,
+		string='Tipo',
+		required=True,
+		default='control', 
+	)
 
+	# Owner 
+	owner_type = fields.Char(
+		default = 'control',
+	)
 
 # ----------------------------------------------------------- Consts -----------
-	# State
-	_state_list = [
-					('cancel', 			'Anulado'),
-					('draft', 			'Inicio'),
-					#('inprogress', 	'En progreso'),
-					('app_confirmed', 	'Cita Confirmada'),
-					('done', 			'Completo'),	
-				]
 
-# ----------------------------------------------------------- Dates - OK ------------------------------------------------------
-
+# ---------------------------------------------------------------- Dates -------
 	# Date
 	evaluation_start_date = fields.Datetime(
 			string = "Fecha", 	
@@ -53,127 +86,57 @@ class Control(models.Model):
 		)
 
 
-# ----------------------------------------------------------- State ------------------------------------------------------
-	
+# ----------------------------------------------------------- State ------------
 	# State 
 	state = fields.Selection(
-			#selection = control_vars._state_list, 
-			selection = _state_list, 
+			selection = control_vars._state_list, 
 			
 			compute='_compute_state', 
 		)
-
-
 	@api.multi
-	#@api.depends('state')
 	def _compute_state(self):
 		for record in self:
-
 			state = 'draft'
-
-			#if record.appointment.state in ['Scheduled']: 
-			#	state = 'app_confirmed'
-
 			if record.x_done: 
 				state = 'done'
-
-			#elif record.maturity > 90: 
-			#	state = 'cancel'
-
 			record.state = state
 
 
-# ----------------------------------------------------------- Re Definitions ------------------------------------------------------
 
-	# Patient 
-	patient = fields.Many2one(
-			'oeh.medical.patient',
-			string = "Paciente", 	
-			ondelete='cascade', 
-			readonly=False, 
-			required=True, 
-		)
-
-	# Treatment 
-	treatment = fields.Many2one(
-			'openhealth.treatment',
-			ondelete='cascade',
-			readonly=False,
-			required=True,
-		)
-
-
-# ----------------------------------------------------------- Primitives ------------------------------------------------------
-
-	# Name 
-	name = fields.Char(
-			#string = 'Control #',
-			string = 'Nombre',
-		)
-
+# ----------------------------------------------------------- Fields ----------------------------------------
 	# Evaluation Nr
 	evaluation_nr = fields.Integer(
-			string="#", 
-			default=1, 
-
-			#compute='_compute_control_nr', 
-		)
-
-	# Evaluation type 
-	evaluation_type = fields.Selection(
-			#selection = eval_vars.EVALUATION_TYPE, 
-			#string = 'Tipo',
-			
-			default='control', 
-			
-			#required=True, 
-		)
-
-	# Product
-	product = fields.Many2one(
-			'product.template',
-			string="Producto",
-
-			#required=True, 
-			required=False, 			
-		)
-
-	# Owner 
-	owner_type = fields.Char(
-			default = 'control',
-		)
+		string="#", 
+		default=1, 
+	)
 
 	# Indications
 	indication = fields.Text(
-			string="Indicaciones",			
-			size=200,
-
-			#required=True,
-			required=False,
-			)
+		string="Indicaciones",			
+		size=200,
+		required=False,
+	)
 
 	# Observation
 	observation = fields.Text(
-			string="Observación",
-			size=200,
+		string="Observación",
+		size=200,
+		required=False,
+	)
 
-			#required=True,
-			required=False,
-			)
+# ----------------------------------------------------------- not Dep --------------
+	maturity = fields.Integer()
+	nr_days = fields.Integer()
+	control_date = fields.Datetime()
+	first_date = fields.Datetime()
+	real_date = fields.Datetime()
+	evaluation_next_date = fields.Date()
 
-	# Procedure  
-	procedure = fields.Many2one('openhealth.procedure',
-			string="Procedimiento",
-			readonly=True,
-			ondelete='cascade', 
-			)
-			
 
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 	# Open Line 
 	@api.multi
 	def open_line_current(self):  
-
 		return {
 				'type': 'ir.actions.act_window',
 				'name': 'Edit Control Current', 
@@ -182,11 +145,8 @@ class Control(models.Model):
 				'res_model': self._name,
 				'res_id': self.id,
 				'target': 'current',
-
 				'flags': {
-						#'form': {'action_buttons': True, 'options': {'mode': 'edit'}}
 						'form': {'action_buttons': True, }
 						},
-				
 				'context': {}
 		}

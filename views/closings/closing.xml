@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+	<data>
+
+
+
+<!-- FORM --> 
+		<record model="ir.ui.view" id="pl_closing_form_view">
+
+			<field name="name">closing.form</field>
+			<field name="model">openhealth.closing</field>
+
+			<field name="inherit_id" ref="openhealth.closing_form_view"/>
+
+			<field name="mode">primary</field>
+			<field name="priority" eval="1"/>
+			<field name="arch" type="xml">
+
+				<xpath expr="//field[@name='year']" position="after">
+					<field name="closing_form"/>
+<!--
+					<field name="closing_form"	groups='openhealth.roots'/>
+					<field name="closing_proof"	groups='openhealth.roots'/>
+-->
+				</xpath>
+
+
+				<xpath expr="//field[@name='total_cards']" position="after">
+					<field name="total_banks"/>
+				</xpath>
+
+				<xpath expr="//field[@name='vid_tot']" position="after">
+
+					<field name="bbva_tot"/>
+					<field name="interbank_tot"/>
+					<field name="scotiabank_tot"/>
+					<field name="bcp_tot"/>
+				</xpath>
+
+			</field>
+		</record>
+
+	</data>
+</openerp>

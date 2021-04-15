@@ -7,8 +7,61 @@
 
 
 # ------------------------------------------------------------------------------
-    Warnings
+    Listen to Warnings
 # ------------------------------------------------------------------------------
+
+
+
+
+Table 'product_template': unable to set a NOT NULL constraint on column 'pl_name_short' !
+If you want to have it, you should update the records and execute manually:
+ALTER TABLE product_template ALTER COLUMN pl_name_short SET NOT NULL
+
+Table 'product_template': unable to set a NOT NULL constraint on column 'pl_subfamily' !
+If you want to have it, you should update the records and execute manually:
+ALTER TABLE product_template ALTER COLUMN pl_subfamily SET NOT NULL
+
+Table 'product_template': unable to set a NOT NULL constraint on column 'pl_family' !
+If you want to have it, you should update the records and execute manually:
+ALTER TABLE product_template ALTER COLUMN pl_family SET NOT NULL
+
+Table 'product_template': unable to set a NOT NULL constraint on column 'pl_price_list' !
+If you want to have it, you should update the records and execute manually:
+ALTER TABLE product_template ALTER COLUMN pl_price_list SET NOT NULL
+
+
+
+
+
+access_oeh_medical_ethnicity,access_oeh_medical_ethnicity,model_oeh_medical_ethnicity,,1,0,0,0
+access_oeh_medical_genetics,access_oeh_medical_genetics,model_oeh_medical_genetics,,1,0,0,0
+access_oeh_medical_insurance_type,access_oeh_medical_insurance_type,model_oeh_medical_insurance_type,,1,0,0,0
+access_oeh_medical_insurance,access_oeh_medical_insurance,model_oeh_medical_insurance,,1,0,0,0
+access_openhealth_closing_form,access_openhealth_closing_form,model_openhealth_closing_form,,1,0,0,0
+access_oeh_medical_pathology_category,access_oeh_medical_pathology_category,model_oeh_medical_pathology_category,,1,0,0,0
+
+
+
+
+
+
+oeh.medical.physician.line has no access rules, consider adding one. E.g. 
+
+oeh.medical.prescription has no access rules, consider adding one. E.g. 
+
+oeh.medical.prescription.line has no access rules, consider adding one. E.g. 
+
+oeh.medical.patient.family has no access rules, consider adding one. E.g. 
+
+oeh.medical.evaluation has no access rules, consider adding one. E.g. 
+
+openhealth.ticket has no access rules, consider adding one. E.g. 
+
+productivity.day has no access rules, consider adding one. E.g. 
+
+
+
+
 
 
 WARNING MICRO openerp.models: openhealth.payment_method.create() includes unknown fields: method, subtotal

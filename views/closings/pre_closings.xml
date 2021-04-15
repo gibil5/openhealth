@@ -3,7 +3,6 @@
     <data>
         
 
-
         <!-- FORM --> 
         <record model="ir.ui.view" id="closing_form_view">
             <field name="name">closing.form</field>
@@ -11,44 +10,36 @@
             <field name="arch" type="xml">
                 <form string="Clsing Form">
                     
-                    <!-- Header -->
+<!-- Header -->
                     <header>
-
                         <button 
                                 type="object" 
                                 class="oe_highlight"
-                                name="update"
                                 string="Actualizar"
+
+                                name="update"
                         />
 
-
                         <button 
                                 type="object" 
-
                                 class="oe_highlight"
+                                string="Imprimir"
 
                                 name="print_closing"
-
-                                string="Imprimir"
                         />
 
 <!--
                         <button 
                                 type="object" 
                                 class="oe_highlight oe_right"
-
                                 name="update_month_all"
-
                                 string="Update month All"
-
                                 groups="openhealth.roots"
                         />
                         <button 
                                 type="object" 
                                 class="oe_highlight oe_right"
-
                                 name="update_month"
-
                                 string="Update month"
 
                                 groups="openhealth.roots"
@@ -59,54 +50,39 @@
                         <button 
                                 type="object" 
                                 class="oe_highlight oe_right"
-
-                                name="test"
-
+                                groups="openhealth.roots"
                                 string="Test"
 
-                                groups="openhealth.roots"
+                                name="test"
                         />
-
 
                         <!-- Reset -->
                         <button 
                                 type="object" 
                                 class="oe_highlight oe_right"
-
-                                name="reset"
-
                                 string="Reset"
-
                                 groups="openhealth.roots"
+                                name="reset"
                         />
-
 
                         <!-- Clean -->
                         <button 
                                 type="object" 
                                 class="oe_highlight oe_right"
-
-                                name="clean"
-
                                 string="Clean"
-
                                 groups="openhealth.roots"
+                                name="clean"
                         />
-
                     </header>
-
 
 
 <!-- Sheet -->  
                     <sheet>
-
-
                         <!-- Base -->
                         <group  string="Total">
                             <group>
                                 <field name="name"/>
                                 <field name="date"/>
-
                                 <field name="month"/>
                                 <field name="year"/>
                             </group>
@@ -116,9 +92,6 @@
                                 <field name="total_cards"/>
                             </group>
                         </group>
-
-
-
 
 
                         <!-- Proof -->

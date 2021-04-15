@@ -9,10 +9,8 @@
 		Abstract, General purpose. Provider of services.
 """
 from __future__ import print_function
+
 import datetime
-
-
-
 
 # ----------------------------------------------------------- Get Orders By State -----------------
 def get_orders_by_state_all(self, date):

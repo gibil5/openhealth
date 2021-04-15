@@ -1,0 +1,110 @@
+<openerp>
+	<data>
+
+
+<!-- FORM -->
+		<record model="ir.ui.view" id="closing_form_form_view">
+			
+			<field name="name">openhealth.closing.form.form</field>
+			
+			<field name="model">openhealth.closing.form</field>
+			
+			<field name="arch" type="xml">
+			
+				<form string="closing Form">
+
+
+					<!-- Header -->
+					<header></header>
+
+
+					<!-- Sheet -->
+					<sheet>
+
+						<!-- Name -->
+						<group col="2">
+							<group>
+								<field name="name"/>
+							</group>
+							<group>
+								<field name="date"/>
+							</group>
+						</group>
+
+
+						<!-- Name -->
+						<group  string='Totales' col="2">
+							<group>
+								<field name="total"/>
+							</group>
+							<group>
+								<field name="total_cash"/>
+								<field name="total_cards"/>
+								<field name="total_banks"/>
+							</group>
+						</group>
+
+
+						<!-- Name -->
+						<group  string='Efectivo' col="2">
+							<group>
+								<field name="cash"/>
+							</group>
+							<group>
+							</group>
+						</group>
+
+
+						<!-- Name -->
+						<group  col="2">
+							<group	string='Tarjetas' >
+								<field name="american"/>
+								<field name="diners"/>
+								<field name="master_credit"/>
+								<field name="master_debit"/>
+								<field name="visa_credit"/>
+								<field name="visa_debit"/>
+							</group>
+							<group	string='Bancos' >
+								<field name="bbva"/>
+								<field name="interbank"/>
+								<field name="scotia"/>
+								<field name="bcp"/>
+							</group>
+						</group>
+
+
+
+
+						<!-- Notebook -->
+						<notebook></notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+
+
+
+
+	   
+<!-- TREE -->
+		<record model="ir.ui.view" id="closing_form_view_tree">
+
+			<field name="name">openhealth.closing.tree</field>
+
+			<field name="model">openhealth.closing.form</field>
+
+			<field name="arch" type="xml">
+				<tree string="closing Tree">
+
+					<field name="name"/>
+					<field name="date"/>
+
+				</tree>
+			</field>
+		</record>
+
+
+	</data>
+</openerp>

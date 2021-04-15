@@ -4,16 +4,15 @@
 
 	Only functions. Not the data model. 
 
-	Created: 			  8 Apr 2019
-	Last up: 	 		 16 Dec 2019
+	Created: 			 8 Apr 2019
+	Previous: 	 		16 Dec 2019
+	Last: 	 		 	15 apr 2021
 """
 from __future__ import print_function
 from openerp import models, fields, api
 
-from . import px_vars
-from . import chk_product
-from . import pl_prod_vars
-from . import exc_prod
+from . import px_vars, chk_product, pl_prod_vars
+#from . import exc_prod
 
 class ProductTemplate(models.Model):
 	"""
@@ -21,20 +20,38 @@ class ProductTemplate(models.Model):
 	"""
 	_order = 'pl_idx_int'
 	_description = 'Product Template'
-
 	_inherit = 'product.template'
 
 
-# ----------------------------------------------------------- Fields ------------------------------
-
+# ----------------------------------------------------------- Descriptors ------
+	# Required
 	pl_price_list = fields.Selection(
-			[
-				('2019', '2019'),
-				('2018', '2018'),
-			],
-			string='Lista de Precios',
-			required=True,
-		)
+		[
+			('2019', '2019'),
+			('2018', '2018'),
+		],
+		string='Lista de Precios',
+		#required=True,
+	)
+	
+	pl_name_short = fields.Char(
+		'Name short',
+		#required=True,
+	)
+	
+	pl_family = fields.Selection(
+		selection=px_vars._family_list,
+		string='Family',
+		#required=True,
+	)
+
+	pl_subfamily = fields.Selection(
+		selection=px_vars._subfamily_list,
+		string='Subfamily',
+		#required=True,
+	)
+	
+
 
 # ----------------------------------------------------------- Natives ----------
 	# Treatment
@@ -45,18 +62,7 @@ class ProductTemplate(models.Model):
 
 
 # ---------------------------------------------- Fields - Categorized ----------
-	# Required
-	pl_family = fields.Selection(
-			selection=px_vars._family_list,
-			string='Family',
-			required=True,
-		)
 
-	pl_subfamily = fields.Selection(
-			selection=px_vars._subfamily_list,
-			string='Subfamily',
-			required=True,
-		)
 
 	# Not Required
 	pl_manufacturer = fields.Selection(
@@ -125,10 +131,6 @@ class ProductTemplate(models.Model):
 		)
 
 # ---------------------------------------------- Fields - Chars ----------------
-	pl_name_short = fields.Char(
-			'Name short',
-			required=True,
-		)
 
 	pl_prefix = fields.Char(
 			'Prefix',

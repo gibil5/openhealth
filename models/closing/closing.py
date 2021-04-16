@@ -76,12 +76,19 @@ class Closing(models.Model):
 
 
 # ----------------------------------------------------- Relational - Counters ------------------------------------------------------------------
-
 	# Closing Form
 	closing_form = fields.Many2one(
 			'openhealth.closing.form', 
 			string='Forma de Pago',
 		)
+
+	# Closing Proof
+	closing_proof = fields.Many2one(
+			'openhealth.closing.proof', 
+			string='Documentos de Pago',
+		)
+
+
 
 # ----------------------------------------------------------- Natives -----------------------
 	total_banks = fields.Float(

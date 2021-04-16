@@ -2,8 +2,7 @@
 <openerp>
     <data>
         
-
-        <!-- FORM --> 
+<!-- FORM --> 
         <record model="ir.ui.view" id="closing_form_view">
             <field name="name">closing.form</field>
             <field name="model">openhealth.closing</field>
@@ -85,11 +84,21 @@
                                 <field name="date"/>
                                 <field name="month"/>
                                 <field name="year"/>
+
+                                <!-- PL -->
+            					<field name="closing_form"/>
+            					<field name="closing_proof"/>
+<!--
+-->
+
                             </group>
                             <group>
                                 <field name="total"/>
                                 <field name="total_cash"/>
                                 <field name="total_cards"/>
+
+                                <!-- PL -->
+                                <field name="total_banks"/>
                             </group>
                         </group>
 
@@ -157,6 +166,12 @@
                                 <field name="mad_tot"/>
                                 <field name="vic_tot"/>
                                 <field name="vid_tot"/>
+
+                                <!-- PL -->
+            					<field name="bbva_tot"/>
+            					<field name="interbank_tot"/>
+            					<field name="scotiabank_tot"/>
+            					<field name="bcp_tot"/>
                             </group>
                             <group>
                                 <field name="total_form"/>
@@ -179,51 +194,41 @@
 
 
         
-        <!-- TREE view --> 
+<!-- TREE view --> 
         <record model="ir.ui.view" id="closing_view_order_tree">
             <field name="name">openhealth.closing.tree</field>
             <field name="model">openhealth.closing</field>
             <field name="arch" type="xml">
-
-
                 <tree string="Cierres de caja"  default_order='date desc'>
-                    
                     <field name="name"/>
                     <field name="month"/>
                     <field name="year"/>
-
-
                     <field name="total_cash"/>
                     <field name="total_cards"/>
                     <field name="total"/>
-
-<!--
-                    <field name="test_target"  groups="openhealth.roots"/>
-
-                    <field name="date"      string="Fecha"  />
-
-                    <field name="total_form"/>
-                    <field name="total_proof"/>
-                    <field name="ame_tot"/>
-                    <field name="cuo_tot"/>
-                    <field name="din_tot"/>
-                    <field name="mac_tot"/>
-                    <field name="mad_tot"/>
-                    <field name="vic_tot"/>
-                    <field name="vid_tot"/>
-                    <field name="tkr_tot"/>
-                    <field name="tki_tot"/>
-                    <field name="rec_tot"/>
-                    <field name="inv_tot"/>
-                    <field name="adv_tot"/>
-                    <field name="san_tot"/>
-
-                    <field name="order_ids"/>
--->
-
                 </tree>
             </field>
         </record>
+<!--
+<field name="test_target"  groups="openhealth.roots"/>
+<field name="date"      string="Fecha"  />
+<field name="total_form"/>
+<field name="total_proof"/>
+<field name="ame_tot"/>
+<field name="cuo_tot"/>
+<field name="din_tot"/>
+<field name="mac_tot"/>
+<field name="mad_tot"/>
+<field name="vic_tot"/>
+<field name="vid_tot"/>
+<field name="tkr_tot"/>
+<field name="tki_tot"/>
+<field name="rec_tot"/>
+<field name="inv_tot"/>
+<field name="adv_tot"/>
+<field name="san_tot"/>
+<field name="order_ids"/>
+-->
 
 
 

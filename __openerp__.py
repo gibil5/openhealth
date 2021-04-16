@@ -345,7 +345,7 @@ Always clean your System:
 	'views/closings/pre_closings.xml',
 	'views/closings/pre_closings_search.xml',
 
-	'views/closings/closing.xml',
+	#'views/closings/closing.xml',
 	'views/closings/closing_form.xml',
 
 	'reports/closing/closing.xml',

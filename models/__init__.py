@@ -4,17 +4,19 @@ from __future__ import absolute_import
 # Commons
 from .commons import *
 
+# Configurator
+from .configurator import *
 
 # Oeh Medical
 from .open_medical import *
-from .oeh_medical import *
+#from .oeh_medical import *
 
 
 # Management
 from .management import *
 
 # Configurator
-from .configurator import *
+#from .configurator import *
 
 # Pricelist
 from .pricelist import *

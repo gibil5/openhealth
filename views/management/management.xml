@@ -22,13 +22,14 @@
 						/>
 
 						<!-- serialize -->
+<!--
 						<button 
 								type="object"
 								class="oe_highlight"
 								name="serialize"
 								string="Serialize"
 						/>
-
+-->
 
 						<!-- Update fast -->
 						<button 
@@ -172,7 +173,9 @@
 						<!-- Serialized report --> 
 						<group  string="Serial">
 							<group>
+<!--
 								<field name="report_serial"/>
+-->
 								<field name="configurator"/>
 								<field name="state"/>
 							</group>

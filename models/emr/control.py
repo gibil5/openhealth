@@ -19,7 +19,8 @@ class Control(models.Model):
 	"""	
 	_name = 'openhealth.control'
 	_description = 'Control'
-	_inherit = ['oeh.medical.evaluation', 'base_multi_image.owner']
+	#_inherit = ['oeh.medical.evaluation', 'base_multi_image.owner']
+	_inherit = ['oeh.medical.evaluation']
 
 
 # ----------------------------------------------------------- Relationals ------

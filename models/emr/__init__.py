@@ -2,7 +2,7 @@
 from __future__ import absolute_import
 
 # Dependencies
-from . import image		
+#from . import image
 from . import cart_line				
 
 # Medical
@@ -15,6 +15,7 @@ from . import control
 
 from . import session 
 from . import session_med
+
 
 
 # Dep 

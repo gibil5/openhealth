@@ -16,7 +16,8 @@ class Session(models.Model):
 	Class Session
 	"""	
 	_name = 'openhealth.session'
-	_inherit = ['oeh.medical.evaluation', 'base_multi_image.owner']
+	#_inherit = ['oeh.medical.evaluation', 'base_multi_image.owner']
+	_inherit = ['oeh.medical.evaluation']
 
 
 # ----------------------------------------------------------- Relational -------

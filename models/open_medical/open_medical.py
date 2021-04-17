@@ -167,8 +167,13 @@ class OeHealthPhysician(models.Model):
 class OeHealthAppointment(models.Model):
     _name = 'oeh.medical.appointment'
     _description = 'Appointment'
-    _inherit = ['mail.thread', 'ir.needaction_mixin']
     _order = "appointment_date desc"
+
+    #_inherit = ['mail.thread', 'ir.needaction_mixin']      # odoo 9
+    #_inherit = ['mail.thread', 'mail.activity.mixin']      # odoo 11
+    _inherit = ['mail.thread']
+
+
     #_defaults = {
     #       'urgency_level': lambda *a: 'Normal',
     #       'name': lambda obj, cr, uid, context: '/',
@@ -228,6 +233,7 @@ class OeHealthAppointment(models.Model):
 
     #def check_physician_availability(self,cr,uid,doctor,appointment_date):
     #    return available
+
 
 
 

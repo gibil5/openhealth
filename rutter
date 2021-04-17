@@ -11,6 +11,32 @@
 # ------------------------------------------------------------------------------
 
 
+raise ValueError('External ID not found in the system: %s' % xmlid)
+odoo.tools.convert.ParseError: "<class 'ValueError'>: "External ID not found in the system: 
+
+base.group_hr_manager
+
+" while evaluating
+"[                     (4, ref('purchase.group_purchase_manager')),              (4, ref('stock.group_stock_manager')),              (4, ref('base.group_hr_manager')),             ]"" while parsing /Users/gibil/Virtualenvs/Odoo11-git/src/odoo/addons/openhealth/security/openhealth_security.xml:136, near
+<record id="directors" model="res.groups">
+			<field name="name">Directores</field>
+			<field name="category_id" ref="module_openhealth_category"/>
+			<field name="comment">cc</field>
+			<field name="implied_ids" eval="[                     (4, ref('purchase.group_purchase_manager')),              (4, ref('stock.group_stock_manager')),              (4, ref('base.group_hr_manager')),             ]"/>
+			<field name="users" eval="[              (4, ref('openhealth.director_clinicachavarri')),              (4, ref('openhealth.rchavarri_clinicachavarri')),              (4, ref('openhealth.fchavarri_clinicachavarri')),          ]"/>
+		</record>
+
+
+
+psycopg2.ProgrammingError: relation "openhealth_configurator_emr" does not exist
+LINE 1: SELECT "openhealth_configurator_emr".id FROM "openhealth_con...
+
+
+TypeError: Model 'oeh.medical.appointment' inherits from non-existing model 'ir.needaction_mixin'.
+
+
+
+
 
 
 Table 'product_template': unable to set a NOT NULL constraint on column 'pl_name_short' !

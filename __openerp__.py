@@ -88,7 +88,8 @@ Always clean your System:
 'version': '7.0',
 
 #'depends': ['base', 'oehealth', 'base_multi_image'],
-'depends': ['base', 'base_multi_image', 'sale', 'purchase', 'account', 'product', 'document', 'hr', 'web'],
+#'depends': ['base', 'base_multi_image', 'sale', 'purchase', 'account', 'product', 'document', 'hr', 'web'],
+'depends': ['base', 'sale', 'purchase', 'account', 'product', 'document', 'hr', 'web'],
 
 'data': [
 
@@ -133,10 +134,12 @@ Always clean your System:
 
 
 
-# ----------------------------------------------------------- Security - Users - First ------------------------------------------------------
-	'security/openhealth_security.xml',             # Groups
-	'security/openhealth_security_readers.xml',   	# Important
-	'security/openhealth_security_managers.xml',
+# ----------------------------------------------------------- Security - Groups ------------------------------------------------------
+	#'security/openhealth_security.xml',             	# Dep
+	#'security/openhealth_security_readers.xml',   		# Dep
+	#'security/openhealth_security_managers.xml',
+
+	'security/open_security_min.xml',             		# Min
 
 
 # ----------------------------------------------------------- Configurator ------------------------------------------------------
@@ -264,8 +267,10 @@ Always clean your System:
 	'views/controls/control.xml',
 	'views/controls/control_admin.xml',
 
+
 	# Images
-	'views/images/image_view.xml',
+	#'views/images/image_view.xml',
+
 
 	# Procedures
 	'views/procedures/procedure_search.xml',
@@ -387,6 +392,11 @@ Always clean your System:
 	#'views/menus/menus_marketing.xml', 	# Dep PL
 	#'views/menus/menus_account.xml',  		# DEP PL
 
+
+# ----------------------------------------------------------- Security - Users - First ------------------------------------------------------
+	#'security/openhealth_security.xml',             # Groups
+	#'security/openhealth_security_readers.xml',   	# Important
+	#'security/openhealth_security_managers.xml',
 
 # ----------------------------------------------------------- Security - Models - Last ------------------------------------------------------
 	'security/ir.model.access.csv',

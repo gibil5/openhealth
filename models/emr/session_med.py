@@ -27,7 +27,8 @@ class SessionMed(models.Model):
 	Should not define the Business Rules. 
 	"""	
 	_name = 'openhealth.session.med'
-	_inherit = ['openhealth.session', 'base_multi_image.owner']
+	#_inherit = ['openhealth.session', 'base_multi_image.owner']
+	_inherit = ['openhealth.session']
 
 
 # ----------------------------------------------------------- Fields ------------------------------

@@ -4,6 +4,7 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
 
 
+access_openhealth_closing_proof,access_openhealth_closing_proof,model_openhealth_closing_proof,,1,0,0,0
 
 access_oeh_medical_health_center_pharmacy_line,access_oeh_medical_health_center_pharmacy_line,model_oeh_medical_health_center_pharmacy_line,,1,0,0,0
 access_openhealth_service_all,access_openhealth_service_all,model_openhealth_service_all,,1,0,0,0

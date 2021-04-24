@@ -14,6 +14,8 @@
 	Last: 				27 mar 2021
 """
 from __future__ import print_function
+from __future__ import absolute_import
+
 import collections
 from openerp import models, fields, api
 

@@ -10,11 +10,9 @@
 	Last updated: 			23 mar 2021
 """
 from openerp import models, fields, api
-import openerp.addons.decimal_precision as dp
+from .libs import commons_lib as lib
 
-#from openerp.addons.openhealth.models.libs import lib
-#from libs import lib
-from libs import commons_lib as lib
+#import openerp.addons.decimal_precision as dp
 
 class Line(models.Model):	
 
@@ -52,7 +50,7 @@ class Line(models.Model):
 	# Qty
 	product_uom_qty = fields.Float(
 			string='Cantidad', 
-			digits=dp.get_precision('Product Unit of Measure'), 
+			#digits=dp.get_precision('Product Unit of Measure'), 
 			default=1.0,
 			required=True, 
 		)
@@ -60,7 +58,7 @@ class Line(models.Model):
 	# Unit 
 	price_unit = fields.Float(
 			'Precio Unit.', 
-			digits=dp.get_precision('Product Price'), 
+			#digits=dp.get_precision('Product Price'),
 			default=0.0, 
 			required=True, 
 		)

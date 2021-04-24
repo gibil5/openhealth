@@ -85,14 +85,12 @@ def create_order(self, partner_id, pricelist_id, product_tup):
 	order = self.env['sale.order'].create({
 											'partner_id': partner_id,
 											'pricelist_id': pricelist_id,
-
 											'state':'draft',
 											'x_doctor': self.physician.id,
 											'patient': self.patient.id,
 											'x_id_doc': self.patient.x_id_doc,
 											'x_id_doc_type': self.patient.x_id_doc_type,
 											'x_family': 'procedure',
-											
 											'treatment': self.id,
 	})
 
@@ -110,7 +108,6 @@ def create_order(self, partner_id, pricelist_id, product_tup):
 										'name': 		product.name,
 										'product_uom_qty': qty,
 										'price_unit': 	price,
-
 										'order_id': 	order.id,
 									})
 	return order

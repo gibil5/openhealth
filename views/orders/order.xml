@@ -2,11 +2,31 @@
 <openerp>
 	<data>
 
+<!-- SEARCH - Odoo11 -->
+		<record id="view_sales_order_filter" model="ir.ui.view">
+		   <field name="name">my_sale_orders_filter</field>
+		   <field name="model">sale.order</field>
+		   <field name="arch" type="xml">
+			   <search string="orders">
+					<field  name="date_order"/>
+<!--
+					<group expand="1" string="Group By">
+						<filter name="Médico" context="{'group_by':'physician'}"/>
+					</group>
+-->
+			   </search>
+		   </field>
+	   </record>
+
+
+
 <!-- FORM -->
 		<record model="ir.ui.view" id="view_order_form">
 			<field name="name">sale.order.form</field>
 			<field name="model">sale.order</field>
+
 			<field name="inherit_id" ref="sale.view_order_form"/>
+
 			<field name="mode">primary</field>
 			<field name="priority">1</field>
 			<field name="arch" type="xml">
@@ -41,7 +61,6 @@
 							string="Agregar SERVICIO - 2019"
 						/>
 
-
 					<!-- Correct Serial Nr -->
 					<button
 							type="object"
@@ -53,7 +72,6 @@
 							name="correct_serial_number"
 							string="Corregir Num Serie"
 						/>
-
 
 <!-- Test All -->
 					<button
@@ -103,8 +121,6 @@
 							context="{'key': 'test_ticket'}"
 					/>
 
-
-
 					<!-- Test Validate -->
 					<!-- test_validation -->
 					<button
@@ -129,7 +145,6 @@
 							context="{'key': 'test_pm'}"
 					/>
 			</xpath>
-
 
 
 
@@ -174,8 +189,6 @@
 
 				<!-- Redefine -->
 				<xpath expr="//button[@name='action_confirm']" position="replace">
-
-
 					<!-- Validate -->
 					<button
 							type="object"
@@ -184,8 +197,6 @@
 							string="Validar y Confirmar"
 							states="sent"
 					/>
-
-
 					<!-- Confirm -->
 					<button
 							type="object"
@@ -194,8 +205,6 @@
 							string="CONFIRMAR"
 							states="validated"
 					/>
-
-
 					<!-- Cancel -->
 					<button
 							name="cancel_order"
@@ -205,9 +214,6 @@
 							string="Anular"
 							states="sale"
 					/>
-
-
-
 					<!-- Activate -->
 					<button
 							type="object"
@@ -218,7 +224,6 @@
 							states="cancel"
 					/>
 
-
 					<!-- Create CN -->
 					<button
 							type="object"
@@ -227,8 +232,6 @@
 							states="sale,cancel"
 							string="Crear NC"
 					/>
-
-
 
 					<!-- Block Flow -->
 					<button
@@ -261,6 +264,9 @@
 					<field name="x_partner_vip"/>
 -->
 					<field name="vspace"/>
+
+					<field name="company_id"/>
+
 
 					<field name="date_order"            string="Fecha"
 
@@ -376,7 +382,10 @@
 				</field>
 
 				<!-- Partner -->
+<!--
 				<field name="partner_id" position="replace">
+-->
+				<field name="partner_id" position="after">
 					<field name="patient"       required="1"            options="{'no_create': False, 'no_create_edit':True}"/>
 				</field>
 

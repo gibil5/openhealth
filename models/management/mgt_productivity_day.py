@@ -6,16 +6,18 @@
 	Last up: 	 		29 mar 2021
 """
 from __future__ import print_function
+from __future__ import absolute_import
+
 import numpy as np
 from openerp import models, fields, api
-from openerp.addons.openhealth.models.order import ord_vars
 
-#from openerp.addons.openhealth.models.libs import lib
-#from openerp.addons.openhealth.models.commons.libs import lib
-from openerp.addons.openhealth.models.commons.libs import commons_lib as lib
+#from .lib import mgt_db
+from .management_db import ManagementDb
 
-#from lib import mgt_db
-from management_db import ManagementDb
+#from openerp.addons.openhealth.models.order import ord_vars
+#from openerp.addons.openhealth.models.commons.libs import commons_lib as lib
+from ..order import ord_vars
+from ..commons.libs import commons_lib as lib
 
 # -------------------------------------------------------------------------------------------------
 #class ProductivityDay(models.Model):

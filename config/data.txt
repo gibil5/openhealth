@@ -1,0 +1,9 @@
+{
+    "test":{
+       "product":   "1",
+       "laser":     "1",
+       "medical":   "0",
+       "cosmetology":"0",
+       "new":       "0"
+    }
+}

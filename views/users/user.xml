@@ -41,9 +41,6 @@
 
 
 <!-- FILTER --> 
-<!--
-        <record id="sale.view_sales_order_filter" model="ir.ui.view">
--->
         <record id="base.view_users_search" model="ir.ui.view">
 
            <field name="name">res.users.search</field>

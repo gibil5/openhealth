@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-	Pricelist Container
+	Pricelist Container - Dep !
 
 	Created: 		23 Apr 2019
 	Previous: 		10 Aug 2019
-	Last: 			 7 apr 2021
+	Last: 			12 apr 2021
 """
 from __future__ import print_function
 from openerp import models, fields, api
-
 from . import px_vars
 
 class PricelistContainer(models.Model):

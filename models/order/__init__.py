@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from __future__ import absolute_import
 
 
 #from . import report_order_line
@@ -17,13 +18,15 @@ from . import order_business
 from . import order_controller
 from . import order_extra
 
+
 from . import order_line
 from . import order_line_pl
 
-from . import payment_method
 
+from . import payment_method
 from . import payment_method_line
 
-from . import closing
+
+#from . import closing
 
 from . import card

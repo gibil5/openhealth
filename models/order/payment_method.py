@@ -27,19 +27,12 @@ class PaymentMethod(models.Model):
 
 
 # ----------------------------------------------------------- Relational ------------------------------
-
 	# Lines
 	pm_line_ids = fields.One2many(
-			
 			'openhealth.payment_method_line',
-			
 			'payment_method',
-			
 			string="Pago #",
 		)
-
-
-
 
 # ----------------------------------------------------------- Locked ------------------------------
 	# Total
@@ -49,22 +42,15 @@ class PaymentMethod(models.Model):
 			#states=pm_vars.READONLY_STATES, 	# Bug: 15 Oct 2019
 		)
 
-
 	# Saledoc
 	saledoc = fields.Selection(
 			string="Tipo",
-
 			selection=pm_vars._sale_doc_type_list,
-			
 			states=pm_vars.READONLY_STATES,
-
 			default='ticket_receipt',
 		)
 
-
-
 # ----------------------------------------------------------- Primitives --------------------------
-
 	# Order
 	order = fields.Many2one(
 			'sale.order',
@@ -112,7 +98,6 @@ class PaymentMethod(models.Model):
 
 
 # ----------------------------------------------------------- Admin - Editable --------------------
-
 	# Confirmed
 	confirmed = fields.Boolean(
 			default=False,
@@ -129,7 +114,6 @@ class PaymentMethod(models.Model):
 
 
 # ----------------------------------------------------------- Actions -----------------------------
-
 	# go_back
 	@api.multi
 	def go_back(self):
@@ -144,11 +128,7 @@ class PaymentMethod(models.Model):
 
 
 
-
-
-
 # ----------------------------------------------------------- Computes ----------------------------
-
 	# Total Paid
 	pm_total = fields.Float(
 			string='Total pagado',
@@ -157,7 +137,6 @@ class PaymentMethod(models.Model):
 
 			compute="_compute_pm_total",
 		)
-
 	@api.multi
 	def _compute_pm_total(self):
 		for record in self:
@@ -165,9 +144,6 @@ class PaymentMethod(models.Model):
 			for line in record.pm_line_ids:
 				pm_total = pm_total + line.subtotal
 			record.pm_total = pm_total
-
-
-
 
 	# Balance
 	balance = fields.Float(
@@ -186,9 +162,6 @@ class PaymentMethod(models.Model):
 			record.balance = record.total - record.pm_total
 
 
-
-
-
 	# Name - Used by Order
 	name = fields.Char(
 			string="Pagos",
@@ -199,8 +172,6 @@ class PaymentMethod(models.Model):
 	def _compute_name(self):
 		for record in self:
 			record.name = 'PA-' + str(record.id).zfill(6)
-
-
 
 	# State
 	state = fields.Selection(
@@ -215,7 +186,6 @@ class PaymentMethod(models.Model):
 
 			compute="_compute_state",
 		)
-
 	@api.multi
 	def _compute_state(self):
 		for record in self:
@@ -228,29 +198,25 @@ class PaymentMethod(models.Model):
 				record.state = 'editable'
 
 
+# ----------------------------------------------------------- Test - Dep---------------------------
+	#def test_computes(self):
+	#	"""
+	#	high level support for doing this and that.
+	#	"""
+	#	print()
+	#	print(self.name)
+	#	print(self.pm_total)
+	#	print(self.balance)
+	#	print(self.state)
 
-
-
-# ----------------------------------------------------------- Test ---------------------------
-	def test_computes(self):
-		"""
-		high level support for doing this and that.
-		"""
-		print()
-		print(self.name)
-		print(self.pm_total)
-		print(self.balance)
-		print(self.state)
-
-
-	@api.multi
-	def test(self):
-		"""
-		high level support for doing this and that.
-		"""
-		print()
-		print('Test')
-		self.test_computes()
+	#@api.multi
+	#def test(self):
+	#	"""
+	#	high level support for doing this and that.
+	#	"""
+	#	print()
+	#	print('Test')
+	#	self.test_computes()
 		#return self.test_actions()		# Dangerous
 
 
@@ -267,12 +233,10 @@ class PaymentMethod(models.Model):
 			pm_total = pm_total + line.subtotal
 			ctr = ctr + 1
 
-
 		# Init
 		self.balance = self.total - pm_total
 		self.pm_total = pm_total
 		self.nr_pm = ctr
-
 
 		if self.balance < 0:
 			# Raise Error

@@ -62,15 +62,12 @@
 
             sequence="5"
             />
-
-
         <menuitem   id="oeh_medical_physician_list"  
                     parent="physician_menu" 
                     sequence="7"
                     name="Médicos"
                     action="physician_list_action" 
                     />
-
         <menuitem   id="oeh_medical_therapeut_list"
                     parent="physician_menu"
                     sequence="8"
@@ -87,7 +84,6 @@
             groups="openhealth.roots,openhealth.managers,openhealth.directors"
             />
 
-
         <!-- Patients --> 
         <menuitem   id="emr_patients_inactive_menu" 
                     name="Pacientes" 
@@ -95,7 +91,6 @@
                     sequence="1"
                     action="patient_inactive_list_action"
                     />
-
 
         <!-- Partners --> 
         <menuitem   id="emr_partners_inactive_menu" 
@@ -105,8 +100,8 @@
                     action="partner_patient_inactive_list_action"
                     />
 
-
         <!-- Physicians -->
+        <!--
         <menuitem   id="oeh_medical_physician_inactive_list"  
                     name="Médicos"
                     parent="emr_inactive_menu"
@@ -114,7 +109,7 @@
                     action="physician_inactive_list_action" 
                     groups="openhealth.roots,openhealth.directors"
                     />
-
+        -->
 
         <!-- users --> 
         <menuitem   id="emr_users_inactive_menu" 

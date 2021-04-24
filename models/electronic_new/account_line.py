@@ -6,7 +6,7 @@
  	Last up: 	 			29 mar 2021
 """
 from openerp import models, fields, api
-from lib import acc_vars, acc_lib, pl_acc_lib
+from .lib import acc_vars, acc_lib, pl_acc_lib
 
 class AccountLine(models.Model):
 	"""

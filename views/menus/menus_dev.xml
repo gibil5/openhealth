@@ -11,6 +11,9 @@
             <field name="res_model">product.product</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
+
+            <field name="view_id" ref="product_template_list"/> 
+
             <field name="domain">[]</field>
         </record>
 
@@ -102,12 +105,14 @@ openhealth.card
 						/>
 
 		<!-- Procurement Orders --> 
+<!--
 		<menuitem   id="dev_procurement_order_menu"
 					parent="parent_dev_menu"
 					sequence="15"
 					name="Procurement Orders"
 					action="procurement_order_list_action"
 				/>
+-->
 <!--
 procurement.order
 -->

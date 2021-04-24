@@ -7,16 +7,17 @@
 	Define a Strategy - for resolving a problem (business logic).
 
 	Created: 			28 may 2018
-	Last up: 			 4 apr 2021
+	Last up: 			16 apr 2021
 """
 from __future__ import print_function
 import collections
 from openerp import models, fields, api
-from mgt_patient_line import MgtPatientLine
-from sales_doctor import SalesDoctor
-from management_db import ManagementDb
 
-from lib import mgt_funcs, prod_funcs, mgt_bridge, mgt_vars
+from .mgt_patient_line import MgtPatientLine
+from .lib import mgt_funcs, prod_funcs, mgt_bridge, mgt_vars
+from .sales_doctor import SalesDoctor
+
+from .management_db import ManagementDb
 
 # ------------------------------------------------------------------- Class -----------------------
 class Management(models.Model):
@@ -43,20 +44,6 @@ class Management(models.Model):
 	def get_total_count(self):
 		return str(self.total_count)
 
-
-
-# ----------------------------------------------------------- Serializer --------------------------
-	# Contains the Finance report serialized in json or xml 
-	# name, date_begin, date_end, total_amount, total_count, total_tickets
-	report_serial = fields.Char()
-
-	@api.multi
-	def serialize(self):
-		self.report_serial = "{	'name': " + self.get_name() + \
-								", 'date_begin': " + self.get_date_begin() + \
-								", 'date_end': " + self.get_date_end() + \
-								", 'total_amount': " + self.get_total_amount() + \
-							"}"
 
 # ----------------------------------------------------------- Relational --------------------------
 
@@ -916,6 +903,7 @@ class Management(models.Model):
 		# Sales by Doctor
 		#self.update_sales_by_doctor()
 
+
 		obj = SalesDoctor(self, self.date_begin, self.date_end, self.doctor_line, self.total_amount)
 		obj.update()
 
@@ -1284,3 +1272,17 @@ class Management(models.Model):
 
 	# reset_micro
 
+
+
+# ----------------------------------------------------------- Serializer --------------------------
+	# Contains the Finance report serialized in json or xml 
+	# name, date_begin, date_end, total_amount, total_count, total_tickets
+	#report_serial = fields.Char()
+
+	#@api.multi
+	#def serialize(self):
+	#	self.report_serial = "{	'name': " + self.get_name() + \
+	#							", 'date_begin': " + self.get_date_begin() + \
+	#							", 'date_end': " + self.get_date_end() + \
+	#							", 'total_amount': " + self.get_total_amount() + \
+	#						"}"

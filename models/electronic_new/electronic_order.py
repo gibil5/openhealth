@@ -12,7 +12,7 @@ import io
 
 from openerp import models, fields, api
 from openerp.addons.openhealth.models.order import ord_vars
-from lib import chk_electronic, lib_coeffs, pl_lib_exp
+from .lib import chk_electronic, lib_coeffs, pl_lib_exp
 
 #from openerp.addons.openhealth.models.libs import lib
 #from openerp.addons.openhealth.models.commons.libs import lib

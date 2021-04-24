@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data noupdate='0'>
+
+<!--
+Groups and Categories
+-->
+
+<!-- Open Health --> 
+<record model="ir.module.category" id="module_openhealth_category">
+		<field name="name">Open Health</field>
+		<field name="sequence">0</field>
+		<field name="visible" eval="0" />   
+</record>
+
+
+
+<!-- Roots --> 
+<record id="roots" model="res.groups">
+	<field name="name">roots</field>	
+
+	<field name="category_id" ref="module_openhealth_category"/>
+		<field name="users" eval="[ 
+        								(4, ref('base.user_root')), 
+        ]"/>
+</record>
+
+
+<record id="directors" model="res.groups">
+	<field name="name">Directores</field>
+
+	<field name="category_id" ref="module_openhealth_category"/>
+		<field name="users" eval="[ 
+										(4, ref('base.user_root')), 
+
+		]"/>
+</record>
+
+
+<record id="managers" model="res.groups">
+	<field name="name">Managers</field>
+
+	<field name="category_id" ref="module_openhealth_category"/>
+		<field name="users" eval="[ 
+										(4, ref('base.user_root')), 
+
+		]"/>
+</record>
+
+
+<record id="reception" model="res.groups">
+	<field name="name">Recepcion</field>
+	<field name="category_id" ref="module_openhealth_category"/>
+		<field name="users" eval="[ 
+										(4, ref('base.user_root')), 
+
+		]"/>
+</record>
+
+<record id="physicians" model="res.groups">
+	<field name="name">Medicos</field>
+	<field name="category_id" ref="module_openhealth_category"/>
+		<field name="users" eval="[ 
+										(4, ref('base.user_root')), 
+
+		]"/>
+</record>
+
+<record id="caja" model="res.groups">
+	<field name="name">Caja</field>
+	<field name="category_id" ref="module_openhealth_category"/>
+		<field name="users" eval="[ 
+										(4, ref('base.user_root')), 
+
+		]"/>
+</record>
+
+<record id="group_oeh_medical_physician" model="res.groups">
+	<field name="name">Physicians</field>
+	<field name="category_id" ref="module_openhealth_category"/>
+		<field name="users" eval="[ 
+										(4, ref('base.user_root')), 
+
+		]"/>
+</record>
+
+
+
+<record id="hc_managers" model="res.groups">
+	<field name="name">HC Managers</field>
+	<field name="category_id" ref="module_openhealth_category"/>
+		<field name="users" eval="[ 
+										(4, ref('base.user_root')), 
+
+		]"/>
+</record>
+
+<record id="hc_readers" model="res.groups">
+	<field name="name">HC Readers</field>
+	<field name="category_id" ref="module_openhealth_category"/>
+		<field name="users" eval="[ 
+										(4, ref('base.user_root')), 
+
+		]"/>
+</record>
+
+
+<record id="assistants" model="res.groups">
+	<field name="name">Asistentes</field>
+	<field name="category_id" ref="module_openhealth_category"/>
+		<field name="users" eval="[ 
+										(4, ref('base.user_root')), 
+
+		]"/>
+</record>
+
+<record id="archivers" model="res.groups">
+	<field name="name">Archivers</field>
+	<field name="category_id" ref="module_openhealth_category"/>
+		<field name="users" eval="[ 
+										(4, ref('base.user_root')), 
+
+		]"/>
+</record>
+
+
+<record id="product_managers" model="res.groups">
+	<field name="name">Prod Managers</field>
+	<field name="category_id" ref="module_openhealth_category"/>
+		<field name="users" eval="[ 
+										(4, ref('base.user_root')), 
+
+		]"/>
+</record>
+
+<record id="product_readers" model="res.groups">
+	<field name="name">Prod Readers</field>
+	<field name="category_id" ref="module_openhealth_category"/>
+		<field name="users" eval="[ 
+										(4, ref('base.user_root')), 
+
+		]"/>
+</record>
+
+
+
+
+	</data>
+</openerp>

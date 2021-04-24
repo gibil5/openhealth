@@ -12,7 +12,8 @@
 
 
 # ------------------------------------------------------------------- Class -----------------------
-class Management(models.Model):
+#class Management(models.Model):
+class Management():
 	"""
 	Finance module
 	"""

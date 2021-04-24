@@ -12,7 +12,7 @@ from openerp.addons.openhealth.models.patient import pat_vars
 
 #from openerp.addons.openhealth.models.libs import eval_vars
 #from openerp.addons.openhealth.models.commons.libs import eval_vars
-from commons import eval_vars
+from .commons import eval_vars
 
 
 #class PatientLine(models.Model):

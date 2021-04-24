@@ -6,6 +6,7 @@ Last up: 	 		22 Jul 2020
 <openerp>
 	<data>
 
+
 <!-- FORM -->
 		<record model="ir.ui.view" id="treatment_form_view">
 			<field name="name">treatment.form</field>
@@ -270,12 +271,14 @@ Last up: 	 		22 Jul 2020
 
 								<!-- Test -->
 								<field name="x_test"   groups="openhealth.roots"/>
+<!--
 								<button
 									type="object"
 									name="toggle_add_procedures"
 									attrs="{ 'invisible':[  ('add_procedures','!=',False),  ]}"
 									string="Manual"
 								/>
+
 								<button
 									type="object"
 									class="oe_highlight"
@@ -283,6 +286,7 @@ Last up: 	 		22 Jul 2020
 									attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}"
 									string="Manual"
 								/>
+-->
 							</group>
 						</group>
 
@@ -292,7 +296,10 @@ Last up: 	 		22 Jul 2020
 <field name="test_pricelist_2018"/>
 -->
 <hr></hr>
+						<!--
 						<group 	 attrs="{ 'invisible':[  ('x_test','==',False),  ]}" col="4">
+						-->
+						<group col="4">
 
 
 							<!-- Test Integration -->
@@ -312,7 +319,6 @@ Last up: 	 		22 Jul 2020
 										string="Integration"
 
 										name="test_integration"
-										context="{'key': 'test_integration'}"
 									/>
 
 									<!-- Reset -->
@@ -323,8 +329,7 @@ Last up: 	 		22 Jul 2020
 										help='Tests: Reset'
 										string="Reset"
 
-										name="test_integration"
-										context="{'key': 'test_reset'}"
+										name="test_reset"
 									/>
 							</group>
 
@@ -333,6 +338,9 @@ Last up: 	 		22 Jul 2020
 							<group string="Reports">
 
 								<field name="report_management"/>
+								<field name="report_product"/>
+								<field name="report_contasis"/>
+								<field name="report_marketing"/>
 
 								<group>
 <!--
@@ -345,8 +353,7 @@ name="test_report_product"
 											class="oe_highlight"
 											string="MGT"
 
-											name="test_report"
-											context="{'key': 'test_report_management'}"
+											name="test_report_management"
 									/>
 
 									<!-- Rsp -->
@@ -355,8 +362,7 @@ name="test_report_product"
 											class="oe_highlight"
 											string="PROD"
 
-											name="test_report"
-											context="{'key': 'test_report_product'}"
+											name="test_report_product"
 									/>
 								</group>
 						</group>
@@ -401,8 +407,11 @@ name="test_report_product"
 
 							<!-- Test Cycle -->
 							<group string="Cycle">
-
+									<!--
 									<group col="3"	 attrs="{ 'invisible':[  ('add_procedures','==',False),  ]}" >
+									-->
+									<group col="3">
+
 <!--
 name="test_create_budget_consultation"
 name="test_create_sale_consultation"

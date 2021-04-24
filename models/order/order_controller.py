@@ -8,6 +8,8 @@
 from __future__ import print_function
 from openerp import models, fields, api
 
+from .commons import pl_creates, action_funcs
+
 class OrderBl(models.Model):
 	"""
     Order controller.

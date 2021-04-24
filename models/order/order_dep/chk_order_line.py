@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 """
- 		chk_order_line.py
+ 		chk_order_line.py - Dep !!!
 
  		Python Constraints - Product. Contains Specifications.
  
  		Created: 			 22 Apr 2019
-		Last up: 	 		 22 Apr 2019
+		Previous: 	 		 22 Apr 2019
+		Last: 	   		     22 Apr 2019
 """
 
 from openerp.exceptions import ValidationError

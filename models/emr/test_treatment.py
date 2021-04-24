@@ -7,45 +7,71 @@
 	Used by:			Treatment
 
 	Created: 			14 aug 2018
-	Last up: 	 		 5 apr 2021
+	Last up: 	 		14 apr 2021
 """
 from __future__ import print_function
-from openerp.addons.price_list.models.lib import test_funcs
-#from openerp import _
-#from openerp.exceptions import Warning as UserError
+import json
+from . import test_funcs
 
 # ----------------------------------------------------------- Exceptions -------
 class OrderErrorException(Exception):
-	#print('This is my first management of order exceptions')
 	pass
 
 class ProductErrorException(Exception):
-	#print('This is my first management of product exceptions')
 	pass
 
-
+TEST_CASES = [
+	'product',
+	'laser', 
+	'medical',
+	'cosmetology',
+	'new',
+]
 
 # ------------------------------------------------------- First Level - Buttons -------------------
 
 # ----------------------------------------------- Test Integration -------------
-def test_integration_treatment(self, test_case):
+def test_integration_treatment(self):
 	"""
 	End to end Tests
  	Integration Testing for the Treatment Class.
 	"""
 	print()
+	print('*** TESTING')
 	print('test_treatment.py - test_integration_treatment')
+
+	test_array = []
+
+	# Init 
+	fname = '/Users/gibil/cellar/github/openhealth/config/data.txt'
+	with open(fname) as json_file:
+		data = json.load(json_file)
+		#print(data)
+		#print(data['test'])
+		for tc in TEST_CASES:
+			go = int(data['test'][tc])
+			if go:
+				test_array.append(tc)
+		#for p in data['test']:
+		#	print(p)
+	print(test_array)
+
+
 
 	# Create Consultation
 	verbose = False
 	create_consultation(self, verbose) 
 
+	# Loop
 	# Create Recommendations and Sale
-	create_recommentations_and_procedure_sale(self, test_case)
+	for test_case in test_array:
+		create_reco_and_procedure_sale(self, test_case)
 
-	# Create sessions and controls
-	#create_sessions(self, True)
-	#create_controls(self, True)
+	# Create sessions
+	create_sessions(self, True, 1)
+
+	# Create controls
+	create_controls(self, True, 1)
 
 # test_integration_treatment
 
@@ -53,7 +79,7 @@ def test_integration_treatment(self, test_case):
 # ----------------------------------------------- 2nd level ---------------------------------------
 
 # -------------------------------------------------- Procedure -----------------
-def create_recommentations_and_procedure_sale(self, test_case):
+def create_reco_and_procedure_sale(self, test_case):
 	"""
 	Create Recommendations and Procedure Sale
 	"""
@@ -61,15 +87,11 @@ def create_recommentations_and_procedure_sale(self, test_case):
 	print()
 	print(msg)
 
-	test_funcs.enablePrint()
-
 	# Create recommendation
 	create_recommendations(self, test_case)
 
 	# Create order
 	self.btn_create_order_pro()
-
-	test_funcs.disablePrint()
 
 	# Pay
 	test_funcs.disablePrint()
@@ -79,15 +101,18 @@ def create_recommentations_and_procedure_sale(self, test_case):
 			try:
 				order.pay_myself()
 			except OrderErrorException:
-				raise OrderErrorException('jx - Pay myself exception')
-	test_funcs.enablePrint()
+				raise OrderErrorException('TEST TREATMENT - ERROR - pay_myself')
 
+	# Reset recos
+	self.service_ids.unlink()
+
+	test_funcs.enablePrint()
 
 
 # ----------------------------------------------------------- Second Level ------------------------
 
 # -------------------------------------------------- Create Recommendations ----
-def create_recommendations(self, test_case):
+def create_recommendations(self, test_case='all'):
 	"""
 	Create Recommendations
 	Test Cases
@@ -98,7 +123,8 @@ def create_recommendations(self, test_case):
 	"""
 
 	print()
-	print('Create Recommendations')
+	print('TEST - Create Recommendations')
+	print(test_case)
 
 	# Init
 	name_dic = {
@@ -109,14 +135,12 @@ def create_recommendations(self, test_case):
 					'prod_3':		'OTROS',						# Other
 					'prod_4':		'COMISION DE ENVIO',			# Comission
 
-
 					# Lasers
 					'co2': 			'LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento - Grado 1 - 1 sesion',	# Co2
 					'exc':			'LASER EXCILITE - Abdomen - Alopecias - 1 sesion - 15 min',					# Excilite
 					'ipl':			'LASER M22 IPL - Abdomen - Depilacion - 1 sesion - 15 min',					# Ipl
 					'ndy':			'LASER M22 ND YAG - Localizado Cuerpo - Hemangiomas - 1 sesion - 15 min',	# Ndyag
 					'qui':			'QUICKLASER - Cuello - Rejuvenecimiento - Grado 1 - 1 sesion',				# Quick
-
 
 					# Cosmetology
 					'cos_0':		'CARBOXITERAPIA - Cuerpo - Rejuvenecimiento - 1 sesion - 30 min',				# Carboxitherapy
@@ -135,11 +159,10 @@ def create_recommendations(self, test_case):
 					'med_8':		'VITAMINA C ENDOVENOSA',																	# Vitamin
 
 					# New Services
-					#'gyn':			'LASER CO2 FRACCIONAL - Monalisa Touch / Revitalizacion',
+					'gyn':			'LASER CO2 FRACCIONAL - Monalisa Touch / Revitalizacion',
 					'echo':			'ECOGRAFIAS ESPECIALES - Cadera Pediatrica (Bilateral) - 1 sesion',
 					'prom':			'CARBOXITERAPIA - Localizado Cuerpo - Rejuvenecimiento Facial - 6 sesiones',
 		}
-
 
 	tst_list_all = [
 					'prod_0',
@@ -168,7 +191,7 @@ def create_recommendations(self, test_case):
 					'med_7',
 					'med_8',
 
-					#'gyn',
+					'gyn',
 					'echo',
 					'prom',
 	]
@@ -238,13 +261,11 @@ def create_recommendations(self, test_case):
 	elif test_case in [False]:
 		tst_list = tst_list_empty
 
+	else:
+		print('This should not happen !!!')
+
 
 	# Loop
-	#for tst in tst_list_laser:
-	#for tst in tst_list_med:
-	#for tst in tst_list_cos:
-	#for tst in tst_list_new:
-	#for tst in tst_list_prod:
 	for tst in tst_list:
 		
 		# Init
@@ -278,10 +299,7 @@ def create_recommendations(self, test_case):
 		print('Check product_template complete')
 		print(product)
 		print(product.name)
-
-		#print(product.list_price)
 		print(product.pl_price_list)
-
 		print(product.pl_family)
 		print(product.pl_subfamily)
 		print(product.pl_zone)
@@ -293,12 +311,10 @@ def create_recommendations(self, test_case):
 		print(product.pl_treatment)
 		print()
 
-		# Create
-		#service = self.env[_model_service].create({
-		service = self.env['openhealth.service_all'].create({
 
+		# *** Create recommendation
+		service = self.env['openhealth.service'].create({
 			'service': 			product_id,
-
 			'family': 			product.pl_family,
 			'subfamily': 		product.pl_subfamily,
 			'zone': 			product.pl_zone,
@@ -306,37 +322,30 @@ def create_recommendations(self, test_case):
 			'sessions': 		product.pl_sessions,
 			'level': 			product.pl_level,
 			'time': 			product.pl_time,
-
-			#'price_applied': 	product.list_price,
 			'price_applied': 	product.pl_price_list,
-
 			'sel_zone': 		product.pl_zone,
 			'pl_treatment': 	product.pl_treatment,
+
 			'treatment': 		self.id,
 		})
 	
 	
 		# Check if service complete 
-		print()
-		print(service)
+		#print()
+		#pint(service)
 		#print(service.name)
-		print(service.pl_treatment)
-
-		print(service.family)
-		print(service.subfamily)
-		print(service.zone)
-		print(service.pathology)
-		print(service.sessions)
-		print(service.level)
-		print(service.time)
-
-		print(service.price_applied)
-		print(service.sel_zone)
-
-		print(service.treatment)
-
-		print()
-
+		#print(service.pl_treatment)
+		#print(service.family)
+		#print(service.subfamily)
+		#print(service.zone)
+		#print(service.pathology)
+		#print(service.sessions)
+		#print(service.level)
+		#print(service.time)
+		#print(service.price_applied)
+		#print(service.sel_zone)
+		#print(service.treatment)
+		#print()
 	
 # create_recommendations
 
@@ -347,13 +356,14 @@ def test_reset_treatment(self):
 	Test Reset - Used by Treatment
 	"""
 	print()
-	print('Test Reset Function')
+	print('*** TEST TRE - test_reset_treatment')
 
 	# Consultation
 	self.consultation_ids.unlink()
 
 	# Recos
-	self.service_all_ids.unlink()
+	self.service_ids.unlink()
+	#self.service_all_ids.unlink()	# Dep
 
 	# Procedures
 	self.procedure_ids.unlink()
@@ -378,7 +388,7 @@ def test_report_management(self):
 	print('Test Report Management')
 
 	# Print Disable
-	test_funcs.disablePrint()
+	#test_funcs.disablePrint()
 
 	# Test
 	report = self.report_management
@@ -390,7 +400,21 @@ def test_report_management(self):
 	report.update_daily()
 
 	# Print Enable
-	test_funcs.enablePrint()
+	#test_funcs.enablePrint()
+
+
+# ----------------------------------------------- Test Report product -----------------------------------------------
+def test_report_product(self):
+	"""
+	Test Report product
+	"""
+	print()
+	print('Test Report product')
+
+	# Test
+	report = self.report_product
+	report.validate()
+
 
 
 # ----------------------------------------------- Test Report Marketing -----------------------------------------------
@@ -450,25 +474,6 @@ def test_report_contasis(self):
 
 	# Print Enable
 	#test_funcs.enablePrint()
-
-# ----------------------------------------------- Test Report product -----------------------------------------------
-def test_report_product(self):
-	"""
-	Test Report product
-	"""
-	print()
-	print('Test Report product')
-
-	# Print Disable
-	#test_funcs.disablePrint()
-
-	# Test
-	report = self.report_product
-	report.validate()
-
-	# Print Enable
-	#test_funcs.enablePrint()
-
 
 # ------------------------------------------------------- Level 0 - Creates ----
 def test_create(self, value):
@@ -532,7 +537,7 @@ def create_block_flow(self):
 
 
 # ----------------------------------------------- Sessions ---------------------
-def create_sessions(self, verbose=False):
+def create_sessions(self, verbose, nr_sessions):
 	"""
 	Create Sessions
 	"""
@@ -544,23 +549,25 @@ def create_sessions(self, verbose=False):
 		test_funcs.disablePrint()
 	for procedure in self.procedure_ids:
 		for _ in range(1):
-			procedure.create_sessions()
+			procedure.create_sessions(nr_sessions)
+
 
 # ----------------------------------------------- Controls ---------------------
-def create_controls(self, verbose=False):
+def create_controls(self, verbose, nr_controls):
 	"""
 	Create Controls
 	"""
 	print()
-	print('test_treatment - create_controls')
+	print('TEST TREATMENT - create_controls')
+
 	if verbose:
 		test_funcs.enablePrint()
 	else:
 		test_funcs.disablePrint()
+
 	for procedure in self.procedure_ids:
 		for _ in range(6):
-			procedure.create_controls()
-
+			procedure.create_controls(nr_controls)
 
 
 
@@ -607,62 +614,48 @@ def test_create_recommendations(self):
 	print()
 	print('Test Create Recommendations')
 
-	name_dic = {
-					# Lasers
-					'co2': 		'LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento - Grado 1 - 1 sesion',	# Co2
-		}
-	model_dic = {
-					'co2': 		'openhealth.service_co2',
-		}
-	tst_list = [
-					'co2',
-	]
+	# Init
+	name_list = ['LASER CO2 FRACCIONAL - Cuello - Rejuvenecimiento - Grado 1 - 1 sesion']
 
 	# Loop
-	for tst in tst_list:
-
-		# Init
-		name = name_dic[tst]
-		model = model_dic[tst]
+	for name in name_list:
 
 		# Search
 		print()
 		print('Search Product')
 		product = self.env['product.template'].search([
-															('name', '=', name),
-															('pl_price_list', 'in', ['2019']),
-											],
-												#order='date_order desc',
-												limit=1,
-									)
+														('name', '=', name),
+														('pl_price_list', 'in', ['2019']),
+													],
+													#order='date_order desc',
+													limit=1,
+		)
 		product_id = product.id
 
 		print()
 		print(product)
 		print(product.name)
 
-		# Create
+
+		# Create service
 		print()
 		print('Create Service')
-		print(model)
+		service = self.env['openhealth.service'].create({
+															'service': 			product_id,
+															'family': 			product.pl_family,
+															'subfamily': 		product.pl_subfamily,
+															'zone': 			product.pl_zone,
+															'pathology': 		product.pl_pathology,
+															'sessions': 		product.pl_sessions,
+															'level': 			product.pl_level,
+															'time': 			product.pl_time,
+															'price_applied': 	product.list_price,
+															'sel_zone': 		product.pl_zone,
+															'pl_treatment': 	product.pl_treatment,
 
-		service = self.env[model].create({
-														'service': 			product_id,
-														'family': 			product.pl_family,
-														'subfamily': 		product.pl_subfamily,
-														'zone': 			product.pl_zone,
-														'pathology': 		product.pl_pathology,
-														'sessions': 		product.pl_sessions,
-														'level': 			product.pl_level,
-														'time': 			product.pl_time,
-														'price_applied': 	product.list_price,
-														'sel_zone': 		product.pl_zone,
-														'pl_treatment': 	product.pl_treatment,
-
-														'treatment': 		self.id,
-											})
+															'treatment': 		self.id,
+		})
 		print(service)
-
 # test_create_recommendations
 
 
@@ -731,7 +724,7 @@ def create_consultation(self, verbose=False):
 	"""
 	Create Consultation
 	"""
-	msg = 'test_treatment - create_consultation'
+	msg = '** test_treatment - create_consultation'
 	print()
 	print(msg)
 

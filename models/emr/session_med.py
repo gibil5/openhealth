@@ -8,9 +8,8 @@ from openerp import models, fields, api
 from datetime import datetime
 from . import session_vars
 
-#from openerp.addons.openhealth.models.libs import lib
-#from openerp.addons.openhealth.models.commons.libs import lib
-from openerp.addons.openhealth.models.commons.libs import commons_lib as lib
+#from openerp.addons.openhealth.models.commons.libs import commons_lib as lib
+from .lib import user 
 
 _fluency = "Fluencia (J/cm2)"
 _frequency = "Frecuencia (Hz)"
@@ -21,15 +20,18 @@ _pulse_duration = "Duración de pulso"
 _time_bet = "Tiempo entre pulsos"
 
 
-#class SessionMed(models.Model):	
-class EmrSessionMed(models.Model):	
+class SessionMed(models.Model):	
 	"""
 	Class Session Med
 	Defines the Data Model.
 	Should not define the Business Rules. 
 	"""	
 	_name = 'openhealth.session.med'
-	_inherit = ['openhealth.session', 'base_multi_image.owner']
+	#_inherit = ['openhealth.session', 'base_multi_image.owner']
+	_inherit = ['openhealth.session']
+
+
+# ----------------------------------------------------------- Fields ------------------------------
 
 #------------------------------------------------------ Quick ------------------
 	quick_type=fields.Selection(
@@ -82,6 +84,7 @@ class EmrSessionMed(models.Model):
 			required=False, 
 		)
 
+
 #------------------------------------------------------ Quick - 2 --------------
 	quick_type_2=fields.Selection(
 			selection = [
@@ -133,6 +136,7 @@ class EmrSessionMed(models.Model):
 			required=False, 
 		)
 
+
 #------------------------------------------------------ Co2 --------------------
 	co2_power=fields.Char(
 			string="Potencia (W)",
@@ -182,6 +186,7 @@ class EmrSessionMed(models.Model):
 	co2_observations=fields.Text(
 			string="Observaciones",
 		)
+
 
 #------------------------------------------------------ Co2 2 ------------------
 	co2_power_2=fields.Char(
@@ -233,6 +238,7 @@ class EmrSessionMed(models.Model):
 			string="Observaciones",
 			#default="x",
 		)
+
 
 #------------------------------------------------------ Ipl --------------------
 	ipl_fluency=fields.Float(
@@ -401,24 +407,23 @@ class EmrSessionMed(models.Model):
 			string="Observaciones",
 			)
 
-# ----------------------------------------------------------- Fields -----------
-	# Date
-	evaluation_start_date = fields.Datetime(
-			string = "Fecha", 	
-			required=False, 		
-		)
 
 # ----------------------------------------------------------- Computes ---------
 	# Nr Days after Session
 	nr_days = fields.Integer(
 			'Nr Dias', 
+
 			compute='_compute_nr_days', 
 		)
-
 	@api.multi
 	def _compute_nr_days(self):
 		for record in self:
-			record.nr_days = lib.get_nr_days(self, record.procedure.session_date, record.evaluation_start_date)
+			#record.nr_days = lib.get_nr_days(self, record.procedure.session_date, record.evaluation_start_date)
+			record.nr_days = user.get_nr_days(self, record.procedure.session_date, record.evaluation_start_date)
+
+
+
+# ----------------------------------------------------------- Methods ------------------------------
 
 # ----------------------------------------------------------- On changes -------
 	# Autofill
@@ -435,4 +440,3 @@ class EmrSessionMed(models.Model):
 			self.co2_density = 30
 			self.co2_time = 40
 			self.co2_distance = 50
-

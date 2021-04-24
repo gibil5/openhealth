@@ -3,19 +3,14 @@
 		Evaluation
 
 		Created: 			 1 Nov 2016
-		Last updated: 	 	02 Aug 2020
+		Previous: 	 		02 Aug 2020
+		Last: 	 			17 apr 2021
 """
 from __future__ import print_function
-import datetime
+from __future__ import absolute_import
 from openerp import models, fields, api
-from openerp.addons.openhealth.models.patient import pat_vars
-
-#from openerp.addons.openhealth.models.libs import eval_vars
-#from openerp.addons.openhealth.models.commons.libs import eval_vars
 from . import eval_vars
-
-from openerp.addons.openhealth.models.commons import prodvars
-
+from ..commons import prodvars
 
 class Evaluation(models.Model):
 	"""
@@ -24,6 +19,23 @@ class Evaluation(models.Model):
 	Used by: Consultation, Procedure, Session and Control
 	"""
 	_inherit = 'oeh.medical.evaluation'
+
+# ----------------------------------------------------------- Primitive ---------------------------
+	# Evaluation type
+	evaluation_type = fields.Selection(
+		selection=eval_vars.EVALUATION_TYPE,
+		string='Tipo',
+		required=True,
+	)
+
+	# Chief complaint
+	chief_complaint = fields.Selection(
+			string='Motivo de consulta',
+			selection=eval_vars._chief_complaint_list,
+			required=True,
+		)
+
+
 
 # ----------------------------------------------------------- Inactive Bug -------------------------
 	# Doctor
@@ -133,8 +145,7 @@ class Evaluation(models.Model):
 					],
 		)
 
-# --------------------------------------------------------- Consultation First --------------------
-
+# --------------------------------------------------------- From Consultation --------------------
 	x_diagnosis = fields.Text(
 			string='Diagnóstico',
 			required=False,
@@ -219,17 +230,7 @@ class Evaluation(models.Model):
 				record.patient_city = city.title()
 
 
-
-
-
-
-
-
-
-
-# ----------------------------------------------------------- Primitives --------------------------
-
-
+# ----------------------------------------------------------- Primitives -------
 	# Space
 	vspace = fields.Char(
 			' ',
@@ -255,8 +256,6 @@ class Evaluation(models.Model):
 			default='draft',
 		)
 
-
-
 	# Evaluation Nr
 	evaluation_nr = fields.Integer(
 			string="Evaluation #",
@@ -264,18 +263,7 @@ class Evaluation(models.Model):
 			required=True,
 		)
 
-
-
-
-
-
-
-
-
-
-
 # ----------------------------------------------------------- Computed ----------------------------
-
 	# Zone
 	zone = fields.Selection(
 			selection=prodvars._zone_list,
@@ -283,13 +271,10 @@ class Evaluation(models.Model):
 
 			compute='_compute_zone',
 		)
-
-	#@api.multi
 	@api.depends('product')
 	def _compute_zone(self):
 		for record in self:
 			record.zone = record.product.x_zone
-
 
 
 	# Pathology
@@ -299,13 +284,10 @@ class Evaluation(models.Model):
 
 			compute='_compute_pathology',
 		)
-
-	#@api.multi
 	@api.depends('product')
 	def _compute_pathology(self):
 		for record in self:
 			record.pathology = record.product.x_pathology
-
 
 	# Level
 	level = fields.Selection(
@@ -314,51 +296,28 @@ class Evaluation(models.Model):
 
 			compute='_compute_level',
 		)
-
-	#@api.multi
 	@api.depends('product')
 	def _compute_level(self):
 		for record in self:
 			record.level = record.product.x_level
 
 
-
-	# Nr images
+	# Nr images - Dep ?
 	nr_images = fields.Integer(
 			string="Nr Visia",
 
-			compute="_compute_nr_images",
+			#compute="_compute_nr_images",
 		)
-
-	@api.multi
-	def _compute_nr_images(self):
-		for record in self:
-			ctr = 0
-			for image in record.image_ids:
-				ctr = ctr + 1
-			record.nr_images = ctr
-
+	#@api.multi
+	#def _compute_nr_images(self):
+	#	for record in self:
+	#		ctr = 0
+	#		for image in record.image_ids:
+	#			ctr = ctr + 1
+	#		record.nr_images = ctr
 
 
-# ----------------------------------------------------------- Primitive ---------------------------
-
-	# Chief complaint
-	chief_complaint = fields.Selection(
-			string='Motivo de consulta',
-			selection=eval_vars._chief_complaint_list,
-			required=True,
-		)
-
-	# Evaluation type
-	evaluation_type = fields.Selection(
-			selection=eval_vars.EVALUATION_TYPE,
-			string='Tipo',
-			required=True,
-		)
-
-
-# ----------------------------------------------------------- Actions -----------------------------
-
+# ----------------------------------------------------------- Actions ----------
 	# Open Procedure
 	@api.multi
 	def open_procedure(self):
@@ -366,11 +325,7 @@ class Evaluation(models.Model):
 		Goes Back to Procedure
 		Used by: Control and Session
 		"""
-		print()
-		print('Eval - Open Treatment')
-
 		ret = self.procedure.open_myself()
-
 		return ret
 	# open_procedure
 
@@ -382,35 +337,26 @@ class Evaluation(models.Model):
 		Goes Back to Treatment
 		Used by: Procedure
 		"""
-		#print
-		#print 'Open Treatment'
 		treatment = self.env['openhealth.treatment'].search([('id', '=', self.treatment.id)])
 		treatment_id = treatment.id
 		ret = treatment.open_myself()
 		return ret
 	# open_treatment
 
+
 # ----------------------------------------------------------- Open Myself -------------------------
 	# Open Myself
 	@api.multi
 	def open_myself(self):
-		print()
-		print('Eval - Open Myself')
-
+		#print()
+		#print('Eval - Open Myself')
 		return {
 			# Mandatory
 			'type': 'ir.actions.act_window',
 			'name': 'Open Consultation Current',
 			# Window action
-
-
-			#'res_model': 'openhealth.treatment',
-			#'res_id': treatment_id,
-
 			'res_model': self._name,
 			'res_id': self.id,
-
-
 			# Views
 			"views": [[False, "form"]],
 			'view_mode': 'form',
@@ -425,4 +371,3 @@ class Evaluation(models.Model):
 			'context':   {}
 		}
 	# open_myself
-

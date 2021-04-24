@@ -23,11 +23,14 @@ mv patient/commons/*.pyc ./pyc/.
 mv product/*.pyc ./pyc/.
 mv service/*.pyc ./pyc/.
 
-
 mv emr/*.pyc ./pyc/.
 mv emr/commons/*.pyc ./pyc/.
 
 mv order/*.pyc ./pyc/.
+
+
+mv open_medical/*.pyc ./pyc/.
+
 
 
 # Dep 

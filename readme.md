@@ -1,6 +1,6 @@
 # Open Health - Odoo 9 Module - Python - Microservices (in progress...)
 
-## Version 8.0
+## Version 7.0
 
 ## History
 ```

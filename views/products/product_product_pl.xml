@@ -5,7 +5,13 @@
 		<record model="ir.ui.view" id="product_product_form">
 			<field name="name">product.product.form</field>
 			<field name="model">product.product</field>
+
+<!--
 			<field name="inherit_id" ref="oehealth.view_product_product_form"/>
+			<field name="inherit_id" ref="product.product_product_form_view"/>
+-->
+			<field name="inherit_id" ref="product.product_template_form_view"/>
+
 <!--
 			<field name="inherit_id" ref="product.product_normal_form_view"/>
 -->

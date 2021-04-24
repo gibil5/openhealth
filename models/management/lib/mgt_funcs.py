@@ -25,7 +25,7 @@
 """
 from __future__ import print_function
 from functools import reduce
-from mgt_product_counter import MgtProductCounter
+from .mgt_product_counter import MgtProductCounter
 
 # ------------------------------------------------------------- Constants ------
 _DATE_FORMAT = "%Y-%m-%d"

@@ -3,7 +3,7 @@
 	Treatment
 
 	Created: 			26 aug 2016
-	Last up: 			 5 dec 2020
+	Last up: 			13 apr 2021
 
 	Design:
 		- This is a Data model. There should be NO Business logic.
@@ -29,8 +29,7 @@ from . import counter_objects
 from . import search_objects
 
 from . import eval_vars
-from commons import pl_creates, tre_funcs, action_funcs
-
+from .lib import pl_creates, tre_funcs, action_funcs
 
 # --------------------------------------------------------------- Constants ----
 _model_treatment = "openhealth.treatment"
@@ -38,11 +37,6 @@ _model_sale = "sale.order"
 _model_consultation = "openhealth.consultation"
 _model_action = "ir.actions.act_window"
 _model_service = "openhealth.service_all"
-
-# ----------------------------------------------------------- Exceptions -------
-class ProductErrorException(Exception):
-	#print('This is my first management of product exceptions')
-	pass
 
 
 # ------------------------------------------------------------------- Class ----
@@ -57,7 +51,22 @@ class Treatment(models.Model):
 
 # ----------------------------------------------------------- Relational --------------------------
 
-# ------------------------------------------------------------------------------
+	# Services
+	service_ids = fields.One2many(
+		'openhealth.service',
+		'treatment',
+		string="Servicios"
+	)
+
+	# Dep
+	service_all_ids = fields.One2many(
+		'openhealth.service_all',
+		'treatment',
+		string="Servicios All"
+	)
+
+
+
 	# Shopping cart
 	shopping_cart_ids = fields.One2many(
 		'price_list.cart_line',
@@ -65,13 +74,6 @@ class Treatment(models.Model):
 		string="Shopping Cart"
 	)
 
-# ------------------------------------------------------------ Services --------
-	# all
-	service_all_ids = fields.One2many(
-		'openhealth.service_all',
-		'treatment',
-		string="Servicios All"
-	)
 
 
 # ----------------------------------------------------------- Primitive ---------------------------
@@ -278,10 +280,6 @@ class Treatment(models.Model):
 	)
 
 # ----------------------------------------------------------- Pricelist Fields - Dummy --------------------------------
-	report_product = fields.Many2one(
-		'openhealth.container.pricelist',
-		string="PROD",
-	)
 
 # ----------------------------------------------------------- Pricelist Fields - Test --------------------------------
 	x_test_scenario = fields.Selection(
@@ -474,7 +472,7 @@ class Treatment(models.Model):
 		# Search product
 		name = 'CONSULTA MEDICA'
 		price_list = '2019'
-		product = tre_funcs.get_product(self, name, price_list)
+		product = tre_funcs.get_product_product(self, name, price_list)
 
 		#  Check 
 		product_template = tre_funcs.get_product_template(self, name, price_list)
@@ -494,11 +492,8 @@ class Treatment(models.Model):
 		Create Order Procedure - 2019
 		From Recommendations
 		"""
-		print('treatment - btn_create_order_pro')
-
-		# Create Order
 		print()
-		print('Create order')
+		print('treatment - btn_create_order_pro')
 
 		# Search Partner
 		partner = tre_funcs.get_partner(self, self.patient.name)
@@ -509,14 +504,15 @@ class Treatment(models.Model):
 		# Search product
 		# Create Product tuple
 		product_tup = []
-		for service in self.service_all_ids:
-			print()
-			print('* Create Product tuple')
-			print(service)
-			print(service.service)
-			print(service.service.name)
-			print(service.qty)
-			print(service.service.list_price)
+		#for service in self.service_all_ids:
+		for service in self.service_ids:
+			#print()
+			#print('* Create Product tuple')
+			#print(service)
+			#print(service.service)
+			#print(service.service.name)
+			#print(service.qty)
+			#print(service.service.list_price)
 			
 			# Init
 			product_template = service.service
@@ -527,10 +523,9 @@ class Treatment(models.Model):
 			# Check Exceptions
 			try:
 				price_list = '2019'
-				product = tre_funcs.get_product(self, name, price_list)
+				product = tre_funcs.get_product_product(self, name, price_list)
 				product_tup.append((product, qty, price))
 
-			#except ProductErrorException:
 			except Exception:
 				print('ERROR - Treatment - Product not in 2019 price_list !')
 				print('Search in other price_lists')
@@ -544,9 +539,10 @@ class Treatment(models.Model):
 				except Exception:
 					print('ERROR - Treatment - Product Not Available at all !!!!!')
 
-			else:
-				print('jx - Else !')
+			#else:
+			#	print('jx - Else !')
 				#pass
+
 
 			#  Check 
 			tre_funcs.check_product(self, '2019', product, product_template)
@@ -597,6 +593,8 @@ class Treatment(models.Model):
 
 		# If Consultation not exist
 		if not consultation.name:
+			print('*** Create')
+
 			# Create
 			consultation = self.env[_model_consultation].create({
 																		'patient': patient_id,
@@ -605,6 +603,7 @@ class Treatment(models.Model):
 																		'chief_complaint': chief_complaint,
 																		'doctor': doctor_id,
 													})
+			print(consultation)
 
 		return {
 				# Mandatory
@@ -786,24 +785,37 @@ class Treatment(models.Model):
 		Integration Test
 		"""
 		print()
-		print('OH - treatment.py - test_integration')
-		value = self.env.context.get('key')
-		print(value)
-		if self.patient.x_test:
-			if value == 'test_integration':
-					#test_case = 'laser'
-					#test_case = 'product'
-					#test_case = 'medical'
-					#test_case = 'cosmetology'
-					#test_case = 'new'
-					test_case = 'all'
-					test_treatment.test_integration_treatment(self, test_case)
+		print('***** TRE - test_integration')
 
-			elif value == 'test_reset':
-				test_treatment.test_reset_treatment(self)
+		#if self.patient.x_test:
+		#if value == 'test_integration':
+		#test_case = 'laser'
+		#test_case = 'product'
+		#test_case = 'medical'
+		#test_case = 'cosmetology'
+		#test_case = 'new'
+		
+		#test_treatment.test_integration_treatment(self, test_case)
+		test_treatment.test_integration_treatment(self)
+
 		print()
 		print()
 		print('SUCCESS !')
+
+
+
+# -------------------------------------------------- Test Cycle ----------------
+	@api.multi
+	def test_reset(self):
+		"""
+		Test Reset
+		"""
+		print()
+		print('***** TRE - test_reset')
+
+		test_treatment.test_reset_treatment(self)
+
+
 
 # -------------------------------------------------- Test Cycle ----------------
 	@api.multi
@@ -822,19 +834,26 @@ class Treatment(models.Model):
 	# Management
 	report_management = fields.Many2one(
 		'openhealth.management',
-		string="MGT",
+		string="Name repo Mgt",
+		required=True,
+	)
+
+	# Product - inprog
+	report_product = fields.Many2one(
+		'openhealth.container.pricelist',
+		string="Prod",
 	)
 
 	# Marketing
 	report_marketing = fields.Many2one(
 		'openhealth.marketing',
-		string="MKT",
+		string="Mkt",
 	)
 
 	# Contasis
 	report_contasis = fields.Many2one(
 		'openhealth.account.contasis',
-		string="ACC",
+		string="Conta",
 	)
 
 	# Txt
@@ -845,29 +864,46 @@ class Treatment(models.Model):
 
 # ----------------------------------------------------- Test Report --------------------------
 	@api.multi
+	def test_report_management(self):
+		"""
+		Test Report
+		"""
+		print()
+		print('test_report_management')
+		test_treatment.test_report_management(self)
+		print()
+		print('SUCCESS !')
+
+
+	@api.multi
+	def test_report_product(self):
+		"""
+		Test Report
+		"""
+		print()
+		print('test_report_product')
+		test_treatment.test_report_product(self)
+		print()
+		print('SUCCESS !')
+
+
+
+	#@api.multi
 	def test_report(self):
 		"""
 		Test Report
 		"""
 		print()
 		print('test_report')
-		value = self.env.context.get('key')
-		print(value)
+	#	value = self.env.context.get('key')
+	#	print(value)
+	#	if value == 'test_report_account':
+	#		test_treatment.test_report_account(self)
 
-		if value == 'test_report_management':
-			test_treatment.test_report_management(self)
-
-		elif value == 'test_report_product':
-			test_treatment.test_report_product(self)
-
-		elif value == 'test_report_account':
-			test_treatment.test_report_account(self)
-
-		elif value == 'test_report_contasis':
-			test_treatment.test_report_contasis(self)
-
-		print()
-		print('SUCCESS !')
+	#	elif value == 'test_report_contasis':
+	#		test_treatment.test_report_contasis(self)
+	#	print()
+	#	print('SUCCESS !')
 
 # -------------------------------------------------------- Open Myself ---------
 	# Open Myself

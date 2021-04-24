@@ -7,7 +7,6 @@
 """
 from __future__ import print_function
 from openerp import models, fields, api
-
 from . import px_vars
 
 class PriceListProduct(models.Model):
@@ -19,8 +18,6 @@ class PriceListProduct(models.Model):
 	_order = 'idx_int'
 	
 	_inherit = 'openhealth.product.pricelist'
-
-
 
 
 # ---------------------------------------------- Fields - Chars -----------------------

@@ -28,7 +28,10 @@
 
 
         <!-- FILTER --> 
+        <!--
         <record id="oehealth.view_oeh_medical_patient_filter" model="ir.ui.view">
+        -->
+        <record id="view_oeh_medical_patient_filter" model="ir.ui.view">
             <field name="name">Patient Search Modified</field>
             <field name="model">oeh.medical.patient</field>
             <field name="arch" type="xml">

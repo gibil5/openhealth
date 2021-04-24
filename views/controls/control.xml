@@ -130,6 +130,7 @@
 
                             <!-- Visia --> 
                             <page string="Fotos VISIA" >
+<!--
                                 <field
                                     name="image_ids"
                                     nolabel="1"
@@ -138,6 +139,7 @@
                                                 'default_owner_id': id,
                                     }"
                                     mode="kanban"/>
+-->
                             </page>
 
                             <!-- Historias --> 

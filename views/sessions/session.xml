@@ -108,6 +108,7 @@
                         <!-- Notebook - Visia --> 
                         <notebook>
                             <page string="Fotos VISIA" >
+<!--
                                 <field
                                     name="image_ids"
                                     nolabel="1"
@@ -117,6 +118,7 @@
                                     }"
                                     mode="kanban"
                                 />
+-->
                             </page>
                         </notebook>
                     </sheet>

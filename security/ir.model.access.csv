@@ -1,7 +1,66 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
-access_openhealth_order_admin,openhealth.order.admin,model_openhealth_order_admin,,1,1,1,0
 
+
+
+
+access_openhealth_closing_proof,access_openhealth_closing_proof,model_openhealth_closing_proof,,1,0,0,0
+
+access_oeh_medical_health_center_pharmacy_line,access_oeh_medical_health_center_pharmacy_line,model_oeh_medical_health_center_pharmacy_line,,1,0,0,0
+access_openhealth_service_all,access_openhealth_service_all,model_openhealth_service_all,,1,0,0,0
+access_oeh_medical_dosage,access_oeh_medical_dosage,model_oeh_medical_dosage,,1,0,0,0
+access_openhealth_management_patient_line,access_openhealth_management_patient_line,model_openhealth_management_patient_line,,1,0,0,0
+access_oeh_medical_medicines,access_oeh_medical_medicines,model_oeh_medical_medicines,,1,0,0,0
+access_oeh_medical_health_center_pharmacy,access_oeh_medical_health_center_pharmacy,model_oeh_medical_health_center_pharmacy,,1,0,0,0
+access_price_list_cart_line,access_price_list_cart_line,model_price_list_cart_line,,1,0,0,0
+access_openhealth_container_pricelist,access_openhealth_container_pricelist,model_openhealth_container_pricelist,,1,0,0,0
+access_openhealth_product_pricelist,access_openhealth_product_pricelist,model_openhealth_product_pricelist,,1,0,0,0
+access_doctor_daily,access_doctor_daily,model_doctor_daily,,1,0,0,0
+
+access_oeh_medical_pathology,access_oeh_medical_pathology,model_oeh_medical_pathology,,1,0,0,0
+access_oeh_medical_dose_unit,access_oeh_medical_dose_unit,model_oeh_medical_dose_unit,,1,0,0,0
+access_openhealth_account_txt_line,access_openhealth_account_txt_line,model_openhealth_account_txt_line,,1,0,0,0
+access_oeh_medical_drug_route,access_oeh_medical_drug_route,model_oeh_medical_drug_route,,1,0,0,0
+access_oeh_medical_drug_form,access_oeh_medical_drug_form,model_oeh_medical_drug_form,,1,0,0,0
+access_openhealth_patient_report,access_openhealth_patient_report,model_openhealth_patient_report,,1,0,0,0
+
+access_oeh_medical_health_center_beds,access_oeh_medical_health_center_beds,model_oeh_medical_health_center_beds,,1,0,0,0
+access_oeh_medical_speciality,access_oeh_medical_speciality,model_oeh_medical_speciality,,1,0,0,0
+access_oeh_medical_degrees,access_oeh_medical_degrees,model_oeh_medical_degrees,,1,0,0,0
+access_openhealth_django_interface,access_openhealth_django_interface,model_openhealth_django_interface,,1,0,0,0
+access_oeh_medical_health_center_pharmacy_prescription_line,access_oeh_medical_health_center_pharmacy_prescription_line,model_oeh_medical_health_center_pharmacy_prescription_line,,1,0,0,0
+access_oeh_medical_health_center,access_oeh_medical_health_center,model_oeh_medical_health_center,,1,0,0,0
+access_oeh_medical_health_center_building,access_oeh_medical_health_center_building,model_oeh_medical_health_center_building,,1,0,0,0
+access_oeh_medical_health_center_ward,access_oeh_medical_health_center_ward,model_oeh_medical_health_center_ward,,1,0,0,0
+
+
+
+
+
+access_oeh_medical_ethnicity,access_oeh_medical_ethnicity,model_oeh_medical_ethnicity,,1,0,0,0
+access_oeh_medical_genetics,access_oeh_medical_genetics,model_oeh_medical_genetics,,1,0,0,0
+access_oeh_medical_insurance_type,access_oeh_medical_insurance_type,model_oeh_medical_insurance_type,,1,0,0,0
+access_oeh_medical_insurance,access_oeh_medical_insurance,model_oeh_medical_insurance,,1,0,0,0
+access_openhealth_closing_form,access_openhealth_closing_form,model_openhealth_closing_form,,1,0,0,0
+access_oeh_medical_pathology_category,access_oeh_medical_pathology_category,model_oeh_medical_pathology_category,,1,0,0,0
+
+
+
+
+
+access_oeh_medical_physician_line,access_oeh_medical_physician_line,model_oeh_medical_physician_line,,1,0,0,0
+access_oeh_medical_prescription,access_oeh_medical_prescription,model_oeh_medical_prescription,,1,0,0,0
+access_oeh_medical_prescription_line,access_oeh_medical_prescription_line,model_oeh_medical_prescription_line,,1,0,0,0
+access_oeh_medical_patient_family,access_oeh_medical_patient_family,model_oeh_medical_patient_family,,1,0,0,0
+access_oeh_medical_evaluation,access_oeh_medical_evaluation,model_oeh_medical_evaluation,,1,0,0,0
+access_openhealth_ticket,access_openhealth_ticket,model_openhealth_ticket,,1,0,0,0
+access_productivity_day,access_productivity_day,model_productivity_day,,1,0,0,0
+
+
+
+
+
+access_openhealth_order_admin,openhealth.order.admin,model_openhealth_order_admin,,1,1,1,0
 
 access_openhealth_patient_origin,openhealth.patient.origin,model_openhealth_patient_origin,,1,1,1,0
 access_openhealth_patient_consultation,openhealth.patient.consultation,model_openhealth_patient_consultation,,1,1,1,1
@@ -10,9 +69,7 @@ access_openhealth_patient_session,openhealth.patient.session,model_openhealth_pa
 access_openhealth_patient_control,openhealth.patient.control,model_openhealth_patient_control,,1,1,1,1
 access_openhealth_patient_sale,openhealth.patient.sale,model_openhealth_patient_sale,,1,1,1,1
 
-
-access_oeh_medical_physician,oeh.medical.physician,oehealth.model_oeh_medical_physician,,1,1,1,0
-
+access_oeh_medical_physician,oeh.medical.physician,model_oeh_medical_physician,,1,1,1,0
 
 access_stock_move,stock.move,stock.model_stock_move,,1,1,1,1
 
@@ -20,11 +77,10 @@ access_account_invoice,account.invoice,account.model_account_invoice,,1,1,1,1
 
 access_sale_order,sale.order,model_sale_order,,1,1,1,0
 
-
-access_oeh_medical_appointment,oeh.medical.appointment,oehealth.model_oeh_medical_appointment,oehealth.group_oeh_medical_physician,1,1,1,1
-access_oeh_medical_appointment_caja,oeh.medical.appointment caja,oehealth.model_oeh_medical_appointment,openhealth.caja,1,1,1,0
-access_oeh_medical_appointment_reception,oeh.medical.appointment reception,oehealth.model_oeh_medical_appointment,openhealth.reception,1,1,1,1
-access_oeh_medical_appointment_manager,oeh.medical.appointment manager,oehealth.model_oeh_medical_appointment,openhealth.managers,1,1,1,1
+access_oeh_medical_appointment,oeh.medical.appointment,model_oeh_medical_appointment,group_oeh_medical_physician,1,1,1,1
+access_oeh_medical_appointment_caja,oeh.medical.appointment caja,model_oeh_medical_appointment,openhealth.caja,1,1,1,0
+access_oeh_medical_appointment_reception,oeh.medical.appointment reception,model_oeh_medical_appointment,openhealth.reception,1,1,1,1
+access_oeh_medical_appointment_manager,oeh.medical.appointment manager,model_oeh_medical_appointment,openhealth.managers,1,1,1,1
 
 
 access_openhealth_doctor,access_openhealth_doctor,model_openhealth_doctor,,1,1,1,1
@@ -167,10 +223,10 @@ access_openhealth_procedure_readers,openhealth.procedure.readers,model_openhealt
 access_openhealth_procedure_caja,openhealth.procedure.caja,model_openhealth_procedure,openhealth.caja,1,1,1,0
 
 
-access_oeh_medical_patient_directors,oeh.medical.patient directors,oehealth.model_oeh_medical_patient,openhealth.directors,1,1,1,1
-access_oeh_medical_patient_caja,oeh.medical.patient caja,oehealth.model_oeh_medical_patient,openhealth.caja,1,1,1,0
-access_oeh_medical_patient_reception,oeh.medical.patient reception,oehealth.model_oeh_medical_patient,openhealth.reception,1,1,1,0
-access_oeh_medical_patient_archivers,oeh.medical.patient archivers,oehealth.model_oeh_medical_patient,openhealth.archivers,1,1,1,0
+access_oeh_medical_patient_directors,oeh.medical.patient directors,model_oeh_medical_patient,openhealth.directors,1,1,1,1
+access_oeh_medical_patient_caja,oeh.medical.patient caja,model_oeh_medical_patient,openhealth.caja,1,1,1,0
+access_oeh_medical_patient_reception,oeh.medical.patient reception,model_oeh_medical_patient,openhealth.reception,1,1,1,0
+access_oeh_medical_patient_archivers,oeh.medical.patient archivers,model_oeh_medical_patient,openhealth.archivers,1,1,1,0
 
 access_product_product_stock_user,product_product_stock_user,product.model_product_product,stock.group_stock_user,1,0,0,0
 access_product_template_stock_user,product.template stock user,product.model_product_template,stock.group_stock_user,1,0,0,0

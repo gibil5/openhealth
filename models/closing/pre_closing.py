@@ -5,12 +5,15 @@
 	Only the Data Model - Not functions. 
 
 	Created: 			18 Oct 2017
+	Previous: 	 		30 Dec 2019
 	Last up: 	 		30 Dec 2019
 """
 from __future__ import print_function
 from openerp import models, fields, api
+
+from . import pre_clos_vars as clos_vars
+
 #from . import clos_funcs
-from . import ord_vars
 
 class Closing(models.Model):
 	"""
@@ -21,152 +24,128 @@ class Closing(models.Model):
 	#_order = 'name desc'
 
 
-
-# ----------------------------------------------------------- Macros ------------------------------
+# ----------------------------------------------------------- Macros -----------
 # Proof of payment
 
 	# Credit Notes
 	crn_tot = fields.Float(
-			'Notas de Crédito',
-			default=0,
-		)
-
-
+		'Notas de Crédito',
+		default=0,
+	)
 
 	# Ticket Receipts
 	tkr_tot = fields.Float(
-			#'Tickets Boleta',
-			'Boleta Electronica',
-			default=0,
-		)
+		'Boleta Electronica',
+		default=0,
+	)
 
 	# Ticket Invoices
 	tki_tot = fields.Float(
-			#'Tickets Factura',
-			'Factura Electronica',
-			default=0,
-		)
+		'Factura Electronica',
+		default=0,
+	)
 
 	# Receipts
 	rec_tot = fields.Float(
-			'Boletas',
-			default=0,
-		)
+		'Boletas',
+		default=0,
+	)
 
 	# Invoices
 	inv_tot = fields.Float(
-			'Facturas',
-			default=0,
-		)
+		'Facturas',
+		default=0,
+	)
 
 	# Advertisements
 	adv_tot = fields.Float(
-			'Canjes Publicidad',
-			default=0,
-		)
+		'Canjes Publicidad',
+		default=0,
+	)
 
 	# Sale Notes
 	san_tot = fields.Float(
-			'Canjes NV',
-			default=0,
-		)
-
-
+		'Canjes NV',
+		default=0,
+	)
 
 
 # ----------------------------------------------------------- Natives -----------------------------
-
 	# Type
 	x_type = fields.Char()
 
-
-
 	# Dates
 	date = fields.Date(
-			string="Fecha",
-			default=fields.Date.today,
-			#readonly=True,
-			required=True,
-		)
+		string="Fecha",
+		default=fields.Date.today,
+		required=True,
+	)
 
 	# Total
 	total = fields.Float(
-			'Total',
-			default=0,
-		)
+		'Total',
+		default=0,
+	)
 
 	# Vspace
 	vspace = fields.Char(
-			' ',
-			readonly=True
-		)
+		' ',
+		readonly=True
+	)
 
 
 	# Month
 	month = fields.Selection(
-
-			selection=ord_vars._month_order_list,
-
-			string='Mes',
-			#required=True,
-			#readonly=True,
-			readonly=False,
-		)
+		selection=clos_vars._month_order_list,
+		string='Mes',
+		readonly=False,
+	)
 
 	# Year
 	year = fields.Char(
 			string='Año',
-			#required=True,
-			#readonly=True,
 			readonly=False,
 			default='2020',
 		)
 
 
-
-# ----------------------------------------------------------- Partials ----------------------------
-
+# ----------------------------------------------------------- Partials ---------
 	# Total Proof
 	total_proof = fields.Float(
-			'Total Documentos de pago',
-			default=0,
-		)
+		'Total Documentos de pago',
+		default=0,
+	)
 
 	total_proof_wblack = fields.Float(					# Without sale_notes and advertisements
-			'Total Documentos de pago - NSF',
-			default=0,
-		)
-
+		'Total Documentos de pago - NSF',
+		default=0,
+	)
 
 	# Total Form
 	total_form = fields.Float(
-			'Total Formas de pago',
-			default=0,
-		)
+		'Total Formas de pago',
+		default=0,
+	)
 
 	total_form_wblack = fields.Float(
-			'Total Formas de pago - NSF',
-			default=0,
-		)
-
+		'Total Formas de pago - NSF',
+		default=0,
+	)
 
 	# Total Cards
 	total_cards = fields.Float(
-			'Total Tarjetas',
-			default=0,
-		)
-
+		'Total Tarjetas',
+		default=0,
+	)
 
 	# Total Cash
 	total_cash = fields.Float(
-			'Total Cash',
-			default=0,
-		)
+		'Total Cash',
+		default=0,
+	)
 
 
-
-# ----------------------------------------------------------- Serial numbers ----------------------
-
+# ----------------------------------------------------------- Serial numbers ---
 # Serial numbers
 
 	serial_nr_first_crn = fields.Char(
@@ -176,8 +155,6 @@ class Closing(models.Model):
 	serial_nr_last_crn = fields.Char(
 			string="A:",
 		)
-
-
 
 	serial_nr_first_tkr = fields.Char(
 			string="De:",
@@ -227,10 +204,7 @@ class Closing(models.Model):
 			string="A:",
 		)
 
-
-
-# ----------------------------------------------------------- Partials ----------------------------
-
+# ----------------------------------------------------------- Partials ---------
 # Form of payment
 
 	# Cash
@@ -280,25 +254,21 @@ class Closing(models.Model):
 			default=0,
 		)
 
-
-
-
-# ----------------------------------------------------------- Computes ----------------------------
+# ----------------------------------------------------------- Computes ---------
 	# Name
 	name = fields.Char(
 			string="Cierre de Caja #",
 
 			compute='_compute_name',
 		)
-
 	@api.multi
-	#@api.depends('x_appointment')
 	def _compute_name(self):
 		for record in self:
 			record.name = record.date
 
 
 
+# ----------------------------------------------------------- Metdhos ---------------------------------------
 
 # ----------------------------------------------------------- Print -------------------------------
 	@api.multi
@@ -308,8 +278,7 @@ class Closing(models.Model):
 		"""
 		print('')
 		print('Print Closing')
-
 		name = "openhealth.report_closing_view"            
-
 		action = self.env['report'].get_action(self, name)
 		return action
+

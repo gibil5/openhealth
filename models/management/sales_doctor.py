@@ -12,11 +12,14 @@
     Last up:             12 dec 2020
 """
 from __future__ import print_function
-from lib import mgt_funcs, prod_funcs, mgt_db
-from physician import Physician
-from mgt_order_line import MgtOrderLine
+from __future__ import absolute_import
 
-from management_db import ManagementDb
+from .lib import mgt_funcs, prod_funcs, mgt_db
+from .mgt_order_line import MgtOrderLine
+from .management_db import ManagementDb
+
+#from physician import Physician
+#from oeh.medical.physician import Physician
 
 # ------------------------------------------------------------------- Class -----------------------
 class SalesDoctor(object):
@@ -54,7 +57,8 @@ class SalesDoctor(object):
         total_tickets = 0
 
         # Get - Should be static method
-        doctors = Physician.get_doctors(self.management)
+        #doctors = Physician.get_doctors(self.management)
+        doctors = []
         print(doctors)
 
 

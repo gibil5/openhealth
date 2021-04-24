@@ -20,11 +20,7 @@ class Ticket(models.Model):
 
 
 # ---------------------------------------------------- Ticket - Vars -----------
- 	name = fields.Char(
-		string="Name",
-		required=True,
-		default='Ticket'
-	)
+	name = fields.Char( string="Name", required=True, default='Ticket')
 
 	# Configurator
 	configurator = fields.Many2one(

@@ -1,0 +1,187 @@
+"""
+    Rutter 
+
+    Created:    8 apr 2021 
+    Last:      13 apr 2021 
+"""
+
+
+# ------------------------------------------------------------------------------
+    Listen to Warnings
+# ------------------------------------------------------------------------------
+
+Error:
+Odoo Server Error
+
+Traceback (most recent call last):
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/fields.py", line 956, in __get__
+    value = record.env.cache.get(record, self)
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/api.py", line 977, in get
+    value = self._data[key][field][record._ids[0]]
+KeyError: 1577
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/http.py", line 653, in _handle_exception
+    return super(JsonRequest, self)._handle_exception(exception)
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/http.py", line 312, in _handle_exception
+    raise pycompat.reraise(type(exception), exception, sys.exc_info()[2])
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/tools/pycompat.py", line 87, in reraise
+    raise value
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/http.py", line 695, in dispatch
+    result = self._call_function(**self.params)
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/http.py", line 344, in _call_function
+    return checked_call(self.db, *args, **kwargs)
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/service/model.py", line 97, in wrapper
+    return f(dbname, *args, **kwargs)
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/http.py", line 337, in checked_call
+    result = self.endpoint(*a, **kw)
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/http.py", line 939, in __call__
+    return self.method(*args, **kw)
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/http.py", line 517, in response_wrap
+    response = f(*args, **kw)
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/addons/web/controllers/main.py", line 1225, in load
+    action = request.env[action_type].browse([action_id]).read()
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/addons/base/ir/ir_actions.py", line 197, in read
+    result = super(IrActionsActWindow, self).read(fields, load=load)
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/models.py", line 2653, in read
+    vals[name] = convert(record[name], record, use_name_get)
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/models.py", line 4849, in __getitem__
+    return self._fields[key].__get__(self, type(self))
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/fields.py", line 960, in __get__
+    self.determine_value(record)
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/fields.py", line 1073, in determine_value
+    self.compute_value(recs)
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/fields.py", line 1027, in compute_value
+    self._compute_value(records)
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/fields.py", line 1018, in _compute_value
+    getattr(records, self.compute)()
+  
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/addons/base/ir/ir_actions.py", line 157, in _compute_search_view
+    fvg = self.env[act.res_model].fields_view_get(act.search_view_id.id, 'search')
+  
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/addons/mail/models/mail_thread.py", line 373, in fields_view_get
+    res = super(MailThread, self).fields_view_get(view_id=view_id, view_type=view_type, toolbar=toolbar, submenu=submenu)
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/models.py", line 1395, in fields_view_get
+    result = self._fields_view_get(view_id=view_id, view_type=view_type, toolbar=toolbar, submenu=submenu)
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/models.py", line 1358, in _fields_view_get
+    root_view = View.browse(view_id).read_combined(['id', 'name', 'field_parent', 'type', 'model', 'arch'])
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/addons/base/ir/ir_ui_view.py", line 734, in read_combined
+    arch_tree = self.apply_inheritance_specs(arch_tree, view_arch, parent_view['id'])
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/addons/base/ir/ir_ui_view.py", line 671, in apply_inheritance_specs
+    self.raise_view_error(_("Element '%s' cannot be located in parent view") % tag, inherit_id)
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/addons/base/ir/ir_ui_view.py", line 533, in raise_view_error
+    raise ValueError(message)
+ValueError: Element '<xpath expr="//filter[@name='my_sale_orders_filter']">' cannot be located in parent view
+
+Error context:
+View `sale.order.search.modified`
+[view_id: 584, xml_id: sale.view_sales_order_filter, model: sale.order, parent_id: n/a]
+
+
+
+Field 'company_id' used in attributes must be present in view but is missing:
+
+
+
+raise ValueError('External ID not found in the system: %s' % xmlid)
+odoo.tools.convert.ParseError: "<class 'ValueError'>: "External ID not found in the system: 
+
+base.group_hr_manager
+
+" while evaluating
+"[                     (4, ref('purchase.group_purchase_manager')),              (4, ref('stock.group_stock_manager')),              (4, ref('base.group_hr_manager')),             ]"" while parsing /Users/gibil/Virtualenvs/Odoo11-git/src/odoo/addons/openhealth/security/openhealth_security.xml:136, near
+<record id="directors" model="res.groups">
+			<field name="name">Directores</field>
+			<field name="category_id" ref="module_openhealth_category"/>
+			<field name="comment">cc</field>
+			<field name="implied_ids" eval="[                     (4, ref('purchase.group_purchase_manager')),              (4, ref('stock.group_stock_manager')),              (4, ref('base.group_hr_manager')),             ]"/>
+			<field name="users" eval="[              (4, ref('openhealth.director_clinicachavarri')),              (4, ref('openhealth.rchavarri_clinicachavarri')),              (4, ref('openhealth.fchavarri_clinicachavarri')),          ]"/>
+		</record>
+
+
+
+psycopg2.ProgrammingError: relation "openhealth_configurator_emr" does not exist
+LINE 1: SELECT "openhealth_configurator_emr".id FROM "openhealth_con...
+
+
+TypeError: Model 'oeh.medical.appointment' inherits from non-existing model 'ir.needaction_mixin'.
+
+
+
+
+
+
+Table 'product_template': unable to set a NOT NULL constraint on column 'pl_name_short' !
+If you want to have it, you should update the records and execute manually:
+ALTER TABLE product_template ALTER COLUMN pl_name_short SET NOT NULL
+
+Table 'product_template': unable to set a NOT NULL constraint on column 'pl_subfamily' !
+If you want to have it, you should update the records and execute manually:
+ALTER TABLE product_template ALTER COLUMN pl_subfamily SET NOT NULL
+
+Table 'product_template': unable to set a NOT NULL constraint on column 'pl_family' !
+If you want to have it, you should update the records and execute manually:
+ALTER TABLE product_template ALTER COLUMN pl_family SET NOT NULL
+
+Table 'product_template': unable to set a NOT NULL constraint on column 'pl_price_list' !
+If you want to have it, you should update the records and execute manually:
+ALTER TABLE product_template ALTER COLUMN pl_price_list SET NOT NULL
+
+
+
+
+
+access_oeh_medical_ethnicity,access_oeh_medical_ethnicity,model_oeh_medical_ethnicity,,1,0,0,0
+access_oeh_medical_genetics,access_oeh_medical_genetics,model_oeh_medical_genetics,,1,0,0,0
+access_oeh_medical_insurance_type,access_oeh_medical_insurance_type,model_oeh_medical_insurance_type,,1,0,0,0
+access_oeh_medical_insurance,access_oeh_medical_insurance,model_oeh_medical_insurance,,1,0,0,0
+access_openhealth_closing_form,access_openhealth_closing_form,model_openhealth_closing_form,,1,0,0,0
+access_oeh_medical_pathology_category,access_oeh_medical_pathology_category,model_oeh_medical_pathology_category,,1,0,0,0
+
+
+
+
+
+
+oeh.medical.physician.line has no access rules, consider adding one. E.g. 
+
+oeh.medical.prescription has no access rules, consider adding one. E.g. 
+
+oeh.medical.prescription.line has no access rules, consider adding one. E.g. 
+
+oeh.medical.patient.family has no access rules, consider adding one. E.g. 
+
+oeh.medical.evaluation has no access rules, consider adding one. E.g. 
+
+openhealth.ticket has no access rules, consider adding one. E.g. 
+
+productivity.day has no access rules, consider adding one. E.g. 
+
+
+
+
+
+
+WARNING MICRO openerp.models: openhealth.payment_method.create() includes unknown fields: method, subtotal
+
+
+
+WARNING MICRO openerp.fields: Field oeh.medical.patient.ethnic_group with unknown comodel_name 'oeh.medical.ethnicity'
+WARNING MICRO openerp.fields: Field oeh.medical.patient.genetic_risks with unknown comodel_name 'oeh.medical.genetics'
+WARNING MICRO openerp.fields: Field oeh.medical.patient.x_allergies with unknown comodel_name 'openhealth.allergy'
+
+WARNING MICRO openerp.fields: Field oeh.medical.physician.degree_id with unknown comodel_name 'oeh.medical.degrees'
+WARNING MICRO openerp.fields: Field oeh.medical.physician.speciality with unknown comodel_name 'oeh.medical.speciality'
+
+WARNING MICRO openerp.fields: Field oeh.medical.prescription.line.common_dosage with unknown comodel_name 'oeh.medical.dosage'
+WARNING MICRO openerp.fields: Field oeh.medical.prescription.line.dose_form with unknown comodel_name 'oeh.medical.drug.form'
+WARNING MICRO openerp.fields: Field oeh.medical.prescription.line.dose_route with unknown comodel_name 'oeh.medical.drug.route'
+WARNING MICRO openerp.fields: Field oeh.medical.prescription.line.dose_unit with unknown comodel_name 'oeh.medical.dose.unit'
+
+
+
+
+
+

@@ -17,7 +17,7 @@ from openerp import models, fields, api
 from openerp.addons.openhealth.models.management.lib import mgt_vars
 from openerp.addons.openhealth.models.management import mgt_funcs_core
 
-from lib import pl_export
+from .lib import pl_export
 
 class ElectronicContainer(models.Model):
 	"""

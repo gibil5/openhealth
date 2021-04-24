@@ -1,17 +1,18 @@
 # -*- coding: utf-8 -*-
 {
-'name': "Open Health - Odoo9 - Object oriented - Refactorized - CodeClimate - SonarQube - Management - Functional - No black boxes - Patterns - Microservices - Testing",
+'name': "jx Open Health - Odoo9 - Object oriented - Refactorized - CodeClimate - SonarQube - Management - Functional - No black boxes - Patterns - Microservices - Testing",
 
 'summary': """ ERP system for a Clinic. Inherits OeHealth. Contains ALL the Data Model. Business logic is in classes and libraries.
 
 """,
+
 'description': """
 
-7 apr 2021
-18:17
+24 apr 2021
 
 Created:        11 Sep 2016
-Last up:        30 Mar 2021
+Last up:        14 April 2021
+
 (From 17 Mar 2018 - 13 963)
 
 Using patterns:
@@ -21,11 +22,12 @@ Using patterns:
 	- Introduce containers.
 
 Classes: 
-	- Order (depends oeHealth)
-	- Patient (free)
-	- Treatment (free)
-	- Management (free)
-	- Management Doctor (free)
+	- Patient (oeh)
+	- Evaluation (oeh)
+	- Physician (oeh)
+	- Order (sale.order)
+	- Treatment
+	- Management
 	
 Contains:
 	- All External Dependencies
@@ -36,16 +38,20 @@ Contains:
 	- All Data
 
 External modules:
-	- Spanish translation
-	- Oehealth
 	- Base multi image
-	- Web Export View
 	- Accounting and Finance. Adjust tax to zero
+	- Spanish translation
+
+External modules - Dep:
+	- Oehealth
+	- Web Export View
 
 Python Libs:
-	- Unidecode - dep
-	- pysftp - dep
 	- Numpy, Num2words, Pandas, QrCode
+
+Python Libs - Dep:
+	- Unidecode
+	- pysftp
 
 For PDF Reporting (tickets):
 	- Install wkhtmltopdf (0.12.2 v). Other versions will not work.
@@ -53,7 +59,7 @@ For PDF Reporting (tickets):
 For Tickets (right button printing):
 	- On Chrome, install extension: PDF Viewer. Link it to Adobe Reader.
 
-Deprecated services:
+Deprecated:
 	- Ooor,
 	- Testcafe,
 	- Auto-backup,
@@ -64,7 +70,7 @@ Remember Robert C. Martin:
 	- Do not mix the Data Model and Business Rules. Encapsulate Business Rules in a separate module.
 	- Use Three layered model: Odoo Active Data - Customized Class with BR - General purpose Library.
 	- Handle Exceptions.
-	- The Database should not contain Business rules. Remove computes.
+	- The Database should not contain Business rules. Remove all computes.
 
 Always clean your System:
 	- Remove Procurement Orders,
@@ -78,18 +84,19 @@ Always clean your System:
 
 'author': "jrevilla55@gmail.com",
 'website': "http://jrevilla.com/",
-'category': 'Object Oriented, Microservices',
-'version': '5.0',
+'category': 'jx, Object Oriented',
+'version': '7.0',
 
-'depends': ['base', 'oehealth', 'base_multi_image'],
+#'depends': ['base', 'oehealth', 'base_multi_image'],
 #'depends': ['base', 'base_multi_image', 'sale', 'purchase', 'account', 'product', 'document', 'hr', 'web'],
+'depends': ['base', 'sale', 'purchase', 'account', 'product', 'document', 'hr', 'web'],
 
 'data': [
 
-# --------------------------------------------------------- Legacy - Products - Only for Lima -----
+
+# --------------------------------------------------------- Dep - Legacy Products - Only Lima -----
 	# Products
 	# Suppliers - Very Important - Account Invoice Dependance
-
 	#'data/categs/base_data_categs_prods.xml',
 	#'data/allergies/allergy.xml',
 	#'data/prods/odoo_data_products.xml',
@@ -103,38 +110,42 @@ Always clean your System:
 	#'data/prods/odoo_data_services_med_dep.xml',
 	#'data/suppliers.xml',
 
-
-# --------------------------------------------------------- Users --------------
+# --------------------------------------------------------- User creation - Deprecated !!! --------------
 	# Categs
-	'data/categs/base_data_categs_partners.xml',
-
-	# Users
-	'data/users/base_data_users_generics.xml',                 # Important
-	'data/physicians/base_data_physicians.xml',
-	'data/physicians/base_data_physicians_inactive.xml',
-	'data/users/base_data_users_platform.xml',
-	'data/users/base_data_users_cash.xml',
-	'data/users/base_data_users_account.xml',
-	'data/users/base_data_users_managers.xml',
-	'data/users/base_data_users_doctors.xml',
-	'data/users/base_data_users_assistants.xml',
-	'data/users/base_data_users_directors.xml',
+	#'data/categs/base_data_categs_partners.xml',
+	#'data/users/base_data_users_generics.xml',                 # Important
+	#'data/physicians/base_data_physicians_inactive.xml',
+	#'data/users/base_data_users_platform.xml',
+	#'data/users/base_data_users_cash.xml',
+	#'data/users/base_data_users_account.xml',
+	#'data/users/base_data_users_managers.xml',
+	#'data/users/base_data_users_doctors.xml',
+	#'data/users/base_data_users_assistants.xml',
+	#'data/users/base_data_users_directors.xml',
 
 	# Inactive
-	'data/users/base_data_users_inactive.xml',
+	#'data/users/base_data_users_inactive.xml',
 
 	# Users Tacna
-	'data/users/base_data_users_tacna.xml',
+	#'data/users/base_data_users_tacna.xml',
 
-# ----------------------------------------------------------- Security - Users - First ------------------------------------------------------
-	'security/openhealth_security.xml',             # Groups
-	'security/openhealth_security_readers.xml',   	# Important
-	'security/openhealth_security_managers.xml',
+# ----------------------------------------------------------- Access profiles - Security Groups ------------------------------------------------------
+	#'security/openhealth_security.xml',             	# Dep
+	#'security/openhealth_security_readers.xml',   		# Dep
+	#'security/openhealth_security_managers.xml',
 
+
+
+# --------------------------------------------------------- Users --------------
+	# Users
+	'data/physicians/base_data_physicians.xml',
+
+# ----------------------------------------------------------- Access profiles - Security Groups ------------------------------------------------------
+	# Minimalist version
+	'security/open_security_min.xml',             		# Min
 
 # ----------------------------------------------------------- Configurator ------------------------------------------------------
 	'views/configurators/configurator_emr.xml',         # Includes Menu
-
 
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 	'views/patients/patient_actions.xml',
@@ -173,11 +184,7 @@ Always clean your System:
 
 
 
-
-
-
 	# Dep - Done In PL
-
 	# Marketing - Dep
 	#'views/marketing/patient_line_search.xml',
 	#'views/marketing/patient_line.xml',
@@ -195,7 +202,6 @@ Always clean your System:
 
 
 
-
 	# Management - New
 	'views/management/mgt_patient_line.xml',
 	'views/management/management_order_line.xml',
@@ -209,18 +215,10 @@ Always clean your System:
 	'views/management/management_doctor_daily.xml',	# too complex
 
 
-
-
-
-	# Dep - Done In PL
-	#'views/menus/menus_management.xml',
-	#'views/menus/menus_rsp.xml',			# Dep PL
-	#'views/menus/menus_marketing.xml', 	# Dep PL
-	#'views/menus/menus_account.xml',  		# DEP PL
-
-# ----------------------------------------------------------- Views - Base Actions ------------------------------------------------------
+# ----------------------------------------------------------- Base Actions ------------------------------------------------------
 	# Base - Form and List Actions - Must be the first
 	'views/base_actions.xml',                                       # Very important - All Actions should go here - Dependencies
+
 
 # ----------------------------------------------------------- Reports -----------------------------
 	# Patient
@@ -232,6 +230,7 @@ Always clean your System:
 	# Ticket - Electronic
 	'reports/report_layouts.xml',
 	'reports/print_ticket_receipt_electronic.xml',
+
 
 # ----------------------------------------------------------- Views - First Level -----------------
 	# Users
@@ -247,11 +246,10 @@ Always clean your System:
 	'views/orders/order.xml',
 	'views/orders/order_tree.xml',
 	'views/orders/order_actions.xml',
-	'views/orders/order_search.xml',
+	#'views/orders/order_search.xml',
 	'views/orders/order_admin.xml',
 	'views/orders/order_account.xml',
-	'views/orders/order_report_nex.xml',                # Estado de Cuenta New
-
+	'views/orders/order_report_nex.xml',	# Estado de Cuenta New
 	'views/orders/order_line.xml',
 
 
@@ -269,8 +267,10 @@ Always clean your System:
 	'views/controls/control.xml',
 	'views/controls/control_admin.xml',
 
+
 	# Images
-	'views/images/image_view.xml',
+	#'views/images/image_view.xml',
+
 
 	# Procedures
 	'views/procedures/procedure_search.xml',
@@ -282,13 +282,16 @@ Always clean your System:
 	'views/consultations/consultation_actions.xml',
 	'views/consultations/consultation.xml',
 
+
 	# Treatments
 	'views/treatments/service_actions.xml',  	# Just a dummy
 	'views/treatments/treatment.xml',
 	'views/treatments/treatment_actions.xml',
 
+
 	# Physicians
 	'views/physicians/physician.xml',
+
 
 	# Patients
 	'views/patients/patient_origin.xml',
@@ -301,22 +304,16 @@ Always clean your System:
 	'views/patients/partners/partner.xml',
 
 
-
-
 	# Product - 2019
 	'views/pricelist/pricelist_container.xml',
 	'views/pricelist/product_pricelist.xml',
 
 	# Products
 	'views/products/product_actions.xml',
-	
 	'views/products/product_product.xml',
 	'views/products/product_product_pl.xml',
-	
 	'views/products/product_template.xml',
 	'views/products/product_template_2019.xml',
-
-
 
 
 	# Cards
@@ -332,23 +329,32 @@ Always clean your System:
 	# Consultation - 2
 	'views/consultations/consultation_diagnosis.xml',
 
+
 	# Treatments - 2
 	'views/treatments/treatment_orders.xml',
 	'views/treatments/treatment_consultations.xml',
-	'views/treatments/treatment_services.xml',
 	'views/treatments/treatment_procedures.xml',
 	'views/treatments/treatment_controls.xml', 	# Sab
+
 
 	# Patients - 2
 	'views/patients/patient_personal.xml',
 	'views/patients/patient_control_docs.xml',
 	'views/patients/patient_admin.xml',
 
+
 # ----------------------------------------------------------- Closings ----------------------------
 	# Closing
-	'views/closings/closings.xml',
-	'views/closings/closings_search.xml',
+	#'views/closings/closings.xml',
+	#'views/closings/closings_search.xml',
+	'views/closings/pre_closings.xml',
+	#'views/closings/pre_closings_search.xml',
+
+	#'views/closings/closing.xml',
+	'views/closings/closing_form.xml',
+
 	'reports/closing/closing.xml',
+
 
 # ----------------------------------------------------------- Sale Reports ------------------------------------------------------
 	'views/reports/report_sale_pivots.xml',
@@ -362,25 +368,49 @@ Always clean your System:
 
 # ----------------------------------------------------------- Menus ------------------------------------------------------
 	'views/menus/menus.xml',
-	'views/menus/menus_dev.xml',
+	
+	
 	'views/menus/menus_caja.xml',
 	'views/menus/menus_products.xml',
 
-
-	#'views/menus/prod_2019_actions.xml',
+	'views/products/prod_2019_actions.xml',
 	'views/menus/menus_prods_2019.xml',
+	'views/menus/menus_dev.xml',
 
-
-	'views/menus/menus_oeh.xml',
 	'views/menus/menus_management.xml',
 	'views/menus/menus_account.xml',
 
+
+	# Dep 
+	#'models/oeh_medical/oeh_medical_view.xml',
+	#'views/menus/menus_oeh.xml',
+	#'views/treatments/treatment_services.xml',	# Dep
+	
+
+
+	# Dep - Done In PL
+	#'views/menus/menus_management.xml',
+	#'views/menus/menus_rsp.xml',			# Dep PL
+	#'views/menus/menus_marketing.xml', 	# Dep PL
+	#'views/menus/menus_account.xml',  		# DEP PL
+
+
+# ----------------------------------------------------------- Security - Users - First ------------------------------------------------------
+	#'security/openhealth_security.xml',             # Groups
+	#'security/openhealth_security_readers.xml',   	# Important
+	#'security/openhealth_security_managers.xml',
+
 # ----------------------------------------------------------- Security - Models - Last ------------------------------------------------------
 	'security/ir.model.access.csv',
-	'security/ir.rule.xml',                # Dep ?
+	'security/ir.rule.xml',
 ],
+
+# Demo
 'demo': [],
+
 # Static - Style Css
-'css': ['static/src/css/jx.css'],
+#'css': ['static/src/css/jx.css'],
+'css': [],
+
 'js': [],
 }

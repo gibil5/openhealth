@@ -3,76 +3,6 @@
 	<data>
 
 
-<!-- TREE - SERVICES -->
-				<record model="ir.ui.view" id="product_template_list">
-					<field name="name">price_list product template list</field>
-					<field name="model">product.template</field>
-					<field name="arch" type="xml">
-						<tree>
-							<field name="name"/>
-
-                            <field name="write_date"/>
-
-							<field name="pl_price_list"/>
-							<field name="type"				string="Tipo"	groups='openhealth.roots'/>
-							<field name="pl_treatment"		groups='openhealth.roots'/>
-							<field name="pl_family"			groups='openhealth.roots'/>
-							<field name="pl_subfamily"		groups='openhealth.roots'/>
-
-							<field name="pl_zone"			groups='openhealth.roots'/>
-							<field name="pl_pathology"		groups='openhealth.roots'/>
-							<field name="pl_level"			groups='openhealth.roots'/>
-							<field name="pl_sessions"		groups='openhealth.roots'/>
-							<field name="pl_time"			groups='openhealth.roots'/>
-
-							<field name="list_price"/>
-							<field name="pl_price_vip"/>
-							<field name="pl_price_company"/>
-
-							<field name="pl_name_short"		groups='openhealth.roots'/>
-							<field name="pl_prefix"/>
-							<field name="pl_idx_int"/>
-
-							<field name="sale_ok"/>
-							<field name="purchase_ok"/>
-							<!--
-							<field name="configurator"/>
-							-->
-						</tree>
-					</field>
-				</record>
-
-				<!-- TREE - PRODUCTS -->
-						<record model="ir.ui.view" id="product_template_stockable_list">
-							<field name="name">price_list product template list</field>
-							<field name="model">product.template</field>
-							<field name="arch" type="xml">
-								<tree>
-									<field name="name"/>
-									<field name="pl_price_list"/>
-									<field name="type"				string="Tipo"	groups='openhealth.roots'/>
-									<field name="pl_family"			groups='openhealth.roots'/>
-									<field name="pl_subfamily"		groups='openhealth.roots'/>
-
-									<field name="pl_manufacturer"/>
-									<field name="pl_brand"/>
-
-									<field name="list_price"/>
-									<field name="pl_price_company"/>
-									<field name="pl_account"/>
-
-									<field name="pl_name_short"		groups='openhealth.roots'/>
-									<field name="pl_prefix"			groups='openhealth.roots'/>
-									<field name="pl_idx_int"/>
-
-									<field name="sale_ok"/>
-									<field name="purchase_ok"/>
-								<!--
-									<field name="configurator"/>
-								-->
-								</tree>
-							</field>
-						</record>
 
 
 
@@ -93,7 +23,6 @@
 
 
 
-
 <!-- Action - 2019 - prod -->
 <record model="ir.actions.act_window" id="product_template_2019_prod_list_action">
 	<field name="name">PRODUCTOS</field>
@@ -109,7 +38,6 @@
 	</field>
 	<field name="limit">700</field>
 </record>
-
 
 
 <!-- Action - 2019 - Services -->
@@ -130,7 +58,6 @@
 
 
 
-
 <!-- Action - 2019 - Consultation -->
 <record model="ir.actions.act_window" id="product_template_2019_consultation_list_action">
 	<field name="name">CONSULTAS</field>
@@ -140,17 +67,12 @@
 	<field name="view_id" ref="product_template_list"/> 
 
 	<field name="domain">[
-													('pl_price_list', '=', '2019'),
-													('pl_family', '=', 'consultation'),
-												]
+							('pl_price_list', '=', '2019'),
+							('pl_family', '=', 'consultation'),
+						]
 	</field>
-	<!--
-	('pl_subfamily', '=', 'consultation'),
-	-->
 	<field name="limit">700</field>
 </record>
-
-
 
 
 

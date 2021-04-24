@@ -15,18 +15,21 @@
 
             <field name="arch" type="xml">
 
-                <!-- Goners -->
-                <xpath expr="//field[@name='fax']" position="replace">
-                </xpath>
 
-                <xpath expr="//field[@name='title']" position="replace">
+                <!-- Goners -->
+<!--
+                <xpath expr="//field[@name='fax']" position="replace">
                 </xpath>
 
                 <xpath expr="//field[@name='zip']" position="replace">
                 </xpath>
 
+                <xpath expr="//field[@name='title']" position="replace">
+                </xpath>
+
                 <xpath expr="//field[@name='state_id']" position="replace">
                 </xpath>
+-->
 
 
 

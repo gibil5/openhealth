@@ -10,10 +10,11 @@
 """
 from __future__ import print_function
 from __future__ import absolute_import
-
 import collections
 from openerp import models, fields, api
+
 from .mgt_patient_line import MgtPatientLine
+
 from .management_db import ManagementDb
 
 #from sales_doctor import SalesDoctor

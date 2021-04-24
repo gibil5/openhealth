@@ -8,7 +8,7 @@
 
 'description': """
 
-15 apr 2021
+24 apr 2021
 
 Created:        11 Sep 2016
 Last up:        14 April 2021
@@ -93,6 +93,7 @@ Always clean your System:
 
 'data': [
 
+
 # --------------------------------------------------------- Dep - Legacy Products - Only Lima -----
 	# Products
 	# Suppliers - Very Important - Account Invoice Dependance
@@ -109,46 +110,45 @@ Always clean your System:
 	#'data/prods/odoo_data_services_med_dep.xml',
 	#'data/suppliers.xml',
 
-
-# --------------------------------------------------------- Users --------------
+# --------------------------------------------------------- User creation - Deprecated !!! --------------
 	# Categs
-	'data/categs/base_data_categs_partners.xml',
-
-	# Users
-	'data/users/base_data_users_generics.xml',                 # Important
-	'data/physicians/base_data_physicians.xml',
-	'data/physicians/base_data_physicians_inactive.xml',
-	'data/users/base_data_users_platform.xml',
-	'data/users/base_data_users_cash.xml',
-	'data/users/base_data_users_account.xml',
-	'data/users/base_data_users_managers.xml',
-	'data/users/base_data_users_doctors.xml',
-	'data/users/base_data_users_assistants.xml',
-	'data/users/base_data_users_directors.xml',
+	#'data/categs/base_data_categs_partners.xml',
+	#'data/users/base_data_users_generics.xml',                 # Important
+	#'data/physicians/base_data_physicians_inactive.xml',
+	#'data/users/base_data_users_platform.xml',
+	#'data/users/base_data_users_cash.xml',
+	#'data/users/base_data_users_account.xml',
+	#'data/users/base_data_users_managers.xml',
+	#'data/users/base_data_users_doctors.xml',
+	#'data/users/base_data_users_assistants.xml',
+	#'data/users/base_data_users_directors.xml',
 
 	# Inactive
-	'data/users/base_data_users_inactive.xml',
+	#'data/users/base_data_users_inactive.xml',
 
 	# Users Tacna
-	'data/users/base_data_users_tacna.xml',
+	#'data/users/base_data_users_tacna.xml',
 
-
-
-# ----------------------------------------------------------- Security - Groups ------------------------------------------------------
+# ----------------------------------------------------------- Access profiles - Security Groups ------------------------------------------------------
 	#'security/openhealth_security.xml',             	# Dep
 	#'security/openhealth_security_readers.xml',   		# Dep
 	#'security/openhealth_security_managers.xml',
 
-	'security/open_security_min.xml',             		# Min
 
+
+# --------------------------------------------------------- Users --------------
+	# Users
+	'data/physicians/base_data_physicians.xml',
+
+# ----------------------------------------------------------- Access profiles - Security Groups ------------------------------------------------------
+	# Minimalist version
+	'security/open_security_min.xml',             		# Min
 
 # ----------------------------------------------------------- Configurator ------------------------------------------------------
 	'views/configurators/configurator_emr.xml',         # Includes Menu
 
-
 # ----------------------------------------------------------- Actions ------------------------------------------------------
 	'views/patients/patient_actions.xml',
-
 
 # ----------------------------------------------------------- Recent ------------------------------------------------------
 	# Product Selector  - RSP
@@ -246,7 +246,7 @@ Always clean your System:
 	'views/orders/order.xml',
 	'views/orders/order_tree.xml',
 	'views/orders/order_actions.xml',
-	'views/orders/order_search.xml',
+	#'views/orders/order_search.xml',
 	'views/orders/order_admin.xml',
 	'views/orders/order_account.xml',
 	'views/orders/order_report_nex.xml',	# Estado de Cuenta New
@@ -348,7 +348,7 @@ Always clean your System:
 	#'views/closings/closings.xml',
 	#'views/closings/closings_search.xml',
 	'views/closings/pre_closings.xml',
-	'views/closings/pre_closings_search.xml',
+	#'views/closings/pre_closings_search.xml',
 
 	#'views/closings/closing.xml',
 	'views/closings/closing_form.xml',
@@ -368,12 +368,14 @@ Always clean your System:
 
 # ----------------------------------------------------------- Menus ------------------------------------------------------
 	'views/menus/menus.xml',
-	'views/menus/menus_dev.xml',
+	
+	
 	'views/menus/menus_caja.xml',
 	'views/menus/menus_products.xml',
 
 	'views/products/prod_2019_actions.xml',
 	'views/menus/menus_prods_2019.xml',
+	'views/menus/menus_dev.xml',
 
 	'views/menus/menus_management.xml',
 	'views/menus/menus_account.xml',

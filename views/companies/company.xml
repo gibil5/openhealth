@@ -58,10 +58,10 @@
 
 					<field name="partner_id"/>
 
-					<field name="rml_header1"/>
 <!--
--->
+					<field name="rml_header1"/>
 					<field name="x_address"/>
+-->
 				</tree>
 			</field>
 		</record>

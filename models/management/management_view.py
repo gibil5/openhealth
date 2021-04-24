@@ -12,11 +12,12 @@
 from __future__ import print_function
 import collections
 from openerp import models, fields, api
+
 from .mgt_patient_line import MgtPatientLine
-from .management_db import ManagementDb
 from .lib import mgt_funcs, prod_funcs, mgt_bridge, mgt_vars
 from .sales_doctor import SalesDoctor
 
+from .management_db import ManagementDb
 
 # ------------------------------------------------------------------- Class -----------------------
 class Management(models.Model):

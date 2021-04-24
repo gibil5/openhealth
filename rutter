@@ -10,6 +10,80 @@
     Listen to Warnings
 # ------------------------------------------------------------------------------
 
+Error:
+Odoo Server Error
+
+Traceback (most recent call last):
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/fields.py", line 956, in __get__
+    value = record.env.cache.get(record, self)
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/api.py", line 977, in get
+    value = self._data[key][field][record._ids[0]]
+KeyError: 1577
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/http.py", line 653, in _handle_exception
+    return super(JsonRequest, self)._handle_exception(exception)
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/http.py", line 312, in _handle_exception
+    raise pycompat.reraise(type(exception), exception, sys.exc_info()[2])
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/tools/pycompat.py", line 87, in reraise
+    raise value
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/http.py", line 695, in dispatch
+    result = self._call_function(**self.params)
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/http.py", line 344, in _call_function
+    return checked_call(self.db, *args, **kwargs)
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/service/model.py", line 97, in wrapper
+    return f(dbname, *args, **kwargs)
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/http.py", line 337, in checked_call
+    result = self.endpoint(*a, **kw)
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/http.py", line 939, in __call__
+    return self.method(*args, **kw)
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/http.py", line 517, in response_wrap
+    response = f(*args, **kw)
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/addons/web/controllers/main.py", line 1225, in load
+    action = request.env[action_type].browse([action_id]).read()
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/addons/base/ir/ir_actions.py", line 197, in read
+    result = super(IrActionsActWindow, self).read(fields, load=load)
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/models.py", line 2653, in read
+    vals[name] = convert(record[name], record, use_name_get)
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/models.py", line 4849, in __getitem__
+    return self._fields[key].__get__(self, type(self))
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/fields.py", line 960, in __get__
+    self.determine_value(record)
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/fields.py", line 1073, in determine_value
+    self.compute_value(recs)
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/fields.py", line 1027, in compute_value
+    self._compute_value(records)
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/fields.py", line 1018, in _compute_value
+    getattr(records, self.compute)()
+  
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/addons/base/ir/ir_actions.py", line 157, in _compute_search_view
+    fvg = self.env[act.res_model].fields_view_get(act.search_view_id.id, 'search')
+  
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/addons/mail/models/mail_thread.py", line 373, in fields_view_get
+    res = super(MailThread, self).fields_view_get(view_id=view_id, view_type=view_type, toolbar=toolbar, submenu=submenu)
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/models.py", line 1395, in fields_view_get
+    result = self._fields_view_get(view_id=view_id, view_type=view_type, toolbar=toolbar, submenu=submenu)
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/models.py", line 1358, in _fields_view_get
+    root_view = View.browse(view_id).read_combined(['id', 'name', 'field_parent', 'type', 'model', 'arch'])
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/addons/base/ir/ir_ui_view.py", line 734, in read_combined
+    arch_tree = self.apply_inheritance_specs(arch_tree, view_arch, parent_view['id'])
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/addons/base/ir/ir_ui_view.py", line 671, in apply_inheritance_specs
+    self.raise_view_error(_("Element '%s' cannot be located in parent view") % tag, inherit_id)
+  File "/Users/gibil/Virtualenvs/Odoo11-git/src/odoo/odoo/addons/base/ir/ir_ui_view.py", line 533, in raise_view_error
+    raise ValueError(message)
+ValueError: Element '<xpath expr="//filter[@name='my_sale_orders_filter']">' cannot be located in parent view
+
+Error context:
+View `sale.order.search.modified`
+[view_id: 584, xml_id: sale.view_sales_order_filter, model: sale.order, parent_id: n/a]
+
+
+
+Field 'company_id' used in attributes must be present in view but is missing:
+
+
 
 raise ValueError('External ID not found in the system: %s' % xmlid)
 odoo.tools.convert.ParseError: "<class 'ValueError'>: "External ID not found in the system: 

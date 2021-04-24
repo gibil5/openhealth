@@ -3,7 +3,6 @@
 	<data>
 		
 
-
 <!-- TREE --> 
 		<record model="ir.ui.view" id="sale.view_order_tree">
 			<field name="name">sale.order.tree</field>
@@ -17,6 +16,12 @@
 						blue:state=='sale';
 						grey:state in ('cancel')
 						">
+
+<!-- Odoo 11-->
+					<field name="invoice_status"/>
+
+
+
 <!--
 					<field name="pl_price_list"	string="Lista de Precios"  	groups="openhealth.roots"/>
 -->

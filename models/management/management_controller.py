@@ -11,7 +11,9 @@
 from __future__ import print_function
 from __future__ import absolute_import
 import collections
-from openerp import models, fields, api
+
+#from openerp import models, fields, api
+from openerp import models
 
 from .mgt_patient_line import MgtPatientLine
 

@@ -21,7 +21,7 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     print('*** root')
-    return 'Hello, from ARCHI_PATS Flask API !', 201
+    return 'Hello, from ARCHITECTURE Flask API !', 201
 
 @app.route('/hello')
 def hello():

@@ -12,11 +12,10 @@ from flask import Flask, jsonify, request
 from sqlalchemy import create_engine 
 from sqlalchemy.orm import sessionmaker 
 
-#from datetime import datetime, timedelta
 from datetime import date, timedelta
 
-from architecture.adapters import repository 
 from architecture import config
+from architecture.adapters import repository 
 from architecture.domain import model
 
 app = Flask(__name__)

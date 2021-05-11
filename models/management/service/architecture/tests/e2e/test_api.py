@@ -33,9 +33,10 @@ def test_root_path_returns_201():
     assert r.status_code == 201 
     #assert r.json ()[ 'batchref' ] == earlybatch 
 
+
 # ------------------------------------ Test ------------------------------------------
 @pytest.mark.usefixtures('postgres_db') 
-@pytest.mark.usefixtures('restart_api')
+#@pytest.mark.usefixtures('restart_api')    # creates an empty flask_app.py 
 def test_happy_path_returns_201():
     print('\n\n* test_happy_path_returns_201')
     url = config.get_api_url()
